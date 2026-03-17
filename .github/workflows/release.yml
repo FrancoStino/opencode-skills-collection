@@ -28,12 +28,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
 
       - name: Configure git
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Install dependencies and generate lockfile
+        run: npm install
 
       - name: Bump version
         id: bump
@@ -41,7 +43,7 @@ jobs:
           NEW_VERSION=$(npm version ${{ github.event.inputs.version }} --no-git-tag-version)
           echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
 
-      - name: Commit and push new version
+      - name: Commit and push
         run: |
           git add package.json package-lock.json
           git commit -m "chore: bump version to ${{ steps.bump.outputs.new_version }}"
