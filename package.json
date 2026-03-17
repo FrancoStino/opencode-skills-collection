@@ -1,0 +1,28 @@
+{
+  "name": "opencode-skills-antigravity",
+  "version": "1.0.0",
+  "description": "OpenCode CLI plugin that automatically downloads and keeps Antigravity Awesome Skills up to date.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "opencode",
+    "opencode-plugin",
+    "antigravity",
+    "skills",
+    "ai",
+    "agent"
+  ],
+  "author": "Davide Ladisa <rawsar@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@opencode-ai/plugin": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  }
+}
