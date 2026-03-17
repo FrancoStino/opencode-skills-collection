@@ -4,6 +4,14 @@
   "description": "OpenCode CLI plugin that automatically downloads and keeps Antigravity Awesome Skills up to date.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FrancoStino/opencode-skills-antigravity"
+  },
+  "homepage": "https://github.com/FrancoStino/opencode-skills-antigravity",
+  "bugs": {
+    "url": "https://github.com/FrancoStino/opencode-skills-antigravity/issues"
+  },
   "scripts": {
     "build": "tsc",
     "prepublishOnly": "npm run build"
