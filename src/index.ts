@@ -1,33 +1,31 @@
 import type { Plugin } from "@opencode-ai/plugin";
-import { exec } from "child_process";
-import { promisify } from "util";
+import fs from "fs";
 import path from "path";
 import os from "os";
-
-const execAsync = promisify(exec);
+import { fileURLToPath } from "url";
 
 const AntigravityAutoUpdater: Plugin = async (_ctx) => {
   // Run asynchronously in background to not block OpenCode startup
-  setTimeout(async () => {
+  setTimeout(() => {
     try {
       console.log("🔄 [Antigravity Plugin] Syncing Awesome Skills...");
 
-      // Resolve absolute path to OpenCode's config directory
-      // so it works regardless of the cwd when OpenCode is launched
-      const opencodeCfgDir = path.join(os.homedir(), ".config", "opencode");
-      const skillsPath = path.join(opencodeCfgDir, ".agents", "skills");
+      // Resolve absolute path to the bundled-skills directory relative to this file
+      // Works regardless of where OpenCode is launched from
+      const __dirname = path.dirname(fileURLToPath(import.meta.url));
+      const bundledSkillsPath = path.join(__dirname, "..", "bundled-skills");
 
-      // --yes skips the interactive "Ok to proceed?" prompt from npx
-      const { stdout, stderr } = await execAsync(
-        `npx --yes antigravity-awesome-skills --path "${skillsPath}"`
-      );
+      // Resolve target path in OpenCode's config directory
+      const skillsPath = path.join(os.homedir(), ".config", "opencode", ".agents", "skills");
 
-      if (stdout) console.log("✅ [Antigravity Plugin]", stdout.trim());
-      if (stderr) console.error("⚠️  [Antigravity Plugin]", stderr.trim());
+      // Create destination directory and copy files
+      fs.mkdirSync(skillsPath, { recursive: true });
+      fs.cpSync(bundledSkillsPath, skillsPath, { recursive: true, force: true });
 
+      console.log("✅ [Antigravity Plugin] Skills synced successfully.");
     } catch (error: unknown) {
       const message = error instanceof Error ? error.message : String(error);
-      console.error("⚠️  [Antigravity Plugin] Could not sync skills (offline?):", message);
+      console.error("⚠️  [Antigravity Plugin] Could not sync skills:", message);
     }
   }, 0);
 
