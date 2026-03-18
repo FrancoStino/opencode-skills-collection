@@ -23,7 +23,7 @@ Or simply describe what you want and OpenCode will pick the right skill automati
 
 ## 🚀 Installation
 
-### 1. Add the plugin to your global OpenCode config
+### Add the plugin to your global OpenCode config
 
 Edit (or create) `~/.config/opencode/opencode.json`:
 
