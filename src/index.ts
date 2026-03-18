@@ -13,10 +13,14 @@ const AntigravityAutoUpdater: Plugin = async (_ctx) => {
 
     // Resolve target path in OpenCode's config directory
     const skillsPath = path.join(os.homedir(), ".config", "opencode", ".agents", "skills");
+    const skillsPathGlobal = path.join(os.homedir(), ".config", "opencode", "skills");
 
     // Create destination directory and copy files
     fs.mkdirSync(skillsPath, { recursive: true });
     fs.cpSync(bundledSkillsPath, skillsPath, { recursive: true, force: true });
+
+    fs.mkdirSync(skillsPathGlobal, { recursive: true });
+    fs.cpSync(bundledSkillsPath, skillsPathGlobal, { recursive: true, force: true });
   } catch (error: unknown) {
     // silently fail
   }
