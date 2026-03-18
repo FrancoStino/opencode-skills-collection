@@ -1,4 +1,4 @@
-# opencode-skills-antigravity
+# OpenCode Skills Antigravity
 
 An [OpenCode CLI](https://opencode.ai/) plugin that bundles and manages the [Antigravity Awesome Skills](https://github.com/sickn33/antigravity-awesome-skills) repository for instant use.
 
