@@ -30,13 +30,13 @@ jobs:
 
       - name: Sync skills
         run: |
-          rm -rf .agents/skills
-          npx --yes antigravity-awesome-skills --path ".agents/skills"
+          rm -rf bundled-skills
+          npx --yes antigravity-awesome-skills --path "bundled-skills"
 
       - name: Check for changes
         id: check_changes
         run: |
-          if [ -n "$(git status --porcelain .agents/skills)" ]; then
+          if [ -n "$(git status --porcelain bundled-skills)" ]; then
             echo "changes=true" >> $GITHUB_OUTPUT
           else
             echo "changes=false" >> $GITHUB_OUTPUT
@@ -49,7 +49,7 @@ jobs:
           npm ci
           NEW_VERSION=$(npm version patch --no-git-tag-version)
           echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
-          git add .agents/skills package.json package-lock.json
+          git add bundled-skills package.json package-lock.json
           git commit -m "chore: sync skills and bump version to $NEW_VERSION"
           git tag $NEW_VERSION
           git push origin main --tags
