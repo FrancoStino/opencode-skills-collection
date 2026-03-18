@@ -49,31 +49,11 @@ git --version
 Skills are stored at:
 
 ```
-~/.config/opencode/skills/antigravity-awesome-skills/
+~/.config/opencode/skills/
 ```
 
 OpenCode scans this directory automatically at startup.
 
-## 🛠️ Development
-
-```bash
-git clone https://github.com/FrancoStino/opencode-skills-antigravity.git
-cd opencode-skills-antigravity
-npm install
-npm run build
-```
-
-### Test locally before publishing
-
-Add the local path directly to your `opencode.json` to test without publishing:
-
-```json
-{
-  "plugin": [
-    "/absolute/path/to/opencode-skills-antigravity/src/index.ts"
-  ]
-}
-```
 
 ## 📄 License
 
