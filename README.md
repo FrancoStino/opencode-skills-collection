@@ -92,35 +92,6 @@ opencode run /refactor clean up this function
 
 ---
 
-## CI/CD Pipeline
-
-The release pipeline is fully automated and self-contained:
-
-```
-[Hourly Cron]
-      │
-      ▼
-Auto-Sync Skills ──── no changes ───▶ (skip)
-      │
-   changes detected
-      │
-      ▼
-Bump patch version + commit + tag
-      │
-      ▼
-Create GitHub Release
-      │
-      ▼
-Publish to npm
-      │
-      ▼
-Sync main → develop
-```
-
-Manual releases (minor/major/patch) can also be triggered via the **Create Release** workflow dispatch in the Actions tab.
-
----
-
 ## Project Structure
 
 ```
