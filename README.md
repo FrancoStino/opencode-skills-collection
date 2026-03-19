@@ -7,8 +7,8 @@
 <br/>
 
 [![npm version](https://img.shields.io/npm/v/opencode-skills-antigravity?style=for-the-badge&color=cb3837&label=npm)](https://www.npmjs.com/package/opencode-skills-antigravity)
-[![license](https://img.shields.io/github/license/FrancoStino/opencode-skills-antigravity?style=for-the-badge&color=blue)](./LICENSE)
 [![npm downloads](https://img.shields.io/npm/dm/opencode-skills-antigravity?style=for-the-badge&color=orange)](https://www.npmjs.com/package/opencode-skills-antigravity)
+[![license](https://img.shields.io/github/license/FrancoStino/opencode-skills-antigravity?style=for-the-badge&color=blue)](./LICENSE)
 
 </div>
 
