@@ -149,6 +149,13 @@ A: Yes, MIT License. Open Source forever.
 
 ## Next Steps
 
+Need a tool-specific starting point first?
+
+- [Claude Code skills](claude-code-skills.md)
+- [Cursor skills](cursor-skills.md)
+- [Codex CLI skills](codex-cli-skills.md)
+- [Gemini CLI skills](gemini-cli-skills.md)
+
 1. [Browse the Bundles](bundles.md)
 2. [See Real-World Examples](../contributors/examples.md)
 3. [Contribute a Skill](../../CONTRIBUTING.md)
