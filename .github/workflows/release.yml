@@ -23,6 +23,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -51,10 +52,24 @@ jobs:
           git tag ${{ steps.bump.outputs.new_version }}
           git push origin main --tags
 
+      - name: Generate changelog
+        id: changelog
+        uses: requarks/changelog-action@v1
+        with:
+          token: ${{ github.token }}
+          tag: ${{ steps.bump.outputs.new_version }}
+
+      - name: Commit CHANGELOG.md
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          branch: main
+          commit_message: 'docs: update CHANGELOG.md for ${{ steps.bump.outputs.new_version }} [skip ci]'
+          file_pattern: CHANGELOG.md
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.bump.outputs.new_version }}
           name: ${{ steps.bump.outputs.new_version }}
-          generate_release_notes: true
+          body: ${{ steps.changelog.outputs.changes }}
           make_latest: true
