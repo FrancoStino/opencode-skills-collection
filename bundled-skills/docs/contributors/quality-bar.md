@@ -54,6 +54,15 @@ For pull requests that add or modify `SKILL.md`, GitHub also runs the automated 
 - inline token/secret-style command examples,
 - deliberate allowlisted high-risk documentation commands via `<!-- security-allowlist: ... -->`.
 
+### Additional Maintainer Audit
+
+Use `npm run audit:skills` when you need a repo-wide report that goes beyond schema validation and answers:
+
+- which skills are structurally valid but still need usability cleanup,
+- which skills still have truncated descriptions (issue `#365`),
+- which skills are missing examples or limitations,
+- and which skills have the highest concentration of warnings/errors.
+
 ---
 
 ## Support Levels
@@ -74,6 +83,7 @@ The canonical validator is `tools/scripts/validate_skills.py`, but the recommend
 
 ```bash
 npm run validate
+npm run audit:skills
 npm run validate:references
 npm test
 npm run security:docs
@@ -82,6 +92,7 @@ npm run security:docs
 Notes:
 
 - `npm run validate` is the operational contributor gate.
+- `npm run audit:skills` is the maintainer-facing compliance/usability report for the full library.
 - `npm run security:docs` is required for command-heavy or risky skill content.
 - PRs that touch `SKILL.md` also get an automated `skill-review` GitHub Actions check.
 - `npm run validate:strict` is a useful hardening pass, but the repository still contains legacy skills that do not yet satisfy strict validation.

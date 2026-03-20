@@ -11,7 +11,6 @@ date_added: "2026-03-17"
 You push code. We review it against your spec, fix issues, and send a PR.
 
 ## When to Use
-
 Use this skill when:
 
 - You want human review for AI-generated code pushed to GitHub

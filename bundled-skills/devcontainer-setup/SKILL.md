@@ -11,7 +11,6 @@ date_added: 2026-03-06
 Creates a pre-configured devcontainer with Claude Code and language-specific tooling.
 
 ## When to Use
-
 - User asks to "set up a devcontainer" or "add devcontainer support"
 - User wants a sandboxed Claude Code development environment
 - User needs isolated development environments with persistent configuration
