@@ -17,6 +17,8 @@ This is the maintainer playbook for cutting a repository release. Historical rel
 npm run release:preflight
 ```
 
+This preflight now runs the deterministic `sync:release-state` flow, refreshes the tracked web assets in `apps/web-app/public`, executes the local test suite, runs the web-app build, and performs `npm pack --dry-run --json` so release tags are validated against the same artifact path used later in CI.
+
 2. Mandatory documentation hardening (repo-wide SKILL.md security scan):
 
 ```bash
@@ -71,6 +73,7 @@ npm publish
 ```
 
 Normally this still happens via the existing GitHub release workflow after the GitHub release is published.
+That workflow now reruns `sync:release-state`, refreshes tracked web assets, fails on canonical drift via `git diff --exit-code`, executes tests and docs security checks, builds the web app, and dry-runs the npm package before `npm publish`.
 
 ## Rollback Notes
 
