@@ -4,6 +4,11 @@ description: "IMPORTANT - Path Resolution: This skill can be installed in differ
 risk: unknown
 source: community
 date_added: "2026-02-27"
+plugin:
+  setup:
+    type: manual
+    summary: "Run `npm run setup` in the skill directory before first use to install Playwright and Chromium."
+    docs: "SKILL.md"
 ---
 
 **IMPORTANT - Path Resolution:**
@@ -11,9 +16,9 @@ This skill can be installed in different locations (plugin system, manual instal
 
 Common installation paths:
 
-- Plugin system: `~/.claude/plugins/marketplaces/playwright-skill/skills/playwright-skill`
-- Manual global: `~/.claude/skills/playwright-skill`
-- Project-specific: `<project>/.claude/skills/playwright-skill`
+- Plugin system: `<plugin-root>/skills/playwright-skill`
+- Manual global: `<agent-home>/skills/playwright-skill`
+- Project-specific: `<project>/.agent/skills/playwright-skill`
 
 # Playwright Browser Automation
 

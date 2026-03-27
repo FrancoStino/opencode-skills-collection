@@ -6,6 +6,8 @@
 
 > **Important:** bundles are installable plugin subsets and activation presets, not invokable mega-skills such as `@web-wizard` or `/essentials-bundle`. Use the individual skills listed in the pack, install the bundle as a dedicated marketplace plugin, or use the activation scripts if you want only that bundle's skills active in your live Antigravity directory.
 
+> **Plugin compatibility:** root plugins and bundle plugins only publish plugin-safe skills. If a bundle shows `pending hardening`, the skills still exist in the repository, but that bundle is not yet published for that target. `Requires manual setup` means the bundle is installable, but one or more included skills need an explicit setup step before first use.
+
 ## Quick Start
 
 1. **Install the repository or bundle plugin:**
@@ -38,6 +40,8 @@ If you want a bundle to behave like a focused active subset instead of a full in
 
 _For everyone. Install these first._
 
+**Plugin status:** Codex plugin-safe · Claude plugin-safe
+
 - [`concise-planning`](../../skills/concise-planning/): Always start with a plan.
 - [`lint-and-validate`](../../skills/lint-and-validate/): Keep your code clean automatically.
 - [`git-pushing`](../../skills/git-pushing/): Save your work safely.
@@ -53,6 +57,8 @@ _For everyone. Install these first._
 
 _For pentesting, auditing, and hardening._
 
+**Plugin status:** Codex plugin-safe · Claude plugin-safe
+
 - [`ethical-hacking-methodology`](../../skills/ethical-hacking-methodology/): The Bible of ethical hacking.
 - [`burp-suite-testing`](../../skills/burp-suite-testing/): Web vulnerability scanning.
 - [`top-web-vulnerabilities`](../../skills/top-web-vulnerabilities/): OWASP-aligned vulnerability taxonomy.
@@ -64,6 +70,8 @@ _For pentesting, auditing, and hardening._
 ### 🔐 The "Security Developer" Pack
 
 _For building secure applications._
+
+**Plugin status:** Codex plugin-safe · Claude plugin-safe
 
 - [`api-security-best-practices`](../../skills/api-security-best-practices/): Secure API design patterns.
 - [`auth-implementation-patterns`](../../skills/auth-implementation-patterns/): JWT, OAuth2, session management.
@@ -81,6 +89,8 @@ _For building secure applications._
 
 _For building modern, high-performance web apps._
 
+**Plugin status:** Codex plugin-safe · Claude plugin-safe
+
 - [`frontend-design`](../../skills/frontend-design/): UI guidelines and aesthetics.
 - [`react-best-practices`](../../skills/react-best-practices/): React & Next.js performance optimization.
 - [`react-patterns`](../../skills/react-patterns/): Modern React patterns and principles.
@@ -93,6 +103,8 @@ _For building modern, high-performance web apps._
 
 _For pixel-perfect experiences._
 
+**Plugin status:** Codex plugin-safe · Claude plugin-safe
+
 - [`ui-ux-pro-max`](../../skills/ui-ux-pro-max/): Premium design systems and tokens.
 - [`frontend-design`](../../skills/frontend-design/): The base layer of aesthetics.
 - [`3d-web-experience`](../../skills/3d-web-experience/): Three.js & React Three Fiber magic.
@@ -103,6 +115,8 @@ _For pixel-perfect experiences._
 ### ⚡ The "Full-Stack Developer" Pack
 
 _For end-to-end web application development._
+
+**Plugin status:** Codex plugin-safe · Claude plugin-safe
 
 - [`senior-fullstack`](../../skills/senior-fullstack/): Complete fullstack development guide.
 - [`frontend-developer`](../../skills/frontend-developer/): React 19+ and Next.js 15+ expertise.
@@ -120,6 +134,8 @@ _For end-to-end web application development._
 
 _For building AI systems and autonomous agents._
 
+**Plugin status:** Codex plugin-safe · Claude plugin-safe
+
 - [`agent-evaluation`](../../skills/agent-evaluation/): Test and benchmark your agents.
 - [`langgraph`](../../skills/langgraph/): Build stateful agent workflows.
 - [`mcp-builder`](../../skills/mcp-builder/): Create your own MCP tools.
@@ -130,6 +146,8 @@ _For building AI systems and autonomous agents._
 ### 🧠 The "LLM Application Developer" Pack
 
 _For building production LLM applications._
+
+**Plugin status:** Codex plugin-safe · Claude plugin-safe
 
 - [`llm-app-patterns`](../../skills/llm-app-patterns/): Production-ready LLM patterns.
 - [`rag-implementation`](../../skills/rag-implementation/): Retrieval-Augmented Generation.
@@ -145,6 +163,8 @@ _For building production LLM applications._
 ### 🎮 The "Indie Game Dev" Pack
 
 _For building games with AI assistants._
+
+**Plugin status:** Codex plugin-safe · Claude plugin-safe
 
 - [`game-development/game-design`](../../skills/game-development/game-design/): Mechanics and loops.
 - [`game-development/2d-games`](../../skills/game-development/2d-games/): Sprites and physics.
@@ -162,6 +182,8 @@ _For building games with AI assistants._
 
 _For backend heavyweights and data scientists._
 
+**Plugin status:** Codex plugin-safe · Claude plugin-safe
+
 - [`python-pro`](../../skills/python-pro/): Master Python 3.12+ with modern features.
 - [`python-patterns`](../../skills/python-patterns/): Idiomatic Python code.
 - [`fastapi-pro`](../../skills/fastapi-pro/): High-performance async APIs.
@@ -174,6 +196,8 @@ _For backend heavyweights and data scientists._
 
 _For modern web development._
 
+**Plugin status:** Codex plugin-safe · Claude plugin-safe
+
 - [`typescript-expert`](../../skills/typescript-expert/): TypeScript mastery and advanced types.
 - [`javascript-pro`](../../skills/javascript-pro/): Modern JavaScript with ES6+.
 - [`react-best-practices`](../../skills/react-best-practices/): React performance optimization.
@@ -183,6 +207,8 @@ _For modern web development._
 ### 🦀 The "Systems Programming" Pack
 
 _For low-level and performance-critical code._
+
+**Plugin status:** Codex plugin-safe · Claude plugin-safe
 
 - [`rust-pro`](../../skills/rust-pro/): Rust 1.75+ with async patterns.
 - [`go-concurrency-patterns`](../../skills/go-concurrency-patterns/): Go concurrency mastery.
@@ -199,6 +225,8 @@ _For low-level and performance-critical code._
 
 _For building products, not just code._
 
+**Plugin status:** Codex plugin-safe · Claude plugin-safe
+
 - [`product-manager-toolkit`](../../skills/product-manager-toolkit/): RICE prioritization, PRD templates.
 - [`competitive-landscape`](../../skills/competitive-landscape/): Competitor analysis.
 - [`competitor-alternatives`](../../skills/competitor-alternatives/): Create comparison pages.
@@ -210,6 +238,8 @@ _For building products, not just code._
 
 _For data-driven decision making._
 
+**Plugin status:** Codex plugin-safe · Claude plugin-safe
+
 - [`business-analyst`](../../skills/business-analyst/): AI-powered analytics and KPIs.
 - [`startup-metrics-framework`](../../skills/startup-metrics-framework/): SaaS metrics and unit economics.
 - [`startup-financial-modeling`](../../skills/startup-financial-modeling/): 3-5 year financial projections.
@@ -219,6 +249,8 @@ _For data-driven decision making._
 ### 📈 The "Marketing & Growth" Pack
 
 _For driving user acquisition and retention._
+
+**Plugin status:** Codex plugin-safe · Claude plugin-safe
 
 - [`content-creator`](../../skills/content-creator/): SEO-optimized marketing content.
 - [`seo-audit`](../../skills/seo-audit/): Technical SEO health checks.
@@ -236,6 +268,8 @@ _For driving user acquisition and retention._
 
 _For infrastructure and scaling._
 
+**Plugin status:** Codex plugin-safe · Claude plugin-safe
+
 - [`docker-expert`](../../skills/docker-expert/): Master containers and multi-stage builds.
 - [`aws-serverless`](../../skills/aws-serverless/): Serverless on AWS (Lambda, DynamoDB).
 - [`kubernetes-architect`](../../skills/kubernetes-architect/): K8s architecture and GitOps.
@@ -247,6 +281,8 @@ _For infrastructure and scaling._
 ### 📊 The "Observability & Monitoring" Pack
 
 _For production reliability._
+
+**Plugin status:** Codex plugin-safe · Claude plugin-safe
 
 - [`observability-engineer`](../../skills/observability-engineer/): Comprehensive monitoring systems.
 - [`distributed-tracing`](../../skills/distributed-tracing/): Track requests across microservices.
@@ -264,6 +300,8 @@ _For production reliability._
 
 _For making sense of the numbers._
 
+**Plugin status:** Codex plugin-safe · Claude plugin-safe
+
 - [`analytics-tracking`](../../skills/analytics-tracking/): Set up GA4/PostHog correctly.
 - [`claude-d3js-skill`](../../skills/claude-d3js-skill/): Beautiful custom visualizations with D3.js.
 - [`sql-pro`](../../skills/sql-pro/): Modern SQL with cloud-native databases.
@@ -274,6 +312,8 @@ _For making sense of the numbers._
 ### 🔄 The "Data Engineering" Pack
 
 _For building data pipelines._
+
+**Plugin status:** Codex plugin-safe · Claude plugin-safe
 
 - [`data-engineer`](../../skills/data-engineer/): Data pipeline architecture.
 - [`airflow-dag-patterns`](../../skills/airflow-dag-patterns/): Apache Airflow DAGs.
@@ -290,6 +330,8 @@ _For building data pipelines._
 
 _For visuals, content, and branding._
 
+**Plugin status:** Codex plugin-safe · Claude plugin-safe
+
 - [`canvas-design`](../../skills/canvas-design/): Generate posters and diagrams.
 - [`frontend-design`](../../skills/frontend-design/): UI aesthetics.
 - [`content-creator`](../../skills/content-creator/): SEO-optimized blog posts.
@@ -305,6 +347,8 @@ _For visuals, content, and branding._
 ### 🐞 The "QA & Testing" Pack
 
 _For breaking things before users do._
+
+**Plugin status:** Codex plugin-safe · Claude plugin-safe
 
 - [`test-driven-development`](../../skills/test-driven-development/): Red, Green, Refactor.
 - [`systematic-debugging`](../../skills/systematic-debugging/): Debug like Sherlock Holmes.
@@ -323,6 +367,8 @@ _For breaking things before users do._
 
 _For iOS, Android, and cross-platform apps._
 
+**Plugin status:** Codex plugin-safe · Claude plugin-safe
+
 - [`mobile-developer`](../../skills/mobile-developer/): Cross-platform mobile development.
 - [`react-native-architecture`](../../skills/react-native-architecture/): React Native with Expo.
 - [`flutter-expert`](../../skills/flutter-expert/): Flutter multi-platform apps.
@@ -332,6 +378,8 @@ _For iOS, Android, and cross-platform apps._
 ### 🔗 The "Integration & APIs" Pack
 
 _For connecting services and building integrations._
+
+**Plugin status:** Codex plugin-safe · Claude plugin-safe
 
 - [`stripe-integration`](../../skills/stripe-integration/): Payments and subscriptions.
 - [`twilio-communications`](../../skills/twilio-communications/): SMS, voice, WhatsApp.
@@ -343,6 +391,8 @@ _For connecting services and building integrations._
 
 _For system design and technical decisions._
 
+**Plugin status:** Codex plugin-safe · Claude plugin-safe
+
 - [`senior-architect`](../../skills/senior-architect/): Comprehensive software architecture.
 - [`architecture-patterns`](../../skills/architecture-patterns/): Clean Architecture, DDD, Hexagonal.
 - [`microservices-patterns`](../../skills/microservices-patterns/): Microservices architecture.
@@ -352,6 +402,8 @@ _For system design and technical decisions._
 ### 🧱 The "DDD & Evented Architecture" Pack
 
 _For teams modeling complex domains and evolving toward evented systems._
+
+**Plugin status:** Codex plugin-safe · Claude plugin-safe
 
 - [`domain-driven-design`](../../skills/domain-driven-design/): Route DDD work from strategic modeling to implementation patterns.
 - [`ddd-strategic-design`](../../skills/ddd-strategic-design/): Subdomains, bounded contexts, and ubiquitous language.
@@ -366,6 +418,8 @@ _For teams modeling complex domains and evolving toward evented systems._
 
 _For connecting tools and building repeatable automated workflows._
 
+**Plugin status:** Codex plugin-safe · Claude plugin-safe
+
 - [`workflow-automation`](../../skills/workflow-automation/): Design durable automation flows for AI and business systems.
 - [`mcp-builder`](../../skills/mcp-builder/): Create tool interfaces agents can use reliably.
 - [`make-automation`](../../skills/make-automation/): Build automations in Make/Integromat.
@@ -377,6 +431,8 @@ _For connecting tools and building repeatable automated workflows._
 ### 💼 The "RevOps & CRM Automation" Pack
 
 _For revenue operations, support handoffs, and CRM-heavy automation._
+
+**Plugin status:** Codex plugin-safe · Claude plugin-safe
 
 - [`hubspot-automation`](../../skills/hubspot-automation/): Automate contacts, companies, deals, and tickets.
 - [`sendgrid-automation`](../../skills/sendgrid-automation/): Automate email sends, contacts, and templates.
@@ -390,6 +446,8 @@ _For revenue operations, support handoffs, and CRM-heavy automation._
 
 _For monetization, payments, and commerce workflows._
 
+**Plugin status:** Codex plugin-safe · Claude plugin-safe
+
 - [`stripe-integration`](../../skills/stripe-integration/): Build robust checkout, subscription, and webhook flows.
 - [`paypal-integration`](../../skills/paypal-integration/): Integrate PayPal payments and related flows.
 - [`plaid-fintech`](../../skills/plaid-fintech/): Link bank accounts and handle ACH-related use cases.
@@ -400,6 +458,8 @@ _For monetization, payments, and commerce workflows._
 ### 🏢 The "Odoo ERP" Pack
 
 _For teams building or operating around Odoo-based business systems._
+
+**Plugin status:** Codex plugin-safe · Claude plugin-safe
 
 - [`odoo-module-developer`](../../skills/odoo-module-developer/): Create custom Odoo modules cleanly.
 - [`odoo-orm-expert`](../../skills/odoo-orm-expert/): Work effectively with Odoo ORM patterns and performance.
@@ -413,6 +473,8 @@ _For teams building or operating around Odoo-based business systems._
 
 _For building on Azure across cloud, AI, and platform services._
 
+**Plugin status:** Codex plugin-safe · Claude plugin-safe
+
 - [`azd-deployment`](../../skills/azd-deployment/): Ship Azure apps with Azure Developer CLI workflows.
 - [`azure-functions`](../../skills/azure-functions/): Build serverless workloads with Azure Functions.
 - [`azure-ai-openai-dotnet`](../../skills/azure-ai-openai-dotnet/): Use Azure OpenAI from .NET applications.
@@ -423,6 +485,8 @@ _For building on Azure across cloud, AI, and platform services._
 ### 📲 The "Expo & React Native" Pack
 
 _For shipping mobile apps with Expo and React Native._
+
+**Plugin status:** Codex plugin-safe · Claude plugin-safe
 
 - [`react-native-architecture`](../../skills/react-native-architecture/): Structure production React Native apps well.
 - [`expo-api-routes`](../../skills/expo-api-routes/): Build API routes in Expo Router and EAS Hosting.
@@ -436,6 +500,8 @@ _For shipping mobile apps with Expo and React Native._
 
 _For teams designing native-feeling Apple platform experiences._
 
+**Plugin status:** Codex plugin-safe · Claude plugin-safe
+
 - [`hig-foundations`](../../skills/hig-foundations/): Learn the core Apple Human Interface Guidelines.
 - [`hig-patterns`](../../skills/hig-patterns/): Apply Apple interaction and UX patterns correctly.
 - [`hig-components-layout`](../../skills/hig-components-layout/): Use Apple layout and navigation components well.
@@ -446,6 +512,8 @@ _For teams designing native-feeling Apple platform experiences._
 ### 🧩 The "Makepad Builder" Pack
 
 _For building UI-heavy apps with the Makepad ecosystem._
+
+**Plugin status:** Codex plugin-safe · Claude plugin-safe
 
 - [`makepad-basics`](../../skills/makepad-basics/): Start with Makepad fundamentals and mental model.
 - [`makepad-layout`](../../skills/makepad-layout/): Handle sizing, flow, alignment, and layout composition.
@@ -458,6 +526,8 @@ _For building UI-heavy apps with the Makepad ecosystem._
 
 _For technical SEO, content structure, and search growth._
 
+**Plugin status:** Codex plugin-safe · Claude plugin-safe
+
 - [`seo-fundamentals`](../../skills/seo-fundamentals/): Build from sound SEO principles and search constraints.
 - [`seo-content-planner`](../../skills/seo-content-planner/): Plan clusters, calendars, and content gaps.
 - [`seo-content-writer`](../../skills/seo-content-writer/): Produce search-aware content drafts with intent alignment.
@@ -469,6 +539,8 @@ _For technical SEO, content structure, and search growth._
 ### 📄 The "Documents & Presentations" Pack
 
 _For document-heavy workflows, spreadsheets, PDFs, and presentations._
+
+**Plugin status:** Codex plugin-safe · Claude plugin-safe
 
 - [`office-productivity`](../../skills/office-productivity/): Coordinate document, spreadsheet, and presentation workflows.
 - [`docx-official`](../../skills/docx-official/): Create and edit Word-compatible documents.
@@ -487,6 +559,8 @@ _For document-heavy workflows, spreadsheets, PDFs, and presentations._
 
 _For shipping clean changes in public repositories._
 
+**Plugin status:** Codex plugin-safe · Claude plugin-safe
+
 - [`commit`](../../skills/commit/): High-quality conventional commits.
 - [`create-pr`](../../skills/create-pr/): PR creation with review-ready context.
 - [`requesting-code-review`](../../skills/requesting-code-review/): Ask for targeted, high-signal reviews.
@@ -498,6 +572,8 @@ _For shipping clean changes in public repositories._
 ### 🧱 The "Skill Author" Pack
 
 _For creating and maintaining high-quality SKILL.md assets._
+
+**Plugin status:** Codex pending hardening · Claude pending hardening
 
 - [`skill-creator`](../../skills/skill-creator/): Design effective new skills.
 - [`skill-developer`](../../skills/skill-developer/): Implement triggers, hooks, and skill lifecycle.
@@ -597,4 +673,4 @@ Found a skill that should be in a bundle? Or want to create a new bundle? [Open 
 
 ---
 
-_Last updated: March 2026 | Total Skills: 1,328+ | Total Bundles: 37_
+_Last updated: March 2026 | Total Skills: 1,329+ | Total Bundles: 37_

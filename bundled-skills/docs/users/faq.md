@@ -17,6 +17,8 @@ Skills are specialized instruction files that teach AI assistants how to handle 
 It's like having a library - all books are there, but you only read the ones you need.
 **Pro Tip:** Use [Starter Packs](bundles.md) to focus on the skills that match your role first.
 
+If you want a narrower install surface for **Claude Code** or **Codex**, use the new plugin distributions documented in [plugins.md](plugins.md) instead of the full library install.
+
 ### What is the difference between Bundles and Workflows?
 
 - **Bundles** are curated recommendations grouped by role or domain.
@@ -136,6 +138,27 @@ git clone https://github.com/sickn33/antigravity-awesome-skills.git .agent/skill
 ```
 
 This repository now includes `.claude-plugin/marketplace.json` and `.claude-plugin/plugin.json` so Claude Code can install the same skill tree through the plugin marketplace.
+
+**Codex plugin alternative:**
+
+This repository also includes repo-local plugin metadata for Codex:
+
+- `.agents/plugins/marketplace.json`
+- `plugins/antigravity-awesome-skills/.codex-plugin/plugin.json`
+
+That path exposes the new plugin-safe Codex root plugin plus generated bundle plugins. For the full explanation, read [plugins.md](plugins.md).
+
+### What does `plugin-safe` mean?
+
+Plugin-safe means the published Claude Code and Codex plugins only include the subset of skills that is ready for marketplace-style distribution.
+
+Skills can stay repo-only for a while if they still need:
+
+- portability cleanup
+- explicit setup metadata
+- additional hardening for plugin ecosystems
+
+So it is normal for the **full library** to be larger than the **plugin-safe** plugin subset. The repository stays the complete source of truth; plugins publish the hardened subset.
 
 ### Does this work with Windows?
 
