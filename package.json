@@ -1,6 +1,6 @@
 {
   "name": "opencode-skills-antigravity",
-  "version": "1.0.29",
+  "version": "1.0.30",
   "description": "OpenCode CLI plugin that automatically downloads and keeps Antigravity Awesome Skills up to date.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
