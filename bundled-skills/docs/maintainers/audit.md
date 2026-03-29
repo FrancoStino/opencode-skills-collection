@@ -37,6 +37,7 @@ This document summarizes the repository coherence audit performed after the `app
   - missing examples and missing limitations sections,
   - overly long `SKILL.md` files that should probably be split into `references/`,
   - plus the existing structural/safety checks (frontmatter, risk, `When to Use`, offensive disclaimer, dangling links).
+- The report also includes a non-blocking `suggested_risk` for skills that are still marked `unknown` or appear to be misclassified, so maintainers can resolve risk classification during PR review without changing the contributor gate.
 - Use `npm run audit:skills` for the maintainer view and `npm run audit:skills -- --json-out ... --markdown-out ...` when you want artifacts for triage or cleanup tracking.
 
 ### 3. Riferimenti incrociati

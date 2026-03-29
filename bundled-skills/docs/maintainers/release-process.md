@@ -75,6 +75,16 @@ npm publish
 Normally this still happens via the existing GitHub release workflow after the GitHub release is published.
 That workflow now reruns `sync:release-state`, refreshes tracked web assets, fails on canonical drift via `git diff --exit-code`, executes tests and docs security checks, builds the web app, and dry-runs the npm package before `npm publish`.
 
+## Canonical Sync Bot
+
+`main` still uses the repository's auto-sync model for canonical generated artifacts, but with a narrow contract:
+
+- PRs stay source-only.
+- After merge, the `main` workflow may commit generated canonical files directly to `main` with `[ci skip]`.
+- The bot commit is only allowed to stage files resolved from `tools/scripts/generated_files.js --include-mixed`.
+- If repo-state sync leaves any unmanaged tracked or untracked drift, the workflow fails instead of pushing a partial fix.
+- The scheduled hygiene workflow follows the same contract and shares the same concurrency group so only one canonical sync writer runs at a time.
+
 ## Rollback Notes
 
 - If the release tag is wrong, delete the tag locally and remotely before republishing.
