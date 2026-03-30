@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.0.51] - 2026-03-30
+### :wrench: Chores
+- [`44eb5f7`](https://github.com/FrancoStino/opencode-skills-antigravity/commit/44eb5f7ce99519d9df1cae27e56625b1be3a6655) - sync skills and bump version to v1.0.51 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
 ## [v1.0.50] - 2026-03-30
 ### :wrench: Chores
 - [`57b5d36`](https://github.com/FrancoStino/opencode-skills-antigravity/commit/57b5d362caca9806d4b2d3b2f016c0279eaff2d1) - sync skills and bump version to v1.0.50 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
@@ -325,3 +330,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.0.48]: https://github.com/FrancoStino/opencode-skills-antigravity/compare/v1.0.47...v1.0.48
 [v1.0.49]: https://github.com/FrancoStino/opencode-skills-antigravity/compare/v1.0.48...v1.0.49
 [v1.0.50]: https://github.com/FrancoStino/opencode-skills-antigravity/compare/v1.0.49...v1.0.50
+[v1.0.51]: https://github.com/FrancoStino/opencode-skills-antigravity/compare/v1.0.50...v1.0.51
