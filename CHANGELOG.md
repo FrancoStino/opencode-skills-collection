@@ -4,6 +4,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.0.117] - 2026-04-03
+### :sparkles: New Features
+- [`35e8a26`](https://github.com/FrancoStino/opencode-skills-collection/commit/35e8a260bf474a5a90bfcc43339c662c3940c034) - Update Node.js version from 20 to 24 *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+- [`b085773`](https://github.com/FrancoStino/opencode-skills-collection/commit/b08577391ea0c0719f2f35a45bb0559f698c60c8) - rename package to opencode-skills-collection *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+- [`b37db77`](https://github.com/FrancoStino/opencode-skills-collection/commit/b37db77493794dfb5fab60986e755fcdaa708676) - Update subtitle text in logo.svg *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+- [`c1a25cb`](https://github.com/FrancoStino/opencode-skills-collection/commit/c1a25cbe76642b050c16f0d40506572abb9adb1a) - update index.ts plugin name and fallback command reference *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+- [`1194fd8`](https://github.com/FrancoStino/opencode-skills-collection/commit/1194fd80e3f60164371f4a99d256ac9a626441ef) - add deprecate-legacy-package workflow *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+
+### :bug: Bug Fixes
+- [`cb41ec5`](https://github.com/FrancoStino/opencode-skills-collection/commit/cb41ec5baea233b433ddaa57af0ae2f054cd1660) - use dynamic version for legacy stub package *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+- [`2752d97`](https://github.com/FrancoStino/opencode-skills-collection/commit/2752d9718435618c3dfb4d3e2d465693f8fa9b81) - fix YAML syntax error in deprecate workflow *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+
+### :wrench: Chores
+- [`9d2d387`](https://github.com/FrancoStino/opencode-skills-collection/commit/9d2d387f6936e55a0f16cb5af1262a2f29aae80b) - sync skills and bump version to v1.0.117 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
 ## [v1.0.116] - 2026-04-03
 ### :wrench: Chores
 - [`4a9a1b1`](https://github.com/FrancoStino/opencode-skills-antigravity/commit/4a9a1b148890fc3995682462eeb90f77187d1ecc) - sync skills and bump version to v1.0.116 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
@@ -721,3 +737,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.0.114]: https://github.com/FrancoStino/opencode-skills-antigravity/compare/v1.0.113...v1.0.114
 [v1.0.115]: https://github.com/FrancoStino/opencode-skills-antigravity/compare/v1.0.114...v1.0.115
 [v1.0.116]: https://github.com/FrancoStino/opencode-skills-antigravity/compare/v1.0.115...v1.0.116
+[v1.0.117]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.116...v1.0.117
