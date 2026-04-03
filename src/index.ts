@@ -4,7 +4,7 @@ import path from "path";
 import os from "os";
 import { fileURLToPath } from "url";
 
-const AntigravityAutoUpdater: Plugin = async (_ctx) => {
+const OpenCodeSkillsCollection: Plugin = async (_ctx) => {
   try {
     // Resolve absolute path to the bundled-skills directory relative to this file
     // Works regardless of where OpenCode is launched from
@@ -34,4 +34,4 @@ const AntigravityAutoUpdater: Plugin = async (_ctx) => {
   return {};
 };
 
-export default AntigravityAutoUpdater;
+export default OpenCodeSkillsCollection;

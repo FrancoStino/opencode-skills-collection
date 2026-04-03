@@ -1,26 +1,28 @@
 <div align="center">
 
-<img src="./docs/logo.svg" alt="OpenCode Skills Antigravity"/>
+<img src="./docs/logo.svg" alt="OpenCode Skills Collection"/>
 
 <br/>
 <br/>
 <br/>
 
-[![npm version](https://img.shields.io/npm/v/opencode-skills-antigravity?style=for-the-badge&color=cb3837&label=npm)](https://www.npmjs.com/package/opencode-skills-antigravity)
-[![npm downloads](https://img.shields.io/npm/dm/opencode-skills-antigravity?style=for-the-badge&color=orange)](https://www.npmjs.com/package/opencode-skills-antigravity)
-[![license](https://img.shields.io/github/license/FrancoStino/opencode-skills-antigravity?style=for-the-badge&color=blue)](./LICENSE)
+[![npm version](https://img.shields.io/npm/v/opencode-skills-collection?style=for-the-badge&color=cb3837&label=npm)](https://www.npmjs.com/package/opencode-skills-collection)
+[![npm downloads](https://img.shields.io/npm/dm/opencode-skills-collection?style=for-the-badge&color=orange)](https://www.npmjs.com/package/opencode-skills-collection)
+[![license](https://img.shields.io/github/license/FrancoStino/opencode-skills-collection?style=for-the-badge&color=blue)](./LICENSE)
 
 </div>
 
-# OpenCode Skills Antigravity
+# OpenCode Skills Collection
 
 > An [OpenCode CLI](https://opencode.ai/) plugin that bundles and auto-syncs the [Antigravity Awesome Skills](https://github.com/sickn33/antigravity-awesome-skills) collection — delivered instantly, with zero network latency at startup.
+
+> ⚠️ **Previously published as [`opencode-skills-antigravity`](https://www.npmjs.com/package/opencode-skills-antigravity)** — that package is now deprecated and points to this one.
 
 ---
 
 ## Overview
 
-**OpenCode Skills Antigravity** bridges the OpenCode CLI with the Antigravity Awesome Skills repository. Instead of fetching skills on every startup, this plugin ships with a pre-bundled snapshot that gets copied directly to your local machine the moment OpenCode launches.
+**OpenCode Skills Collection** bridges the OpenCode CLI with the Antigravity Awesome Skills repository. Instead of fetching skills on every startup, this plugin ships with a pre-bundled snapshot that gets copied directly to your local machine the moment OpenCode launches.
 
 The result: skills are always fresh (synced hourly via GitHub Actions), always available (even offline), and always instant.
 
@@ -58,7 +60,7 @@ Add the plugin to your global OpenCode configuration file at `~/.config/opencode
 ```json
 {
   "plugin": [
-    "opencode-skills-antigravity"
+    "opencode-skills-collection"
   ]
 }
 ```
@@ -95,7 +97,7 @@ opencode run /refactor clean up this function
 ## Project Structure
 
 ```
-opencode-skills-antigravity/
+opencode-skills-collection/
 ├── src/
 │   └── index.ts          # Plugin entry point — copies bundled skills on startup
 ├── bundled-skills/        # Pre-bundled skills snapshot (auto-updated by CI)
@@ -130,9 +132,25 @@ The plugin is written in TypeScript and compiled to ESNext with full type declar
 
 ---
 
+## Migration from `opencode-skills-antigravity`
+
+If you were using the old package, simply update your `~/.config/opencode/opencode.json`:
+
+```json
+{
+  "plugin": [
+    "opencode-skills-collection"
+  ]
+}
+```
+
+The old `opencode-skills-antigravity` package on npm is deprecated and re-exports this one automatically.
+
+---
+
 ## Contributing
 
-Issues and pull requests are welcome at [github.com/FrancoStino/opencode-skills-antigravity](https://github.com/FrancoStino/opencode-skills-antigravity/issues).
+Issues and pull requests are welcome at [github.com/FrancoStino/opencode-skills-collection](https://github.com/FrancoStino/opencode-skills-collection/issues).
 
 If you'd like to contribute new skills to the upstream collection, head over to [antigravity-awesome-skills](https://github.com/sickn33/antigravity-awesome-skills) — they'll be automatically picked up and bundled here within the hour.
 

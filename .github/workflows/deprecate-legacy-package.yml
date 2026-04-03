@@ -1,0 +1,65 @@
+name: Deprecate Legacy Package
+
+# Run this workflow ONCE after publishing opencode-skills-collection to npm.
+# It publishes a final stub of opencode-skills-antigravity that re-exports
+# opencode-skills-collection, then marks it as deprecated on npm.
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deprecate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Resolve next stub version
+        id: version
+        run: |
+          CURRENT=$(npm view opencode-skills-antigravity version 2>/dev/null || echo "0.0.0")
+          NEXT=$(node -e "const [a,b,c]=process.argv[1].split('.').map(Number); console.log(a+'.'+b+'.'+(c+1))" $CURRENT)
+          echo "next=$NEXT" >> $GITHUB_OUTPUT
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Create stub package
+        run: |
+          mkdir stub
+          cat > stub/package.json << EOF
+          {
+            "name": "opencode-skills-antigravity",
+            "version": "${{ steps.version.outputs.next }}",
+            "description": "⚠️ Deprecated: renamed to opencode-skills-collection",
+            "main": "index.js",
+            "dependencies": {
+              "opencode-skills-collection": "latest"
+            },
+            "repository": {
+              "type": "git",
+              "url": "https://github.com/FrancoStino/opencode-skills-collection"
+            },
+            "license": "MIT"
+          }
+          EOF
+          cat > stub/index.js << 'EOF'
+          module.exports = require('opencode-skills-collection');
+          EOF
+
+      - name: Publish stub to npm
+        working-directory: stub
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Deprecate legacy package on npm
+        run: npm deprecate opencode-skills-antigravity "⚠️ Package renamed to opencode-skills-collection. Please update your plugin config: https://github.com/FrancoStino/opencode-skills-collection"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
