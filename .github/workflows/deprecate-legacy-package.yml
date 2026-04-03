@@ -21,13 +21,22 @@ jobs:
           node-version: '24'
           registry-url: 'https://registry.npmjs.org'
 
+      - name: Resolve next stub version
+        id: version
+        run: |
+          CURRENT=$(npm view opencode-skills-antigravity version 2>/dev/null || echo "0.0.0")
+          NEXT=$(node -e "const [a,b,c]=process.argv[1].split('.').map(Number); console.log(a+'.'+b+'.'+(c+1))" $CURRENT)
+          echo "next=$NEXT" >> $GITHUB_OUTPUT
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       - name: Create stub package
         run: |
           mkdir stub
-          cat > stub/package.json << 'EOF'
+          cat > stub/package.json << EOF
           {
             "name": "opencode-skills-antigravity",
-            "version": "99.0.0",
+            "version": "${{ steps.version.outputs.next }}",
             "description": "⚠️ Deprecated: renamed to opencode-skills-collection",
             "main": "index.js",
             "dependencies": {
