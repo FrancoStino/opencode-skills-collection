@@ -34,6 +34,13 @@ jobs:
           rm -rf bundled-skills
           npx --yes antigravity-awesome-skills --path "bundled-skills"
 
+      - name: Download skills_index.json from upstream
+        run: |
+          curl -fsSL \
+            "https://raw.githubusercontent.com/sickn33/antigravity-awesome-skills/main/skills_index.json" \
+            -o bundled-skills/skills_index.json
+          echo "✅ skills_index.json downloaded ($(wc -c < bundled-skills/skills_index.json) bytes)"
+
       - name: Check for changes
         id: check_changes
         run: |
