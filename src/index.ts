@@ -14,9 +14,27 @@ const OpenCodeSkillsCollection: Plugin = async (_ctx) => {
     // Resolve target path in OpenCode's config directory
     const skillsPath = path.join(os.homedir(), ".config", "opencode", "skills");
 
-    // Create destination directory and copy files
     fs.mkdirSync(skillsPath, { recursive: true });
-    fs.cpSync(bundledSkillsPath, skillsPath, { recursive: true, force: true });
+
+    // Iterate each entry in bundled-skills and copy only valid skill folders
+    // (those containing a SKILL.md), skipping files and hidden entries like
+    // .antigravity-install-manifest.json which would cause OpenCode to
+    // group everything under _uncategorized
+    const entries = fs.readdirSync(bundledSkillsPath, { withFileTypes: true });
+
+    for (const entry of entries) {
+      if (!entry.isDirectory()) continue;
+      if (entry.name.startsWith(".")) continue;
+
+      const src = path.join(bundledSkillsPath, entry.name);
+      const skillMd = path.join(src, "SKILL.md");
+
+      // Only copy folders that contain a valid SKILL.md
+      if (!fs.existsSync(skillMd)) continue;
+
+      const dest = path.join(skillsPath, entry.name);
+      fs.cpSync(src, dest, { recursive: true, force: true });
+    }
   } catch (error: unknown) {
     setTimeout(async () => {
       try {
