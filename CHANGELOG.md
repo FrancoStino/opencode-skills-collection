@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.0.150] - 2026-04-05
+### :bug: Bug Fixes
+- [`5918d5f`](https://github.com/FrancoStino/opencode-skills-collection/commit/5918d5f33d81871be677f8bcf817d7cf90da2e1c) - copy only valid skill folders to avoid _uncategorized grouping *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+- [`eaef9f5`](https://github.com/FrancoStino/opencode-skills-collection/commit/eaef9f56c7676ea0615cfaed588052fb7e7ab3e1) - set moduleResolution to bundler compatible with ESNext module *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+- [`64e58d0`](https://github.com/FrancoStino/opencode-skills-collection/commit/64e58d043e0a39c3b56d5b7cd4a8df31db046385) - copy each skill file-by-file to avoid fs.cpSync dest nesting issue *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+- [`f7c04e7`](https://github.com/FrancoStino/opencode-skills-collection/commit/f7c04e74e46ec39000bf43e9a2156a9611844037) - resolve bundled-skills path robustly and log errors to stderr *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+
+### :wrench: Chores
+- [`dc70b51`](https://github.com/FrancoStino/opencode-skills-collection/commit/dc70b51d2265ee5967f52a9efcec4897186ef447) - sync skills and bump version to v1.0.150 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
 ## [v1.0.149] - 2026-04-05
 ### :wrench: Chores
 - [`be3de7e`](https://github.com/FrancoStino/opencode-skills-collection/commit/be3de7e8dabc85417ddfa2895e3231454889a4c6) - sync skills and bump version to v1.0.149 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
@@ -930,3 +941,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.0.147]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.146...v1.0.147
 [v1.0.148]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.147...v1.0.148
 [v1.0.149]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.148...v1.0.149
+[v1.0.150]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.149...v1.0.150
