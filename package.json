@@ -1,6 +1,6 @@
 {
   "name": "opencode-skills-collection",
-  "version": "1.0.169",
+  "version": "1.0.170",
   "description": "OpenCode CLI plugin that automatically downloads and keeps skills up to date.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
