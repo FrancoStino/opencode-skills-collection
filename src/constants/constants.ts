@@ -15,4 +15,4 @@ export const SKILL_FILENAME = "SKILL.md" as const;
 export const VAULT_DIR_NAME = "skill-libraries" as const;
 
 /** Fallback category slug for skills not present in skills_index.json. */
-export const UNCATEGORIZED_CATEGORY = "_uncategorized" as const;
+export const UNCATEGORIZED_CATEGORY = "uncategorized" as const;

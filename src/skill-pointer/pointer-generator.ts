@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { POINTER_SUFFIX, SKILL_FILENAME } from "../constants/constants.js";
+import { POINTER_SUFFIX, SKILL_FILENAME, UNCATEGORIZED_CATEGORY } from "../constants/constants.js";
 import { ensureDir, listSubdirectories } from "../utils/fs.utils.js";
 import type { SkillIndexEntry } from "./vault-installer.js";
 
@@ -64,7 +64,7 @@ export function generatePointers(
 
   const byCategory = new Map<string, SkillIndexEntry[]>();
   for (const entry of index) {
-    const cat = entry.category ?? "_uncategorized";
+    const cat = entry.category ?? UNCATEGORIZED_CATEGORY;
     if (!byCategory.has(cat)) byCategory.set(cat, []);
     byCategory.get(cat)!.push(entry);
   }
