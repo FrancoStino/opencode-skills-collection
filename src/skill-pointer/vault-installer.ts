@@ -55,12 +55,12 @@ function buildIndexFromBundledSkills(bundledSkillsPath: string): SkillIndexEntry
 }
 
 /**
- * Loads the pre-built skills_index.json that ships alongside bundled-skills.
+ * Loads the pre-built skills_index.json from the project root.
  * Falls back to a dynamically generated index from SKILL.md frontmatter
  * when the file is missing, so the plugin always works correctly.
  */
 export function loadSkillsIndex(bundledSkillsPath: string): SkillIndexEntry[] {
-  const indexPath = path.join(bundledSkillsPath, "skills_index.json");
+  const indexPath = path.join(bundledSkillsPath, "..", "skills_index.json");
   if (fs.existsSync(indexPath)) {
     try {
       const raw = fs.readFileSync(indexPath, "utf-8");

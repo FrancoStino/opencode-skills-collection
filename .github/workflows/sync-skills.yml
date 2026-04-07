@@ -38,13 +38,13 @@ jobs:
         run: |
           curl -fsSL \
             "https://raw.githubusercontent.com/sickn33/antigravity-awesome-skills/main/skills_index.json" \
-            -o bundled-skills/skills_index.json
-          echo "✅ skills_index.json downloaded ($(wc -c < bundled-skills/skills_index.json) bytes)"
+            -o skills_index.json
+          echo "✅ skills_index.json downloaded ($(wc -c < skills_index.json) bytes)"
 
       - name: Check for changes
         id: check_changes
         run: |
-          if [ -n "$(git status --porcelain bundled-skills)" ]; then
+          if [ -n "$(git status --porcelain bundled-skills skills_index.json)" ]; then
             echo "changes=true" >> $GITHUB_OUTPUT
           else
             echo "changes=false" >> $GITHUB_OUTPUT
@@ -58,7 +58,7 @@ jobs:
           npm ci
           NEW_VERSION=$(npm version patch --no-git-tag-version)
           echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
-          git add bundled-skills package.json package-lock.json
+          git add bundled-skills skills_index.json package.json package-lock.json
           git commit -m "chore: sync skills and bump version to $NEW_VERSION"
           git tag $NEW_VERSION
           git push origin main --tags
