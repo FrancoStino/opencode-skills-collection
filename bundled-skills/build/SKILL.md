@@ -16,6 +16,12 @@ metadata:
 
 Feature development pipeline - research, plan, track, and implement major features.
 
+## When to Use
+
+- You need a structured workflow for building a major feature across research, planning, implementation, and tracking.
+- The task involves moving a feature through named phases such as `research`, `implementation`, `progress`, or `phase`.
+- You want one command to coordinate status, next steps, and phased delivery for a feature effort.
+
 ## Instructions
 
 This command manages a 4-phase feature development workflow for building major features. Parse `$ARGUMENTS` to determine which subcommand to run.

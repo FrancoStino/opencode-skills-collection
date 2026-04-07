@@ -4,6 +4,302 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.0.186] - 2026-04-07
+### :wrench: Chores
+- [`8ec5add`](https://github.com/FrancoStino/opencode-skills-collection/commit/8ec5add5d0d5c6273c0e8acb94328d72e5e7d0b0) - sync skills and bump version to v1.0.186 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.185] - 2026-04-07
+### :wrench: Chores
+- [`bec151d`](https://github.com/FrancoStino/opencode-skills-collection/commit/bec151db23253c97f09293d7af761788c56499b2) - sync skills and bump version to v1.0.185 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.184] - 2026-04-07
+### :wrench: Chores
+- [`de356db`](https://github.com/FrancoStino/opencode-skills-collection/commit/de356dbe9257e5deaf27fc7f5919ad16b0c76f0f) - sync skills and bump version to v1.0.184 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.183] - 2026-04-07
+### :wrench: Chores
+- [`30b469c`](https://github.com/FrancoStino/opencode-skills-collection/commit/30b469cf14def0a773a332da161ada4dfe7b6a7d) - sync skills and bump version to v1.0.183 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.182] - 2026-04-07
+### :wrench: Chores
+- [`8696b6c`](https://github.com/FrancoStino/opencode-skills-collection/commit/8696b6c7e12cff389f4dc83748f141793a239468) - sync skills and bump version to v1.0.182 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.181] - 2026-04-07
+### :wrench: Chores
+- [`a8fe54d`](https://github.com/FrancoStino/opencode-skills-collection/commit/a8fe54d18516572261237118eb79eba8fc4158ab) - sync skills and bump version to v1.0.181 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.180] - 2026-04-07
+### :wrench: Chores
+- [`283df04`](https://github.com/FrancoStino/opencode-skills-collection/commit/283df0459615c54ca1d85404e807dc4c7e2f2e87) - sync skills and bump version to v1.0.180 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.179] - 2026-04-07
+### :wrench: Chores
+- [`1355184`](https://github.com/FrancoStino/opencode-skills-collection/commit/1355184be0cfa3ea0cf3cee23ba16845f2a3ae4f) - sync skills and bump version to v1.0.179 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.178] - 2026-04-06
+### :wrench: Chores
+- [`34a2310`](https://github.com/FrancoStino/opencode-skills-collection/commit/34a23109ed823fb951f95436d9bda48edfec92db) - sync skills and bump version to v1.0.178 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.177] - 2026-04-06
+### :wrench: Chores
+- [`341b805`](https://github.com/FrancoStino/opencode-skills-collection/commit/341b80554c13208f0b47308c25228ce36f84ab56) - sync skills and bump version to v1.0.177 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.176] - 2026-04-06
+### :wrench: Chores
+- [`886dd32`](https://github.com/FrancoStino/opencode-skills-collection/commit/886dd3273cd543764f19b4186f60d4388506c8a9) - sync skills and bump version to v1.0.176 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.175] - 2026-04-06
+### :wrench: Chores
+- [`68f5254`](https://github.com/FrancoStino/opencode-skills-collection/commit/68f525415f34a4e952d2496e61d9a937f45833b3) - sync skills and bump version to v1.0.175 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.174] - 2026-04-06
+### :wrench: Chores
+- [`a9e9240`](https://github.com/FrancoStino/opencode-skills-collection/commit/a9e9240dccadf517d1e9b979fd2b97306cf38686) - sync skills and bump version to v1.0.174 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.173] - 2026-04-06
+### :wrench: Chores
+- [`4f86397`](https://github.com/FrancoStino/opencode-skills-collection/commit/4f86397121797c13bf94cb9798e82ae3fc489c0c) - sync skills and bump version to v1.0.173 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.172] - 2026-04-06
+### :wrench: Chores
+- [`b5e8145`](https://github.com/FrancoStino/opencode-skills-collection/commit/b5e81453f64dd0cbd4d1dfcf3c5608ef5fba7378) - sync skills and bump version to v1.0.172 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.171] - 2026-04-06
+### :wrench: Chores
+- [`cdf80fc`](https://github.com/FrancoStino/opencode-skills-collection/commit/cdf80fc7185f06ee8a3cff4e54e6f1aa13f8f442) - sync skills and bump version to v1.0.171 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.170] - 2026-04-06
+### :wrench: Chores
+- [`937145a`](https://github.com/FrancoStino/opencode-skills-collection/commit/937145a9029bca931c575c4203b0eaf0aa9c0413) - sync skills and bump version to v1.0.170 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.169] - 2026-04-06
+### :wrench: Chores
+- [`08caaee`](https://github.com/FrancoStino/opencode-skills-collection/commit/08caaeebc65f8efd7f64bb6e2f7f184eae7095dc) - sync skills and bump version to v1.0.169 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.168] - 2026-04-06
+### :wrench: Chores
+- [`6539fd9`](https://github.com/FrancoStino/opencode-skills-collection/commit/6539fd9603f5575accd5eafffce3130fd6476bfe) - sync skills and bump version to v1.0.168 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.167] - 2026-04-06
+### :wrench: Chores
+- [`3f27cce`](https://github.com/FrancoStino/opencode-skills-collection/commit/3f27ccebda047dc85a17fe25e7398ac68afd2b18) - sync skills and bump version to v1.0.167 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.166] - 2026-04-06
+### :wrench: Chores
+- [`0750173`](https://github.com/FrancoStino/opencode-skills-collection/commit/07501736ac30263b4f2cd69493355df17444ce0a) - sync skills and bump version to v1.0.166 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.165] - 2026-04-06
+### :wrench: Chores
+- [`f2390d0`](https://github.com/FrancoStino/opencode-skills-collection/commit/f2390d04138a35d33921ba95619f94e1b1683f0c) - sync skills and bump version to v1.0.165 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.164] - 2026-04-06
+### :wrench: Chores
+- [`d878b62`](https://github.com/FrancoStino/opencode-skills-collection/commit/d878b627bac7ff1c735b33249225a2d81773c7fd) - sync skills and bump version to v1.0.164 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.163] - 2026-04-06
+### :wrench: Chores
+- [`bd28922`](https://github.com/FrancoStino/opencode-skills-collection/commit/bd2892215fd46cdcb2b857bd23a2f7cfc24a030a) - sync skills and bump version to v1.0.163 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.162] - 2026-04-05
+### :wrench: Chores
+- [`02f3731`](https://github.com/FrancoStino/opencode-skills-collection/commit/02f37317be35b4db551f03a95efefeaec4df3a16) - sync skills and bump version to v1.0.162 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.161] - 2026-04-05
+### :wrench: Chores
+- [`dff831a`](https://github.com/FrancoStino/opencode-skills-collection/commit/dff831aad476bffb35ce438427adf500c839575e) - sync skills and bump version to v1.0.161 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.160] - 2026-04-05
+### :wrench: Chores
+- [`befd793`](https://github.com/FrancoStino/opencode-skills-collection/commit/befd793d14ef0faa3d751a8d901ffd51fe96bc65) - sync skills and bump version to v1.0.160 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.159] - 2026-04-05
+### :wrench: Chores
+- [`d94781e`](https://github.com/FrancoStino/opencode-skills-collection/commit/d94781e0bfc20ae3a221a4938a61767867803184) - sync skills and bump version to v1.0.159 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.158] - 2026-04-05
+### :wrench: Chores
+- [`8b149e3`](https://github.com/FrancoStino/opencode-skills-collection/commit/8b149e3b8aa3999807845d59a7df1f585391f7d3) - sync skills and bump version to v1.0.158 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.157] - 2026-04-05
+### :wrench: Chores
+- [`08b397e`](https://github.com/FrancoStino/opencode-skills-collection/commit/08b397e219f4c9f1562195a362a9f224a030fd37) - sync skills and bump version to v1.0.157 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.156] - 2026-04-05
+### :wrench: Chores
+- [`e997d2d`](https://github.com/FrancoStino/opencode-skills-collection/commit/e997d2d59fee9c8b48b23b74011924da737999f5) - sync skills and bump version to v1.0.156 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.155] - 2026-04-05
+### :wrench: Chores
+- [`b89df12`](https://github.com/FrancoStino/opencode-skills-collection/commit/b89df12a34c3a127c047e5f9f65dae1329a6f4b1) - sync skills and bump version to v1.0.155 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.154] - 2026-04-05
+### :wrench: Chores
+- [`257d780`](https://github.com/FrancoStino/opencode-skills-collection/commit/257d7803a78abf1a85fe0fc5a56e24a87f1fa645) - sync skills and bump version to v1.0.154 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.153] - 2026-04-05
+### :wrench: Chores
+- [`ef36892`](https://github.com/FrancoStino/opencode-skills-collection/commit/ef368924f49307bc581cad9c990e16c29e3eed23) - sync skills and bump version to v1.0.153 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.152] - 2026-04-05
+### :wrench: Chores
+- [`751ef8d`](https://github.com/FrancoStino/opencode-skills-collection/commit/751ef8d8b47ec23adeb9259dab16f2807c76602e) - sync skills and bump version to v1.0.152 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.151] - 2026-04-05
+### :wrench: Chores
+- [`b6ad3cb`](https://github.com/FrancoStino/opencode-skills-collection/commit/b6ad3cb31095480573a1bdc823898e02deb176ea) - sync skills and bump version to v1.0.151 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.150] - 2026-04-05
+### :bug: Bug Fixes
+- [`5918d5f`](https://github.com/FrancoStino/opencode-skills-collection/commit/5918d5f33d81871be677f8bcf817d7cf90da2e1c) - copy only valid skill folders to avoid _uncategorized grouping *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+- [`eaef9f5`](https://github.com/FrancoStino/opencode-skills-collection/commit/eaef9f56c7676ea0615cfaed588052fb7e7ab3e1) - set moduleResolution to bundler compatible with ESNext module *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+- [`64e58d0`](https://github.com/FrancoStino/opencode-skills-collection/commit/64e58d043e0a39c3b56d5b7cd4a8df31db046385) - copy each skill file-by-file to avoid fs.cpSync dest nesting issue *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+- [`f7c04e7`](https://github.com/FrancoStino/opencode-skills-collection/commit/f7c04e74e46ec39000bf43e9a2156a9611844037) - resolve bundled-skills path robustly and log errors to stderr *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+
+### :wrench: Chores
+- [`dc70b51`](https://github.com/FrancoStino/opencode-skills-collection/commit/dc70b51d2265ee5967f52a9efcec4897186ef447) - sync skills and bump version to v1.0.150 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.149] - 2026-04-05
+### :wrench: Chores
+- [`be3de7e`](https://github.com/FrancoStino/opencode-skills-collection/commit/be3de7e8dabc85417ddfa2895e3231454889a4c6) - sync skills and bump version to v1.0.149 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.148] - 2026-04-05
+### :wrench: Chores
+- [`7fddd26`](https://github.com/FrancoStino/opencode-skills-collection/commit/7fddd2644d4d59caecbd002c31e43666d3fcbe90) - sync skills and bump version to v1.0.148 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.147] - 2026-04-05
+### :wrench: Chores
+- [`2f69597`](https://github.com/FrancoStino/opencode-skills-collection/commit/2f69597d49c344a1e595b3b39ae3bba9d290cb30) - sync skills and bump version to v1.0.147 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.146] - 2026-04-05
+### :wrench: Chores
+- [`e3ee033`](https://github.com/FrancoStino/opencode-skills-collection/commit/e3ee0337e926f15caae469e20afbcf5447453e14) - sync skills and bump version to v1.0.146 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.145] - 2026-04-05
+### :wrench: Chores
+- [`bc61f95`](https://github.com/FrancoStino/opencode-skills-collection/commit/bc61f95a1f66413fbb085ff6f2a15180c9070e5a) - sync skills and bump version to v1.0.145 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.144] - 2026-04-04
+### :wrench: Chores
+- [`1deec7d`](https://github.com/FrancoStino/opencode-skills-collection/commit/1deec7d803c847d1799ae017f2d67c5ff84c3d40) - sync skills and bump version to v1.0.144 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.143] - 2026-04-04
+### :wrench: Chores
+- [`e6f5cc5`](https://github.com/FrancoStino/opencode-skills-collection/commit/e6f5cc5a6e1587c1a33f079ce23de8db3253a349) - sync skills and bump version to v1.0.143 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.142] - 2026-04-04
+### :wrench: Chores
+- [`f942eff`](https://github.com/FrancoStino/opencode-skills-collection/commit/f942effd3b7c5d4edb55e6b77606424121ac8e29) - sync skills and bump version to v1.0.142 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.141] - 2026-04-04
+### :wrench: Chores
+- [`c69af3c`](https://github.com/FrancoStino/opencode-skills-collection/commit/c69af3c850e683bb520388dbf1de97b8aabb0a2e) - sync skills and bump version to v1.0.141 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.140] - 2026-04-04
+### :wrench: Chores
+- [`681cc13`](https://github.com/FrancoStino/opencode-skills-collection/commit/681cc136d463e39df62b2d5f20d045a85423a253) - sync skills and bump version to v1.0.140 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.139] - 2026-04-04
+### :wrench: Chores
+- [`f7eab81`](https://github.com/FrancoStino/opencode-skills-collection/commit/f7eab81fe0532df7860695102d9c3c082a566914) - sync skills and bump version to v1.0.139 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.138] - 2026-04-04
+### :wrench: Chores
+- [`59f8815`](https://github.com/FrancoStino/opencode-skills-collection/commit/59f88151bd582ea5a663ef55bd37aa4b560d337f) - sync skills and bump version to v1.0.138 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.137] - 2026-04-04
+### :wrench: Chores
+- [`31da0f3`](https://github.com/FrancoStino/opencode-skills-collection/commit/31da0f3d823174583ada81beaa73559d6afd61fd) - sync skills and bump version to v1.0.137 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.136] - 2026-04-04
+### :wrench: Chores
+- [`5c975c0`](https://github.com/FrancoStino/opencode-skills-collection/commit/5c975c055ac074898bf4ddadd0948c2658287494) - sync skills and bump version to v1.0.136 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.135] - 2026-04-04
+### :wrench: Chores
+- [`80cc84f`](https://github.com/FrancoStino/opencode-skills-collection/commit/80cc84f9c9aac77c6e274b94911a14fd754f361e) - sync skills and bump version to v1.0.135 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.134] - 2026-04-04
+### :wrench: Chores
+- [`1cc186d`](https://github.com/FrancoStino/opencode-skills-collection/commit/1cc186da46743dab8452df7517d0fddfb73232e4) - sync skills and bump version to v1.0.134 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.133] - 2026-04-04
+### :wrench: Chores
+- [`bc864f0`](https://github.com/FrancoStino/opencode-skills-collection/commit/bc864f04a198e43bfc3ca6fd72def8e5458b12be) - sync skills and bump version to v1.0.133 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.132] - 2026-04-04
+### :wrench: Chores
+- [`93a028a`](https://github.com/FrancoStino/opencode-skills-collection/commit/93a028a435d44c2467f661f99a849c932f512e61) - sync skills and bump version to v1.0.132 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.131] - 2026-04-04
+### :wrench: Chores
+- [`05c6111`](https://github.com/FrancoStino/opencode-skills-collection/commit/05c611101bdd22d638be29daec70b748c6fb813e) - sync skills and bump version to v1.0.131 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.130] - 2026-04-04
+### :wrench: Chores
+- [`8030ec2`](https://github.com/FrancoStino/opencode-skills-collection/commit/8030ec24526e6aec8297186d1bc05221ef7a01bc) - sync skills and bump version to v1.0.130 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
+## [v1.0.129] - 2026-04-04
+### :wrench: Chores
+- [`180716b`](https://github.com/FrancoStino/opencode-skills-collection/commit/180716bd479e5e868fba6335ad70e3111e8beae2) - sync skills and bump version to v1.0.129 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
 ## [v1.0.128] - 2026-04-04
 ### :wrench: Chores
 - [`526e212`](https://github.com/FrancoStino/opencode-skills-collection/commit/526e212db11d19bd870832657355254a8fe92a83) - sync skills and bump version to v1.0.128 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
@@ -804,3 +1100,61 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.0.126]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.125...v1.0.126
 [v1.0.127]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.126...v1.0.127
 [v1.0.128]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.127...v1.0.128
+[v1.0.129]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.128...v1.0.129
+[v1.0.130]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.129...v1.0.130
+[v1.0.131]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.130...v1.0.131
+[v1.0.132]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.131...v1.0.132
+[v1.0.133]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.132...v1.0.133
+[v1.0.134]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.133...v1.0.134
+[v1.0.135]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.134...v1.0.135
+[v1.0.136]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.135...v1.0.136
+[v1.0.137]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.136...v1.0.137
+[v1.0.138]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.137...v1.0.138
+[v1.0.139]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.138...v1.0.139
+[v1.0.140]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.139...v1.0.140
+[v1.0.141]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.140...v1.0.141
+[v1.0.142]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.141...v1.0.142
+[v1.0.143]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.142...v1.0.143
+[v1.0.144]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.143...v1.0.144
+[v1.0.145]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.144...v1.0.145
+[v1.0.146]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.145...v1.0.146
+[v1.0.147]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.146...v1.0.147
+[v1.0.148]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.147...v1.0.148
+[v1.0.149]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.148...v1.0.149
+[v1.0.150]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.149...v1.0.150
+[v1.0.151]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.150...v1.0.151
+[v1.0.152]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.151...v1.0.152
+[v1.0.153]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.152...v1.0.153
+[v1.0.154]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.153...v1.0.154
+[v1.0.155]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.154...v1.0.155
+[v1.0.156]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.155...v1.0.156
+[v1.0.157]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.156...v1.0.157
+[v1.0.158]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.157...v1.0.158
+[v1.0.159]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.158...v1.0.159
+[v1.0.160]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.159...v1.0.160
+[v1.0.161]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.160...v1.0.161
+[v1.0.162]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.161...v1.0.162
+[v1.0.163]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.162...v1.0.163
+[v1.0.164]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.163...v1.0.164
+[v1.0.165]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.164...v1.0.165
+[v1.0.166]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.165...v1.0.166
+[v1.0.167]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.166...v1.0.167
+[v1.0.168]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.167...v1.0.168
+[v1.0.169]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.168...v1.0.169
+[v1.0.170]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.169...v1.0.170
+[v1.0.171]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.170...v1.0.171
+[v1.0.172]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.171...v1.0.172
+[v1.0.173]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.172...v1.0.173
+[v1.0.174]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.173...v1.0.174
+[v1.0.175]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.174...v1.0.175
+[v1.0.176]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.175...v1.0.176
+[v1.0.177]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.176...v1.0.177
+[v1.0.178]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.177...v1.0.178
+[v1.0.179]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.178...v1.0.179
+[v1.0.180]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.179...v1.0.180
+[v1.0.181]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.180...v1.0.181
+[v1.0.182]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.181...v1.0.182
+[v1.0.183]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.182...v1.0.183
+[v1.0.184]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.183...v1.0.184
+[v1.0.185]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.184...v1.0.185
+[v1.0.186]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.185...v1.0.186
