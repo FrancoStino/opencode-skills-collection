@@ -50,14 +50,19 @@ jobs:
           
           # Check if this is already a beta version
           if [[ "$CURRENT_VERSION" == *"-beta."* ]]; then
-            # Increment beta number
-            npm version prerelease --preid=beta --no-git-tag-version
+            # Extract base version and beta number
+            BASE_VERSION=$(echo "$CURRENT_VERSION" | sed 's/-beta\.[0-9]*$//')
+            BETA_NUM=$(echo "$CURRENT_VERSION" | sed 's/.*-beta\.//' | sed 's/[^0-9]//g')
+            NEW_BETA_NUM=$((BETA_NUM + 1))
+            NEW_VERSION="${BASE_VERSION}-beta.${NEW_BETA_NUM}"
           else
-            # Create first beta from current version
-            npm version prerelease --preid=beta --no-git-tag-version
+            # Create first beta from current version (no increment)
+            NEW_VERSION="${CURRENT_VERSION}-beta.1"
           fi
           
-          NEW_VERSION=$(node -p "require('./package.json').version")
+          # Update package.json manually
+          npm version $NEW_VERSION --no-git-tag-version
+          
           echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
 
       - name: Commit version bump
@@ -66,6 +71,21 @@ jobs:
           git commit -m "chore: bump version to ${{ steps.version.outputs.new_version }}"
           git tag ${{ steps.version.outputs.new_version }}
           git push origin develop --tags
+
+      - name: Generate changelog
+        id: changelog
+        uses: requarks/changelog-action@v1
+        with:
+          token: ${{ github.token }}
+          tag: ${{ steps.version.outputs.new_version }}
+          changelogFilePath: BETA_CHANGELOG.md
+
+      - name: Commit BETA_CHANGELOG.md
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          branch: develop
+          commit_message: 'docs: update BETA_CHANGELOG.md for ${{ steps.version.outputs.new_version }} [skip ci]'
+          file_pattern: BETA_CHANGELOG.md
 
       - name: Build
         run: npm run build
@@ -81,9 +101,5 @@ jobs:
           tag_name: ${{ steps.version.outputs.new_version }}
           name: ${{ steps.version.outputs.new_version }}
           prerelease: true
-          body: |
-            ## Beta Release
-            
-            This is a beta release for testing purposes.
-            
-            **Install**: `npm install opencode-skills-collection@beta`
+          body: ${{ steps.changelog.outputs.changes }}
+            This is a beta release for testing purposes. Please report any issues you encounter.
