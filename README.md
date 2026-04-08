@@ -14,9 +14,12 @@
 
 # OpenCode Skills Collection
 
-> An [OpenCode CLI](https://opencode.ai/) plugin that bundles and auto-syncs a universal collection of AI skills — delivered instantly, with zero network latency at startup.
+> An [OpenCode CLI](https://opencode.ai/) plugin that bundles and auto-syncs a universal collection of AI skills —
+> delivered instantly, with zero network latency at startup.
 
-> ⚠️ **Previously published as [`opencode-skills-antigravity`](https://www.npmjs.com/package/opencode-skills-antigravity)** — that package is now deprecated and points to this one.
+> ⚠️ **Previously published
+as [`opencode-skills-antigravity`](https://www.npmjs.com/package/opencode-skills-antigravity)** — that package is now
+> deprecated and points to this one.
 
 ---
 
@@ -24,7 +27,9 @@
 
 **OpenCode Skills Collection** ships a pre-bundled snapshot of 800+ universal skills for the OpenCode CLI.
 
-Instead of loading every skill into the AI context at startup — which would consume ~80k tokens and cause compaction loops — the plugin uses a **SkillPointer** architecture: skills are organised into categories inside a hidden vault and only loaded into context on demand.
+Instead of loading every skill into the AI context at startup — which would consume ~80k tokens and cause compaction
+loops — the plugin uses a **SkillPointer** architecture: skills are organized into categories inside a hidden vault and
+only loaded into context on demand.
 
 ---
 
@@ -32,18 +37,10 @@ Instead of loading every skill into the AI context at startup — which would co
 
 The plugin operates in three phases:
 
-**1. Automated upstream sync (CI)**
+**1. Local deployment (startup)**
 
-A GitHub Actions workflow runs every hour, checking the upstream skills repository for changes. When new or updated skills are detected, the workflow:
-
-- Re-bundles the skill files into `bundled-skills/`
-- Bumps the package version (`patch`)
-- Creates a tagged GitHub Release
-- Publishes the new version to npm
-
-**2. Local deployment (startup)**
-
-When OpenCode starts, the plugin copies the pre-bundled skills from the npm package and runs the **SkillPointer pipeline**:
+When OpenCode starts, the plugin copies the pre-bundled skills from the npm package and runs the **SkillPointer pipeline
+**:
 
 ```
 bundled-skills/ (npm package)
@@ -57,9 +54,10 @@ bundled-skills/ (npm package)
               └─ pointer-generator → writes ~35 lightweight pointer files
 ```
 
-**3. On-demand skill loading**
+**2. On-demand skill loading**
 
-Each pointer file tells the AI: *"there are N skills for this category in the vault — use `list_dir` / `view_file` to retrieve them when needed."*
+Each pointer file tells the AI: *"there are N skills for this category in the vault — use `list_dir` / `view_file` to
+retrieve them when needed."*
 The full skill content is only injected into context when the AI actually needs it.
 
 ---
@@ -91,12 +89,12 @@ After the first startup, your `~/.config/opencode/` directory looks like this:
 
 ## Context Usage
 
-| | Without SkillPointer | With SkillPointer |
-|---|---|---|
-| Folders in `skills/` | ~800 | ~35 |
-| Tokens at startup | ~80,000 | ~255 |
-| Skills available | All injected upfront | On-demand via vault |
-| Compaction loops | ✗ frequent | ✓ none |
+|                      | Without SkillPointer | With SkillPointer   |
+|----------------------|----------------------|---------------------|
+| Folders in `skills/` | ~800                 | ~35                 |
+| Tokens at startup    | ~80,000              | ~255                |
+| Skills available     | All injected upfront | On-demand via vault |
+| Compaction loops     | ✗ frequent           | ✓ none              |
 
 ---
 
@@ -112,7 +110,8 @@ Add the plugin to your global OpenCode configuration file at `~/.config/opencode
 }
 ```
 
-That's it. OpenCode will automatically download the npm package on next startup via Bun — no manual `npm install` needed.
+That's it. OpenCode will automatically download the npm package on next startup via Bun — no manual `npm install`
+needed.
 
 ---
 
@@ -121,12 +120,14 @@ That's it. OpenCode will automatically download the npm package on next startup 
 Once installed, all skills are available in three ways:
 
 **Explicit invocation via CLI:**
+
 ```bash
 opencode run /brainstorming help me plan a new feature
 opencode run /refactor clean up this function
 ```
 
 **Slash commands in the OpenCode chat:**
+
 ```
 /brainstorming
 /refactor
@@ -134,38 +135,10 @@ opencode run /refactor clean up this function
 ```
 
 **Natural language — OpenCode picks the right skill automatically:**
+
 ```
 "Help me brainstorm ideas for a REST API design"
 "Refactor this function to be more readable"
-```
-
----
-
-## Project Structure
-
-```
-opencode-skills-collection/
-├── src/
-│   ├── constants/
-│   │   └── heuristics.ts          # DOMAIN_HEURISTICS map + shared constants
-│   ├── utils/
-│   │   └── fs.utils.ts            # Filesystem utilities (countSkillFiles, moveDir…)
-│   ├── skill-pointer/
-│   │   ├── categorizer.ts         # Skill categorisation logic
-│   │   ├── vault-manager.ts       # Migrates raw skills into the vault
-│   │   ├── pointer-generator.ts   # Generates lightweight pointer SKILL.md files
-│   │   └── index.ts               # runSkillPointer() orchestrator
-│   └── index.ts                   # Plugin entry point
-├── bundled-skills/                # Pre-bundled skills snapshot (auto-updated by CI)
-├── dist/                          # Compiled TypeScript output
-├── .github/
-│   └── workflows/
-│       ├── sync-skills.yml        # Hourly skill sync + auto-publish
-│       ├── release.yml            # Manual version bump + GitHub Release
-│       ├── publish.yml            # npm publish on new release
-│       └── merge-branch.yml      # Keeps develop in sync with main
-├── package.json
-└── tsconfig.json
 ```
 
 ---
@@ -184,7 +157,8 @@ npm run build
 # Output is in dist/
 ```
 
-The plugin is written in TypeScript and compiled to ESNext with full type declarations. It targets ES2022 and uses ESM module resolution.
+The plugin is written in TypeScript and compiled to ESNext with full type declarations. It targets ES2022 and uses ESM
+module resolution.
 
 ---
 
@@ -206,12 +180,30 @@ The old `opencode-skills-antigravity` package on npm is deprecated and re-export
 
 ## Contributing
 
-Issues and pull requests are welcome at [github.com/FrancoStino/opencode-skills-collection](https://github.com/FrancoStino/opencode-skills-collection/issues).
+Issues and pull requests are welcome
+at [github.com/FrancoStino/opencode-skills-collection](https://github.com/FrancoStino/opencode-skills-collection/issues).
 
-If you'd like to contribute new skills to the collection, open a PR adding a new folder inside `bundled-skills/` — it will be automatically picked up on next sync.
+If you'd like to contribute new skills to the collection, open a PR adding a new folder inside `bundled-skills/` — it
+will be automatically picked up on next sync.
 
 ---
 
+## Beta Releases
+
+Beta versions are published from the `develop` branch for testing before official releases.
+
+### Installing Beta Versions
+
+To use the latest beta version, update your `~/.config/opencode/opencode.json`:
+
+```json
+{
+  "plugin": [
+    "opencode-skills-collection@beta"
+  ]
+}
+```
+
 ## License
 
-MIT © [Davide Ladisa](https://www.davideladisa.it/)
+[MIT ©](./LICENSE) 
