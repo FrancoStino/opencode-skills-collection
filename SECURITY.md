@@ -2,14 +2,17 @@
 
 ## Supported Versions
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 1.x     | ✅ Yes              |
-| 0.x     | ❌ No               |
+| Version | Supported |
+|---------|-----------|
+| 2.x     | ✅ Yes     |
+| 1.x     | ❌ No      |
+| 0.x     | ❌ No      |
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability in this project, please report it by emailing [info@davideladisa.it](mailto:info@davideladisa.it). We are committed to responding within **3 working days** and aim to resolve critical issues within **7 days**.
+If you discover a security vulnerability in this project, please report it by
+emailing [info@davideladisa.it](mailto:info@davideladisa.it). We are committed to responding within **3 working days**
+and aim to resolve critical issues within **7 days**.
 
 Please refrain from disclosing any security issues publicly until they are resolved.
 
