@@ -6,7 +6,8 @@
   "types": "dist/index.d.ts",
   "files": [
     "dist",
-    "bundled-skills"
+    "bundled-skills",
+    "skills_index.json"
   ],
   "repository": {
     "type": "git",
