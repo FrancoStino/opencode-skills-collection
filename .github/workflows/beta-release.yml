@@ -10,8 +10,6 @@ on:
         default: 'prerelease'
         options:
           - prerelease
-          - minor
-          - major
 
 jobs:
   beta-release:
@@ -101,5 +99,7 @@ jobs:
           tag_name: ${{ steps.version.outputs.new_version }}
           name: ${{ steps.version.outputs.new_version }}
           prerelease: true
-          body: ${{ steps.changelog.outputs.changes }}
-            This is a beta release for testing purposes. Please report any issues you encounter.
+          body: This is a beta release for testing purposes. Please report any issues you encounter.
+                      
+            ${{ steps.changelog.outputs.changes }}
+
