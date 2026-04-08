@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-04-07T15:09:47.494Z",
+  "updatedAt": "2026-04-08T09:03:21.581Z",
   "entries": [
     "00-andruia-consultant",
     "007",
@@ -528,6 +528,8 @@
     "expo-tailwind-setup",
     "expo-ui-jetpack-compose",
     "expo-ui-swift-ui",
+    "faf-expert",
+    "faf-wizard",
     "fal-audio",
     "fal-generate",
     "fal-image-edit",
@@ -692,6 +694,7 @@
     "hybrid-search-implementation",
     "i18n-localization",
     "iconsax-library",
+    "idea-darwin",
     "identity-mirror",
     "idor-testing",
     "ilya-sutskever",
@@ -1063,6 +1066,7 @@
     "sam-altman",
     "sankhya-dashboard-html-jsp-custom-best-pratices",
     "sast-configuration",
+    "satori",
     "scala-pro",
     "scanning-tools",
     "scanpy",
