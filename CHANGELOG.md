@@ -4,6 +4,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.0.207] - 2026-04-09
+### :sparkles: New Features
+- [`833e969`](https://github.com/FrancoStino/opencode-skills-collection/commit/833e969819877633a479bdd0d5fd534a3e123e14) - Add GitHub Actions workflow for beta release *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+
+### :wrench: Chores
+- [`2074a67`](https://github.com/FrancoStino/opencode-skills-collection/commit/2074a6747fc6b3ca266c64ff29ceb5345ffdf6ea) - sync skills and bump version to v1.0.197 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+- [`4c85869`](https://github.com/FrancoStino/opencode-skills-collection/commit/4c85869c4ce63bd9e9d53ad4612f989eb0263ae5) - sync skills and bump version to v1.0.198 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+- [`a5b6260`](https://github.com/FrancoStino/opencode-skills-collection/commit/a5b62607cc3eec16b1aaeb1054c445fd1ea12523) - sync skills and bump version to v1.0.199 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+- [`09271ff`](https://github.com/FrancoStino/opencode-skills-collection/commit/09271ff756a6e4f85b866f9c522ddf94a1918250) - sync skills and bump version to v1.0.200 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+- [`b425d3a`](https://github.com/FrancoStino/opencode-skills-collection/commit/b425d3a03ee29e53160a2cddaf76b50aeea168e7) - sync skills and bump version to v1.0.201 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+- [`18a87ce`](https://github.com/FrancoStino/opencode-skills-collection/commit/18a87cecd27e06426fcec0796c8c45d7f3a6ad62) - sync skills and bump version to v1.0.202 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+- [`6c87ac9`](https://github.com/FrancoStino/opencode-skills-collection/commit/6c87ac9a63cae2f09e74e39be5bbf7bfb9ded263) - sync skills and bump version to v1.0.203 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+- [`eacedfd`](https://github.com/FrancoStino/opencode-skills-collection/commit/eacedfd10298eea7575b606c562d4b69bb0ae43e) - sync skills and bump version to v1.0.204 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+- [`9a4cf58`](https://github.com/FrancoStino/opencode-skills-collection/commit/9a4cf58c4fdd8bdd25bbb9b2f8e34ae84740a42e) - sync skills and bump version to v1.0.205 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+- [`2a00689`](https://github.com/FrancoStino/opencode-skills-collection/commit/2a006891309cdd9f2547e138a20a2c47de3e1a4b) - sync skills and bump version to v1.0.206 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+- [`f56a58c`](https://github.com/FrancoStino/opencode-skills-collection/commit/f56a58c5244eb42be2652fdd886596fa40776ee3) - sync skills and bump version to v1.0.207 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
 ## [v1.0.196] - 2026-04-08
 ### :wrench: Chores
 - [`b77bc67`](https://github.com/FrancoStino/opencode-skills-collection/commit/b77bc67314d0c79e5360e056bfc4fa75e2881644) - sync skills and bump version to v1.0.196 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
@@ -1218,3 +1236,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.0.194]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.193...v1.0.194
 [v1.0.195]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.194...v1.0.195
 [v1.0.196]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.195...v1.0.196
+[v1.0.207]: https://github.com/FrancoStino/opencode-skills-collection/compare/2.0.0-beta.1...v1.0.207
