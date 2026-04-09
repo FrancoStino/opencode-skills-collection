@@ -10,12 +10,12 @@ on:
         default: 'prerelease'
         options:
           - prerelease
-          - minor
-          - major
 
 jobs:
   beta-release:
     runs-on: ubuntu-latest
+    # Only run this workflow on the develop branch to prevent accidental beta releases from other branches
+    if: github.ref == 'refs/heads/develop'
     permissions:
       contents: write
       id-token: write
@@ -66,10 +66,12 @@ jobs:
           echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
 
       - name: Commit version bump
+        env:
+          NEW_VERSION: ${{ steps.version.outputs.new_version }}
         run: |
           git add package.json package-lock.json
-          git commit -m "chore: bump version to ${{ steps.version.outputs.new_version }}"
-          git tag ${{ steps.version.outputs.new_version }}
+          git commit -m "chore: bump version to ${NEW_VERSION}"
+          git tag "${NEW_VERSION}"
           git push origin develop --tags
 
       - name: Generate changelog
@@ -101,5 +103,7 @@ jobs:
           tag_name: ${{ steps.version.outputs.new_version }}
           name: ${{ steps.version.outputs.new_version }}
           prerelease: true
-          body: ${{ steps.changelog.outputs.changes }}            
+          body: |
             This is a beta release for testing purposes. Please report any issues you encounter.
+            
+            ${{ steps.changelog.outputs.changes }}

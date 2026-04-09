@@ -2,7 +2,7 @@ name: Sync multiple branches
 
 on:
   workflow_run:
-    workflows: ["Publish to npm"]
+    workflows: [ "Publish to npm" ]
     types:
       - completed
 
@@ -23,10 +23,66 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          registry-url: 'https://registry.npmjs.org'
+
       - name: Merge main to develop
         run: |
           git checkout develop
-          git merge origin/main
+          git merge origin/main --no-edit || {
+            echo "⚠️ Merge conflict detected, resolving..."
+          
+            # Check if package-lock.json has conflicts
+            if git diff --name-only --diff-filter=U | grep -q "package-lock.json"; then
+              echo "📦 Resolving package-lock.json conflicts with npm..."
+              npm install --package-lock-only
+              git add package-lock.json
+            fi
+          
+            # Commit the resolution
+            git commit --no-edit
+          }
+
+      - name: Auto-version beta after merge
+        id: auto_version
+        run: |
+          MERGED_VERSION=$(git show origin/main:package.json | grep '"version"' | head -1 | sed 's/.*"version": "\(.*\)".*/\1/')
+          echo "Merged version from main: $MERGED_VERSION"
+
+          CURRENT_VERSION=$(node -p "require('./package.json').version")
+          echo "Current develop version: $CURRENT_VERSION"
+
+          CURRENT_BASE=$(echo "$CURRENT_VERSION" | sed 's/-beta\.[0-9]*$//')
+
+          IS_NEWER=$(node -e "
+            const merged = '${MERGED_VERSION}'.split('.').map(Number);
+            const current = '${CURRENT_BASE}'.split('.').map(Number);
+            const newer = merged[0] > current[0]
+              || (merged[0] === current[0] && merged[1] > current[1])
+              || (merged[0] === current[0] && merged[1] === current[1] && merged[2] > current[2]);
+            console.log(newer ? 'true' : 'false');
+          ")
+
+          if [[ "$IS_NEWER" == "true" && ! "$MERGED_VERSION" == *"-beta"* ]]; then
+            echo "📦 New stable version detected, creating beta..."
+
+            npm version "$MERGED_VERSION" --no-git-tag-version
+            npm version prerelease --preid=beta --no-git-tag-version
+
+            NEW_VERSION=$(node -p "require('./package.json').version")
+            echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
+            echo "✅ Created new beta version: $NEW_VERSION"
+
+            git add package.json package-lock.json
+            git commit -m "chore: auto-version to $NEW_VERSION after merge"
+            git tag "$NEW_VERSION"
+          else
+            echo "No version bump needed"
+            echo "new_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
+          fi
 
       - name: Push changes
-        run: git push origin develop
+        run: git push origin develop --tags

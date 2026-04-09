@@ -34,10 +34,17 @@ jobs:
           rm -rf bundled-skills
           npx --yes antigravity-awesome-skills --path "bundled-skills"
 
+      - name: Download skills_index.json from upstream
+        run: |
+          curl -fsSL \
+            "https://raw.githubusercontent.com/sickn33/antigravity-awesome-skills/main/skills_index.json" \
+            -o skills_index.json
+          echo "✅ skills_index.json downloaded ($(wc -c < skills_index.json) bytes)"
+
       - name: Check for changes
         id: check_changes
         run: |
-          if [ -n "$(git status --porcelain bundled-skills)" ]; then
+          if [ -n "$(git status --porcelain bundled-skills skills_index.json)" ]; then
             echo "changes=true" >> $GITHUB_OUTPUT
           else
             echo "changes=false" >> $GITHUB_OUTPUT
@@ -45,26 +52,27 @@ jobs:
 
       - name: Bump version and push
         id: bump
-        if: steps.check_changes.outputs.changes == 'true'
+        # Only run on main to avoid accidental version bumps on open PRs
+        if: steps.check_changes.outputs.changes == 'true' && github.ref == 'refs/heads/main'
         run: |
           npm ci
           NEW_VERSION=$(npm version patch --no-git-tag-version)
           echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
-          git add bundled-skills package.json package-lock.json
+          git add bundled-skills skills_index.json package.json package-lock.json
           git commit -m "chore: sync skills and bump version to $NEW_VERSION"
           git tag $NEW_VERSION
           git push origin main --tags
 
       - name: Generate changelog
         id: changelog
-        if: steps.check_changes.outputs.changes == 'true'
+        if: steps.check_changes.outputs.changes == 'true' && github.ref == 'refs/heads/main'
         uses: requarks/changelog-action@v1
         with:
           token: ${{ github.token }}
           tag: ${{ steps.bump.outputs.new_version }}
 
       - name: Commit CHANGELOG.md
-        if: steps.check_changes.outputs.changes == 'true'
+        if: steps.check_changes.outputs.changes == 'true' && github.ref == 'refs/heads/main'
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           branch: main
@@ -72,7 +80,7 @@ jobs:
           file_pattern: CHANGELOG.md
 
       - name: Create GitHub Release
-        if: steps.check_changes.outputs.changes == 'true'
+        if: steps.check_changes.outputs.changes == 'true' && github.ref == 'refs/heads/main'
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.bump.outputs.new_version }}
