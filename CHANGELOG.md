@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.0.2] - 2026-04-09
+### :wrench: Chores
+- [`0159303`](https://github.com/FrancoStino/opencode-skills-collection/commit/0159303f3e4ed0af08e3f70a22f2827a62500efb) - sync skills and bump version to v2.0.1 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+- [`0cebcfb`](https://github.com/FrancoStino/opencode-skills-collection/commit/0cebcfb0a73071d28b4018b9add99da181f2bbaa) - sync skills and bump version to v2.0.2 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
 ## [v2.0.0] - 2026-04-09
 ### :sparkles: New Features
 - [`971bc4b`](https://github.com/FrancoStino/opencode-skills-collection/commit/971bc4b6618568ed61c6dbb69a11e746b2d019c4) - integrate SkillPointer architecture in TypeScript *(commit by [@FrancoStino](https://github.com/FrancoStino))*
@@ -1300,3 +1306,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.0.209]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.208...v1.0.209
 [v1.0.210]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.209...v1.0.210
 [v2.0.0]: https://github.com/FrancoStino/opencode-skills-collection/compare/v1.0.214...v2.0.0
+[v2.0.2]: https://github.com/FrancoStino/opencode-skills-collection/compare/v2.0.0...v2.0.2
