@@ -38,7 +38,11 @@ jobs:
         run: |
           CURRENT_VERSION=$(node -p "require('./package.json').version")
 
-          # Remove -beta suffix if present (promote beta to stable)
+          # Trova il tag stabile precedente (escludi beta) per il changelog
+          PREVIOUS_STABLE=$(git tag --list 'v*' | grep -v 'beta' | sort -V | tail -1)
+          echo "previous_stable=$PREVIOUS_STABLE" >> $GITHUB_OUTPUT
+
+          # Rimuovi -beta se presente
           if [[ "$CURRENT_VERSION" == *"-beta"* ]]; then
             STABLE_VERSION=$(echo $CURRENT_VERSION | sed 's/-beta\.[0-9]*$//')
             npm version $STABLE_VERSION --no-git-tag-version
@@ -54,14 +58,20 @@ jobs:
           echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
       - name: Commit and push
         run: |
-          # Check if there are changes to commit (version bump or beta removal)
-          if [ "${{ github.event.inputs.version }}" != "current" ] || git diff --quiet package.json; then
+          if git diff --quiet package.json package-lock.json; then
+            echo "No changes to commit."
+          else
             git add package.json package-lock.json
             git commit -m "chore: bump version to ${{ steps.bump.outputs.new_version }}"
           fi
-          git tag ${{ steps.bump.outputs.new_version }}
+
+          if git rev-parse "${{ steps.bump.outputs.new_version }}" >/dev/null 2>&1; then
+            echo "Tag ${{ steps.bump.outputs.new_version }} already exists, skipping."
+          else
+            git tag ${{ steps.bump.outputs.new_version }}
+          fi
+
           git push origin main --tags
-          # Wait for GitHub to process the new tag
           sleep 5
           git fetch --tags
       - name: Generate changelog
@@ -69,8 +79,8 @@ jobs:
         uses: requarks/changelog-action@v1
         with:
           token: ${{ github.token }}
-          tag: ${{ steps.bump.outputs.new_version }}
-          excludeTags: '-beta'
+          fromTag: ${{ steps.bump.outputs.new_version }}
+          toTag: ${{ steps.bump.outputs.previous_stable }}
       - name: Commit CHANGELOG.md
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
