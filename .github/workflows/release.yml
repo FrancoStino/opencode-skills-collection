@@ -61,12 +61,16 @@ jobs:
           fi
           git tag ${{ steps.bump.outputs.new_version }}
           git push origin main --tags
+          # Wait for GitHub to process the new tag
+          sleep 5
+          git fetch --tags
       - name: Generate changelog
         id: changelog
         uses: requarks/changelog-action@v1
         with:
           token: ${{ github.token }}
           tag: ${{ steps.bump.outputs.new_version }}
+          excludeTags: '-beta'
       - name: Commit CHANGELOG.md
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
