@@ -71,9 +71,17 @@ jobs:
             git tag ${{ steps.bump.outputs.new_version }}
           fi
 
-          git push origin main --tags
-          sleep 5
-          git fetch --tags
+          MAX_RETRIES=5
+          RETRY=0
+          until git push origin main --tags; do
+            RETRY=$((RETRY + 1))
+            if [ "$RETRY" -ge "$MAX_RETRIES" ]; then
+              echo "❌ Push failed after $MAX_RETRIES attempts"
+              exit 1
+            fi
+            echo "⚠️ Push rejected, rebasing ($RETRY/$MAX_RETRIES)..."
+            git pull origin main --rebase
+          done
       - name: Generate changelog
         id: changelog
         uses: requarks/changelog-action@v1
