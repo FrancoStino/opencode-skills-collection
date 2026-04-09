@@ -1,46 +1,38 @@
 name: Auto-Sync Skills
-
 on:
   schedule:
     - cron: '0 * * * *'
   workflow_dispatch:
-
 jobs:
   sync-skills:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.WORKFLOW_TOKEN }}
           fetch-depth: 0
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '24'
           cache: 'npm'
-
       - name: Configure git
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-
       - name: Sync skills
         run: |
           rm -rf bundled-skills
           npx --yes antigravity-awesome-skills --path "bundled-skills"
-
       - name: Download skills_index.json from upstream
         run: |
           curl -fsSL \
             "https://raw.githubusercontent.com/sickn33/antigravity-awesome-skills/main/skills_index.json" \
             -o skills_index.json
           echo "✅ skills_index.json downloaded ($(wc -c < skills_index.json) bytes)"
-
       - name: Check for changes
         id: check_changes
         run: |
@@ -49,28 +41,42 @@ jobs:
           else
             echo "changes=false" >> $GITHUB_OUTPUT
           fi
-
       - name: Bump version and push
         id: bump
-        # Only run on main to avoid accidental version bumps on open PRs
         if: steps.check_changes.outputs.changes == 'true' && github.ref == 'refs/heads/main'
         run: |
           npm ci
+
+          # Trova il tag stabile precedente (escludi beta) per il changelog
+          PREVIOUS_STABLE=$(git tag --list 'v*' | grep -v 'beta' | sort -V | tail -1)
+          echo "previous_stable=$PREVIOUS_STABLE" >> $GITHUB_OUTPUT
+
           NEW_VERSION=$(npm version patch --no-git-tag-version)
           echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
+
           git add bundled-skills skills_index.json package.json package-lock.json
           git commit -m "chore: sync skills and bump version to $NEW_VERSION"
           git tag $NEW_VERSION
-          git push origin main --tags
 
+          MAX_RETRIES=5
+          RETRY=0
+          until git push origin main --tags; do
+            RETRY=$((RETRY + 1))
+            if [ "$RETRY" -ge "$MAX_RETRIES" ]; then
+              echo "❌ Push failed after $MAX_RETRIES attempts"
+              exit 1
+            fi
+            echo "⚠️ Push rejected, rebasing ($RETRY/$MAX_RETRIES)..."
+            git pull origin main --rebase
+          done
       - name: Generate changelog
         id: changelog
         if: steps.check_changes.outputs.changes == 'true' && github.ref == 'refs/heads/main'
         uses: requarks/changelog-action@v1
         with:
-          token: ${{ github.token }}
-          tag: ${{ steps.bump.outputs.new_version }}
-
+          token: ${{ secrets.WORKFLOW_TOKEN }}
+          fromTag: ${{ steps.bump.outputs.new_version }}
+          toTag: ${{ steps.bump.outputs.previous_stable }}
       - name: Commit CHANGELOG.md
         if: steps.check_changes.outputs.changes == 'true' && github.ref == 'refs/heads/main'
         uses: stefanzweifel/git-auto-commit-action@v5
@@ -78,11 +84,11 @@ jobs:
           branch: main
           commit_message: 'docs: update CHANGELOG.md for ${{ steps.bump.outputs.new_version }} [skip ci]'
           file_pattern: CHANGELOG.md
-
       - name: Create GitHub Release
         if: steps.check_changes.outputs.changes == 'true' && github.ref == 'refs/heads/main'
         uses: softprops/action-gh-release@v2
         with:
+          token: ${{ secrets.WORKFLOW_TOKEN }}
           tag_name: ${{ steps.bump.outputs.new_version }}
           name: ${{ steps.bump.outputs.new_version }}
           body: ${{ steps.changelog.outputs.changes }}
