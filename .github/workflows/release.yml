@@ -1,5 +1,4 @@
 name: Create Release
-
 on:
   workflow_dispatch:
     inputs:
@@ -11,61 +10,58 @@ on:
           - patch
           - minor
           - major
-
+          - current
 jobs:
   release:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '24'
           cache: 'npm'
-
       - name: Configure git
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-
       - name: Install dependencies
         run: npm ci
-
       - name: Bump version
         id: bump
         run: |
-          NEW_VERSION=$(npm version ${{ github.event.inputs.version }} --no-git-tag-version)
+          if [ "${{ github.event.inputs.version }}" = "current" ]; then
+            NEW_VERSION="v$(node -p "require('./package.json').version")"
+          else
+            NEW_VERSION=$(npm version ${{ github.event.inputs.version }} --no-git-tag-version)
+          fi
           echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
-
       - name: Commit and push
         run: |
-          git add package.json package-lock.json
-          git commit -m "chore: bump version to ${{ steps.bump.outputs.new_version }}"
+          if [ "${{ github.event.inputs.version }}" != "current" ]; then
+            git add package.json package-lock.json
+            git commit -m "chore: bump version to ${{ steps.bump.outputs.new_version }}"
+          fi
           git tag ${{ steps.bump.outputs.new_version }}
           git push origin main --tags
-
       - name: Generate changelog
         id: changelog
         uses: requarks/changelog-action@v1
         with:
           token: ${{ github.token }}
           tag: ${{ steps.bump.outputs.new_version }}
-
       - name: Commit CHANGELOG.md
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           branch: main
           commit_message: 'docs: update CHANGELOG.md for ${{ steps.bump.outputs.new_version }} [skip ci]'
           file_pattern: CHANGELOG.md
-
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
