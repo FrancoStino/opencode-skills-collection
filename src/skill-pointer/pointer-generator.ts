@@ -71,13 +71,20 @@ export function generatePointers(
 
   for (const categoryName of categoryDirs) {
     const categoryVaultPath = path.join(vaultDir, categoryName);
-    const skills = byCategory.get(categoryName) ?? [];
+    let skills = byCategory.get(categoryName) ?? [];
 
     if (skills.length === 0) {
       const subDirs = fs.readdirSync(categoryVaultPath).filter((e) =>
         fs.statSync(path.join(categoryVaultPath, e)).isDirectory()
       );
       if (subDirs.length === 0) continue;
+
+      skills = subDirs.map((dir) => ({
+        id: dir,
+        category: categoryName,
+        name: dir.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()),
+        description: dir.replace(/-/g, " "),
+      }));
     }
 
     const pointerDir = path.join(

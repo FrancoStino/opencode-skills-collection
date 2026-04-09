@@ -18,7 +18,7 @@
 > delivered instantly, with zero network latency at startup.
 
 > ⚠️ **Previously published
-as [`opencode-skills-antigravity`](https://www.npmjs.com/package/opencode-skills-antigravity)** — that package is now
+> as [`opencode-skills-antigravity`](https://www.npmjs.com/package/opencode-skills-antigravity)** — that package is now
 > deprecated and points to this one.
 
 ---
@@ -35,7 +35,7 @@ only loaded into context on demand.
 
 ## How It Works
 
-The plugin operates in three phases:
+The plugin operates in two phases:
 
 **1. Local deployment (startup)**
 

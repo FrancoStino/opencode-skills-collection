@@ -33,8 +33,8 @@ const OpenCodeSkillsCollection: Plugin = async (_ctx) => {
 
     ensureDir(activeSkillsDir);
     runSkillPointer({ bundledSkillsPath, activeSkillsDir });
-  } catch {
-    // Plugin errors must never crash OpenCode.
+  } catch (error) {
+    process.stderr.write(`[opencode-skills-collection] ${error}\n`);
   }
 
   return {};
