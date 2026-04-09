@@ -50,7 +50,7 @@ bundled-skills/ (npm package)
         │
         └── SkillPointer pipeline
               │
-              ├─ vault-manager     → moves 800+ raw skills to the vault
+              ├─ vault-manager     → moves raw skills to the vault
               └─ pointer-generator → writes ~35 lightweight pointer files
 ```
 
@@ -69,7 +69,7 @@ After the first startup, your `~/.config/opencode/` directory looks like this:
 ```
 ~/.config/opencode/
 ├── opencode.json
-├── skills/                          ← ~35 pointer folders (active, read by OpenCode)
+├── skills/                          ← pointer folders (active, read by OpenCode)
 │   ├── backend-dev-category-pointer/
 │   │   └── SKILL.md
 │   ├── devops-category-pointer/
