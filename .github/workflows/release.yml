@@ -69,3 +69,28 @@ jobs:
           name: ${{ steps.bump.outputs.new_version }}
           body: ${{ steps.changelog.outputs.changes }}
           make_latest: true
+      - name: Remove -beta suffix
+        run: |
+          CURRENT=$(node -p "require('./package.json').version")
+          CLEAN=$(echo "$CURRENT" | sed 's/-beta.*//')
+
+          if [ "$CURRENT" = "$CLEAN" ]; then
+            echo "No -beta suffix found, nothing to do."
+            exit 0
+          fi
+
+          npm version "$CLEAN" --no-git-tag-version
+          git add package.json package-lock.json
+          git commit -m "chore: remove -beta suffix, version is now $CLEAN [skip ci]"
+
+          MAX_RETRIES=5
+          RETRY=0
+          until git push origin main; do
+            RETRY=$((RETRY + 1))
+            if [ "$RETRY" -ge "$MAX_RETRIES" ]; then
+              echo "❌ Push failed after $MAX_RETRIES attempts"
+              exit 1
+            fi
+            echo "⚠️ Push rejected, rebasing ($RETRY/$MAX_RETRIES)..."
+            git pull origin main --rebase
+          done
