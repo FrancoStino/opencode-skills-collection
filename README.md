@@ -9,6 +9,7 @@
 [![npm version](https://img.shields.io/npm/v/opencode-skills-collection?style=for-the-badge&color=cb3837&label=npm)](https://www.npmjs.com/package/opencode-skills-collection)
 [![npm downloads](https://img.shields.io/npm/dm/opencode-skills-collection?style=for-the-badge&color=orange)](https://www.npmjs.com/package/opencode-skills-collection)
 [![license](https://img.shields.io/github/license/FrancoStino/opencode-skills-collection?style=for-the-badge&color=blue)](./LICENSE)
+[![wiki](https://img.shields.io/badge/wiki-available-black?style=for-the-badge)](https://www.cubic.dev/wikis/FrancoStino/opencode-skills-collection?page=home)
 
 </div>
 
