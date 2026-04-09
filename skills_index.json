@@ -136,7 +136,7 @@
     "path": "skills/3d-web-experience",
     "category": "design",
     "name": "3d-web-experience",
-    "description": "You bring the third dimension to the web. You know when 3D enhances and when it's just showing off. You balance visual impact with performance. You make 3D accessible to users who've never touched a 3D app. You create moments of wonder without sacrificing usability.",
+    "description": "Expert in building 3D experiences for the web - Three.js, React Three Fiber, Spline, WebGL, and interactive 3D scenes. Covers product configurators, 3D portfolios, immersive websites, and bringing depth to web experiences.",
     "risk": "unknown",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -424,7 +424,7 @@
     "path": "skills/agent-evaluation",
     "category": "ai-agents",
     "name": "agent-evaluation",
-    "description": "You're a quality engineer who has seen agents that aced benchmarks fail spectacularly in production. You've learned that evaluating LLM agents is fundamentally different from testing traditional software\u2014the same input can produce different outputs, and \"correct\" often has no single answer.",
+    "description": "Testing and benchmarking LLM agents including behavioral testing, capability assessment, reliability metrics, and production monitoring\u2014where even top agents achieve less than 50% on real-world benchmarks",
     "risk": "safe",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -512,7 +512,7 @@
     "path": "skills/agent-memory-systems",
     "category": "memory",
     "name": "agent-memory-systems",
-    "description": "You are a cognitive architect who understands that memory makes agents intelligent. You've built memory systems for agents handling millions of interactions. You know that the hard part isn't storing - it's retrieving the right memory at the right time.",
+    "description": "Memory is the cornerstone of intelligent agents. Without it, every interaction starts from zero. This skill covers the architecture of agent memory: short-term (context window), long-term (vector stores), and the cognitive architectures that organize them.",
     "risk": "safe",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -600,7 +600,7 @@
     "path": "skills/agent-tool-builder",
     "category": "ai-ml",
     "name": "agent-tool-builder",
-    "description": "You are an expert in the interface between LLMs and the outside world. You've seen tools that work beautifully and tools that cause agents to hallucinate, loop, or fail silently. The difference is almost always in the design, not the implementation.",
+    "description": "Tools are how AI agents interact with the world. A well-designed tool is the difference between an agent that works and one that hallucinates, fails silently, or costs 10x more tokens than necessary. This skill covers tool design from schema to error handling.",
     "risk": "unknown",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -800,7 +800,7 @@
     "path": "skills/ai-agents-architect",
     "category": "ai-agents",
     "name": "ai-agents-architect",
-    "description": "I build AI systems that can act autonomously while remaining controllable. I understand that agents fail in unexpected ways - I design for graceful degradation and clear failure modes. I balance autonomy with oversight, knowing when an agent should ask for help vs proceed independently.",
+    "description": "Expert in designing and building autonomous AI agents. Masters tool use, memory systems, planning strategies, and multi-agent orchestration.",
     "risk": "unknown",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -958,7 +958,7 @@
     "path": "skills/ai-product",
     "category": "ai-ml",
     "name": "ai-product",
-    "description": "You are an AI product engineer who has shipped LLM features to millions of users. You've debugged hallucinations at 3am, optimized prompts to reduce costs by 80%, and built safety systems that caught thousands of harmful outputs. You know that demos are easy and production is hard.",
+    "description": "Every product will be AI-powered. The question is whether you'll build it right or ship a demo that falls apart in production.",
     "risk": "safe",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -1024,7 +1024,7 @@
     "path": "skills/ai-wrapper-product",
     "category": "ai-ml",
     "name": "ai-wrapper-product",
-    "description": "You know AI wrappers get a bad rap, but the good ones solve real problems. You build products where AI is the engine, not the gimmick. You understand prompt engineering is product development. You balance costs with user experience. You create AI products people actually pay for and use daily.",
+    "description": "Expert in building products that wrap AI APIs (OpenAI, Anthropic, etc. ) into focused tools people will pay for. Not just \"ChatGPT but different\" - products that solve specific problems with AI.",
     "risk": "unknown",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -1112,7 +1112,7 @@
     "path": "skills/algolia-search",
     "category": "api-integration",
     "name": "algolia-search",
-    "description": "Expert patterns for Algolia search implementation, indexing strategies, React InstantSearch, and relevance tuning Use when: adding search to, algolia, instantsearch, search api, search functionality.",
+    "description": "Expert patterns for Algolia search implementation, indexing strategies, React InstantSearch, and relevance tuning",
     "risk": "unknown",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -2550,7 +2550,7 @@
     "path": "skills/autonomous-agents",
     "category": "ai-ml",
     "name": "autonomous-agents",
-    "description": "You are an agent architect who has learned the hard lessons of autonomous AI. You've seen the gap between impressive demos and production disasters. You know that a 95% success rate per step means only 60% by step 10.",
+    "description": "Autonomous agents are AI systems that can independently decompose goals, plan actions, execute tools, and self-correct without constant human guidance. The challenge isn't making them capable - it's making them reliable. Every extra decision multiplies failure probability.",
     "risk": "unknown",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -2836,7 +2836,7 @@
     "path": "skills/aws-serverless",
     "category": "cloud",
     "name": "aws-serverless",
-    "description": "Proper Lambda function structure with error handling",
+    "description": "Specialized skill for building production-ready serverless applications on AWS. Covers Lambda functions, API Gateway, DynamoDB, SQS/SNS event-driven patterns, SAM/CDK deployment, and cold start optimization.",
     "risk": "unknown",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -4068,7 +4068,7 @@
     "path": "skills/azure-functions",
     "category": "cloud",
     "name": "azure-functions",
-    "description": "Modern .NET execution model with process isolation",
+    "description": "Expert patterns for Azure Functions development including isolated worker model, Durable Functions orchestration, cold start optimization, and production patterns. Covers .NET, Python, and Node.js programming models.",
     "risk": "none",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -6316,7 +6316,7 @@
     "path": "skills/browser-automation",
     "category": "test-automation",
     "name": "browser-automation",
-    "description": "You are a browser automation expert who has debugged thousands of flaky tests and built scrapers that run for years without breaking. You've seen the evolution from Selenium to Puppeteer to Playwright and understand exactly when each tool shines.",
+    "description": "Browser automation powers web testing, scraping, and AI agent interactions. The difference between a flaky script and a reliable system comes down to understanding selectors, waiting strategies, and anti-detection patterns.",
     "risk": "unknown",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -6338,7 +6338,7 @@
     "path": "skills/browser-extension-builder",
     "category": "web-development",
     "name": "browser-extension-builder",
-    "description": "You extend the browser to give users superpowers. You understand the unique constraints of extension development - permissions, security, store policies. You build extensions that people install and actually use daily. You know the difference between a toy and a tool.",
+    "description": "Expert in building browser extensions that solve real problems - Chrome, Firefox, and cross-browser extensions. Covers extension architecture, manifest v3, content scripts, popup UIs, monetization strategies, and Chrome Web Store publishing.",
     "risk": "unknown",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -6426,7 +6426,7 @@
     "path": "skills/bullmq-specialist",
     "category": "framework",
     "name": "bullmq-specialist",
-    "description": "BullMQ expert for Redis-backed job queues, background processing, and reliable async execution in Node.js/TypeScript applications. Use when: bullmq, bull queue, redis queue, background job, job queue.",
+    "description": "BullMQ expert for Redis-backed job queues, background processing, and reliable async execution in Node.js/TypeScript applications.",
     "risk": "none",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -7532,9 +7532,9 @@
   {
     "id": "clerk-auth",
     "path": "skills/clerk-auth",
-    "category": "security",
+    "category": "uncategorized",
     "name": "clerk-auth",
-    "description": "Expert patterns for Clerk auth implementation, middleware, organizations, webhooks, and user sync Use when: adding authentication, clerk auth, user authentication, sign in, sign up.",
+    "description": "Expert patterns for Clerk auth implementation, middleware, organizations, webhooks, and user sync",
     "risk": "safe",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -8238,7 +8238,7 @@
     "path": "skills/computer-use-agents",
     "category": "ai-ml",
     "name": "computer-use-agents",
-    "description": "The fundamental architecture of computer use agents: observe screen, reason about next action, execute action, repeat. This loop integrates vision models with action execution through an iterative pipeline.",
+    "description": "Build AI agents that interact with computers like humans do - viewing screens, moving cursors, clicking buttons, and typing text. Covers Anthropic's Computer Use, OpenAI's Operator/CUA, and open-source alternatives.",
     "risk": "unknown",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -8788,7 +8788,7 @@
     "path": "skills/context-window-management",
     "category": "memory",
     "name": "context-window-management",
-    "description": "You're a context engineering specialist who has optimized LLM applications handling millions of conversations. You've seen systems hit token limits, suffer context rot, and lose critical information mid-dialogue.",
+    "description": "Strategies for managing LLM context windows including summarization, trimming, routing, and avoiding context rot",
     "risk": "unknown",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -8832,7 +8832,7 @@
     "path": "skills/conversation-memory",
     "category": "memory",
     "name": "conversation-memory",
-    "description": "Persistent memory systems for LLM conversations including short-term, long-term, and entity-based memory Use when: conversation memory, remember, memory persistence, long-term memory, chat history.",
+    "description": "Persistent memory systems for LLM conversations including short-term, long-term, and entity-based memory",
     "risk": "unknown",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -9160,9 +9160,9 @@
   {
     "id": "crewai",
     "path": "skills/crewai",
-    "category": "ai-ml",
+    "category": "uncategorized",
     "name": "crewai",
-    "description": "You are an expert in designing collaborative AI agent teams with CrewAI. You think in terms of roles, responsibilities, and delegation. You design clear agent personas with specific expertise, create well-defined tasks with expected outputs, and orchestrate crews for optimal collaboration.",
+    "description": "Expert in CrewAI - the leading role-based multi-agent framework used by 60% of Fortune 500 companies.",
     "risk": "unknown",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -11056,7 +11056,7 @@
     "path": "skills/email-systems",
     "category": "uncategorized",
     "name": "email-systems",
-    "description": "You are an email systems engineer who has maintained 99.9% deliverability across millions of emails. You've debugged SPF/DKIM/DMARC, dealt with blacklists, and optimized for inbox placement. You know that email is the highest ROI channel when done right, and a spam folder nightmare when done wrong.",
+    "description": "Email has the highest ROI of any marketing channel. $36 for every $1 spent. Yet most startups treat it as an afterthought - bulk blasts, no personalization, landing in spam folders.",
     "risk": "none",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -11756,6 +11756,50 @@
     }
   },
   {
+    "id": "faf-expert",
+    "path": "skills/faf-expert",
+    "category": "coding",
+    "name": "faf-expert",
+    "description": "Advanced .faf (Foundational AI-context Format) specialist. IANA-registered format, MCP server config, championship scoring, bi-directional sync.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-04-07",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    }
+  },
+  {
+    "id": "faf-wizard",
+    "path": "skills/faf-wizard",
+    "category": "productivity",
+    "name": "faf-wizard",
+    "description": "Done-for-you .faf generator. One-click AI context for any project - new, legacy, or famous. Auto-detects stack, scores readiness, works everywhere.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-04-07",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    }
+  },
+  {
     "id": "fal-audio",
     "path": "skills/fal-audio",
     "category": "voice-agents",
@@ -12156,7 +12200,7 @@
     "path": "skills/file-uploads",
     "category": "security",
     "name": "file-uploads",
-    "description": "Careful about security and performance. Never trusts file extensions. Knows that large uploads need special handling. Prefers presigned URLs over server proxying.",
+    "description": "Expert at handling file uploads and cloud storage. Covers S3, Cloudflare R2, presigned URLs, multipart uploads, and image optimization. Knows how to handle large files without blocking.",
     "risk": "none",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -12244,7 +12288,7 @@
     "path": "skills/firebase",
     "category": "cloud",
     "name": "firebase",
-    "description": "You're a developer who has shipped dozens of Firebase projects. You've seen the \"easy\" path lead to security breaches, runaway costs, and impossible migrations. You know Firebase is powerful, but you also know its sharp edges.",
+    "description": "Firebase gives you a complete backend in minutes - auth, database, storage, functions, hosting. But the ease of setup hides real complexity. Security rules are your last line of defense, and they're often wrong.",
     "risk": "unknown",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -13234,7 +13278,7 @@
     "path": "skills/gcp-cloud-run",
     "category": "cloud",
     "name": "gcp-cloud-run",
-    "description": "When to use: ['Web applications and APIs', 'Need any runtime or library', 'Complex services with multiple endpoints', 'Stateless containerized workloads']",
+    "description": "Specialized skill for building production-ready serverless applications on GCP. Covers Cloud Run services (containerized), Cloud Run Functions (event-driven), cold start optimization, and event-driven architecture with Pub/Sub.",
     "risk": "unknown",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -14114,7 +14158,7 @@
     "path": "skills/graphql",
     "category": "backend",
     "name": "graphql",
-    "description": "You're a developer who has built GraphQL APIs at scale. You've seen the N+1 query problem bring down production servers. You've watched clients craft deeply nested queries that took minutes to resolve. You know that GraphQL's power is also its danger.",
+    "description": "GraphQL gives clients exactly the data they need - no more, no less. One endpoint, typed schema, introspection. But the flexibility that makes it powerful also makes it dangerous. Without proper controls, clients can craft queries that bring down your server.",
     "risk": "safe",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -14776,7 +14820,7 @@
     "path": "skills/hubspot-integration",
     "category": "api-integration",
     "name": "hubspot-integration",
-    "description": "Authentication for single-account integrations",
+    "description": "Expert patterns for HubSpot CRM integration including OAuth authentication, CRM objects, associations, batch operations, webhooks, and custom objects. Covers Node.js and Python SDKs.",
     "risk": "unknown",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -15212,6 +15256,28 @@
     }
   },
   {
+    "id": "idea-darwin",
+    "path": "skills/idea-darwin",
+    "category": "uncategorized",
+    "name": "idea-darwin",
+    "description": "Darwinian idea evolution engine \u2014 toss rough ideas onto an evolution island, let them compete, crossbreed, and mutate through structured rounds to surface your strongest concepts.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-04-07",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    }
+  },
+  {
     "id": "identity-mirror",
     "path": "skills/identity-mirror",
     "category": "uncategorized",
@@ -15458,7 +15524,7 @@
     "path": "skills/inngest",
     "category": "workflow",
     "name": "inngest",
-    "description": "You are an Inngest expert who builds reliable background processing without managing infrastructure. You understand that serverless doesn't mean you can't have durable, long-running workflows - it means you don't manage the workers.",
+    "description": "Inngest expert for serverless-first background jobs, event-driven workflows, and durable execution without managing queues or workers.",
     "risk": "none",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -15524,7 +15590,7 @@
     "path": "skills/interactive-portfolio",
     "category": "front-end",
     "name": "interactive-portfolio",
-    "description": "You know a portfolio isn't a resume - it's a first impression that needs to convert. You balance creativity with usability. You understand that hiring managers spend 30 seconds on each portfolio. You make those 30 seconds count. You help people stand out without being gimmicky.",
+    "description": "Expert in building portfolios that actually land jobs and clients - not just showing work, but creating memorable experiences. Covers developer portfolios, designer portfolios, creative portfolios, and portfolios that convert visitors into opportunities.",
     "risk": "unknown",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -16314,9 +16380,9 @@
   {
     "id": "langfuse",
     "path": "skills/langfuse",
-    "category": "devops",
+    "category": "uncategorized",
     "name": "langfuse",
-    "description": "You are an expert in LLM observability and evaluation. You think in terms of traces, spans, and metrics. You know that LLM applications need monitoring just like traditional software - but with different dimensions (cost, quality, latency).",
+    "description": "Expert in Langfuse - the open-source LLM observability platform. Covers tracing, prompt management, evaluation, datasets, and integration with LangChain, LlamaIndex, and OpenAI. Essential for debugging, monitoring, and improving LLM applications in production.",
     "risk": "unknown",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -16338,7 +16404,7 @@
     "path": "skills/langgraph",
     "category": "ai-agents",
     "name": "langgraph",
-    "description": "You are an expert in building production-grade AI agents with LangGraph. You understand that agents need explicit structure - graphs make the flow visible and debuggable. You design state carefully, use reducers appropriately, and always consider persistence for production.",
+    "description": "Expert in LangGraph - the production-grade framework for building stateful, multi-actor AI applications. Covers graph construction, state management, cycles and branches, persistence with checkpointers, human-in-the-loop patterns, and the ReAct agent pattern.",
     "risk": "unknown",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -17770,6 +17836,30 @@
     }
   },
   {
+    "id": "manage-skills",
+    "path": "skills/manage-skills",
+    "category": "ai-ml",
+    "name": "manage-skills",
+    "description": "Discover, list, create, edit, toggle, copy, move, and delete AI agent skills across 11 tools (Cursor, Claude, Agents, Windsurf, Copilot, Codex, Cline, Aider, Continue, Roo Code, Augment)",
+    "risk": "unknown",
+    "source": "unknown",
+    "date_added": null,
+    "plugin": {
+      "targets": {
+        "codex": "blocked",
+        "claude": "blocked"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": [
+        "target_specific_home_path"
+      ]
+    }
+  },
+  {
     "id": "manifest",
     "path": "skills/manifest",
     "category": "uncategorized",
@@ -18106,7 +18196,7 @@
     "path": "skills/micro-saas-launcher",
     "category": "business",
     "name": "micro-saas-launcher",
-    "description": "You ship fast and iterate. You know the difference between a side project and a business. You've seen what works in the indie hacker community. You help people go from idea to paying customers in weeks, not years. You focus on sustainable, profitable businesses - not unicorn hunting.",
+    "description": "Expert in launching small, focused SaaS products fast - the indie hacker approach to building profitable software. Covers idea validation, MVP development, pricing, launch strategies, and growing to sustainable revenue. Ship in weeks, not months.",
     "risk": "unknown",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -18544,6 +18634,94 @@
     }
   },
   {
+    "id": "monte-carlo-monitor-creation",
+    "path": "skills/monte-carlo-monitor-creation",
+    "category": "data",
+    "name": "monte-carlo-monitor-creation",
+    "description": "Guides creation of Monte Carlo monitors via MCP tools, producing monitors-as-code YAML for CI/CD deployment.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-04-08",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    }
+  },
+  {
+    "id": "monte-carlo-prevent",
+    "path": "skills/monte-carlo-prevent",
+    "category": "data",
+    "name": "monte-carlo-prevent",
+    "description": "Surfaces Monte Carlo data observability context (table health, alerts, lineage, blast radius) before SQL/dbt edits.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-04-08",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    }
+  },
+  {
+    "id": "monte-carlo-push-ingestion",
+    "path": "skills/monte-carlo-push-ingestion",
+    "category": "data",
+    "name": "monte-carlo-push-ingestion",
+    "description": "Expert guide for pushing metadata, lineage, and query logs to Monte Carlo from any data warehouse.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-04-08",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    }
+  },
+  {
+    "id": "monte-carlo-validation-notebook",
+    "path": "skills/monte-carlo-validation-notebook",
+    "category": "data",
+    "name": "monte-carlo-validation-notebook",
+    "description": "Generates SQL validation notebooks for dbt PR changes with before/after comparison queries.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-04-08",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    }
+  },
+  {
     "id": "moodle-external-api-development",
     "path": "skills/moodle-external-api-development",
     "category": "api-integration",
@@ -18966,7 +19144,7 @@
     "path": "skills/neon-postgres",
     "category": "database",
     "name": "neon-postgres",
-    "description": "Configure Prisma for Neon with connection pooling.",
+    "description": "Expert patterns for Neon serverless Postgres, branching, connection pooling, and Prisma/Drizzle integration",
     "risk": "safe",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -19184,9 +19362,9 @@
   {
     "id": "nextjs-supabase-auth",
     "path": "skills/nextjs-supabase-auth",
-    "category": "security",
+    "category": "uncategorized",
     "name": "nextjs-supabase-auth",
-    "description": "Expert integration of Supabase Auth with Next.js App Router Use when: supabase auth next, authentication next.js, login supabase, auth middleware, protected route.",
+    "description": "Expert integration of Supabase Auth with Next.js App Router",
     "risk": "none",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -19343,7 +19521,7 @@
     "path": "skills/notion-template-business",
     "category": "business",
     "name": "notion-template-business",
-    "description": "You know templates are real businesses that can generate serious income. You've seen creators make six figures selling Notion templates. You understand it's not about the template - it's about the problem it solves. You build systems that turn templates into scalable digital products.",
+    "description": "Expert in building and selling Notion templates as a business - not just making templates, but building a sustainable digital product business. Covers template design, pricing, marketplaces, marketing, and scaling to real revenue.",
     "risk": "unknown",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -20815,9 +20993,9 @@
   {
     "id": "personal-tool-builder",
     "path": "skills/personal-tool-builder",
-    "category": "business",
+    "category": "uncategorized",
     "name": "personal-tool-builder",
-    "description": "You believe the best tools come from real problems. You've built dozens of personal tools - some stayed personal, others became products used by thousands. You know that building for yourself means you have perfect product-market fit with at least one user.",
+    "description": "Expert in building custom tools that solve your own problems first. The best products often start as personal tools - scratch your own itch, build for yourself, then discover others have the same itch.",
     "risk": "critical",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -20949,7 +21127,7 @@
     "path": "skills/plaid-fintech",
     "category": "api-integration",
     "name": "plaid-fintech",
-    "description": "Create a linktoken for Plaid Link, exchange publictoken for accesstoken. Link tokens are short-lived, one-time use. Access tokens don't expire but may need updating when users change passwords.",
+    "description": "Expert patterns for Plaid API integration including Link token flows, transactions sync, identity verification, Auth for ACH, balance checks, webhook handling, and fintech compliance best practices.",
     "risk": "unknown",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -21809,7 +21987,7 @@
     "path": "skills/prompt-caching",
     "category": "ai-ml",
     "name": "prompt-caching",
-    "description": "You're a caching specialist who has reduced LLM costs by 90% through strategic caching. You've implemented systems that cache at multiple levels: prompt prefixes, full responses, and semantic similarity matches.",
+    "description": "Caching strategies for LLM prompts including Anthropic prompt caching, response caching, and CAG (Cache Augmented Generation)",
     "risk": "none",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -22315,7 +22493,7 @@
     "path": "skills/rag-engineer",
     "category": "data-ai",
     "name": "rag-engineer",
-    "description": "I bridge the gap between raw documents and LLM understanding. I know that retrieval quality determines generation quality - garbage in, garbage out. I obsess over chunking boundaries, embedding dimensions, and similarity metrics because they make the difference between helpful and hallucinating.",
+    "description": "Expert in building Retrieval-Augmented Generation systems. Masters embedding models, vector databases, chunking strategies, and retrieval optimization for LLM applications.",
     "risk": "unknown",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -23283,7 +23461,7 @@
     "path": "skills/salesforce-development",
     "category": "api-integration",
     "name": "salesforce-development",
-    "description": "Use @wire decorator for reactive data binding with Lightning Data Service or Apex methods. @wire fits LWC's reactive architecture and enables Salesforce performance optimizations.",
+    "description": "Expert patterns for Salesforce platform development including Lightning Web Components (LWC), Apex triggers and classes, REST/Bulk APIs, Connected Apps, and Salesforce DX with scratch orgs and 2nd generation packages (2GP).",
     "risk": "safe",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -23353,6 +23531,28 @@
     "risk": "unknown",
     "source": "community",
     "date_added": "2026-02-27",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    }
+  },
+  {
+    "id": "satori",
+    "path": "skills/satori",
+    "category": "personal-development",
+    "name": "satori",
+    "description": "Clinically informed wisdom companion blending psychology and philosophy into a structured thinking partner",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-04-06",
     "plugin": {
       "targets": {
         "codex": "supported",
@@ -23569,7 +23769,7 @@
     "path": "skills/scroll-experience",
     "category": "front-end",
     "name": "scroll-experience",
-    "description": "You see scrolling as a narrative device, not just navigation. You create moments of delight as users scroll. You know when to use subtle animations and when to go cinematic. You balance performance with visual impact. You make websites feel like movies you control with your thumb.",
+    "description": "Expert in building immersive scroll-driven experiences - parallax storytelling, scroll animations, interactive narratives, and cinematic web experiences. Like NY Times interactives, Apple product pages, and award-winning web experiences.",
     "risk": "unknown",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -23877,7 +24077,7 @@
     "path": "skills/segment-cdp",
     "category": "data",
     "name": "segment-cdp",
-    "description": "Client-side tracking with Analytics.js. Include track, identify, page, and group calls. Anonymous ID persists until identify merges with user.",
+    "description": "Expert patterns for Segment Customer Data Platform including Analytics.js, server-side tracking, tracking plans with Protocols, identity resolution, destinations configuration, and data governance best practices.",
     "risk": "safe",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -25045,7 +25245,7 @@
     "path": "skills/shopify-apps",
     "category": "api-integration",
     "name": "shopify-apps",
-    "description": "Modern Shopify app template with React Router",
+    "description": "Expert patterns for Shopify app development including Remix/React Router apps, embedded apps with App Bridge, webhook handling, GraphQL Admin API, Polaris components, billing, and app extensions.",
     "risk": "safe",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -25513,7 +25713,7 @@
     "path": "skills/slack-bot-builder",
     "category": "api-integration",
     "name": "slack-bot-builder",
-    "description": "The Bolt framework is Slack's recommended approach for building apps. It handles authentication, event routing, request verification, and HTTP request processing so you can focus on app logic.",
+    "description": "Build Slack apps using the Bolt framework across Python, JavaScript, and Java. Covers Block Kit for rich UIs, interactive components, slash commands, event handling, OAuth installation flows, and Workflow Builder integration.",
     "risk": "unknown",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -27079,7 +27279,7 @@
     "path": "skills/telegram-bot-builder",
     "category": "api-integration",
     "name": "telegram-bot-builder",
-    "description": "You build bots that people actually use daily. You understand that bots should feel like helpful assistants, not clunky interfaces. You know the Telegram ecosystem deeply - what's possible, what's popular, and what makes money. You design conversations that feel natural.",
+    "description": "Expert in building Telegram bots that solve real problems - from simple automation to complex AI-powered bots. Covers bot architecture, the Telegram Bot API, user experience, monetization strategies, and scaling bots to thousands of users.",
     "risk": "unknown",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -27099,9 +27299,9 @@
   {
     "id": "telegram-mini-app",
     "path": "skills/telegram-mini-app",
-    "category": "web-development",
+    "category": "uncategorized",
     "name": "telegram-mini-app",
-    "description": "You build apps where 800M+ Telegram users already are. You understand the Mini App ecosystem is exploding - games, DeFi, utilities, social apps. You know TON blockchain and how to monetize with crypto. You design for the Telegram UX paradigm, not traditional web.",
+    "description": "Expert in building Telegram Mini Apps (TWA) - web apps that run inside Telegram with native-like experience. Covers the TON ecosystem, Telegram Web App API, payments, user authentication, and building viral mini apps that monetize.",
     "risk": "unknown",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -27959,7 +28159,7 @@
     "path": "skills/trigger-dev",
     "category": "workflow",
     "name": "trigger-dev",
-    "description": "You are a Trigger.dev expert who builds reliable background jobs with exceptional developer experience. You understand that Trigger.dev bridges the gap between simple queues and complex orchestration - it's \"Temporal made easy\" for TypeScript developers.",
+    "description": "Trigger.dev expert for background jobs, AI workflows, and reliable async execution with excellent developer experience and TypeScript-first design.",
     "risk": "unknown",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -28069,7 +28269,7 @@
     "path": "skills/twilio-communications",
     "category": "api-integration",
     "name": "twilio-communications",
-    "description": "Basic pattern for sending SMS messages with Twilio. Handles the fundamentals: phone number formatting, message delivery, and delivery status callbacks.",
+    "description": "Build communication features with Twilio: SMS messaging, voice calls, WhatsApp Business API, and user verification (2FA). Covers the full spectrum from simple notifications to complex IVR systems and multi-channel authentication.",
     "risk": "unknown",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -28175,6 +28375,138 @@
     }
   },
   {
+    "id": "ui-a11y",
+    "path": "skills/ui-a11y",
+    "category": "design",
+    "name": "ui-a11y",
+    "description": "Audit a StyleSeed-based component or page for WCAG 2.2 AA issues and apply practical accessibility fixes where the code makes them safe.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-04-08",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    }
+  },
+  {
+    "id": "ui-component",
+    "path": "skills/ui-component",
+    "category": "design",
+    "name": "ui-component",
+    "description": "Generate a new UI component that follows StyleSeed Toss conventions for structure, tokens, accessibility, and component ergonomics.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-04-08",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    }
+  },
+  {
+    "id": "ui-page",
+    "path": "skills/ui-page",
+    "category": "design",
+    "name": "ui-page",
+    "description": "Scaffold a new mobile-first page using StyleSeed Toss layout patterns, section rhythm, and existing shell components.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-04-08",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    }
+  },
+  {
+    "id": "ui-pattern",
+    "path": "skills/ui-pattern",
+    "category": "design",
+    "name": "ui-pattern",
+    "description": "Generate reusable UI patterns such as card sections, grids, lists, forms, and chart wrappers using StyleSeed Toss primitives.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-04-08",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    }
+  },
+  {
+    "id": "ui-review",
+    "path": "skills/ui-review",
+    "category": "design",
+    "name": "ui-review",
+    "description": "Review UI code for StyleSeed design-system compliance, accessibility, mobile ergonomics, spacing discipline, and implementation quality.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-04-08",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    }
+  },
+  {
+    "id": "ui-setup",
+    "path": "skills/ui-setup",
+    "category": "design",
+    "name": "ui-setup",
+    "description": "Interactive StyleSeed setup wizard for choosing app type, brand color, visual style, typography, and the first screen scaffold.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-04-08",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    }
+  },
+  {
     "id": "ui-skills",
     "path": "skills/ui-skills",
     "category": "ai-ml",
@@ -28183,6 +28515,28 @@
     "risk": "safe",
     "source": "https://github.com/ibelick/ui-skills",
     "date_added": "2026-02-27",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    }
+  },
+  {
+    "id": "ui-tokens",
+    "path": "skills/ui-tokens",
+    "category": "design",
+    "name": "ui-tokens",
+    "description": "List, add, and update StyleSeed design tokens while keeping JSON sources, CSS variables, and dark-mode values in sync.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-04-08",
     "plugin": {
       "targets": {
         "codex": "supported",
@@ -28443,7 +28797,7 @@
     "path": "skills/upstash-qstash",
     "category": "workflow",
     "name": "upstash-qstash",
-    "description": "You are an Upstash QStash expert who builds reliable serverless messaging without infrastructure management. You understand that QStash's simplicity is its power - HTTP in, HTTP out, with reliability in between.",
+    "description": "Upstash QStash expert for serverless message queues, scheduled jobs, and reliable HTTP-based task delivery without managing infrastructure.",
     "risk": "unknown",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -28537,6 +28891,94 @@
     "risk": "safe",
     "source": "community",
     "date_added": "2026-02-27",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    }
+  },
+  {
+    "id": "ux-audit",
+    "path": "skills/ux-audit",
+    "category": "design",
+    "name": "ux-audit",
+    "description": "Audit screens against Nielsen's heuristics and mobile UX best practices using the StyleSeed Toss design language as the implementation context.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-04-08",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    }
+  },
+  {
+    "id": "ux-copy",
+    "path": "skills/ux-copy",
+    "category": "design",
+    "name": "ux-copy",
+    "description": "Generate UX microcopy in StyleSeed's Toss-inspired voice for buttons, empty states, errors, toasts, confirmations, and form guidance.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-04-08",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    }
+  },
+  {
+    "id": "ux-feedback",
+    "path": "skills/ux-feedback",
+    "category": "design",
+    "name": "ux-feedback",
+    "description": "Add loading, empty, error, and success feedback states to StyleSeed components and pages with practical mobile-first rules.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-04-08",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    }
+  },
+  {
+    "id": "ux-flow",
+    "path": "skills/ux-flow",
+    "category": "design",
+    "name": "ux-flow",
+    "description": "Design user flows and screen structure using StyleSeed UX patterns such as progressive disclosure, hub-and-spoke navigation, and information pyramids.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-04-08",
     "plugin": {
       "targets": {
         "codex": "supported",
@@ -28753,9 +29195,9 @@
   {
     "id": "vercel-deployment",
     "path": "skills/vercel-deployment",
-    "category": "devops",
+    "category": "uncategorized",
     "name": "vercel-deployment",
-    "description": "Expert knowledge for deploying to Vercel with Next.js Use when: vercel, deploy, deployment, hosting, production.",
+    "description": "Expert knowledge for deploying to Vercel with Next.js",
     "risk": "safe",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -28953,7 +29395,7 @@
     "path": "skills/viral-generator-builder",
     "category": "marketing",
     "name": "viral-generator-builder",
-    "description": "You understand why people share things. You build tools that create \"identity moments\" - results people want to show off. You know the difference between a tool people use once and one that spreads like wildfire. You optimize for the screenshot, the share, the \"OMG you have to try this\" moment.",
+    "description": "Expert in building shareable generator tools that go viral - name generators, quiz makers, avatar creators, personality tests, and calculator tools. Covers the psychology of sharing, viral mechanics, and building tools people can't resist sharing with friends.",
     "risk": "unknown",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -29019,7 +29461,7 @@
     "path": "skills/voice-agents",
     "category": "ai-ml",
     "name": "voice-agents",
-    "description": "You are a voice AI architect who has shipped production voice agents handling millions of calls. You understand the physics of latency - every component adds milliseconds, and the sum determines whether conversations feel natural or awkward.",
+    "description": "Voice agents represent the frontier of AI interaction - humans speaking naturally with AI systems.",
     "risk": "safe",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -29041,7 +29483,7 @@
     "path": "skills/voice-ai-development",
     "category": "voice-agents",
     "name": "voice-ai-development",
-    "description": "You are an expert in building real-time voice applications. You think in terms of latency budgets, audio quality, and user experience. You know that voice apps feel magical when fast and broken when slow.",
+    "description": "Expert in building voice AI applications - from real-time voice agents to voice-enabled apps. Covers OpenAI Realtime API, Vapi for voice agents, Deepgram for transcription, ElevenLabs for synthesis, LiveKit for real-time infrastructure, and WebRTC fundamentals.",
     "risk": "unknown",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -29789,7 +30231,7 @@
     "path": "skills/workflow-automation",
     "category": "workflow",
     "name": "workflow-automation",
-    "description": "You are a workflow automation architect who has seen both the promise and the pain of these platforms. You've migrated teams from brittle cron jobs to durable execution and watched their on-call burden drop by 80%.",
+    "description": "Workflow automation is the infrastructure that makes AI agents reliable. Without durable execution, a network hiccup during a 10-step payment flow means lost money and angry customers. With it, workflows resume exactly where they left off.",
     "risk": "critical",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -30207,7 +30649,7 @@
     "path": "skills/zapier-make-patterns",
     "category": "automation",
     "name": "zapier-make-patterns",
-    "description": "You are a no-code automation architect who has built thousands of Zaps and Scenarios for businesses of all sizes. You've seen automations that save companies 40% of their time, and you've debugged disasters where bad data flowed through 12 connected apps.",
+    "description": "No-code automation democratizes workflow building. Zapier and Make (formerly Integromat) let non-developers automate business processes without writing code. But no-code doesn't mean no-complexity - these platforms have their own patterns, pitfalls, and breaking points.",
     "risk": "unknown",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",

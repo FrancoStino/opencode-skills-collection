@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-04-09T17:09:01.460Z",
+  "updatedAt": "2026-04-09T19:45:51.472Z",
   "entries": [
     "00-andruia-consultant",
     "007",
@@ -815,6 +815,7 @@
     "makepad-splash",
     "makepad-widgets",
     "malware-analyst",
+    "manage-skills",
     "manifest",
     "market-sizing-analysis",
     "marketing-ideas",
@@ -849,6 +850,10 @@
     "monetization",
     "monorepo-architect",
     "monorepo-management",
+    "monte-carlo-monitor-creation",
+    "monte-carlo-prevent",
+    "monte-carlo-push-ingestion",
+    "monte-carlo-validation-notebook",
     "moodle-external-api-development",
     "moyu",
     "mtls-configuration",
