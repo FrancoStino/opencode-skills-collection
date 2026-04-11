@@ -22159,6 +22159,28 @@
     }
   },
   {
+    "id": "puzzle-activity-planner",
+    "path": "skills/puzzle-activity-planner",
+    "category": "education",
+    "name": "puzzle-activity-planner",
+    "description": "Plan puzzle-based activities for classrooms, parties, and events with pre-configured generator links",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-04-11",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    }
+  },
+  {
     "id": "pydantic-ai",
     "path": "skills/pydantic-ai",
     "category": "ai-agents",
@@ -22519,6 +22541,50 @@
     "risk": "safe",
     "source": "personal",
     "date_added": "2026-02-27",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    }
+  },
+  {
+    "id": "rayden-code",
+    "path": "skills/rayden-code",
+    "category": "development",
+    "name": "rayden-code",
+    "description": "Generate React code with Rayden UI components using correct props, tokens, and premium layout patterns",
+    "risk": "safe",
+    "source": "https://github.com/playbookTV/rayden-ui-design-skill",
+    "date_added": "2026-04-10",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    }
+  },
+  {
+    "id": "rayden-use",
+    "path": "skills/rayden-use",
+    "category": "design",
+    "name": "rayden-use",
+    "description": "Build and maintain Rayden UI components and screens in Figma via Figma MCP with full design token enforcement",
+    "risk": "safe",
+    "source": "https://github.com/playbookTV/rayden-ui-design-skill",
+    "date_added": "2026-04-10",
     "plugin": {
       "targets": {
         "codex": "supported",
@@ -23395,7 +23461,7 @@
     "path": "skills/sales-automator",
     "category": "business",
     "name": "sales-automator",
-    "description": "Draft cold emails, follow-ups, and proposal templates. Creates\npricing pages, case studies, and sales scripts. Use PROACTIVELY for sales\noutreach or lead nurturing.\n",
+    "description": "Draft cold emails, follow-ups, and proposal templates. Creates pricing pages, case studies, and sales scripts. Use PROACTIVELY for sales outreach or lead nurturing. ",
     "risk": "unknown",
     "source": "community",
     "date_added": "2026-02-27",

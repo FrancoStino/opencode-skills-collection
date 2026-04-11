@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-04-11T17:33:11.670Z",
+  "updatedAt": "2026-04-11T18:48:47.035Z",
   "entries": [
     "00-andruia-consultant",
     "007",
@@ -1008,6 +1008,7 @@
     "protect-mcp-governance",
     "protocol-reverse-engineering",
     "pubmed-database",
+    "puzzle-activity-planner",
     "pydantic-ai",
     "pydantic-models-py",
     "pypict-skill",
@@ -1025,6 +1026,8 @@
     "radix-ui-design-system",
     "rag-engineer",
     "rag-implementation",
+    "rayden-code",
+    "rayden-use",
     "react-best-practices",
     "react-component-performance",
     "react-flow-architect",
