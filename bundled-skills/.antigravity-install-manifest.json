@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-04-11T18:48:47.035Z",
+  "updatedAt": "2026-04-11T19:36:06.899Z",
   "entries": [
     "00-andruia-consultant",
     "007",
@@ -1168,6 +1168,7 @@
     "skill-developer",
     "skill-improver",
     "skill-installer",
+    "skill-optimizer",
     "skill-rails-upgrade",
     "skill-router",
     "skill-scanner",
