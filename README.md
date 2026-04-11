@@ -184,9 +184,6 @@ The old `opencode-skills-antigravity` package on npm is deprecated and re-export
 Issues and pull requests are welcome
 at [github.com/FrancoStino/opencode-skills-collection](https://github.com/FrancoStino/opencode-skills-collection/issues).
 
-If you'd like to contribute new skills to the collection, open a PR adding a new folder inside `bundled-skills/` — it
-will be automatically picked up on next sync.
-
 ---
 
 ## Beta Releases
