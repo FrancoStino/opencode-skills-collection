@@ -26,7 +26,7 @@
 
 ## Overview
 
-**OpenCode Skills Collection** ships a pre-bundled snapshot of 800+ universal skills for the OpenCode CLI.
+**OpenCode Skills Collection** ships a pre-bundled snapshot of 1000+ universal skills for the OpenCode CLI.
 
 Instead of loading every skill into the AI context at startup — which would consume ~80k tokens and cause compaction
 loops — the plugin uses a **SkillPointer** architecture: skills are organized into categories inside a hidden vault and
