@@ -92,7 +92,7 @@ After the first startup, your `~/.config/opencode/` directory looks like this:
 
 |                      | Without SkillPointer | With SkillPointer   |
 |----------------------|----------------------|---------------------|
-| Folders in `skills/` | ~800                 | ~35                 |
+| Folders in `skills/` | ~1000                 | ~35                 |
 | Tokens at startup    | ~80,000              | ~255                |
 | Skills available     | All injected upfront | On-demand via vault |
 | Compaction loops     | ✗ frequent           | ✓ none              |
