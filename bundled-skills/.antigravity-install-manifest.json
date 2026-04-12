@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-04-12T15:37:17.354Z",
+  "updatedAt": "2026-04-12T16:41:28.486Z",
   "entries": [
     "00-andruia-consultant",
     "007",
@@ -360,6 +360,7 @@
     "codebase-cleanup-deps-audit",
     "codebase-cleanup-refactor-clean",
     "codebase-cleanup-tech-debt",
+    "codebase-to-wordpress-converter",
     "codex-review",
     "cold-email",
     "comfyui-gateway",
@@ -1349,6 +1350,7 @@
     "voice-agents",
     "voice-ai-development",
     "voice-ai-engine-development",
+    "vscode-extension-guide-en",
     "vulnerability-scanner",
     "warren-buffett",
     "wcag-audit-patterns",
@@ -1375,6 +1377,7 @@
     "windows-shell-reliability",
     "wireshark-analysis",
     "wordpress",
+    "wordpress-centric-high-seo-optimized-blogwriting-skill",
     "wordpress-penetration-testing",
     "wordpress-plugin-development",
     "wordpress-theme-development",
