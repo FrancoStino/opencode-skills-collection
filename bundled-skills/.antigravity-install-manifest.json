@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-04-13T20:06:36.949Z",
+  "updatedAt": "2026-04-13T21:52:24.338Z",
   "entries": [
     "00-andruia-consultant",
     "007",
@@ -128,6 +128,7 @@
     "aws-serverless",
     "aws-skills",
     "awt-e2e-testing",
+    "axiom",
     "azd-deployment",
     "azure-ai-agents-persistent-dotnet",
     "azure-ai-agents-persistent-java",
@@ -774,6 +775,7 @@
     "linear-claude-skill",
     "linkedin-automation",
     "linkedin-cli",
+    "linkedin-profile-optimizer",
     "linkerd-patterns",
     "lint-and-validate",
     "linux-privilege-escalation",
@@ -1403,6 +1405,7 @@
     "zapier-make-patterns",
     "zendesk-automation",
     "zeroize-audit",
+    "zipai-optimizer",
     "zod-validation-expert",
     "zoho-crm-automation",
     "zoom-automation",
