@@ -63,6 +63,11 @@ More instructions...
 - ❌ Don't do this
 - ❌ Avoid this
 
+## Limitations
+
+- This skill does not replace environment-specific validation, testing, or expert review.
+- Stop and ask for clarification if required inputs, permissions, or safety boundaries are missing.
+
 ## Security & Safety Notes
 
 - If this skill includes shell commands, command-like examples, network fetches, token/capability strings, or direct mutation guidance, add explicit preconditions and caveats.

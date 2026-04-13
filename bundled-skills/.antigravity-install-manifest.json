@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-04-13T21:52:24.338Z",
+  "updatedAt": "2026-04-13T22:44:31.970Z",
   "entries": [
     "00-andruia-consultant",
     "007",
@@ -653,6 +653,7 @@
     "haskell-pro",
     "headline-psychologist",
     "health-trend-analyzer",
+    "helium-mcp",
     "helm-chart-scaffolding",
     "helpdesk-automation",
     "hierarchical-agent-memory",
@@ -706,6 +707,7 @@
     "incident-response-incident-response",
     "incident-response-smart-fix",
     "incident-runbook-templates",
+    "indexing-issue-auditor",
     "infinite-gratitude",
     "inngest",
     "instagram",

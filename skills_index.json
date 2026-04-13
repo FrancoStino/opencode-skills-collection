@@ -14352,6 +14352,28 @@
     }
   },
   {
+    "id": "helium-mcp",
+    "path": "skills/helium-mcp",
+    "category": "uncategorized",
+    "name": "helium-mcp",
+    "description": "Connect to Helium's MCP server for news research, media bias analysis, balanced perspectives, stock/options data, and semantic meme search across 3.2M+ articles and 5,000+ sources",
+    "risk": "safe",
+    "source": "https://heliumtrades.com/mcp-page/",
+    "date_added": "2026-04-13",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    }
+  },
+  {
     "id": "helm-chart-scaffolding",
     "path": "skills/helm-chart-scaffolding",
     "category": "devops",
@@ -15528,6 +15550,28 @@
     "risk": "critical",
     "source": "community",
     "date_added": "2026-02-27",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    }
+  },
+  {
+    "id": "indexing-issue-auditor",
+    "path": "skills/indexing-issue-auditor",
+    "category": "growth",
+    "name": "indexing-issue-auditor",
+    "description": "High-level technical SEO and site architecture auditor. Invoke to scan local or live environments for indexing, crawl budget, and structural errors.",
+    "risk": "safe",
+    "source": "self",
+    "date_added": "2026-04-13",
     "plugin": {
       "targets": {
         "codex": "supported",

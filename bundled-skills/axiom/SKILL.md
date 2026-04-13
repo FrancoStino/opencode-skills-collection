@@ -253,3 +253,8 @@ See `examples/walkthrough-en.md` for a complete 5-phase walkthrough using: "I'm 
 - `references/assumption-types.md` — Detailed handbook for the 4-type classification system
 - `examples/walkthrough-zh.md` — Complete Chinese example (辞职创业)
 - `examples/walkthrough-en.md` — Complete English example (dropping out for startup)
+
+## Limitations
+- Use this skill only when the task clearly matches the scope described above.
+- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
+- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.

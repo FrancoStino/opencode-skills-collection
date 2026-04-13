@@ -37,3 +37,8 @@ version: "5.0"
   - DO NOT say "Here is the updated code", "I understand", "Let me help", or any variation of filler.
   - DO NOT blind-truncate error logs or stacktraces.
 </negative_constraints>
+
+## Limitations
+- Use this skill only when the task clearly matches the scope described above.
+- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
+- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
