@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-04-14T17:10:47.719Z",
+  "updatedAt": "2026-04-14T19:18:15.869Z",
   "entries": [
     "00-andruia-consultant",
     "007",
@@ -846,6 +846,7 @@
     "ml-engineer",
     "ml-pipeline-workflow",
     "mlops-engineer",
+    "mmx-cli",
     "mobile-design",
     "mobile-developer",
     "mobile-security-coder",

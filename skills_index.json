@@ -18522,6 +18522,28 @@
     }
   },
   {
+    "id": "mmx-cli",
+    "path": "skills/mmx-cli",
+    "category": "uncategorized",
+    "name": "mmx-cli",
+    "description": "Use mmx to generate text, images, video, speech, and music via the MiniMax AI platform. Use when the user wants to create media content, chat with MiniMax models, perform web search, or manage MiniMax API resources from the terminal.",
+    "risk": "safe",
+    "source": "https://github.com/MiniMax-AI/cli",
+    "date_added": "2026-04-14",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    }
+  },
+  {
     "id": "mobile-design",
     "path": "skills/mobile-design",
     "category": "mobile",
@@ -30959,7 +30981,7 @@
     "path": "skills/zipai-optimizer",
     "category": "agent-behavior",
     "name": "zipai-optimizer",
-    "description": "Behavioral protocol engineered for extreme AI agent token optimization, eliminating I/O noise via context-aware truncation and strict conciseness.",
+    "description": "Adaptive token optimizer: intelligent filtering, surgical output, ambiguity-first, context-window-aware, VCS-aware.",
     "risk": "safe",
     "source": "unknown",
     "date_added": null,
