@@ -9356,6 +9356,28 @@
     }
   },
   {
+    "id": "daily-gift",
+    "path": "skills/daily-gift",
+    "category": "productivity",
+    "name": "daily-gift",
+    "description": "Relationship-aware daily gift engine with five-stage creative pipeline \u2014 editorial judgment, synthesis, concept generation, visual strategy, and rendering in H5, image, or video",
+    "risk": "unknown",
+    "source": "community",
+    "date_added": "2026-04-15",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    }
+  },
+  {
     "id": "daily-news-report",
     "path": "skills/daily-news-report",
     "category": "content",
@@ -16408,6 +16430,28 @@
     "risk": "safe",
     "source": "personal",
     "date_added": "2026-02-27",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    }
+  },
+  {
+    "id": "lambdatest-agent-skills",
+    "path": "skills/lambdatest-agent-skills",
+    "category": "testing",
+    "name": "lambdatest-agent-skills",
+    "description": "Production-grade test automation skills for 46 frameworks across E2E, unit, mobile, BDD, visual, and cloud testing in 15+ languages.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-04-16",
     "plugin": {
       "targets": {
         "codex": "supported",

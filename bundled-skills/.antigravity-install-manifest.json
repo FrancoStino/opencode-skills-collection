@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-04-16T13:48:36.159Z",
+  "updatedAt": "2026-04-16T15:27:20.964Z",
   "entries": [
     "00-andruia-consultant",
     "007",
@@ -419,6 +419,7 @@
     "customer-support",
     "customs-trade-compliance",
     "daily",
+    "daily-gift",
     "daily-news-report",
     "data-engineer",
     "data-engineering-data-driven-feature",
@@ -746,6 +747,7 @@
     "kpi-dashboard-design",
     "kubernetes-architect",
     "kubernetes-deployment",
+    "lambdatest-agent-skills",
     "landing-page-generator",
     "langchain-architecture",
     "langfuse",
