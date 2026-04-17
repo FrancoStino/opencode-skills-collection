@@ -26,4 +26,4 @@ This policy applies to:
 
 ## Thank You
 
-We appreciate your efforts in helping us maintain the security and integrity of opencode-skills-collection.
+We appreciate your efforts in helping us maintain the security and integrity of ``opencode-skills-collection``.
