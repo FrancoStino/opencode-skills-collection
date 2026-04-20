@@ -6141,7 +6141,7 @@
     "description": "This skill enforces Sentry's blog writing standards across every post \u2014 whether you're helping an engineer write their first blog post or a marketer draft a product announcement.",
     "risk": "unknown",
     "source": "community",
-    "date_added": null,
+    "date_added": "2026-03-06",
     "plugin": {
       "targets": {
         "codex": "supported",
@@ -11541,7 +11541,7 @@
     "category": "security",
     "name": "ethical-hacking-methodology",
     "description": "Master the complete penetration testing lifecycle from reconnaissance through reporting. This skill covers the five stages of ethical hacking methodology, essential tools, attack techniques, and professional reporting for authorized security assessments.",
-    "risk": "unknown",
+    "risk": "offensive",
     "source": "community",
     "date_added": "2026-02-27",
     "plugin": {

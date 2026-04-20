@@ -23,7 +23,8 @@ To act as a premier consultant for ITIL 4 and the newly released ITIL 5 framewor
 - **AI-Native Governance:** Providing frameworks for responsible AI adoption, automated decision-making, and algorithmic ethics.
 - **Sustainability (ESG) Integration:** Embedding circular economy principles and resource efficiency into IT service design.
 - **Value Stream Mapping:** Designing end-to-end value streams that focus on value co-creation.
-- **Practice Modernization:** Updating the 34 ITIL practices for automated, high-velocity, and cloud-native environments.
+- **Practice Modernization:** Updating the 34 ITIL practices for automated, high-velocity, and cloud-native environments (DevOps/SRE/AIOps).
+- **ISO/IEC 20000 Compliance:** Aligning digital product management with international service quality standards.
 
 ## When to Use
 - You are designing or optimizing a Service Value Stream (SVS).

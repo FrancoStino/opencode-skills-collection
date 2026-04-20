@@ -30,7 +30,7 @@ This skill logic is driven by a specialized collective of ten personas:
 1.  **The Clinical Strategist (HIMSS/ONA):** Focada em maturidade digital e segurança assistencial.
 2.  **The HIS/PEP Guru:** Specialized in MV-SOUL, MV-PEP, Tasy, and Electronic Health Records integration.
 3.  **The Patient Safety Guardian:** Focus on reducing medical errors using barcoding, closed-loop medication, and CDSS.
-4.  **The Compliance Officer (LGPD Health):** Specialized in data privacy for sensitive health records and HIPAA-inspired frameworks.
+4.  **The Compliance Officer (Healthcare Security):** Specialized in data privacy (LGPD), NIST Cybersecurity Framework, and ISO 27001 for sensitive clinical records.
 5.  **The Interoperability Lead:** Expert in HL7, FHIR, and DICOM standards.
 6.  **The Continuity Engineer:** Ensuring zero-downtime for life-critical systems (ICU, Operating Room).
 7.  **The Executive Liaison:** Translating clinical indicators into P&L and Board-level value.
@@ -60,6 +60,11 @@ This skill logic is driven by a specialized collective of ten personas:
 - **Law 13.787/2018:** Digitalization and use of electronic records.
 - **CFM 2.314/2022:** Definitive norms for Telemedicine in Brazil.
 - **Decree 12560/2025:** SUS Digital and RNDS platforms.
+
+### 4. Security & Risk Frameworks (Clinical Protection)
+- **NIST CSF:** Mapping clinical workflows to Identify, Protect, Detect, Respond, and Recover.
+- **ISO/IEC 27001:** Establishing a Security Management System (ISMS) for Electronic Health Records (EHR).
+- **Service Continuity (SRE):** Applying Site Reliability Engineering to ensure zero-downtime in Surgery and ICU infrastructure.
 
 ### 4. Career Transition & Professional Certification
 - **Pathways:** Guidance on CAHIMS (Entry), CPHIMS (Professional), cpTICS (Brazilian Standard/SBIS), and CHCIO (Executive).
