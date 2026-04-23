@@ -18,10 +18,6 @@
 > An [OpenCode CLI](https://opencode.ai/) plugin that bundles and auto-syncs a universal collection of AI skills —
 > delivered instantly, with zero network latency at startup.
 
-> ⚠️ **Previously published
-> as [`opencode-skills-antigravity`](https://www.npmjs.com/package/opencode-skills-antigravity)** — that package is now
-> deprecated and points to this one.
-
 ---
 
 ## Overview
@@ -162,18 +158,6 @@ The plugin is written in TypeScript and compiled to ESNext with full type declar
 module resolution.
 
 ---
-
-## Migration from `opencode-skills-antigravity`
-
-If you were using the old package, simply update your `~/.config/opencode/opencode.json`:
-
-```json
-{
-  "plugin": [
-    "opencode-skills-collection@latest"
-  ]
-}
-```
 
 The old `opencode-skills-antigravity` package on npm is deprecated and re-exports this one automatically.
 
