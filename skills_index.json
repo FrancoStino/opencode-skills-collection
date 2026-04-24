@@ -6466,6 +6466,28 @@
     }
   },
   {
+    "id": "bulletmind",
+    "path": "skills/bulletmind",
+    "category": "writing",
+    "name": "bulletmind",
+    "description": "Convert input into clean, structured, hierarchical bullet points for summarization, note-taking, and structured thinking.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-04-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    }
+  },
+  {
     "id": "bullmq-specialist",
     "path": "skills/bullmq-specialist",
     "category": "framework",
@@ -13098,6 +13120,28 @@
     }
   },
   {
+    "id": "frontend-api-integration-patterns",
+    "path": "skills/frontend-api-integration-patterns",
+    "category": "frontend",
+    "name": "frontend-api-integration-patterns",
+    "description": "Production-ready patterns for integrating frontend applications with backend APIs, including race condition handling, request cancellation, retry strategies, error normalization, and UI state management.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-04-23",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    }
+  },
+  {
     "id": "frontend-design",
     "path": "skills/frontend-design",
     "category": "front-end",
@@ -16672,6 +16716,28 @@
     "risk": "safe",
     "source": "personal",
     "date_added": "2026-02-27",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    }
+  },
+  {
+    "id": "lambda-lang",
+    "path": "skills/lambda-lang",
+    "category": "ai-agents",
+    "name": "lambda-lang",
+    "description": "Native agent-to-agent language for compact multi-agent messaging. A shared tongue agents speak directly, not a translation layer. 340+ atoms across 7 domains; 3x smaller than natural language.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-04-24",
     "plugin": {
       "targets": {
         "codex": "supported",
@@ -26291,6 +26357,28 @@
     "risk": "safe",
     "source": "community",
     "date_added": null,
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    }
+  },
+  {
+    "id": "skyvern-browser-automation",
+    "path": "skills/skyvern-browser-automation",
+    "category": "browser-automation",
+    "name": "skyvern-browser-automation",
+    "description": "AI-powered browser automation \u2014 navigate sites, fill forms, extract structured data, log in with stored credentials, and build reusable workflows.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-04-23",
     "plugin": {
       "targets": {
         "codex": "supported",
