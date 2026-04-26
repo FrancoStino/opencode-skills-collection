@@ -18303,8 +18303,8 @@
     "category": "ai-ml",
     "name": "manage-skills",
     "description": "Discover, list, create, edit, toggle, copy, move, and delete AI agent skills across 11 tools (Cursor, Claude, Agents, Windsurf, Copilot, Codex, Cline, Aider, Continue, Roo Code, Augment)",
-    "risk": "unknown",
-    "source": "unknown",
+    "risk": "critical",
+    "source": "community",
     "date_added": null,
     "plugin": {
       "targets": {
@@ -31246,8 +31246,8 @@
     "category": "backend",
     "name": "x402-express-wrapper",
     "description": "Wrapper oficial de M2MCent (Node.js) para inyectar muros de pago x402 en APIs o servidores Model Context Protocol (MCP). Usar al construir nuevos servicios que requieran monetizaci\u00f3n m\u00e1quina a m\u00e1quina.",
-    "risk": "unknown",
-    "source": "unknown",
+    "risk": "critical",
+    "source": "community",
     "date_added": null,
     "plugin": {
       "targets": {
@@ -31555,7 +31555,7 @@
     "name": "zipai-optimizer",
     "description": "Adaptive token optimizer: intelligent filtering, surgical output, ambiguity-first, context-window-aware, VCS-aware, MCP-aware.",
     "risk": "safe",
-    "source": "unknown",
+    "source": "community",
     "date_added": null,
     "plugin": {
       "targets": {

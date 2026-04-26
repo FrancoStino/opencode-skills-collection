@@ -5,9 +5,14 @@ version: "12.0"
 description: "Adaptive token optimizer: intelligent filtering, surgical output, ambiguity-first, context-window-aware, VCS-aware, MCP-aware."
 category: agent-behavior
 risk: safe
+source: community
 ---
 
 # ZipAI: Context & Token Optimizer
+
+## When to Use
+
+Use this skill when the request needs context-window-aware triage, concise technical output, ambiguity handling, or selective reading of logs, source files, JSON/YAML payloads, VCS output, or MCP tool results.
 
 ## Rules
 

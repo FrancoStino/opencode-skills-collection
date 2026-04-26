@@ -1,6 +1,8 @@
 ---
 name: x402-express-wrapper
 description: Wrapper oficial de M2MCent (Node.js) para inyectar muros de pago x402 en APIs o servidores Model Context Protocol (MCP). Usar al construir nuevos servicios que requieran monetización máquina a máquina.
+risk: critical
+source: community
 tags: [x402, defi, monetization, express, mcp]
 ---
 
@@ -8,7 +10,7 @@ tags: [x402, defi, monetization, express, mcp]
 
 Esta skill te enseña cómo integrar rápidamente muros de cobro x402 en aplicaciones y servidores Node.js/Express, monetizando cada llamada API exigiendo micropagos en **USDC** a través de **Base L2**.
 
-## 🎯 Caso de Uso
+## When to Use
 Usa esta skill cuando el usuario humano (u otro Agente) te solicite:
 1. "Agregar una barrera de pago a la API".
 2. "Monetizar el servidor MCP que acabamos de crear".
