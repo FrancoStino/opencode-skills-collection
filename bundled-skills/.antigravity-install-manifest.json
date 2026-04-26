@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-04-26T18:57:21.139Z",
+  "updatedAt": "2026-04-26T19:50:17.204Z",
   "entries": [
     "00-andruia-consultant",
     "007",
@@ -1202,7 +1202,6 @@
     "skill-seekers",
     "skill-sentinel",
     "skill-writer",
-    "skills/x402-express-wrapper",
     "skin-health-analyzer",
     "skyvern-browser-automation",
     "slack-automation",
@@ -1421,6 +1420,7 @@
     "writing-skills",
     "x-article-publisher-skill",
     "x-twitter-scraper",
+    "x402-express-wrapper",
     "xlsx-official",
     "xss-html-injection",
     "xvary-stock-research",
