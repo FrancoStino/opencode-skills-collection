@@ -29499,6 +29499,28 @@
     }
   },
   {
+    "id": "unslop",
+    "path": "skills/unslop",
+    "category": "writing",
+    "name": "unslop",
+    "description": "Post-process AI-generated text through the unslop CLI to strip AI writing patterns before publishing",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-04-25",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    }
+  },
+  {
     "id": "unsplash-integration",
     "path": "skills/unsplash-integration",
     "category": "api-integration",
@@ -30915,10 +30937,10 @@
     "path": "skills/wordpress-centric-high-seo-optimized-blogwriting-skill",
     "category": "content",
     "name": "wordpress-centric-high-seo-optimized-blogwriting-skill",
-    "description": "Use this skill when the user asks to write a blog post, article, or SEO content. This applies a professional structure, truth boxes, click-bait-free accurate information, and outputs direct WordPress-ready content.",
-    "risk": "unknown",
-    "source": "unknown",
-    "date_added": null,
+    "description": "Create long-form, high-quality, SEO-optimized blog posts ready for WordPress with truth boxes and FAQ schema.",
+    "risk": "safe",
+    "source": "self",
+    "date_added": "2026-04-12",
     "plugin": {
       "targets": {
         "codex": "supported",
@@ -31531,7 +31553,7 @@
     "path": "skills/zipai-optimizer",
     "category": "agent-behavior",
     "name": "zipai-optimizer",
-    "description": "Adaptive token optimizer: intelligent filtering, surgical output, ambiguity-first, context-window-aware, VCS-aware.",
+    "description": "Adaptive token optimizer: intelligent filtering, surgical output, ambiguity-first, context-window-aware, VCS-aware, MCP-aware.",
     "risk": "safe",
     "source": "unknown",
     "date_added": null,
