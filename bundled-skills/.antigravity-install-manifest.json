@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-04-26T13:10:15.709Z",
+  "updatedAt": "2026-04-26T14:45:21.449Z",
   "entries": [
     "00-andruia-consultant",
     "007",
@@ -1345,6 +1345,7 @@
     "unity-developer",
     "unity-ecs-patterns",
     "unreal-engine-cpp-pro",
+    "unslop",
     "unsplash-integration",
     "upgrading-expo",
     "upstash-qstash",
