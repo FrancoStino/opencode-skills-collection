@@ -1,0 +1,73 @@
+name: Skill Source Request
+description: Add skills from an external registry or sync from an upstream repo
+title: "[Source] "
+labels: ["skill-source", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Import Skills from an External Source
+
+        Use this template to request adding skills from another registry, repo, or collection.
+
+  - type: checkboxes
+    id: searched
+    attributes:
+      label: Pre-filing checklist
+      options:
+        - label: I have searched existing issues and this is not a duplicate
+          required: true
+        - label: I have checked the [upstream skills directory](https://github.com/sickn33/antigravity-awesome-skills/tree/main/skills)
+          required: true
+
+  - type: dropdown
+    id: request-type
+    attributes:
+      label: Request Type
+      description: What kind of import is this?
+      options:
+        - "Batch: add multiple skills from a registry"
+        - "Single: add one specific skill"
+        - "Sync: pull latest from an upstream repo"
+        - "Update: fix/update existing skills from source"
+    validations:
+      required: true
+
+  - type: input
+    id: source-repo
+    attributes:
+      label: Source Repository / Registry URL
+      description: "Where do these skills come from?"
+      placeholder: "https://github.com/org/repo"
+    validations:
+      required: true
+
+  - type: textarea
+    id: skills-list
+    attributes:
+      label: Skills to Add
+      description: |
+        List the skills to import. One per line for batch, or just the name for single.
+        If syncing, describe what changed upstream.
+      placeholder: |
+        - skill-name-1
+        - skill-name-2
+        - skill-name-3
+    validations:
+      required: true
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Why These Skills?
+      description: What problem do they solve? Why are they needed here?
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Links to docs, related issues, PRs, screenshots, etc.
+    validations:
+      required: false
