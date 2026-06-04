@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v3.0.36] - 2026-06-04
+### :wrench: Chores
+- [`40ab343`](https://github.com/FrancoStino/opencode-skills-collection/commit/40ab34339af1501c3a2f9f0e51daa7bbec6d157b) - add .omo to .gitignore *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+- [`e17886e`](https://github.com/FrancoStino/opencode-skills-collection/commit/e17886e34e4f95a6a61be5aacac3fdde8c0c7b91) - add .crew to .gitignore *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+- [`908cc87`](https://github.com/FrancoStino/opencode-skills-collection/commit/908cc8752fc2b36813c3076b5966ea5b8da30c69) - sync skills and bump version to v3.0.36 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
 ## [v3.0.35] - 2026-06-03
 ### :wrench: Chores
 - [`fe89ddf`](https://github.com/FrancoStino/opencode-skills-collection/commit/fe89ddfae7f69dca46d6eb36bb99820e8ce9bb98) - sync skills and bump version to v3.0.35 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
@@ -3332,3 +3339,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v3.0.33]: https://github.com/FrancoStino/opencode-skills-collection/compare/v3.0.32...v3.0.33
 [v3.0.34]: https://github.com/FrancoStino/opencode-skills-collection/compare/v3.0.33...v3.0.34
 [v3.0.35]: https://github.com/FrancoStino/opencode-skills-collection/compare/v3.0.34...v3.0.35
+[v3.0.36]: https://github.com/FrancoStino/opencode-skills-collection/compare/v3.0.35...v3.0.36
