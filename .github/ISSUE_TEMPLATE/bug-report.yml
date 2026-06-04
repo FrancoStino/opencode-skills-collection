@@ -58,7 +58,7 @@ body:
     id: logs
     attributes:
       label: Relevant Log Output
-      description: Paste any relevant error messages or logs.
+      description: "Warning: remove or redact any secrets, tokens, credentials, IPs, or personal data before posting logs. Paste any relevant error messages or logs."
       render: shell
     validations:
       required: false
