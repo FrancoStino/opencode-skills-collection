@@ -76,7 +76,7 @@ body:
         - **safe**: Read-only, no special permissions needed
         - **critical**: Writes files, executes commands, or accesses external services
         - **offensive**: Security testing, penetration testing, exploit-related
-      options:
+        - none
         - safe
         - critical
         - offensive
