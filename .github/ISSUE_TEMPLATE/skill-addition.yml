@@ -8,6 +8,11 @@ body:
       value: |
         ## Request a New Skill
 
+        > **Note:** Skills here are synced nightly from the upstream repo
+        > [`sickn33/antigravity-awesome-skills`](https://github.com/sickn33/antigravity-awesome-skills).
+        > The fastest way to add a skill is to **open a PR upstream** — once merged, it lands here
+        > automatically. Use this issue to request a skill or track one you'd like added.
+
         Before submitting, please:
         - Search [existing issues](https://github.com/FrancoStino/opencode-skills-collection/issues) to avoid duplicates
         - Check if the skill already exists in the [upstream repo](https://github.com/sickn33/antigravity-awesome-skills/tree/main/skills)
@@ -73,9 +78,11 @@ body:
       label: Risk Level
       description: |
         Does this skill require elevated permissions or access to sensitive resources?
-        - **safe**: Read-only, no special permissions needed
-        - **critical**: Writes files, executes commands, or accesses external services
-        - **offensive**: Security testing, penetration testing, exploit-related
+        - **none**: No risk assessment
+        - **safe**: Verified safe — read-only, no special permissions needed
+        - **critical**: Contains sensitive operations (writes files, executes commands, or accesses external services)
+        - **offensive**: Contains offensive security tools (exploits, reverse shells, etc.)
+        - **unknown**: Not yet classified
       options:
         - none
         - safe
@@ -84,7 +91,6 @@ body:
         - unknown
     validations:
       required: true
-
 
   - type: input
     id: source-repo
