@@ -1,8 +1,5 @@
 blank_issues_enabled: false
 contact_links:
-  - name: Bug Report
-    url: https://github.com/FrancoStino/opencode-skills-collection/issues/new?template=bug-report.yml
-    about: Report a bug or unexpected behavior
   - name: Security Disclosure
     url: https://github.com/FrancoStino/opencode-skills-collection/blob/main/SECURITY.md
     about: For security issues, follow responsible disclosure policy. Do NOT open a public issue.
