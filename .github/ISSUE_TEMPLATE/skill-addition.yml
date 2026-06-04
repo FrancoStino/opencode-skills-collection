@@ -1,0 +1,115 @@
+name: Skill Addition Request
+description: Request a new skill to be added to the collection
+title: "[Skill] "
+labels: ["skill-request", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Request a New Skill
+
+        Before submitting, please:
+        - Search [existing issues](https://github.com/FrancoStino/opencode-skills-collection/issues) to avoid duplicates
+        - Check if the skill already exists in the [upstream repo](https://github.com/sickn33/antigravity-awesome-skills/tree/main/skills)
+
+  - type: checkboxes
+    id: searched
+    attributes:
+      label: Pre-filing checklist
+      options:
+        - label: I have searched existing issues and this is not a duplicate
+          required: true
+        - label: I have checked the upstream skills directory
+          required: true
+
+  - type: input
+    id: skill-name
+    attributes:
+      label: Skill Name
+      description: "The skill's identifier (e.g. `my-awesome-skill`)"
+      placeholder: "my-awesome-skill"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What does this skill do?
+      description: A clear, concise description of the skill's purpose and behavior.
+      placeholder: "This skill helps users do X by automating Y..."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      description: Which category best fits this skill?
+      options:
+        - agent-behavior
+        - ai-ml
+        - api-integration
+        - automation
+        - backend
+        - cloud
+        - code-quality
+        - content
+        - data
+        - database
+        - design
+        - devops
+        - development
+        - frontend
+        - security
+        - testing
+        - uncategorized
+        - Other (specify below)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: risk
+    attributes:
+      label: Risk Level
+      description: |
+        Does this skill require elevated permissions or access to sensitive resources?
+        - **safe**: Read-only, no special permissions needed
+        - **critical**: Writes files, executes commands, or accesses external services
+        - **offensive**: Security testing, penetration testing, exploit-related
+      options:
+        - safe
+        - critical
+        - offensive
+        - unknown
+    validations:
+      required: true
+
+  - type: input
+    id: source-repo
+    attributes:
+      label: Source Repository
+      description: "If this skill exists in another repo, provide the URL"
+      placeholder: "https://github.com/org/repo"
+    validations:
+      required: false
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use Case
+      description: Describe a concrete scenario where this skill would be useful.
+      placeholder: |
+        When I need to do X, I currently have to:
+        1. Step one...
+        2. Step two...
+        This skill would automate that.
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Anything else — links to docs, similar skills, screenshots, etc.
+    validations:
+      required: false
