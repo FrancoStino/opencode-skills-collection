@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v3.0.37] - 2026-06-05
+### :sparkles: New Features
+- [`67fea3a`](https://github.com/FrancoStino/opencode-skills-collection/commit/67fea3a04406b5329097896d9db1a1ac212cf90d) - add GitHub issue templates for skill requests and bug reports *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+- [`ef37d19`](https://github.com/FrancoStino/opencode-skills-collection/commit/ef37d19fe342fc68cff419f67b36e09d37b967d2) - **issue-template**: add skill source request template *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+
+### :bug: Bug Fixes
+- [`fd48e1b`](https://github.com/FrancoStino/opencode-skills-collection/commit/fd48e1b0f86600f781464c008d78677e9f145ac3) - apply CodeRabbit auto-fixes *(commit by [@coderabbitai[bot]](https://github.com/apps/coderabbitai))*
+- [`4844cc7`](https://github.com/FrancoStino/opencode-skills-collection/commit/4844cc77c101a9f1a9ef8774f8f6d50a156f0c22) - **issue-template**: clarify upstream-PR workflow and document all risk levels *(commit by [@devin-ai-integration[bot]](https://github.com/apps/devin-ai-integration))*
+
+### :wrench: Chores
+- [`388a75b`](https://github.com/FrancoStino/opencode-skills-collection/commit/388a75bbca89515b2f3d9b529ed0008c33c3a2a4) - update @types/bun dependency to latest version *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+- [`870d76e`](https://github.com/FrancoStino/opencode-skills-collection/commit/870d76e036196403b2b40d581b9311444620144a) - remove redundant Bug Report contact link from issue template config *(commit by [@devin-ai-integration[bot]](https://github.com/apps/devin-ai-integration))*
+- [`15f0ccf`](https://github.com/FrancoStino/opencode-skills-collection/commit/15f0ccfe440bfbc5852da54e4a27e5874149b430) - sync skills and bump version to v3.0.37 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
 ## [v3.0.36] - 2026-06-04
 ### :wrench: Chores
 - [`40ab343`](https://github.com/FrancoStino/opencode-skills-collection/commit/40ab34339af1501c3a2f9f0e51daa7bbec6d157b) - add .omo to .gitignore *(commit by [@FrancoStino](https://github.com/FrancoStino))*
@@ -3340,3 +3355,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v3.0.34]: https://github.com/FrancoStino/opencode-skills-collection/compare/v3.0.33...v3.0.34
 [v3.0.35]: https://github.com/FrancoStino/opencode-skills-collection/compare/v3.0.34...v3.0.35
 [v3.0.36]: https://github.com/FrancoStino/opencode-skills-collection/compare/v3.0.35...v3.0.36
+[v3.0.37]: https://github.com/FrancoStino/opencode-skills-collection/compare/v3.0.36...v3.0.37
