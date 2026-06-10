@@ -220,3 +220,13 @@ To use the latest beta version, update your `~/.config/opencode/opencode.json`:
 ## License
 
 [MIT ©](./LICENSE) 
+
+## Star History
+
+<a href="https://www.star-history.com/?repos=FrancoStino%2Fopencode-skills-collection&type=date&legend=top-left">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=FrancoStino/opencode-skills-collection&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=FrancoStino/opencode-skills-collection&type=date&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=FrancoStino/opencode-skills-collection&type=date&legend=top-left" />
+ </picture>
+</a>
