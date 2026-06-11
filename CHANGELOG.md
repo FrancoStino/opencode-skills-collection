@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v3.0.43] - 2026-06-11
+### :sparkles: New Features
+- [`450c2d0`](https://github.com/FrancoStino/opencode-skills-collection/commit/450c2d0b2673a631bfeb4c4b3c5d14978c8dcad3) - add Star History section to README *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+
+### :wrench: Chores
+- [`7ec7c2f`](https://github.com/FrancoStino/opencode-skills-collection/commit/7ec7c2fb35c13b2af20bcb387b4bb3c05852f8f6) - sync skills and bump version to v3.0.43 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
 ## [v3.0.42] - 2026-06-10
 ### :wrench: Chores
 - [`4aa72e6`](https://github.com/FrancoStino/opencode-skills-collection/commit/4aa72e69537a06a258b095f87919d07e6df135d2) - sync skills and bump version to v3.0.42 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
@@ -3386,3 +3394,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v3.0.40]: https://github.com/FrancoStino/opencode-skills-collection/compare/v3.0.39...v3.0.40
 [v3.0.41]: https://github.com/FrancoStino/opencode-skills-collection/compare/v3.0.40...v3.0.41
 [v3.0.42]: https://github.com/FrancoStino/opencode-skills-collection/compare/v3.0.41...v3.0.42
+[v3.0.43]: https://github.com/FrancoStino/opencode-skills-collection/compare/v3.0.42...v3.0.43
