@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-06-10T02:07:01.120Z",
+  "updatedAt": "2026-06-11T02:30:21.005Z",
   "entries": [
     "00-andruia-consultant",
     "007",
@@ -65,6 +65,7 @@
     "analytics-tracking",
     "analyze-project",
     "andrej-karpathy",
+    "android-dev",
     "android-jetpack-compose-expert",
     "android_ui_verification",
     "angular",
@@ -1422,6 +1423,7 @@
     "unity-developer",
     "unity-ecs-patterns",
     "unreal-engine-cpp-pro",
+    "unship",
     "unslop",
     "unsplash-integration",
     "upgrading-expo",
