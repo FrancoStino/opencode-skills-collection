@@ -21,7 +21,7 @@
 
 ## Overview
 
-**OpenCode Skills Collection** ships a pre-bundled snapshot of 1000+ universal skills for the OpenCode CLI.
+**OpenCode Skills Collection** ships a pre-bundled snapshot of 1595+ universal skills for the OpenCode CLI.
 
 Instead of loading every skill into the AI context at startup — which would consume ~80k tokens and cause compaction
 loops — the plugin uses a **SkillPointer** architecture: skills are organized into categories inside a hidden vault and
@@ -45,7 +45,10 @@ bundled-skills/ (npm package)
         │
         └── SkillPointer pipeline
               │
-              ├─ vault-manager     → moves raw skills to the vault
+              ├─ risk-filter       → excludes skills by risk level or ID
+              ├─ content-scanner   → quarantines skills with dangerous patterns
+              ├─ vault-manager     → moves safe skills to the vault
+              ├─ skill-patcher     → applies config-driven content patches
               └─ pointer-generator → writes ~35 lightweight pointer files
 ```
 
@@ -61,24 +64,19 @@ The full skill content is only injected into context when the AI actually needs 
 
 After the first startup, your `~/.config/opencode/` directory looks like this:
 
-```
 ~/.config/opencode/
 ├── opencode.json
-├── skills/                          ← pointer folders (active, read by OpenCode)
+├── skill-filter.jsonc                ← optional: risk filter + patcher config
+├── skills/                           ← pointer folders (active, read by OpenCode)
 │   ├── backend-dev-category-pointer/
 │   │   └── SKILL.md
-│   ├── devops-category-pointer/
-│   │   └── SKILL.md
 │   └── ...
-└── skill-libraries/                 ← vault with all raw skills (hidden from startup context)
+└── skill-libraries/                  ← vault with all raw skills
     ├── backend-dev/
     │   ├── laravel-expert/
     │   │   └── SKILL.md
-    │   └── wordpress-core/
-    │       └── SKILL.md
-    ├── devops/
+    │   └── ...
     └── ...
-```
 
 ---
 
@@ -138,7 +136,7 @@ opencode run /refactor clean up this function
 
 ---
 
-## Skill Risk Filter
+## Skill Safety & Filtering
 
 The plugin supports configurable risk-based filtering of skills. By default, **all skills are loaded** — filtering is
 opt-in.
@@ -168,6 +166,40 @@ Create a `~/.config/opencode/skill-filter.jsonc` file:
 - **`excludedSkills`**: Array of specific skill IDs to block
 
 Blocked skills are excluded from both the vault and the generated pointers — they are never loaded into context.
+
+### Content Safety Scanner (CI)
+
+Dangerous skills are automatically detected and removed **at build time** — before the npm package is published.
+The nightly sync workflow scans every SKILL.md for recursive loop patterns and strips matching skills from
+`bundled-skills/` and `skills_index.json`, so they never reach end users.
+
+**Built-in patterns detect:**
+- Recursive skill invocation loops ("invoke skills before any response")
+- Aggressive match thresholds ("even a 1% chance")
+- Mandatory pre-response skill checks ("you must invoke the skill")
+
+### Skill Patcher
+
+The plugin can modify skill content after installation via config-driven patches. This allows neutralizing
+problematic instructions without forking upstream skills.
+
+Add patches in `skill-filter.jsonc`:
+
+```jsonc
+{
+  "skillPatches": [
+    {
+      "skillId": "some-skill-name",
+      "find": "regex-pattern-to-match",
+      "replace": "replacement-text",
+      "description": "Why this patch exists"
+    }
+  ]
+}
+```
+
+Patches are applied in order, case-insensitive, and globally (all occurrences). Invalid regex patterns are
+skipped silently. Re-running the pipeline with the same patches is idempotent.
 
 ---
 
