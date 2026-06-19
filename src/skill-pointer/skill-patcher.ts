@@ -42,7 +42,7 @@ function applySinglePatch(content: string, patch: SkillPatch): string | undefine
     // (avoids $& $1 $` $' being interpreted as special replacement patterns)
     const replacement = patch.replace;
     const newContent = content.replace(re, () => replacement);
-    return newContent !== content ? newContent : undefined;
+    return newContent === content ? undefined : newContent;
   } catch {
     return undefined;
   }

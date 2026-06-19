@@ -85,13 +85,19 @@ if (!indexPath.startsWith(resolvedProjectRoot + path.sep)) {
 }
 
 if (fs.existsSync(indexPath)) {
+	const realIndexPath = fs.realpathSync(indexPath);
+	if (!realIndexPath.startsWith(resolvedProjectRoot + path.sep)) {
+		console.error(`\n❌ Security error: realIndexPath ${realIndexPath} escapes project root`);
+		process.exit(1);
+	}
+
 	const quarantinedIds = new Set(result.quarantined.map((q) => q.skillId));
-	const rawIndex = JSON.parse(fs.readFileSync(indexPath, "utf-8"));
+	const rawIndex = JSON.parse(fs.readFileSync(realIndexPath, "utf-8"));
 	const cleanIndex = rawIndex.filter((s) => !quarantinedIds.has(s.id));
 	const removed = rawIndex.length - cleanIndex.length;
 
 	if (removed > 0) {
-		fs.writeFileSync(indexPath, JSON.stringify(cleanIndex, null, 2) + "\n", "utf-8");
+		fs.writeFileSync(realIndexPath, JSON.stringify(cleanIndex, null, 2) + "\n", "utf-8");
 		console.log(`\n📝 Removed ${removed} entries from skills_index.json`);
 	}
 }

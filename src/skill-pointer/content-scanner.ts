@@ -57,7 +57,7 @@ export function mergePatterns(configPatterns: ScanPattern[]): ScanPattern[] {
     for (const p of configPatterns) {
         // Validate regex before allowing override
         try {
-            new RegExp(p.pattern, "i");
+            new RegExp(p.pattern, "is");
             merged.set(p.id, p);
         } catch {
             // If this would override a default, keep the default — don't silently disable protection
@@ -84,7 +84,7 @@ export function scanSkillContent(
 
     for (const p of patterns) {
         try {
-            const re = new RegExp(p.pattern, "i");
+            const re = new RegExp(p.pattern, "is");
             if (re.test(content)) {
                 matches.push({id: p.id, severity: p.severity});
             }

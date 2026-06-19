@@ -23,6 +23,14 @@ describe("scanSkillContent", () => {
     expect(matches.some((m) => m.id === "recursive-skill-invocation")).toBe(true);
   });
 
+  test("detects recursive skill invocation pattern across newlines", () => {
+    const content =
+      "Invoke relevant or requested skills\nBEFORE any response or action.";
+    const matches = scanSkillContent(content, DEFAULT_SCAN_PATTERNS);
+    expect(matches.length).toBeGreaterThan(0);
+    expect(matches.some((m) => m.id === "recursive-skill-invocation")).toBe(true);
+  });
+
   test("detects aggressive 1% threshold pattern", () => {
     const content =
       "If you think there is even a 1% chance a skill might apply, you ABSOLUTELY MUST invoke the skill.";
