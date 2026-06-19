@@ -33,6 +33,12 @@ jobs:
             "https://raw.githubusercontent.com/sickn33/antigravity-awesome-skills/main/skills_index.json" \
             -o skills_index.json
           echo "✅ skills_index.json downloaded ($(wc -c < skills_index.json) bytes)"
+      - name: Install dependencies and build
+        run: |
+          npm ci
+          npm run build
+      - name: Scan and remove dangerous skills
+        run: node scripts/ci-scan-skills.mjs
       - name: Check for changes
         id: check_changes
         run: |
@@ -45,8 +51,6 @@ jobs:
         id: bump
         if: steps.check_changes.outputs.changes == 'true' && github.ref == 'refs/heads/main'
         run: |
-          npm ci
-
           # Trova il tag stabile precedente (escludi beta) per il changelog
           PREVIOUS_STABLE=$(git tag --list 'v*' | grep -v 'beta' | sort -V | tail -1)
           echo "previous_stable=$PREVIOUS_STABLE" >> $GITHUB_OUTPUT

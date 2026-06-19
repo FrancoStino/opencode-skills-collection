@@ -2,15 +2,13 @@ import { test, expect, describe, beforeEach, afterEach } from "bun:test";
 import type { RiskLevel } from "../skill-pointer/risk-level.js";
 import { shouldLoad, filterIndex } from "../skill-pointer/skill-risk-filter.js";
 import { loadFilterConfig } from "../skill-pointer/config-loader.js";
-import { loadSkillsIndex, installSkillsToVault } from "../skill-pointer/vault-installer.js";
 import { runSkillPointer } from "../skill-pointer/index.js";
-import { generatePointers } from "../skill-pointer/pointer-generator.js";
 import type { SkillIndexEntry } from "../skill-pointer/vault-installer.js";
 import type { SkillRiskFilterConfig } from "../skill-pointer/config-loader.js";
-import { POINTER_SUFFIX, SKILL_FILENAME } from "../constants/constants.js";
-import fs from "fs";
-import path from "path";
-import os from "os";
+import { POINTER_SUFFIX } from "../constants/constants.js";
+import fs from "node:fs";
+import path from "node:path";
+import os from "node:os";
 
 describe("shouldLoad", () => {
   const defaultConfig: SkillRiskFilterConfig = {
@@ -122,6 +120,37 @@ describe("loadFilterConfig", () => {
       const config = loadFilterConfig(configPath);
       expect(config.excludedRiskLevels).toEqual(["offensive", "unknown"]);
       expect(config.excludedSkills).toEqual(["windows-privilege-escalation"]);
+    } finally {
+      fs.rmSync(tmpDir, { recursive: true, force: true });
+    }
+  });
+
+  test("parses JSONC with scanPatterns and skillPatches, silently discarding invalid entries", () => {
+    const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "risk-filter-test-"));
+    const configPath = path.join(tmpDir, "skill-filter.jsonc");
+    fs.writeFileSync(
+      configPath,
+      `{
+  "scanPatterns": [
+    { "id": "test-pattern", "pattern": "test", "description": "test", "severity": "block" },
+    { "id": "invalid-pattern", "pattern": "test" }, // Missing fields
+    "not-an-object",
+    null
+  ],
+  "skillPatches": [
+    { "skillId": "test-skill", "find": "test", "replace": "replaced" },
+    { "skillId": "invalid-patch" }, // Missing fields
+    "not-an-object",
+    null
+  ]
+}`
+    );
+    try {
+      const config = loadFilterConfig(configPath);
+      expect(config.scanPatterns?.length).toBe(1);
+      expect(config.scanPatterns?.[0].id).toBe("test-pattern");
+      expect(config.skillPatches?.length).toBe(1);
+      expect(config.skillPatches?.[0].skillId).toBe("test-skill");
     } finally {
       fs.rmSync(tmpDir, { recursive: true, force: true });
     }

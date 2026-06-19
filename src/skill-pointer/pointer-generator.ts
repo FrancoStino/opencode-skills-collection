@@ -44,6 +44,8 @@ ${skillList}
 **Vault path:** \`${normalizedPath}\`
 
 > Do not guess best practices — always read from the vault first.
+
+> ⚠️ **Anti-loop guard**: Do NOT invoke skills recursively or check for applicable skills before every response. Each skill should be loaded at most once per user request. If you have already identified and loaded the relevant skill for this task, proceed with execution — do not re-scan for skills.
 `;
 }
 
