@@ -4,6 +4,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v3.1.0] - 2026-06-19
+### :sparkles: New Features
+- [`8e9b527`](https://github.com/FrancoStino/opencode-skills-collection/commit/8e9b527944eb79183e5f7c4409b0add87a45c686) - implement skill safety scanning and patching *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+- [`f7753ee`](https://github.com/FrancoStino/opencode-skills-collection/commit/f7753eefc23215a6ae5854118bdc35ae423158c6) - enhance skill patching and filtering logic *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+- [`3211c23`](https://github.com/FrancoStino/opencode-skills-collection/commit/3211c23afaecb6716dff05c99171decd2480c4dd) - add path traversal guard and improve config validation in skill risk filter *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+- [`620a2e7`](https://github.com/FrancoStino/opencode-skills-collection/commit/620a2e7df71ed90efdbf4a7045178988de02d94b) - add tests for path traversal quarantine and symlink handling *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+- [`4e2a71b`](https://github.com/FrancoStino/opencode-skills-collection/commit/4e2a71b6714f41ee48b63da90880f441748c916a) - enhance security checks and improve regex pattern handling *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+- [`681c7a0`](https://github.com/FrancoStino/opencode-skills-collection/commit/681c7a099dd2aae90d1cff8dc8871a7f26a48f50) - simplify path traversal guard and improve config handling *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+- [`9294f7d`](https://github.com/FrancoStino/opencode-skills-collection/commit/9294f7deee3888067817c065202c34b8c69da431) - add security check for index path resolution *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+- [`a5a327a`](https://github.com/FrancoStino/opencode-skills-collection/commit/a5a327a1f0215964a01e8946b28bc9ee68f38584) - improve project root resolution for security checks *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+- [`7cb4ef5`](https://github.com/FrancoStino/opencode-skills-collection/commit/7cb4ef59f86470f775dba230af1a6adda7537b7e) - update index path resolution and enhance regex handling *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+- [`67152a4`](https://github.com/FrancoStino/opencode-skills-collection/commit/67152a4b50fc8c96af2dc25d55e635ff55050c02) - update index path handling for improved accuracy *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+- [`e0161c9`](https://github.com/FrancoStino/opencode-skills-collection/commit/e0161c991c48e7cfba6ba080802ede74d05ca29c) - update index path to use project root for security compliance *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+- [`60c6dc1`](https://github.com/FrancoStino/opencode-skills-collection/commit/60c6dc16dca1bd9cf85eb68d06f130274c3694f7) - harden index path resolution with security and regex improvements *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+
+
 ## [v3.0.51] - 2026-06-19
 ### :wrench: Chores
 - [`1a3a4d2`](https://github.com/FrancoStino/opencode-skills-collection/commit/1a3a4d2586d5aa89ca9a3ef30f2c7db7eadf32c2) - sync skills and bump version to v3.0.51 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
@@ -3443,3 +3459,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v3.0.49]: https://github.com/FrancoStino/opencode-skills-collection/compare/v3.0.48...v3.0.49
 [v3.0.50]: https://github.com/FrancoStino/opencode-skills-collection/compare/v3.0.49...v3.0.50
 [v3.0.51]: https://github.com/FrancoStino/opencode-skills-collection/compare/v3.0.50...v3.0.51
+[v3.1.0]: https://github.com/FrancoStino/opencode-skills-collection/compare/v3.0.51...v3.1.0
