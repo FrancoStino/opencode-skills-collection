@@ -125,7 +125,7 @@ describe("loadFilterConfig", () => {
     }
   });
 
-  test("parses JSONC with scanPatterns and skillPatches", () => {
+  test("parses JSONC with scanPatterns and skillPatches, silently discarding invalid entries", () => {
     const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "risk-filter-test-"));
     const configPath = path.join(tmpDir, "skill-filter.jsonc");
     fs.writeFileSync(
@@ -133,11 +133,15 @@ describe("loadFilterConfig", () => {
       `{
   "scanPatterns": [
     { "id": "test-pattern", "pattern": "test", "description": "test", "severity": "block" },
-    { "id": "invalid-pattern", "pattern": "test" } // Missing fields
+    { "id": "invalid-pattern", "pattern": "test" }, // Missing fields
+    "not-an-object",
+    null
   ],
   "skillPatches": [
     { "skillId": "test-skill", "find": "test", "replace": "replaced" },
-    { "skillId": "invalid-patch" } // Missing fields
+    { "skillId": "invalid-patch" }, // Missing fields
+    "not-an-object",
+    null
   ]
 }`
     );
@@ -147,37 +151,6 @@ describe("loadFilterConfig", () => {
       expect(config.scanPatterns?.[0].id).toBe("test-pattern");
       expect(config.skillPatches?.length).toBe(1);
       expect(config.skillPatches?.[0].skillId).toBe("test-skill");
-    } finally {
-      fs.rmSync(tmpDir, { recursive: true, force: true });
-    }
-  });
-
-  test("silently discards invalid scanPatterns and skillPatches", () => {
-    const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "risk-filter-test-"));
-    const configPath = path.join(tmpDir, "skill-filter.jsonc");
-    fs.writeFileSync(
-      configPath,
-      `{
-  "scanPatterns": [
-    { "id": "valid-pattern", "pattern": "test", "description": "test", "severity": "block" },
-    { "id": "invalid-pattern", "pattern": "test" }, // Missing description and severity
-    "not-an-object",
-    null
-  ],
-  "skillPatches": [
-    { "skillId": "valid-patch", "find": "test", "replace": "replaced" },
-    { "skillId": "invalid-patch" }, // Missing find and replace
-    "not-an-object",
-    null
-  ]
-}`
-    );
-    try {
-      const config = loadFilterConfig(configPath);
-      expect(config.scanPatterns?.length).toBe(1);
-      expect(config.scanPatterns?.[0].id).toBe("valid-pattern");
-      expect(config.skillPatches?.length).toBe(1);
-      expect(config.skillPatches?.[0].skillId).toBe("valid-patch");
     } finally {
       fs.rmSync(tmpDir, { recursive: true, force: true });
     }
