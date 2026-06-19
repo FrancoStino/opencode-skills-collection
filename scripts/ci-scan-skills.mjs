@@ -80,6 +80,14 @@ for (const entry of result.quarantined) {
 const indexPath = path.join(projectRoot, "skills_index.json");
 
 if (fs.existsSync(indexPath)) {
+	const realIndexPath = fs.realpathSync(indexPath);
+	const resolvedProjectRoot = path.resolve(projectRoot);
+	
+	if (!realIndexPath.startsWith(resolvedProjectRoot + path.sep)) {
+		console.error(`\n❌ Security error: realIndexPath ${realIndexPath} escapes project root`);
+		process.exit(1);
+	}
+
 	const quarantinedIds = new Set(result.quarantined.map((q) => q.skillId));
 	const rawIndex = JSON.parse(fs.readFileSync(indexPath, "utf-8"));
 	const cleanIndex = rawIndex.filter((s) => !quarantinedIds.has(s.id));
