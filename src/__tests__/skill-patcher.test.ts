@@ -1,4 +1,6 @@
 import { test, expect, describe, beforeEach, afterEach } from "bun:test";
+import * as fs from "node:fs";
+import * as path from "node:path";
 import { applySkillPatches } from "../skill-pointer/skill-patcher.js";
 import type { SkillPatch } from "../skill-pointer/config-loader.js";
 import type { SkillIndexEntry } from "../skill-pointer/vault-installer.js";
@@ -43,6 +45,41 @@ describe("applySkillPatches", () => {
     const result = readSkill(ctx.baseDir, "regex-skill", "meta");
     expect(result).toContain("reasonable chance");
     expect(result).not.toContain("1% chance");
+  });
+
+  test("handles symlinked vault directory correctly", () => {
+    // Create a real directory outside the vault
+    const realVaultDir = path.join(ctx.baseDir, "real-vault");
+    fs.mkdirSync(realVaultDir);
+    
+    // Create a symlink to it
+    const symlinkedVaultDir = path.join(ctx.baseDir, "symlinked-vault");
+    fs.symlinkSync(realVaultDir, symlinkedVaultDir, "dir");
+
+    // Create a skill in the real directory
+    const categoryDir = path.join(realVaultDir, "dev");
+    fs.mkdirSync(categoryDir);
+    const skillDir = path.join(categoryDir, "symlink-skill");
+    fs.mkdirSync(skillDir);
+    fs.writeFileSync(path.join(skillDir, "SKILL.md"), "Original content", "utf-8");
+
+    const entry: SkillIndexEntry = {
+      id: "symlink-skill",
+      category: "dev",
+      name: "Symlink",
+      description: "Symlink test",
+    };
+
+    const patches: SkillPatch[] = [
+      { skillId: "symlink-skill", find: "Original", replace: "Patched" },
+    ];
+
+    // Apply patches using the symlinked vault path
+    applySkillPatches(symlinkedVaultDir, [entry], patches);
+
+    // Verify the patch was applied
+    const result = fs.readFileSync(path.join(realVaultDir, "dev", "symlink-skill", "SKILL.md"), "utf-8");
+    expect(result).toBe("Patched content");
   });
 
   test("skips silently on invalid inputs (missing index, missing file, invalid regex)", () => {

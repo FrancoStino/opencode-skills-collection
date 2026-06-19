@@ -107,6 +107,20 @@ describe("scanSkills", () => {
     expect(result.passed.length).toBe(0);
   });
 
+  test("quarantines entries with path-traversal-like skillIds", () => {
+    const index: SkillIndexEntry[] = [
+      { id: "../escape", category: "dev", name: "Escape", description: "Escape" },
+      { id: "a/b", category: "dev", name: "Nested", description: "Nested" },
+    ];
+
+    const result = scanSkills(ctx.baseDir, index);
+    expect(result.quarantined.length).toBe(2);
+    expect(result.quarantined[0].skillId).toBe("../escape");
+    expect(result.quarantined[0].matchedPatterns[0].id).toBe("path-traversal");
+    expect(result.quarantined[1].skillId).toBe("a/b");
+    expect(result.passed.length).toBe(0);
+  });
+
   test("passes safe skills", () => {
     makeBundledSkill(ctx.baseDir, "safe-skill", "---\nname: safe-skill\n---\nHelps write clean code.");
 

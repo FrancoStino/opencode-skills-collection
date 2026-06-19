@@ -21,7 +21,7 @@ function resolveSkillFile(vaultDir: string, entry: SkillIndexEntry): string | un
   const skillFile = path.join(vaultDir, entry.category, entry.id, SKILL_FILENAME);
   if (!fs.existsSync(skillFile)) return undefined;
 
-  const resolvedVault = path.resolve(vaultDir);
+  const resolvedVault = fs.realpathSync(vaultDir);
   const realSkillFile = fs.realpathSync(skillFile);
 
   if (!realSkillFile.startsWith(resolvedVault + path.sep)) return undefined;

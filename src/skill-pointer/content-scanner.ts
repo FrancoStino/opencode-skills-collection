@@ -112,8 +112,13 @@ export function scanSkills(
     const warned: ScanResult[] = [];
 
     for (const entry of index) {
-        // Path traversal guard: skip entries whose id escapes the bundled-skills directory
+        // Path traversal guard: quarantine entries whose id escapes the bundled-skills directory
         if (entry.id.includes("..") || entry.id.includes(path.sep) || entry.id.includes("/")) {
+            quarantined.push({
+                skillId: entry.id,
+                matchedPatterns: [{ id: "path-traversal", severity: "block" }],
+                blocked: true,
+            });
             continue;
         }
 
