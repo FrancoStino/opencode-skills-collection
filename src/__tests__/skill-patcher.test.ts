@@ -45,37 +45,20 @@ describe("applySkillPatches", () => {
     expect(result).not.toContain("1% chance");
   });
 
-  test("skips silently when skill not in index", () => {
-    const entry = makeSkill(ctx.baseDir, "existing-skill", "dev", "Some content.");
+  test("skips silently on invalid inputs (missing index, missing file, invalid regex)", () => {
+    const existingEntry = makeSkill(ctx.baseDir, "existing-skill", "dev", "Some content.");
+    const badRegexEntry = makeSkill(ctx.baseDir, "bad-regex-skill", "dev", "Some content here.");
+    const ghostEntry: SkillIndexEntry = { id: "ghost-skill", category: "dev", name: "Ghost", description: "No file" };
+
     const patches: SkillPatch[] = [
       { skillId: "nonexistent-skill", find: "content", replace: "replaced" },
-    ];
-
-    expect(() => applySkillPatches(ctx.baseDir, [entry], patches)).not.toThrow();
-    expect(readSkill(ctx.baseDir, "existing-skill", "dev")).toBe("Some content.");
-  });
-
-  test("skips silently when SKILL.md file is missing", () => {
-    const entry: SkillIndexEntry = {
-      id: "ghost-skill",
-      category: "dev",
-      name: "Ghost",
-      description: "No file",
-    };
-    const patches: SkillPatch[] = [
       { skillId: "ghost-skill", find: "anything", replace: "replaced" },
-    ];
-
-    expect(() => applySkillPatches(ctx.baseDir, [entry], patches)).not.toThrow();
-  });
-
-  test("skips silently with invalid regex", () => {
-    const entry = makeSkill(ctx.baseDir, "bad-regex-skill", "dev", "Some content here.");
-    const patches: SkillPatch[] = [
       { skillId: "bad-regex-skill", find: "[invalid(", replace: "replaced" },
     ];
 
-    expect(() => applySkillPatches(ctx.baseDir, [entry], patches)).not.toThrow();
+    expect(() => applySkillPatches(ctx.baseDir, [existingEntry, badRegexEntry, ghostEntry], patches)).not.toThrow();
+    
+    expect(readSkill(ctx.baseDir, "existing-skill", "dev")).toBe("Some content.");
     expect(readSkill(ctx.baseDir, "bad-regex-skill", "dev")).toBe("Some content here.");
   });
 

@@ -19,7 +19,14 @@ function resolveSkillFile(vaultDir: string, entry: SkillIndexEntry): string | un
   if (!isSafePath(entry.id) || !isSafePath(entry.category)) return undefined;
 
   const skillFile = path.join(vaultDir, entry.category, entry.id, SKILL_FILENAME);
-  return fs.existsSync(skillFile) ? skillFile : undefined;
+  if (!fs.existsSync(skillFile)) return undefined;
+
+  const resolvedVault = path.resolve(vaultDir);
+  const realSkillFile = fs.realpathSync(skillFile);
+
+  if (!realSkillFile.startsWith(resolvedVault + path.sep)) return undefined;
+
+  return skillFile;
 }
 
 /**
