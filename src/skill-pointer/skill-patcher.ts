@@ -37,7 +37,7 @@ function applySinglePatch(content: string, patch: SkillPatch): string | undefine
   if (!patch.find) return undefined;
 
   try {
-    const re = new RegExp(patch.find, "gi");
+    const re = new RegExp(patch.find, "gis");
     // Use function replacement to treat patch.replace as a literal string
     // (avoids $& $1 $` $' being interpreted as special replacement patterns)
     const replacement = patch.replace;

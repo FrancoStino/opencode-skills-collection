@@ -75,9 +75,7 @@ for (const entry of result.quarantined) {
 }
 
 // Also remove from skills_index.json
-// We use projectRoot directly to avoid SonarQube path injection warnings
-// since skills_index.json is always at the root of the project.
-const indexPath = path.join(projectRoot, "skills_index.json");
+const indexPath = path.join(path.dirname(bundledPath), "skills_index.json");
 
 if (fs.existsSync(indexPath)) {
 	const realIndexPath = fs.realpathSync(indexPath);

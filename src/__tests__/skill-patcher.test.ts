@@ -82,6 +82,17 @@ describe("applySkillPatches", () => {
     expect(result).toBe("Patched content");
   });
 
+  test("applies regex replacement across newlines using dotAll flag", () => {
+    const entry = makeSkill(ctx.baseDir, "multiline-skill", "dev", "Line 1\nLine 2\nLine 3");
+    const patches: SkillPatch[] = [
+      { skillId: "multiline-skill", find: "Line 1.*Line 3", replace: "Replaced all lines" },
+    ];
+
+    applySkillPatches(ctx.baseDir, [entry], patches);
+    const result = readSkill(ctx.baseDir, "multiline-skill", "dev");
+    expect(result).toBe("Replaced all lines");
+  });
+
   test("skips silently on invalid inputs (missing index, missing file, invalid regex)", () => {
     const existingEntry = makeSkill(ctx.baseDir, "existing-skill", "dev", "Some content.");
     const badRegexEntry = makeSkill(ctx.baseDir, "bad-regex-skill", "dev", "Some content here.");
