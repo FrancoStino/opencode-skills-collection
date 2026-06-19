@@ -1,4 +1,6 @@
 import { test, expect, describe, beforeEach, afterEach } from "bun:test";
+import * as fs from "node:fs";
+import * as path from "node:path";
 import { applySkillPatches } from "../skill-pointer/skill-patcher.js";
 import type { SkillPatch } from "../skill-pointer/config-loader.js";
 import type { SkillIndexEntry } from "../skill-pointer/vault-installer.js";
@@ -45,37 +47,66 @@ describe("applySkillPatches", () => {
     expect(result).not.toContain("1% chance");
   });
 
-  test("skips silently when skill not in index", () => {
-    const entry = makeSkill(ctx.baseDir, "existing-skill", "dev", "Some content.");
+  test("handles symlinked vault directory correctly", () => {
+    // Create a real directory outside the vault
+    const realVaultDir = path.join(ctx.baseDir, "real-vault");
+    fs.mkdirSync(realVaultDir);
+    
+    // Create a symlink to it
+    const symlinkedVaultDir = path.join(ctx.baseDir, "symlinked-vault");
+    fs.symlinkSync(realVaultDir, symlinkedVaultDir, "dir");
+
+    // Create a skill in the real directory
+    const categoryDir = path.join(realVaultDir, "dev");
+    fs.mkdirSync(categoryDir);
+    const skillDir = path.join(categoryDir, "symlink-skill");
+    fs.mkdirSync(skillDir);
+    fs.writeFileSync(path.join(skillDir, "SKILL.md"), "Original content", "utf-8");
+
+    const entry: SkillIndexEntry = {
+      id: "symlink-skill",
+      category: "dev",
+      name: "Symlink",
+      description: "Symlink test",
+    };
+
+    const patches: SkillPatch[] = [
+      { skillId: "symlink-skill", find: "Original", replace: "Patched" },
+    ];
+
+    // Apply patches using the symlinked vault path
+    applySkillPatches(symlinkedVaultDir, [entry], patches);
+
+    // Verify the patch was applied
+    const result = fs.readFileSync(path.join(realVaultDir, "dev", "symlink-skill", "SKILL.md"), "utf-8");
+    expect(result).toBe("Patched content");
+  });
+
+  test("applies regex replacement across newlines using dotAll flag", () => {
+    const entry = makeSkill(ctx.baseDir, "multiline-skill", "dev", "Line 1\nLine 2\nLine 3");
+    const patches: SkillPatch[] = [
+      { skillId: "multiline-skill", find: "Line 1.*Line 3", replace: "Replaced all lines" },
+    ];
+
+    applySkillPatches(ctx.baseDir, [entry], patches);
+    const result = readSkill(ctx.baseDir, "multiline-skill", "dev");
+    expect(result).toBe("Replaced all lines");
+  });
+
+  test("skips silently on invalid inputs (missing index, missing file, invalid regex)", () => {
+    const existingEntry = makeSkill(ctx.baseDir, "existing-skill", "dev", "Some content.");
+    const badRegexEntry = makeSkill(ctx.baseDir, "bad-regex-skill", "dev", "Some content here.");
+    const ghostEntry: SkillIndexEntry = { id: "ghost-skill", category: "dev", name: "Ghost", description: "No file" };
+
     const patches: SkillPatch[] = [
       { skillId: "nonexistent-skill", find: "content", replace: "replaced" },
-    ];
-
-    expect(() => applySkillPatches(ctx.baseDir, [entry], patches)).not.toThrow();
-    expect(readSkill(ctx.baseDir, "existing-skill", "dev")).toBe("Some content.");
-  });
-
-  test("skips silently when SKILL.md file is missing", () => {
-    const entry: SkillIndexEntry = {
-      id: "ghost-skill",
-      category: "dev",
-      name: "Ghost",
-      description: "No file",
-    };
-    const patches: SkillPatch[] = [
       { skillId: "ghost-skill", find: "anything", replace: "replaced" },
-    ];
-
-    expect(() => applySkillPatches(ctx.baseDir, [entry], patches)).not.toThrow();
-  });
-
-  test("skips silently with invalid regex", () => {
-    const entry = makeSkill(ctx.baseDir, "bad-regex-skill", "dev", "Some content here.");
-    const patches: SkillPatch[] = [
       { skillId: "bad-regex-skill", find: "[invalid(", replace: "replaced" },
     ];
 
-    expect(() => applySkillPatches(ctx.baseDir, [entry], patches)).not.toThrow();
+    expect(() => applySkillPatches(ctx.baseDir, [existingEntry, badRegexEntry, ghostEntry], patches)).not.toThrow();
+    
+    expect(readSkill(ctx.baseDir, "existing-skill", "dev")).toBe("Some content.");
     expect(readSkill(ctx.baseDir, "bad-regex-skill", "dev")).toBe("Some content here.");
   });
 

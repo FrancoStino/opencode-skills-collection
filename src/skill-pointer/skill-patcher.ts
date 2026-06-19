@@ -19,7 +19,14 @@ function resolveSkillFile(vaultDir: string, entry: SkillIndexEntry): string | un
   if (!isSafePath(entry.id) || !isSafePath(entry.category)) return undefined;
 
   const skillFile = path.join(vaultDir, entry.category, entry.id, SKILL_FILENAME);
-  return fs.existsSync(skillFile) ? skillFile : undefined;
+  if (!fs.existsSync(skillFile)) return undefined;
+
+  const resolvedVault = fs.realpathSync(vaultDir);
+  const realSkillFile = fs.realpathSync(skillFile);
+
+  if (!realSkillFile.startsWith(resolvedVault + path.sep)) return undefined;
+
+  return skillFile;
 }
 
 /**
@@ -30,12 +37,12 @@ function applySinglePatch(content: string, patch: SkillPatch): string | undefine
   if (!patch.find) return undefined;
 
   try {
-    const re = new RegExp(patch.find, "gi");
+    const re = new RegExp(patch.find, "gis");
     // Use function replacement to treat patch.replace as a literal string
     // (avoids $& $1 $` $' being interpreted as special replacement patterns)
     const replacement = patch.replace;
     const newContent = content.replace(re, () => replacement);
-    return newContent !== content ? newContent : undefined;
+    return newContent === content ? undefined : newContent;
   } catch {
     return undefined;
   }
