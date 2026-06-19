@@ -81,9 +81,9 @@ const indexPath = path.join(projectRoot, "skills_index.json");
 
 if (fs.existsSync(indexPath)) {
 	const realIndexPath = fs.realpathSync(indexPath);
-	const resolvedProjectRoot = path.resolve(projectRoot);
+	const realProjectRoot = fs.realpathSync(projectRoot);
 	
-	if (!realIndexPath.startsWith(resolvedProjectRoot + path.sep)) {
+	if (!realIndexPath.startsWith(realProjectRoot + path.sep)) {
 		console.error(`\n❌ Security error: realIndexPath ${realIndexPath} escapes project root`);
 		process.exit(1);
 	}
