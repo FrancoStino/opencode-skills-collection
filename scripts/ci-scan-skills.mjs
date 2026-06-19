@@ -75,7 +75,15 @@ for (const entry of result.quarantined) {
 }
 
 // Also remove from skills_index.json
-const indexPath = path.join(path.dirname(bundledPath), "skills_index.json");
+const indexPath = path.resolve(path.dirname(bundledPath), "skills_index.json");
+const resolvedProjectRoot = path.resolve(projectRoot);
+
+// Path traversal guard: ensure indexPath stays inside projectRoot
+if (!indexPath.startsWith(resolvedProjectRoot + path.sep)) {
+	console.error(`\n❌ Security error: indexPath ${indexPath} escapes project root`);
+	process.exit(1);
+}
+
 if (fs.existsSync(indexPath)) {
 	const quarantinedIds = new Set(result.quarantined.map((q) => q.skillId));
 	const rawIndex = JSON.parse(fs.readFileSync(indexPath, "utf-8"));
