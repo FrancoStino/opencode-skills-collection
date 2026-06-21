@@ -1531,20 +1531,22 @@
     "category": "tools",
     "name": "android-cli",
     "description": "Orchestrates Android development tasks including project creation, deployment, SDK management, and environment diagnostics using the `android` command-line tool.",
-    "risk": "safe",
+    "risk": "critical",
     "source": "self",
     "date_added": "2026-06-15",
     "plugin": {
       "targets": {
-        "codex": "supported",
-        "claude": "supported"
+        "codex": "blocked",
+        "claude": "blocked"
       },
       "setup": {
-        "type": "none",
-        "summary": "",
-        "docs": null
+        "type": "manual",
+        "summary": "Installer guidance executes remote Android CLI setup scripts; keep out of plugin-safe bundles.",
+        "docs": "SKILL.md"
       },
-      "reasons": []
+      "reasons": [
+        "explicit_target_restriction"
+      ]
     }
   },
   {
@@ -2503,7 +2505,7 @@
     "category": "uncategorized",
     "name": "apple-notes-search",
     "description": "Semantic + keyword search and connection-discovery across the user's own Apple Notes via the apple-notes MCP server. Use when the user wants to find, recall, or synthesize something from their notes, or surface non-obvious bridges/related notes. macOS, on-device.",
-    "risk": "safe",
+    "risk": "critical",
     "source": "community",
     "date_added": "2026-06-16",
     "plugin": {
@@ -2512,12 +2514,13 @@
         "claude": "blocked"
       },
       "setup": {
-        "type": "none",
-        "summary": "",
-        "docs": null
+        "type": "manual",
+        "summary": "Requires third-party MCP setup and macOS Full Disk Access; keep out of plugin-safe bundles.",
+        "docs": "SKILL.md"
       },
       "reasons": [
-        "absolute_host_path"
+        "absolute_host_path",
+        "explicit_target_restriction"
       ]
     }
   },
@@ -2840,15 +2843,17 @@
     "date_added": "2026-06-12",
     "plugin": {
       "targets": {
-        "codex": "supported",
-        "claude": "supported"
+        "codex": "blocked",
+        "claude": "blocked"
       },
       "setup": {
-        "type": "none",
-        "summary": "",
-        "docs": null
+        "type": "manual",
+        "summary": "Writes durable Atlas.md project memory after confirmation; keep out of plugin-safe bundles.",
+        "docs": "SKILL.md"
       },
-      "reasons": []
+      "reasons": [
+        "explicit_target_restriction"
+      ]
     }
   },
   {
@@ -8925,20 +8930,22 @@
     "category": "agent-behavior",
     "name": "codex-fable5",
     "description": "Apply Fable-inspired discipline to Codex work: inspect first, track goals and findings, ground conclusions in evidence, verify before completion, and adapt Claude/Fable prompt guidance without identity or provider claims.",
-    "risk": "safe",
+    "risk": "critical",
     "source": "community",
     "date_added": "2026-06-15",
     "plugin": {
       "targets": {
-        "codex": "supported",
-        "claude": "supported"
+        "codex": "blocked",
+        "claude": "blocked"
       },
       "setup": {
-        "type": "none",
-        "summary": "",
-        "docs": null
+        "type": "manual",
+        "summary": "Optional external plugin/helper setup executes mutable third-party code; keep out of plugin-safe bundles.",
+        "docs": "SKILL.md"
       },
-      "reasons": []
+      "reasons": [
+        "explicit_target_restriction"
+      ]
     }
   },
   {
@@ -12451,20 +12458,22 @@
     "category": "quality",
     "name": "dos-verify-done-claims",
     "description": "Before accepting an agent's 'done / shipped / fixed' claim, verify it against ground truth (git ancestry + the commit's own diff) using the DOS kernel's `dos verify` and `dos commit-audit` — never the agent's own narration.",
-    "risk": "safe",
+    "risk": "critical",
     "source": "community",
     "date_added": "2026-06-12",
     "plugin": {
       "targets": {
-        "codex": "supported",
-        "claude": "supported"
+        "codex": "blocked",
+        "claude": "blocked"
       },
       "setup": {
-        "type": "none",
-        "summary": "",
-        "docs": null
+        "type": "manual",
+        "summary": "Setup installs and executes an external PyPI CLI; keep out of plugin-safe bundles.",
+        "docs": "SKILL.md"
       },
-      "reasons": []
+      "reasons": [
+        "explicit_target_restriction"
+      ]
     }
   },
   {
@@ -20627,20 +20636,22 @@
     "category": "uncategorized",
     "name": "macos-screen-recorder",
     "description": "macOS screen recorder that captures the main display PLUS system audio via ScreenCaptureKit — no BlackHole/loopback driver, no sudo, just the standard Screen Recording permission. CLI-driven; fills the headless-screen-recording-with-system-sound gap QuickTime and `screencapture -v` can't.",
-    "risk": "safe",
+    "risk": "critical",
     "source": "community",
     "date_added": "2026-06-16",
     "plugin": {
       "targets": {
-        "codex": "supported",
-        "claude": "supported"
+        "codex": "blocked",
+        "claude": "blocked"
       },
       "setup": {
-        "type": "none",
-        "summary": "",
-        "docs": null
+        "type": "manual",
+        "summary": "Screen/audio/input capture requires sensitive macOS permissions; keep out of plugin-safe bundles.",
+        "docs": "SKILL.md"
       },
-      "reasons": []
+      "reasons": [
+        "explicit_target_restriction"
+      ]
     }
   },
   {
@@ -20737,7 +20748,7 @@
     "category": "uncategorized",
     "name": "mailtrap-managing-contacts",
     "description": "Manage Mailtrap contacts, lists, segments, custom fields, imports, CRM syncs, and campaign audiences through the UI or API.",
-    "risk": "safe",
+    "risk": "critical",
     "source": "community",
     "date_added": "2026-06-19",
     "plugin": {
@@ -20759,7 +20770,7 @@
     "category": "uncategorized",
     "name": "mailtrap-sending-emails",
     "description": "Configure or troubleshoot Mailtrap live email sending with Email API, SMTP, transactional streams, bulk streams, or batches.",
-    "risk": "safe",
+    "risk": "critical",
     "source": "community",
     "date_added": "2026-06-19",
     "plugin": {
@@ -20781,7 +20792,7 @@
     "category": "uncategorized",
     "name": "mailtrap-setting-up-sending-domain",
     "description": "Add or verify a Mailtrap sending domain, troubleshoot DNS propagation, publish SPF/DKIM/DMARC records, and complete compliance.",
-    "risk": "safe",
+    "risk": "critical",
     "source": "community",
     "date_added": "2026-06-19",
     "plugin": {
@@ -28346,20 +28357,22 @@
     "category": "uncategorized",
     "name": "screenstudio-alt",
     "description": "Open-source headless Screen Studio alternative: auto speed-up of idle, auto-zoom on click clusters, keystroke overlay chips, smoothed synthetic cursor, and 9:16 vertical export that follows the action — post-production for screen recordings from the CLI.",
-    "risk": "safe",
+    "risk": "critical",
     "source": "community",
     "date_added": "2026-06-16",
     "plugin": {
       "targets": {
-        "codex": "supported",
-        "claude": "supported"
+        "codex": "blocked",
+        "claude": "blocked"
       },
       "setup": {
-        "type": "none",
-        "summary": "",
-        "docs": null
+        "type": "manual",
+        "summary": "Screen/input capture requires sensitive local permissions; keep out of plugin-safe bundles.",
+        "docs": "SKILL.md"
       },
-      "reasons": []
+      "reasons": [
+        "explicit_target_restriction"
+      ]
     }
   },
   {
