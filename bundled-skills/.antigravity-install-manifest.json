@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-06-21T02:30:50.258Z",
+  "updatedAt": "2026-06-22T02:35:01.240Z",
   "entries": [
     "00-andruia-consultant",
     "007",
@@ -24,6 +24,7 @@
     "advogado-criminal",
     "advogado-especialista",
     "aegisops-ai",
+    "agent-creator",
     "agent-evaluation",
     "agent-framework-azure-ai-py",
     "agent-manager-skill",
@@ -155,6 +156,7 @@
     "aws-serverless",
     "aws-skills",
     "awt-e2e-testing",
+    "ax-extract-workflow",
     "axiom",
     "azd-deployment",
     "azure-ai-agents-persistent-dotnet",
@@ -1252,6 +1254,7 @@
     "reference-builder",
     "referral-program",
     "rehabilitation-analyzer",
+    "remote-gpu-trainer",
     "remotion",
     "remotion-best-practices",
     "render-automation",
