@@ -46,6 +46,23 @@ EXCLUDE_EXTENSIONS = {
     ".pyc", ".pyo", ".db", ".sqlite", ".sqlite3",
     ".log", ".tmp", ".bak",
 }
+SAFE_ARCHIVE_NAME_RE = re.compile(r"^[a-z0-9][a-z0-9-]*[a-z0-9]$|^[a-z0-9]$")
+
+
+def resolve_existing_dir(path) -> Path:
+    """Resolve a user-provided directory and require it to exist."""
+    resolved = Path(path).expanduser().resolve()
+    if not resolved.is_dir():
+        raise ValueError(f"Directory not found: {resolved}")
+    return resolved
+
+
+def resolve_output_dir(path) -> Path:
+    """Resolve a user-provided output directory."""
+    resolved = Path(path).expanduser().resolve()
+    if resolved.exists() and not resolved.is_dir():
+        raise ValueError(f"Output path is not a directory: {resolved}")
+    return resolved
 
 
 # ── YAML Frontmatter Parser ───────────────────────────────────────────────
@@ -131,6 +148,12 @@ def validate_for_web(skill_dir: Path) -> dict:
 
 def should_include(file_path: Path, skill_dir: Path) -> bool:
     """Check if a file should be included in the ZIP."""
+    if file_path.is_symlink():
+        return False
+    try:
+        file_path.resolve(strict=True).relative_to(skill_dir.resolve(strict=True))
+    except (OSError, ValueError):
+        return False
     rel = file_path.relative_to(skill_dir)
 
     # Check directory exclusions
@@ -163,10 +186,10 @@ def package_skill(skill_dir: Path, output_dir: Path = None) -> dict:
               ├── references/
               └── ...
     """
-    skill_dir = Path(skill_dir).resolve()
-
-    if not skill_dir.exists():
-        return {"success": False, "error": f"Directory not found: {skill_dir}"}
+    try:
+        skill_dir = resolve_existing_dir(skill_dir)
+    except ValueError as e:
+        return {"success": False, "error": str(e)}
 
     # Validate
     validation = validate_for_web(skill_dir)
@@ -179,11 +202,16 @@ def package_skill(skill_dir: Path, output_dir: Path = None) -> dict:
 
     skill_name = validation["name"] or skill_dir.name
     skill_name_lower = skill_name.lower()
+    if not SAFE_ARCHIVE_NAME_RE.fullmatch(skill_name_lower):
+        return {"success": False, "error": f"Unsafe archive skill name: {skill_name}"}
 
     # Determine output path
     if output_dir is None:
         output_dir = DEFAULT_OUTPUT
-    output_dir = Path(output_dir).resolve()
+    try:
+        output_dir = resolve_output_dir(output_dir)
+    except ValueError as e:
+        return {"success": False, "error": str(e)}
     output_dir.mkdir(parents=True, exist_ok=True)
 
     zip_path = output_dir / f"{skill_name_lower}.zip"
@@ -382,10 +410,10 @@ def main():
     if "--output" in args:
         idx = args.index("--output")
         if idx + 1 < len(args):
-            output_dir = Path(args[idx + 1])
+            output_dir = resolve_output_dir(args[idx + 1])
 
     if do_verify:
-        result = verify_zips(Path(output_dir) if output_dir else None)
+        result = verify_zips(output_dir if output_dir else None)
         print(json.dumps(result, indent=2, ensure_ascii=False))
         sys.exit(0 if result["invalid"] == 0 else 1)
 
@@ -404,7 +432,7 @@ def main():
         sys.exit(1)
 
     if source:
-        result = package_skill(Path(source), output_dir)
+        result = package_skill(source, output_dir)
         print(json.dumps(result, indent=2, ensure_ascii=False))
         sys.exit(0 if result["success"] else 1)
     elif do_all:

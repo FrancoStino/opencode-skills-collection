@@ -33,7 +33,12 @@ API = "/api/video-deepdives"
 FM_RE = re.compile(r"^---\n(.*?)\n---\n?(.*)$", re.DOTALL)
 SAFE_SLUG_RE = re.compile(r"^[A-Za-z0-9_-]+$")
 SAFE_MEDIA_RE = re.compile(r"^[A-Za-z0-9_.-]+$")
+SAFE_PATH_PART_RE = re.compile(r"^[A-Za-z0-9_.-]+$")
 SAFE_CTYPE_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9!#$&^_.+-]*/[A-Za-z0-9][A-Za-z0-9!#$&^_.+-]*(?:; charset=[A-Za-z0-9._-]+)?$")
+LOCAL_ORIGINS = {
+    "http://127.0.0.1:8000": "http://127.0.0.1:8000",
+    "http://localhost:8000": "http://localhost:8000",
+}
 
 
 def split_frontmatter(text):
@@ -52,7 +57,13 @@ def dump_file(meta, body):
 
 def library_path(lib, *parts):
     root = Path(lib).resolve()
-    candidate = root.joinpath(*parts).resolve()
+    candidate = root
+    for part in parts:
+        value = str(part)
+        if not SAFE_PATH_PART_RE.fullmatch(value) or value in {".", ".."}:
+            return None
+        candidate = candidate / value
+    candidate = candidate.resolve()
     try:
         candidate.relative_to(root)
     except ValueError:
@@ -60,14 +71,38 @@ def library_path(lib, *parts):
     return candidate
 
 
+def media_path(lib, filename):
+    if not SAFE_MEDIA_RE.fullmatch(filename or ""):
+        return None
+    media_dir = library_path(lib, "_media")
+    if not media_dir or not media_dir.is_dir():
+        return None
+    for path in media_dir.iterdir():
+        if path.is_file() and path.name == filename:
+            return path
+    return None
+
+
+def item_path(lib, slug):
+    if not SAFE_SLUG_RE.fullmatch(slug or ""):
+        return None
+    target = slug + ".md"
+    for path in Path(lib).resolve().iterdir():
+        if path.is_file() and path.name == target:
+            return path
+    return None
+
+
 def safe_content_type(ctype):
     return ctype if isinstance(ctype, str) and SAFE_CTYPE_RE.match(ctype) else "application/octet-stream"
 
 
+def safe_local_origin(origin):
+    return LOCAL_ORIGINS.get(origin or "")
+
+
 def load_item(lib, slug):
-    if not SAFE_SLUG_RE.match(slug):
-        return None
-    path = library_path(lib, slug + ".md")
+    path = item_path(lib, slug)
     if not path or not path.is_file():
         return None
     meta, body = split_frontmatter(path.read_text(encoding="utf-8"))
@@ -110,9 +145,12 @@ class Handler(BaseHTTPRequestHandler):
         self.send_response(code)
         self.send_header("Content-Type", ctype)
         self.send_header("Content-Length", str(len(body)))
-        self.send_header("Access-Control-Allow-Origin", "*")
         self.send_header("Access-Control-Allow-Methods", "GET, OPTIONS")
         self.send_header("Access-Control-Allow-Headers", "Content-Type, X-Video-Library-Token")
+        origin = safe_local_origin(self.headers.get("Origin"))
+        if origin:
+            self.send_header("Access-Control-Allow-Origin", origin)
+            self.send_header("Vary", "Origin")
         self.end_headers()
         if self.command != "HEAD":
             self.wfile.write(body)
@@ -134,9 +172,9 @@ class Handler(BaseHTTPRequestHandler):
 
         if path.startswith(API + "/_media/"):
             fn = posixpath.basename(path)  # strip any traversal
-            if not SAFE_MEDIA_RE.match(fn):
+            if not SAFE_MEDIA_RE.fullmatch(fn):
                 return self._send(400, {"error": "bad media name"})
-            fp = library_path(self.lib, "_media", fn)
+            fp = media_path(self.lib, fn)
             if not fp or not fp.is_file():
                 return self._send(404, {"error": "no such media"})
             ctype = mimetypes.guess_type(str(fp))[0] or "application/octet-stream"
@@ -186,9 +224,12 @@ def self_test():
         (root / "_media" / "video_1-slide-01.jpg").write_bytes(b"x")
         assert load_item(str(root), "video_1")
         assert load_item(str(root), "../secret") is None
-        assert library_path(str(root), "_media", "../video_1.md") == root.resolve() / "video_1.md"
+        assert library_path(str(root), "_media", "../video_1.md") is None
         assert safe_content_type("text/html; charset=utf-8") == "text/html; charset=utf-8"
         assert safe_content_type("text/html\r\nX-Bad: 1") == "application/octet-stream"
+        assert safe_local_origin("http://localhost:8000") == LOCAL_ORIGINS["http://localhost:8000"]
+        assert safe_local_origin("http://localhost:3000") is None
+        assert safe_local_origin("http://localhost:8000\r\nX-Bad: 1") is None
 
 
 def main():
