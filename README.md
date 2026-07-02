@@ -64,6 +64,7 @@ The full skill content is only injected into context when the AI actually needs 
 
 After the first startup, your `~/.config/opencode/` directory looks like this:
 
+```
 ~/.config/opencode/
 ├── opencode.json
 ├── skill-filter.jsonc                ← optional: risk filter + patcher config
@@ -77,6 +78,7 @@ After the first startup, your `~/.config/opencode/` directory looks like this:
     │   │   └── SKILL.md
     │   └── ...
     └── ...
+```
 
 ---
 
