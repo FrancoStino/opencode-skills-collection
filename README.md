@@ -222,10 +222,6 @@ module resolution.
 
 ---
 
-The old `opencode-skills-antigravity` package on npm is deprecated and re-exports this one automatically.
-
----
-
 ## Contributing
 
 Issues and pull requests are welcome
