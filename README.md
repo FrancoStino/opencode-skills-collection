@@ -14,7 +14,7 @@
 
 # OpenCode Skills Collection
 
-> An [OpenCode CLI](https://opencode.ai/) plugin that bundles and auto-syncs a universal collection of AI skills —
+> An [OpenCode](https://opencode.ai/) plugin that bundles and auto-syncs a universal collection of AI skills —
 > delivered instantly, with zero network latency at startup.
 
 ---
