@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-07-02T02:02:47.438Z",
+  "updatedAt": "2026-07-03T01:46:50.032Z",
   "entries": [
     "00-andruia-consultant",
     "007",
@@ -321,6 +321,7 @@
     "bdistill-behavioral-xray",
     "bdistill-knowledge-extraction",
     "beautiful-prose",
+    "before-you-build",
     "behavioral-modes",
     "bevy-ecs-expert",
     "bilig-workpaper",
@@ -653,6 +654,7 @@
     "differential-review",
     "discord-automation",
     "discord-bot-architect",
+    "dispatch",
     "dispatching-parallel-agents",
     "distributed-debugging-debug-trace",
     "distributed-tracing",
@@ -1128,6 +1130,7 @@
     "mcp-builder",
     "mcp-builder-ms",
     "mcp-tool-developer",
+    "mdpr-skill",
     "memory-forensics",
     "memory-safety-patterns",
     "memory-systems",
