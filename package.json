@@ -33,6 +33,10 @@
   ],
   "author": "Davide Ladisa <info@davideladisa.it>",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
   "dependencies": {
     "@opencode-ai/plugin": "^1.15.5",
     "strip-json-comments": "^5.0.3"
