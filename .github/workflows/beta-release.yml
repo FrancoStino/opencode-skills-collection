@@ -82,7 +82,7 @@ jobs:
           changelogFilePath: BETA_CHANGELOG.md
 
       - name: Commit BETA_CHANGELOG.md
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v7
         with:
           branch: develop
           commit_message: 'docs: update BETA_CHANGELOG.md for ${{ steps.version.outputs.new_version }} [skip ci]'

@@ -89,7 +89,7 @@ jobs:
           fromTag: ${{ steps.bump.outputs.new_version }}
           toTag: ${{ steps.bump.outputs.previous_stable }}
       - name: Commit CHANGELOG.md
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v7
         with:
           branch: main
           commit_message: 'docs: update CHANGELOG.md for ${{ steps.bump.outputs.new_version }} [skip ci]'
