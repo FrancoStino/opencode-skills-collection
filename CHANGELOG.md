@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v3.1.16] - 2026-07-07
+### :sparkles: New Features
+- [`2dfe4d1`](https://github.com/FrancoStino/opencode-skills-collection/commit/2dfe4d139e45f6a2e396d5b3caf517a1324d04bb) - **sync-skills**: update path for bundled skills to use GITHUB_WORKSPACE *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+- [`bfbfdf2`](https://github.com/FrancoStino/opencode-skills-collection/commit/bfbfdf28f1823cb5ed78f079c1881d7e561a12a3) - **dependabot**: add GitHub Actions package ecosystem to dependabot configuration *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+
+### :wrench: Chores
+- [`168343c`](https://github.com/FrancoStino/opencode-skills-collection/commit/168343c2463d5ff7b3c52a8ab6ac3122b0669ccb) - sync skills and bump version to v3.1.16 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
 ## [v3.1.15] - 2026-07-04
 ### :wrench: Chores
 - [`9b09844`](https://github.com/FrancoStino/opencode-skills-collection/commit/9b0984481772b234bbd3f32cd76c50a1beef0017) - sync skills and bump version to v3.1.15 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
@@ -3550,3 +3559,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v3.1.13]: https://github.com/FrancoStino/opencode-skills-collection/compare/v3.1.12...v3.1.13
 [v3.1.14]: https://github.com/FrancoStino/opencode-skills-collection/compare/v3.1.13...v3.1.14
 [v3.1.15]: https://github.com/FrancoStino/opencode-skills-collection/compare/v3.1.14...v3.1.15
+[v3.1.16]: https://github.com/FrancoStino/opencode-skills-collection/compare/v3.1.15...v3.1.16
