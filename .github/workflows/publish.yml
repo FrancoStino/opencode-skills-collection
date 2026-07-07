@@ -50,6 +50,19 @@ jobs:
             echo "skip=false" >> $GITHUB_OUTPUT
           fi
 
+      # setup-node@v6 (v6.4.0) still exports a dummy NODE_AUTH_TOKEN that
+      # overrides OIDC. Strip the _authToken from .npmrc so npm falls through
+      # to OIDC trusted publisher auth. Remove this step once setup-node v6.5+
+      # ships the fix (PR #1558).
+      - name: Strip dummy auth token for OIDC
+        if: steps.version_check.outputs.skip != 'true'
+        run: |
+          NPMRC="${NPM_CONFIG_USERCONFIG:-$HOME/.npmrc}"
+          if [ -f "$NPMRC" ]; then
+            sed -i '/_authToken/d' "$NPMRC"
+            echo "Stripped _authToken from $NPMRC"
+          fi
+
       - name: Publish to npm
         if: steps.version_check.outputs.skip != 'true'
         run: npm publish --provenance --access public
