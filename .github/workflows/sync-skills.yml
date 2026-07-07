@@ -26,7 +26,7 @@ jobs:
       - name: Sync skills
         run: |
           rm -rf bundled-skills
-          npx --yes antigravity-awesome-skills --path "bundled-skills"
+          npx --yes antigravity-awesome-skills --path "$GITHUB_WORKSPACE/bundled-skills"
       - name: Download skills_index.json from upstream
         run: |
           curl -fsSL \
