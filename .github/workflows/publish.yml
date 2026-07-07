@@ -25,9 +25,9 @@ jobs:
           fi
 
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
-          ref: ${{ github.event.workflow_run.head_branch || github.ref }}
+          ref: main
           persist-credentials: false
 
       - name: Setup Node.js

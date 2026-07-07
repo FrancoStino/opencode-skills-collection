@@ -22,7 +22,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
@@ -86,7 +86,7 @@ jobs:
           changelogFilePath: BETA_CHANGELOG.md
 
       - name: Commit BETA_CHANGELOG.md
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v7
         with:
           branch: develop
           commit_message: 'docs: update BETA_CHANGELOG.md for ${{ steps.version.outputs.new_version }} [skip ci]'
@@ -108,7 +108,7 @@ jobs:
         run: npm publish --tag beta --provenance --access public
 
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ steps.version.outputs.new_version }}
           name: ${{ steps.version.outputs.new_version }}

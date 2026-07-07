@@ -84,14 +84,14 @@ jobs:
           toTag: ${{ steps.bump.outputs.previous_stable }}
       - name: Commit CHANGELOG.md
         if: steps.check_changes.outputs.changes == 'true' && github.ref == 'refs/heads/main'
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v7
         with:
           branch: main
           commit_message: 'docs: update CHANGELOG.md for ${{ steps.bump.outputs.new_version }} [skip ci]'
           file_pattern: CHANGELOG.md
       - name: Create GitHub Release
         if: steps.check_changes.outputs.changes == 'true' && github.ref == 'refs/heads/main'
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           token: ${{ secrets.WORKFLOW_TOKEN }}
           tag_name: ${{ steps.bump.outputs.new_version }}
