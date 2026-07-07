@@ -95,7 +95,7 @@ jobs:
           commit_message: 'docs: update CHANGELOG.md for ${{ steps.bump.outputs.new_version }} [skip ci]'
           file_pattern: CHANGELOG.md
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           token: ${{ secrets.WORKFLOW_TOKEN }}
           tag_name: ${{ steps.bump.outputs.new_version }}
