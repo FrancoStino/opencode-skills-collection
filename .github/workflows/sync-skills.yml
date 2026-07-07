@@ -10,13 +10,14 @@ jobs:
       contents: write
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@v4
         with:
           token: ${{ secrets.WORKFLOW_TOKEN }}
           fetch-depth: 0
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
+          node-version: '24'
           cache: 'npm'
       - name: Configure git
         run: |
@@ -31,7 +32,8 @@ jobs:
           curl -fsSL \
             "https://raw.githubusercontent.com/sickn33/antigravity-awesome-skills/main/skills_index.json" \
             -o skills_index.json
-          echo "✅ skills_index.json downloaded ($(wc -c < skills_index.json) bytes)"
+          node -e "JSON.parse(require('fs').readFileSync('skills_index.json','utf8'))"
+          echo "✅ skills_index.json valid ($(wc -c < skills_index.json) bytes)"
       - name: Install dependencies and build
         run: |
           npm ci

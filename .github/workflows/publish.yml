@@ -16,6 +16,14 @@ jobs:
       id-token: write
 
     steps:
+      - name: Validate source branch
+        if: github.event_name == 'workflow_run'
+        run: |
+          if [ "${{ github.event.workflow_run.head_branch }}" != "main" ]; then
+            echo "::error::Refusing to publish from non-main branch: ${{ github.event.workflow_run.head_branch }}"
+            exit 1
+          fi
+
       - name: Checkout repository
         uses: actions/checkout@v7
         with:

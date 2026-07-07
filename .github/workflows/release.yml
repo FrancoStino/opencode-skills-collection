@@ -25,6 +25,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
+          node-version: '24'
           cache: 'npm'
       - name: Configure git
         run: |
@@ -34,6 +35,8 @@ jobs:
         run: npm ci
       - name: Bump version
         id: bump
+        env:
+          VERSION_TYPE: ${{ github.event.inputs.version }}
         run: |
           CURRENT_VERSION=$(node -p "require('./package.json').version")
 
@@ -49,10 +52,10 @@ jobs:
           fi
 
           # Bump version
-          if [ "${{ github.event.inputs.version }}" = "current" ]; then
+          if [ "$VERSION_TYPE" = "current" ]; then
             NEW_VERSION="v$(node -p "require('./package.json').version")"
           else
-            NEW_VERSION=$(npm version ${{ github.event.inputs.version }} --no-git-tag-version)
+            NEW_VERSION=$(npm version "$VERSION_TYPE" --no-git-tag-version)
           fi
           echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
       - name: Commit and push

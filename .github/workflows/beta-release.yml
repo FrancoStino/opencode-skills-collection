@@ -30,6 +30,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
+          node-version: '24'
           registry-url: 'https://registry.npmjs.org'
           cache: 'npm'
 
@@ -64,6 +65,9 @@ jobs:
           
           echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
 
+      - name: Build
+        run: npm run build
+
       - name: Commit version bump
         env:
           NEW_VERSION: ${{ steps.version.outputs.new_version }}
@@ -88,13 +92,20 @@ jobs:
           commit_message: 'docs: update BETA_CHANGELOG.md for ${{ steps.version.outputs.new_version }} [skip ci]'
           file_pattern: BETA_CHANGELOG.md
 
-      - name: Build
-        run: npm run build
+      # setup-node@v6 (v6.4.0) still exports a dummy NODE_AUTH_TOKEN that
+      # overrides OIDC. Strip the _authToken from .npmrc so npm falls through
+      # to OIDC trusted publisher auth. Remove this step once setup-node v6.5+
+      # ships the fix (PR #1558).
+      - name: Strip dummy auth token for OIDC
+        run: |
+          NPMRC="${NPM_CONFIG_USERCONFIG:-$HOME/.npmrc}"
+          if [ -f "$NPMRC" ]; then
+            sed -i '/_authToken/d' "$NPMRC"
+            echo "Stripped _authToken from $NPMRC"
+          fi
 
       - name: Publish to npm (beta tag)
         run: npm publish --tag beta --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v3
