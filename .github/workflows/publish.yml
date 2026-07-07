@@ -2,8 +2,8 @@ name: Publish to npm
 
 on:
   workflow_run:
-    workflows: ["Create Release", "Auto-Sync Skills"]
-    types: [completed]
+    workflows: [ "Create Release", "Auto-Sync Skills" ]
+    types: [ completed ]
   workflow_dispatch:
 
 jobs:
@@ -22,9 +22,8 @@ jobs:
           ref: ${{ github.event.workflow_run.head_branch || github.ref }}
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: '24'
           registry-url: 'https://registry.npmjs.org'
           cache: 'npm'
 
