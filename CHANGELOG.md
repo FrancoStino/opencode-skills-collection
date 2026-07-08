@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v3.1.17] - 2026-07-08
+### :wrench: Chores
+- [`2124783`](https://github.com/FrancoStino/opencode-skills-collection/commit/21247831d3ffe57a939fb3dafd85f51351690129) - add .gitignore for magic-context and clean up publish.yml *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+- [`3a77f51`](https://github.com/FrancoStino/opencode-skills-collection/commit/3a77f5157495c337e9d6a61f3b2a3b04c1a6fe7c) - sync skills and bump version to v3.1.17 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
 ## [v3.1.16] - 2026-07-07
 ### :sparkles: New Features
 - [`2dfe4d1`](https://github.com/FrancoStino/opencode-skills-collection/commit/2dfe4d139e45f6a2e396d5b3caf517a1324d04bb) - **sync-skills**: update path for bundled skills to use GITHUB_WORKSPACE *(commit by [@FrancoStino](https://github.com/FrancoStino))*
@@ -3560,3 +3566,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v3.1.14]: https://github.com/FrancoStino/opencode-skills-collection/compare/v3.1.13...v3.1.14
 [v3.1.15]: https://github.com/FrancoStino/opencode-skills-collection/compare/v3.1.14...v3.1.15
 [v3.1.16]: https://github.com/FrancoStino/opencode-skills-collection/compare/v3.1.15...v3.1.16
+[v3.1.17]: https://github.com/FrancoStino/opencode-skills-collection/compare/v3.1.16...v3.1.17
