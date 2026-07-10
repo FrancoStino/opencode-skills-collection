@@ -255,8 +255,8 @@ To use the latest beta version, update your `~/.config/opencode/opencode.json`:
 
 <a href="https://www.star-history.com/?repos=FrancoStino%2Fopencode-skills-collection&type=date&legend=top-left">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=FrancoStino/opencode-skills-collection&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=FrancoStino/opencode-skills-collection&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=FrancoStino/opencode-skills-collection&type=date&legend=top-left" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=FrancoStino/opencode-skills-collection&type=date&theme=dark&legend=top-left&sealed_token=QyOR2eOD47MzxIAhnsjhkG1p25eQjMkEF7T6a0A6tDSVh3SQZUKZ7v5G-ZdgxEknAqANbBQ2qqK8EjY75dMWcY2Av-LYGeTE0SJjXUZC1UILMIzSWP2clQ" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=FrancoStino/opencode-skills-collection&type=date&legend=top-left&sealed_token=QyOR2eOD47MzxIAhnsjhkG1p25eQjMkEF7T6a0A6tDSVh3SQZUKZ7v5G-ZdgxEknAqANbBQ2qqK8EjY75dMWcY2Av-LYGeTE0SJjXUZC1UILMIzSWP2clQ" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=FrancoStino/opencode-skills-collection&type=date&legend=top-left&sealed_token=QyOR2eOD47MzxIAhnsjhkG1p25eQjMkEF7T6a0A6tDSVh3SQZUKZ7v5G-ZdgxEknAqANbBQ2qqK8EjY75dMWcY2Av-LYGeTE0SJjXUZC1UILMIzSWP2clQ" />
  </picture>
 </a>
