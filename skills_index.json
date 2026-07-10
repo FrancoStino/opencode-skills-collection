@@ -129,7 +129,9 @@
         "docs": "SKILL.md"
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "2slides/slides-generation-2slides-skills"
   },
   {
     "id": "3d-games",
@@ -173,7 +175,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "3d-web-experience",
@@ -239,7 +242,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "coreyhaines31/marketingskills",
+    "license": "MIT",
+    "license_source": "https://github.com/coreyhaines31/marketingskills/blob/main/LICENSE"
   },
   {
     "id": "acceptance-orchestrator",
@@ -371,7 +378,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "maxbaluev/accreted-intelligence",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/maxbaluev/accreted-intelligence/blob/main/LICENSE"
   },
   {
     "id": "accint-frames",
@@ -393,7 +404,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "maxbaluev/accreted-intelligence",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/maxbaluev/accreted-intelligence/blob/main/LICENSE"
   },
   {
     "id": "accint-solve",
@@ -415,7 +430,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "maxbaluev/accreted-intelligence",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/maxbaluev/accreted-intelligence/blob/main/LICENSE"
   },
   {
     "id": "active-directory-attacks",
@@ -503,7 +522,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "expo/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/expo/skills/blob/main/LICENSE"
   },
   {
     "id": "address-github-comments",
@@ -749,7 +772,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "webzler/agentMemory",
+    "license": "MIT",
+    "license_source": "https://github.com/webzler/agentMemory/blob/main/LICENSE"
   },
   {
     "id": "agent-memory-mcp",
@@ -881,7 +908,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "davidondrej/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
   },
   {
     "id": "agent-squad",
@@ -890,7 +921,7 @@
     "name": "agent-squad",
     "description": "Main agent orchestrator that coordinates a specialized squad of agents",
     "risk": "unknown",
-    "source": "unknown",
+    "source": "community",
     "date_added": null,
     "plugin": {
       "targets": {
@@ -1103,7 +1134,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "luoyuctl/agenttrace",
+    "license": "MIT",
+    "license_source": "https://github.com/luoyuctl/agenttrace/blob/master/LICENSE"
   },
   {
     "id": "ai-agent-development",
@@ -1191,7 +1226,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community"
   },
   {
     "id": "ai-engineer",
@@ -1325,7 +1361,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "ai-product",
@@ -1589,7 +1626,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "jonathimer/devmarketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/jonathimer/devmarketing-skills/blob/main/LICENSE"
   },
   {
     "id": "amazon-alexa",
@@ -1655,7 +1696,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "coreyhaines31/marketingskills",
+    "license": "MIT",
+    "license_source": "https://github.com/coreyhaines31/marketingskills/blob/main/LICENSE"
   },
   {
     "id": "analytics-product",
@@ -1745,7 +1790,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "multica-ai/andrej-karpathy-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/multica-ai/andrej-karpathy-skills/blob/main/skills/karpathy-guidelines/SKILL.md"
   },
   {
     "id": "android-cli",
@@ -1769,7 +1818,8 @@
       "reasons": [
         "explicit_target_restriction"
       ]
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "android-dev",
@@ -1835,7 +1885,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "android_ui_verification",
@@ -2011,7 +2062,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "ejentum/ejentum-mcp",
+    "license": "MIT",
+    "license_source": "https://github.com/ejentum/ejentum-mcp/blob/main/LICENSE"
   },
   {
     "id": "anti-reversing-techniques",
@@ -2055,7 +2110,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "davidondrej/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
   },
   {
     "id": "anti-sycophancy",
@@ -2077,7 +2136,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "mskadu/opencode-agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/mskadu/opencode-agent-skills/blob/main/LICENSE"
   },
   {
     "id": "antigravity-agent-manager",
@@ -2101,7 +2164,8 @@
       "reasons": [
         "absolute_host_path"
       ]
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "antigravity-design-expert",
@@ -2189,7 +2253,10 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_repo": "aomi-labs/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/aomi-labs/skills/blob/main/LICENSE"
   },
   {
     "id": "api-analyzer",
@@ -2211,7 +2278,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "LambdaTest/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/LambdaTest/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "api-and-interface-design",
@@ -2233,7 +2304,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "addyosmani/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/addyosmani/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "api-design-principles",
@@ -2277,7 +2352,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "LambdaTest/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/LambdaTest/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "api-documentation",
@@ -2409,7 +2488,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "LambdaTest/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/LambdaTest/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "api-onboarding",
@@ -2431,7 +2514,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "jonathimer/devmarketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/jonathimer/devmarketing-skills/blob/main/LICENSE"
   },
   {
     "id": "api-patterns",
@@ -2475,7 +2562,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "LambdaTest/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/LambdaTest/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "api-security-best-practices",
@@ -2917,7 +3008,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "LambdaTest/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/LambdaTest/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "apple-notes-search",
@@ -2942,7 +3037,11 @@
         "absolute_host_path",
         "explicit_target_restriction"
       ]
-    }
+    },
+    "source_type": "community",
+    "source_repo": "connerkward/mcp-apple-notes",
+    "license": "MIT",
+    "license_source": "https://github.com/connerkward/mcp-apple-notes/blob/main/LICENSE"
   },
   {
     "id": "application-performance-performance-optimization",
@@ -2986,7 +3085,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "microsoft/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/microsoft/skills/blob/main/LICENSE"
   },
   {
     "id": "architect-review",
@@ -3140,7 +3243,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "Genefold/arrowspace-skills",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/Genefold/arrowspace-skills/blob/main/LICENSE"
   },
   {
     "id": "article-illustrations",
@@ -3162,7 +3269,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "vipin-si/article-illustrations",
+    "license": "MIT",
+    "license_source": "https://github.com/vipin-si/article-illustrations/blob/main/LICENSE"
   },
   {
     "id": "asana-automation",
@@ -3187,6 +3298,30 @@
     }
   },
   {
+    "id": "ask-copilot",
+    "path": "skills/ask-copilot",
+    "category": "development",
+    "name": "ask-copilot",
+    "description": "Use GitHub Copilot CLI in non-interactive mode to ask questions, review code, or generate snippets without manual interaction.",
+    "risk": "critical",
+    "source": "self",
+    "date_added": "2026-07-08",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "self",
+    "source_repo": "cshara1/antigravity-awesome-skills"
+  },
+  {
     "id": "ask-matt",
     "path": "skills/ask-matt",
     "category": "productivity",
@@ -3206,7 +3341,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "mattpocock/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE"
   },
   {
     "id": "ask-questions-if-underspecified",
@@ -3272,7 +3411,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "license": "BSD-3-Clause license"
   },
   {
     "id": "async-python-patterns",
@@ -3318,7 +3458,11 @@
       "reasons": [
         "explicit_target_restriction"
       ]
-    }
+    },
+    "source_type": "community",
+    "source_repo": "wede-wx/atlas",
+    "license": "MIT",
+    "license_source": "https://github.com/wede-wx/atlas/blob/main/LICENSE"
   },
   {
     "id": "attack-tree-construction",
@@ -3454,7 +3598,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "auth-implementation-patterns",
@@ -3498,7 +3643,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "monte-carlo-data/mc-agent-toolkit",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/monte-carlo-data/mc-agent-toolkit/blob/main/LICENSE"
   },
   {
     "id": "autonomous-agent-patterns",
@@ -3674,7 +3823,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "zxkane/aws-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/zxkane/aws-skills/blob/main/LICENSE"
   },
   {
     "id": "aws-cdk-development",
@@ -3696,7 +3849,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "zxkane/aws-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/zxkane/aws-skills/blob/main/LICENSE"
   },
   {
     "id": "aws-compliance-checker",
@@ -3762,7 +3919,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "zxkane/aws-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/zxkane/aws-skills/blob/main/LICENSE"
   },
   {
     "id": "aws-cost-optimizer",
@@ -3828,7 +3989,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "zxkane/aws-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/zxkane/aws-skills/blob/main/LICENSE"
   },
   {
     "id": "aws-penetration-testing",
@@ -3938,7 +4103,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "zxkane/aws-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/zxkane/aws-skills/blob/main/LICENSE"
   },
   {
     "id": "aws-skills",
@@ -3982,7 +4151,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "zxkane/aws-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/zxkane/aws-skills/blob/main/LICENSE"
   },
   {
     "id": "awt-e2e-testing",
@@ -4026,7 +4199,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "Necmttn/ax",
+    "license": "AGPL-3.0-only",
+    "license_source": "https://github.com/Necmttn/ax/blob/main/LICENSE"
   },
   {
     "id": "axiom",
@@ -4312,7 +4489,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "microsoft/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/microsoft/skills/blob/main/LICENSE"
   },
   {
     "id": "azure-ai-ml-py",
@@ -6402,7 +6583,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "microsoft/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/microsoft/skills/blob/main/LICENSE"
   },
   {
     "id": "azure-servicebus-ts",
@@ -6644,7 +6829,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "microsoft/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/microsoft/skills/blob/main/LICENSE"
   },
   {
     "id": "azure-storage-queue-ts",
@@ -6886,7 +7075,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "ibelick/ui-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/ibelick/ui-skills/blob/main/LICENSE"
   },
   {
     "id": "bash",
@@ -7150,7 +7343,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "bin1874/before-you-build-skill",
+    "license": "MIT",
+    "license_source": "https://github.com/bin1874/before-you-build-skill/blob/main/LICENSE"
   },
   {
     "id": "behavioral-modes",
@@ -7194,7 +7391,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "bevy-ecs-expert",
@@ -7328,7 +7526,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "license": "Unknown"
   },
   {
     "id": "bitbucket-automation",
@@ -7486,7 +7685,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "davidondrej/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
   },
   {
     "id": "brainstorming",
@@ -7684,7 +7887,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "hyhmrright/brooks-lint",
+    "license": "MIT",
+    "license_source": "https://github.com/hyhmrright/brooks-lint/blob/main/LICENSE"
   },
   {
     "id": "brooks-debt",
@@ -7706,7 +7913,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "hyhmrright/brooks-lint",
+    "license": "MIT",
+    "license_source": "https://github.com/hyhmrright/brooks-lint/blob/main/LICENSE"
   },
   {
     "id": "brooks-harness",
@@ -7728,7 +7939,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "hyhmrright/brooks-lint",
+    "license": "MIT",
+    "license_source": "https://github.com/hyhmrright/brooks-lint/blob/main/LICENSE"
   },
   {
     "id": "brooks-lint",
@@ -7750,7 +7965,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "hyhmrright/brooks-lint",
+    "license": "MIT",
+    "license_source": "https://github.com/hyhmrright/brooks-lint/blob/main/LICENSE"
   },
   {
     "id": "brooks-review",
@@ -7772,7 +7991,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "hyhmrright/brooks-lint",
+    "license": "MIT",
+    "license_source": "https://github.com/hyhmrright/brooks-lint/blob/main/LICENSE"
   },
   {
     "id": "brooks-sweep",
@@ -7794,7 +8017,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "hyhmrright/brooks-lint",
+    "license": "MIT",
+    "license_source": "https://github.com/hyhmrright/brooks-lint/blob/main/LICENSE"
   },
   {
     "id": "brooks-test",
@@ -7816,7 +8043,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "hyhmrright/brooks-lint",
+    "license": "MIT",
+    "license_source": "https://github.com/hyhmrright/brooks-lint/blob/main/LICENSE"
   },
   {
     "id": "browser-automation",
@@ -7882,7 +8113,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "davidondrej/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
   },
   {
     "id": "browser-testing-with-devtools",
@@ -7904,7 +8139,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "addyosmani/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/addyosmani/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "brutalism",
@@ -7926,7 +8165,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "brutalist-typography",
@@ -7948,7 +8188,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "bug-hunt-swarm",
@@ -7970,7 +8211,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "Dimillian/Skills",
+    "license": "MIT",
+    "license_source": "https://github.com/Dimillian/Skills/blob/main/LICENSE"
   },
   {
     "id": "bug-hunter",
@@ -8058,7 +8303,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "expo/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/expo/skills/blob/main/LICENSE"
   },
   {
     "id": "bulletmind",
@@ -8124,7 +8373,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "mycelos-ai/bumblebee-skill",
+    "license": "MIT",
+    "license_source": "https://github.com/mycelos-ai/bumblebee-skill/blob/main/LICENSE"
   },
   {
     "id": "bun-development",
@@ -8234,7 +8487,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "BuyWhere/buywhere-mcp",
+    "license": "Not declared",
+    "license_source": "https://github.com/BuyWhere/buywhere-mcp"
   },
   {
     "id": "c",
@@ -8520,7 +8777,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "carrier-relationship-management",
@@ -8784,7 +9042,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "jonathimer/devmarketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/jonathimer/devmarketing-skills/blob/main/LICENSE"
   },
   {
     "id": "chat-widget",
@@ -8872,7 +9134,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "addyosmani/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/addyosmani/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "cicd-automation-workflow-automate",
@@ -8938,7 +9204,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "license": "Apache-2.0 license"
   },
   {
     "id": "citation-management",
@@ -8960,7 +9227,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "license": "MIT License"
   },
   {
     "id": "ckw-design",
@@ -8982,7 +9250,10 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "connerkward/ckw-design-skill",
+    "license": "MIT"
   },
   {
     "id": "claimable-postgres",
@@ -9004,7 +9275,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "neondatabase/agent-skills",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/neondatabase/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "clarity-gate",
@@ -9026,7 +9301,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "license": "CC-BY-4.0"
   },
   {
     "id": "clarvia-aeo-check",
@@ -9092,7 +9368,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "license": "Complete terms in LICENSE.txt"
   },
   {
     "id": "claude-code-expert",
@@ -9320,7 +9597,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "clean-code",
@@ -9562,7 +9840,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "davidondrej/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
   },
   {
     "id": "co-marketing",
@@ -9584,7 +9866,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "coreyhaines31/marketingskills",
+    "license": "MIT",
+    "license_source": "https://github.com/coreyhaines31/marketingskills/blob/main/LICENSE"
   },
   {
     "id": "coda-automation",
@@ -9782,7 +10068,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "addyosmani/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/addyosmani/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "code-review-checklist",
@@ -9870,7 +10160,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "ChrisWiles/claude-code-showcase",
+    "license": "MIT",
+    "license_source": "https://github.com/ChrisWiles/claude-code-showcase/blob/main/LICENSE"
   },
   {
     "id": "code-showcase-react-ui-patterns",
@@ -9892,7 +10186,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "ChrisWiles/claude-code-showcase",
+    "license": "MIT",
+    "license_source": "https://github.com/ChrisWiles/claude-code-showcase/blob/main/LICENSE"
   },
   {
     "id": "code-showcase-systematic-debugging",
@@ -9914,7 +10212,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "ChrisWiles/claude-code-showcase",
+    "license": "MIT",
+    "license_source": "https://github.com/ChrisWiles/claude-code-showcase/blob/main/LICENSE"
   },
   {
     "id": "code-showcase-testing-patterns",
@@ -9936,7 +10238,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "ChrisWiles/claude-code-showcase",
+    "license": "MIT",
+    "license_source": "https://github.com/ChrisWiles/claude-code-showcase/blob/main/LICENSE"
   },
   {
     "id": "code-simplification",
@@ -9958,7 +10264,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "addyosmani/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/addyosmani/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "code-simplifier",
@@ -10090,7 +10400,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "mattpocock/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE"
   },
   {
     "id": "codebase-to-wordpress-converter",
@@ -10136,7 +10450,11 @@
       "reasons": [
         "explicit_target_restriction"
       ]
-    }
+    },
+    "source_type": "community",
+    "source_repo": "baskduf/FableCodex",
+    "license": "AGPL-3.0-or-later",
+    "license_source": "https://github.com/baskduf/FableCodex/blob/main/LICENSE"
   },
   {
     "id": "codex-profiles",
@@ -10158,7 +10476,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "Ducksss/codex-profiles",
+    "license": "MIT",
+    "license_source": "https://github.com/Ducksss/codex-profiles/blob/main/LICENSE"
   },
   {
     "id": "codex-review",
@@ -10204,7 +10526,11 @@
       "reasons": [
         "target_specific_home_path"
       ]
-    }
+    },
+    "source_type": "community",
+    "source_repo": "davidondrej/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
   },
   {
     "id": "cold-email",
@@ -10248,7 +10574,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "comfyui-gateway",
@@ -10292,7 +10619,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "commit",
@@ -10336,7 +10664,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "jonathimer/devmarketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/jonathimer/devmarketing-skills/blob/main/LICENSE"
   },
   {
     "id": "competitive-landscape",
@@ -10404,7 +10736,11 @@
       "reasons": [
         "target_specific_home_path"
       ]
-    }
+    },
+    "source_type": "official",
+    "source_repo": "browserbase/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/browserbase/skills/blob/main/skills/competitor-analysis/LICENSE.txt"
   },
   {
     "id": "competitor-profiling",
@@ -10426,7 +10762,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "coreyhaines31/marketingskills",
+    "license": "MIT",
+    "license_source": "https://github.com/coreyhaines31/marketingskills/blob/main/LICENSE"
   },
   {
     "id": "competitor-tracking",
@@ -10448,7 +10788,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "jonathimer/devmarketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/jonathimer/devmarketing-skills/blob/main/LICENSE"
   },
   {
     "id": "complexity-cuts",
@@ -10470,7 +10814,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "morsechimwai/lemmaly",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/morsechimwai/lemmaly/blob/main/LICENSE"
   },
   {
     "id": "composition-patterns",
@@ -10998,7 +11346,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "addyosmani/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/addyosmani/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "context-fundamentals",
@@ -11066,7 +11418,9 @@
       "reasons": [
         "target_specific_home_path"
       ]
-    }
+    },
+    "source_type": "community",
+    "source_repo": "JDDavenport/context-kit"
   },
   {
     "id": "context-management-context-restore",
@@ -11594,7 +11948,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "coreyhaines31/marketingskills",
+    "license": "MIT",
+    "license_source": "https://github.com/coreyhaines31/marketingskills/blob/main/LICENSE"
   },
   {
     "id": "cron-doctor",
@@ -11616,7 +11974,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "takeaseatventure/devops-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/takeaseatventure/devops-skills/blob/main/LICENSE"
   },
   {
     "id": "crossframe",
@@ -11638,7 +12000,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "xi-kari/crossframe-skill",
+    "license": "MIT",
+    "license_source": "https://github.com/xi-kari/crossframe-skill/blob/main/LICENSE"
   },
   {
     "id": "crossframe-casebook",
@@ -11660,7 +12026,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "xi-kari/crossframe-skill",
+    "license": "MIT",
+    "license_source": "https://github.com/xi-kari/crossframe-skill/blob/main/LICENSE"
   },
   {
     "id": "crossframe-critical",
@@ -11682,7 +12052,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "xi-kari/crossframe-skill",
+    "license": "MIT",
+    "license_source": "https://github.com/xi-kari/crossframe-skill/blob/main/LICENSE"
   },
   {
     "id": "crossframe-debate",
@@ -11704,7 +12078,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "xi-kari/crossframe-skill",
+    "license": "MIT",
+    "license_source": "https://github.com/xi-kari/crossframe-skill/blob/main/LICENSE"
   },
   {
     "id": "crossframe-dialogue",
@@ -11726,7 +12104,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "xi-kari/crossframe-skill",
+    "license": "MIT",
+    "license_source": "https://github.com/xi-kari/crossframe-skill/blob/main/LICENSE"
   },
   {
     "id": "crossframe-essay",
@@ -11748,7 +12130,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "xi-kari/crossframe-skill",
+    "license": "MIT",
+    "license_source": "https://github.com/xi-kari/crossframe-skill/blob/main/LICENSE"
   },
   {
     "id": "crossframe-notebook",
@@ -11770,7 +12156,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "xi-kari/crossframe-skill",
+    "license": "MIT",
+    "license_source": "https://github.com/xi-kari/crossframe-skill/blob/main/LICENSE"
   },
   {
     "id": "crossframe-org",
@@ -11792,7 +12182,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "xi-kari/crossframe-skill",
+    "license": "MIT",
+    "license_source": "https://github.com/xi-kari/crossframe-skill/blob/main/LICENSE"
   },
   {
     "id": "crossframe-public",
@@ -11814,7 +12208,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "xi-kari/crossframe-skill",
+    "license": "MIT",
+    "license_source": "https://github.com/xi-kari/crossframe-skill/blob/main/LICENSE"
   },
   {
     "id": "crossframe-review",
@@ -11836,7 +12234,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "xi-kari/crossframe-skill",
+    "license": "MIT",
+    "license_source": "https://github.com/xi-kari/crossframe-skill/blob/main/LICENSE"
   },
   {
     "id": "crossframe-suite",
@@ -11858,7 +12260,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "xi-kari/crossframe-skill",
+    "license": "MIT",
+    "license_source": "https://github.com/xi-kari/crossframe-skill/blob/main/LICENSE"
   },
   {
     "id": "crossframe-teach",
@@ -11880,7 +12286,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "xi-kari/crossframe-skill",
+    "license": "MIT",
+    "license_source": "https://github.com/xi-kari/crossframe-skill/blob/main/LICENSE"
   },
   {
     "id": "crypto-bd-agent",
@@ -11968,7 +12378,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "LambdaTest/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/LambdaTest/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "customer-psychographic-profiler",
@@ -12012,7 +12426,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "coreyhaines31/marketingskills",
+    "license": "MIT",
+    "license_source": "https://github.com/coreyhaines31/marketingskills/blob/main/LICENSE"
   },
   {
     "id": "customer-support",
@@ -12100,7 +12518,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "davidondrej/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
   },
   {
     "id": "cyber-y2k",
@@ -12122,7 +12544,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "cyberpunk-ui",
@@ -12144,7 +12567,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "cypress-skill",
@@ -12166,7 +12590,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "LambdaTest/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/LambdaTest/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "daily",
@@ -12210,7 +12638,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "openclaw/skills",
+    "license": "MIT-0",
+    "license_source": "https://clawhub.ai/jiawei248/daily-gift"
   },
   {
     "id": "daily-news-report",
@@ -12254,7 +12686,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "dart",
@@ -12298,7 +12731,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "data-dense-design",
@@ -12320,7 +12754,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "data-engineer",
@@ -12914,7 +13349,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "addyosmani/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/addyosmani/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "debugging-code",
@@ -12936,7 +13375,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "AlmogBaku/debug-skill",
+    "license": "MIT",
+    "license_source": "https://github.com/AlmogBaku/debug-skill/blob/master/LICENSE"
   },
   {
     "id": "debugging-strategies",
@@ -13024,7 +13467,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community"
   },
   {
     "id": "deep-research",
@@ -13068,7 +13512,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "davidondrej/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
   },
   {
     "id": "defi-protocol-templates",
@@ -13136,7 +13584,11 @@
       "reasons": [
         "target_specific_home_path"
       ]
-    }
+    },
+    "source_type": "community",
+    "source_repo": "davidondrej/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
   },
   {
     "id": "dep",
@@ -13336,7 +13788,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "addyosmani/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/addyosmani/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "design-it",
@@ -13358,7 +13814,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "design-md",
@@ -13424,7 +13881,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "connerkward/ckw-design-skill",
+    "license": "MIT",
+    "license_source": "https://github.com/connerkward/ckw-design-skill/blob/main/LICENSE"
   },
   {
     "id": "design-spatial",
@@ -13446,7 +13907,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "connerkward/ckw-design-skill",
+    "license": "MIT",
+    "license_source": "https://github.com/connerkward/ckw-design-skill/blob/main/LICENSE"
   },
   {
     "id": "design-spells",
@@ -13492,7 +13957,11 @@
       "reasons": [
         "escaped_local_reference"
       ]
-    }
+    },
+    "source_type": "community",
+    "source_repo": "connerkward/ckw-design-skill",
+    "license": "MIT",
+    "license_source": "https://github.com/connerkward/ckw-design-skill/blob/main/LICENSE"
   },
   {
     "id": "design-taste-frontend",
@@ -13514,7 +13983,9 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "Leonxlnx/taste-skill"
   },
   {
     "id": "design-thinking",
@@ -13536,7 +14007,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "connerkward/ckw-design-skill",
+    "license": "MIT",
+    "license_source": "https://github.com/connerkward/ckw-design-skill/blob/main/LICENSE"
   },
   {
     "id": "design-ux",
@@ -13558,7 +14033,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "connerkward/ckw-design-skill",
+    "license": "MIT",
+    "license_source": "https://github.com/connerkward/ckw-design-skill/blob/main/LICENSE"
   },
   {
     "id": "deterministic-design",
@@ -13580,7 +14059,10 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "connerkward/deterministic-design-skill",
+    "license": "MIT"
   },
   {
     "id": "dev-to-hashnode",
@@ -13602,7 +14084,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "jonathimer/devmarketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/jonathimer/devmarketing-skills/blob/main/LICENSE"
   },
   {
     "id": "devcontainer-setup",
@@ -13646,7 +14132,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "jonathimer/devmarketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/jonathimer/devmarketing-skills/blob/main/LICENSE"
   },
   {
     "id": "developer-audience-context",
@@ -13668,7 +14158,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "jonathimer/devmarketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/jonathimer/devmarketing-skills/blob/main/LICENSE"
   },
   {
     "id": "developer-churn",
@@ -13690,7 +14184,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "jonathimer/devmarketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/jonathimer/devmarketing-skills/blob/main/LICENSE"
   },
   {
     "id": "developer-listening",
@@ -13712,7 +14210,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "jonathimer/devmarketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/jonathimer/devmarketing-skills/blob/main/LICENSE"
   },
   {
     "id": "developer-newsletter",
@@ -13734,7 +14236,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "jonathimer/devmarketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/jonathimer/devmarketing-skills/blob/main/LICENSE"
   },
   {
     "id": "developer-onboarding",
@@ -13756,7 +14262,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "jonathimer/devmarketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/jonathimer/devmarketing-skills/blob/main/LICENSE"
   },
   {
     "id": "developer-sandbox",
@@ -13778,7 +14288,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "jonathimer/devmarketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/jonathimer/devmarketing-skills/blob/main/LICENSE"
   },
   {
     "id": "developer-seo",
@@ -13800,7 +14314,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "jonathimer/devmarketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/jonathimer/devmarketing-skills/blob/main/LICENSE"
   },
   {
     "id": "developer-signup-flow",
@@ -13822,7 +14340,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "jonathimer/devmarketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/jonathimer/devmarketing-skills/blob/main/LICENSE"
   },
   {
     "id": "development",
@@ -13910,7 +14432,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "jonathimer/devmarketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/jonathimer/devmarketing-skills/blob/main/LICENSE"
   },
   {
     "id": "diagnosing-bugs",
@@ -13932,7 +14458,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "mattpocock/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE"
   },
   {
     "id": "diary",
@@ -14046,7 +14576,11 @@
       "reasons": [
         "explicit_target_restriction"
       ]
-    }
+    },
+    "source_type": "community",
+    "source_repo": "sparklingneuronics/sparkling-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/sparklingneuronics/sparkling-skills/blob/main/LICENSE"
   },
   {
     "id": "dispatching-parallel-agents",
@@ -14092,7 +14626,11 @@
       "reasons": [
         "target_specific_home_path"
       ]
-    }
+    },
+    "source_type": "community",
+    "source_repo": "davidondrej/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
   },
   {
     "id": "distributed-debugging-debug-trace",
@@ -14180,7 +14718,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "license": "LICENSE"
   },
   {
     "id": "django-pro",
@@ -14312,7 +14851,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "jonathimer/devmarketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/jonathimer/devmarketing-skills/blob/main/LICENSE"
   },
   {
     "id": "documentation",
@@ -14356,7 +14899,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "addyosmani/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/addyosmani/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "documentation-generation-doc-generate",
@@ -14488,7 +15035,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "mattpocock/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE"
   },
   {
     "id": "dos-verify-done-claims",
@@ -14512,7 +15063,11 @@
       "reasons": [
         "explicit_target_restriction"
       ]
-    }
+    },
+    "source_type": "community",
+    "source_repo": "anthony-chaudhary/dos-kernel",
+    "license": "MIT",
+    "license_source": "https://github.com/anthony-chaudhary/dos-kernel/blob/master/LICENSE"
   },
   {
     "id": "dotnet-architect",
@@ -14600,7 +15155,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "addyosmani/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/addyosmani/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "draw",
@@ -14646,7 +15205,11 @@
       "reasons": [
         "target_specific_home_path"
       ]
-    }
+    },
+    "source_type": "community",
+    "source_repo": "chaunsin/agent-skills",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/chaunsin/agent-skills/blob/master/LICENSE"
   },
   {
     "id": "drizzle-orm-expert",
@@ -14712,7 +15275,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "dwarf-expert",
@@ -14844,7 +15408,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "expo/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/expo/skills/blob/main/LICENSE"
   },
   {
     "id": "ecl-harness-engineer",
@@ -14866,7 +15434,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "qinghui316/ecl-harness-engineer",
+    "license": "MIT",
+    "license_source": "https://github.com/qinghui316/ecl-harness-engineer/blob/main/LICENSE"
   },
   {
     "id": "editorial-design",
@@ -14888,7 +15460,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "effective-agent-skills",
@@ -14910,7 +15483,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "davidondrej/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
   },
   {
     "id": "efficient-web-research",
@@ -14919,7 +15496,7 @@
     "name": "efficient-web-research",
     "description": "Protocol for token-efficient web research. Use when accessing URLs, GitHub repos, or running search queries. Prevents full-page fetching waste.",
     "risk": "safe",
-    "source": "unknown",
+    "source": "community",
     "date_added": null,
     "plugin": {
       "targets": {
@@ -14956,7 +15533,11 @@
       "reasons": [
         "explicit_target_restriction"
       ]
-    }
+    },
+    "source_type": "community",
+    "source_repo": "ejentum/ejentum-mcp",
+    "license": "MIT",
+    "license_source": "https://github.com/ejentum/ejentum-mcp/blob/main/LICENSE"
   },
   {
     "id": "electron-development",
@@ -15176,7 +15757,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "emilkowalski/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/emilkowalski/skills/blob/main/LICENSE.txt"
   },
   {
     "id": "emotional-arc-designer",
@@ -15726,7 +16311,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "expo/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/expo/skills/blob/main/LICENSE"
   },
   {
     "id": "expo-brownfield",
@@ -15748,7 +16337,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "expo/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/expo/skills/blob/main/LICENSE"
   },
   {
     "id": "expo-cicd-workflows",
@@ -15770,7 +16363,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "expo/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/expo/skills/blob/main/LICENSE"
   },
   {
     "id": "expo-deployment",
@@ -15792,7 +16389,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "expo/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/expo/skills/blob/main/LICENSE"
   },
   {
     "id": "expo-dev-client",
@@ -15814,7 +16415,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "expo/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/expo/skills/blob/main/LICENSE"
   },
   {
     "id": "expo-examples",
@@ -15836,7 +16441,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "expo/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/expo/skills/blob/main/LICENSE"
   },
   {
     "id": "expo-module",
@@ -15858,7 +16467,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "expo/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/expo/skills/blob/main/LICENSE"
   },
   {
     "id": "expo-observe",
@@ -15880,7 +16493,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "expo/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/expo/skills/blob/main/LICENSE"
   },
   {
     "id": "expo-tailwind-setup",
@@ -15902,7 +16519,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "expo/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/expo/skills/blob/main/LICENSE"
   },
   {
     "id": "expo-ui",
@@ -15924,7 +16545,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "expo/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/expo/skills/blob/main/LICENSE"
   },
   {
     "id": "expo-ui-jetpack-compose",
@@ -15990,7 +16615,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "davidondrej/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
   },
   {
     "id": "faf-context",
@@ -16012,7 +16641,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "Wolfe-Jam/faf-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/Wolfe-Jam/faf-skills/blob/main/LICENSE"
   },
   {
     "id": "faf-expert",
@@ -16034,7 +16667,9 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "Wolfe-Jam/faf-skills"
   },
   {
     "id": "faf-go",
@@ -16056,7 +16691,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "Wolfe-Jam/faf-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/Wolfe-Jam/faf-skills/blob/main/LICENSE"
   },
   {
     "id": "faf-wizard",
@@ -16078,7 +16717,9 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "Wolfe-Jam/faf-skills"
   },
   {
     "id": "fal-audio",
@@ -16694,7 +17335,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "ibelick/ui-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/ibelick/ui-skills/blob/main/LICENSE"
   },
   {
     "id": "fixing-metadata",
@@ -16716,7 +17361,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "ibelick/ui-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/ibelick/ui-skills/blob/main/LICENSE"
   },
   {
     "id": "fixing-motion-performance",
@@ -16738,7 +17387,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "ibelick/ui-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/ibelick/ui-skills/blob/main/LICENSE"
   },
   {
     "id": "flat-design",
@@ -16760,7 +17413,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "flat-design-2",
@@ -16782,7 +17436,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "floating-ui",
@@ -16804,7 +17459,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "flowhunt-skill",
@@ -16826,7 +17482,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "heyneuron/flowhunt-skill",
+    "license": "MIT",
+    "license_source": "https://github.com/heyneuron/flowhunt-skill/blob/main/LICENSE"
   },
   {
     "id": "flutter-expert",
@@ -16870,7 +17530,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "davidondrej/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
   },
   {
     "id": "food-database-query",
@@ -16936,7 +17600,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "ChrisWiles/claude-code-showcase",
+    "license": "MIT",
+    "license_source": "https://github.com/ChrisWiles/claude-code-showcase/blob/main/LICENSE"
   },
   {
     "id": "fp-async",
@@ -17354,7 +18022,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "jonathimer/devmarketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/jonathimer/devmarketing-skills/blob/main/LICENSE"
   },
   {
     "id": "free-tool-strategy",
@@ -17464,7 +18136,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "stareezy-1/frontend-architecture-skill",
+    "license": "MIT",
+    "license_source": "https://github.com/stareezy-1/frontend-architecture-skill/blob/main/LICENSE"
   },
   {
     "id": "frontend-data-contracts",
@@ -17486,7 +18162,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "stareezy-1/frontend-architecture-skill",
+    "license": "MIT",
+    "license_source": "https://github.com/stareezy-1/frontend-architecture-skill/blob/main/LICENSE"
   },
   {
     "id": "frontend-design",
@@ -17574,7 +18254,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "stareezy-1/frontend-architecture-skill",
+    "license": "MIT",
+    "license_source": "https://github.com/stareezy-1/frontend-architecture-skill/blob/main/LICENSE"
   },
   {
     "id": "frontend-mobile-development-component-scaffold",
@@ -17640,7 +18324,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "stareezy-1/frontend-architecture-skill",
+    "license": "MIT",
+    "license_source": "https://github.com/stareezy-1/frontend-architecture-skill/blob/main/LICENSE"
   },
   {
     "id": "frontend-optimistic-mutations",
@@ -17662,7 +18350,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "stareezy-1/frontend-architecture-skill",
+    "license": "MIT",
+    "license_source": "https://github.com/stareezy-1/frontend-architecture-skill/blob/main/LICENSE"
   },
   {
     "id": "frontend-security-coder",
@@ -17706,7 +18398,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "stareezy-1/frontend-architecture-skill",
+    "license": "MIT",
+    "license_source": "https://github.com/stareezy-1/frontend-architecture-skill/blob/main/LICENSE"
   },
   {
     "id": "frontend-slides",
@@ -17752,7 +18448,11 @@
       "reasons": [
         "absolute_host_path"
       ]
-    }
+    },
+    "source_type": "community",
+    "source_repo": "zarazhangrui/frontend-slides",
+    "license": "MIT",
+    "license_source": "https://github.com/zarazhangrui/frontend-slides/blob/main/LICENSE"
   },
   {
     "id": "frontend-ui-dark-ts",
@@ -17796,7 +18496,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "addyosmani/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/addyosmani/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "frutiger-aero",
@@ -17818,7 +18522,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "fsi-compliance-checker",
@@ -17840,7 +18545,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "timwukp/agent-skills-best-practice",
+    "license": "MIT",
+    "license_source": "https://github.com/timwukp/agent-skills-best-practice/blob/main/LICENSE"
   },
   {
     "id": "full-output-enforcement",
@@ -17862,7 +18571,9 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "Leonxlnx/taste-skill"
   },
   {
     "id": "full-stack-orchestration-full-stack-feature",
@@ -18060,7 +18771,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "google-gemini/gemini-skills",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/google-gemini/gemini-skills/blob/main/LICENSE"
   },
   {
     "id": "gemini-api-integration",
@@ -18104,7 +18819,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "google-gemini/gemini-skills",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/google-gemini/gemini-skills/blob/main/LICENSE"
   },
   {
     "id": "gemini-omni-flash-api",
@@ -18126,7 +18845,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "google-gemini/gemini-skills",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/google-gemini/gemini-skills/blob/main/LICENSE"
   },
   {
     "id": "geminiignore-finops",
@@ -18148,7 +18871,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "iradoweck/antigravity-awesome-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/iradoweck/antigravity-awesome-skills/blob/main/LICENSE"
   },
   {
     "id": "geo-fundamentals",
@@ -18216,7 +18943,11 @@
       "reasons": [
         "explicit_target_restriction"
       ]
-    }
+    },
+    "source_type": "community",
+    "source_repo": "drogers0/gh-image",
+    "license": "MIT",
+    "license_source": "https://github.com/drogers0/gh-image/blob/main/LICENSE"
   },
   {
     "id": "gh-review-requests",
@@ -18326,7 +19057,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community"
   },
   {
     "id": "git-pr-workflows-git-workflow",
@@ -18436,7 +19168,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "addyosmani/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/addyosmani/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "github",
@@ -18502,7 +19238,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community"
   },
   {
     "id": "github-actions-templates",
@@ -18590,7 +19327,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "jonathimer/devmarketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/jonathimer/devmarketing-skills/blob/main/LICENSE"
   },
   {
     "id": "github-workflow-automation",
@@ -18700,7 +19441,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "global-chat-agent-discovery",
@@ -18722,7 +19464,9 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "pumanitro/global-chat"
   },
   {
     "id": "gmail-automation",
@@ -18744,7 +19488,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "license": "Apache-2.0"
   },
   {
     "id": "go",
@@ -18810,7 +19555,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "go-playwright",
@@ -18898,7 +19644,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "davidondrej/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
   },
   {
     "id": "godot-4-migration",
@@ -19008,7 +19758,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "license": "Apache-2.0"
   },
   {
     "id": "google-docs-automation",
@@ -19030,7 +19781,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "license": "Apache-2.0"
   },
   {
     "id": "google-drive-automation",
@@ -19052,7 +19804,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "license": "Apache-2.0"
   },
   {
     "id": "google-sheets-automation",
@@ -19074,7 +19827,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "license": "Apache-2.0"
   },
   {
     "id": "google-slides-automation",
@@ -19096,7 +19850,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "license": "Apache-2.0"
   },
   {
     "id": "googlesheets-automation",
@@ -19140,7 +19895,9 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "Leonxlnx/taste-skill"
   },
   {
     "id": "gradient-design",
@@ -19162,7 +19919,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "grafana-dashboards",
@@ -19250,7 +20008,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "ChrisWiles/claude-code-showcase",
+    "license": "MIT",
+    "license_source": "https://github.com/ChrisWiles/claude-code-showcase/blob/main/LICENSE"
   },
   {
     "id": "grill-me",
@@ -19272,7 +20034,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "mattpocock/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE"
   },
   {
     "id": "grill-with-docs",
@@ -19294,7 +20060,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "mattpocock/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE"
   },
   {
     "id": "grilling",
@@ -19316,7 +20086,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "mattpocock/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE"
   },
   {
     "id": "growth-engine",
@@ -19382,7 +20156,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "mattpocock/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE"
   },
   {
     "id": "hasdata",
@@ -19404,7 +20182,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "HasData/hasdata-cli",
+    "license": "MIT",
+    "license_source": "https://github.com/HasData/hasdata-cli/blob/main/LICENSE"
   },
   {
     "id": "hasdata-cli",
@@ -19426,7 +20208,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "HasData/hasdata-cli",
+    "license": "MIT",
+    "license_source": "https://github.com/HasData/hasdata-cli/blob/main/LICENSE"
   },
   {
     "id": "haskell-pro",
@@ -19514,7 +20300,9 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "connerlambden/helium-mcp"
   },
   {
     "id": "helm-chart-scaffolding",
@@ -19580,7 +20368,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "huggingface/skills",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/huggingface/skills/blob/main/LICENSE"
   },
   {
     "id": "hf-mem",
@@ -19602,7 +20394,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "huggingface/skills",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/huggingface/skills/blob/main/LICENSE"
   },
   {
     "id": "hierarchical-agent-memory",
@@ -19956,7 +20752,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "high-end-visual-design",
@@ -19978,7 +20775,9 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "Leonxlnx/taste-skill"
   },
   {
     "id": "holographic-ui",
@@ -20000,7 +20799,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "hono",
@@ -20176,7 +20976,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "huggingface/skills",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/huggingface/skills/blob/main/LICENSE"
   },
   {
     "id": "hugging-face-community-evals",
@@ -20198,7 +21002,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "huggingface/skills",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/huggingface/skills/blob/main/LICENSE"
   },
   {
     "id": "hugging-face-dataset-viewer",
@@ -20222,7 +21030,11 @@
       "reasons": [
         "target_specific_home_path"
       ]
-    }
+    },
+    "source_type": "official",
+    "source_repo": "huggingface/skills",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/huggingface/skills/blob/main/LICENSE"
   },
   {
     "id": "hugging-face-datasets",
@@ -20288,7 +21100,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "huggingface/skills",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/huggingface/skills/blob/main/LICENSE"
   },
   {
     "id": "hugging-face-jobs",
@@ -20310,7 +21126,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "license": "Complete terms in LICENSE.txt"
   },
   {
     "id": "hugging-face-model-trainer",
@@ -20332,7 +21149,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "huggingface/skills",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/huggingface/skills/blob/main/LICENSE"
   },
   {
     "id": "hugging-face-paper-publisher",
@@ -20354,7 +21175,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "huggingface/skills",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/huggingface/skills/blob/main/LICENSE"
   },
   {
     "id": "hugging-face-papers",
@@ -20376,7 +21201,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "huggingface/skills",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/huggingface/skills/blob/main/LICENSE"
   },
   {
     "id": "hugging-face-tool-builder",
@@ -20420,7 +21249,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "huggingface/skills",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/huggingface/skills/blob/main/LICENSE"
   },
   {
     "id": "hugging-face-vision-trainer",
@@ -20442,7 +21275,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "huggingface/skills",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/huggingface/skills/blob/main/LICENSE"
   },
   {
     "id": "huggingface-best",
@@ -20464,7 +21301,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "huggingface/skills",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/huggingface/skills/blob/main/LICENSE"
   },
   {
     "id": "huggingface-local-models",
@@ -20486,7 +21327,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "huggingface/skills",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/huggingface/skills/blob/main/LICENSE"
   },
   {
     "id": "huggingface-lora-space-builder",
@@ -20508,7 +21353,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "huggingface/skills",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/huggingface/skills/blob/main/LICENSE"
   },
   {
     "id": "huggingface-spaces",
@@ -20530,7 +21379,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "huggingface/skills",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/huggingface/skills/blob/main/LICENSE"
   },
   {
     "id": "huggingface-tool-builder",
@@ -20552,7 +21405,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "huggingface/skills",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/huggingface/skills/blob/main/LICENSE"
   },
   {
     "id": "huggingface-zerogpu",
@@ -20574,7 +21431,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "huggingface/skills",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/huggingface/skills/blob/main/LICENSE"
   },
   {
     "id": "hugo-to-markdown",
@@ -20596,7 +21457,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "chaunsin/agent-skills",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/chaunsin/agent-skills/blob/master/LICENSE"
   },
   {
     "id": "humanize-chinese",
@@ -20706,7 +21571,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "LambdaTest/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/LambdaTest/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "i18n-localization",
@@ -20794,7 +21663,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "Slashworks-biz/idea-os",
+    "license": "MIT",
+    "license_source": "https://github.com/Slashworks-biz/idea-os/blob/main/LICENSE"
   },
   {
     "id": "idea-refine",
@@ -20816,7 +21689,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "addyosmani/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/addyosmani/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "identity-mirror",
@@ -20882,7 +21759,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "Intelligent-Internet/II-Commons-Skills",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/Intelligent-Internet/II-Commons-Skills/blob/main/LICENSE"
   },
   {
     "id": "ilya-sutskever",
@@ -20926,7 +21807,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "dair-ai/dair-academy-plugins",
+    "license": "MIT",
+    "license_source": "https://github.com/dair-ai/dair-academy-plugins/blob/main/README.md#license"
   },
   {
     "id": "image-studio",
@@ -20992,7 +21877,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "mattpocock/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE"
   },
   {
     "id": "impress",
@@ -21036,7 +21925,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "mattpocock/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE"
   },
   {
     "id": "incident-responder",
@@ -21146,7 +22039,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "addyosmani/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/addyosmani/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "indexing-issue-auditor",
@@ -21168,7 +22065,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "industrial-brutalist-ui",
@@ -21190,7 +22088,9 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "Leonxlnx/taste-skill"
   },
   {
     "id": "infinite-gratitude",
@@ -21256,7 +22156,11 @@
         "docs": "SKILL.md"
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "adelaidasofia/ai-brain-starter",
+    "license": "MIT",
+    "license_source": "https://github.com/adelaidasofia/ai-brain-starter/blob/main/LICENSE"
   },
   {
     "id": "inngest",
@@ -21388,7 +22292,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "license": "Complete terms in LICENSE.txt"
   },
   {
     "id": "internal-comms-anthropic",
@@ -21476,7 +22381,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "davidondrej/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
   },
   {
     "id": "invariant-guard",
@@ -21498,7 +22407,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "morsechimwai/lemmaly",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/morsechimwai/lemmaly/blob/main/LICENSE"
   },
   {
     "id": "inventory-demand-planning",
@@ -21586,7 +22499,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "issues",
@@ -21872,7 +22786,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "LambdaTest/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/LambdaTest/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "jira-automation",
@@ -22026,7 +22944,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "LambdaTest/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/LambdaTest/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "junta-leiloeiros",
@@ -22202,7 +23124,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "kotlin",
@@ -22334,7 +23257,11 @@
         "docs": "https://github.com/kubestellar/console#quick-start"
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "kubestellar/console",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/kubestellar/console/blob/main/LICENSE"
   },
   {
     "id": "lambda-lang",
@@ -22356,7 +23283,9 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "voidborne-d/lambda-lang"
   },
   {
     "id": "lambdatest-agent-skills",
@@ -22378,7 +23307,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "LambdaTest/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/LambdaTest/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "landing-page-generator",
@@ -22600,7 +23533,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "lead-magnets",
@@ -22644,7 +23578,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "dair-ai/dair-academy-plugins",
+    "license": "MIT",
+    "license_source": "https://github.com/dair-ai/dair-academy-plugins/blob/main/README.md#license"
   },
   {
     "id": "legacy-modernizer",
@@ -22842,7 +23780,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "morsechimwai/lemmaly",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/morsechimwai/lemmaly/blob/main/LICENSE"
   },
   {
     "id": "lesson-generator",
@@ -22864,7 +23806,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "dair-ai/dair-academy-plugins",
+    "license": "MIT",
+    "license_source": "https://github.com/dair-ai/dair-academy-plugins/blob/main/README.md#license"
   },
   {
     "id": "lex",
@@ -23066,7 +24012,11 @@
       "reasons": [
         "target_specific_home_path"
       ]
-    }
+    },
+    "source_type": "community",
+    "source_repo": "sarveshtalele/linkedin-content-skill",
+    "license": "MIT",
+    "license_source": "https://github.com/sarveshtalele/linkedin-content-skill/blob/main/LICENSE"
   },
   {
     "id": "linkedin-post-writer",
@@ -23088,7 +24038,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "sergebulaev/linkedin-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/sergebulaev/linkedin-skills/blob/main/LICENSE"
   },
   {
     "id": "linkedin-profile-optimizer",
@@ -23110,7 +24064,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "linkerd-patterns",
@@ -23330,7 +24285,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "dair-ai/dair-academy-plugins",
+    "license": "MIT",
+    "license_source": "https://github.com/dair-ai/dair-academy-plugins/blob/main/README.md#license"
   },
   {
     "id": "llm-evaluation",
@@ -23484,7 +24443,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "hyhmrright/logic-lens",
+    "license": "MIT",
+    "license_source": "https://github.com/hyhmrright/logic-lens/blob/main/LICENSE"
   },
   {
     "id": "logic-explain",
@@ -23506,7 +24469,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "hyhmrright/logic-lens",
+    "license": "MIT",
+    "license_source": "https://github.com/hyhmrright/logic-lens/blob/main/LICENSE"
   },
   {
     "id": "logic-fix-all",
@@ -23528,7 +24495,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "hyhmrright/logic-lens",
+    "license": "MIT",
+    "license_source": "https://github.com/hyhmrright/logic-lens/blob/main/LICENSE"
   },
   {
     "id": "logic-lens",
@@ -23550,7 +24521,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "hyhmrright/logic-lens",
+    "license": "MIT",
+    "license_source": "https://github.com/hyhmrright/logic-lens/blob/main/LICENSE"
   },
   {
     "id": "logic-locate",
@@ -23572,7 +24547,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "hyhmrright/logic-lens",
+    "license": "MIT",
+    "license_source": "https://github.com/hyhmrright/logic-lens/blob/main/LICENSE"
   },
   {
     "id": "logic-review",
@@ -23594,7 +24573,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "hyhmrright/logic-lens",
+    "license": "MIT",
+    "license_source": "https://github.com/hyhmrright/logic-lens/blob/main/LICENSE"
   },
   {
     "id": "logistics-exception-management",
@@ -23664,7 +24647,11 @@
       "reasons": [
         "explicit_target_restriction"
       ]
-    }
+    },
+    "source_type": "official",
+    "source_repo": "longbridge/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/longbridge/skills/blob/main/LICENSE"
   },
   {
     "id": "longbridge-content",
@@ -23686,7 +24673,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "longbridge/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/longbridge/skills/blob/main/LICENSE"
   },
   {
     "id": "longbridge-fundamentals",
@@ -23708,7 +24699,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "longbridge/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/longbridge/skills/blob/main/LICENSE"
   },
   {
     "id": "longbridge-market-data",
@@ -23730,7 +24725,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "longbridge/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/longbridge/skills/blob/main/LICENSE"
   },
   {
     "id": "lookdev",
@@ -23752,7 +24751,10 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "connerkward/lookdev-studio-skill",
+    "license": "MIT"
   },
   {
     "id": "lookdev-auto",
@@ -23774,7 +24776,10 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "connerkward/lookdev-auto-skill",
+    "license": "MIT"
   },
   {
     "id": "loop-library",
@@ -23796,7 +24801,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "Forward-Future/loop-library",
+    "license": "MIT",
+    "license_source": "https://github.com/Forward-Future/loop-library/blob/main/LICENSE"
   },
   {
     "id": "loopy",
@@ -23818,7 +24827,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "Forward-Future/loop-library",
+    "license": "MIT",
+    "license_source": "https://github.com/Forward-Future/loop-library/blob/main/LICENSE"
   },
   {
     "id": "loss-aversion-designer",
@@ -23862,7 +24875,9 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "whoisabhishekadhikari/lovable-cleanup"
   },
   {
     "id": "luna",
@@ -24018,7 +25033,10 @@
       "reasons": [
         "explicit_target_restriction"
       ]
-    }
+    },
+    "source_type": "community",
+    "source_repo": "connerkward/macos-screen-recorder-system-audio",
+    "license": "MIT"
   },
   {
     "id": "macos-spm-app-packaging",
@@ -24548,7 +25566,9 @@
       "reasons": [
         "target_specific_home_path"
       ]
-    }
+    },
+    "source_type": "community",
+    "source_repo": "umutbozdag/agent-skills-manager"
   },
   {
     "id": "manifest",
@@ -24594,7 +25614,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "davidondrej/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
   },
   {
     "id": "market-sizing-analysis",
@@ -24660,7 +25684,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "coreyhaines31/marketingskills",
+    "license": "MIT",
+    "license_source": "https://github.com/coreyhaines31/marketingskills/blob/main/LICENSE"
   },
   {
     "id": "marketing-psychology",
@@ -24748,7 +25776,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "mathguard",
@@ -24770,7 +25799,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "morsechimwai/lemmaly",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/morsechimwai/lemmaly/blob/main/LICENSE"
   },
   {
     "id": "matplotlib",
@@ -24792,7 +25825,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "license": "https://github.com/matplotlib/matplotlib/tree/main/LICENSE"
   },
   {
     "id": "max",
@@ -24858,7 +25892,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "mcp-builder",
@@ -24924,7 +25959,9 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "demo112/yunqu-ai-skills"
   },
   {
     "id": "mdpr-skill",
@@ -24946,7 +25983,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "ch040602/mdpr-skill",
+    "license": "MIT",
+    "license_source": "https://github.com/ch040602/mdpr-skill/blob/main/LICENSE"
   },
   {
     "id": "memory-forensics",
@@ -25256,7 +26297,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "minimalist-ui",
@@ -25278,7 +26320,9 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "Leonxlnx/taste-skill"
   },
   {
     "id": "miro-automation",
@@ -25322,7 +26366,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "mixpanel-automation",
@@ -25566,7 +26611,11 @@
       "reasons": [
         "explicit_target_restriction"
       ]
-    }
+    },
+    "source_type": "community",
+    "source_repo": "CodeShuX/mockhunter",
+    "license": "MIT",
+    "license_source": "https://github.com/CodeShuX/mockhunter/blob/main/LICENSE"
   },
   {
     "id": "modern-javascript-patterns",
@@ -25678,16 +26727,17 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "monopoly",
     "path": "skills/monopoly",
     "category": "architecture",
     "name": "monopoly",
-    "description": "MONOPOLY is a Senior System Design Engineer skill for architecting, reviewing, and scaling systems. Triggers on requests involving architecture, databases, scaling, microservices, or infrastructure design. Proactively engages to design resilient backend systems.",
+    "description": "MONOPOLY is a Senior System Design Engineer skill for architecting, reviewing, and scaling systems. Triggers on requests involving architecture, databases, scaling, microservices, or infrastructure design. Proactively engages to design resilient backend systems.\n",
     "risk": "unknown",
-    "source": "unknown",
+    "source": "community",
     "date_added": null,
     "plugin": {
       "targets": {
@@ -25766,7 +26816,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "monte-carlo-data/mc-agent-toolkit",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/monte-carlo-data/mc-agent-toolkit/blob/main/LICENSE"
   },
   {
     "id": "monte-carlo-asset-health",
@@ -25788,7 +26842,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "monte-carlo-data/mc-agent-toolkit",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/monte-carlo-data/mc-agent-toolkit/blob/main/LICENSE"
   },
   {
     "id": "monte-carlo-monitor-creation",
@@ -25810,7 +26868,9 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "monte-carlo-data/mc-agent-toolkit"
   },
   {
     "id": "monte-carlo-monitoring-advisor",
@@ -25832,7 +26892,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "monte-carlo-data/mc-agent-toolkit",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/monte-carlo-data/mc-agent-toolkit/blob/main/LICENSE"
   },
   {
     "id": "monte-carlo-performance-diagnosis",
@@ -25854,7 +26918,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "monte-carlo-data/mc-agent-toolkit",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/monte-carlo-data/mc-agent-toolkit/blob/main/LICENSE"
   },
   {
     "id": "monte-carlo-remediation",
@@ -25876,7 +26944,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "monte-carlo-data/mc-agent-toolkit",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/monte-carlo-data/mc-agent-toolkit/blob/main/LICENSE"
   },
   {
     "id": "monte-carlo-storage-cost-analysis",
@@ -25898,7 +26970,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "monte-carlo-data/mc-agent-toolkit",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/monte-carlo-data/mc-agent-toolkit/blob/main/LICENSE"
   },
   {
     "id": "monte-carlo-validation-notebook",
@@ -25920,7 +26996,9 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "monte-carlo-data/mc-agent-toolkit"
   },
   {
     "id": "moodle-external-api-development",
@@ -25964,7 +27042,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "license": "MIT"
   },
   {
     "id": "mtls-configuration",
@@ -26096,7 +27175,9 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "milkomida77/guardian-agent-prompts"
   },
   {
     "id": "multi-cloud-architecture",
@@ -26360,7 +27441,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "expo/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/expo/skills/blob/main/LICENSE"
   },
   {
     "id": "neo-brutalism",
@@ -26382,7 +27467,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "neon-ai-gateway",
@@ -26404,7 +27490,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "neondatabase/agent-skills",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/neondatabase/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "neon-functions",
@@ -26426,7 +27516,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "neondatabase/agent-skills",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/neondatabase/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "neon-object-storage",
@@ -26448,7 +27542,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "neondatabase/agent-skills",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/neondatabase/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "neon-postgres",
@@ -26470,7 +27568,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "neondatabase/agent-skills",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/neondatabase/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "neon-postgres-branches",
@@ -26492,7 +27594,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "neondatabase/agent-skills",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/neondatabase/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "neon-postgres-egress-optimizer",
@@ -26514,7 +27620,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "neondatabase/agent-skills",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/neondatabase/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "nerdzao-elite",
@@ -26646,7 +27756,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "license": "3-clause BSD license"
   },
   {
     "id": "neumorphism",
@@ -26668,7 +27779,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "new-rails-project",
@@ -26712,7 +27824,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "LambdaTest/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/LambdaTest/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "news-sentiment-engine",
@@ -26736,7 +27852,9 @@
       "reasons": [
         "explicit_target_restriction"
       ]
-    }
+    },
+    "source_type": "community",
+    "source_repo": "tellmefrankie/news-engine"
   },
   {
     "id": "nextjs-app-router-patterns",
@@ -26802,7 +27920,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "nextjs-supabase-auth",
@@ -26921,7 +28040,7 @@
     "name": "not-a-vibe-coder",
     "description": "Turns vague prompts into 8 structured planning files for brand new projects. DO NOT use on existing codebases.",
     "risk": "critical",
-    "source": "unknown",
+    "source": "community",
     "date_added": null,
     "plugin": {
       "targets": {
@@ -26956,7 +28075,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community"
   },
   {
     "id": "notebooklm",
@@ -27113,7 +28233,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "addyosmani/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/addyosmani/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "observability-engineer",
@@ -27841,7 +28965,11 @@
       "reasons": [
         "target_specific_home_path"
       ]
-    }
+    },
+    "source_type": "community",
+    "source_repo": "Suraj1235/open-dynamic-workflows",
+    "license": "MIT",
+    "license_source": "https://github.com/Suraj1235/open-dynamic-workflows/blob/main/LICENSE"
   },
   {
     "id": "offers",
@@ -27863,7 +28991,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "coreyhaines31/marketingskills",
+    "license": "MIT",
+    "license_source": "https://github.com/coreyhaines31/marketingskills/blob/main/LICENSE"
   },
   {
     "id": "office-productivity",
@@ -27929,7 +29061,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "coreyhaines31/marketingskills",
+    "license": "MIT",
+    "license_source": "https://github.com/coreyhaines31/marketingskills/blob/main/LICENSE"
   },
   {
     "id": "onboarding-cro",
@@ -28017,7 +29153,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "Suraj1235/open-dynamic-workflows",
+    "license": "MIT",
+    "license_source": "https://github.com/Suraj1235/open-dynamic-workflows/blob/main/LICENSE"
   },
   {
     "id": "open-source-marketing",
@@ -28039,7 +29179,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "jonathimer/devmarketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/jonathimer/devmarketing-skills/blob/main/LICENSE"
   },
   {
     "id": "openapi-spec-generation",
@@ -28083,7 +29227,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "LambdaTest/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/LambdaTest/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "openclaw-github-repo-commander",
@@ -28127,7 +29275,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community"
   },
   {
     "id": "oral-health-analyzer",
@@ -28237,7 +29386,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "outlook-automation",
@@ -28413,7 +29563,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "xwmxcz/papers-skill",
+    "license": "MIT",
+    "license_source": "https://github.com/xwmxcz/papers-skill/blob/main/LICENSE"
   },
   {
     "id": "parallel-agents",
@@ -28444,7 +29598,7 @@
     "name": "patterns",
     "description": "Reference document for monopoly patterns.",
     "risk": "safe",
-    "source": "unknown",
+    "source": "community",
     "date_added": null,
     "plugin": {
       "targets": {
@@ -28699,7 +29853,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "addyosmani/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/addyosmani/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "performance-optimizer",
@@ -28809,7 +29967,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "mskadu/opencode-agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/mskadu/opencode-agent-skills/blob/main/LICENSE"
   },
   {
     "id": "personal-tool-builder",
@@ -28875,7 +30037,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "yikuansun/PhotopeaAPI",
+    "license": "MIT",
+    "license_source": "https://github.com/yikuansun/PhotopeaAPI/blob/master/LICENSE"
   },
   {
     "id": "php",
@@ -28941,7 +30107,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "davidondrej/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
   },
   {
     "id": "pi-web-search",
@@ -28963,7 +30133,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "davidondrej/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
   },
   {
     "id": "pilot-protocol",
@@ -28985,7 +30159,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "pilot-protocol/pilotprotocol",
+    "license": "AGPL-3.0",
+    "license_source": "https://github.com/pilot-protocol/pilotprotocol/blob/main/LICENSE"
   },
   {
     "id": "pipecat-friday-agent",
@@ -29117,7 +30295,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "addyosmani/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/addyosmani/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "planning-with-files",
@@ -29205,7 +30387,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "license": "MIT license"
   },
   {
     "id": "podcast-generation",
@@ -29249,7 +30432,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "license": "https://github.com/pola-rs/polars/blob/main/LICENSE"
   },
   {
     "id": "polis-protocol",
@@ -29273,7 +30457,11 @@
       "reasons": [
         "explicit_target_restriction"
       ]
-    }
+    },
+    "source_type": "community",
+    "source_repo": "yehudalevy-collab/polis-protocol",
+    "license": "MIT",
+    "license_source": "https://github.com/yehudalevy-collab/polis-protocol/blob/main/LICENSE"
   },
   {
     "id": "polis-protocol-a-self-optimizing-city-of-agents",
@@ -29295,7 +30483,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "yehudalevy-collab/polis-protocol",
+    "license": "MIT",
+    "license_source": "https://github.com/yehudalevy-collab/polis-protocol/blob/main/LICENSE"
   },
   {
     "id": "popup-cro",
@@ -29405,7 +30597,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "chaunsin/agent-skills",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/chaunsin/agent-skills/blob/master/LICENSE"
   },
   {
     "id": "postgresql-optimization",
@@ -29471,7 +30667,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "LambdaTest/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/LambdaTest/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "postman-newman-automation",
@@ -29493,7 +30693,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "LambdaTest/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/LambdaTest/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "postman-openapi-converter",
@@ -29515,7 +30719,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "LambdaTest/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/LambdaTest/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "postmark-automation",
@@ -29581,7 +30789,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "jonathimer/devmarketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/jonathimer/devmarketing-skills/blob/main/LICENSE"
   },
   {
     "id": "powershell-windows",
@@ -29647,7 +30859,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "pr-writer",
@@ -29691,7 +30904,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "chaunsin/agent-skills",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/chaunsin/agent-skills/blob/master/LICENSE"
   },
   {
     "id": "pre-ship-gate",
@@ -29713,7 +30930,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "Sharrmavishal/operating-kit",
+    "license": "MIT",
+    "license_source": "https://github.com/Sharrmavishal/operating-kit/blob/main/LICENSE"
   },
   {
     "id": "premium-3d-website",
@@ -29735,7 +30956,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "price-psychology-strategist",
@@ -29779,7 +31001,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "coreyhaines31/marketingskills",
+    "license": "MIT",
+    "license_source": "https://github.com/coreyhaines31/marketingskills/blob/main/LICENSE"
   },
   {
     "id": "pricing-strategy",
@@ -29867,7 +31093,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "fullstackcrew-alpha/privacy-mask",
+    "license": "MIT",
+    "license_source": "https://github.com/fullstackcrew-alpha/privacy-mask/blob/main/LICENSE"
   },
   {
     "id": "privilege-escalation-methods",
@@ -29999,7 +31229,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "coreyhaines31/marketingskills",
+    "license": "MIT",
+    "license_source": "https://github.com/coreyhaines31/marketingskills/blob/main/LICENSE"
   },
   {
     "id": "product-marketing-context",
@@ -30043,7 +31277,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "commitshow/production-audit",
+    "license": "MIT",
+    "license_source": "https://github.com/commitshow/production-audit/blob/main/LICENSE"
   },
   {
     "id": "production-code-audit",
@@ -30397,7 +31635,9 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "scopeblind/scopeblind-gateway"
   },
   {
     "id": "protocol-reverse-engineering",
@@ -30441,7 +31681,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "mattpocock/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE"
   },
   {
     "id": "public-relations",
@@ -30463,7 +31707,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "coreyhaines31/marketingskills",
+    "license": "MIT",
+    "license_source": "https://github.com/coreyhaines31/marketingskills/blob/main/LICENSE"
   },
   {
     "id": "pubmed-database",
@@ -30485,7 +31733,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "license": "Unknown"
   },
   {
     "id": "puppeteer-skill",
@@ -30507,7 +31756,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "LambdaTest/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/LambdaTest/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "push-skill-to-github",
@@ -30529,7 +31782,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "davidondrej/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
   },
   {
     "id": "puzzle-activity-planner",
@@ -30551,7 +31808,9 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "fruitwyatt/puzzle-activity-planner"
   },
   {
     "id": "pydantic-ai",
@@ -30639,7 +31898,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "LambdaTest/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/LambdaTest/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "python",
@@ -30815,7 +32078,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "python-pro",
@@ -30881,7 +32145,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "license": "Apache-2.0 license"
   },
   {
     "id": "quality-nonconformance",
@@ -31035,7 +32300,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community"
   },
   {
     "id": "rayden-use",
@@ -31057,7 +32323,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community"
   },
   {
     "id": "rclone-cli",
@@ -31079,7 +32346,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "chaunsin/agent-skills",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/chaunsin/agent-skills/blob/master/LICENSE"
   },
   {
     "id": "re-create",
@@ -31365,7 +32636,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "davidondrej/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
   },
   {
     "id": "readme",
@@ -31453,7 +32728,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "mturac/recsys-pipeline-architect",
+    "license": "MIT",
+    "license_source": "https://github.com/mturac/recsys-pipeline-architect/blob/main/LICENSE"
   },
   {
     "id": "recursive-context-pruning-token-budgeting",
@@ -31475,7 +32754,9 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self",
+    "source_repo": "Kench001/antigravity-awesome-skills"
   },
   {
     "id": "red-team-tactics",
@@ -31563,7 +32844,9 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "Leonxlnx/taste-skill"
   },
   {
     "id": "redis-cli",
@@ -31585,7 +32868,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "chaunsin/agent-skills",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/chaunsin/agent-skills/blob/master/LICENSE"
   },
   {
     "id": "reference-builder",
@@ -31673,7 +32960,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "Hanyuyuan6/remote-gpu-trainer",
+    "license": "MIT",
+    "license_source": "https://github.com/Hanyuyuan6/remote-gpu-trainer/blob/main/LICENSE"
   },
   {
     "id": "remotion",
@@ -31761,7 +33052,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "Wolfe-Jam/faf-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/Wolfe-Jam/faf-skills/blob/main/LICENSE"
   },
   {
     "id": "requesting-code-review",
@@ -31805,7 +33100,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "davidondrej/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
   },
   {
     "id": "resolving-merge-conflicts",
@@ -31827,7 +33126,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "mattpocock/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE"
   },
   {
     "id": "retro-design",
@@ -31849,7 +33152,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "retro-futurism",
@@ -31871,7 +33175,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "returns-reverse-logistics",
@@ -31937,7 +33242,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "Dimillian/Skills",
+    "license": "MIT",
+    "license_source": "https://github.com/Dimillian/Skills/blob/main/LICENSE"
   },
   {
     "id": "review-animations",
@@ -31959,7 +33268,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "emilkowalski/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/emilkowalski/skills/blob/main/LICENSE.txt"
   },
   {
     "id": "review-swarm",
@@ -31981,7 +33294,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "Dimillian/Skills",
+    "license": "MIT",
+    "license_source": "https://github.com/Dimillian/Skills/blob/main/LICENSE"
   },
   {
     "id": "revops",
@@ -32047,7 +33364,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "riffkit",
@@ -32069,7 +33387,11 @@
         "docs": "SKILL.md"
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "riffkit/skill",
+    "license": "MIT",
+    "license_source": "https://github.com/riffkit/skill/blob/main/LICENSE"
   },
   {
     "id": "risk-manager",
@@ -32245,7 +33567,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "LambdaTest/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/LambdaTest/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "routerbase-model-gateway",
@@ -32267,7 +33593,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "zenlee123/routerbase-agent-skills",
+    "license": "MIT-0",
+    "license_source": "https://github.com/zenlee123/routerbase-agent-skills/blob/main/LICENSE"
   },
   {
     "id": "ruby",
@@ -32333,7 +33663,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "davidondrej/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
   },
   {
     "id": "runapi-cli",
@@ -32355,7 +33689,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "runapi-ai/cli-skill",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/runapi-ai/cli-skill/blob/main/LICENSE"
   },
   {
     "id": "runaway-guard",
@@ -32377,7 +33715,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "morsechimwai/lemmaly",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/morsechimwai/lemmaly/blob/main/LICENSE"
   },
   {
     "id": "rust",
@@ -32685,7 +34027,9 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "MetcalfSolutions/Satori"
   },
   {
     "id": "scala",
@@ -32738,7 +34082,7 @@
     "name": "scale-benchmarks",
     "description": "Reference document for monopoly scale-benchmarks.",
     "risk": "safe",
-    "source": "unknown",
+    "source": "community",
     "date_added": null,
     "plugin": {
       "targets": {
@@ -32795,7 +34139,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "license": "SD-3-Clause license"
   },
   {
     "id": "scarcity-urgency-psychologist",
@@ -32861,7 +34206,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "sci-fi-interface",
@@ -32883,7 +34229,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "scientific-writing",
@@ -32905,7 +34252,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "license": "MIT license"
   },
   {
     "id": "scikit-learn",
@@ -32927,7 +34275,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "license": "BSD-3-Clause license"
   },
   {
     "id": "screen-reader-testing",
@@ -32995,7 +34344,10 @@
       "reasons": [
         "explicit_target_restriction"
       ]
-    }
+    },
+    "source_type": "community",
+    "source_repo": "connerkward/screenstudio-alternative-skill",
+    "license": "MIT"
   },
   {
     "id": "scroll-experience",
@@ -33039,7 +34391,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "jonathimer/devmarketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/jonathimer/devmarketing-skills/blob/main/LICENSE"
   },
   {
     "id": "seaborn",
@@ -33061,7 +34417,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "license": "BSD-3-Clause license"
   },
   {
     "id": "search-specialist",
@@ -33127,7 +34484,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "addyosmani/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/addyosmani/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "security-audit",
@@ -33202,7 +34563,7 @@
     "name": "security-checklist",
     "description": "Reference document for monopoly security-checklist.",
     "risk": "safe",
-    "source": "unknown",
+    "source": "community",
     "date_added": null,
     "plugin": {
       "targets": {
@@ -33413,7 +34774,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "LambdaTest/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/LambdaTest/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "semgrep-rule-creator",
@@ -33481,7 +34846,8 @@
       "reasons": [
         "explicit_target_restriction"
       ]
-    }
+    },
+    "source_type": "official"
   },
   {
     "id": "sendblue-cli",
@@ -33505,7 +34871,11 @@
       "reasons": [
         "explicit_target_restriction"
       ]
-    }
+    },
+    "source_type": "official",
+    "source_repo": "sendblue-api/sendblue-cli",
+    "license": "MIT",
+    "license_source": "https://github.com/sendblue-api/sendblue-cli/blob/main/LICENSE"
   },
   {
     "id": "sendblue-notify",
@@ -33529,7 +34899,8 @@
       "reasons": [
         "explicit_target_restriction"
       ]
-    }
+    },
+    "source_type": "official"
   },
   {
     "id": "sendgrid-automation",
@@ -34521,7 +35892,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "davidondrej/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
   },
   {
     "id": "setup-matt-pocock-skills",
@@ -34543,7 +35918,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "mattpocock/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE"
   },
   {
     "id": "sexual-health-analyzer",
@@ -34631,7 +36010,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "sharp-edges",
@@ -34697,7 +36077,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "addyosmani/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/addyosmani/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "shodan-reconnaissance",
@@ -34807,7 +36191,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "davidondrej/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
   },
   {
     "id": "signup-flow-cro",
@@ -34917,7 +36305,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "skill-audit",
@@ -34939,7 +36328,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "aptratcn/skill-audit",
+    "license": "MIT",
+    "license_source": "https://github.com/aptratcn/skill-audit/blob/main/LICENSE"
   },
   {
     "id": "skill-check",
@@ -34963,7 +36356,8 @@
       "reasons": [
         "target_specific_home_path"
       ]
-    }
+    },
+    "license": "MIT"
   },
   {
     "id": "skill-creator",
@@ -34976,17 +36370,15 @@
     "date_added": "2026-02-27",
     "plugin": {
       "targets": {
-        "codex": "blocked",
-        "claude": "blocked"
+        "codex": "supported",
+        "claude": "supported"
       },
       "setup": {
         "type": "none",
         "summary": "",
         "docs": null
       },
-      "reasons": [
-        "target_specific_home_path"
-      ]
+      "reasons": []
     }
   },
   {
@@ -35099,7 +36491,11 @@
       "reasons": [
         "target_specific_home_path"
       ]
-    }
+    },
+    "source_type": "community",
+    "source_repo": "mishanefedov/skill-issue",
+    "license": "MIT",
+    "license_source": "https://github.com/mishanefedov/skill-issue/blob/main/LICENSE"
   },
   {
     "id": "skill-rails-upgrade",
@@ -35233,7 +36629,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "mskadu/opencode-agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/mskadu/opencode-agent-skills/blob/main/LICENSE"
   },
   {
     "id": "skill-writer",
@@ -35299,7 +36699,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "Skyvern-AI/skyvern",
+    "license": "AGPL-3.0",
+    "license_source": "https://github.com/Skyvern-AI/skyvern/blob/main/LICENSE"
   },
   {
     "id": "slack-automation",
@@ -35433,7 +36837,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "mskadu/opencode-agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/mskadu/opencode-agent-skills/blob/main/LICENSE"
   },
   {
     "id": "smartui-skill",
@@ -35455,7 +36863,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "LambdaTest/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/LambdaTest/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "smtp-penetration-testing",
@@ -35543,7 +36955,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "social-orchestrator",
@@ -35587,7 +37000,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "social-proof-architect",
@@ -35633,7 +37047,11 @@
       "reasons": [
         "explicit_target_restriction"
       ]
-    }
+    },
+    "source_type": "community",
+    "source_repo": "ndesv21/socialclaw",
+    "license": "MIT",
+    "license_source": "https://github.com/ndesv21/socialclaw/blob/main/LICENSE"
   },
   {
     "id": "soft-pastel",
@@ -35655,7 +37073,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "software-architecture",
@@ -35721,7 +37140,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "addyosmani/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/addyosmani/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "spark-optimization",
@@ -35765,7 +37188,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "spatial-design",
@@ -35787,7 +37211,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "spec-driven-development",
@@ -35809,7 +37234,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "addyosmani/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/addyosmani/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "spec-to-code-compliance",
@@ -35989,7 +37418,11 @@
       "reasons": [
         "explicit_target_restriction"
       ]
-    }
+    },
+    "source_type": "community",
+    "source_repo": "takeaseatventure/sql-sentinel",
+    "license": "MIT",
+    "license_source": "https://github.com/takeaseatventure/sql-sentinel/blob/main/LICENSE"
   },
   {
     "id": "sqlmap-database-pentesting",
@@ -36055,7 +37488,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "flyingsquirrel0419/squirrel-skill",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/flyingsquirrel0419/squirrel-skill/blob/main/LICENSE"
   },
   {
     "id": "sred-project-organizer",
@@ -36297,7 +37734,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "license": "BSD-3-Clause license"
   },
   {
     "id": "steve-jobs",
@@ -36341,7 +37779,9 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "Leonxlnx/taste-skill"
   },
   {
     "id": "stitch-loop",
@@ -36473,7 +37913,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "bitjaru/styleseed",
+    "license": "MIT",
+    "license_source": "https://github.com/bitjaru/styleseed/blob/main/LICENSE"
   },
   {
     "id": "subagent-driven-development",
@@ -36561,7 +38005,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "supabase/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/supabase/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "supabase-automation",
@@ -36605,7 +38053,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "supabase/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/supabase/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "super-code",
@@ -36693,7 +38145,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "dair-ai/dair-academy-plugins",
+    "license": "MIT",
+    "license_source": "https://github.com/dair-ai/dair-academy-plugins/blob/main/README.md#license"
   },
   {
     "id": "sveltekit",
@@ -36781,7 +38237,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "AvdLee/SwiftUI-Agent-Skill",
+    "license": "MIT",
+    "license_source": "https://github.com/AvdLee/SwiftUI-Agent-Skill/blob/main/LICENSE"
   },
   {
     "id": "swiftui-liquid-glass",
@@ -36891,7 +38351,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "sympy",
@@ -36913,7 +38374,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "license": "https://github.com/sympy/sympy/blob/master/LICENSE"
   },
   {
     "id": "synthwave",
@@ -36935,7 +38397,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "systematic-debugging",
@@ -37045,7 +38508,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "taisly/agent",
+    "license": "MIT",
+    "license_source": "https://github.com/taisly/agent/blob/main/LICENSE"
   },
   {
     "id": "tanstack-query-expert",
@@ -37155,7 +38622,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "mattpocock/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE"
   },
   {
     "id": "tdd-orchestrator",
@@ -37331,7 +38802,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "mattpocock/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE"
   },
   {
     "id": "team-collaboration-issue",
@@ -37406,7 +38881,7 @@
     "name": "tech-matrix",
     "description": "Reference document for monopoly tech-matrix.",
     "risk": "safe",
-    "source": "unknown",
+    "source": "community",
     "date_added": null,
     "plugin": {
       "targets": {
@@ -37441,7 +38916,9 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "Elkidogz/technical-change-skill"
   },
   {
     "id": "technical-tutorials",
@@ -37463,7 +38940,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "jonathimer/devmarketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/jonathimer/devmarketing-skills/blob/main/LICENSE"
   },
   {
     "id": "telegram",
@@ -37837,7 +39318,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "LambdaTest/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/LambdaTest/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "testing-patterns",
@@ -37903,7 +39388,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "LambdaTest/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/LambdaTest/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "textme",
@@ -37927,7 +39416,11 @@
       "reasons": [
         "explicit_target_restriction"
       ]
-    }
+    },
+    "source_type": "community",
+    "source_repo": "njerschow/textme",
+    "license": "MIT",
+    "license_source": "https://github.com/njerschow/textme/blob/main/LICENSE"
   },
   {
     "id": "theme-factory",
@@ -38279,7 +39772,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "time-ledger",
@@ -38301,7 +39795,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "cruisekkk/time-ledger",
+    "license": "MIT",
+    "license_source": "https://github.com/cruisekkk/time-ledger/blob/main/LICENSE"
   },
   {
     "id": "tmux",
@@ -38345,7 +39843,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "mattpocock/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE"
   },
   {
     "id": "to-prd",
@@ -38367,7 +39869,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "mattpocock/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE"
   },
   {
     "id": "todoist-automation",
@@ -38413,7 +39919,11 @@
       "reasons": [
         "explicit_target_restriction"
       ]
-    }
+    },
+    "source_type": "community",
+    "source_repo": "CodeShuX/tokenwise",
+    "license": "MIT",
+    "license_source": "https://github.com/CodeShuX/tokenwise/blob/main/LICENSE"
   },
   {
     "id": "tool-design",
@@ -38479,7 +39989,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community"
   },
   {
     "id": "top-web-vulnerabilities",
@@ -38545,7 +40056,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "cruisekkk/trading-ledger",
+    "license": "MIT",
+    "license_source": "https://github.com/cruisekkk/trading-ledger/blob/main/LICENSE"
   },
   {
     "id": "train-sentence-transformers",
@@ -38567,7 +40082,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "huggingface/skills",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/huggingface/skills/blob/main/LICENSE"
   },
   {
     "id": "transformers-js",
@@ -38589,7 +40108,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "huggingface/skills",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/huggingface/skills/blob/main/LICENSE"
   },
   {
     "id": "travel-health-analyzer",
@@ -38633,7 +40156,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "TerminallyLazy/Tree-Ring-Memory",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/TerminallyLazy/Tree-Ring-Memory/blob/main/LICENSE"
   },
   {
     "id": "trello-automation",
@@ -38677,7 +40204,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "mattpocock/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE"
   },
   {
     "id": "trigger-dev",
@@ -38721,7 +40252,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "huggingface/skills",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/huggingface/skills/blob/main/LICENSE"
   },
   {
     "id": "trpc-fullstack",
@@ -38787,7 +40322,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "monte-carlo-data/mc-agent-toolkit",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/monte-carlo-data/mc-agent-toolkit/blob/main/LICENSE"
   },
   {
     "id": "turborepo-caching",
@@ -38985,7 +40524,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "ui-a11y",
@@ -39007,7 +40547,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "bitjaru/styleseed",
+    "license": "MIT",
+    "license_source": "https://github.com/bitjaru/styleseed/blob/main/LICENSE"
   },
   {
     "id": "ui-component",
@@ -39029,7 +40573,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "bitjaru/styleseed",
+    "license": "MIT",
+    "license_source": "https://github.com/bitjaru/styleseed/blob/main/LICENSE"
   },
   {
     "id": "ui-lint",
@@ -39051,7 +40599,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "bitjaru/styleseed",
+    "license": "MIT",
+    "license_source": "https://github.com/bitjaru/styleseed/blob/main/LICENSE"
   },
   {
     "id": "ui-motion",
@@ -39073,7 +40625,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "bitjaru/styleseed",
+    "license": "MIT",
+    "license_source": "https://github.com/bitjaru/styleseed/blob/main/LICENSE"
   },
   {
     "id": "ui-page",
@@ -39095,7 +40651,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "bitjaru/styleseed",
+    "license": "MIT",
+    "license_source": "https://github.com/bitjaru/styleseed/blob/main/LICENSE"
   },
   {
     "id": "ui-pattern",
@@ -39117,7 +40677,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "bitjaru/styleseed",
+    "license": "MIT",
+    "license_source": "https://github.com/bitjaru/styleseed/blob/main/LICENSE"
   },
   {
     "id": "ui-review",
@@ -39139,7 +40703,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "bitjaru/styleseed",
+    "license": "MIT",
+    "license_source": "https://github.com/bitjaru/styleseed/blob/main/LICENSE"
   },
   {
     "id": "ui-score",
@@ -39161,7 +40729,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "bitjaru/styleseed",
+    "license": "MIT",
+    "license_source": "https://github.com/bitjaru/styleseed/blob/main/LICENSE"
   },
   {
     "id": "ui-setup",
@@ -39183,7 +40755,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "bitjaru/styleseed",
+    "license": "MIT",
+    "license_source": "https://github.com/bitjaru/styleseed/blob/main/LICENSE"
   },
   {
     "id": "ui-skills",
@@ -39227,7 +40803,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "ibelick/ui-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/ibelick/ui-skills/blob/main/LICENSE"
   },
   {
     "id": "ui-tokens",
@@ -39249,7 +40829,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "bitjaru/styleseed",
+    "license": "MIT",
+    "license_source": "https://github.com/bitjaru/styleseed/blob/main/LICENSE"
   },
   {
     "id": "ui-update",
@@ -39271,7 +40855,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "bitjaru/styleseed",
+    "license": "MIT",
+    "license_source": "https://github.com/bitjaru/styleseed/blob/main/LICENSE"
   },
   {
     "id": "ui-ux-designer",
@@ -39381,7 +40969,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "license": "Unknown"
   },
   {
     "id": "unit-testing-test-generate",
@@ -39425,7 +41014,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community"
   },
   {
     "id": "unity-developer",
@@ -39515,7 +41105,11 @@
       "reasons": [
         "explicit_target_restriction"
       ]
-    }
+    },
+    "source_type": "community",
+    "source_repo": "mbenhard/unship",
+    "license": "MIT",
+    "license_source": "https://github.com/mbenhard/unship/blob/main/LICENSE"
   },
   {
     "id": "unslop",
@@ -39537,7 +41131,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "MohamedAbdallah-14/unslop",
+    "license": "MIT",
+    "license_source": "https://github.com/MohamedAbdallah-14/unslop/blob/main/LICENSE"
   },
   {
     "id": "unslop-commit",
@@ -39559,7 +41157,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "MohamedAbdallah-14/unslop",
+    "license": "MIT",
+    "license_source": "https://github.com/MohamedAbdallah-14/unslop/blob/main/LICENSE"
   },
   {
     "id": "unslop-file",
@@ -39581,7 +41183,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "MohamedAbdallah-14/unslop",
+    "license": "MIT",
+    "license_source": "https://github.com/MohamedAbdallah-14/unslop/blob/main/LICENSE"
   },
   {
     "id": "unslop-review",
@@ -39603,7 +41209,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "MohamedAbdallah-14/unslop",
+    "license": "MIT",
+    "license_source": "https://github.com/MohamedAbdallah-14/unslop/blob/main/LICENSE"
   },
   {
     "id": "unsplash-integration",
@@ -39647,7 +41257,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "AvdLee/SwiftUI-Agent-Skill",
+    "license": "MIT",
+    "license_source": "https://github.com/AvdLee/SwiftUI-Agent-Skill/blob/main/LICENSE"
   },
   {
     "id": "upgrading-expo",
@@ -39669,7 +41283,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "expo/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/expo/skills/blob/main/LICENSE"
   },
   {
     "id": "upstash-qstash",
@@ -39713,7 +41331,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "jonathimer/devmarketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/jonathimer/devmarketing-skills/blob/main/LICENSE"
   },
   {
     "id": "use-dom",
@@ -39735,7 +41357,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "expo/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/expo/skills/blob/main/LICENSE"
   },
   {
     "id": "user-thoughts",
@@ -39757,7 +41383,10 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "JularDepick/user-thoughts.SKILL",
+    "license": "MIT"
   },
   {
     "id": "using-git-worktrees",
@@ -39847,7 +41476,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "bitjaru/styleseed",
+    "license": "MIT",
+    "license_source": "https://github.com/bitjaru/styleseed/blob/main/LICENSE"
   },
   {
     "id": "ux-copy",
@@ -39869,7 +41502,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "bitjaru/styleseed",
+    "license": "MIT",
+    "license_source": "https://github.com/bitjaru/styleseed/blob/main/LICENSE"
   },
   {
     "id": "ux-feedback",
@@ -39891,7 +41528,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "bitjaru/styleseed",
+    "license": "MIT",
+    "license_source": "https://github.com/bitjaru/styleseed/blob/main/LICENSE"
   },
   {
     "id": "ux-flow",
@@ -39913,7 +41554,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "bitjaru/styleseed",
+    "license": "MIT",
+    "license_source": "https://github.com/bitjaru/styleseed/blob/main/LICENSE"
   },
   {
     "id": "ux-persuasion-engineer",
@@ -39979,7 +41624,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "variant-analysis",
@@ -40333,7 +41979,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "vibecode-production-qa-validator",
@@ -40355,7 +42002,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "vibers-code-review",
@@ -40421,7 +42069,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "video-content-extractor",
@@ -40443,7 +42092,9 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "274326424/video-content-extractor"
   },
   {
     "id": "videodb",
@@ -40553,7 +42204,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "LambdaTest/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/LambdaTest/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "vizcom",
@@ -40663,7 +42318,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "davidondrej/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
   },
   {
     "id": "vr-ar",
@@ -40707,7 +42366,9 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "lewiswigmore/agent-skills"
   },
   {
     "id": "vulnerability-scanner",
@@ -40795,7 +42456,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "weaviate/agent-skills",
+    "license": "BSD-3-Clause",
+    "license_source": "https://github.com/weaviate/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "weaviate-cookbooks",
@@ -40817,7 +42482,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "weaviate/agent-skills",
+    "license": "BSD-3-Clause",
+    "license_source": "https://github.com/weaviate/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "web-artifacts-builder",
@@ -40905,7 +42574,10 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "connerkward/web-media-getter-skill",
+    "license": "MIT"
   },
   {
     "id": "web-performance-optimization",
@@ -40949,7 +42621,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "web-scraper",
@@ -41059,7 +42732,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "LambdaTest/agent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/LambdaTest/agent-skills/blob/main/LICENSE"
   },
   {
     "id": "webflow-automation",
@@ -41103,7 +42780,9 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "demo112/yunqu-ai-skills"
   },
   {
     "id": "weightloss-analyzer",
@@ -41169,7 +42848,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "agent-frontier/wgm",
+    "license": "MIT",
+    "license_source": "https://github.com/agent-frontier/wgm/blob/main/LICENSE"
   },
   {
     "id": "whatsapp-automation",
@@ -41235,7 +42918,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "wiki-architect",
@@ -41279,7 +42963,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "dair-ai/dair-academy-plugins",
+    "license": "MIT",
+    "license_source": "https://github.com/dair-ai/dair-academy-plugins/blob/main/README.md#license"
   },
   {
     "id": "wiki-changelog",
@@ -41499,7 +43187,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "Wolfe-Jam/faf-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/Wolfe-Jam/faf-skills/blob/main/LICENSE"
   },
   {
     "id": "wjttc-tester",
@@ -41521,7 +43213,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "Wolfe-Jam/faf-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/Wolfe-Jam/faf-skills/blob/main/LICENSE"
   },
   {
     "id": "wordpress",
@@ -41565,7 +43261,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "wordpress-penetration-testing",
@@ -41741,7 +43438,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "work0r-ai/agent-kit",
+    "license": "MIT",
+    "license_source": "https://github.com/work0r-ai/agent-kit/blob/main/skills/workorai/LICENSE.txt"
   },
   {
     "id": "wp-site-health-auditor",
@@ -41763,7 +43464,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "wrike-automation",
@@ -41829,7 +43531,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "mattpocock/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE"
   },
   {
     "id": "writing-plans",
@@ -41902,7 +43608,7 @@
     "path": "skills/x-twitter-scraper",
     "category": "data",
     "name": "x-twitter-scraper",
-    "description": "X/Twitter automation skill for tweet search, follower export, posting, DMs, webhooks, MCP, SDKs, Hermes Tweet, and TweetClaw.",
+    "description": "Use Xquik for X data workflows: tweet search, user lookup, follower export, media downloads, monitors, webhooks, REST API, MCP, SDK setup, and approval-gated account actions.",
     "risk": "critical",
     "source": "community",
     "date_added": "2026-02-28",
@@ -41919,7 +43625,11 @@
       "reasons": [
         "explicit_target_restriction"
       ]
-    }
+    },
+    "source_type": "official",
+    "source_repo": "Xquik-dev/x-twitter-scraper",
+    "license": "MIT",
+    "license_source": "https://github.com/Xquik-dev/x-twitter-scraper/blob/master/LICENSE"
   },
   {
     "id": "x402-express-wrapper",
@@ -41963,7 +43673,9 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "demo112/yunqu-ai-skills"
   },
   {
     "id": "xlsx-official",
@@ -42051,7 +43763,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "self"
   },
   {
     "id": "yann-lecun",
@@ -42161,7 +43874,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "yaojingang/yao-meta-skill",
+    "license": "MIT",
+    "license_source": "https://github.com/yaojingang/yao-meta-skill/blob/main/LICENSE"
   },
   {
     "id": "yes-md",
@@ -42249,7 +43966,11 @@
         "docs": "https://transcriptapi.com/docs"
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "ZeroPointRepo/youtube-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/ZeroPointRepo/youtube-skills/blob/main/LICENSE"
   },
   {
     "id": "youtube-notetaker",
@@ -42271,7 +43992,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "official",
+    "source_repo": "dair-ai/dair-academy-plugins",
+    "license": "MIT",
+    "license_source": "https://github.com/dair-ai/dair-academy-plugins/blob/main/README.md#license"
   },
   {
     "id": "youtube-seo-optimizer",
@@ -42293,7 +44018,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community"
   },
   {
     "id": "youtube-summarizer",
@@ -42337,7 +44063,11 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community",
+    "source_repo": "davidondrej/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
   },
   {
     "id": "zapier-make-patterns",
