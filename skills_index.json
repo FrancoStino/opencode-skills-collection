@@ -3015,6 +3015,32 @@
     "license_source": "https://github.com/LambdaTest/agent-skills/blob/main/LICENSE"
   },
   {
+    "id": "apple-container",
+    "path": "skills/apple-container",
+    "category": "devops",
+    "name": "apple-container",
+    "description": "Build, run, and manage OCI/Linux containers as lightweight per-container VMs on Apple-silicon macOS using Apple's open-source container CLI, no Docker daemon required.",
+    "risk": "critical",
+    "source": "https://github.com/sanjay3290/ai-skills/tree/main/skills/apple-container",
+    "date_added": "2026-07-09",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "sanjay3290/ai-skills",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/sanjay3290/ai-skills/blob/main/LICENSE"
+  },
+  {
     "id": "apple-notes-search",
     "path": "skills/apple-notes-search",
     "category": "uncategorized",
@@ -3622,6 +3648,30 @@
       },
       "reasons": []
     }
+  },
+  {
+    "id": "auto-research",
+    "path": "skills/auto-research",
+    "category": "automation",
+    "name": "auto-research",
+    "description": "Research uncertain questions with an explicit, user-approved web search or ChatGPT consultation, then present options and wait for implementation approval.",
+    "risk": "critical",
+    "source": "self",
+    "date_added": "2026-07-09",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "self",
+    "license": "MIT"
   },
   {
     "id": "automated-triage",
@@ -17494,7 +17544,7 @@
     "category": "mobile",
     "name": "flutter-expert",
     "description": "Master Flutter development with Dart 3, advanced widgets, and multi-platform deployment.",
-    "risk": "unknown",
+    "risk": "safe",
     "source": "community",
     "date_added": "2026-02-27",
     "plugin": {
@@ -17508,7 +17558,8 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "source_type": "community"
   },
   {
     "id": "folder-specific-claude-and-agents-md",
@@ -18798,6 +18849,34 @@
       },
       "reasons": []
     }
+  },
+  {
+    "id": "gemini-deep-research",
+    "path": "skills/gemini-deep-research",
+    "category": "research",
+    "name": "gemini-deep-research",
+    "description": "Run autonomous multi-step research with Google's Gemini Deep Research Agent: kick off a query, poll progress, and collect a cited report for market analysis or literature reviews.",
+    "risk": "critical",
+    "source": "https://github.com/sanjay3290/ai-skills/tree/main/skills/deep-research",
+    "date_added": "2026-07-09",
+    "plugin": {
+      "targets": {
+        "codex": "blocked",
+        "claude": "blocked"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": [
+        "undeclared_runtime_dependency"
+      ]
+    },
+    "source_type": "community",
+    "source_repo": "sanjay3290/ai-skills",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/sanjay3290/ai-skills/blob/main/LICENSE"
   },
   {
     "id": "gemini-live-api-dev",
@@ -20091,6 +20170,32 @@
     "source_repo": "mattpocock/skills",
     "license": "MIT",
     "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE"
+  },
+  {
+    "id": "grok-build",
+    "path": "skills/grok-build",
+    "category": "agent-orchestration",
+    "name": "grok-build",
+    "description": "Delegate well-specified implementation tasks to xAI's Grok Build CLI running headlessly while the orchestrating agent plans, writes task specs, reviews every diff, and owns the result.",
+    "risk": "critical",
+    "source": "https://github.com/sanjay3290/ai-skills/tree/main/skills/grok-build",
+    "date_added": "2026-07-09",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "sanjay3290/ai-skills",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/sanjay3290/ai-skills/blob/main/LICENSE"
   },
   {
     "id": "growth-engine",
@@ -30556,6 +30661,34 @@
     }
   },
   {
+    "id": "postgres-readonly-queries",
+    "path": "skills/postgres-readonly-queries",
+    "category": "data",
+    "name": "postgres-readonly-queries",
+    "description": "Execute safe read-only SQL queries against PostgreSQL databases with multi-connection support and defense-in-depth write protection.",
+    "risk": "safe",
+    "source": "https://github.com/sanjay3290/ai-skills/tree/main/skills/postgres",
+    "date_added": "2026-07-09",
+    "plugin": {
+      "targets": {
+        "codex": "blocked",
+        "claude": "blocked"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": [
+        "undeclared_runtime_dependency"
+      ]
+    },
+    "source_type": "community",
+    "source_repo": "sanjay3290/ai-skills",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/sanjay3290/ai-skills/blob/main/LICENSE"
+  },
+  {
     "id": "postgresql",
     "path": "skills/postgresql",
     "category": "database",
@@ -31120,6 +31253,32 @@
       },
       "reasons": []
     }
+  },
+  {
+    "id": "product-decision-agent",
+    "path": "skills/product-decision-agent",
+    "category": "product",
+    "name": "product-decision-agent",
+    "description": "中文产品决策 Agent。用于需求优先级、Roadmap、增长、留存、运营、数据异常、A/B Test、项目延期和跨团队协作；先判断事实、阶段、核心阻塞与主导机制，再给出下一步、停止清单和切换条件。默认中文，不引用原文或讲历史。",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-07-10",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "atdy/maoxuan-product-agent",
+    "license": "MIT",
+    "license_source": "https://github.com/atdy/maoxuan-product-agent/blob/main/LICENSE"
   },
   {
     "id": "product-design",
@@ -39011,6 +39170,34 @@
       },
       "reasons": []
     }
+  },
+  {
+    "id": "telegram-bot-messaging",
+    "path": "skills/telegram-bot-messaging",
+    "category": "productivity",
+    "name": "telegram-bot-messaging",
+    "description": "Send Telegram messages, files, and alerts via bot API; ask questions with inline buttons and wait for the answer. Supports multiple bots, named chat targets, and CI/cron/hook notifications.",
+    "risk": "critical",
+    "source": "https://github.com/sanjay3290/ai-skills/tree/main/skills/telegram",
+    "date_added": "2026-07-09",
+    "plugin": {
+      "targets": {
+        "codex": "blocked",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": [
+        "target_specific_home_path"
+      ]
+    },
+    "source_type": "community",
+    "source_repo": "sanjay3290/ai-skills",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/sanjay3290/ai-skills/blob/main/LICENSE"
   },
   {
     "id": "telegram-mini-app",
