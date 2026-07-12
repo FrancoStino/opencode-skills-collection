@@ -250,7 +250,10 @@ To use the latest beta version, update your `~/.config/opencode/opencode.json`:
 
 ## License
 
-[MIT ©](./LICENSE) 
+[MIT ©](./LICENSE)
+
+## GitAds Sponsored
+[![Sponsored by GitAds](https://gitads.dev/v1/ad-serve?source=francostino/opencode-skills-collection@github)](https://gitads.dev/v1/ad-track?source=francostino/opencode-skills-collection@github)
 
 ## Star History
 
