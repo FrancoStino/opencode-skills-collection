@@ -1,3 +1,4 @@
+<!-- GitAds-Verify: UJY7GLBGO5NXKQAS89X9E6DFWFIHOM1Q -->
 <div align="center">
 
 <img src="docs/assets/logo.svg" alt="OpenCode Skills Collection"/>
