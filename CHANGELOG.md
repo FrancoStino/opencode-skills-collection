@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v4.0.0] - 2026-07-14
+### :wrench: Chores
+- [`c1c67dd`](https://github.com/FrancoStino/opencode-skills-collection/commit/c1c67dd596156647095d4adb840a3029395fd18b) - update references from antigravity-awesome-skills to agentic-awesome-skills *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+- [`831342b`](https://github.com/FrancoStino/opencode-skills-collection/commit/831342bf7f02e0db409f54e946a4bc6f1b74c3e3) - bump version to v4.0.0 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
 ## [v3.1.23] - 2026-07-14
 ### :wrench: Chores
 - [`7f32ab8`](https://github.com/FrancoStino/opencode-skills-collection/commit/7f32ab8a46676b61366b65d38eed9f189685560f) - sync skills and bump version to v3.1.23 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
@@ -3603,3 +3609,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v3.1.21]: https://github.com/FrancoStino/opencode-skills-collection/compare/v3.1.20...v3.1.21
 [v3.1.22]: https://github.com/FrancoStino/opencode-skills-collection/compare/v3.1.21...v3.1.22
 [v3.1.23]: https://github.com/FrancoStino/opencode-skills-collection/compare/v3.1.22...v3.1.23
+[v4.0.0]: https://github.com/FrancoStino/opencode-skills-collection/compare/v3.1.23...v4.0.0
