@@ -41,7 +41,15 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "security",
+      "audit",
+      "owasp",
+      "threat-modeling",
+      "hardening",
+      "pentest"
+    ]
   },
   {
     "id": "10-andruia-skill-smith",
@@ -131,7 +139,17 @@
       "reasons": []
     },
     "source_type": "community",
-    "source_repo": "2slides/slides-generation-2slides-skills"
+    "source_repo": "2slides/slides-generation-2slides-skills",
+    "tags": [
+      "presentations",
+      "slides",
+      "powerpoint",
+      "ai",
+      "api-integration",
+      "pdf",
+      "narration",
+      "document-summarization"
+    ]
   },
   {
     "id": "3d-games",
@@ -616,7 +634,13 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "legal",
+      "brazilian-law",
+      "criminal-law",
+      "portuguese"
+    ]
   },
   {
     "id": "advogado-especialista",
@@ -638,7 +662,13 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "legal",
+      "brazilian-law",
+      "multi-domain",
+      "portuguese"
+    ]
   },
   {
     "id": "aegisops-ai",
@@ -886,7 +916,13 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "orchestration",
+      "multi-agent",
+      "workflow",
+      "automation"
+    ]
   },
   {
     "id": "agent-self-scheduling",
@@ -912,7 +948,13 @@
     "source_type": "community",
     "source_repo": "davidondrej/skills",
     "license": "MIT",
-    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE",
+    "tags": [
+      "agents",
+      "scheduling",
+      "automation",
+      "cron"
+    ]
   },
   {
     "id": "agent-squad",
@@ -1138,7 +1180,13 @@
     "source_type": "community",
     "source_repo": "luoyuctl/agenttrace",
     "license": "MIT",
-    "license_source": "https://github.com/luoyuctl/agenttrace/blob/master/LICENSE"
+    "license_source": "https://github.com/luoyuctl/agenttrace/blob/master/LICENSE",
+    "tags": [
+      "ai-coding",
+      "observability",
+      "cost-tracking",
+      "session-analysis"
+    ]
   },
   {
     "id": "ai-agent-development",
@@ -1227,7 +1275,16 @@
       },
       "reasons": []
     },
-    "source_type": "community"
+    "source_type": "community",
+    "tags": [
+      "mcp",
+      "jobs",
+      "ai-jobs",
+      "ml-jobs",
+      "recruiting",
+      "job-search",
+      "career"
+    ]
   },
   {
     "id": "ai-engineer",
@@ -1273,7 +1330,15 @@
       "reasons": [
         "target_specific_home_path"
       ]
-    }
+    },
+    "tags": [
+      "prompt-engineering",
+      "rag",
+      "security",
+      "evaluation",
+      "ai-engineering",
+      "llm"
+    ]
   },
   {
     "id": "ai-loop",
@@ -1295,7 +1360,15 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "agent-workflow",
+      "specification",
+      "implementation",
+      "review",
+      "verification",
+      "feedback-loop"
+    ]
   },
   {
     "id": "ai-ml",
@@ -1428,7 +1501,13 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "image-generation",
+      "ai-studio",
+      "google",
+      "photography"
+    ]
   },
   {
     "id": "ai-wrapper-product",
@@ -1516,7 +1595,15 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "trust",
+      "metadata",
+      "provenance",
+      "compliance",
+      "file-format",
+      "ai-native"
+    ]
   },
   {
     "id": "alex",
@@ -1652,7 +1739,14 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "voice",
+      "alexa",
+      "aws",
+      "smart-home",
+      "iot"
+    ]
   },
   {
     "id": "amplitude-automation",
@@ -1722,7 +1816,14 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "analytics",
+      "product",
+      "metrics",
+      "posthog",
+      "mixpanel"
+    ]
   },
   {
     "id": "analytics-tracking",
@@ -1768,7 +1869,15 @@
       "reasons": [
         "target_specific_home_path"
       ]
-    }
+    },
+    "tags": [
+      "analysis",
+      "diagnostics",
+      "meta",
+      "root-cause",
+      "project-health",
+      "session-review"
+    ]
   },
   {
     "id": "andrej-karpathy",
@@ -1794,7 +1903,13 @@
     "source_type": "community",
     "source_repo": "multica-ai/andrej-karpathy-skills",
     "license": "MIT",
-    "license_source": "https://github.com/multica-ai/andrej-karpathy-skills/blob/main/skills/karpathy-guidelines/SKILL.md"
+    "license_source": "https://github.com/multica-ai/andrej-karpathy-skills/blob/main/skills/karpathy-guidelines/SKILL.md",
+    "tags": [
+      "coding-guidelines",
+      "code-review",
+      "llm-coding",
+      "simplicity"
+    ]
   },
   {
     "id": "android-cli",
@@ -1819,7 +1934,15 @@
         "explicit_target_restriction"
       ]
     },
-    "source_type": "self"
+    "source_type": "self",
+    "tags": [
+      "android",
+      "cli",
+      "adb",
+      "mobile",
+      "build",
+      "emulator"
+    ]
   },
   {
     "id": "android-dev",
@@ -1886,7 +2009,15 @@
       },
       "reasons": []
     },
-    "source_type": "self"
+    "source_type": "self",
+    "tags": [
+      "android",
+      "journey-testing",
+      "ui-verification",
+      "testing",
+      "adb",
+      "automation"
+    ]
   },
   {
     "id": "android_ui_verification",
@@ -2066,7 +2197,14 @@
     "source_type": "community",
     "source_repo": "ejentum/ejentum-mcp",
     "license": "MIT",
-    "license_source": "https://github.com/ejentum/ejentum-mcp/blob/main/LICENSE"
+    "license_source": "https://github.com/ejentum/ejentum-mcp/blob/main/LICENSE",
+    "tags": [
+      "community",
+      "ai-tools",
+      "anti-deception",
+      "integrity",
+      "mcp"
+    ]
   },
   {
     "id": "anti-reversing-techniques",
@@ -2114,7 +2252,12 @@
     "source_type": "community",
     "source_repo": "davidondrej/skills",
     "license": "MIT",
-    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE",
+    "tags": [
+      "macos",
+      "caffeinate",
+      "operations"
+    ]
   },
   {
     "id": "anti-sycophancy",
@@ -2165,7 +2308,13 @@
         "absolute_host_path"
       ]
     },
-    "source_type": "self"
+    "source_type": "self",
+    "tags": [
+      "agent-manager",
+      "orchestration",
+      "multi-agent",
+      "setup"
+    ]
   },
   {
     "id": "antigravity-design-expert",
@@ -2209,7 +2358,13 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "[orchestration",
+      "meta-skill",
+      "agent-memory",
+      "task-evaluation]"
+    ]
   },
   {
     "id": "antigravity-workflows",
@@ -2256,7 +2411,17 @@
     },
     "source_repo": "aomi-labs/skills",
     "license": "MIT",
-    "license_source": "https://github.com/aomi-labs/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/aomi-labs/skills/blob/main/LICENSE",
+    "tags": [
+      "defi",
+      "wallet",
+      "account-abstraction",
+      "cli",
+      "eip-712",
+      "onchain",
+      "agent",
+      "intent"
+    ]
   },
   {
     "id": "api-analyzer",
@@ -3038,7 +3203,13 @@
     "source_type": "community",
     "source_repo": "sanjay3290/ai-skills",
     "license": "Apache-2.0",
-    "license_source": "https://github.com/sanjay3290/ai-skills/blob/main/LICENSE"
+    "license_source": "https://github.com/sanjay3290/ai-skills/blob/main/LICENSE",
+    "tags": [
+      "macos",
+      "containers",
+      "oci",
+      "apple-silicon"
+    ]
   },
   {
     "id": "apple-notes-search",
@@ -3067,7 +3238,15 @@
     "source_type": "community",
     "source_repo": "connerkward/mcp-apple-notes",
     "license": "MIT",
-    "license_source": "https://github.com/connerkward/mcp-apple-notes/blob/main/LICENSE"
+    "license_source": "https://github.com/connerkward/mcp-apple-notes/blob/main/LICENSE",
+    "tags": [
+      "apple-notes",
+      "search",
+      "mcp",
+      "macos",
+      "semantic-search",
+      "knowledge"
+    ]
   },
   {
     "id": "application-performance-performance-optimization",
@@ -3273,7 +3452,14 @@
     "source_type": "community",
     "source_repo": "Genefold/arrowspace-skills",
     "license": "Apache-2.0",
-    "license_source": "https://github.com/Genefold/arrowspace-skills/blob/main/LICENSE"
+    "license_source": "https://github.com/Genefold/arrowspace-skills/blob/main/LICENSE",
+    "tags": [
+      "vector-search",
+      "spectral-analysis",
+      "graph-laplacian",
+      "embeddings",
+      "lambda-tau"
+    ]
   },
   {
     "id": "article-illustrations",
@@ -3299,7 +3485,14 @@
     "source_type": "community",
     "source_repo": "vipin-si/article-illustrations",
     "license": "MIT",
-    "license_source": "https://github.com/vipin-si/article-illustrations/blob/main/LICENSE"
+    "license_source": "https://github.com/vipin-si/article-illustrations/blob/main/LICENSE",
+    "tags": [
+      "illustration",
+      "article-graphics",
+      "visual-metaphors",
+      "image-generation",
+      "whiteboard-sketch"
+    ]
   },
   {
     "id": "asana-automation",
@@ -3345,7 +3538,14 @@
       "reasons": []
     },
     "source_type": "self",
-    "source_repo": "cshara1/antigravity-awesome-skills"
+    "source_repo": "cshara1/antigravity-awesome-skills",
+    "tags": [
+      "copilot",
+      "github",
+      "cli",
+      "review",
+      "prompt"
+    ]
   },
   {
     "id": "ask-matt",
@@ -3371,7 +3571,12 @@
     "source_type": "community",
     "source_repo": "mattpocock/skills",
     "license": "MIT",
-    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE",
+    "tags": [
+      "productivity",
+      "workflow",
+      "coding-agents"
+    ]
   },
   {
     "id": "ask-questions-if-underspecified",
@@ -3415,7 +3620,17 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "astro",
+      "ssg",
+      "ssr",
+      "islands",
+      "content",
+      "markdown",
+      "mdx",
+      "performance"
+    ]
   },
   {
     "id": "astropy",
@@ -3532,7 +3747,14 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "[audio",
+      "transcription",
+      "whisper",
+      "meeting-minutes",
+      "speech-to-text]"
+    ]
   },
   {
     "id": "audit-context-building",
@@ -3578,7 +3800,14 @@
       "reasons": [
         "absolute_host_path"
       ]
-    }
+    },
+    "tags": [
+      "security",
+      "audit",
+      "skills",
+      "bundles",
+      "cross-platform"
+    ]
   },
   {
     "id": "auri-core",
@@ -3602,7 +3831,13 @@
       "reasons": [
         "absolute_host_path"
       ]
-    }
+    },
+    "tags": [
+      "voice-assistant",
+      "product-vision",
+      "alexa",
+      "aws"
+    ]
   },
   {
     "id": "aurora-ui",
@@ -3671,7 +3906,15 @@
       "reasons": []
     },
     "source_type": "self",
-    "license": "MIT"
+    "license": "MIT",
+    "tags": [
+      "research",
+      "chatgpt",
+      "playwright",
+      "browser-automation",
+      "decision-support",
+      "chinese"
+    ]
   },
   {
     "id": "automated-triage",
@@ -3925,7 +4168,16 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "[aws",
+      "compliance",
+      "audit",
+      "cis",
+      "pci-dss",
+      "hipaa",
+      "kiro-cli]"
+    ]
   },
   {
     "id": "aws-cost-cleanup",
@@ -4017,7 +4269,15 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "[aws",
+      "iam",
+      "security",
+      "access-control",
+      "kiro-cli",
+      "least-privilege]"
+    ]
   },
   {
     "id": "aws-mcp-setup",
@@ -4087,7 +4347,15 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "[aws",
+      "secrets-manager",
+      "security",
+      "automation",
+      "kiro-cli",
+      "credentials]"
+    ]
   },
   {
     "id": "aws-security-audit",
@@ -4109,7 +4377,15 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "[aws",
+      "security",
+      "audit",
+      "compliance",
+      "kiro-cli",
+      "security-assessment]"
+    ]
   },
   {
     "id": "aws-serverless",
@@ -4253,7 +4529,13 @@
     "source_type": "community",
     "source_repo": "Necmttn/ax",
     "license": "AGPL-3.0-only",
-    "license_source": "https://github.com/Necmttn/ax/blob/main/LICENSE"
+    "license_source": "https://github.com/Necmttn/ax/blob/main/LICENSE",
+    "tags": [
+      "ai-coding",
+      "workflow-reconstruction",
+      "session-analysis",
+      "observability"
+    ]
   },
   {
     "id": "axiom",
@@ -7327,7 +7609,16 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "ai",
+      "testing",
+      "behavioral-analysis",
+      "model-evaluation",
+      "red-team",
+      "compliance",
+      "mcp"
+    ]
   },
   {
     "id": "bdistill-knowledge-extraction",
@@ -7349,7 +7640,15 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "ai",
+      "knowledge-extraction",
+      "domain-specific",
+      "data-moat",
+      "mcp",
+      "reference-data"
+    ]
   },
   {
     "id": "beautiful-prose",
@@ -7397,7 +7696,13 @@
     "source_type": "community",
     "source_repo": "bin1874/before-you-build-skill",
     "license": "MIT",
-    "license_source": "https://github.com/bin1874/before-you-build-skill/blob/main/LICENSE"
+    "license_source": "https://github.com/bin1874/before-you-build-skill/blob/main/LICENSE",
+    "tags": [
+      "product-validation",
+      "planning",
+      "ai-coding",
+      "risk-review"
+    ]
   },
   {
     "id": "behavioral-modes",
@@ -7488,7 +7793,14 @@
       "reasons": [
         "explicit_target_restriction"
       ]
-    }
+    },
+    "tags": [
+      "spreadsheets",
+      "formulas",
+      "mcp",
+      "xlsx",
+      "typescript"
+    ]
   },
   {
     "id": "bill-gates",
@@ -7510,7 +7822,13 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "persona",
+      "business-strategy",
+      "technology",
+      "philanthropy"
+    ]
   },
   {
     "id": "billing-automation",
@@ -7739,7 +8057,12 @@
     "source_type": "community",
     "source_repo": "davidondrej/skills",
     "license": "MIT",
-    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE",
+    "tags": [
+      "documentation",
+      "adr",
+      "planning"
+    ]
   },
   {
     "id": "brainstorming",
@@ -8019,7 +8342,14 @@
     "source_type": "community",
     "source_repo": "hyhmrright/brooks-lint",
     "license": "MIT",
-    "license_source": "https://github.com/hyhmrright/brooks-lint/blob/main/LICENSE"
+    "license_source": "https://github.com/hyhmrright/brooks-lint/blob/main/LICENSE",
+    "tags": [
+      "code-review",
+      "architecture",
+      "software-design",
+      "refactoring",
+      "claude-code"
+    ]
   },
   {
     "id": "brooks-review",
@@ -8167,7 +8497,13 @@
     "source_type": "community",
     "source_repo": "davidondrej/skills",
     "license": "MIT",
-    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE",
+    "tags": [
+      "browser",
+      "cdp",
+      "automation",
+      "scraping"
+    ]
   },
   {
     "id": "browser-testing-with-devtools",
@@ -8193,7 +8529,14 @@
     "source_type": "community",
     "source_repo": "addyosmani/agent-skills",
     "license": "MIT",
-    "license_source": "https://github.com/addyosmani/agent-skills/blob/main/LICENSE"
+    "license_source": "https://github.com/addyosmani/agent-skills/blob/main/LICENSE",
+    "tags": [
+      "browser-testing",
+      "chrome-devtools",
+      "mcp",
+      "frontend",
+      "performance"
+    ]
   },
   {
     "id": "brutalism",
@@ -8379,7 +8722,14 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "writing",
+      "summarization",
+      "note-taking",
+      "formatting",
+      "structured-output"
+    ]
   },
   {
     "id": "bullmq-specialist",
@@ -8427,7 +8777,15 @@
     "source_type": "community",
     "source_repo": "mycelos-ai/bumblebee-skill",
     "license": "MIT",
-    "license_source": "https://github.com/mycelos-ai/bumblebee-skill/blob/main/LICENSE"
+    "license_source": "https://github.com/mycelos-ai/bumblebee-skill/blob/main/LICENSE",
+    "tags": [
+      "security",
+      "supply-chain",
+      "incident-response",
+      "npm",
+      "pypi",
+      "tooling"
+    ]
   },
   {
     "id": "bun-development",
@@ -8541,7 +8899,15 @@
     "source_type": "official",
     "source_repo": "BuyWhere/buywhere-mcp",
     "license": "Not declared",
-    "license_source": "https://github.com/BuyWhere/buywhere-mcp"
+    "license_source": "https://github.com/BuyWhere/buywhere-mcp",
+    "tags": [
+      "buywhere",
+      "ecommerce",
+      "shopping",
+      "mcp",
+      "api",
+      "product-catalog"
+    ]
   },
   {
     "id": "c",
@@ -9303,7 +9669,15 @@
     },
     "source_type": "community",
     "source_repo": "connerkward/ckw-design-skill",
-    "license": "MIT"
+    "license": "MIT",
+    "tags": [
+      "design",
+      "frontend",
+      "ui",
+      "css",
+      "typography",
+      "responsive"
+    ]
   },
   {
     "id": "claimable-postgres",
@@ -9374,7 +9748,15 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "mcp",
+      "aeo",
+      "tool-quality",
+      "agent-readiness",
+      "api-scoring",
+      "clarvia"
+    ]
   },
   {
     "id": "claude-ally-health",
@@ -9444,7 +9826,13 @@
         "absolute_host_path",
         "target_specific_home_path"
       ]
-    }
+    },
+    "tags": [
+      "claude-code",
+      "productivity",
+      "cli",
+      "configuration"
+    ]
   },
   {
     "id": "claude-code-guide",
@@ -9535,7 +9923,13 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "monitoring",
+      "performance",
+      "diagnostics",
+      "system-health"
+    ]
   },
   {
     "id": "claude-scientific-skills",
@@ -9894,7 +10288,13 @@
     "source_type": "community",
     "source_repo": "davidondrej/skills",
     "license": "MIT",
-    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE",
+    "tags": [
+      "cmux",
+      "terminal",
+      "agents",
+      "macos"
+    ]
   },
   {
     "id": "co-marketing",
@@ -10454,7 +10854,12 @@
     "source_type": "community",
     "source_repo": "mattpocock/skills",
     "license": "MIT",
-    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE",
+    "tags": [
+      "architecture",
+      "workflow",
+      "coding-agents"
+    ]
   },
   {
     "id": "codebase-to-wordpress-converter",
@@ -10504,7 +10909,14 @@
     "source_type": "community",
     "source_repo": "baskduf/FableCodex",
     "license": "AGPL-3.0-or-later",
-    "license_source": "https://github.com/baskduf/FableCodex/blob/main/LICENSE"
+    "license_source": "https://github.com/baskduf/FableCodex/blob/main/LICENSE",
+    "tags": [
+      "codex",
+      "fable-style",
+      "agent-workflow",
+      "verification",
+      "prompt-adaptation"
+    ]
   },
   {
     "id": "codex-profiles",
@@ -10530,7 +10942,15 @@
     "source_type": "community",
     "source_repo": "Ducksss/codex-profiles",
     "license": "MIT",
-    "license_source": "https://github.com/Ducksss/codex-profiles/blob/main/LICENSE"
+    "license_source": "https://github.com/Ducksss/codex-profiles/blob/main/LICENSE",
+    "tags": [
+      "codex",
+      "codex-cli",
+      "profiles",
+      "code-home",
+      "account-isolation",
+      "desktop"
+    ]
   },
   {
     "id": "codex-review",
@@ -10580,7 +11000,12 @@
     "source_type": "community",
     "source_repo": "davidondrej/skills",
     "license": "MIT",
-    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE",
+    "tags": [
+      "codex",
+      "subagents",
+      "delegation"
+    ]
   },
   {
     "id": "cold-email",
@@ -10647,7 +11072,13 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "comfyui",
+      "api-gateway",
+      "image-generation",
+      "typescript"
+    ]
   },
   {
     "id": "command-center-ui",
@@ -10790,7 +11221,13 @@
     "source_type": "official",
     "source_repo": "browserbase/skills",
     "license": "MIT",
-    "license_source": "https://github.com/browserbase/skills/blob/main/skills/competitor-analysis/LICENSE.txt"
+    "license_source": "https://github.com/browserbase/skills/blob/main/skills/competitor-analysis/LICENSE.txt",
+    "tags": [
+      "competitor-analysis",
+      "browserbase",
+      "market-research",
+      "browser-automation"
+    ]
   },
   {
     "id": "competitor-profiling",
@@ -10868,7 +11305,15 @@
     "source_type": "community",
     "source_repo": "morsechimwai/lemmaly",
     "license": "Apache-2.0",
-    "license_source": "https://github.com/morsechimwai/lemmaly/blob/main/LICENSE"
+    "license_source": "https://github.com/morsechimwai/lemmaly/blob/main/LICENSE",
+    "tags": [
+      "algorithms",
+      "big-o",
+      "refactoring",
+      "optimization",
+      "performance",
+      "n-plus-one"
+    ]
   },
   {
     "id": "composition-patterns",
@@ -11308,7 +11753,13 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "context",
+      "session-management",
+      "continuity",
+      "memory"
+    ]
   },
   {
     "id": "context-compression",
@@ -11444,7 +11895,13 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "context",
+      "data-integrity",
+      "snapshots",
+      "verification"
+    ]
   },
   {
     "id": "context-kit",
@@ -11470,7 +11927,14 @@
       ]
     },
     "source_type": "community",
-    "source_repo": "JDDavenport/context-kit"
+    "source_repo": "JDDavenport/context-kit",
+    "tags": [
+      "personal-context",
+      "claude-code",
+      "memory",
+      "knowledge-management",
+      "agent-workflows"
+    ]
   },
   {
     "id": "context-management-context-restore",
@@ -11954,7 +12418,14 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "credentials",
+      "secrets",
+      "security",
+      "api-keys",
+      "vault"
+    ]
   },
   {
     "id": "crewai",
@@ -12028,7 +12499,16 @@
     "source_type": "community",
     "source_repo": "takeaseatventure/devops-skills",
     "license": "MIT",
-    "license_source": "https://github.com/takeaseatventure/devops-skills/blob/main/LICENSE"
+    "license_source": "https://github.com/takeaseatventure/devops-skills/blob/main/LICENSE",
+    "tags": [
+      "cron",
+      "crontab",
+      "scheduling",
+      "devops",
+      "debugging",
+      "kubernetes",
+      "validation"
+    ]
   },
   {
     "id": "crossframe",
@@ -12054,7 +12534,14 @@
     "source_type": "community",
     "source_repo": "xi-kari/crossframe-skill",
     "license": "MIT",
-    "license_source": "https://github.com/xi-kari/crossframe-skill/blob/main/LICENSE"
+    "license_source": "https://github.com/xi-kari/crossframe-skill/blob/main/LICENSE",
+    "tags": [
+      "crossframe",
+      "chinese",
+      "structural-diagnosis",
+      "reasoning",
+      "governance"
+    ]
   },
   {
     "id": "crossframe-casebook",
@@ -12080,7 +12567,14 @@
     "source_type": "community",
     "source_repo": "xi-kari/crossframe-skill",
     "license": "MIT",
-    "license_source": "https://github.com/xi-kari/crossframe-skill/blob/main/LICENSE"
+    "license_source": "https://github.com/xi-kari/crossframe-skill/blob/main/LICENSE",
+    "tags": [
+      "crossframe",
+      "chinese",
+      "casebook",
+      "case-study",
+      "knowledge-base"
+    ]
   },
   {
     "id": "crossframe-critical",
@@ -12106,7 +12600,14 @@
     "source_type": "community",
     "source_repo": "xi-kari/crossframe-skill",
     "license": "MIT",
-    "license_source": "https://github.com/xi-kari/crossframe-skill/blob/main/LICENSE"
+    "license_source": "https://github.com/xi-kari/crossframe-skill/blob/main/LICENSE",
+    "tags": [
+      "crossframe",
+      "chinese",
+      "critique",
+      "essay",
+      "structural-analysis"
+    ]
   },
   {
     "id": "crossframe-debate",
@@ -12132,7 +12633,14 @@
     "source_type": "community",
     "source_repo": "xi-kari/crossframe-skill",
     "license": "MIT",
-    "license_source": "https://github.com/xi-kari/crossframe-skill/blob/main/LICENSE"
+    "license_source": "https://github.com/xi-kari/crossframe-skill/blob/main/LICENSE",
+    "tags": [
+      "crossframe",
+      "chinese",
+      "debate",
+      "argument",
+      "proposition"
+    ]
   },
   {
     "id": "crossframe-dialogue",
@@ -12158,7 +12666,14 @@
     "source_type": "community",
     "source_repo": "xi-kari/crossframe-skill",
     "license": "MIT",
-    "license_source": "https://github.com/xi-kari/crossframe-skill/blob/main/LICENSE"
+    "license_source": "https://github.com/xi-kari/crossframe-skill/blob/main/LICENSE",
+    "tags": [
+      "crossframe",
+      "chinese",
+      "dialogue",
+      "reader-reply",
+      "consultation"
+    ]
   },
   {
     "id": "crossframe-essay",
@@ -12184,7 +12699,14 @@
     "source_type": "community",
     "source_repo": "xi-kari/crossframe-skill",
     "license": "MIT",
-    "license_source": "https://github.com/xi-kari/crossframe-skill/blob/main/LICENSE"
+    "license_source": "https://github.com/xi-kari/crossframe-skill/blob/main/LICENSE",
+    "tags": [
+      "crossframe",
+      "chinese",
+      "essay",
+      "writing",
+      "commentary"
+    ]
   },
   {
     "id": "crossframe-notebook",
@@ -12210,7 +12732,14 @@
     "source_type": "community",
     "source_repo": "xi-kari/crossframe-skill",
     "license": "MIT",
-    "license_source": "https://github.com/xi-kari/crossframe-skill/blob/main/LICENSE"
+    "license_source": "https://github.com/xi-kari/crossframe-skill/blob/main/LICENSE",
+    "tags": [
+      "crossframe",
+      "chinese",
+      "notebook",
+      "research",
+      "reading"
+    ]
   },
   {
     "id": "crossframe-org",
@@ -12236,7 +12765,14 @@
     "source_type": "community",
     "source_repo": "xi-kari/crossframe-skill",
     "license": "MIT",
-    "license_source": "https://github.com/xi-kari/crossframe-skill/blob/main/LICENSE"
+    "license_source": "https://github.com/xi-kari/crossframe-skill/blob/main/LICENSE",
+    "tags": [
+      "crossframe",
+      "chinese",
+      "organization",
+      "retrospective",
+      "repair"
+    ]
   },
   {
     "id": "crossframe-public",
@@ -12262,7 +12798,14 @@
     "source_type": "community",
     "source_repo": "xi-kari/crossframe-skill",
     "license": "MIT",
-    "license_source": "https://github.com/xi-kari/crossframe-skill/blob/main/LICENSE"
+    "license_source": "https://github.com/xi-kari/crossframe-skill/blob/main/LICENSE",
+    "tags": [
+      "crossframe",
+      "chinese",
+      "public-policy",
+      "governance",
+      "evidence"
+    ]
   },
   {
     "id": "crossframe-review",
@@ -12288,7 +12831,14 @@
     "source_type": "community",
     "source_repo": "xi-kari/crossframe-skill",
     "license": "MIT",
-    "license_source": "https://github.com/xi-kari/crossframe-skill/blob/main/LICENSE"
+    "license_source": "https://github.com/xi-kari/crossframe-skill/blob/main/LICENSE",
+    "tags": [
+      "crossframe",
+      "chinese",
+      "review",
+      "quality-gate",
+      "evidence"
+    ]
   },
   {
     "id": "crossframe-suite",
@@ -12314,7 +12864,14 @@
     "source_type": "community",
     "source_repo": "xi-kari/crossframe-skill",
     "license": "MIT",
-    "license_source": "https://github.com/xi-kari/crossframe-skill/blob/main/LICENSE"
+    "license_source": "https://github.com/xi-kari/crossframe-skill/blob/main/LICENSE",
+    "tags": [
+      "crossframe",
+      "chinese",
+      "workflow",
+      "multi-skill",
+      "structural-diagnosis"
+    ]
   },
   {
     "id": "crossframe-teach",
@@ -12340,7 +12897,14 @@
     "source_type": "community",
     "source_repo": "xi-kari/crossframe-skill",
     "license": "MIT",
-    "license_source": "https://github.com/xi-kari/crossframe-skill/blob/main/LICENSE"
+    "license_source": "https://github.com/xi-kari/crossframe-skill/blob/main/LICENSE",
+    "tags": [
+      "crossframe",
+      "chinese",
+      "teaching",
+      "concepts",
+      "plain-language"
+    ]
   },
   {
     "id": "crypto-bd-agent",
@@ -12546,7 +13110,15 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "cv",
+      "resume",
+      "ats",
+      "career",
+      "job-application",
+      "career-change"
+    ]
   },
   {
     "id": "cyber-audit",
@@ -12572,7 +13144,12 @@
     "source_type": "community",
     "source_repo": "davidondrej/skills",
     "license": "MIT",
-    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE",
+    "tags": [
+      "security",
+      "audit",
+      "read-only"
+    ]
   },
   {
     "id": "cyber-y2k",
@@ -12692,7 +13269,16 @@
     "source_type": "community",
     "source_repo": "openclaw/skills",
     "license": "MIT-0",
-    "license_source": "https://clawhub.ai/jiawei248/daily-gift"
+    "license_source": "https://clawhub.ai/jiawei248/daily-gift",
+    "tags": [
+      "creative",
+      "gift",
+      "personalization",
+      "h5",
+      "image-generation",
+      "video-generation",
+      "relationship"
+    ]
   },
   {
     "id": "daily-news-report",
@@ -13113,7 +13699,16 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "database",
+      "cdc",
+      "debezium",
+      "kafka",
+      "prometheus",
+      "grafana",
+      "monitoring"
+    ]
   },
   {
     "id": "database-migrations-sql-migrations",
@@ -13289,7 +13884,13 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "[ddd",
+      "context-map",
+      "anti-corruption-layer",
+      "integration]"
+    ]
   },
   {
     "id": "ddd-strategic-design",
@@ -13311,7 +13912,13 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "[ddd",
+      "strategic-design",
+      "bounded-context",
+      "ubiquitous-language]"
+    ]
   },
   {
     "id": "ddd-tactical-patterns",
@@ -13333,7 +13940,14 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "[ddd",
+      "tactical",
+      "aggregates",
+      "value-objects",
+      "domain-events]"
+    ]
   },
   {
     "id": "debug-buttercup",
@@ -13566,7 +14180,13 @@
     "source_type": "community",
     "source_repo": "davidondrej/skills",
     "license": "MIT",
-    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE",
+    "tags": [
+      "deepapi",
+      "scraping",
+      "email",
+      "api"
+    ]
   },
   {
     "id": "defi-protocol-templates",
@@ -13638,7 +14258,12 @@
     "source_type": "community",
     "source_repo": "davidondrej/skills",
     "license": "MIT",
-    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE",
+    "tags": [
+      "agents",
+      "delegation",
+      "orchestration"
+    ]
   },
   {
     "id": "dep",
@@ -13865,7 +14490,12 @@
       },
       "reasons": []
     },
-    "source_type": "self"
+    "source_type": "self",
+    "tags": [
+      "design",
+      "ui",
+      "frontend"
+    ]
   },
   {
     "id": "design-md",
@@ -14035,7 +14665,13 @@
       "reasons": []
     },
     "source_type": "community",
-    "source_repo": "Leonxlnx/taste-skill"
+    "source_repo": "Leonxlnx/taste-skill",
+    "tags": [
+      "frontend",
+      "design",
+      "ui",
+      "react"
+    ]
   },
   {
     "id": "design-thinking",
@@ -14112,7 +14748,15 @@
     },
     "source_type": "community",
     "source_repo": "connerkward/deterministic-design-skill",
-    "license": "MIT"
+    "license": "MIT",
+    "tags": [
+      "design",
+      "layout",
+      "usability",
+      "audit",
+      "verification",
+      "vision"
+    ]
   },
   {
     "id": "dev-to-hashnode",
@@ -14438,7 +15082,15 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "devops",
+      "docker",
+      "ci-cd",
+      "aws",
+      "terraform",
+      "github-actions"
+    ]
   },
   {
     "id": "devops-troubleshooter",
@@ -14512,7 +15164,12 @@
     "source_type": "community",
     "source_repo": "mattpocock/skills",
     "license": "MIT",
-    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE",
+    "tags": [
+      "engineering",
+      "workflow",
+      "coding-agents"
+    ]
   },
   {
     "id": "diary",
@@ -14630,7 +15287,16 @@
     "source_type": "community",
     "source_repo": "sparklingneuronics/sparkling-skills",
     "license": "MIT",
-    "license_source": "https://github.com/sparklingneuronics/sparkling-skills/blob/main/LICENSE"
+    "license_source": "https://github.com/sparklingneuronics/sparkling-skills/blob/main/LICENSE",
+    "tags": [
+      "delegation",
+      "codex",
+      "antigravity",
+      "gemini",
+      "multi-model",
+      "second-opinion",
+      "agent-workflow"
+    ]
   },
   {
     "id": "dispatching-parallel-agents",
@@ -14680,7 +15346,12 @@
     "source_type": "community",
     "source_repo": "davidondrej/skills",
     "license": "MIT",
-    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE",
+    "tags": [
+      "skills",
+      "distribution",
+      "agents"
+    ]
   },
   {
     "id": "distributed-debugging-debug-trace",
@@ -15063,7 +15734,13 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "[ddd",
+      "domain",
+      "bounded-context",
+      "architecture]"
+    ]
   },
   {
     "id": "domain-modeling",
@@ -15089,7 +15766,12 @@
     "source_type": "community",
     "source_repo": "mattpocock/skills",
     "license": "MIT",
-    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE",
+    "tags": [
+      "architecture",
+      "workflow",
+      "coding-agents"
+    ]
   },
   {
     "id": "dos-verify-done-claims",
@@ -15117,7 +15799,14 @@
     "source_type": "community",
     "source_repo": "anthony-chaudhary/dos-kernel",
     "license": "MIT",
-    "license_source": "https://github.com/anthony-chaudhary/dos-kernel/blob/master/LICENSE"
+    "license_source": "https://github.com/anthony-chaudhary/dos-kernel/blob/master/LICENSE",
+    "tags": [
+      "verification",
+      "git",
+      "ai-agents",
+      "trust",
+      "quality-gate"
+    ]
   },
   {
     "id": "dotnet-architect",
@@ -15259,7 +15948,14 @@
     "source_type": "community",
     "source_repo": "chaunsin/agent-skills",
     "license": "Apache-2.0",
-    "license_source": "https://github.com/chaunsin/agent-skills/blob/master/LICENSE"
+    "license_source": "https://github.com/chaunsin/agent-skills/blob/master/LICENSE",
+    "tags": [
+      "drizzle",
+      "migrations",
+      "database",
+      "ci",
+      "merge-conflicts"
+    ]
   },
   {
     "id": "drizzle-orm-expert",
@@ -15436,7 +16132,14 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "android",
+      "kotlin",
+      "bluetooth",
+      "llm",
+      "voice"
+    ]
   },
   {
     "id": "eas-update-insights",
@@ -15488,7 +16191,14 @@
     "source_type": "community",
     "source_repo": "qinghui316/ecl-harness-engineer",
     "license": "MIT",
-    "license_source": "https://github.com/qinghui316/ecl-harness-engineer/blob/main/LICENSE"
+    "license_source": "https://github.com/qinghui316/ecl-harness-engineer/blob/main/LICENSE",
+    "tags": [
+      "codex",
+      "agent-harness",
+      "ecl",
+      "workflow",
+      "ci"
+    ]
   },
   {
     "id": "editorial-design",
@@ -15537,7 +16247,12 @@
     "source_type": "community",
     "source_repo": "davidondrej/skills",
     "license": "MIT",
-    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE",
+    "tags": [
+      "skills",
+      "authoring",
+      "quality"
+    ]
   },
   {
     "id": "efficient-web-research",
@@ -15675,7 +16390,13 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "persona",
+      "first-principles",
+      "innovation",
+      "strategy"
+    ]
   },
   {
     "id": "email-sequence",
@@ -15811,7 +16532,14 @@
     "source_type": "community",
     "source_repo": "emilkowalski/skills",
     "license": "MIT",
-    "license_source": "https://github.com/emilkowalski/skills/blob/main/LICENSE.txt"
+    "license_source": "https://github.com/emilkowalski/skills/blob/main/LICENSE.txt",
+    "tags": [
+      "frontend",
+      "design",
+      "ui",
+      "animation",
+      "motion"
+    ]
   },
   {
     "id": "emotional-arc-designer",
@@ -16295,7 +17023,16 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "education",
+      "exam-prep",
+      "study-guide",
+      "question-prediction",
+      "syllabus-analysis",
+      "revision",
+      "students"
+    ]
   },
   {
     "id": "executing-plans",
@@ -16669,7 +17406,12 @@
     "source_type": "community",
     "source_repo": "davidondrej/skills",
     "license": "MIT",
-    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE",
+    "tags": [
+      "prompting",
+      "safety",
+      "guardrails"
+    ]
   },
   {
     "id": "faf-context",
@@ -16719,7 +17461,14 @@
       "reasons": []
     },
     "source_type": "community",
-    "source_repo": "Wolfe-Jam/faf-skills"
+    "source_repo": "Wolfe-Jam/faf-skills",
+    "tags": [
+      "faf",
+      "ai-context",
+      "project-management",
+      "mcp",
+      "iana"
+    ]
   },
   {
     "id": "faf-go",
@@ -16769,7 +17518,14 @@
       "reasons": []
     },
     "source_type": "community",
-    "source_repo": "Wolfe-Jam/faf-skills"
+    "source_repo": "Wolfe-Jam/faf-skills",
+    "tags": [
+      "faf",
+      "automation",
+      "project-setup",
+      "ai-context",
+      "productivity"
+    ]
   },
   {
     "id": "fal-audio",
@@ -17536,7 +18292,17 @@
     "source_type": "community",
     "source_repo": "heyneuron/flowhunt-skill",
     "license": "MIT",
-    "license_source": "https://github.com/heyneuron/flowhunt-skill/blob/main/LICENSE"
+    "license_source": "https://github.com/heyneuron/flowhunt-skill/blob/main/LICENSE",
+    "tags": [
+      "automation",
+      "discovery",
+      "audit",
+      "gmail",
+      "calendar",
+      "slack",
+      "productivity",
+      "workflow"
+    ]
   },
   {
     "id": "flutter-expert",
@@ -17559,7 +18325,14 @@
       },
       "reasons": []
     },
-    "source_type": "community"
+    "source_type": "community",
+    "tags": [
+      "flutter",
+      "dart",
+      "mobile",
+      "cross-platform",
+      "riverpod"
+    ]
   },
   {
     "id": "folder-specific-claude-and-agents-md",
@@ -17585,7 +18358,12 @@
     "source_type": "community",
     "source_repo": "davidondrej/skills",
     "license": "MIT",
-    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE",
+    "tags": [
+      "agents-md",
+      "claude-md",
+      "documentation"
+    ]
   },
   {
     "id": "food-database-query",
@@ -17677,7 +18455,17 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "fp-ts",
+      "typescript",
+      "async",
+      "error-handling",
+      "practical",
+      "promises",
+      "api",
+      "fetch"
+    ]
   },
   {
     "id": "fp-backend",
@@ -17699,7 +18487,17 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "fp-ts",
+      "typescript",
+      "backend",
+      "functional-programming",
+      "node",
+      "deno",
+      "dependency-injection",
+      "reader-task-either"
+    ]
   },
   {
     "id": "fp-data-transforms",
@@ -17721,7 +18519,18 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "functional-programming",
+      "typescript",
+      "data-transformation",
+      "fp-ts",
+      "arrays",
+      "objects",
+      "grouping",
+      "aggregation",
+      "null-safety"
+    ]
   },
   {
     "id": "fp-either-ref",
@@ -17743,7 +18552,14 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "fp-ts",
+      "either",
+      "error-handling",
+      "validation",
+      "quick-reference"
+    ]
   },
   {
     "id": "fp-errors",
@@ -17765,7 +18581,16 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "fp-ts",
+      "error-handling",
+      "either",
+      "task-either",
+      "typescript",
+      "validation",
+      "practical"
+    ]
   },
   {
     "id": "fp-option-ref",
@@ -17787,7 +18612,14 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "fp-ts",
+      "option",
+      "nullable",
+      "maybe",
+      "quick-reference"
+    ]
   },
   {
     "id": "fp-pipe-ref",
@@ -17809,7 +18641,14 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "fp-ts",
+      "pipe",
+      "flow",
+      "composition",
+      "quick-reference"
+    ]
   },
   {
     "id": "fp-pragmatic",
@@ -17831,7 +18670,15 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "fp-ts",
+      "functional-programming",
+      "typescript",
+      "pragmatic",
+      "beginner-friendly",
+      "best-practices"
+    ]
   },
   {
     "id": "fp-react",
@@ -17853,7 +18700,19 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "fp-ts",
+      "react",
+      "typescript",
+      "hooks",
+      "state-management",
+      "forms",
+      "data-fetching",
+      "remote-data",
+      "react-19",
+      "next-js"
+    ]
   },
   {
     "id": "fp-refactor",
@@ -17875,7 +18734,18 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "fp-ts",
+      "refactoring",
+      "functional-programming",
+      "typescript",
+      "migration",
+      "either",
+      "option",
+      "task",
+      "reader"
+    ]
   },
   {
     "id": "fp-taskeither-ref",
@@ -17897,7 +18767,15 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "fp-ts",
+      "taskeither",
+      "async",
+      "promise",
+      "error-handling",
+      "quick-reference"
+    ]
   },
   {
     "id": "fp-ts-errors",
@@ -17985,7 +18863,15 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "fp-ts",
+      "typescript",
+      "quick-reference",
+      "option",
+      "either",
+      "task"
+    ]
   },
   {
     "id": "framework-migration-code-migrate",
@@ -18165,7 +19051,14 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "frontend",
+      "api-integration",
+      "javascript",
+      "react",
+      "async"
+    ]
   },
   {
     "id": "frontend-architecture",
@@ -18309,7 +19202,14 @@
     "source_type": "community",
     "source_repo": "stareezy-1/frontend-architecture-skill",
     "license": "MIT",
-    "license_source": "https://github.com/stareezy-1/frontend-architecture-skill/blob/main/LICENSE"
+    "license_source": "https://github.com/stareezy-1/frontend-architecture-skill/blob/main/LICENSE",
+    "tags": [
+      "frontend",
+      "lighthouse",
+      "performance",
+      "core-web-vitals",
+      "ci"
+    ]
   },
   {
     "id": "frontend-mobile-development-component-scaffold",
@@ -18600,7 +19500,17 @@
     "source_type": "community",
     "source_repo": "timwukp/agent-skills-best-practice",
     "license": "MIT",
-    "license_source": "https://github.com/timwukp/agent-skills-best-practice/blob/main/LICENSE"
+    "license_source": "https://github.com/timwukp/agent-skills-best-practice/blob/main/LICENSE",
+    "tags": [
+      "compliance",
+      "pci-dss",
+      "mas-trm",
+      "fintech",
+      "banking",
+      "security-review",
+      "audit",
+      "financial-services"
+    ]
   },
   {
     "id": "full-output-enforcement",
@@ -18624,7 +19534,12 @@
       "reasons": []
     },
     "source_type": "community",
-    "source_repo": "Leonxlnx/taste-skill"
+    "source_repo": "Leonxlnx/taste-skill",
+    "tags": [
+      "output",
+      "code-generation",
+      "quality"
+    ]
   },
   {
     "id": "full-stack-orchestration-full-stack-feature",
@@ -18778,7 +19693,15 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "debugging",
+      "gdb",
+      "core-dump",
+      "crash-analysis",
+      "c++",
+      "c"
+    ]
   },
   {
     "id": "gdpr-data-handling",
@@ -18876,7 +19799,13 @@
     "source_type": "community",
     "source_repo": "sanjay3290/ai-skills",
     "license": "Apache-2.0",
-    "license_source": "https://github.com/sanjay3290/ai-skills/blob/main/LICENSE"
+    "license_source": "https://github.com/sanjay3290/ai-skills/blob/main/LICENSE",
+    "tags": [
+      "research",
+      "gemini",
+      "google",
+      "reports"
+    ]
   },
   {
     "id": "gemini-live-api-dev",
@@ -18954,7 +19883,13 @@
     "source_type": "community",
     "source_repo": "iradoweck/antigravity-awesome-skills",
     "license": "MIT",
-    "license_source": "https://github.com/iradoweck/antigravity-awesome-skills/blob/main/LICENSE"
+    "license_source": "https://github.com/iradoweck/antigravity-awesome-skills/blob/main/LICENSE",
+    "tags": [
+      "finops",
+      "context-management",
+      "token-optimization",
+      "geminiignore"
+    ]
   },
   {
     "id": "geo-fundamentals",
@@ -18998,7 +19933,13 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "persona",
+      "deep-learning",
+      "ai-safety",
+      "neural-networks"
+    ]
   },
   {
     "id": "gh-image",
@@ -19026,7 +19967,14 @@
     "source_type": "community",
     "source_repo": "drogers0/gh-image",
     "license": "MIT",
-    "license_source": "https://github.com/drogers0/gh-image/blob/main/LICENSE"
+    "license_source": "https://github.com/drogers0/gh-image/blob/main/LICENSE",
+    "tags": [
+      "github",
+      "images",
+      "screenshots",
+      "gh-extension",
+      "cli"
+    ]
   },
   {
     "id": "gh-review-requests",
@@ -19210,7 +20158,7 @@
     "path": "skills/git-pushing",
     "category": "workflow",
     "name": "git-pushing",
-    "description": "Stage all changes, create a conventional commit, and push to the remote branch. Use when explicitly asks to push changes (\"push this\", \"commit and push\"), mentions saving work to remote (\"save to github\", \"push to remote\"), or completes a feature and wants to share it.",
+    "description": "Safely stage, commit, and push intended git changes with conventional commit messages. Use for ordinary non-release pushes when explicitly asked to push, save work remotely, or share a completed change.",
     "risk": "critical",
     "source": "community",
     "date_added": "2026-02-27",
@@ -19318,7 +20266,14 @@
       },
       "reasons": []
     },
-    "source_type": "community"
+    "source_type": "community",
+    "tags": [
+      "github-actions",
+      "ci-cd",
+      "devops",
+      "debugging",
+      "workflows"
+    ]
   },
   {
     "id": "github-actions-templates",
@@ -19545,7 +20500,15 @@
       "reasons": []
     },
     "source_type": "community",
-    "source_repo": "pumanitro/global-chat"
+    "source_repo": "pumanitro/global-chat",
+    "tags": [
+      "mcp",
+      "ai-agents",
+      "agent-discovery",
+      "agents-txt",
+      "a2a",
+      "developer-tools"
+    ]
   },
   {
     "id": "gmail-automation",
@@ -19727,7 +20690,12 @@
     "source_type": "community",
     "source_repo": "davidondrej/skills",
     "license": "MIT",
-    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE",
+    "tags": [
+      "goals",
+      "autonomy",
+      "planning"
+    ]
   },
   {
     "id": "godot-4-migration",
@@ -19976,7 +20944,13 @@
       "reasons": []
     },
     "source_type": "community",
-    "source_repo": "Leonxlnx/taste-skill"
+    "source_repo": "Leonxlnx/taste-skill",
+    "tags": [
+      "frontend",
+      "design",
+      "gsap",
+      "motion"
+    ]
   },
   {
     "id": "gradient-design",
@@ -20117,7 +21091,12 @@
     "source_type": "community",
     "source_repo": "mattpocock/skills",
     "license": "MIT",
-    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE",
+    "tags": [
+      "productivity",
+      "workflow",
+      "coding-agents"
+    ]
   },
   {
     "id": "grill-with-docs",
@@ -20143,7 +21122,12 @@
     "source_type": "community",
     "source_repo": "mattpocock/skills",
     "license": "MIT",
-    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE",
+    "tags": [
+      "productivity",
+      "workflow",
+      "coding-agents"
+    ]
   },
   {
     "id": "grilling",
@@ -20169,7 +21153,12 @@
     "source_type": "community",
     "source_repo": "mattpocock/skills",
     "license": "MIT",
-    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE",
+    "tags": [
+      "productivity",
+      "workflow",
+      "coding-agents"
+    ]
   },
   {
     "id": "grok-build",
@@ -20195,7 +21184,13 @@
     "source_type": "community",
     "source_repo": "sanjay3290/ai-skills",
     "license": "Apache-2.0",
-    "license_source": "https://github.com/sanjay3290/ai-skills/blob/main/LICENSE"
+    "license_source": "https://github.com/sanjay3290/ai-skills/blob/main/LICENSE",
+    "tags": [
+      "grok",
+      "delegation",
+      "code-generation",
+      "xai"
+    ]
   },
   {
     "id": "growth-engine",
@@ -20217,7 +21212,14 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "growth",
+      "seo",
+      "marketing",
+      "viral",
+      "acquisition"
+    ]
   },
   {
     "id": "grpc-golang",
@@ -20265,7 +21267,12 @@
     "source_type": "community",
     "source_repo": "mattpocock/skills",
     "license": "MIT",
-    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE",
+    "tags": [
+      "productivity",
+      "workflow",
+      "coding-agents"
+    ]
   },
   {
     "id": "hasdata",
@@ -20407,7 +21414,16 @@
       "reasons": []
     },
     "source_type": "community",
-    "source_repo": "connerlambden/helium-mcp"
+    "source_repo": "connerlambden/helium-mcp",
+    "tags": [
+      "mcp",
+      "news",
+      "media-bias",
+      "stocks",
+      "options",
+      "finance",
+      "research"
+    ]
   },
   {
     "id": "helm-chart-scaffolding",
@@ -20882,7 +21898,13 @@
       "reasons": []
     },
     "source_type": "community",
-    "source_repo": "Leonxlnx/taste-skill"
+    "source_repo": "Leonxlnx/taste-skill",
+    "tags": [
+      "frontend",
+      "visual-design",
+      "motion",
+      "ui"
+    ]
   },
   {
     "id": "holographic-ui",
@@ -20927,7 +21949,17 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "hono",
+      "edge",
+      "cloudflare-workers",
+      "bun",
+      "deno",
+      "api",
+      "typescript",
+      "web-standards"
+    ]
   },
   {
     "id": "hosted-agents",
@@ -21588,7 +22620,15 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "chinese",
+      "writing",
+      "editing",
+      "aigc",
+      "academic",
+      "style-transfer"
+    ]
   },
   {
     "id": "hybrid-cloud-architect",
@@ -21750,7 +22790,14 @@
     "source_type": "community",
     "source_repo": "hafiz-actyte/idea-autopsy",
     "license": "MIT",
-    "license_source": "https://github.com/hafiz-actyte/idea-autopsy/blob/main/LICENSE"
+    "license_source": "https://github.com/hafiz-actyte/idea-autopsy/blob/main/LICENSE",
+    "tags": [
+      "business-ideas",
+      "idea-validation",
+      "market-research",
+      "startup",
+      "founders"
+    ]
   },
   {
     "id": "idea-darwin",
@@ -21798,7 +22845,19 @@
     "source_type": "community",
     "source_repo": "Slashworks-biz/idea-os",
     "license": "MIT",
-    "license_source": "https://github.com/Slashworks-biz/idea-os/blob/main/LICENSE"
+    "license_source": "https://github.com/Slashworks-biz/idea-os/blob/main/LICENSE",
+    "tags": [
+      "product-management",
+      "prd",
+      "market-research",
+      "mvp",
+      "idea-validation",
+      "jtbd",
+      "swot",
+      "competitor-analysis",
+      "founder",
+      "non-technical"
+    ]
   },
   {
     "id": "idea-refine",
@@ -21894,7 +22953,17 @@
     "source_type": "community",
     "source_repo": "Intelligent-Internet/II-Commons-Skills",
     "license": "Apache-2.0",
-    "license_source": "https://github.com/Intelligent-Internet/II-Commons-Skills/blob/main/LICENSE"
+    "license_source": "https://github.com/Intelligent-Internet/II-Commons-Skills/blob/main/LICENSE",
+    "tags": [
+      "research",
+      "arxiv",
+      "pubmed",
+      "pmc",
+      "policy",
+      "retrieval",
+      "cli",
+      "codex"
+    ]
   },
   {
     "id": "ilya-sutskever",
@@ -21916,7 +22985,14 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "persona",
+      "agi",
+      "safety",
+      "scaling-laws",
+      "openai"
+    ]
   },
   {
     "id": "image-generator",
@@ -21942,7 +23018,12 @@
     "source_type": "official",
     "source_repo": "dair-ai/dair-academy-plugins",
     "license": "MIT",
-    "license_source": "https://github.com/dair-ai/dair-academy-plugins/blob/main/README.md#license"
+    "license_source": "https://github.com/dair-ai/dair-academy-plugins/blob/main/README.md#license",
+    "tags": [
+      "dair-academy",
+      "ai",
+      "workflow"
+    ]
   },
   {
     "id": "image-studio",
@@ -21964,7 +23045,13 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "image-generation",
+      "routing",
+      "ai-art",
+      "photography"
+    ]
   },
   {
     "id": "imagen",
@@ -22060,7 +23147,12 @@
     "source_type": "community",
     "source_repo": "mattpocock/skills",
     "license": "MIT",
-    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE",
+    "tags": [
+      "engineering",
+      "workflow",
+      "coding-agents"
+    ]
   },
   {
     "id": "incident-responder",
@@ -22197,7 +23289,14 @@
       },
       "reasons": []
     },
-    "source_type": "self"
+    "source_type": "self",
+    "tags": [
+      "seo",
+      "architecture",
+      "indexing",
+      "crawler",
+      "sitemap"
+    ]
   },
   {
     "id": "industrial-brutalist-ui",
@@ -22221,7 +23320,13 @@
       "reasons": []
     },
     "source_type": "community",
-    "source_repo": "Leonxlnx/taste-skill"
+    "source_repo": "Leonxlnx/taste-skill",
+    "tags": [
+      "frontend",
+      "design",
+      "brutalism",
+      "ui"
+    ]
   },
   {
     "id": "infinite-gratitude",
@@ -22335,7 +23440,13 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "social-media",
+      "instagram",
+      "graph-api",
+      "content"
+    ]
   },
   {
     "id": "instagram-automation",
@@ -22490,7 +23601,15 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "interview",
+      "job-search",
+      "coaching",
+      "career",
+      "storybank",
+      "negotiation"
+    ]
   },
   {
     "id": "interview-style-doc-building",
@@ -22516,7 +23635,12 @@
     "source_type": "community",
     "source_repo": "davidondrej/skills",
     "license": "MIT",
-    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE",
+    "tags": [
+      "documentation",
+      "interview",
+      "planning"
+    ]
   },
   {
     "id": "invariant-guard",
@@ -22542,7 +23666,15 @@
     "source_type": "community",
     "source_repo": "morsechimwai/lemmaly",
     "license": "Apache-2.0",
-    "license_source": "https://github.com/morsechimwai/lemmaly/blob/main/LICENSE"
+    "license_source": "https://github.com/morsechimwai/lemmaly/blob/main/LICENSE",
+    "tags": [
+      "algorithms",
+      "correctness",
+      "loop-invariants",
+      "contracts",
+      "edge-cases",
+      "verification"
+    ]
   },
   {
     "id": "inventory-demand-planning",
@@ -23009,7 +24141,15 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "jq",
+      "json",
+      "shell",
+      "cli",
+      "data-transformation",
+      "bash"
+    ]
   },
   {
     "id": "json-canvas",
@@ -23101,7 +24241,13 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "scraping",
+      "brazilian-data",
+      "auctioneers",
+      "api"
+    ]
   },
   {
     "id": "k6-load-testing",
@@ -23123,7 +24269,14 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "k6",
+      "load-testing",
+      "performance",
+      "api-testing",
+      "ci-cd"
+    ]
   },
   {
     "id": "k8s-manifest-generator",
@@ -23256,7 +24409,14 @@
       },
       "reasons": []
     },
-    "source_type": "self"
+    "source_type": "self",
+    "tags": [
+      "marketing",
+      "economics",
+      "strategy",
+      "kotler",
+      "pestel"
+    ]
   },
   {
     "id": "kotlin",
@@ -23392,7 +24552,16 @@
     "source_type": "community",
     "source_repo": "kubestellar/console",
     "license": "Apache-2.0",
-    "license_source": "https://github.com/kubestellar/console/blob/main/LICENSE"
+    "license_source": "https://github.com/kubestellar/console/blob/main/LICENSE",
+    "tags": [
+      "kubernetes",
+      "multi-cluster",
+      "mcp",
+      "dashboard",
+      "cncf",
+      "devops",
+      "observability"
+    ]
   },
   {
     "id": "lambda-lang",
@@ -23416,7 +24585,14 @@
       "reasons": []
     },
     "source_type": "community",
-    "source_repo": "voidborne-d/lambda-lang"
+    "source_repo": "voidborne-d/lambda-lang",
+    "tags": [
+      "agent-to-agent",
+      "communication",
+      "protocol",
+      "compression",
+      "multi-agent"
+    ]
   },
   {
     "id": "lambdatest-agent-skills",
@@ -23442,7 +24618,22 @@
     "source_type": "community",
     "source_repo": "LambdaTest/agent-skills",
     "license": "MIT",
-    "license_source": "https://github.com/LambdaTest/agent-skills/blob/main/LICENSE"
+    "license_source": "https://github.com/LambdaTest/agent-skills/blob/main/LICENSE",
+    "tags": [
+      "testing",
+      "test-automation",
+      "e2e",
+      "unit-testing",
+      "mobile-testing",
+      "bdd",
+      "selenium",
+      "playwright",
+      "cypress",
+      "jest",
+      "pytest",
+      "appium",
+      "lambdatest"
+    ]
   },
   {
     "id": "landing-page-generator",
@@ -23464,7 +24655,16 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "nextjs",
+      "react",
+      "tailwind",
+      "landing-page",
+      "marketing",
+      "seo",
+      "cro"
+    ]
   },
   {
     "id": "langchain-architecture",
@@ -23713,7 +24913,12 @@
     "source_type": "official",
     "source_repo": "dair-ai/dair-academy-plugins",
     "license": "MIT",
-    "license_source": "https://github.com/dair-ai/dair-academy-plugins/blob/main/README.md#license"
+    "license_source": "https://github.com/dair-ai/dair-academy-plugins/blob/main/README.md#license",
+    "tags": [
+      "dair-academy",
+      "ai",
+      "workflow"
+    ]
   },
   {
     "id": "legacy-modernizer",
@@ -23779,7 +24984,13 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "real-estate",
+      "valuation",
+      "appraisal",
+      "brazilian"
+    ]
   },
   {
     "id": "leiloeiro-edital",
@@ -23801,7 +25012,13 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "auction",
+      "legal-analysis",
+      "risk",
+      "brazilian"
+    ]
   },
   {
     "id": "leiloeiro-ia",
@@ -23823,7 +25040,13 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "auction",
+      "ai-analysis",
+      "real-estate",
+      "brazilian"
+    ]
   },
   {
     "id": "leiloeiro-juridico",
@@ -23845,7 +25068,13 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "legal",
+      "auction-law",
+      "brazilian",
+      "judicial"
+    ]
   },
   {
     "id": "leiloeiro-mercado",
@@ -23867,7 +25096,13 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "market-analysis",
+      "real-estate",
+      "roi",
+      "brazilian"
+    ]
   },
   {
     "id": "leiloeiro-risco",
@@ -23889,7 +25124,13 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "risk-analysis",
+      "scoring",
+      "stress-test",
+      "brazilian"
+    ]
   },
   {
     "id": "lemmaly",
@@ -23915,7 +25156,15 @@
     "source_type": "community",
     "source_repo": "morsechimwai/lemmaly",
     "license": "Apache-2.0",
-    "license_source": "https://github.com/morsechimwai/lemmaly/blob/main/LICENSE"
+    "license_source": "https://github.com/morsechimwai/lemmaly/blob/main/LICENSE",
+    "tags": [
+      "algorithms",
+      "big-o",
+      "performance",
+      "code-review",
+      "complexity",
+      "gateway"
+    ]
   },
   {
     "id": "lesson-generator",
@@ -23941,7 +25190,12 @@
     "source_type": "official",
     "source_repo": "dair-ai/dair-academy-plugins",
     "license": "MIT",
-    "license_source": "https://github.com/dair-ai/dair-academy-plugins/blob/main/README.md#license"
+    "license_source": "https://github.com/dair-ai/dair-academy-plugins/blob/main/README.md#license",
+    "tags": [
+      "dair-academy",
+      "ai",
+      "workflow"
+    ]
   },
   {
     "id": "lex",
@@ -23963,7 +25217,14 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "legal",
+      "context",
+      "cross-jurisdictional",
+      "compliance",
+      "scaffolding"
+    ]
   },
   {
     "id": "lightning-architecture-review",
@@ -24147,7 +25408,19 @@
     "source_type": "community",
     "source_repo": "sarveshtalele/linkedin-content-skill",
     "license": "MIT",
-    "license_source": "https://github.com/sarveshtalele/linkedin-content-skill/blob/main/LICENSE"
+    "license_source": "https://github.com/sarveshtalele/linkedin-content-skill/blob/main/LICENSE",
+    "tags": [
+      "linkedin",
+      "content-creation",
+      "social-media",
+      "marketing",
+      "newsletter",
+      "carousel",
+      "content-calendar",
+      "reinforcement-learning",
+      "seo",
+      "copywriting"
+    ]
   },
   {
     "id": "linkedin-post-writer",
@@ -24173,7 +25446,15 @@
     "source_type": "community",
     "source_repo": "sergebulaev/linkedin-skills",
     "license": "MIT",
-    "license_source": "https://github.com/sergebulaev/linkedin-skills/blob/main/LICENSE"
+    "license_source": "https://github.com/sergebulaev/linkedin-skills/blob/main/LICENSE",
+    "tags": [
+      "linkedin",
+      "copywriting",
+      "hooks",
+      "social-media",
+      "personal-brand",
+      "content-marketing"
+    ]
   },
   {
     "id": "linkedin-profile-optimizer",
@@ -24196,7 +25477,14 @@
       },
       "reasons": []
     },
-    "source_type": "self"
+    "source_type": "self",
+    "tags": [
+      "linkedin",
+      "branding",
+      "career",
+      "growth",
+      "personal-brand"
+    ]
   },
   {
     "id": "linkerd-patterns",
@@ -24420,7 +25708,12 @@
     "source_type": "official",
     "source_repo": "dair-ai/dair-academy-plugins",
     "license": "MIT",
-    "license_source": "https://github.com/dair-ai/dair-academy-plugins/blob/main/README.md#license"
+    "license_source": "https://github.com/dair-ai/dair-academy-plugins/blob/main/README.md#license",
+    "tags": [
+      "dair-academy",
+      "ai",
+      "workflow"
+    ]
   },
   {
     "id": "llm-evaluation",
@@ -24464,7 +25757,14 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "llm",
+      "rag",
+      "embeddings",
+      "vector-db",
+      "fine-tuning"
+    ]
   },
   {
     "id": "llm-prompt-optimizer",
@@ -24656,7 +25956,14 @@
     "source_type": "community",
     "source_repo": "hyhmrright/logic-lens",
     "license": "MIT",
-    "license_source": "https://github.com/hyhmrright/logic-lens/blob/main/LICENSE"
+    "license_source": "https://github.com/hyhmrright/logic-lens/blob/main/LICENSE",
+    "tags": [
+      "code-review",
+      "logic-analysis",
+      "debugging",
+      "security-review",
+      "claude-code"
+    ]
   },
   {
     "id": "logic-locate",
@@ -24782,7 +26089,14 @@
     "source_type": "official",
     "source_repo": "longbridge/skills",
     "license": "MIT",
-    "license_source": "https://github.com/longbridge/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/longbridge/skills/blob/main/LICENSE",
+    "tags": [
+      "finance",
+      "stocks",
+      "trading",
+      "portfolio",
+      "market-data"
+    ]
   },
   {
     "id": "longbridge-content",
@@ -24885,7 +26199,16 @@
     },
     "source_type": "community",
     "source_repo": "connerkward/lookdev-studio-skill",
-    "license": "MIT"
+    "license": "MIT",
+    "tags": [
+      "lookdev",
+      "design",
+      "ui",
+      "tuning",
+      "studio",
+      "visual-eval",
+      "annotation"
+    ]
   },
   {
     "id": "lookdev-auto",
@@ -24910,7 +26233,14 @@
     },
     "source_type": "community",
     "source_repo": "connerkward/lookdev-auto-skill",
-    "license": "MIT"
+    "license": "MIT",
+    "tags": [
+      "visual-eval",
+      "vision-model",
+      "tuning",
+      "automation",
+      "render-loop"
+    ]
   },
   {
     "id": "loop-library",
@@ -24936,7 +26266,14 @@
     "source_type": "official",
     "source_repo": "Forward-Future/loop-library",
     "license": "MIT",
-    "license_source": "https://github.com/Forward-Future/loop-library/blob/main/LICENSE"
+    "license_source": "https://github.com/Forward-Future/loop-library/blob/main/LICENSE",
+    "tags": [
+      "ai-agents",
+      "workflows",
+      "loops",
+      "automation",
+      "evaluation"
+    ]
   },
   {
     "id": "loopy",
@@ -24963,6 +26300,42 @@
     "source_repo": "Forward-Future/loop-library",
     "license": "MIT",
     "license_source": "https://github.com/Forward-Future/loop-library/blob/main/LICENSE"
+  },
+  {
+    "id": "lore",
+    "path": "skills/lore",
+    "category": "development",
+    "name": "lore",
+    "description": "Markdown project memory for AI agents. Use for decisions, architecture, conventions, monorepo scopes, `.lore/`, or `lore` commands; not native `/init`/`/compact` or generic init/compress/audit/query.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-07-12",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "TheaDust/lore",
+    "license": "MIT",
+    "license_source": "https://github.com/TheaDust/lore/blob/main/LICENSE",
+    "tags": [
+      "memory",
+      "knowledge-base",
+      "project-context",
+      "monorepo",
+      "markdown",
+      "conventions",
+      "adr",
+      "agent-skills"
+    ]
   },
   {
     "id": "loss-aversion-designer",
@@ -25008,7 +26381,15 @@
       "reasons": []
     },
     "source_type": "community",
-    "source_repo": "whoisabhishekadhikari/lovable-cleanup"
+    "source_repo": "whoisabhishekadhikari/lovable-cleanup",
+    "tags": [
+      "lovable",
+      "cleanup",
+      "vite",
+      "react",
+      "shadcn",
+      "devtools"
+    ]
   },
   {
     "id": "luna",
@@ -25167,7 +26548,15 @@
     },
     "source_type": "community",
     "source_repo": "connerkward/macos-screen-recorder-system-audio",
-    "license": "MIT"
+    "license": "MIT",
+    "tags": [
+      "macos",
+      "screen-recording",
+      "system-audio",
+      "screencapturekit",
+      "cli",
+      "swift"
+    ]
   },
   {
     "id": "macos-spm-app-packaging",
@@ -25749,7 +27138,12 @@
     "source_type": "community",
     "source_repo": "davidondrej/skills",
     "license": "MIT",
-    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE",
+    "tags": [
+      "markdown",
+      "cmux",
+      "rendering"
+    ]
   },
   {
     "id": "market-sizing-analysis",
@@ -25885,7 +27279,13 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "mathematics",
+      "code-analysis",
+      "algorithms",
+      "formal-methods"
+    ]
   },
   {
     "id": "material-design",
@@ -25934,7 +27334,16 @@
     "source_type": "community",
     "source_repo": "morsechimwai/lemmaly",
     "license": "Apache-2.0",
-    "license_source": "https://github.com/morsechimwai/lemmaly/blob/main/LICENSE"
+    "license_source": "https://github.com/morsechimwai/lemmaly/blob/main/LICENSE",
+    "tags": [
+      "algorithms",
+      "probabilistic-data-structures",
+      "approximate-algorithms",
+      "bloom-filter",
+      "hyperloglog",
+      "fft",
+      "performance"
+    ]
   },
   {
     "id": "matplotlib",
@@ -26001,7 +27410,18 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "solana",
+      "crypto",
+      "marketplace",
+      "ai-agents",
+      "mcp",
+      "defi",
+      "usdc",
+      "web3",
+      "a2a"
+    ]
   },
   {
     "id": "maximalism",
@@ -26092,7 +27512,16 @@
       "reasons": []
     },
     "source_type": "community",
-    "source_repo": "demo112/yunqu-ai-skills"
+    "source_repo": "demo112/yunqu-ai-skills",
+    "tags": [
+      "mcp",
+      "ai-agent",
+      "tool-development",
+      "typescript",
+      "python",
+      "llm",
+      "model-context-protocol"
+    ]
   },
   {
     "id": "mdpr-skill",
@@ -26118,7 +27547,16 @@
     "source_type": "community",
     "source_repo": "ch040602/mdpr-skill",
     "license": "MIT",
-    "license_source": "https://github.com/ch040602/mdpr-skill/blob/main/LICENSE"
+    "license_source": "https://github.com/ch040602/mdpr-skill/blob/main/LICENSE",
+    "tags": [
+      "mdpr",
+      "presentations",
+      "markdown",
+      "powerpoint",
+      "codex",
+      "visual-review",
+      "agent-hints"
+    ]
   },
   {
     "id": "memory-forensics",
@@ -26453,7 +27891,13 @@
       "reasons": []
     },
     "source_type": "community",
-    "source_repo": "Leonxlnx/taste-skill"
+    "source_repo": "Leonxlnx/taste-skill",
+    "tags": [
+      "frontend",
+      "design",
+      "minimalism",
+      "ui"
+    ]
   },
   {
     "id": "miro-automation",
@@ -26498,7 +27942,15 @@
       },
       "reasons": []
     },
-    "source_type": "self"
+    "source_type": "self",
+    "tags": [
+      "mise",
+      "devops",
+      "ci-cd",
+      "toolchain",
+      "runtimes",
+      "automation"
+    ]
   },
   {
     "id": "mixpanel-automation",
@@ -26746,7 +28198,17 @@
     "source_type": "community",
     "source_repo": "CodeShuX/mockhunter",
     "license": "MIT",
-    "license_source": "https://github.com/CodeShuX/mockhunter/blob/main/LICENSE"
+    "license_source": "https://github.com/CodeShuX/mockhunter/blob/main/LICENSE",
+    "tags": [
+      "testing",
+      "qa",
+      "playwright",
+      "mock-detection",
+      "web-audit",
+      "ai-testing",
+      "vibe-coding",
+      "claude-code"
+    ]
   },
   {
     "id": "modern-javascript-patterns",
@@ -26836,7 +28298,14 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "monetization",
+      "stripe",
+      "saas",
+      "pricing",
+      "subscriptions"
+    ]
   },
   {
     "id": "monochromatic-ui",
@@ -27001,7 +28470,13 @@
       "reasons": []
     },
     "source_type": "community",
-    "source_repo": "monte-carlo-data/mc-agent-toolkit"
+    "source_repo": "monte-carlo-data/mc-agent-toolkit",
+    "tags": [
+      "data-observability",
+      "monitoring",
+      "monte-carlo",
+      "monitors-as-code"
+    ]
   },
   {
     "id": "monte-carlo-monitoring-advisor",
@@ -27129,7 +28604,14 @@
       "reasons": []
     },
     "source_type": "community",
-    "source_repo": "monte-carlo-data/mc-agent-toolkit"
+    "source_repo": "monte-carlo-data/mc-agent-toolkit",
+    "tags": [
+      "data-observability",
+      "validation",
+      "dbt",
+      "monte-carlo",
+      "sql-notebook"
+    ]
   },
   {
     "id": "moodle-external-api-development",
@@ -27218,7 +28700,13 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "multi-agent",
+      "advisory",
+      "parallel-analysis",
+      "synthesis"
+    ]
   },
   {
     "id": "multi-agent-architect",
@@ -27240,7 +28728,16 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "langgraph",
+      "langchain",
+      "multi-agent",
+      "orchestration",
+      "deepagents",
+      "rag",
+      "tool-calling"
+    ]
   },
   {
     "id": "multi-agent-brainstorming",
@@ -27308,7 +28805,14 @@
       "reasons": []
     },
     "source_type": "community",
-    "source_repo": "milkomida77/guardian-agent-prompts"
+    "source_repo": "milkomida77/guardian-agent-prompts",
+    "tags": [
+      "multi-agent",
+      "orchestration",
+      "task-routing",
+      "quality-gates",
+      "anti-duplication"
+    ]
   },
   {
     "id": "multi-cloud-architecture",
@@ -27985,7 +29489,14 @@
       ]
     },
     "source_type": "community",
-    "source_repo": "tellmefrankie/news-engine"
+    "source_repo": "tellmefrankie/news-engine",
+    "tags": [
+      "news",
+      "rss",
+      "sentiment-analysis",
+      "briefing",
+      "research"
+    ]
   },
   {
     "id": "nextjs-app-router-patterns",
@@ -28052,7 +29563,16 @@
       },
       "reasons": []
     },
-    "source_type": "self"
+    "source_type": "self",
+    "tags": [
+      "seo",
+      "indexing",
+      "nextjs",
+      "search-console",
+      "crawl-budget",
+      "canonical",
+      "sitemap"
+    ]
   },
   {
     "id": "nextjs-supabase-auth",
@@ -28233,7 +29753,15 @@
       },
       "reasons": []
     },
-    "source_type": "community"
+    "source_type": "community",
+    "tags": [
+      "mcp",
+      "search",
+      "ai-discovery",
+      "api-discovery",
+      "mcp-verification",
+      "agent-tools"
+    ]
   },
   {
     "id": "notebooklm",
@@ -29314,7 +30842,14 @@
     "source_type": "community",
     "source_repo": "Suraj1235/open-dynamic-workflows",
     "license": "MIT",
-    "license_source": "https://github.com/Suraj1235/open-dynamic-workflows/blob/main/LICENSE"
+    "license_source": "https://github.com/Suraj1235/open-dynamic-workflows/blob/main/LICENSE",
+    "tags": [
+      "multi-agent",
+      "orchestration",
+      "workflow",
+      "adversarial-verification",
+      "coding-agents"
+    ]
   },
   {
     "id": "open-source-marketing",
@@ -29410,7 +30945,19 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "github",
+      "git",
+      "repository",
+      "audit",
+      "cleanup",
+      "workflow",
+      "devtools",
+      "automation",
+      "code-review",
+      "security"
+    ]
   },
   {
     "id": "options-flow-analyzer",
@@ -29433,7 +30980,14 @@
       },
       "reasons": []
     },
-    "source_type": "community"
+    "source_type": "community",
+    "tags": [
+      "options",
+      "sentiment-analysis",
+      "trading",
+      "polygon",
+      "market-analysis"
+    ]
   },
   {
     "id": "oral-health-analyzer",
@@ -29544,7 +31098,13 @@
       },
       "reasons": []
     },
-    "source_type": "self"
+    "source_type": "self",
+    "tags": [
+      "business-model",
+      "osterwalder",
+      "strategy",
+      "bmc"
+    ]
   },
   {
     "id": "outlook-automation",
@@ -29698,7 +31258,16 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "saas",
+      "payments",
+      "pakistan",
+      "nextjs",
+      "b2b",
+      "pkr",
+      "reconciliation"
+    ]
   },
   {
     "id": "papers-skill",
@@ -29724,7 +31293,16 @@
     "source_type": "community",
     "source_repo": "xwmxcz/papers-skill",
     "license": "MIT",
-    "license_source": "https://github.com/xwmxcz/papers-skill/blob/main/LICENSE"
+    "license_source": "https://github.com/xwmxcz/papers-skill/blob/main/LICENSE",
+    "tags": [
+      "research",
+      "academic",
+      "papers",
+      "citations",
+      "arxiv",
+      "semantic-scholar",
+      "pdf"
+    ]
   },
   {
     "id": "parallel-agents",
@@ -30268,7 +31846,12 @@
     "source_type": "community",
     "source_repo": "davidondrej/skills",
     "license": "MIT",
-    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE",
+    "tags": [
+      "pi-agent",
+      "models",
+      "openrouter"
+    ]
   },
   {
     "id": "pi-web-search",
@@ -30294,7 +31877,12 @@
     "source_type": "community",
     "source_repo": "davidondrej/skills",
     "license": "MIT",
-    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE",
+    "tags": [
+      "web-search",
+      "pi-agent",
+      "research"
+    ]
   },
   {
     "id": "pilot-protocol",
@@ -30320,7 +31908,14 @@
     "source_type": "official",
     "source_repo": "pilot-protocol/pilotprotocol",
     "license": "AGPL-3.0",
-    "license_source": "https://github.com/pilot-protocol/pilotprotocol/blob/main/LICENSE"
+    "license_source": "https://github.com/pilot-protocol/pilotprotocol/blob/main/LICENSE",
+    "tags": [
+      "agent-networking",
+      "p2p",
+      "nat-traversal",
+      "overlay-network",
+      "agent-apps"
+    ]
   },
   {
     "id": "pipecat-friday-agent",
@@ -30342,7 +31937,14 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "pipecat",
+      "voice",
+      "gemini",
+      "openai",
+      "python"
+    ]
   },
   {
     "id": "pipedrive-automation",
@@ -30500,7 +32102,16 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "playwright",
+      "java",
+      "e2e-testing",
+      "junit5",
+      "page-object-model",
+      "allure",
+      "selenium-alternative"
+    ]
   },
   {
     "id": "playwright-skill",
@@ -30618,7 +32229,15 @@
     "source_type": "community",
     "source_repo": "yehudalevy-collab/polis-protocol",
     "license": "MIT",
-    "license_source": "https://github.com/yehudalevy-collab/polis-protocol/blob/main/LICENSE"
+    "license_source": "https://github.com/yehudalevy-collab/polis-protocol/blob/main/LICENSE",
+    "tags": [
+      "multi-agent",
+      "coordination",
+      "routing",
+      "orchestration",
+      "governance",
+      "vendor-agnostic"
+    ]
   },
   {
     "id": "polis-protocol-a-self-optimizing-city-of-agents",
@@ -30738,7 +32357,13 @@
     "source_type": "community",
     "source_repo": "sanjay3290/ai-skills",
     "license": "Apache-2.0",
-    "license_source": "https://github.com/sanjay3290/ai-skills/blob/main/LICENSE"
+    "license_source": "https://github.com/sanjay3290/ai-skills/blob/main/LICENSE",
+    "tags": [
+      "postgres",
+      "sql",
+      "database",
+      "read-only"
+    ]
   },
   {
     "id": "postgresql",
@@ -31045,7 +32670,14 @@
       },
       "reasons": []
     },
-    "source_type": "self"
+    "source_type": "self",
+    "tags": [
+      "git",
+      "github",
+      "pull-request",
+      "code-review",
+      "workflow"
+    ]
   },
   {
     "id": "pr-writer",
@@ -31093,7 +32725,14 @@
     "source_type": "community",
     "source_repo": "chaunsin/agent-skills",
     "license": "Apache-2.0",
-    "license_source": "https://github.com/chaunsin/agent-skills/blob/master/LICENSE"
+    "license_source": "https://github.com/chaunsin/agent-skills/blob/master/LICENSE",
+    "tags": [
+      "release",
+      "deploy-readiness",
+      "ci-cd",
+      "rollback",
+      "production"
+    ]
   },
   {
     "id": "pre-ship-gate",
@@ -31119,7 +32758,14 @@
     "source_type": "community",
     "source_repo": "Sharrmavishal/operating-kit",
     "license": "MIT",
-    "license_source": "https://github.com/Sharrmavishal/operating-kit/blob/main/LICENSE"
+    "license_source": "https://github.com/Sharrmavishal/operating-kit/blob/main/LICENSE",
+    "tags": [
+      "deployment",
+      "quality-gate",
+      "verification",
+      "ci-cd",
+      "production"
+    ]
   },
   {
     "id": "premium-3d-website",
@@ -31142,7 +32788,15 @@
       },
       "reasons": []
     },
-    "source_type": "self"
+    "source_type": "self",
+    "tags": [
+      "threejs",
+      "webgl",
+      "shaders",
+      "post-processing",
+      "creative-coding",
+      "premium-design"
+    ]
   },
   {
     "id": "price-psychology-strategist",
@@ -31330,7 +32984,14 @@
     "source_type": "community",
     "source_repo": "atdy/maoxuan-product-agent",
     "license": "MIT",
-    "license_source": "https://github.com/atdy/maoxuan-product-agent/blob/main/LICENSE"
+    "license_source": "https://github.com/atdy/maoxuan-product-agent/blob/main/LICENSE",
+    "tags": [
+      "product-management",
+      "decision-making",
+      "growth",
+      "operations",
+      "chinese"
+    ]
   },
   {
     "id": "product-design",
@@ -31352,7 +33013,14 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "design",
+      "ux",
+      "design-systems",
+      "accessibility",
+      "figma"
+    ]
   },
   {
     "id": "product-inventor",
@@ -31374,7 +33042,13 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "product-thinking",
+      "innovation",
+      "ux-design",
+      "storytelling"
+    ]
   },
   {
     "id": "product-manager",
@@ -31396,7 +33070,14 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "product-management",
+      "saas",
+      "frameworks",
+      "metrics",
+      "strategy"
+    ]
   },
   {
     "id": "product-manager-toolkit",
@@ -31492,7 +33173,18 @@
     "source_type": "community",
     "source_repo": "commitshow/production-audit",
     "license": "MIT",
-    "license_source": "https://github.com/commitshow/production-audit/blob/main/LICENSE"
+    "license_source": "https://github.com/commitshow/production-audit/blob/main/LICENSE",
+    "tags": [
+      "security",
+      "audit",
+      "production",
+      "vibe-coding",
+      "rls",
+      "webhook",
+      "stripe",
+      "supabase",
+      "mobile"
+    ]
   },
   {
     "id": "production-code-audit",
@@ -31602,7 +33294,14 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "estimation",
+      "project-management",
+      "pert",
+      "sprint-planning",
+      "ai-agents"
+    ]
   },
   {
     "id": "progressive-web-app",
@@ -31624,7 +33323,15 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "pwa",
+      "web-dev",
+      "service-worker",
+      "frontend",
+      "offline",
+      "caching"
+    ]
   },
   {
     "id": "project-development",
@@ -31758,7 +33465,13 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "[prompt-engineering",
+      "optimization",
+      "frameworks",
+      "ai-enhancement]"
+    ]
   },
   {
     "id": "prompt-engineering",
@@ -31896,7 +33609,12 @@
     "source_type": "community",
     "source_repo": "mattpocock/skills",
     "license": "MIT",
-    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE",
+    "tags": [
+      "engineering",
+      "workflow",
+      "coding-agents"
+    ]
   },
   {
     "id": "public-relations",
@@ -31997,7 +33715,12 @@
     "source_type": "community",
     "source_repo": "davidondrej/skills",
     "license": "MIT",
-    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE",
+    "tags": [
+      "skills",
+      "git",
+      "publishing"
+    ]
   },
   {
     "id": "puzzle-activity-planner",
@@ -32021,7 +33744,14 @@
       "reasons": []
     },
     "source_type": "community",
-    "source_repo": "fruitwyatt/puzzle-activity-planner"
+    "source_repo": "fruitwyatt/puzzle-activity-planner",
+    "tags": [
+      "education",
+      "puzzle",
+      "classroom",
+      "activity-planning",
+      "event"
+    ]
   },
   {
     "id": "pydantic-ai",
@@ -32043,7 +33773,18 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "pydantic-ai",
+      "ai-agents",
+      "llm",
+      "openai",
+      "anthropic",
+      "gemini",
+      "tool-use",
+      "structured-output",
+      "python"
+    ]
   },
   {
     "id": "pydantic-models-py",
@@ -32290,7 +34031,14 @@
       },
       "reasons": []
     },
-    "source_type": "self"
+    "source_type": "self",
+    "tags": [
+      "python",
+      "powerpoint",
+      "python-pptx",
+      "presentations",
+      "slide-decks"
+    ]
   },
   {
     "id": "python-pro",
@@ -32426,6 +34174,41 @@
     }
   },
   {
+    "id": "quit-sponsor",
+    "path": "skills/quit-sponsor",
+    "category": "personal-development",
+    "name": "quit-sponsor",
+    "description": "Helps an AI agent provide non-judgmental, evidence-informed quit-smoking support with user-consented tracking, craving check-ins, and escalation to human or clinical help. Not medical care.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-07-12",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "metrox-eth/quit-sponsor",
+    "license": "MIT",
+    "license_source": "https://github.com/metrox-eth/quit-sponsor/blob/main/LICENSE",
+    "tags": [
+      "quit-smoking",
+      "smoking-cessation",
+      "health",
+      "habits",
+      "addiction-recovery",
+      "wellbeing",
+      "coaching"
+    ]
+  },
+  {
     "id": "radix-ui-design-system",
     "path": "skills/radix-ui-design-system",
     "category": "web-development",
@@ -32512,7 +34295,18 @@
       },
       "reasons": []
     },
-    "source_type": "community"
+    "source_type": "community",
+    "tags": [
+      "react",
+      "tailwind",
+      "design-system",
+      "ui",
+      "components",
+      "vibe-coding",
+      "rayden",
+      "rayna-ui",
+      "code-generation"
+    ]
   },
   {
     "id": "rayden-use",
@@ -32535,7 +34329,16 @@
       },
       "reasons": []
     },
-    "source_type": "community"
+    "source_type": "community",
+    "tags": [
+      "figma",
+      "design-system",
+      "ui",
+      "components",
+      "mcp",
+      "rayden",
+      "rayna-ui"
+    ]
   },
   {
     "id": "rclone-cli",
@@ -32851,7 +34654,12 @@
     "source_type": "community",
     "source_repo": "davidondrej/skills",
     "license": "MIT",
-    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE",
+    "tags": [
+      "adr",
+      "documentation",
+      "architecture"
+    ]
   },
   {
     "id": "readme",
@@ -32895,7 +34703,16 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "memory",
+      "context",
+      "rag",
+      "summarization",
+      "compression",
+      "long-context",
+      "agent-infrastructure"
+    ]
   },
   {
     "id": "receiving-code-review",
@@ -32943,7 +34760,17 @@
     "source_type": "community",
     "source_repo": "mturac/recsys-pipeline-architect",
     "license": "MIT",
-    "license_source": "https://github.com/mturac/recsys-pipeline-architect/blob/main/LICENSE"
+    "license_source": "https://github.com/mturac/recsys-pipeline-architect/blob/main/LICENSE",
+    "tags": [
+      "recommender-system",
+      "ranking",
+      "feed-algorithm",
+      "recsys",
+      "personalization",
+      "for-you-feed",
+      "rag-reranker",
+      "pipeline-architecture"
+    ]
   },
   {
     "id": "recursive-context-pruning-token-budgeting",
@@ -32967,7 +34794,13 @@
       "reasons": []
     },
     "source_type": "self",
-    "source_repo": "Kench001/antigravity-awesome-skills"
+    "source_repo": "Kench001/antigravity-awesome-skills",
+    "tags": [
+      "efficiency",
+      "token-optimization",
+      "brevity",
+      "context-management"
+    ]
   },
   {
     "id": "red-team-tactics",
@@ -33057,7 +34890,13 @@
       "reasons": []
     },
     "source_type": "community",
-    "source_repo": "Leonxlnx/taste-skill"
+    "source_repo": "Leonxlnx/taste-skill",
+    "tags": [
+      "frontend",
+      "redesign",
+      "design-audit",
+      "ui"
+    ]
   },
   {
     "id": "redis-cli",
@@ -33219,7 +35058,14 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "remotion",
+      "video",
+      "react",
+      "animation",
+      "composition"
+    ]
   },
   {
     "id": "render-automation",
@@ -33315,7 +35161,12 @@
     "source_type": "community",
     "source_repo": "davidondrej/skills",
     "license": "MIT",
-    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE",
+    "tags": [
+      "research",
+      "prompting",
+      "briefs"
+    ]
   },
   {
     "id": "resolving-merge-conflicts",
@@ -33483,7 +35334,14 @@
     "source_type": "community",
     "source_repo": "emilkowalski/skills",
     "license": "MIT",
-    "license_source": "https://github.com/emilkowalski/skills/blob/main/LICENSE.txt"
+    "license_source": "https://github.com/emilkowalski/skills/blob/main/LICENSE.txt",
+    "tags": [
+      "frontend",
+      "animation",
+      "motion",
+      "review",
+      "accessibility"
+    ]
   },
   {
     "id": "review-swarm",
@@ -33576,7 +35434,14 @@
       },
       "reasons": []
     },
-    "source_type": "self"
+    "source_type": "self",
+    "tags": [
+      "elicitation",
+      "clarifying-questions",
+      "ambiguity",
+      "multi-round",
+      "prompt-engineering"
+    ]
   },
   {
     "id": "riffkit",
@@ -33602,7 +35467,17 @@
     "source_type": "community",
     "source_repo": "riffkit/skill",
     "license": "MIT",
-    "license_source": "https://github.com/riffkit/skill/blob/main/LICENSE"
+    "license_source": "https://github.com/riffkit/skill/blob/main/LICENSE",
+    "tags": [
+      "video",
+      "short-form",
+      "tiktok",
+      "ai-video",
+      "marketing",
+      "ads",
+      "ecommerce",
+      "api-integration"
+    ]
   },
   {
     "id": "risk-manager",
@@ -33808,7 +35683,13 @@
     "source_type": "community",
     "source_repo": "zenlee123/routerbase-agent-skills",
     "license": "MIT-0",
-    "license_source": "https://github.com/zenlee123/routerbase-agent-skills/blob/main/LICENSE"
+    "license_source": "https://github.com/zenlee123/routerbase-agent-skills/blob/main/LICENSE",
+    "tags": [
+      "routerbase",
+      "llm-routing",
+      "openai-compatible",
+      "model-gateway"
+    ]
   },
   {
     "id": "ruby",
@@ -33878,7 +35759,13 @@
     "source_type": "community",
     "source_repo": "davidondrej/skills",
     "license": "MIT",
-    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE",
+    "tags": [
+      "benchmark",
+      "deepswe",
+      "openrouter",
+      "evaluation"
+    ]
   },
   {
     "id": "runapi-cli",
@@ -33904,7 +35791,16 @@
     "source_type": "official",
     "source_repo": "runapi-ai/cli-skill",
     "license": "Apache-2.0",
-    "license_source": "https://github.com/runapi-ai/cli-skill/blob/main/LICENSE"
+    "license_source": "https://github.com/runapi-ai/cli-skill/blob/main/LICENSE",
+    "tags": [
+      "runapi",
+      "cli",
+      "models",
+      "automation",
+      "codex",
+      "claude",
+      "gemini"
+    ]
   },
   {
     "id": "runaway-guard",
@@ -33930,7 +35826,17 @@
     "source_type": "community",
     "source_repo": "morsechimwai/lemmaly",
     "license": "Apache-2.0",
-    "license_source": "https://github.com/morsechimwai/lemmaly/blob/main/LICENSE"
+    "license_source": "https://github.com/morsechimwai/lemmaly/blob/main/LICENSE",
+    "tags": [
+      "cost-safety",
+      "finops",
+      "ai-apis",
+      "agents",
+      "retries",
+      "concurrency",
+      "wallet-invariant",
+      "gateway"
+    ]
   },
   {
     "id": "rust",
@@ -34018,7 +35924,14 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "multi-tenancy",
+      "saas",
+      "row-level-security",
+      "postgresql",
+      "tenant-isolation"
+    ]
   },
   {
     "id": "saas-mvp-launcher",
@@ -34172,7 +36085,14 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "persona",
+      "startups",
+      "agi",
+      "yc",
+      "fundraising"
+    ]
   },
   {
     "id": "sankhya-dashboard-html-jsp-custom-best-pratices",
@@ -34194,7 +36114,15 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "sankhya",
+      "dashboard",
+      "jsp",
+      "html",
+      "sql",
+      "best-practices"
+    ]
   },
   {
     "id": "sast-configuration",
@@ -34240,7 +36168,17 @@
       "reasons": []
     },
     "source_type": "community",
-    "source_repo": "MetcalfSolutions/Satori"
+    "source_repo": "MetcalfSolutions/Satori",
+    "tags": [
+      "mental-health",
+      "psychology",
+      "wisdom",
+      "philosophy",
+      "ifs",
+      "stoicism",
+      "jungian",
+      "conversation"
+    ]
   },
   {
     "id": "scala",
@@ -34418,7 +36356,16 @@
       },
       "reasons": []
     },
-    "source_type": "self"
+    "source_type": "self",
+    "tags": [
+      "seo",
+      "schema",
+      "json-ld",
+      "structured-data",
+      "rich-results",
+      "nextjs",
+      "technical-seo"
+    ]
   },
   {
     "id": "sci-fi-interface",
@@ -34558,7 +36505,15 @@
     },
     "source_type": "community",
     "source_repo": "connerkward/screenstudio-alternative-skill",
-    "license": "MIT"
+    "license": "MIT",
+    "tags": [
+      "screen-recording",
+      "video",
+      "post-production",
+      "auto-zoom",
+      "vertical-video",
+      "ffmpeg"
+    ]
   },
   {
     "id": "scroll-experience",
@@ -34919,7 +36874,16 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "video",
+      "ai",
+      "memories",
+      "social-media",
+      "youtube",
+      "tiktok",
+      "analysis"
+    ]
   },
   {
     "id": "segment-automation",
@@ -35058,7 +37022,16 @@
         "explicit_target_restriction"
       ]
     },
-    "source_type": "official"
+    "source_type": "official",
+    "tags": [
+      "sendblue",
+      "imessage",
+      "sms",
+      "rcs",
+      "messaging",
+      "api",
+      "webhooks"
+    ]
   },
   {
     "id": "sendblue-cli",
@@ -35086,7 +37059,15 @@
     "source_type": "official",
     "source_repo": "sendblue-api/sendblue-cli",
     "license": "MIT",
-    "license_source": "https://github.com/sendblue-api/sendblue-cli/blob/main/LICENSE"
+    "license_source": "https://github.com/sendblue-api/sendblue-cli/blob/main/LICENSE",
+    "tags": [
+      "sendblue",
+      "imessage",
+      "sms",
+      "cli",
+      "messaging",
+      "notifications"
+    ]
   },
   {
     "id": "sendblue-notify",
@@ -35111,7 +37092,16 @@
         "explicit_target_restriction"
       ]
     },
-    "source_type": "official"
+    "source_type": "official",
+    "tags": [
+      "sendblue",
+      "imessage",
+      "sms",
+      "notifications",
+      "hooks",
+      "claude-code",
+      "automation"
+    ]
   },
   {
     "id": "sendgrid-automation",
@@ -36107,7 +38097,12 @@
     "source_type": "community",
     "source_repo": "davidondrej/skills",
     "license": "MIT",
-    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE",
+    "tags": [
+      "setup",
+      "onboarding",
+      "installation"
+    ]
   },
   {
     "id": "setup-matt-pocock-skills",
@@ -36133,7 +38128,12 @@
     "source_type": "community",
     "source_repo": "mattpocock/skills",
     "license": "MIT",
-    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE",
+    "tags": [
+      "engineering",
+      "workflow",
+      "coding-agents"
+    ]
   },
   {
     "id": "sexual-health-analyzer",
@@ -36406,7 +38406,12 @@
     "source_type": "community",
     "source_repo": "davidondrej/skills",
     "license": "MIT",
-    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE",
+    "tags": [
+      "writing",
+      "editing",
+      "concise"
+    ]
   },
   {
     "id": "signup-flow-cro",
@@ -36543,7 +38548,14 @@
     "source_type": "community",
     "source_repo": "aptratcn/skill-audit",
     "license": "MIT",
-    "license_source": "https://github.com/aptratcn/skill-audit/blob/main/LICENSE"
+    "license_source": "https://github.com/aptratcn/skill-audit/blob/main/LICENSE",
+    "tags": [
+      "security",
+      "audit",
+      "pre-install",
+      "malicious-detection",
+      "supply-chain"
+    ]
   },
   {
     "id": "skill-check",
@@ -36568,7 +38580,14 @@
         "target_specific_home_path"
       ]
     },
-    "license": "MIT"
+    "license": "MIT",
+    "tags": [
+      "validation",
+      "linter",
+      "agentskills",
+      "skill-authoring",
+      "code-quality"
+    ]
   },
   {
     "id": "skill-creator",
@@ -36590,7 +38609,13 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "[automation",
+      "scaffolding",
+      "skill-creation",
+      "meta-skill]"
+    ]
   },
   {
     "id": "skill-creator-ms",
@@ -36678,7 +38703,13 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "skill-management",
+      "deployment",
+      "validation",
+      "installation"
+    ]
   },
   {
     "id": "skill-issue",
@@ -36706,7 +38737,14 @@
     "source_type": "community",
     "source_repo": "mishanefedov/skill-issue",
     "license": "MIT",
-    "license_source": "https://github.com/mishanefedov/skill-issue/blob/main/LICENSE"
+    "license_source": "https://github.com/mishanefedov/skill-issue/blob/main/LICENSE",
+    "tags": [
+      "skills",
+      "linter",
+      "activation",
+      "meta",
+      "ci"
+    ]
   },
   {
     "id": "skill-rails-upgrade",
@@ -36818,7 +38856,13 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "governance",
+      "audit",
+      "quality",
+      "skill-health"
+    ]
   },
   {
     "id": "skill-suggester",
@@ -36914,7 +38958,15 @@
     "source_type": "official",
     "source_repo": "Skyvern-AI/skyvern",
     "license": "AGPL-3.0",
-    "license_source": "https://github.com/Skyvern-AI/skyvern/blob/main/LICENSE"
+    "license_source": "https://github.com/Skyvern-AI/skyvern/blob/main/LICENSE",
+    "tags": [
+      "browser-automation",
+      "mcp",
+      "web-scraping",
+      "form-filling",
+      "ai-agents",
+      "workflow-automation"
+    ]
   },
   {
     "id": "slack-automation",
@@ -37167,7 +39219,16 @@
       },
       "reasons": []
     },
-    "source_type": "self"
+    "source_type": "self",
+    "tags": [
+      "seo",
+      "open-graph",
+      "twitter-card",
+      "social-sharing",
+      "og-image",
+      "nextjs",
+      "metadata"
+    ]
   },
   {
     "id": "social-orchestrator",
@@ -37189,7 +39250,13 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "social-media",
+      "cross-channel",
+      "scheduling",
+      "campaigns"
+    ]
   },
   {
     "id": "social-post-writer-seo",
@@ -37212,7 +39279,14 @@
       },
       "reasons": []
     },
-    "source_type": "self"
+    "source_type": "self",
+    "tags": [
+      "social-media",
+      "marketing",
+      "content-writing",
+      "seo",
+      "growth"
+    ]
   },
   {
     "id": "social-proof-architect",
@@ -37262,7 +39336,22 @@
     "source_type": "community",
     "source_repo": "ndesv21/socialclaw",
     "license": "MIT",
-    "license_source": "https://github.com/ndesv21/socialclaw/blob/main/LICENSE"
+    "license_source": "https://github.com/ndesv21/socialclaw/blob/main/LICENSE",
+    "tags": [
+      "social-media",
+      "publishing",
+      "scheduling",
+      "marketing",
+      "twitter",
+      "linkedin",
+      "instagram",
+      "tiktok",
+      "discord",
+      "telegram",
+      "reddit",
+      "wordpress",
+      "pinterest"
+    ]
   },
   {
     "id": "soft-pastel",
@@ -37633,7 +39722,19 @@
     "source_type": "community",
     "source_repo": "takeaseatventure/sql-sentinel",
     "license": "MIT",
-    "license_source": "https://github.com/takeaseatventure/sql-sentinel/blob/main/LICENSE"
+    "license_source": "https://github.com/takeaseatventure/sql-sentinel/blob/main/LICENSE",
+    "tags": [
+      "sql",
+      "bigquery",
+      "snowflake",
+      "redshift",
+      "postgres",
+      "data-warehouse",
+      "cost-optimization",
+      "performance",
+      "audit",
+      "finops"
+    ]
   },
   {
     "id": "sqlmap-database-pentesting",
@@ -37703,7 +39804,15 @@
     "source_type": "community",
     "source_repo": "flyingsquirrel0419/squirrel-skill",
     "license": "Apache-2.0",
-    "license_source": "https://github.com/flyingsquirrel0419/squirrel-skill/blob/main/LICENSE"
+    "license_source": "https://github.com/flyingsquirrel0419/squirrel-skill/blob/main/LICENSE",
+    "tags": [
+      "development",
+      "testing",
+      "planning",
+      "code-review",
+      "documentation",
+      "ci-cd"
+    ]
   },
   {
     "id": "sred-project-organizer",
@@ -37791,7 +39900,13 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "image-generation",
+      "stable-diffusion",
+      "ai-art",
+      "api"
+    ]
   },
   {
     "id": "startup-analyst",
@@ -37968,7 +40083,13 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "persona",
+      "design-thinking",
+      "product",
+      "presentations"
+    ]
   },
   {
     "id": "stitch-design-taste",
@@ -37992,7 +40113,13 @@
       "reasons": []
     },
     "source_type": "community",
-    "source_repo": "Leonxlnx/taste-skill"
+    "source_repo": "Leonxlnx/taste-skill",
+    "tags": [
+      "stitch",
+      "design-system",
+      "frontend",
+      "ui"
+    ]
   },
   {
     "id": "stitch-loop",
@@ -38172,7 +40299,14 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "subagents",
+      "orchestration",
+      "quota",
+      "parallel",
+      "multi-agent"
+    ]
   },
   {
     "id": "subject-line-psychologist",
@@ -38360,7 +40494,12 @@
     "source_type": "official",
     "source_repo": "dair-ai/dair-academy-plugins",
     "license": "MIT",
-    "license_source": "https://github.com/dair-ai/dair-academy-plugins/blob/main/README.md#license"
+    "license_source": "https://github.com/dair-ai/dair-academy-plugins/blob/main/README.md#license",
+    "tags": [
+      "dair-academy",
+      "ai",
+      "workflow"
+    ]
   },
   {
     "id": "sveltekit",
@@ -38382,7 +40521,15 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "svelte",
+      "sveltekit",
+      "fullstack",
+      "ssr",
+      "ssg",
+      "typescript"
+    ]
   },
   {
     "id": "swift",
@@ -38723,7 +40870,20 @@
     "source_type": "community",
     "source_repo": "taisly/agent",
     "license": "MIT",
-    "license_source": "https://github.com/taisly/agent/blob/main/LICENSE"
+    "license_source": "https://github.com/taisly/agent/blob/main/LICENSE",
+    "tags": [
+      "social-media",
+      "video",
+      "publishing",
+      "mcp",
+      "cli",
+      "sdk",
+      "tiktok",
+      "instagram",
+      "youtube-shorts",
+      "x",
+      "facebook"
+    ]
   },
   {
     "id": "tanstack-query-expert",
@@ -38767,7 +40927,13 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "planning",
+      "pre-task",
+      "risk-analysis",
+      "orchestration"
+    ]
   },
   {
     "id": "tavily-web",
@@ -38837,7 +41003,12 @@
     "source_type": "community",
     "source_repo": "mattpocock/skills",
     "license": "MIT",
-    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE",
+    "tags": [
+      "engineering",
+      "workflow",
+      "coding-agents"
+    ]
   },
   {
     "id": "tdd-orchestrator",
@@ -39017,7 +41188,12 @@
     "source_type": "community",
     "source_repo": "mattpocock/skills",
     "license": "MIT",
-    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE",
+    "tags": [
+      "education",
+      "workflow",
+      "coding-agents"
+    ]
   },
   {
     "id": "team-collaboration-issue",
@@ -39129,7 +41305,14 @@
       "reasons": []
     },
     "source_type": "community",
-    "source_repo": "Elkidogz/technical-change-skill"
+    "source_repo": "Elkidogz/technical-change-skill",
+    "tags": [
+      "change-tracking",
+      "session-handoff",
+      "documentation",
+      "accessibility",
+      "state-machine"
+    ]
   },
   {
     "id": "technical-tutorials",
@@ -39177,7 +41360,13 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "messaging",
+      "telegram",
+      "bots",
+      "webhooks"
+    ]
   },
   {
     "id": "telegram-automation",
@@ -39249,7 +41438,13 @@
     "source_type": "community",
     "source_repo": "sanjay3290/ai-skills",
     "license": "Apache-2.0",
-    "license_source": "https://github.com/sanjay3290/ai-skills/blob/main/LICENSE"
+    "license_source": "https://github.com/sanjay3290/ai-skills/blob/main/LICENSE",
+    "tags": [
+      "telegram",
+      "notifications",
+      "bots",
+      "approvals"
+    ]
   },
   {
     "id": "telegram-mini-app",
@@ -39659,7 +41854,17 @@
     "source_type": "community",
     "source_repo": "njerschow/textme",
     "license": "MIT",
-    "license_source": "https://github.com/njerschow/textme/blob/main/LICENSE"
+    "license_source": "https://github.com/njerschow/textme/blob/main/LICENSE",
+    "tags": [
+      "textme",
+      "sendblue",
+      "imessage",
+      "sms",
+      "claude-code",
+      "daemon",
+      "remote-control",
+      "automation"
+    ]
   },
   {
     "id": "theme-factory",
@@ -40038,7 +42243,14 @@
     "source_type": "community",
     "source_repo": "cruisekkk/time-ledger",
     "license": "MIT",
-    "license_source": "https://github.com/cruisekkk/time-ledger/blob/main/LICENSE"
+    "license_source": "https://github.com/cruisekkk/time-ledger/blob/main/LICENSE",
+    "tags": [
+      "time-tracking",
+      "notion",
+      "quantified-self",
+      "productivity",
+      "journaling"
+    ]
   },
   {
     "id": "tmux",
@@ -40060,7 +42272,16 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "tmux",
+      "terminal",
+      "multiplexer",
+      "sessions",
+      "shell",
+      "remote",
+      "automation"
+    ]
   },
   {
     "id": "to-issues",
@@ -40086,7 +42307,12 @@
     "source_type": "community",
     "source_repo": "mattpocock/skills",
     "license": "MIT",
-    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE",
+    "tags": [
+      "project-management",
+      "workflow",
+      "coding-agents"
+    ]
   },
   {
     "id": "to-prd",
@@ -40112,7 +42338,12 @@
     "source_type": "community",
     "source_repo": "mattpocock/skills",
     "license": "MIT",
-    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE",
+    "tags": [
+      "project-management",
+      "workflow",
+      "coding-agents"
+    ]
   },
   {
     "id": "todoist-automation",
@@ -40162,7 +42393,19 @@
     "source_type": "community",
     "source_repo": "CodeShuX/tokenwise",
     "license": "MIT",
-    "license_source": "https://github.com/CodeShuX/tokenwise/blob/main/LICENSE"
+    "license_source": "https://github.com/CodeShuX/tokenwise/blob/main/LICENSE",
+    "tags": [
+      "model-routing",
+      "token-optimization",
+      "cost-reduction",
+      "anthropic",
+      "haiku",
+      "sonnet",
+      "opus",
+      "claude-code",
+      "ab-testing",
+      "measurement"
+    ]
   },
   {
     "id": "tool-design",
@@ -40206,7 +42449,15 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "reliability",
+      "tool-use",
+      "error-handling",
+      "retries",
+      "recovery",
+      "agent-infrastructure"
+    ]
   },
   {
     "id": "tools-page-seo-optimizer",
@@ -40229,7 +42480,19 @@
       },
       "reasons": []
     },
-    "source_type": "community"
+    "source_type": "community",
+    "tags": [
+      "seo",
+      "tools-pages",
+      "product-pages",
+      "duplicate-content",
+      "content-registry",
+      "meta-tags",
+      "internal-linking",
+      "url-slugs",
+      "e-e-a-t",
+      "framework-agnostic"
+    ]
   },
   {
     "id": "top-web-vulnerabilities",
@@ -40299,7 +42562,14 @@
     "source_type": "community",
     "source_repo": "cruisekkk/trading-ledger",
     "license": "MIT",
-    "license_source": "https://github.com/cruisekkk/trading-ledger/blob/main/LICENSE"
+    "license_source": "https://github.com/cruisekkk/trading-ledger/blob/main/LICENSE",
+    "tags": [
+      "trading-journal",
+      "notion",
+      "journaling",
+      "market-wizards",
+      "decision-making"
+    ]
   },
   {
     "id": "train-sentence-transformers",
@@ -40399,7 +42669,16 @@
     "source_type": "community",
     "source_repo": "TerminallyLazy/Tree-Ring-Memory",
     "license": "Apache-2.0",
-    "license_source": "https://github.com/TerminallyLazy/Tree-Ring-Memory/blob/main/LICENSE"
+    "license_source": "https://github.com/TerminallyLazy/Tree-Ring-Memory/blob/main/LICENSE",
+    "tags": [
+      "agent-memory",
+      "local-first",
+      "recall",
+      "privacy",
+      "codex",
+      "sqlite",
+      "cli"
+    ]
   },
   {
     "id": "trello-automation",
@@ -40447,7 +42726,12 @@
     "source_type": "community",
     "source_repo": "mattpocock/skills",
     "license": "MIT",
-    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE",
+    "tags": [
+      "engineering",
+      "workflow",
+      "coding-agents"
+    ]
   },
   {
     "id": "trigger-dev",
@@ -40517,7 +42801,16 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "typescript",
+      "trpc",
+      "api",
+      "fullstack",
+      "nextjs",
+      "react",
+      "type-safety"
+    ]
   },
   {
     "id": "trust-calibrator",
@@ -41188,7 +43481,14 @@
       "reasons": []
     },
     "source_type": "official",
-    "source_repo": "aislon/uizze-mcp"
+    "source_repo": "aislon/uizze-mcp",
+    "tags": [
+      "ui-design",
+      "ui-research",
+      "mcp",
+      "design-contracts",
+      "agent-workflows"
+    ]
   },
   {
     "id": "uncle-bob-craft",
@@ -41210,7 +43510,15 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "clean-code",
+      "clean-architecture",
+      "solid",
+      "code-review",
+      "craftsmanship",
+      "uncle-bob"
+    ]
   },
   {
     "id": "uniprot-database",
@@ -41278,7 +43586,16 @@
       },
       "reasons": []
     },
-    "source_type": "community"
+    "source_type": "community",
+    "tags": [
+      "unity",
+      "game-development",
+      "ai-generation",
+      "asset-pipeline",
+      "scene-design",
+      "music-generation",
+      "game-design-document"
+    ]
   },
   {
     "id": "unity-developer",
@@ -41372,7 +43689,13 @@
     "source_type": "community",
     "source_repo": "mbenhard/unship",
     "license": "MIT",
-    "license_source": "https://github.com/mbenhard/unship/blob/main/LICENSE"
+    "license_source": "https://github.com/mbenhard/unship/blob/main/LICENSE",
+    "tags": [
+      "ui-variants",
+      "frontend",
+      "local-first",
+      "coding-agents"
+    ]
   },
   {
     "id": "unslop",
@@ -41398,7 +43721,15 @@
     "source_type": "community",
     "source_repo": "MohamedAbdallah-14/unslop",
     "license": "MIT",
-    "license_source": "https://github.com/MohamedAbdallah-14/unslop/blob/main/LICENSE"
+    "license_source": "https://github.com/MohamedAbdallah-14/unslop/blob/main/LICENSE",
+    "tags": [
+      "writing",
+      "content-quality",
+      "ai-writing",
+      "text-processing",
+      "cli",
+      "publishing"
+    ]
   },
   {
     "id": "unslop-commit",
@@ -41649,7 +43980,13 @@
     },
     "source_type": "community",
     "source_repo": "JularDepick/user-thoughts.SKILL",
-    "license": "MIT"
+    "license": "MIT",
+    "tags": [
+      "userthoughts",
+      "documentation",
+      "project-management",
+      "mdbase"
+    ]
   },
   {
     "id": "using-git-worktrees",
@@ -41865,7 +44202,16 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "ux",
+      "ui",
+      "design",
+      "evaluation",
+      "principles",
+      "antipatterns",
+      "accessibility"
+    ]
   },
   {
     "id": "vaporwave",
@@ -42243,7 +44589,16 @@
       },
       "reasons": []
     },
-    "source_type": "self"
+    "source_type": "self",
+    "tags": [
+      "cleanup",
+      "refactor",
+      "nextjs",
+      "production",
+      "vibe-code",
+      "fullstack",
+      "nodejs"
+    ]
   },
   {
     "id": "vibecode-production-qa-validator",
@@ -42266,7 +44621,23 @@
       },
       "reasons": []
     },
-    "source_type": "self"
+    "source_type": "self",
+    "tags": [
+      "qa",
+      "nextjs",
+      "production",
+      "deployment",
+      "seo",
+      "authentication",
+      "api",
+      "performance",
+      "favicon",
+      "cleanup",
+      "lighthouse",
+      "database",
+      "security",
+      "ui-ux"
+    ]
   },
   {
     "id": "vibers-code-review",
@@ -42310,7 +44681,14 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "matching",
+      "psychology",
+      "compatibility",
+      "networking",
+      "collaboration"
+    ]
   },
   {
     "id": "vibrant-maximalism",
@@ -42357,7 +44735,15 @@
       "reasons": []
     },
     "source_type": "community",
-    "source_repo": "274326424/video-content-extractor"
+    "source_repo": "274326424/video-content-extractor",
+    "tags": [
+      "video",
+      "ocr",
+      "ffmpeg",
+      "tesseract",
+      "frame-extraction",
+      "media"
+    ]
   },
   {
     "id": "videodb",
@@ -42379,7 +44765,19 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "[video",
+      "editing",
+      "transcription",
+      "subtitles",
+      "search",
+      "streaming",
+      "ai-generation",
+      "media",
+      "live-streams",
+      "desktop-capture]"
+    ]
   },
   {
     "id": "videodb-skills",
@@ -42401,7 +44799,17 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "[video",
+      "editing",
+      "transcription",
+      "subtitles",
+      "search",
+      "streaming",
+      "ai-generation",
+      "media]"
+    ]
   },
   {
     "id": "viral-generator-builder",
@@ -42585,7 +44993,12 @@
     "source_type": "community",
     "source_repo": "davidondrej/skills",
     "license": "MIT",
-    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE",
+    "tags": [
+      "vps",
+      "ssh",
+      "server-management"
+    ]
   },
   {
     "id": "vr-ar",
@@ -42631,7 +45044,14 @@
       "reasons": []
     },
     "source_type": "community",
-    "source_repo": "lewiswigmore/agent-skills"
+    "source_repo": "lewiswigmore/agent-skills",
+    "tags": [
+      "vscode",
+      "extension",
+      "ide",
+      "typescript",
+      "marketplace"
+    ]
   },
   {
     "id": "vulnerability-scanner",
@@ -42675,7 +45095,13 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "persona",
+      "investing",
+      "value-investing",
+      "business"
+    ]
   },
   {
     "id": "wcag-audit-patterns",
@@ -42723,7 +45149,14 @@
     "source_type": "official",
     "source_repo": "weaviate/agent-skills",
     "license": "BSD-3-Clause",
-    "license_source": "https://github.com/weaviate/agent-skills/blob/main/LICENSE"
+    "license_source": "https://github.com/weaviate/agent-skills/blob/main/LICENSE",
+    "tags": [
+      "weaviate",
+      "vector-database",
+      "semantic-search",
+      "hybrid-search",
+      "data-import"
+    ]
   },
   {
     "id": "weaviate-cookbooks",
@@ -42749,7 +45182,14 @@
     "source_type": "official",
     "source_repo": "weaviate/agent-skills",
     "license": "BSD-3-Clause",
-    "license_source": "https://github.com/weaviate/agent-skills/blob/main/LICENSE"
+    "license_source": "https://github.com/weaviate/agent-skills/blob/main/LICENSE",
+    "tags": [
+      "weaviate",
+      "rag",
+      "agents",
+      "vector-database",
+      "ai-apps"
+    ]
   },
   {
     "id": "web-artifacts-builder",
@@ -42840,7 +45280,16 @@
     },
     "source_type": "community",
     "source_repo": "connerkward/web-media-getter-skill",
-    "license": "MIT"
+    "license": "MIT",
+    "tags": [
+      "media",
+      "images",
+      "video",
+      "gif",
+      "stock",
+      "archival",
+      "attribution"
+    ]
   },
   {
     "id": "web-performance-optimization",
@@ -42885,7 +45334,15 @@
       },
       "reasons": []
     },
-    "source_type": "self"
+    "source_type": "self",
+    "tags": [
+      "brainstorming",
+      "project-planning",
+      "web-development",
+      "product-scoping",
+      "design-system",
+      "architecture"
+    ]
   },
   {
     "id": "web-scraper",
@@ -42907,7 +45364,13 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "scraping",
+      "data-extraction",
+      "automation",
+      "csv"
+    ]
   },
   {
     "id": "web-security-testing",
@@ -43045,7 +45508,15 @@
       "reasons": []
     },
     "source_type": "community",
-    "source_repo": "demo112/yunqu-ai-skills"
+    "source_repo": "demo112/yunqu-ai-skills",
+    "tags": [
+      "wechat",
+      "chinese-market",
+      "content-strategy",
+      "marketing",
+      "公众号",
+      "微信"
+    ]
   },
   {
     "id": "weightloss-analyzer",
@@ -43115,7 +45586,15 @@
     "source_type": "official",
     "source_repo": "agent-frontier/wgm",
     "license": "MIT",
-    "license_source": "https://github.com/agent-frontier/wgm/blob/main/LICENSE"
+    "license_source": "https://github.com/agent-frontier/wgm/blob/main/LICENSE",
+    "tags": [
+      "build-loop",
+      "spec-driven",
+      "ralph-loop",
+      "self-improving",
+      "agentic-development",
+      "methodology"
+    ]
   },
   {
     "id": "whatsapp-automation",
@@ -43159,7 +45638,13 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "messaging",
+      "whatsapp",
+      "meta",
+      "webhooks"
+    ]
   },
   {
     "id": "widget-based-design",
@@ -43230,7 +45715,12 @@
     "source_type": "official",
     "source_repo": "dair-ai/dair-academy-plugins",
     "license": "MIT",
-    "license_source": "https://github.com/dair-ai/dair-academy-plugins/blob/main/README.md#license"
+    "license_source": "https://github.com/dair-ai/dair-academy-plugins/blob/main/README.md#license",
+    "tags": [
+      "dair-academy",
+      "ai",
+      "workflow"
+    ]
   },
   {
     "id": "wiki-changelog",
@@ -43525,7 +46015,14 @@
       },
       "reasons": []
     },
-    "source_type": "self"
+    "source_type": "self",
+    "tags": [
+      "writing",
+      "blog",
+      "seo",
+      "content",
+      "wordpress"
+    ]
   },
   {
     "id": "wordpress-penetration-testing",
@@ -43705,7 +46202,14 @@
     "source_type": "community",
     "source_repo": "work0r-ai/agent-kit",
     "license": "MIT",
-    "license_source": "https://github.com/work0r-ai/agent-kit/blob/main/skills/workorai/LICENSE.txt"
+    "license_source": "https://github.com/work0r-ai/agent-kit/blob/main/skills/workorai/LICENSE.txt",
+    "tags": [
+      "job-search",
+      "hiring",
+      "recruiting",
+      "talent-marketplace",
+      "mcp"
+    ]
   },
   {
     "id": "wp-site-health-auditor",
@@ -43728,7 +46232,16 @@
       },
       "reasons": []
     },
-    "source_type": "self"
+    "source_type": "self",
+    "tags": [
+      "wordpress",
+      "site-health",
+      "wp-cli",
+      "seo",
+      "performance",
+      "security",
+      "hardening"
+    ]
   },
   {
     "id": "wrike-automation",
@@ -43798,7 +46311,12 @@
     "source_type": "community",
     "source_repo": "mattpocock/skills",
     "license": "MIT",
-    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/mattpocock/skills/blob/main/LICENSE",
+    "tags": [
+      "skill-authoring",
+      "workflow",
+      "coding-agents"
+    ]
   },
   {
     "id": "writing-plans",
@@ -43892,7 +46410,19 @@
     "source_type": "official",
     "source_repo": "Xquik-dev/x-twitter-scraper",
     "license": "MIT",
-    "license_source": "https://github.com/Xquik-dev/x-twitter-scraper/blob/master/LICENSE"
+    "license_source": "https://github.com/Xquik-dev/x-twitter-scraper/blob/master/LICENSE",
+    "tags": [
+      "twitter",
+      "x",
+      "social-media",
+      "x-api",
+      "tweet-search",
+      "follower-export",
+      "automation",
+      "mcp",
+      "sdk",
+      "webhooks"
+    ]
   },
   {
     "id": "x402-express-wrapper",
@@ -43914,7 +46444,14 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "x402",
+      "defi",
+      "monetization",
+      "express",
+      "mcp"
+    ]
   },
   {
     "id": "xiaohongshu-content-strategist",
@@ -43938,7 +46475,16 @@
       "reasons": []
     },
     "source_type": "community",
-    "source_repo": "demo112/yunqu-ai-skills"
+    "source_repo": "demo112/yunqu-ai-skills",
+    "tags": [
+      "xiaohongshu",
+      "chinese-market",
+      "content-strategy",
+      "social-media",
+      "marketing",
+      "红书",
+      "小红书"
+    ]
   },
   {
     "id": "xlsx-official",
@@ -44049,7 +46595,14 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "persona",
+      "cnn",
+      "meta",
+      "ai-safety-critic",
+      "open-source"
+    ]
   },
   {
     "id": "yann-lecun-debate",
@@ -44071,7 +46624,13 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "persona",
+      "ai-debate",
+      "llm-criticism",
+      "open-source"
+    ]
   },
   {
     "id": "yann-lecun-filosofia",
@@ -44093,7 +46652,13 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "persona",
+      "ai-philosophy",
+      "open-source",
+      "education"
+    ]
   },
   {
     "id": "yann-lecun-tecnico",
@@ -44115,7 +46680,14 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "persona",
+      "cnn",
+      "jepa",
+      "self-supervised",
+      "pytorch"
+    ]
   },
   {
     "id": "yao-meta-skill",
@@ -44141,7 +46713,13 @@
     "source_type": "community",
     "source_repo": "yaojingang/yao-meta-skill",
     "license": "MIT",
-    "license_source": "https://github.com/yaojingang/yao-meta-skill/blob/main/LICENSE"
+    "license_source": "https://github.com/yaojingang/yao-meta-skill/blob/main/LICENSE",
+    "tags": [
+      "skill-authoring",
+      "agent-skills",
+      "evaluation",
+      "packaging"
+    ]
   },
   {
     "id": "yes-md",
@@ -44233,7 +46811,16 @@
     "source_type": "community",
     "source_repo": "ZeroPointRepo/youtube-skills",
     "license": "MIT",
-    "license_source": "https://github.com/ZeroPointRepo/youtube-skills/blob/main/LICENSE"
+    "license_source": "https://github.com/ZeroPointRepo/youtube-skills/blob/main/LICENSE",
+    "tags": [
+      "youtube",
+      "transcripts",
+      "video-search",
+      "channels",
+      "playlists",
+      "api",
+      "transcriptapi"
+    ]
   },
   {
     "id": "youtube-notetaker",
@@ -44259,7 +46846,12 @@
     "source_type": "official",
     "source_repo": "dair-ai/dair-academy-plugins",
     "license": "MIT",
-    "license_source": "https://github.com/dair-ai/dair-academy-plugins/blob/main/README.md#license"
+    "license_source": "https://github.com/dair-ai/dair-academy-plugins/blob/main/README.md#license",
+    "tags": [
+      "dair-academy",
+      "ai",
+      "workflow"
+    ]
   },
   {
     "id": "youtube-seo-optimizer",
@@ -44304,7 +46896,14 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "tags": [
+      "[video",
+      "summarization",
+      "transcription",
+      "youtube",
+      "content-analysis]"
+    ]
   },
   {
     "id": "youtube-transcript",
@@ -44330,7 +46929,12 @@
     "source_type": "community",
     "source_repo": "davidondrej/skills",
     "license": "MIT",
-    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE"
+    "license_source": "https://github.com/davidondrej/skills/blob/main/LICENSE",
+    "tags": [
+      "youtube",
+      "transcripts",
+      "research"
+    ]
   },
   {
     "id": "zapier-make-patterns",
