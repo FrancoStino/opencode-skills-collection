@@ -2,7 +2,7 @@
 
 ## Directory Layout
 
-```
+```text
 opencode-skills-collection/
 ├── src/                              # TypeScript source — plugin + skill-pointer pipeline
 │   ├── index.ts                      # Plugin entry point (default export)
@@ -80,7 +80,7 @@ opencode-skills-collection/
 - Key files: `test-helpers.ts`, one `*.test.ts` per major module
 
 **`bundled-skills/`:**
-- Purpose: Pre-packaged skill folders synced nightly from `sickn33/antigravity-awesome-skills`
+- Purpose: Pre-packaged skill folders synced nightly from `sickn33/agentic-awesome-skills`
 - Contains: Subdirectories per skill, each with a `SKILL.md` and optional assets
 - Key files: `skills_index.json` (at project root, not inside this dir)
 
