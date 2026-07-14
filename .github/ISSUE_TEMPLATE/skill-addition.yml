@@ -9,13 +9,13 @@ body:
         ## Request a New Skill
 
         > **Note:** Skills here are synced nightly from the upstream repo
-        > [`sickn33/antigravity-awesome-skills`](https://github.com/sickn33/antigravity-awesome-skills).
+        > [`sickn33/agentic-awesome-skills`](https://github.com/sickn33/agentic-awesome-skills).
         > The fastest way to add a skill is to **open a PR upstream** — once merged, it lands here
         > automatically. Use this issue to request a skill or track one you'd like added.
 
         Before submitting, please:
         - Search [existing issues](https://github.com/FrancoStino/opencode-skills-collection/issues) to avoid duplicates
-        - Check if the skill already exists in the [upstream repo](https://github.com/sickn33/antigravity-awesome-skills/tree/main/skills)
+        - Check if the skill already exists in the [upstream repo](https://github.com/sickn33/agentic-awesome-skills/tree/main/skills)
 
   - type: checkboxes
     id: searched

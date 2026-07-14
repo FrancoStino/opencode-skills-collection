@@ -6,13 +6,13 @@ OpenCode plugin (npm: `opencode-skills-collection`) that bundles 1400+ AI skills
 
 ## ⚠️ Generated files — never edit directly
 
-`bundled-skills/` and `skills_index.json` are **destroyed and regenerated nightly** by `.github/workflows/sync-skills.yml` from upstream repo `sickn33/antigravity-awesome-skills`.
+`bundled-skills/` and `skills_index.json` are **destroyed and regenerated nightly** by `.github/workflows/sync-skills.yml` from upstream repo `sickn33/agentic-awesome-skills`.
 
 - The workflow runs `rm -rf bundled-skills` then re-downloads everything
 - `skills_index.json` is overwritten from upstream's `main` branch
 - Any local changes to these paths **will be lost**
 
-**To add or modify skills:** submit a PR to [`sickn33/antigravity-awesome-skills`](https://github.com/sickn33/antigravity-awesome-skills). After merge, the nightly sync brings changes here automatically.
+**To add or modify skills:** submit a PR to [`sickn33/agentic-awesome-skills`](https://github.com/sickn33/agentic-awesome-skills). After merge, the nightly sync brings changes here automatically.
 
 **To add skills from external sources:** clone the source repo, copy files programmatically with a script. Never write SKILL.md content by hand.
 
