@@ -13,9 +13,9 @@
 1. **Install the repository or bundle plugin:**
 
    ```bash
-   npx antigravity-awesome-skills
+   npx agentic-awesome-skills
    # or clone manually
-   git clone https://github.com/sickn33/antigravity-awesome-skills.git .agent/skills
+   git clone https://github.com/sickn33/agentic-awesome-skills.git .agent/skills
    ```
 
 2. **Choose your bundle** from the list below based on your role or interests.
@@ -43,10 +43,10 @@ _For everyone. Install these first._
 **Plugin status:** Codex plugin-safe · Claude plugin-safe
 
 - [`concise-planning`](../../skills/concise-planning/): Always start with a plan.
+- [`test-driven-development`](../../skills/test-driven-development/): Build features and fixes through a red-green-refactor loop.
 - [`lint-and-validate`](../../skills/lint-and-validate/): Keep your code clean automatically.
+- [`systematic-debugging`](../../skills/systematic-debugging/): Debug from evidence instead of guesses.
 - [`git-pushing`](../../skills/git-pushing/): Save your work safely.
-- [`kaizen`](../../skills/kaizen/): Continuous improvement mindset.
-- [`systematic-debugging`](../../skills/systematic-debugging/): Debug like a pro.
 
 
 ---
@@ -59,13 +59,14 @@ _For pentesting, auditing, and hardening._
 
 **Plugin status:** Codex plugin-safe · Claude plugin-safe
 
-- [`ethical-hacking-methodology`](../../skills/ethical-hacking-methodology/): The Bible of ethical hacking.
-- [`burp-suite-testing`](../../skills/burp-suite-testing/): Web vulnerability scanning.
+- [`ethical-hacking-methodology`](../../skills/ethical-hacking-methodology/): Plan authorized security assessments with clear boundaries.
+- [`threat-modeling-expert`](../../skills/threat-modeling-expert/): Model threats with STRIDE, PASTA, and attack trees.
 - [`top-web-vulnerabilities`](../../skills/top-web-vulnerabilities/): OWASP-aligned vulnerability taxonomy.
-- [`linux-privilege-escalation`](../../skills/linux-privilege-escalation/): Advanced Linux security assessment.
+- [`burp-suite-testing`](../../skills/burp-suite-testing/): Web vulnerability scanning.
 - [`cloud-penetration-testing`](../../skills/cloud-penetration-testing/): AWS/Azure/GCP security.
-- [`security-auditor`](../../skills/security-auditor/): Comprehensive security audits.
+- [`linux-privilege-escalation`](../../skills/linux-privilege-escalation/): Advanced Linux security assessment.
 - [`vulnerability-scanner`](../../skills/vulnerability-scanner/): Advanced vulnerability analysis.
+- [`security-auditor`](../../skills/security-auditor/): Comprehensive security audits.
 
 ### 🔐 The "Security Developer" Pack
 
@@ -77,6 +78,7 @@ _For building secure applications._
 - [`auth-implementation-patterns`](../../skills/auth-implementation-patterns/): JWT, OAuth2, session management.
 - [`backend-security-coder`](../../skills/backend-security-coder/): Secure backend coding practices.
 - [`frontend-security-coder`](../../skills/frontend-security-coder/): XSS prevention and client-side security.
+- [`dependency-management-deps-audit`](../../skills/dependency-management-deps-audit/): Audit dependency vulnerabilities, licenses, and supply-chain risk.
 - [`cc-skill-security-review`](../../skills/cc-skill-security-review/): Security checklist for features.
 - [`pci-compliance`](../../skills/pci-compliance/): Payment card security standards.
 
@@ -92,11 +94,12 @@ _For building modern, high-performance web apps._
 **Plugin status:** Codex plugin-safe · Claude plugin-safe
 
 - [`frontend-design`](../../skills/frontend-design/): UI guidelines and aesthetics.
-- [`react-best-practices`](../../skills/react-best-practices/): React & Next.js performance optimization.
+- [`tailwind-patterns`](../../skills/tailwind-patterns/): Tailwind CSS v4 styling patterns.
 - [`react-patterns`](../../skills/react-patterns/): Modern React patterns and principles.
+- [`react-best-practices`](../../skills/react-best-practices/): React & Next.js performance optimization.
 - [`nextjs-best-practices`](../../skills/nextjs-best-practices/): Next.js App Router patterns.
-- [`tailwind-patterns`](../../skills/tailwind-patterns/): Tailwind CSS v4 styling superpowers.
 - [`form-cro`](../../skills/form-cro/): Optimize your forms for conversion.
+- [`accessibility-compliance-accessibility-audit`](../../skills/accessibility-compliance-accessibility-audit/): Audit WCAG issues and plan concrete remediation.
 - [`seo-audit`](../../skills/seo-audit/): Get found on Google.
 
 ### 🖌️ The "Web Designer" Pack
@@ -107,9 +110,10 @@ _For pixel-perfect experiences._
 
 - [`ui-ux-pro-max`](../../skills/ui-ux-pro-max/): Premium design systems and tokens.
 - [`frontend-design`](../../skills/frontend-design/): The base layer of aesthetics.
-- [`3d-web-experience`](../../skills/3d-web-experience/): Three.js & React Three Fiber magic.
-- [`canvas-design`](../../skills/canvas-design/): Static visuals and posters.
 - [`mobile-design`](../../skills/mobile-design/): Mobile-first design principles.
+- [`accessibility-compliance-accessibility-audit`](../../skills/accessibility-compliance-accessibility-audit/): Audit WCAG issues and plan concrete remediation.
+- [`canvas-design`](../../skills/canvas-design/): Static visuals and posters.
+- [`3d-web-experience`](../../skills/3d-web-experience/): Build immersive Three.js and React Three Fiber experiences.
 - [`scroll-experience`](../../skills/scroll-experience/): Immersive scroll-driven experiences.
 
 ### ⚡ The "Full-Stack Developer" Pack
@@ -123,7 +127,9 @@ _For end-to-end web application development._
 - [`backend-dev-guidelines`](../../skills/backend-dev-guidelines/): Node.js/Express/TypeScript patterns.
 - [`api-patterns`](../../skills/api-patterns/): REST vs GraphQL vs tRPC selection.
 - [`database-design`](../../skills/database-design/): Schema design and ORM selection.
+- [`auth-implementation-patterns`](../../skills/auth-implementation-patterns/): Design secure sessions, JWT, OAuth2, and authorization.
 - [`stripe-integration`](../../skills/stripe-integration/): Payments and subscriptions.
+- [`e2e-testing-patterns`](../../skills/e2e-testing-patterns/): Verify critical user journeys with reliable E2E tests.
 
 
 ---
@@ -136,12 +142,13 @@ _For building AI systems and autonomous agents._
 
 **Plugin status:** Codex plugin-safe · Claude plugin-safe
 
-- [`agent-evaluation`](../../skills/agent-evaluation/): Test and benchmark your agents.
-- [`langgraph`](../../skills/langgraph/): Build stateful agent workflows.
-- [`mcp-builder`](../../skills/mcp-builder/): Create your own MCP tools.
-- [`prompt-engineering`](../../skills/prompt-engineering/): Master the art of talking to LLMs.
+- [`prompt-engineering`](../../skills/prompt-engineering/): Design reliable instructions and prompt workflows.
 - [`ai-agents-architect`](../../skills/ai-agents-architect/): Design autonomous AI agents.
+- [`mcp-builder`](../../skills/mcp-builder/): Create your own MCP tools.
+- [`langgraph`](../../skills/langgraph/): Build stateful agent workflows.
 - [`rag-engineer`](../../skills/rag-engineer/): Build RAG systems with vector search.
+- [`agent-memory-systems`](../../skills/agent-memory-systems/): Design durable short- and long-term memory for agents.
+- [`agent-evaluation`](../../skills/agent-evaluation/): Test and benchmark your agents.
 
 ### 🧠 The "LLM Application Developer" Pack
 
@@ -154,6 +161,7 @@ _For building production LLM applications._
 - [`prompt-caching`](../../skills/prompt-caching/): Cache strategies for LLM prompts.
 - [`context-window-management`](../../skills/context-window-management/): Manage LLM context efficiently.
 - [`langfuse`](../../skills/langfuse/): LLM observability and tracing.
+- [`llm-evaluation`](../../skills/llm-evaluation/): Measure LLM quality with automated and human evaluation.
 
 
 ---
@@ -171,6 +179,7 @@ _For building games with AI assistants._
 - [`game-development/3d-games`](../../skills/game-development/3d-games/): Models and shaders.
 - [`unity-developer`](../../skills/unity-developer/): Unity 6 LTS development.
 - [`godot-gdscript-patterns`](../../skills/godot-gdscript-patterns/): Godot 4 GDScript patterns.
+- [`game-development/game-audio`](../../skills/game-development/game-audio/): Design sound effects, music systems, and adaptive game audio.
 - [`algorithmic-art`](../../skills/algorithmic-art/): Generate assets with code.
 
 
@@ -229,6 +238,7 @@ _For building products, not just code._
 
 - [`product-manager-toolkit`](../../skills/product-manager-toolkit/): RICE prioritization, PRD templates.
 - [`competitive-landscape`](../../skills/competitive-landscape/): Competitor analysis.
+- [`pricing-strategy`](../../skills/pricing-strategy/): Design pricing, packaging, and value metrics.
 - [`competitor-alternatives`](../../skills/competitor-alternatives/): Create comparison pages.
 - [`launch-strategy`](../../skills/launch-strategy/): Product launch planning.
 - [`copywriting`](../../skills/copywriting/): Marketing copy that converts.
@@ -252,6 +262,7 @@ _For driving user acquisition and retention._
 
 **Plugin status:** Codex plugin-safe · Claude plugin-safe
 
+- [`content-strategy`](../../skills/content-strategy/): Plan content pillars, topic clusters, and an editorial roadmap.
 - [`content-creator`](../../skills/content-creator/): SEO-optimized marketing content.
 - [`seo-audit`](../../skills/seo-audit/): Technical SEO health checks.
 - [`programmatic-seo`](../../skills/programmatic-seo/): Create pages at scale.
@@ -270,13 +281,14 @@ _For infrastructure and scaling._
 
 **Plugin status:** Codex plugin-safe · Claude plugin-safe
 
+- [`environment-setup-guide`](../../skills/environment-setup-guide/): Standardize development environments for teams.
+- [`bash-linux`](../../skills/bash-linux/): Automate operational work safely from the shell.
 - [`docker-expert`](../../skills/docker-expert/): Master containers and multi-stage builds.
-- [`aws-serverless`](../../skills/aws-serverless/): Serverless on AWS (Lambda, DynamoDB).
-- [`kubernetes-architect`](../../skills/kubernetes-architect/): K8s architecture and GitOps.
 - [`terraform-specialist`](../../skills/terraform-specialist/): Infrastructure as Code mastery.
-- [`environment-setup-guide`](../../skills/environment-setup-guide/): Standardization for teams.
-- [`deployment-procedures`](../../skills/deployment-procedures/): Safe rollout strategies.
-- [`bash-linux`](../../skills/bash-linux/): Terminal wizardry.
+- [`kubernetes-architect`](../../skills/kubernetes-architect/): K8s architecture and GitOps.
+- [`aws-serverless`](../../skills/aws-serverless/): Serverless on AWS (Lambda, DynamoDB).
+- [`ci-cd-and-automation`](../../skills/ci-cd-and-automation/): Build CI/CD pipelines with automated quality gates.
+- [`deployment-procedures`](../../skills/deployment-procedures/): Apply safe rollout and rollback strategies.
 
 ### 📊 The "Observability & Monitoring" Pack
 
@@ -303,11 +315,12 @@ _For making sense of the numbers._
 **Plugin status:** Codex plugin-safe · Claude plugin-safe
 
 - [`analytics-tracking`](../../skills/analytics-tracking/): Set up GA4/PostHog correctly.
-- [`claude-d3js-skill`](../../skills/claude-d3js-skill/): Beautiful custom visualizations with D3.js.
+- [`data-quality-frameworks`](../../skills/data-quality-frameworks/): Validate data with contracts, dbt tests, and quality monitoring.
 - [`sql-pro`](../../skills/sql-pro/): Modern SQL with cloud-native databases.
 - [`postgres-best-practices`](../../skills/postgres-best-practices/): Postgres optimization.
 - [`ab-test-setup`](../../skills/ab-test-setup/): Validated learning.
 - [`database-architect`](../../skills/database-architect/): Database design from scratch.
+- [`data-storytelling`](../../skills/data-storytelling/): Turn analysis into clear narratives and decisions.
 
 ### 🔄 The "Data Engineering" Pack
 
@@ -318,8 +331,8 @@ _For building data pipelines._
 - [`data-engineer`](../../skills/data-engineer/): Data pipeline architecture.
 - [`airflow-dag-patterns`](../../skills/airflow-dag-patterns/): Apache Airflow DAGs.
 - [`dbt-transformation-patterns`](../../skills/dbt-transformation-patterns/): Analytics engineering.
+- [`data-quality-frameworks`](../../skills/data-quality-frameworks/): Validate pipelines with contracts, dbt tests, and quality monitoring.
 - [`vector-database-engineer`](../../skills/vector-database-engineer/): Vector databases for RAG.
-- [`embedding-strategies`](../../skills/embedding-strategies/): Embedding model selection.
 
 
 ---
@@ -351,12 +364,12 @@ _For breaking things before users do._
 **Plugin status:** Codex plugin-safe · Claude plugin-safe
 
 - [`test-driven-development`](../../skills/test-driven-development/): Red, Green, Refactor.
-- [`systematic-debugging`](../../skills/systematic-debugging/): Debug like Sherlock Holmes.
-- [`browser-automation`](../../skills/browser-automation/): End-to-end testing with Playwright.
 - [`e2e-testing-patterns`](../../skills/e2e-testing-patterns/): Reliable E2E test suites.
-- [`ab-test-setup`](../../skills/ab-test-setup/): Validated experiments.
-- [`code-review-checklist`](../../skills/code-review-checklist/): Catch bugs in PRs.
+- [`browser-automation`](../../skills/browser-automation/): End-to-end testing with Playwright.
 - [`test-fixing`](../../skills/test-fixing/): Fix failing tests systematically.
+- [`systematic-debugging`](../../skills/systematic-debugging/): Diagnose failures from evidence instead of guesses.
+- [`code-review-checklist`](../../skills/code-review-checklist/): Catch bugs in PRs.
+- [`ci-cd-and-automation`](../../skills/ci-cd-and-automation/): Run automated test gates consistently in CI/CD.
 
 
 ---
@@ -427,8 +440,8 @@ _Application developers who want security embedded while building features._
 - [`cc-skill-security-review`](../../skills/cc-skill-security-review/): Review features with a security checklist.
 - [`pci-compliance`](../../skills/pci-compliance/): Handle payment security and PCI expectations.
 - [`sast-configuration`](../../skills/sast-configuration/): Configure static application security testing.
-- [`sql-injection-testing`](../../skills/sql-injection-testing/): Find and validate SQL injection risks.
-- [`broken-authentication`](../../skills/broken-authentication/): Find and prevent authentication implementation flaws.
+- [`security-and-hardening`](../../skills/security-and-hardening/): Harden applications against untrusted input, auth, data, and integration risks.
+- [`secrets-management`](../../skills/secrets-management/): Manage application and CI/CD secrets with least privilege and rotation.
 - [`django-access-review`](../../skills/django-access-review/): Review Django access control and authorization behavior.
 
 ### 📄 The "AAS Documents & Presentations" Plugin
@@ -480,23 +493,6 @@ _Developers building agentic apps, MCP tools, RAG systems, and evaluation loops.
 - [`langfuse`](../../skills/langfuse/): Trace, evaluate, and monitor LLM apps.
 - [`context-window-management`](../../skills/context-window-management/): Manage long context effectively.
 - [`prompt-engineering`](../../skills/prompt-engineering/): Design effective prompts and LLM interaction patterns.
-
-### 🧰 The "AAS OSS Maintainer" Plugin
-
-_Open-source maintainers managing PRs, releases, reviews, and contributor handoffs._
-
-**Plugin status:** Codex plugin-safe · Claude plugin-safe
-
-- [`agents-md`](../../skills/agents-md/): Create concise durable agent instructions.
-- [`commit`](../../skills/commit/): Write high-quality conventional commits.
-- [`create-pr`](../../skills/create-pr/): Create review-ready pull requests.
-- [`requesting-code-review`](../../skills/requesting-code-review/): Ask for targeted code reviews.
-- [`receiving-code-review`](../../skills/receiving-code-review/): Apply review feedback rigorously.
-- [`changelog-automation`](../../skills/changelog-automation/): Keep changelogs and release notes consistent.
-- [`git-advanced-workflows`](../../skills/git-advanced-workflows/): Handle advanced Git recovery and history workflows.
-- [`github-actions-advanced`](../../skills/github-actions-advanced/): Build and debug advanced GitHub Actions.
-- [`address-github-comments`](../../skills/address-github-comments/): Address GitHub review comments systematically.
-- [`lint-and-validate`](../../skills/lint-and-validate/): Run validation and quality checks.
 
 ### 🧪 The "AAS QA & Test Automation" Plugin
 
@@ -569,7 +565,7 @@ _Teams designing reliable automations across tools, data stores, and communicati
 - [`slack-automation`](../../skills/slack-automation/): Automate Slack workflows.
 - [`googlesheets-automation`](../../skills/googlesheets-automation/): Automate Google Sheets operations.
 - [`github-automation`](../../skills/github-automation/): Automate GitHub issues and repository work.
-- [`n8n-expression-syntax`](../../skills/n8n-expression-syntax/): Use n8n expressions safely in automations.
+- [`n8n-workflow-patterns`](../../skills/n8n-workflow-patterns/): Choose proven architectures for webhook, sync, scheduled, and AI-agent workflows.
 
 ### 📡 The "AAS Observability IR" Plugin
 
@@ -578,15 +574,15 @@ _Engineering teams monitoring systems, debugging production issues, and writing 
 **Plugin status:** Codex plugin-safe · Claude plugin-safe
 
 - [`observability-engineer`](../../skills/observability-engineer/): Design monitoring and observability systems.
+- [`observability-and-instrumentation`](../../skills/observability-and-instrumentation/): Instrument production code with useful logs, metrics, traces, and alerts.
 - [`distributed-tracing`](../../skills/distributed-tracing/): Trace requests across services.
 - [`slo-implementation`](../../skills/slo-implementation/): Define and operate service level objectives.
-- [`incident-responder`](../../skills/incident-responder/): Respond to incidents with clear procedure.
-- [`postmortem-writing`](../../skills/postmortem-writing/): Write clear blameless postmortems.
-- [`performance-engineer`](../../skills/performance-engineer/): Diagnose and improve application performance.
 - [`grafana-dashboards`](../../skills/grafana-dashboards/): Create useful Grafana dashboards.
-- [`langfuse`](../../skills/langfuse/): Trace, evaluate, and monitor LLM apps.
+- [`performance-engineer`](../../skills/performance-engineer/): Diagnose and improve application performance.
+- [`incident-responder`](../../skills/incident-responder/): Respond to incidents with clear procedure.
 - [`devops-troubleshooter`](../../skills/devops-troubleshooter/): Diagnose infrastructure and deployment issues.
-- [`claude-monitor`](../../skills/claude-monitor/): Monitor Claude usage and operational behavior.
+- [`postmortem-writing`](../../skills/postmortem-writing/): Write clear blameless postmortems.
+- [`langfuse`](../../skills/langfuse/): Trace, evaluate, and monitor LLM apps.
 
 ### 🐍 The "AAS Python API Builder" Plugin
 
@@ -645,6 +641,7 @@ _For connecting services and building integrations._
 
 **Plugin status:** Codex plugin-safe · Claude plugin-safe
 
+- [`api-integration`](../../skills/api-integration/): Design service contracts, webhooks, and integration pipelines.
 - [`stripe-integration`](../../skills/stripe-integration/): Payments and subscriptions.
 - [`twilio-communications`](../../skills/twilio-communications/): SMS, voice, WhatsApp.
 - [`hubspot-integration`](../../skills/hubspot-integration/): CRM integration.
@@ -686,6 +683,7 @@ _For connecting tools and building repeatable automated workflows._
 
 - [`workflow-automation`](../../skills/workflow-automation/): Design durable automation flows for AI and business systems.
 - [`mcp-builder`](../../skills/mcp-builder/): Create tool interfaces agents can use reliably.
+- [`browser-automation`](../../skills/browser-automation/): Automate workflows when a service has no suitable API.
 - [`make-automation`](../../skills/make-automation/): Build automations in Make/Integromat.
 - [`airtable-automation`](../../skills/airtable-automation/): Automate Airtable records, bases, and views.
 - [`notion-automation`](../../skills/notion-automation/): Automate Notion pages, databases, and blocks.
@@ -811,6 +809,7 @@ _For document-heavy workflows, spreadsheets, PDFs, and presentations._
 - [`pptx-official`](../../skills/pptx-official/): Create and edit PowerPoint-compatible presentations.
 - [`xlsx-official`](../../skills/xlsx-official/): Create and analyze spreadsheet files with formulas and formatting.
 - [`pdf-official`](../../skills/pdf-official/): Extract, generate, and manipulate PDFs programmatically.
+- [`google-docs-automation`](../../skills/google-docs-automation/): Automate document creation and updates in Google Docs.
 - [`google-slides-automation`](../../skills/google-slides-automation/): Automate presentation updates in Google Slides.
 - [`google-sheets-automation`](../../skills/google-sheets-automation/): Automate reads and writes in Google Sheets.
 
@@ -832,15 +831,16 @@ _For shipping clean changes in public repositories._
 - [`changelog-automation`](../../skills/changelog-automation/): Keep release notes and changelogs consistent.
 - [`git-advanced-workflows`](../../skills/git-advanced-workflows/): Rebase, cherry-pick, bisect, recovery.
 - [`documentation-templates`](../../skills/documentation-templates/): Standardize docs and handoffs.
+- [`finishing-a-development-branch`](../../skills/finishing-a-development-branch/): Close a branch with verified integration, merge, and cleanup options.
 
 ### 🧱 The "Skill Author" Pack
 
 _For creating and maintaining high-quality SKILL.md assets._
 
-**Plugin status:** Codex pending hardening · Claude pending hardening
+**Plugin status:** Codex plugin-safe · Claude plugin-safe
 
 - [`skill-creator`](../../skills/skill-creator/): Design effective new skills.
-- [`skill-developer`](../../skills/skill-developer/): Implement triggers, hooks, and skill lifecycle.
+- [`effective-agent-skills`](../../skills/effective-agent-skills/): Design portable triggers, progressive disclosure, and safe skill workflows.
 - [`writing-skills`](../../skills/writing-skills/): Improve clarity and structure of skill instructions.
 - [`documentation-generation-doc-generate`](../../skills/documentation-generation-doc-generate/): Generate maintainable technical docs.
 - [`lint-and-validate`](../../skills/lint-and-validate/): Validate quality after edits.
@@ -937,7 +937,7 @@ _Data and AI platform teams building pipelines, warehouses, transforms, embeddin
 - [`embedding-strategies`](../../skills/embedding-strategies/): Choose and operate embedding strategies.
 - [`rag-engineer`](../../skills/rag-engineer/): Build retrieval-augmented generation systems.
 - [`sql-pro`](../../skills/sql-pro/): Query and model data with modern SQL.
-- [`fp-data-transforms`](../../skills/fp-data-transforms/): Build reliable data transformation flows.
+- [`data-quality-frameworks`](../../skills/data-quality-frameworks/): Implement data contracts, validation, dbt tests, and quality monitoring.
 
 ### 🧾 The "AAS Privacy & Compliance Engineering" Plugin
 
@@ -949,7 +949,6 @@ _Teams building privacy-aware and compliance-sensitive SaaS, AI, finance, and cl
 - [`gdpr-data-handling`](../../skills/gdpr-data-handling/): Handle GDPR-sensitive data safely.
 - [`pci-compliance`](../../skills/pci-compliance/): Handle payment security and PCI expectations.
 - [`fsi-compliance-checker`](../../skills/fsi-compliance-checker/): Check financial-services compliance requirements.
-- [`spec-to-code-compliance`](../../skills/spec-to-code-compliance/): Verify implementation against written specs.
 - [`security-audit`](../../skills/security-audit/): Audit security posture and controls.
 - [`cc-skill-security-review`](../../skills/cc-skill-security-review/): Review features with a security checklist.
 
@@ -1049,7 +1048,7 @@ Keep a small list of high-frequency skills and reuse it across tasks to reduce c
 
 ## Contributing
 
-Found a skill that should be in a bundle? Or want to create a new bundle? [Open an issue](https://github.com/sickn33/antigravity-awesome-skills/issues) or submit a PR!
+Found a skill that should be in a bundle? Or want to create a new bundle? [Open an issue](https://github.com/sickn33/agentic-awesome-skills/issues) or submit a PR!
 
 ---
 
@@ -1061,4 +1060,4 @@ Found a skill that should be in a bundle? Or want to create a new bundle? [Open 
 
 ---
 
-_Last updated: June 2026 | Total Skills: 1,935+ | Total Bundles: 59_
+_Last updated: June 2026 | Total Skills: 1,958+ | Total Bundles: 58_

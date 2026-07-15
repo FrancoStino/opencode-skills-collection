@@ -911,7 +911,7 @@ Then run the Quality Checklist below.
 
 **Podcast, existing episode, underperforming:** User says "My episode with [guest] has barely any views, here's the URL." → Fetch URL, confirm target keyword, produce Mode D audit — scorecard, detailed findings, rewritten metadata, action plan.
 
-**Short-form, new clip from a podcast:** User says "Cut a Short from the Antigravity Awesome Skills part of that episode." → Mode E: reuse episode's keyword and tags, 60-70 char title, 150-200 word description, 3-5 hashtags including `#Shorts`, cross-post caption.
+**Short-form, new clip from a podcast:** User says "Cut a Short from the Agentic Awesome Skills part of that episode." → Mode E: reuse episode's keyword and tags, 60-70 char title, 150-200 word description, 3-5 hashtags including `#Shorts`, cross-post caption.
 
 ---
 

@@ -12,9 +12,9 @@ If you came in through a **Claude Code** or **Codex** plugin instead of a full l
 
 ### What You Just Did
 
-When you ran `npx antigravity-awesome-skills` or cloned the repository, you:
+When you ran `npx agentic-awesome-skills` or cloned the repository, you:
 
-✅ **Downloaded 1,935+ skill files** to your computer (default: `~/.agents/skills/`; or a custom path like `~/.agent/skills/` if you used `--path`)
+✅ **Downloaded 1,958+ skill files** to your computer (default: `~/.agents/skills/`; or a custom path like `~/.agent/skills/` if you used `--path`)
 ✅ **Made them available** to your AI assistant
 ❌ **Did NOT enable them all automatically** (they're just sitting there, waiting)
 
@@ -34,7 +34,7 @@ Bundles are **curated groups** of skills organized by role. They help you decide
 
 **Analogy:**
 
-- You installed a toolbox with 1,935+ tools (✅ done)
+- You installed a toolbox with 1,958+ tools (✅ done)
 - Bundles are like **labeled organizer trays** saying: "If you're a carpenter, start with these 10 tools"
 - You can either **pick skills from the tray** or install that tray as a focused marketplace bundle plugin
 
@@ -212,7 +212,7 @@ Let's actually use a skill right now. Follow these steps:
 
 ## Step 5: Picking Your First Skills (Practical Advice)
 
-Don't try to use all 1,935+ skills at once. Here's a sensible approach:
+Don't try to use all 1,958+ skills at once. Here's a sensible approach:
 
 If you want a tool-specific starting point before choosing skills, use:
 
@@ -339,11 +339,11 @@ Usually no, but if your AI doesn't recognize a skill:
 
 1. Try restarting your IDE/CLI
 2. Check the installation path matches your tool
-3. Try the explicit path: `npx antigravity-awesome-skills --claude` (or `--cursor`, `--gemini`, etc.)
+3. Try the explicit path: `npx agentic-awesome-skills --claude` (or `--cursor`, `--gemini`, etc.)
 
 ### "Can I load all skills into the model at once?"
 
-No. Even though you have 1,935+ skills installed locally, you should **not** concatenate every `SKILL.md` into a single system prompt or context block.
+No. Even though you have 1,958+ skills installed locally, you should **not** concatenate every `SKILL.md` into a single system prompt or context block.
 
 The intended pattern is:
 
@@ -372,7 +372,7 @@ Use @skill-creator to help me build a custom skill for [your task]
 
 1. Check the skill's `SKILL.md` file directly in your installed path, for example: `~/.agents/skills/[skill-name]/SKILL.md`
 2. Read the description to ensure you're using it correctly
-3. [Open an issue](https://github.com/sickn33/antigravity-awesome-skills/issues) with details
+3. [Open an issue](https://github.com/sickn33/agentic-awesome-skills/issues) with details
 
 ---
 
@@ -434,7 +434,7 @@ If something still doesn't make sense:
 
 1. Check the [FAQ](faq.md)
 2. See [Real-World Examples](../contributors/examples.md)
-3. [Open a Discussion](https://github.com/sickn33/antigravity-awesome-skills/discussions)
-4. [File an Issue](https://github.com/sickn33/antigravity-awesome-skills/issues) to help us improve this guide!
+3. [Open a Discussion](https://github.com/sickn33/agentic-awesome-skills/discussions)
+4. [File an Issue](https://github.com/sickn33/agentic-awesome-skills/issues) to help us improve this guide!
 
 Remember: You're not alone! The whole point of this project is to make AI assistants easier to use. If this guide didn't help, let us know so we can fix it. 🙌

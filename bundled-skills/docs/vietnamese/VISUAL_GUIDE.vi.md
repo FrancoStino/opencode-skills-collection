@@ -28,12 +28,12 @@
 ## 📦 Cấu trúc Repository (Trực quan)
 
 ```
-antigravity-awesome-skills/
+agentic-awesome-skills/
 │
 ├── 📄 README.md                    ← Tổng quan & danh sách skill
 ├── 📄 CONTRIBUTING.md              ← Cách thức đóng góp
 │
-├── 📁 skills/                      ← Nguồn canonical cho 1,684+ skills
+├── 📁 skills/                      ← Nguồn canonical cho 1,936+ skills
 │   │
 │   ├── 📁 brainstorming/
 │   │   └── 📄 SKILL.md             ← Định nghĩa skill
@@ -42,7 +42,7 @@ antigravity-awesome-skills/
 │   │   ├── 📄 SKILL.md
 │   │   └── 📁 examples/            ← Các phần bổ sung tùy chọn
 │   │
-│   └── ... (1,684+ skills khác)
+│   └── ... (1,936+ skills khác)
 │
 ├── 📁 tools/
 │   ├── 📁 scripts/                 ← Quản lý, xác thực và tạo catalog
@@ -67,7 +67,7 @@ antigravity-awesome-skills/
 
 ```
 ┌──────────────┐
-│ 1. CÀI ĐẶT   │  npx antigravity-awesome-skills
+│ 1. CÀI ĐẶT   │  npx agentic-awesome-skills
 1 └──────┬───────┘
        │
        ↓
@@ -97,7 +97,7 @@ antigravity-awesome-skills/
 
 ```
                     ┌─────────────────────────┐
-                    │  1,684+ AWESOME SKILLS  │
+                    │  1,936+ AWESOME SKILLS  │
                     └────────────┬────────────┘
                                  │
         ┌────────────────────────┼────────────────────────┐
@@ -181,7 +181,7 @@ antigravity-awesome-skills/
 ┌─────────────────────────────────────────┐
 │ Terminal                                │
 ├─────────────────────────────────────────┤
-│ $ npx antigravity-awesome-skills        │
+│ $ npx agentic-awesome-skills        │
 │                                         │
 │ ✓ Cài vào '~/.agents/skills'...         │
 │ ✓ Hoàn tất!                             │
@@ -199,7 +199,7 @@ antigravity-awesome-skills/
 │       ├── 📁 brainstorming/             │
 │       ├── 📁 stripe-integration/        │
 │       ├── 📁 react-best-practices/      │
-│       └── ... (1,684+ skills)           │
+│       └── ... (1,936+ skills)           │
 └─────────────────────────────────────────┘
 ```
 
@@ -436,7 +436,7 @@ BẮT ĐẦU TẠI ĐÂY
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
 │  📥 CÀI ĐẶT                                                 │
-│  npx antigravity-awesome-skills                             │
+│  npx agentic-awesome-skills                             │
 │                                                             │
 │  🎯 SỬ DỤNG                                                 │
 │  @ten-skill [yêu cầu của bạn]                               │

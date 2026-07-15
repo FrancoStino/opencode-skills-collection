@@ -55,7 +55,7 @@ formats across every session.
 
 **Python 3.8 or later** must be available in your shell path.
 
-The skill is self-contained. Install it from the antigravity skills library:
+The skill is self-contained. Install it from the Agentic Awesome Skills library:
 
 ```bash
 # Install via antigravity CLI (recommended)

@@ -1,17 +1,17 @@
-# Antigravity Awesome Skills vs Awesome Claude Skills
+# Agentic Awesome Skills vs Awesome Claude Skills
 
-If you are comparing **Antigravity Awesome Skills** with **Awesome Claude Skills**, the decision usually comes down to breadth vs curation.
+If you are comparing **Agentic Awesome Skills** with **Awesome Claude Skills**, the decision usually comes down to breadth vs curation.
 
 For clarity: the repository many people still refer to as `awesome-claude-skills` now lives at [VoltAgent/awesome-agent-skills](https://github.com/VoltAgent/awesome-agent-skills).
 
 ## TL;DR
 
-- Choose **Antigravity Awesome Skills** if you want a large installable library, broad tool coverage, and strong onboarding.
+- Choose **Agentic Awesome Skills** if you want a large installable library, broad tool coverage, and strong onboarding.
 - Choose **VoltAgent Awesome Agent Skills** if you want a curated list with a strong official-team angle and a tighter scope.
 
 ## At-a-glance comparison
 
-| Criteria | Antigravity Awesome Skills | VoltAgent Awesome Agent Skills |
+| Criteria | Agentic Awesome Skills | VoltAgent Awesome Agent Skills |
 | --- | --- | --- |
 | Best for | Breadth, installation, multi-tool daily use | Curated discovery and official/community highlights |
 | Catalog shape | Large installable library with bundles, workflows, docs, and generated catalog | Curated awesome-list style collection |
@@ -19,7 +19,7 @@ For clarity: the repository many people still refer to as `awesome-claude-skills
 | Onboarding | Installation docs, bundles, workflows, getting-started guides | Curated README and categorized references |
 | Good fit when | You want one repo to install and work from | You want a smaller list to browse and evaluate |
 
-## Why choose Antigravity Awesome Skills
+## Why choose Agentic Awesome Skills
 
 - You want a single GitHub repository that acts as both a skill source and an installable working library.
 - You care about onboarding assets like [`bundles.md`](bundles.md), [`workflows.md`](workflows.md), and tool-specific guides.

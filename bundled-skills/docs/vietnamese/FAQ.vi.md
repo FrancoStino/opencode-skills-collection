@@ -1,6 +1,6 @@
 # ❓ Câu hỏi thường gặp (FAQ)
 
-**Bạn có thắc mắc?** Bạn không hề cô đơn! Dưới đây là câu trả lời cho những câu hỏi thường gặp nhất về Antigravity Awesome Skills.
+**Bạn có thắc mắc?** Bạn không hề cô đơn! Dưới đây là câu trả lời cho những câu hỏi thường gặp nhất về Agentic Awesome Skills.
 
 ---
 
@@ -11,7 +11,7 @@
 Skills là các tệp hướng dẫn chuyên biệt dạy cho các trợ lý AI cách xử lý những tác vụ cụ thể. Hãy coi chúng như những mô-đun kiến thức chuyên gia mà AI của bạn có thể tải khi cần.  
 **Một so sánh đơn giản:** Giống như việc bạn tham khảo ý kiến của các chuyên gia khác nhau (luật sư, bác sĩ, thợ máy), những kỹ năng này giúp AI của bạn trở thành chuyên gia trong các lĩnh vực khác nhau khi bạn cần.
 
-### Tôi có cần phải cài đặt tất cả hơn 1,684 skills không?
+### Tôi có cần phải cài đặt tất cả hơn 1,936 skills không?
 
 **Không!** Khi bạn cài đặt repository này, tất cả các kỹ năng đều có sẵn, nhưng AI của bạn chỉ tải chúng khi bạn yêu cầu rõ ràng bằng lệnh `@ten-skill`.
 Nó giống như việc sở hữu một thư viện - tất cả sách đều ở đó, nhưng bạn chỉ đọc những cuốn bạn cần thôi.  
@@ -25,7 +25,14 @@ Nó giống như việc sở hữu một thư viện - tất cả sách đều �
 - ✅ **Cursor** (IDE tích hợp AI)
 - ✅ **Antigravity IDE**
 - ✅ **OpenCode**
-- ⚠️ **GitHub Copilot** (Hỗ trợ một phần qua việc copy-paste)
+- 🧪 **GitHub Copilot** (hỗ trợ preview qua GitHub CLI `gh skill`)
+
+Với Copilot, `gh skill` hiện vẫn ở trạng thái preview. Repository lớn này có cả bản canonical và bản mirror trong plugin, vì vậy hãy dùng đường dẫn chính xác; chỉ dùng `--all` khi bạn thực sự muốn cài mọi bản được phát hiện:
+
+```bash
+gh skill preview sickn33/agentic-awesome-skills skills/brainstorming/SKILL.md
+gh skill install sickn33/agentic-awesome-skills skills/brainstorming/SKILL.md --agent github-copilot --scope user --pin v14.2.0
+```
 
 ### Những kỹ năng này có được sử dụng miễn phí không?
 
@@ -67,7 +74,7 @@ _Luôn kiểm tra nhãn rủi ro và xem xét mã nguồn trước khi dùng._
 Đường dẫn mặc định của installer là `~/.agents/skills/` cho Antigravity global:
 
 ```bash
-npx antigravity-awesome-skills
+npx agentic-awesome-skills
 ```
 
 **Các đường dẫn cụ thể cho từng công cụ:**
@@ -87,7 +94,7 @@ npx antigravity-awesome-skills
 **Có.** Hãy dùng lệnh cài đặt chuẩn:
 
 ```bash
-npx antigravity-awesome-skills
+npx agentic-awesome-skills
 ```
 
 Không còn cần workaround cũ `core.symlinks=true` hoặc bật Developer Mode chỉ để cài repository này.
@@ -97,7 +104,7 @@ Không còn cần workaround cũ `core.symlinks=true` hoặc bật Developer Mod
 Chạy lại installer để lấy phiên bản mới nhất, hoặc nếu bạn cài bằng git clone thì pull trong thư mục đã clone:
 
 ```bash
-npx antigravity-awesome-skills
+npx agentic-awesome-skills
 
 # hoặc, nếu bạn tự clone repository:
 cd ~/.agents/skills
@@ -144,7 +151,7 @@ Sử dụng biểu tượng `@` theo sau là tên skill:
 
 ### Một kỹ năng đưa ra lời khuyên sai hoặc lỗi thời
 
-Hãy [Mở một issue](https://github.com/sickn33/antigravity-awesome-skills/issues)!  
+Hãy [Mở một issue](https://github.com/sickn33/agentic-awesome-skills/issues)!  
 Vui lòng gửi kèm:
 
 - Skill nào?
@@ -185,4 +192,4 @@ Hãy chạy `npm run validate` cục bộ để kiểm tra trước khi đẩy c
 - Thử `@test-driven-development` để code có chất lượng tốt hơn.
 - Khám phá `@skill-creator` để tự tạo kỹ năng của riêng bạn.
 
-**Vẫn còn thắc mắc?** [Mở một cuộc thảo luận (Discussion)](https://github.com/sickn33/antigravity-awesome-skills/discussions) và chúng tôi sẽ giúp bạn! 🙌
+**Vẫn còn thắc mắc?** [Mở một cuộc thảo luận (Discussion)](https://github.com/sickn33/agentic-awesome-skills/discussions) và chúng tôi sẽ giúp bạn! 🙌
