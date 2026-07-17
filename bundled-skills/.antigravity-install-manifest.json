@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-07-16T01:22:28.705Z",
+  "updatedAt": "2026-07-17T01:25:38.278Z",
   "entries": [
     "00-andruia-consultant",
     "007",
@@ -20,6 +20,7 @@
     "accint-solve",
     "active-directory-attacks",
     "activecampaign-automation",
+    "ad-campaign-analyzer",
     "ad-creative",
     "add-app-clip",
     "address-github-comments",
@@ -467,6 +468,7 @@
     "commit",
     "community-building",
     "competitive-landscape",
+    "competitor-ad-intelligence",
     "competitor-alternatives",
     "competitor-analysis",
     "competitor-profiling",
@@ -667,6 +669,7 @@
     "devops-deploy",
     "devops-troubleshooter",
     "devrel-content",
+    "diagnose-android-overheating",
     "diagnosing-bugs",
     "diary",
     "differential-review",
