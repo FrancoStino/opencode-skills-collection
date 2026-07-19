@@ -825,7 +825,9 @@ _For shipping clean changes in public repositories._
 **Plugin status:** Codex plugin-safe · Claude plugin-safe
 
 - [`commit`](../../skills/commit/): High-quality conventional commits.
+- [`create-branch`](../../skills/create-branch/): Create a safe topic branch before committing.
 - [`create-pr`](../../skills/create-pr/): PR creation with review-ready context.
+- [`pr-writer`](../../skills/pr-writer/): Write and open structured pull requests.
 - [`requesting-code-review`](../../skills/requesting-code-review/): Ask for targeted, high-signal reviews.
 - [`receiving-code-review`](../../skills/receiving-code-review/): Apply feedback with technical rigor.
 - [`changelog-automation`](../../skills/changelog-automation/): Keep release notes and changelogs consistent.
@@ -1060,4 +1062,4 @@ Found a skill that should be in a bundle? Or want to create a new bundle? [Open 
 
 ---
 
-_Last updated: June 2026 | Total Skills: 1,965+ | Total Bundles: 58_
+_Last updated: June 2026 | Total Skills: 1,968+ | Total Bundles: 58_

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-07-18T01:17:51.174Z",
+  "updatedAt": "2026-07-19T01:23:41.256Z",
   "entries": [
     "00-andruia-consultant",
     "007",
@@ -103,6 +103,7 @@
     "anti-sycophancy",
     "antigravity-agent-manager",
     "antigravity-design-expert",
+    "antigravity-maintainer-batch-release",
     "antigravity-skill-orchestrator",
     "antigravity-workflows",
     "anywrite",
@@ -849,6 +850,7 @@
     "game-development",
     "game-development/2d-games",
     "game-development/3d-games",
+    "game-development/engine-selection",
     "game-development/game-art",
     "game-development/game-audio",
     "game-development/game-design",
@@ -1194,6 +1196,7 @@
     "mobile-developer",
     "mobile-security-coder",
     "mock-hunter",
+    "modellix",
     "modern-javascript-patterns",
     "molykit",
     "monday-automation",
