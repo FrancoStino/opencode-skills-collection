@@ -6,7 +6,7 @@ This document keeps the repository's GitHub-facing discovery copy aligned with t
 
 Preferred positioning:
 
-> AAS Core is the local, deterministic boundary that exposes the complete catalog, validates exact skill IDs selected by the coding agent from an explicit project profile, and produces an immutable preview plan, backed by 1,968+ cataloged skills.
+> AAS Core is the local, deterministic boundary that exposes the complete catalog, validates exact skill IDs selected by the coding agent from an explicit project profile, and produces an immutable preview plan, backed by the current catalog.
 
 Key framing:
 
@@ -20,7 +20,7 @@ Key framing:
 
 Preferred description:
 
-> Local, deterministic AAS Core for explainable coding-agent skill stacks, backed by 1,967+ cataloged skills. Includes a read-only MCP, stack CLI, Workbench review, plugins, bundles, workflows, and direct distribution.
+> Local, deterministic AAS Core for explainable coding-agent skill stacks, backed by the current catalog. Includes a read-only MCP, stack CLI, Workbench review, plugins, bundles, workflows, and direct distribution.
 
 Preferred homepage:
 
@@ -29,7 +29,7 @@ Preferred homepage:
 Preferred social preview:
 
 - lead with `AAS Core` and the profile → stack → plan flow;
-- present `1,969+ Agentic Skills` as supporting catalog evidence, not a second product;
+- present `1,987+ Agentic Skills` as supporting catalog evidence, not a second product;
 - mention Codex and Claude as the current Core agent path, with broader host compatibility as distribution support;
 - avoid dense text and tiny logos that disappear in social cards.
 
