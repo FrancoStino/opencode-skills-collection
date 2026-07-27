@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-07-26T01:29:15.078Z",
+  "updatedAt": "2026-07-27T01:47:09.733Z",
   "entries": [
     "00-andruia-consultant",
     "007",
@@ -782,6 +782,7 @@
     "fda-food-safety-auditor",
     "fda-medtech-compliance-auditor",
     "feature-tracking",
+    "fedora-hyprland-installer",
     "ffuf-claude-skill",
     "ffuf-web-fuzzing",
     "figma-automation",
@@ -790,6 +791,7 @@
     "file-uploads",
     "filesystem-context",
     "find-bugs",
+    "find-complementary-founders",
     "finishing-a-development-branch",
     "firebase",
     "firecrawl-scraper",
@@ -1337,6 +1339,7 @@
     "optim-agent",
     "options-flow-analyzer",
     "oral-health-analyzer",
+    "orchestrate",
     "orchestrate-batch-refactor",
     "os-scripting",
     "oss-hunter",
