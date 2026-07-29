@@ -8289,6 +8289,41 @@
     }
   },
   {
+    "id": "brendangregg-use-tsa",
+    "path": "skills/brendangregg-use-tsa",
+    "category": "devops",
+    "name": "brendangregg-use-tsa",
+    "description": "Methodical performance troubleshooting and root-cause analysis with Brendan Gregg's USE and TSA methods, plus evidence-backed RCA and postmortem reports.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-07-28",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "thecsdoctor/brendangregg-use-tsa-skill",
+    "license": "MIT",
+    "license_source": "https://github.com/thecsdoctor/brendangregg-use-tsa-skill/blob/main/LICENSE",
+    "tags": [
+      "performance",
+      "troubleshooting",
+      "root-cause-analysis",
+      "linux",
+      "observability",
+      "sre",
+      "postmortem"
+    ]
+  },
+  {
     "id": "brevo-automation",
     "path": "skills/brevo-automation",
     "category": "marketing",
@@ -8520,6 +8555,39 @@
     "source_repo": "hyhmrright/brooks-lint",
     "license": "MIT",
     "license_source": "https://github.com/hyhmrright/brooks-lint/blob/main/LICENSE"
+  },
+  {
+    "id": "browser-act",
+    "path": "skills/browser-act",
+    "category": "browser-automation",
+    "name": "browser-act",
+    "description": "Use BrowserAct for authenticated browser automation, JS-rendered extraction, screenshots, parallel sessions, verification handling, and human handoff.",
+    "risk": "critical",
+    "source": "https://github.com/browser-act/skills/tree/main/browser-act",
+    "date_added": "2026-07-28",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "browser-act/skills",
+    "license": "MIT",
+    "license_source": "https://github.com/browser-act/skills/blob/main/LICENSE",
+    "tags": [
+      "browser-automation",
+      "web-extraction",
+      "ai-agents",
+      "cli",
+      "multi-session"
+    ]
   },
   {
     "id": "browser-automation",
@@ -29011,9 +29079,9 @@
       "reasons": []
     },
     "source_type": "official",
-    "source_repo": "Modellix/modellix-skill",
+    "source_repo": "Modellix/modellix-plugin",
     "license": "MIT",
-    "license_source": "https://github.com/Modellix/modellix-skill/blob/main/LICENSE",
+    "license_source": "https://github.com/Modellix/modellix-plugin/blob/main/LICENSE",
     "tags": [
       "image-generation",
       "video-generation",

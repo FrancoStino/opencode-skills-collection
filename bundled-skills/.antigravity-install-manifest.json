@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-07-28T01:21:13.118Z",
+  "updatedAt": "2026-07-29T01:22:48.520Z",
   "entries": [
     "00-andruia-consultant",
     "007",
@@ -350,6 +350,7 @@
     "brand-guidelines-community",
     "brand-perception-psychologist",
     "brave-man",
+    "brendangregg-use-tsa",
     "brevo-automation",
     "broken-authentication",
     "brooks-audit",
@@ -359,6 +360,7 @@
     "brooks-review",
     "brooks-sweep",
     "brooks-test",
+    "browser-act",
     "browser-automation",
     "browser-extension-builder",
     "browser-harness",
