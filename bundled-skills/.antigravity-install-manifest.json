@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-07-29T01:22:48.520Z",
+  "updatedAt": "2026-07-30T01:15:43.018Z",
   "entries": [
     "00-andruia-consultant",
     "007",
@@ -466,6 +466,7 @@
     "codex-profiles",
     "codex-review",
     "codex-subagent",
+    "cohesivity",
     "cold-email",
     "comfyui-gateway",
     "commit",
