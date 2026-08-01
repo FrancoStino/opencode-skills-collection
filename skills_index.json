@@ -12473,6 +12473,34 @@
     }
   },
   {
+    "id": "cowork-to-code-bridge",
+    "path": "skills/cowork-to-code-bridge",
+    "category": "uncategorized",
+    "name": "cowork-to-code-bridge",
+    "description": "Use an already-installed, independently verified cowork-to-code bridge to run narrowly approved actions on the user's own macOS, Linux, or WSL2 machine through a local file queue.",
+    "risk": "critical",
+    "source": "https://github.com/abhinaykrupa/cowork-to-code-bridge/tree/97f515d425df587c281effb02cda9ad0fd470790",
+    "date_added": "2026-07-30",
+    "plugin": {
+      "targets": {
+        "codex": "blocked",
+        "claude": "blocked"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": [
+        "absolute_host_path"
+      ]
+    },
+    "source_type": "community",
+    "source_repo": "abhinaykrupa/cowork-to-code-bridge",
+    "license": "MIT",
+    "license_source": "https://github.com/abhinaykrupa/cowork-to-code-bridge/blob/97f515d425df587c281effb02cda9ad0fd470790/LICENSE"
+  },
+  {
     "id": "cpp",
     "path": "skills/super-code/cpp",
     "category": "super-code",
@@ -17729,6 +17757,38 @@
     ]
   },
   {
+    "id": "fact-check-x-complete",
+    "path": "skills/fact-check-x-complete",
+    "category": "research",
+    "name": "fact-check-x-complete",
+    "description": "Compare claims from one or more AI answers, verify their citations against public primary sources, and produce an evidence-linked fact-check report without installing a bundled browser runtime.",
+    "risk": "critical",
+    "source": "https://github.com/ASI2030/Fact-Check-X/tree/4dd7eef0452a4c31e4b3b3b0d643c9daeea7fdbe",
+    "date_added": "2026-07-31",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "ASI2030/Fact-Check-X",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/ASI2030/Fact-Check-X/blob/4dd7eef0452a4c31e4b3b3b0d643c9daeea7fdbe/LICENSE",
+    "tags": [
+      "fact-checking",
+      "research",
+      "evidence",
+      "source-verification"
+    ]
+  },
+  {
     "id": "faf-context",
     "path": "skills/faf-context",
     "category": "uncategorized",
@@ -18374,7 +18434,7 @@
     "path": "skills/find-complementary-founders",
     "category": "business-strategy",
     "name": "find-complementary-founders",
-    "description": "Use when an owner asks to find a cofounder or project partner. Assess only that agent's own owner and rank only approved profiles other agents posted for their own owners.",
+    "description": "Use when an owner explicitly asks for a cofounder or project partner, or explicitly says they need a complementary builder, operator, go-to-market partner, or scaling capability. Assess and publish only the agent's own owner, then rank only approved own-owner profiles.",
     "risk": "critical",
     "source": "community",
     "date_added": "2026-07-26",
@@ -27179,6 +27239,39 @@
       },
       "reasons": []
     }
+  },
+  {
+    "id": "maintain-codex-wiki",
+    "path": "skills/maintain-codex-wiki",
+    "category": "knowledge-management",
+    "name": "maintain-codex-wiki",
+    "description": "Maintain a review-first engineering wiki with provenance, citation-aware queries, explicit capture and promotion, and deterministic checks.",
+    "risk": "critical",
+    "source": "https://github.com/Phelan164/codex-howto/tree/47f36fd8aacfe6f222935e5c2e1d972ef06dcb99/skills/maintain-codex-wiki",
+    "date_added": "2026-07-31",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "Phelan164/codex-howto",
+    "license": "MIT",
+    "license_source": "https://github.com/Phelan164/codex-howto/blob/47f36fd8aacfe6f222935e5c2e1d972ef06dcb99/LICENSE",
+    "tags": [
+      "codex",
+      "wiki",
+      "knowledge-management",
+      "provenance",
+      "engineering"
+    ]
   },
   {
     "id": "make-automation",

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-07-31T01:29:46.374Z",
+  "updatedAt": "2026-08-01T01:42:51.046Z",
   "entries": [
     "00-andruia-consultant",
     "007",
@@ -520,6 +520,7 @@
     "copywriting-psychologist",
     "core-components",
     "cost-optimization",
+    "cowork-to-code-bridge",
     "cpp-pro",
     "cqrs-implementation",
     "create-branch",
@@ -767,6 +768,7 @@
     "expo-ui-jetpack-compose",
     "expo-ui-swift-ui",
     "fable-safe-prompt",
+    "fact-check-x-complete",
     "faf-context",
     "faf-expert",
     "faf-go",
@@ -1146,6 +1148,7 @@
     "mailtrap-sending-emails",
     "mailtrap-setting-up-sending-domain",
     "mailtrap-testing-with-sandbox",
+    "maintain-codex-wiki",
     "make-automation",
     "makepad-animation",
     "makepad-basics",
