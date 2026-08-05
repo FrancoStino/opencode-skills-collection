@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-08-04T01:18:45.477Z",
+  "updatedAt": "2026-08-05T01:22:48.516Z",
   "entries": [
     "00-andruia-consultant",
     "007",
@@ -877,6 +877,7 @@
     "gemini-live-api-dev",
     "gemini-omni-flash-api",
     "geminiignore-finops",
+    "generate-nanobanana",
     "geo-fundamentals",
     "geoffrey-hinton",
     "gh-attach",
@@ -1645,6 +1646,7 @@
     "shopify-apps",
     "shopify-automation",
     "shopify-development",
+    "shopify-review-triage",
     "short",
     "signup-flow-cro",
     "similarity-search-patterns",
