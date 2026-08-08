@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-08-07T02:00:25.550Z",
+  "updatedAt": "2026-08-08T00:44:00.180Z",
   "entries": [
     "00-andruia-consultant",
     "007",
@@ -1355,6 +1355,7 @@
     "osterwalder-canvas-architect",
     "outlook-automation",
     "outlook-calendar-automation",
+    "outreachagent",
     "page-cro",
     "pagerduty-automation",
     "pagespeed-enhancer",
@@ -1914,6 +1915,7 @@
     "vibers-code-review",
     "viboscope",
     "video-content-extractor",
+    "video-router",
     "videodb",
     "videodb-skills",
     "viral-generator-builder",
