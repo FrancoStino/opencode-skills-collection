@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-08-09T00:46:22.025Z",
+  "updatedAt": "2026-08-10T00:49:14.706Z",
   "entries": [
     "00-andruia-consultant",
     "007",
@@ -1371,6 +1371,7 @@
     "pdf-official",
     "pentest-checklist",
     "pentest-commands",
+    "people-data",
     "performance-engineer",
     "performance-optimization",
     "performance-optimizer",
@@ -1832,6 +1833,7 @@
     "train-sentence-transformers",
     "transformers-js",
     "travel-health-analyzer",
+    "travel-planner",
     "tree-ring-memory",
     "trello-automation",
     "triage",
