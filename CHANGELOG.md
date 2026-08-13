@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v4.0.30] - 2026-08-13
+### :wrench: Chores
+- [`247bca9`](https://github.com/FrancoStino/opencode-skills-collection/commit/247bca92c0f8f2f62e3902a44c687dca1ebc1467) - sync skills and bump version to v4.0.30 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
 ## [v4.0.29] - 2026-08-12
 ### :wrench: Chores
 - [`f41d6db`](https://github.com/FrancoStino/opencode-skills-collection/commit/f41d6db23c16d86d7cb7b00de6e22d490ddea054) - sync skills and bump version to v4.0.29 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
@@ -3784,3 +3789,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v4.0.27]: https://github.com/FrancoStino/opencode-skills-collection/compare/v4.0.26...v4.0.27
 [v4.0.28]: https://github.com/FrancoStino/opencode-skills-collection/compare/v4.0.27...v4.0.28
 [v4.0.29]: https://github.com/FrancoStino/opencode-skills-collection/compare/v4.0.28...v4.0.29
+[v4.0.30]: https://github.com/FrancoStino/opencode-skills-collection/compare/v4.0.29...v4.0.30
