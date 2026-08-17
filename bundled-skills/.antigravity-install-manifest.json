@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-08-16T00:33:58.296Z",
+  "updatedAt": "2026-08-17T00:32:53.675Z",
   "entries": [
     "00-andruia-consultant",
     "007",
@@ -39,6 +39,9 @@
     "agent-orchestration-improve-agent",
     "agent-orchestration-multi-agent-optimize",
     "agent-orchestrator",
+    "agent-qa-authoring",
+    "agent-qa-debug-fix",
+    "agent-qa-result-triage",
     "agent-self-scheduling",
     "agent-squad",
     "agent-squad/alex",
@@ -479,6 +482,7 @@
     "competitor-analysis",
     "competitor-profiling",
     "competitor-tracking",
+    "compile-knowledge",
     "complexity-cuts",
     "composition-patterns",
     "comprehensive-review-full-review",
