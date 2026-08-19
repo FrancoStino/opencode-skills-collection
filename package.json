@@ -20,7 +20,7 @@
   "scripts": {
     "build": "tsc",
     "test": "bun test",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "bun run build"
   },
   "keywords": [
     "opencode",
