@@ -14,10 +14,8 @@ jobs:
         with:
           token: ${{ secrets.WORKFLOW_TOKEN }}
           fetch-depth: 0
-      - name: Setup Node.js
-        uses: actions/setup-node@v7
-        with:
-          node-version: '24'
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
       - name: Configure git
         run: |
           git config user.name "github-actions[bot]"
@@ -25,20 +23,20 @@ jobs:
       - name: Sync skills
         run: |
           rm -rf bundled-skills
-          npx --yes agentic-awesome-skills --path "$GITHUB_WORKSPACE/bundled-skills"
+          bunx agentic-awesome-skills --path "$GITHUB_WORKSPACE/bundled-skills"
       - name: Download skills_index.json from upstream
         run: |
           curl -fsSL \
             "https://raw.githubusercontent.com/sickn33/agentic-awesome-skills/main/skills_index.json" \
             -o skills_index.json
-          node -e "JSON.parse(require('fs').readFileSync('skills_index.json','utf8'))"
+          bun -e "JSON.parse(require('fs').readFileSync('skills_index.json','utf8'))"
           echo "✅ skills_index.json valid ($(wc -c < skills_index.json) bytes)"
       - name: Install dependencies and build
         run: |
-          npm ci
-          npm run build
+          bun install --frozen-lockfile
+          bun run build
       - name: Scan and remove dangerous skills
-        run: node scripts/ci-scan-skills.mjs
+        run: bun scripts/ci-scan-skills.mjs
       - name: Check for changes
         id: check_changes
         run: |
@@ -55,10 +53,10 @@ jobs:
           PREVIOUS_STABLE=$(git tag --list 'v*' | grep -v 'beta' | sort -V | tail -1)
           echo "previous_stable=$PREVIOUS_STABLE" >> $GITHUB_OUTPUT
 
-          NEW_VERSION=$(npm version patch --no-git-tag-version)
+          NEW_VERSION=$(bun pm version patch --no-git-tag-version)
           echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
 
-          git add bundled-skills skills_index.json package.json package-lock.json
+          git add bundled-skills skills_index.json package.json
           git commit -m "chore: sync skills and bump version to $NEW_VERSION"
           git tag $NEW_VERSION
 

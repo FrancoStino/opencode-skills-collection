@@ -24,10 +24,8 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v7
-        with:
-          node-version: '24'
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
 
       - name: Merge main to develop
         run: |
@@ -35,11 +33,12 @@ jobs:
           git merge origin/main --no-edit || {
             echo "⚠️ Merge conflict detected, resolving..."
           
-            # Check if package-lock.json has conflicts
-            if git diff --name-only --diff-filter=U | grep -q "package-lock.json"; then
-              echo "📦 Resolving package-lock.json conflicts with npm..."
-              npm install --package-lock-only
-              git add package-lock.json
+            # Check if bun.lock has conflicts
+            if git diff --name-only --diff-filter=U | grep -q "bun.lock"; then
+              echo "📦 Resolving bun.lock conflicts with bun..."
+              rm bun.lock
+              bun install
+              git add bun.lock
             fi
 
             # Fail loudly if any conflicts remain unresolved
@@ -75,14 +74,14 @@ jobs:
           if [[ "$IS_NEWER" == "true" && ! "$MERGED_VERSION" == *"-beta"* ]]; then
             echo "📦 New stable version detected, creating beta..."
 
-            npm version "$MERGED_VERSION" --no-git-tag-version
-            npm version prerelease --preid=beta --no-git-tag-version
+            bun pm version "$MERGED_VERSION" --no-git-tag-version
+            bun pm version prerelease --preid=beta --no-git-tag-version
 
             NEW_VERSION=$(node -p "require('./package.json').version")
             echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
             echo "✅ Created new beta version: $NEW_VERSION"
 
-            git add package.json package-lock.json
+            git add package.json
             git commit -m "chore: auto-version to $NEW_VERSION after merge"
             git tag "$NEW_VERSION"
           else

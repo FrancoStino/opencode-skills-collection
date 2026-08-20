@@ -33,13 +33,16 @@ jobs:
           node-version: '24'
           registry-url: 'https://registry.npmjs.org'
 
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+
       - name: Configure git
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Install dependencies
-        run: npm ci
+        run: bun install --frozen-lockfile
 
       - name: Bump beta version
         id: version
@@ -60,18 +63,18 @@ jobs:
           fi
           
           # Update package.json manually
-          npm version $NEW_VERSION --no-git-tag-version
+          bun pm version $NEW_VERSION --no-git-tag-version
           
           echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
 
       - name: Build
-        run: npm run build
+        run: bun run build
 
       - name: Commit version bump
         env:
           NEW_VERSION: ${{ steps.version.outputs.new_version }}
         run: |
-          git add package.json package-lock.json
+          git add package.json
           git commit -m "chore: bump version to ${NEW_VERSION}"
           git tag "${NEW_VERSION}"
           git push origin develop --tags

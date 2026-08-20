@@ -22,16 +22,14 @@ jobs:
         with:
           token: ${{ secrets.WORKFLOW_TOKEN }}
           fetch-depth: 0
-      - name: Setup Node.js
-        uses: actions/setup-node@v7
-        with:
-          node-version: '24'
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
       - name: Configure git
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
       - name: Install dependencies
-        run: npm ci
+        run: bun install --frozen-lockfile
       - name: Bump version
         id: bump
         env:
@@ -46,7 +44,7 @@ jobs:
           # Rimuovi -beta se presente
           if [[ "$CURRENT_VERSION" == *"-beta"* ]]; then
             STABLE_VERSION=$(echo $CURRENT_VERSION | sed 's/-beta\.[0-9]*$//')
-            npm version $STABLE_VERSION --no-git-tag-version
+            bun pm version $STABLE_VERSION --no-git-tag-version
             echo "✅ Removed beta suffix: $CURRENT_VERSION -> $STABLE_VERSION"
           fi
 
@@ -54,15 +52,15 @@ jobs:
           if [ "$VERSION_TYPE" = "current" ]; then
             NEW_VERSION="v$(node -p "require('./package.json').version")"
           else
-            NEW_VERSION=$(npm version "$VERSION_TYPE" --no-git-tag-version)
+            NEW_VERSION=$(bun pm version "$VERSION_TYPE" --no-git-tag-version)
           fi
           echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
       - name: Commit and push
         run: |
-          if git diff --quiet package.json package-lock.json; then
+          if git diff --quiet package.json; then
             echo "No changes to commit."
           else
-            git add package.json package-lock.json
+            git add package.json
             git commit -m "chore: bump version to ${{ steps.bump.outputs.new_version }}"
           fi
 
