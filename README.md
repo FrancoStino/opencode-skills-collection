@@ -208,14 +208,17 @@ skipped silently. Re-running the pipeline with the same patches is idempotent.
 
 ## Development
 
-**Requirements:** Node.js ≥ 20, TypeScript ≥ 5
+**Requirements:** Bun ≥ 1.3
 
 ```bash
 # Install dependencies
-npm install
+bun install
 
 # Build
-npm run build
+bun run build
+
+# Test
+bun test
 
 # Output is in dist/
 ```

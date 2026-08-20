@@ -19,9 +19,9 @@ OpenCode plugin (npm: `opencode-skills-collection`) that bundles 1400+ AI skills
 ## Commands
 
 ```bash
-npm install          # install deps
-npm run build        # tsc → dist/
-npm test             # bun test (src/__tests__/)
+bun install          # install deps
+bun run build        # tsc → dist/
+bun test             # bun test (src/__tests__/)
 ```
 
 Tests use Bun's test runner, not Jest/Vitest. Tests are in `src/__tests__/` and excluded from `tsconfig.json` compilation.
