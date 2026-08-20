@@ -36,7 +36,7 @@ jobs:
       - name: Download and validate skills index
         run: |
           curl -fsSL https://raw.githubusercontent.com/sickn33/agentic-awesome-skills/main/skills_index.json -o skills_index.json
-          bun -e 'JSON.parse(await Bun.file("skills_index.json").text()); console.log(`✅ skills_index.json valid (${(await Bun.file("skills_index.json").size} bytes)`)'
+          bun -e 'const f=Bun.file("skills_index.json"); JSON.parse(await f.text()); console.log(`✅ skills_index.json valid (${f.size} bytes)`)'
 
       - name: Install dependencies and build
         run: |
