@@ -1,99 +1,53 @@
-name: Auto-Sync Skills
+name: Sync skills
+
 on:
+  workflow_dispatch:
   schedule:
     - cron: '0 0 * * *'
-  workflow_dispatch:
+
+permissions:
+  contents: write
+
 jobs:
   sync-skills:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
         with:
           token: ${{ secrets.WORKFLOW_TOKEN }}
           fetch-depth: 0
-      - name: Setup Node.js
-        uses: actions/setup-node@v7
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
         with:
-          node-version: '24'
-      - name: Configure git
+          bun-version: latest
+
+      - name: Configure Git
         run: |
           git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-      - name: Sync skills
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Sync bundled skills
         run: |
           rm -rf bundled-skills
-          npx --yes agentic-awesome-skills --path "$GITHUB_WORKSPACE/bundled-skills"
-      - name: Download skills_index.json from upstream
+          bunx --yes agentic-awesome-skills --path "$GITHUB_WORKSPACE/bundled-skills"
+
+      - name: Download and validate skills index
         run: |
-          curl -fsSL \
-            "https://raw.githubusercontent.com/sickn33/agentic-awesome-skills/main/skills_index.json" \
-            -o skills_index.json
-          node -e "JSON.parse(require('fs').readFileSync('skills_index.json','utf8'))"
-          echo "✅ skills_index.json valid ($(wc -c < skills_index.json) bytes)"
+          curl -fsSL https://raw.githubusercontent.com/sickn33/agentic-awesome-skills/main/skills/index.json -o skills_index.json
+          bun -e 'JSON.parse(await Bun.file("skills_index.json").text()); console.log(`✅ skills_index.json valid (${(await Bun.file("skills_index.json").size} bytes)`)'
+
       - name: Install dependencies and build
         run: |
-          npm ci
-          npm run build
+          bun install --frozen-lockfile
+          bun run build
+
       - name: Scan and remove dangerous skills
-        run: node scripts/ci-scan-skills.mjs
-      - name: Check for changes
-        id: check_changes
-        run: |
-          if [ -n "$(git status --porcelain bundled-skills skills_index.json)" ]; then
-            echo "changes=true" >> $GITHUB_OUTPUT
-          else
-            echo "changes=false" >> $GITHUB_OUTPUT
-          fi
-      - name: Bump version and push
-        id: bump
-        if: steps.check_changes.outputs.changes == 'true' && github.ref == 'refs/heads/main'
-        run: |
-          # Trova il tag stabile precedente (escludi beta) per il changelog
-          PREVIOUS_STABLE=$(git tag --list 'v*' | grep -v 'beta' | sort -V | tail -1)
-          echo "previous_stable=$PREVIOUS_STABLE" >> $GITHUB_OUTPUT
+        run: bun scripts/ci-scan-skills.mjs
 
-          NEW_VERSION=$(npm version patch --no-git-tag-version)
-          echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
-
-          git add bundled-skills skills_index.json package.json package-lock.json
-          git commit -m "chore: sync skills and bump version to $NEW_VERSION"
-          git tag $NEW_VERSION
-
-          MAX_RETRIES=5
-          RETRY=0
-          until git push origin main --tags; do
-            RETRY=$((RETRY + 1))
-            if [ "$RETRY" -ge "$MAX_RETRIES" ]; then
-              echo "❌ Push failed after $MAX_RETRIES attempts"
-              exit 1
-            fi
-            echo "⚠️ Push rejected, rebasing ($RETRY/$MAX_RETRIES)..."
-            git pull origin main --rebase
-          done
-      - name: Generate changelog
-        id: changelog
-        if: steps.check_changes.outputs.changes == 'true' && github.ref == 'refs/heads/main'
-        uses: requarks/changelog-action@v1
-        with:
-          token: ${{ secrets.WORKFLOW_TOKEN }}
-          fromTag: ${{ steps.bump.outputs.new_version }}
-          toTag: ${{ steps.bump.outputs.previous_stable }}
-      - name: Commit CHANGELOG.md
-        if: steps.check_changes.outputs.changes == 'true' && github.ref == 'refs/heads/main'
+      - name: Commit generated changes
         uses: stefanzweifel/git-auto-commit-action@v7
         with:
-          branch: main
-          commit_message: 'docs: update CHANGELOG.md for ${{ steps.bump.outputs.new_version }} [skip ci]'
-          file_pattern: CHANGELOG.md
-      - name: Create GitHub Release
-        if: steps.check_changes.outputs.changes == 'true' && github.ref == 'refs/heads/main'
-        uses: softprops/action-gh-release@v3
-        with:
-          token: ${{ secrets.WORKFLOW_TOKEN }}
-          tag_name: ${{ steps.bump.outputs.new_version }}
-          name: ${{ steps.bump.outputs.new_version }}
-          body: ${{ steps.changelog.outputs.changes }}
-          make_latest: true
+          commit_message: 'chore: sync bundled skills'
+          file_pattern: 'bundled-skills skills_index.json'

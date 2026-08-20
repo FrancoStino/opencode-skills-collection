@@ -1,25 +1,23 @@
-name: Beta Release
+name: Beta release
 
 on:
   workflow_dispatch:
     inputs:
-      version:
-        description: 'Beta version bump type'
+      prerelease:
+        description: 'Prerelease identifier'
         required: false
-        type: choice
-        default: 'prerelease'
-        options:
-          - prerelease
+        default: beta
+  push:
+    branches:
+      - develop
+
+permissions:
+  contents: write
+  packages: write
 
 jobs:
   beta-release:
     runs-on: ubuntu-latest
-    # Only run this workflow on the develop branch to prevent accidental beta releases from other branches
-    if: github.ref == 'refs/heads/develop'
-    permissions:
-      contents: write
-      id-token: write
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
@@ -27,92 +25,35 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v7
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
         with:
-          node-version: '24'
-          registry-url: 'https://registry.npmjs.org'
-
-      - name: Configure git
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          bun-version: latest
 
       - name: Install dependencies
-        run: npm ci
+        run: bun install --frozen-lockfile
 
-      - name: Bump beta version
+      - name: Build package
+        run: bun run build
+
+      - name: Set beta version
         id: version
-        run: |
-          # Get current version
-          CURRENT_VERSION=$(node -p "require('./package.json').version")
-          
-          # Check if this is already a beta version
-          if [[ "$CURRENT_VERSION" == *"-beta."* ]]; then
-            # Extract base version and beta number
-            BASE_VERSION=$(echo "$CURRENT_VERSION" | sed 's/-beta\.[0-9]*$//')
-            BETA_NUM=$(echo "$CURRENT_VERSION" | sed 's/.*-beta\.//' | sed 's/[^0-9]//g')
-            NEW_BETA_NUM=$((BETA_NUM + 1))
-            NEW_VERSION="${BASE_VERSION}-beta.${NEW_BETA_NUM}"
-          else
-            # Create first beta from current version (no increment)
-            NEW_VERSION="${CURRENT_VERSION}-beta.1"
-          fi
-          
-          # Update package.json manually
-          npm version $NEW_VERSION --no-git-tag-version
-          
-          echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
-
-      - name: Build
-        run: npm run build
-
-      - name: Commit version bump
         env:
-          NEW_VERSION: ${{ steps.version.outputs.new_version }}
+          PRERELEASE: ${{ inputs.prerelease || 'beta' }}
         run: |
-          git add package.json package-lock.json
-          git commit -m "chore: bump version to ${NEW_VERSION}"
-          git tag "${NEW_VERSION}"
-          git push origin develop --tags
+          bun pm version prerelease --preid "$PRERELEASE" --no-git-tag-version
+          echo "version=$(bun -e 'console.log((await Bun.file("package.json").json()).version)')" >> "$GITHUB_OUTPUT"
 
-      - name: Generate changelog
-        id: changelog
-        uses: requarks/changelog-action@v1
-        with:
-          token: ${{ github.token }}
-          tag: ${{ steps.version.outputs.new_version }}
-          changelogFilePath: BETA_CHANGELOG.md
+      - name: Publish beta package
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: bun publish --tag beta
 
-      - name: Commit BETA_CHANGELOG.md
-        uses: stefanzweifel/git-auto-commit-action@v7
-        with:
-          branch: develop
-          commit_message: 'docs: update BETA_CHANGELOG.md for ${{ steps.version.outputs.new_version }} [skip ci]'
-          file_pattern: BETA_CHANGELOG.md
-
-      # setup-node@v6 (v6.4.0) still exports a dummy NODE_AUTH_TOKEN that
-      # overrides OIDC. Strip the _authToken from .npmrc so npm falls through
-      # to OIDC trusted publisher auth. Remove this step once setup-node v6.5+
-      # ships the fix (PR #1558).
-      - name: Strip dummy auth token for OIDC
+      - name: Create beta tag
         run: |
-          NPMRC="${NPM_CONFIG_USERCONFIG:-$HOME/.npmrc}"
-          if [ -f "$NPMRC" ]; then
-            sed -i '/_authToken/d' "$NPMRC"
-            echo "Stripped _authToken from $NPMRC"
-          fi
-
-      - name: Publish to npm (beta tag)
-        run: npm publish --tag beta --provenance --access public
-
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v3
-        with:
-          tag_name: ${{ steps.version.outputs.new_version }}
-          name: ${{ steps.version.outputs.new_version }}
-          prerelease: true
-          body: |
-            This is a beta release for testing purposes. Please report any issues you encounter.
-            
-            ${{ steps.changelog.outputs.changes }}
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package.json bun.lock
+          git commit -m "chore: release v${{ steps.version.outputs.version }}" || true
+          git tag "v${{ steps.version.outputs.version }}"
+          git push origin HEAD:develop --follow-tags
