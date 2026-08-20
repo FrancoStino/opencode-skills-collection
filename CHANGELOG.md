@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v4.0.37] - 2026-08-20
+### :sparkles: New Features
+- [`e7e877d`](https://github.com/FrancoStino/opencode-skills-collection/commit/e7e877d6376c06eca2b43657fcd93a71bb569b65) - add GitHub Actions workflow for auto-assigning issues *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+
+### :bug: Bug Fixes
+- [`3f370e8`](https://github.com/FrancoStino/opencode-skills-collection/commit/3f370e84c93043fe8c184dff5a00f0832367b399) - change issue assignee from andrewlock to FrancoStino *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+- [`faf126d`](https://github.com/FrancoStino/opencode-skills-collection/commit/faf126de98d14b389adf513365e473d134850d03) - **ci**: correct skills index URL *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+- [`86895c7`](https://github.com/FrancoStino/opencode-skills-collection/commit/86895c7028fbe06e2a2aad50c446d112514a9663) - **ci**: use canonical upstream skills index *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+- [`04cce20`](https://github.com/FrancoStino/opencode-skills-collection/commit/04cce20aef33c758ba09458d34d0672f5e6d45a3) - **ci**: fix Bun inline validation script *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+
+### :wrench: Chores
+- [`d78a5d2`](https://github.com/FrancoStino/opencode-skills-collection/commit/d78a5d2ee93c34667d8c4e691626ecb8f675ccfe) - update prepublish script to use bun *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+- [`225e810`](https://github.com/FrancoStino/opencode-skills-collection/commit/225e810570834fb6a8e0ad2a2c937503761cfd81) - sync bundled skills *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+- [`4630c78`](https://github.com/FrancoStino/opencode-skills-collection/commit/4630c7865f20f29d7809227e8def05bd5114488f) - migrate workflows to use Bun for dependency management *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+- [`22b8a64`](https://github.com/FrancoStino/opencode-skills-collection/commit/22b8a64d63d526fadd7f91f7517067b0a577daaa) - sync skills and bump version to v4.0.37 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
 ## [v4.0.36] - 2026-08-19
 ### :wrench: Chores
 - [`41bdcbb`](https://github.com/FrancoStino/opencode-skills-collection/commit/41bdcbb6f6bc782c68274cd49628707b9352908b) - sync skills and bump version to v4.0.36 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
@@ -3826,3 +3843,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v4.0.34]: https://github.com/FrancoStino/opencode-skills-collection/compare/v4.0.33...v4.0.34
 [v4.0.35]: https://github.com/FrancoStino/opencode-skills-collection/compare/v4.0.34...v4.0.35
 [v4.0.36]: https://github.com/FrancoStino/opencode-skills-collection/compare/v4.0.35...v4.0.36
+[v4.0.37]: https://github.com/FrancoStino/opencode-skills-collection/compare/v4.0.36...v4.0.37
