@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v4.0.38] - 2026-08-21
+### :wrench: Chores
+- [`c2f6bd5`](https://github.com/FrancoStino/opencode-skills-collection/commit/c2f6bd579c88a23ee9f53a076d5b5052d100e9ff) - update README and AGENTS documentation for Bun usage *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+- [`aea0e0b`](https://github.com/FrancoStino/opencode-skills-collection/commit/aea0e0b00a8eb12bf263534cf803fa92ede68845) - sync skills and bump version to v4.0.38 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
 ## [v4.0.37] - 2026-08-20
 ### :sparkles: New Features
 - [`e7e877d`](https://github.com/FrancoStino/opencode-skills-collection/commit/e7e877d6376c06eca2b43657fcd93a71bb569b65) - add GitHub Actions workflow for auto-assigning issues *(commit by [@FrancoStino](https://github.com/FrancoStino))*
@@ -3844,3 +3850,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v4.0.35]: https://github.com/FrancoStino/opencode-skills-collection/compare/v4.0.34...v4.0.35
 [v4.0.36]: https://github.com/FrancoStino/opencode-skills-collection/compare/v4.0.35...v4.0.36
 [v4.0.37]: https://github.com/FrancoStino/opencode-skills-collection/compare/v4.0.36...v4.0.37
+[v4.0.38]: https://github.com/FrancoStino/opencode-skills-collection/compare/v4.0.37...v4.0.38
