@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-08-24T00:33:51.210Z",
+  "updatedAt": "2026-08-25T00:33:41.568Z",
   "entries": [
     "00-andruia-consultant",
     "007",
@@ -793,6 +793,7 @@
     "fal-upscale",
     "fal-workflow",
     "family-health-analyzer",
+    "famulor-skill",
     "fastapi-pro",
     "fastapi-router-py",
     "fastapi-templates",
@@ -1459,6 +1460,7 @@
     "progressive-web-app",
     "project-development",
     "project-skill-audit",
+    "project-state-governor",
     "projection-patterns",
     "prometheus-configuration",
     "prompt-caching",
@@ -1881,7 +1883,6 @@
     "ui-ux-designer",
     "ui-ux-pro-max",
     "ui-visual-validator",
-    "uizze-ui-research",
     "uncle-bob-craft",
     "unified-ai-gateway",
     "uniprot-database",
