@@ -17,9 +17,17 @@ jobs:
   auto-assign:
     runs-on: ubuntu-latest
     steps:
-      - name: 'Auto-assign issue'
-        uses: pozil/auto-assign-issue@v1
+      - name: Assign issue
+        uses: actions/github-script@v7
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          assignees: FrancoStino
-          issue-number: ${{ github.event.inputs.issue_number || github.event.issue.number }}
+          script: |
+            const issue_number = context.eventName === 'workflow_dispatch'
+              ? Number(context.payload.inputs.issue_number)
+              : context.payload.issue.number;
+
+            await github.rest.issues.addAssignees({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number,
+              assignees: ['FrancoStino']
+            });
