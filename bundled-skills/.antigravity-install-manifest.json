@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-08-25T00:33:41.568Z",
+  "updatedAt": "2026-08-26T00:34:21.858Z",
   "entries": [
     "00-andruia-consultant",
     "007",
@@ -1412,6 +1412,7 @@
     "playwright-skill",
     "plotly",
     "podcast-generation",
+    "poka-yoke",
     "polars",
     "polis-protocol",
     "polis-protocol-a-self-optimizing-city-of-agents",
@@ -1709,6 +1710,7 @@
     "source-driven-development",
     "spark-optimization",
     "spec-driven-development",
+    "spec-driven-loop",
     "spec-to-code-compliance",
     "speckit-updater",
     "speed",
