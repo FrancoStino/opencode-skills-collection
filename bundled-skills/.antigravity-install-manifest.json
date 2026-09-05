@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-04T01:43:39.255Z",
+  "updatedAt": "2026-09-05T01:44:38.530Z",
   "entries": [
     "00-andruia-consultant",
     "007",
@@ -778,6 +778,7 @@
     "employment-contract-templates",
     "energy-procurement",
     "enhance-prompt",
+    "entropy-box",
     "environment-setup-guide",
     "error-debugging-error-analysis",
     "error-debugging-error-trace",
@@ -1126,6 +1127,7 @@
     "langchain-architecture",
     "langfuse",
     "langgraph",
+    "laravel-development-workflow",
     "laravel-expert",
     "laravel-security-audit",
     "last30days",
@@ -1414,6 +1416,7 @@
     "optim-agent",
     "options-flow-analyzer",
     "oral-health-analyzer",
+    "orca-replay",
     "orchestrate",
     "orchestrate-batch-refactor",
     "os-scripting",
