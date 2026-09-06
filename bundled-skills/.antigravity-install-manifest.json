@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-05T01:44:38.530Z",
+  "updatedAt": "2026-09-06T01:38:35.007Z",
   "entries": [
     "00-andruia-consultant",
     "007",
@@ -729,7 +729,6 @@
     "doc-coauthoring",
     "doc2math",
     "docker-expert",
-    "docs",
     "docs-architect",
     "docs-as-marketing",
     "docs-generator",
@@ -1433,6 +1432,7 @@
     "pakistan-payments-stack",
     "papers-skill",
     "parallel-agents",
+    "parallel-search-mcp",
     "patch-diff-exploit",
     "payment-integration",
     "paypal-integration",
@@ -1753,6 +1753,7 @@
     "skill-rails-upgrade",
     "skill-router",
     "skill-scanner",
+    "skill-security-audit",
     "skill-seekers",
     "skill-sentinel",
     "skill-suggester",
