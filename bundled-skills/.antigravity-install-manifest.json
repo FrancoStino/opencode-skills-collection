@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-08T01:47:16.781Z",
+  "updatedAt": "2026-09-09T01:53:48.864Z",
   "entries": [
     "00-andruia-consultant",
     "007",
@@ -368,6 +368,7 @@
     "brand-guidelines-community",
     "brand-perception-psychologist",
     "brave-man",
+    "break-ai-fix-loops",
     "brendangregg-use-tsa",
     "brevo-automation",
     "broken-authentication",
@@ -1750,6 +1751,7 @@
     "skill-installer",
     "skill-issue",
     "skill-optimizer",
+    "skill-porter",
     "skill-rails-upgrade",
     "skill-router",
     "skill-scanner",
