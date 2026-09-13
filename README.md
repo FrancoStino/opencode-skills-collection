@@ -15,6 +15,8 @@
 
 # OpenCode Skills Collection
 
+[![HOL Guard](https://img.shields.io/endpoint?url=https%3A%2F%2Fhol.org%2Fapi%2Fregistry%2Fbadges%2Fplugin%3Fslug%3Dfrancostino%252Fopencode-skills-collection%26metric%3Dtrust)](https://hol.org/go/guard/rawsar?dest=%2Fguard%2Fbilling%3Fpromo%3DGUARD20-RAWSAR%23upgrade&link_id=02c248f9-50d5-4c60-abf0-ca80d2604a6b&utm_source=insights_share&utm_medium=affiliate_cta&utm_campaign=share20)
+
 > An [OpenCode](https://opencode.ai/) plugin that bundles and auto-syncs a universal collection of AI skills —
 > delivered instantly, with zero network latency at startup.
 
