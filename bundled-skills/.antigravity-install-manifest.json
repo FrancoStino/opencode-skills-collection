@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-12T01:53:52.661Z",
+  "updatedAt": "2026-09-13T01:46:17.010Z",
   "entries": [
     "00-andruia-consultant",
     "007",
@@ -64,6 +64,7 @@
     "agents-md",
     "agents-v2-py",
     "agenttrace-session-audit",
+    "agy-auto",
     "agy-delegate",
     "ai-agent-development",
     "ai-agents-architect",
@@ -451,6 +452,7 @@
     "clean-code-guard",
     "clerk-auth",
     "clickup-automation",
+    "client-secret-exposure-audit",
     "cline-delegate",
     "close-automation",
     "closed-loop-delivery",
@@ -1255,6 +1257,7 @@
     "mcp-builder",
     "mcp-builder-ms",
     "mcp-tool-developer",
+    "md2video-audio",
     "mdpr-skill",
     "memory-forensics",
     "memory-safety-patterns",
