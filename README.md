@@ -24,6 +24,8 @@
 ## Sponsor
 [![Sponsored by GitAds](https://gitads.dev/v1/ad-serve?source=francostino/opencode-skills-collection@github)](https://gitads.dev/v1/ad-track?source=francostino/opencode-skills-collection@github)
 
+---
+
 ## Overview
 
 **OpenCode Skills Collection** ships a pre-bundled snapshot of 1595+ universal skills for the OpenCode.
