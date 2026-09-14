@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-13T01:46:17.010Z",
+  "updatedAt": "2026-09-14T02:04:32.368Z",
   "entries": [
     "00-andruia-consultant",
     "007",
@@ -954,6 +954,7 @@
     "gitlab-automation",
     "gitlab-ci-patterns",
     "gitops-workflow",
+    "glasser",
     "global-chat-agent-discovery",
     "gmail-automation",
     "go-concurrency-patterns",
@@ -1239,6 +1240,7 @@
     "marketing-ideas",
     "marketing-plan",
     "marketing-psychology",
+    "marketplace-rbac-audit",
     "markstream-angular",
     "markstream-custom-components",
     "markstream-install",
@@ -1517,6 +1519,7 @@
     "product-marketing-context",
     "production-audit",
     "production-code-audit",
+    "production-runtime-certification",
     "production-scheduling",
     "professional-proofreader",
     "programmatic-seo",
