@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-15T02:11:34.766Z",
+  "updatedAt": "2026-09-16T02:03:41.825Z",
   "entries": [
     "00-andruia-consultant",
     "007",
@@ -614,6 +614,7 @@
     "ddd-context-mapping",
     "ddd-strategic-design",
     "ddd-tactical-patterns",
+    "de-ai-writer",
     "debate-review",
     "debug-buttercup",
     "debugger",
