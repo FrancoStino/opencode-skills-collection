@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-16T02:03:41.825Z",
+  "updatedAt": "2026-09-17T02:07:42.936Z",
   "entries": [
     "00-andruia-consultant",
     "007",
@@ -1698,6 +1698,7 @@
     "seo-aeo-keyword-research",
     "seo-aeo-landing-page-writer",
     "seo-aeo-meta-description-generator",
+    "seo-aeo-orchestrator",
     "seo-aeo-schema-generator",
     "seo-audit",
     "seo-authority-builder",
@@ -2115,6 +2116,7 @@
     "youtube-seo-optimizer",
     "youtube-summarizer",
     "youtube-transcript",
+    "youtube-transcript-skills",
     "zapier-make-patterns",
     "zcode-delegate",
     "zendesk-automation",
