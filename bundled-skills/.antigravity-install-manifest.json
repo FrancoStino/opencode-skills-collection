@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-18T01:54:43.223Z",
+  "updatedAt": "2026-09-19T01:59:35.529Z",
   "entries": [
     "00-andruia-consultant",
     "007",
@@ -345,6 +345,7 @@
     "bdi-mental-states",
     "bdistill-behavioral-xray",
     "bdistill-knowledge-extraction",
+    "beatra-ai-video-studio",
     "beautiful-prose",
     "before-you-build",
     "behavioral-modes",
@@ -1270,6 +1271,7 @@
     "mermaid-expert",
     "mesh-memory",
     "metasploit-framework",
+    "meteora-dlmm-pool-screening",
     "micro-saas-launcher",
     "microservices-patterns",
     "microsoft-azure-webjobs-extensions-authentication-events-dotnet",
