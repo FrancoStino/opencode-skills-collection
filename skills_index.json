@@ -22487,6 +22487,39 @@
     }
   },
   {
+    "id": "film-crew",
+    "path": "skills/film-crew",
+    "category": "media",
+    "name": "film-crew",
+    "description": "Turn a one-line AI video idea into a shot list and per-shot, model-ready prompts via a film crew (director, DP, gaffer, editor, script supervisor). Also fixes failing video prompts and diagnoses bad clips before a reroll. Works with Wan, LTX, Kling, Veo, Seedance, Hailuo, Runway.",
+    "risk": "safe",
+    "source": "https://github.com/HEOJUNFO/ai-film-crew/tree/533f61be2741c10932c6c86e47777cac9ffe3fe4/skills/film-crew",
+    "date_added": "2026-09-25",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "HEOJUNFO/ai-film-crew",
+    "license": "MIT",
+    "license_source": "https://github.com/HEOJUNFO/ai-film-crew/blob/533f61be2741c10932c6c86e47777cac9ffe3fe4/LICENSE",
+    "tags": [
+      "video",
+      "text-to-video",
+      "shot-list",
+      "prompting",
+      "film"
+    ]
+  },
+  {
     "id": "find-bugs",
     "path": "skills/find-bugs",
     "category": "code-quality",
@@ -36413,6 +36446,39 @@
     }
   },
   {
+    "id": "mcp-dependency-drift-audit",
+    "path": "skills/mcp-dependency-drift-audit",
+    "category": "security",
+    "name": "mcp-dependency-drift-audit",
+    "description": "Statically audit MCP configs for mutable npm/npx package references before approval or CI, without executing discovered MCP servers.",
+    "risk": "safe",
+    "source": "https://github.com/tomelias10/mcp-drift-check",
+    "date_added": "2026-09-25",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "tomelias10/mcp-drift-check",
+    "license": "MIT",
+    "license_source": "https://github.com/tomelias10/mcp-drift-check/blob/v0/LICENSE",
+    "tags": [
+      "mcp",
+      "ai-security",
+      "supply-chain",
+      "devsecops",
+      "sarif"
+    ]
+  },
+  {
     "id": "mcp-server-security",
     "path": "skills/mcp-server-security",
     "category": "security",
@@ -39100,6 +39166,137 @@
       "sentiment-analysis",
       "briefing",
       "research"
+    ]
+  },
+  {
+    "id": "nexrad-mosaic-access",
+    "path": "skills/nexrad-mosaic-access",
+    "category": "data",
+    "name": "nexrad-mosaic-access",
+    "description": "Access official NOAA/NCEP MRMS radar and multisensor composites for a region and time; validate product, grid, domain, quality, timestamp, and provenance.",
+    "risk": "safe",
+    "source": "self",
+    "date_added": "2026-09-25",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "self",
+    "tags": [
+      "weather",
+      "nexrad",
+      "mrms",
+      "mosaic",
+      "qpe",
+      "vil",
+      "vii",
+      "mesh",
+      "composite-products"
+    ]
+  },
+  {
+    "id": "nexrad-mosaic-construction",
+    "path": "skills/nexrad-mosaic-construction",
+    "category": "analysis",
+    "name": "nexrad-mosaic-construction",
+    "description": "Construct a quality-aware NEXRAD multi-radar mosaic from aligned single-site products with explicit coverage, beam geometry, quality weighting, overlap resolution, and provenance.",
+    "risk": "safe",
+    "source": "self",
+    "date_added": "2026-09-25",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "self",
+    "tags": [
+      "weather",
+      "nexrad",
+      "mosaic",
+      "multi-radar",
+      "quality-weighting",
+      "coverage",
+      "overlap-resolution"
+    ]
+  },
+  {
+    "id": "nexrad-product-access",
+    "path": "skills/nexrad-product-access",
+    "category": "data",
+    "name": "nexrad-product-access",
+    "description": "Discover and access NEXRAD data for a selected radar site, time, product, or Level II moment using completed archive volumes, real-time chunks, or supported Level III sources with metadata validation.",
+    "risk": "safe",
+    "source": "self",
+    "date_added": "2026-09-25",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "self",
+    "tags": [
+      "weather",
+      "nexrad",
+      "level-ii",
+      "level-iii",
+      "radar-products",
+      "single-site",
+      "aws-s3"
+    ]
+  },
+  {
+    "id": "nexrad-radar-visualization",
+    "path": "skills/nexrad-radar-visualization",
+    "category": "analysis",
+    "name": "nexrad-radar-visualization",
+    "description": "Plot NEXRAD Level II/III site scans and decoded radar mosaics with correct radar geometry, map grids, units, quality masks, timestamps, and provenance.",
+    "risk": "safe",
+    "source": "self",
+    "date_added": "2026-09-25",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "self",
+    "tags": [
+      "weather",
+      "nexrad",
+      "radar-plotting",
+      "ppi",
+      "velocity",
+      "dual-pol",
+      "cross-section",
+      "visualization"
     ]
   },
   {
@@ -45044,6 +45241,40 @@
       "addiction-recovery",
       "wellbeing",
       "coaching"
+    ]
+  },
+  {
+    "id": "radar-satellite-analysis",
+    "path": "skills/radar-satellite-analysis",
+    "category": "analysis",
+    "name": "radar-satellite-analysis",
+    "description": "Interpret weather radar and satellite observations by validating product metadata and geometry, deriving storm and cloud structures, tracking evolution, and quantifying uncertainty.",
+    "risk": "safe",
+    "source": "self",
+    "date_added": "2026-09-25",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "self",
+    "tags": [
+      "weather",
+      "radar",
+      "satellite",
+      "nexrad",
+      "goes",
+      "nowcasting",
+      "storm-analysis",
+      "remote-sensing",
+      "uncertainty"
     ]
   },
   {
@@ -54069,6 +54300,39 @@
     },
     "source_type": "community",
     "source_repo": "amElnagdy/guard-skills"
+  },
+  {
+    "id": "testdriver-e2e-testing",
+    "path": "skills/testdriver-e2e-testing",
+    "category": "testing",
+    "name": "testdriver-e2e-testing",
+    "description": "Build E2E tests with TestDriver.ai, the AI code reviewer that runs every pull request in a real desktop sandbox, finds bugs, and builds regression tests",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-09-24",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "testdriverai/testdriverai",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/testdriverai/testdriverai/blob/main/LICENSE",
+    "tags": [
+      "testing",
+      "e2e",
+      "qa",
+      "automation",
+      "computer-use"
+    ]
   },
   {
     "id": "testing-patterns",

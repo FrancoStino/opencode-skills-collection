@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-25T02:13:20.897Z",
+  "updatedAt": "2026-09-26T02:19:01.177Z",
   "entries": [
     "00-andruia-consultant",
     "007",
@@ -941,6 +941,7 @@
     "file-path-traversal",
     "file-uploads",
     "filesystem-context",
+    "film-crew",
     "find-bugs",
     "find-complementary-founders",
     "find-matching-tenders",
@@ -2206,6 +2207,7 @@
     "test-fixing",
     "test-framework-migration-skill",
     "test-guard",
+    "testdriver-e2e-testing",
     "testing-patterns",
     "testing-qa",
     "testng-skill",
