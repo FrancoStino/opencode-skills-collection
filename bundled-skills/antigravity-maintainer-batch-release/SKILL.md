@@ -38,6 +38,7 @@ Before changing anything:
    - Separate valid source changes, repairable PRs, conflicts, generated-only noise, promotional links, and unsupported ownership/license changes.
    - Review semantics, safety, provenance, risk labels, limitations, source credits, and changed-skill evidence.
    - Prefer narrow maintainer repairs on the contributor branch when maintainer edits are enabled.
+   - Optional accelerator before editing: run `npm run maintainer:sweep` for repo health, open PR check rollup, advisory download of CI `pr-evidence-*` artifacts (when `pr-evidence` succeeded), optional Jev triage (`TYPESAFE_API_KEY` in `.env.local`), `merge:batch --dry-run` on CI-ready PRs, and a **Next actions** hint list. Prefer CI evidence over re-running `npm run pr:evidence` locally when the artifact head matches. For a single head only, use `npm run maintainer:jev-hints -- --base origin/main --head <head-sha>`. Sweep/Jev/CI summaries are advisory only; `merge:batch` recomputes from trusted `main`, and Tessl plus `--reviewed-head` attestation remain authoritative. See `docs/maintainers/maintainer-sweep.md` and `docs/maintainers/jev-hints.md`.
 
 2. Validate changed skills truthfully.
    - Run `npm run validate`, `npm run validate:references`, `npm run security:docs`, changed-skill evidence, and the relevant tests.
@@ -48,12 +49,14 @@ Before changing anything:
    - `manual-review-required` means Tessl credentials or credits were unavailable, or Tessl did not produce a passing result. Perform the maintainer semantic review and attest with `--reviewed-head <full-40-character-sha>`.
    - Any non-passing Tessl outcome produces `manual-review-required`; complete the semantic review and bind the judgment to the exact head instead of treating a heuristic score as merge authority.
    - Never report `manual-review-required` as “Tessl passed.”
+   - Scoped content-review fingerprints document exact bytes and observed checks, not general reliability. Keep explicit compatibility aliases and their complete local support bundles synchronized; the alias-integrity regression checks equality without affecting selection eligibility. Report remaining corpus debt rather than awarding an unqualified validation badge.
    - A verified upstream repository rename may bypass the provenance-identity blocker only through an exact entry in the trusted protected-base exception ledger. Record the skill ID, old and new `source_repo`, stable upstream repository ID, verification date, and canonical GitHub URL; all other provenance changes remain blocked.
 
 3. Run checks in parallel where independent.
    - Use the repository validation, test, docs-security, source-credit, reference, warning-budget, and targeted app checks required by the changed files.
    - Fix deterministic policy failures in the source; do not wait for them as if they were flaky CI.
-   - Treat `pr-policy` fork classification from the exact protected-base implementation as an unprivileged fail-fast gate before dependent work, never as approval authority. Install and resolve every dependency used by that classifier from the same protected-base worktree; never expose it to pull-request-controlled `node_modules`. `merge:batch` must still recompute the current trusted decision before approving any fork run or merging.
+   - For source-only changed paths, a Git copy changes only its destination; renames change both paths. Preserve independent raw-record and blob safety checks and regressions for genuine generated-file mutations.
+   - Treat `pr-policy` fork classification from the exact protected-base implementation as an unprivileged fail-fast gate before dependent work, never as approval authority. Install and resolve every dependency used by that classifier from the same protected-base worktree; never expose it to pull-request-controlled `node_modules`. `merge:batch` must still recompute the current trusted decision before approving any fork run or merging. The intake allowlist also covers browser source under `apps/web-app/src/**` (`.css`, `.ts`, `.tsx`); those fork runs may be approved, but every web-app source change still requires an exact-head maintainer attestation before merge.
    - Treat `impact_profile` as shadow-only telemetry. It must not skip, downgrade, or satisfy any required check.
    - For ordinary source PRs, require `source-validation` to generate preview state once and `artifact-preview` to verify the manifest bound to the exact head and run identity. For canonical-sync PRs, rely on `pr-policy` exact-tree reproduction, keep `source-validation` lightweight, require `artifact-preview` to confirm no drift, and retain final CI and CodeQL on the merged `main` commit.
    - Keep timing observational and test sharding opt-in. Required CI must continue to run the full unsharded `npm run test`; deterministic local shards may be used only through `npm run test:local -- --shard-index N --shard-count M`.
@@ -76,15 +79,43 @@ Before changing anything:
    - Verify its managed-only diff, required checks, merge result, and the resulting `origin/main`.
    - If an unmanaged repair remains, use a topic PR; never patch `main` directly.
 
+
+### Reviewed fork bundle exceptions
+
+`tools/config/reviewed-fork-skills.json` is a protected-base ledger for the two
+explicitly reviewed fork contributions #1337 and #1413. Each entry binds the
+base repository, fork repository, PR number, original full reviewed head and
+complete Git skill-tree object. It permits only Python files under that skill's
+`scripts/` subtree and its root `LICENSE`, with a read-only Git copy origin when
+needed. It does not allow workflows, arbitrary script types, generated-file
+mutations, unsafe modes, links, invalid paths/objects or oversized content.
+
+Both CI intake and `merge:batch` load the ledger from their trusted evaluator
+checkout, never the PR's repository directory. Any change anywhere in the skill
+subtree invalidates the exception. A base-only merge may reuse identical content,
+but the maintainer must inspect the new complete PR diff and attest its exact
+current head with `--reviewed-head`. Evidence, source-only checks, truthful skill
+review, immutable PR/workflow binding and strict branch protection all remain
+mandatory. Missing or malformed ledger data fails closed. Further exceptions or
+policy expansions need explicit maintainer authorization and protected review.
+
 ## Workflow Contract Change Gate
 
 When changing maintainer scripts, workflows, or policy, update the canonical skill, maintainer documentation, and regression tests in the same source PR. Add a negative test for every failure mode being fixed, run the relevant dry-run path, and reject any implementation/documentation mismatch. Source PRs must exclude generated registries and plugin mirrors; the protected canonical-sync PR owns that derived state, except for files intentionally staged by the scripted protected-release flow.
+
+## Repository documentation consistency
+
+When auditing repository documentation, compare operational guides and translations with exact-base scripts and workflow behavior. Check local links, heading anchors and documented npm commands with `tools/scripts/tests/test_documentation_consistency.py`; dated evidence and backup snapshots are historical, not current instructions. Keep canonical guides discoverable from `docs/README.md`, distinguish source merge from release availability, and report the scope of the audit without claiming that all skill procedures or external integrations ran.
+
+## Specialized Plugin Consistency
+
+Use `data/specialized-plugin-candidates.json` for specialized-plugin membership and `data/editorial-bundles.json` for the installable composition, descriptions, limits and starter prompts. Review changes against canonical `skills_index.json`; keep IDs stable unless a migration is explicitly requested. Derive the web catalog and prerender/live-verifier counts from these sources instead of maintaining copied lists or fixed counts. Verify full skill-list expansion, source-to-web parity and a negative stale-count case. The specialized-resource regression must reject missing prose-declared local support paths and verify their bytes in generated specialized bundles; fenced application examples remain a separate semantic review. Run the pure-example regressions when editing documented calculations or chunking behavior. Regenerate plugin artifacts as evidence, but leave their commit to the protected canonical-sync lane. A source refresh does not authorize release or deployment.
 
 ## Hosted Catalog and Legacy Redirect Bridge
 
 Treat the current catalog and the legacy user-site bridge as one public system:
 
-- Current catalog: `sickn33/agentic-awesome-skills` at `https://sickn33.github.io/agentic-awesome-skills/`.
+- Current catalog: `sickn33/agentic-awesome-skills` at `https://aaskills.tech/`.
 - Legacy bridge: `sickn33/sickn33.github.io` at `https://sickn33.github.io/antigravity-awesome-skills/`.
 
 For SEO, indexing, Pages, redirect, or infrastructure changes:
@@ -107,8 +138,14 @@ For AAS CLI, MCP, stack, catalog-cache, or Workbench changes:
 1. Use the current scripts declared in `package.json`; do not resurrect retired evaluator, benchmark, tuning-gold, transaction-fault, race, or frozen-matrix gates as routine prerequisites.
 2. Run the focused Core tests with `npm run test:aas-v1`, the catalog integrity check with `npm run check:aas-v1-catalog`, and the relevant Workbench tests/build when its contracts or copy change.
 3. Keep MCP local, offline, read-only, bounded, and non-mutating. The coding agent inspects the project, searches and reads the complete catalog, and chooses the exact skill IDs. MCP searches, reads, validates agent-owned composition, and compares without scanning the repository or writing to it. Core must not rank, recommend, exclude, or disable skills; metadata is informational only.
+   - For bundle inspection changes, verify catalog-bound file inventories and per-read digests, traversal/link rejection, binary and size limits, older-catalog behavior, and a support-file read from the actual packed runtime. Never execute inspected scripts or fetch missing payloads. Preserve all canonical IDs, including skills whose files cannot be read through the text interface.
+   - Explicit caller search filters may narrow retrieval; they never define skill eligibility. For search changes, verify backward-compatible broad matching, all-term matching, bounded filters, category aliases, stable pagination, complete-catalog reachability without filters, and preservation of supplied options through evidence export and inspection.
 4. Keep `aas-stack.json` free of Core selection policy. It pins catalog identity, targets, goals, and the exact IDs selected by the agent. `compose_stack` validates and records that selection; missing or cautionary metadata must never make a canonical skill unselectable or unusable.
 5. Keep the supported public path at manifest validation and immutable plan preview. Planning may write only the requested plan artifact; it must not materialize skill payloads or AAS managed state in the target.
+   - Verify manifest-to-installer command preparation preserves exact agent-selected IDs and catalog version, rejects empty or unknown selections, quotes shell arguments, and only emits a dry run. Runtime auto-resolution must stay offline and bounded, fully verify cached bytes, and reject multiple verified identities; never infer skill suitability from runtime or metadata checks. Exercise actual packed installation in a temporary destination, compare all selected file bytes, repeat it, preserve unmanaged files, and reject moved-release and symlink-target cases. Distinguish fixture publication resolution from a real published-release/client check; the aggregate must reject missing installation evidence. Require both Linux and Windows packed receipts. Execute the emitted PowerShell command with both PowerShell 7 and Windows PowerShell 5.1 on a disposable Windows runner, recording and checking both actual shell versions, including paths with spaces and apostrophes, full payload comparison, repeat/prune behavior and junction rejection. Local Git/publication fixtures are not proof of registry availability or a native client session.
+   - Infer a target only for a validated single-target manifest; require an explicit choice otherwise. Verify that the cached runtime's catalog matches the manifest, and keep runtime integrity, cache location and destination explicit. Document the separate direct-installer handoff without implying it applies Core plans.
+   - Workbench evidence imports must remain bounded and in memory. Verify artifact digests, project references, manifest/catalog/profile/selection bindings, conflict displays and replacement of stale results. Identify browser checks separately from full Core inspection and semantic judgment. Recorded examples need real inputs and observed checks; optional feedback may export only user-entered fields after an explicit action, without telemetry or imported project data.
+   - Verify large manifest and evidence round trips through real stdio, not just in-process handlers. Artifact arguments may use the existing 256 KiB frame ceiling; ordinary requests and unrelated metadata remain bounded at 4 KiB. Rejected, safely parsed requests must retain a bounded request ID; never reflect malformed or unbounded IDs. Keep overload errors correlated to bounded, strictly parsed request IDs; valid notifications receive no response, including when the queue is full or a handler fails. Reject invalid envelopes without reflecting invalid IDs, and test the burst path through real stdio.
 6. Treat apply and recovery as experimental opt-ins outside the supported preview claim. Do not add apply/recovery, benchmark, fuzz, crash/race, or synthetic verifier work unless the user explicitly places it in scope.
 7. When the task asks for end-to-end client proof, use a real supported client that discovers and invokes the local AAS MCP tools; direct stdio probes and automated tests do not substitute for that evidence.
 8. Do not tag, publish npm, deploy Pages, or write real user MCP configuration without the separately required publication approval.
@@ -126,7 +163,7 @@ Every stable or prerelease version requires full release alignment. Creating the
 5. Merge that release PR through its required checks, update local `main` to equal `origin/main`, and wait for every source, release, or canonical-sync PR in the release path to close. Re-run the release-state and plugin gates if protected `main` moved.
 6. Run `npm run release:publish -- X.Y.Z`. It must resolve exactly one merged release PR from the same repository, authored by the repository owner, with base `main`, exact title `chore: release vX.Y.Z`, and head branch `release/vX.Y.Z`. Zero or multiple candidates fail closed; never select the newest approximate match. The command then verifies that exact protected merge before creating or reusing the tag and GitHub Release.
    The npm publication workflow must first check out protected `main`, verify that the peeled release tag is an ancestor of current `origin/main`, validate the version directly from the tagged `package.json`, and only then check out or execute tag-controlled code. It has no manual-dispatch bypass.
-7. Wait for publishing workflows, then bind every proof to the exact released commit: verify the tag/ref, GitHub Release, npm version and intended dist-tag, required CI, CodeQL, and the explicitly dispatched release-only Pages build from the exact immutable `vX.Y.Z` tag. Never dispatch Pages from `main` or another branch. Verify live `llms.txt`, `skills.json`, catalog and plugin routes, and the legacy redirect bridge; do not accept a successful run for a different SHA.
+7. Wait for publishing workflows, then bind every proof to the exact released commit: verify the tag/ref, GitHub Release, npm version and intended dist-tag, required CI, CodeQL, and the release-tag Pages build from the exact immutable `vX.Y.Z` tag using `deployment_target=release`. Never manually dispatch the release-tag build from `main` or another branch. A separate `deployment_target=main` dispatch may publish a protected main commit after source and canonical-sync work completes; it must verify current-main identity before build and again before deploy. Canonical-sync commits marked `[skip pages]` are never dispatched by canonical synchronization. Verify live `llms.txt`, `skills.json`, catalog and plugin routes, and the legacy redirect bridge; do not accept a successful run for a different SHA.
 8. After npm confirms `X.Y.Z` as the published dist-tag, discover every already-configured local AAS MCP host from its real configuration and update each one to the exact same package version before declaring the release complete. Updating existing AAS host entries is part of the release; creating a previously absent host configuration still requires explicit authorization.
    - Use the published package's `aas mcp configure` two-pass flow: first preview the change, then repeat the identical command with its approval digest. Supply absolute host-config, cache, and backup paths; require a backup when replacing an existing configuration.
    - Pin `agentic-awesome-skills@X.Y.Z` and `--version X.Y.Z`; never use `latest`, reuse an older cached runtime, or create a previously absent host configuration without explicit authorization.
