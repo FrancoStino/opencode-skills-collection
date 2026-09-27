@@ -40,7 +40,8 @@ opencode-skills-collection/
 │       ├── publish.yml               # npm publish after sync/release
 │       ├── beta-release.yml          # Manual beta publish from develop
 │       ├── release.yml               # Manual version bump + GitHub release
-│       └── merge-branch.yml          # Merge develop → main
+│       ├── merge-branch.yml          # Merge develop → main
+│       └── assign-issue.yml          # Auto-assign newly opened issues
 ├── package.json                      # npm package config (@opencode-ai/plugin, strip-json-comments)
 ├── tsconfig.json                     # TypeScript config (ES2022, ESNext modules, bundler resolution)
 ├── AGENTS.md                         # AI agent instructions for this repo
@@ -91,7 +92,7 @@ opencode-skills-collection/
 
 **`.github/workflows/`:**
 - Purpose: GitHub Actions CI/CD pipelines
-- Contains: 5 workflow files for sync, publish, release, beta, and branch merge
+- Contains: 6 workflow files for sync, publish, release, beta, branch merge, and issue assignment
 - Key files: `sync-skills.yml` (nightly + manual), `publish.yml`
 
 ## Key File Locations

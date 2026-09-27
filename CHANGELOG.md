@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v4.0.75] - 2026-09-27
+### :wrench: Chores
+- [`ee49663`](https://github.com/FrancoStino/opencode-skills-collection/commit/ee49663e59dad6f2f569f36934418880b4cec791) - add GitHub Actions workflow for plugin security scan *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+- [`4368eec`](https://github.com/FrancoStino/opencode-skills-collection/commit/4368eec6e7714fc55411c2c116aa67c4edf68bd3) - sync skills and bump version to v4.0.75 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
 ## [v4.0.74] - 2026-09-26
 ### :wrench: Chores
 - [`5d038dd`](https://github.com/FrancoStino/opencode-skills-collection/commit/5d038dd9661ae19f5f9bd50fe82356a2d416e453) - sync skills and bump version to v4.0.74 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
@@ -4067,3 +4073,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v4.0.72]: https://github.com/FrancoStino/opencode-skills-collection/compare/v4.0.71...v4.0.72
 [v4.0.73]: https://github.com/FrancoStino/opencode-skills-collection/compare/v4.0.72...v4.0.73
 [v4.0.74]: https://github.com/FrancoStino/opencode-skills-collection/compare/v4.0.73...v4.0.74
+[v4.0.75]: https://github.com/FrancoStino/opencode-skills-collection/compare/v4.0.74...v4.0.75
