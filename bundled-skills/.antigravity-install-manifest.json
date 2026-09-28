@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-27T02:13:37.767Z",
+  "updatedAt": "2026-09-28T02:18:06.360Z",
   "entries": [
     "00-andruia-consultant",
     "007",
@@ -1376,6 +1376,7 @@
     "linkedin-profile-optimizer",
     "linkerd-patterns",
     "lint-and-validate",
+    "lintlang-audit",
     "linux-administration",
     "linux-hardening",
     "linux-privilege-escalation",
@@ -2168,6 +2169,7 @@
     "swiftui-ui-patterns",
     "swiftui-view-refactor",
     "sympy",
+    "system-prompt-lookup",
     "systematic-debugging",
     "systemd-services",
     "systems-programming-rust-project",
