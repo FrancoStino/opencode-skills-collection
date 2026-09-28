@@ -43,7 +43,6 @@
     "strip-json-comments": "^5.0.3"
   },
   "devDependencies": {
-    "@opencode/sdk": "^2.0.18",
     "@types/bun": "*",
     "@types/node": "^26.0.0",
     "@types/strip-json-comments": "^3.0.0",
