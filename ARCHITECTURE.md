@@ -16,9 +16,9 @@
 **Plugin Entry:**
 - Purpose: Bootstrap the SkillPointer pipeline, resolve paths, handle top-level errors
 - Location: `src/index.ts`
-- Contains: Path resolution (`resolveBundledSkillsPath`, `resolveActiveSkillsDir`), the `OpenCodeSkillsCollection` plugin function
+- Contains: Path resolution (`resolveBundledSkillsPath`, `resolveActiveSkillsDir`), the `opencode-skills-collection` plugin definition
 - Depends on: `src/skill-pointer/index.ts` (`runSkillPointer`), `src/utils/fs.utils.ts` (`ensureDir`)
-- Used by: OpenCode runtime (loads as a plugin via `@opencode-ai/plugin`)
+- Used by: OpenCode runtime (loads as a plugin via `@opencode/plugin`)
 
 **SkillPointer Orchestrator:**
 - Purpose: Sequence the full pipeline — load index, filter, install vault, patch content, generate pointers
@@ -133,7 +133,7 @@
 ## Entry Points
 
 **OpenCode Plugin Hook:**
-- Location: `src/index.ts` (default export `OpenCodeSkillsCollection`)
+- Location: `src/index.ts` (default export via `Plugin.define`, id `opencode-skills-collection`)
 - Triggers: OpenCode startup (plugin system loads the package)
 - Responsibilities: Resolve paths, ensure directories exist, invoke the full SkillPointer pipeline, catch and log errors to stderr
 

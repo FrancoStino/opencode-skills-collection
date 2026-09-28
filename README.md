@@ -106,7 +106,7 @@ Add the plugin to your global OpenCode configuration file at `~/.config/opencode
 
 ```json
 {
-  "plugin": [
+  "plugins": [
     "opencode-skills-collection@latest"
   ]
 }
@@ -251,7 +251,7 @@ To use the latest beta version, update your `~/.config/opencode/opencode.json`:
 
 ```json
 {
-  "plugin": [
+  "plugins": [
     "opencode-skills-collection@beta"
   ]
 }

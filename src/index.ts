@@ -1,4 +1,4 @@
-import type { Plugin } from "@opencode-ai/plugin";
+import { Plugin } from "@opencode/plugin";
 import os from "os";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -26,18 +26,17 @@ function resolveActiveSkillsDir(): string {
  * 2. Generates lightweight category pointer SKILL.md files in
  *    ~/.config/opencode/skills/ without touching user custom skills.
  */
-const OpenCodeSkillsCollection: Plugin = async (_ctx) => {
-  try {
-    const bundledSkillsPath = resolveBundledSkillsPath();
-    const activeSkillsDir = resolveActiveSkillsDir();
+export default Plugin.define({
+  id: "opencode-skills-collection",
+  async setup(_ctx) {
+    try {
+      const bundledSkillsPath = resolveBundledSkillsPath();
+      const activeSkillsDir = resolveActiveSkillsDir();
 
-    ensureDir(activeSkillsDir);
-    runSkillPointer({ bundledSkillsPath, activeSkillsDir });
-  } catch (error) {
-    process.stderr.write(`[opencode-skills-collection] ${error}\n`);
-  }
-
-  return {};
-};
-
-export default OpenCodeSkillsCollection;
+      ensureDir(activeSkillsDir);
+      runSkillPointer({ bundledSkillsPath, activeSkillsDir });
+    } catch (error) {
+      process.stderr.write(`[opencode-skills-collection] ${error}\n`);
+    }
+  },
+});
