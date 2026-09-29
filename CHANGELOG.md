@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v4.1.0] - 2026-09-29
+### :white_check_mark: Tests
+- [`834b826`](https://github.com/FrancoStino/opencode-skills-collection/commit/834b826af38b10a3354366164a11ca3f7c462cd9) - mock os.homedir() for isolated testing environment *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+- [`7fbb774`](https://github.com/FrancoStino/opencode-skills-collection/commit/7fbb7746c0e3e9b445fd811d58207fa8ec5cb1b2) - refactor plugin entrypoint tests for improved readability *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+- [`74f5814`](https://github.com/FrancoStino/opencode-skills-collection/commit/74f58147fd563956511e5beeac07999eb07c8498) - enhance os module mocking for isolated testing *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+
+### :wrench: Chores
+- [`2ff8cb9`](https://github.com/FrancoStino/opencode-skills-collection/commit/2ff8cb9cd2b2b7751d66cdebc8d17d935ad61ec4) - remove outdated skill sync plans *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+- [`31cdf7b`](https://github.com/FrancoStino/opencode-skills-collection/commit/31cdf7b507302750e69431b913cb6e706270c54c) - update plugin dependencies and improve documentation *(commit by [@FrancoStino](https://github.com/FrancoStino))*
+- [`000497b`](https://github.com/FrancoStino/opencode-skills-collection/commit/000497be39f4d3a099b619c560aad110ca6e25da) - bump version to v4.1.0 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
+
+
 ## [v4.0.77] - 2026-09-29
 ### :wrench: Chores
 - [`591636e`](https://github.com/FrancoStino/opencode-skills-collection/commit/591636e0802d491b964ab3e4e05d2331bc141d90) - sync skills and bump version to v4.0.77 *(commit by [@github-actions[bot]](https://github.com/apps/github-actions))*
@@ -4086,3 +4098,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v4.0.75]: https://github.com/FrancoStino/opencode-skills-collection/compare/v4.0.74...v4.0.75
 [v4.0.76]: https://github.com/FrancoStino/opencode-skills-collection/compare/v4.0.75...v4.0.76
 [v4.0.77]: https://github.com/FrancoStino/opencode-skills-collection/compare/v4.0.76...v4.0.77
+[v4.1.0]: https://github.com/FrancoStino/opencode-skills-collection/compare/v4.0.77...v4.1.0
