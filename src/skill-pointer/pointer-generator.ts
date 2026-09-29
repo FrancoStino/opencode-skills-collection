@@ -53,8 +53,10 @@ ${skillList}
  * Scans every category directory in the vault and writes
  * a lightweight pointer SKILL.md into the active skills directory.
  *
- * Each pointer includes the full list of skill names + descriptions
- * so the agent can match tasks to skills without loading every SKILL.md.
+ * Each pointer includes the full list of skill names + descriptions.
+ * NOTE: the model only sees a pointer's ID + frontmatter description until
+ * it loads the pointer via the `skill` tool — the body list is visible
+ * only after that first load, followed by a `read` of the vault file.
  */
 export function generatePointers(
   activeSkillsDir: string,

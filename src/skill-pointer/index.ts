@@ -36,7 +36,8 @@ function resolveDefaultVaultDir(): string {
  * 3. Copies skills into the vault, categorised by the index.
  * 4. Applies config-driven content patches to installed skills.
  * 5. Generates pointer SKILL.md files in activeSkillsDir with full skill
- *    listings so keyword searches (e.g. "laravel") resolve out of the box.
+ *    listings. The listings are visible to the model only after it loads
+ *    the pointer via the `skill` tool (per step it sees ID + description).
  *
  * Content safety scanning is performed at CI time (sync-skills.yml),
  * not at runtime — dangerous skills are removed before npm publish.

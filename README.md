@@ -28,11 +28,13 @@
 
 ## Overview
 
-**OpenCode Skills Collection** ships a pre-bundled snapshot of 1595+ universal skills for the OpenCode.
+**OpenCode Skills Collection** ships a pre-bundled snapshot of 2400+ universal skills for OpenCode.
 
-Instead of loading every skill into the AI context at startup — which would consume ~80k tokens and cause compaction
-loops — the plugin uses a **SkillPointer** architecture: skills are organized into categories inside a hidden vault and
-only loaded into context on demand.
+Instead of registering every skill with OpenCode at startup — which would flood the model's available-skills list with
+thousands of entries — the plugin uses a **SkillPointer** architecture: skills are stored in a hidden vault organized by
+category, and only ~100 lightweight pointer skills are registered. At each model step OpenCode advertises the pointers
+(ID, name, description); the model loads a pointer via the `skill` tool, reads which vault skills match the task, then
+loads the chosen vault `SKILL.md` via `read`.
 
 ---
 
@@ -42,28 +44,36 @@ The plugin operates in two phases:
 
 **1. Local deployment (startup)**
 
-When OpenCode starts, the plugin copies the pre-bundled skills from the npm package and runs the SkillPointer pipeline:
+When OpenCode starts, the plugin runs the SkillPointer pipeline synchronously before anything else. No hooks, tools,
+or commands are registered — the only side effect is files on disk:
 
 ```
-bundled-skills/ (npm package)
+bundled-skills/ (npm package) + skills_index.json
         │
-        ▼
-~/.config/opencode/skills/          ← OpenCode reads this
+        ▼ runSkillPointer()
+        ├─ filterIndex       → drops skills matching excluded risk levels / IDs
+        ├─ installSkillsToVault → copies kept skills into the vault by category,
+        │                        removes vault entries no longer in the filtered index
+        ├─ applySkillPatches → regex find/replace from skill-filter.jsonc on vault copies
+        └─ generatePointers  → writes one <category>-category-pointer/SKILL.md per
+                               category into the active skills dir, removes stale pointers
         │
-        └── SkillPointer pipeline
-              │
-              ├─ risk-filter       → excludes skills by risk level or ID
-              ├─ content-scanner   → quarantines skills with dangerous patterns
-              ├─ vault-manager     → moves safe skills to the vault
-              ├─ skill-patcher     → applies config-driven content patches
-              └─ pointer-generator → writes ~35 lightweight pointer files
+        ├── ~/.config/opencode/skill-libraries/<category>/<skill>/SKILL.md  (vault, NOT registered)
+        └── ~/.config/opencode/skills/<category>-category-pointer/SKILL.md  (registered by OpenCode)
 ```
 
-**2. On-demand skill loading**
+Content scanning is NOT a runtime stage: dangerous skills are quarantined at CI time (sync-skills.yml) and never
+reach the npm package.
 
-Each pointer file tells the AI: *"there are N skills for this category in the vault — use `read` to
-retrieve them when needed."*
-The full skill content is only injected into context when the AI actually needs it.
+**2. On-demand skill loading (at inference time)**
+
+1. OpenCode discovers pointer skills in `~/.config/opencode/skills/` and advertises ID + name + description to the
+   model at each step (body stays out of context).
+2. The model loads the matching pointer via the `skill` tool (`{"id": "<category>-category-pointer"}`); OpenCode
+   injects the pointer body — the categorized skill list plus vault path.
+3. The model reads the chosen vault file via `read` (`skill-libraries/<category>/<skill>/SKILL.md`) and follows it.
+
+Vault skills are never registered with OpenCode directly, so they never appear in the advertised list.
 
 ---
 
@@ -91,12 +101,12 @@ After the first startup, your `~/.config/opencode/` directory looks like this:
 
 ## Context Usage
 
-|                      | Without SkillPointer | With SkillPointer   |
-|----------------------|----------------------|---------------------|
-| Folders in `skills/` | ~1000                | ~35                 |
-| Tokens at startup    | ~80,000              | ~255                |
-| Skills available     | All injected upfront | On-demand via vault |
-| Compaction loops     | ✗ frequent           | ✓ none              |
+|                              | Without SkillPointer | With SkillPointer     |
+|------------------------------|----------------------|-----------------------|
+| Entries in `skills/`         | ~2450                | ~100 pointers         |
+| Skills advertised per step   | ~2450                | ~100                  |
+| Full bodies in context       | On explicit load     | On explicit load      |
+| Vault skills loaded          | n/a                  | Via `read` after pointer |
 
 ---
 
@@ -131,29 +141,23 @@ needed.
 
 ## Usage
 
-Once installed, all skills are available in three ways:
+The plugin registers pointer skills, not commands. There is no `/skill-name` slash command and no `opencode run /...`
+syntax — slash commands live in `commands/`, this plugin only writes to `skills/`.
 
-**Explicit invocation via CLI:**
+**How a skill gets used (V2 runtime):**
 
-```bash
-opencode run /brainstorming help me plan a new feature
-opencode run /refactor clean up this function
-```
-
-**Slash commands in the OpenCode chat:**
-
-```
-/brainstorming
-/refactor
-/document
-```
-
-**Natural language — OpenCode picks the right skill automatically:**
+1. You describe the task in plain language (CLI `opencode run "..."`, TUI chat, or session).
+2. OpenCode advertises the ~100 pointer skills (ID + description) to the model.
+3. The model loads the matching `<category>-category-pointer` via the `skill` tool, picks the vault skill from its
+   list, reads `skill-libraries/<category>/<skill>/SKILL.md` via `read`, and follows it.
 
 ```
-"Help me brainstorm ideas for a REST API design"
-"Refactor this function to be more readable"
+"Help me design a REST API"  →  model loads backend-dev-category-pointer  →  reads laravel-expert/SKILL.md
 ```
+
+Skills without a `description` are never advertised; skills can opt out of the advertised list with
+`metadata.opencode/autoinvoke: false` but remain loadable by exact ID. The `skill` tool takes an exact,
+case-sensitive ID.
 
 ---
 

@@ -7,7 +7,7 @@
 **Key Characteristics:**
 - Plugin lifecycle: runs once at OpenCode startup via `Plugin` hook interface
 - Vault-based storage: full skill content lives in a hidden vault (`~/.config/opencode/skill-libraries/`) to avoid token bloat at startup
-- Pointer indirection: OpenCode reads lightweight `SKILL.md` pointers in `~/.config/opencode/skills/`, each listing available skills and vault path — the agent loads full skill content on-demand via the `read` tool
+- Pointer indirection: only `*-category-pointer/SKILL.md` files are registered with OpenCode in `~/.config/opencode/skills/`; full skill content lives unregistered in the vault. Discovery flow: model sees pointer ID + description per step → loads pointer via the `skill` tool → reads the chosen vault `SKILL.md` via the `read` tool. Vault skills are never advertised directly
 - Content safety: CI-time scanning with regex patterns quarantines dangerous skills before npm publish; runtime patching applies config-driven find/replace fixes
 - Risk-based filtering: user-configurable `skill-filter.jsonc` excludes skills by risk level or ID
 
@@ -88,7 +88,7 @@
 **Startup Pipeline (runtime):**
 
 1. OpenCode loads the plugin — `src/index.ts` resolves `bundledSkillsPath` (from `dist/` relative to `__dirname`) and `activeSkillsDir` (`~/.config/opencode/skills/`)
-2. `runSkillPointer()` is called — `src/skill-pointer/index.ts`
+2. `setup()` (V2) or `server()` (V1) calls the shared `runStartupPipeline()`, which invokes `runSkillPointer()` — `src/skill-pointer/index.ts`. No hooks, tools, commands, or events are registered; the plugin's only effect is files on disk
 3. `loadSkillsIndex()` reads `skills_index.json` (or scans `SKILL.md` frontmatter as fallback) — `src/skill-pointer/vault-installer.ts`
 4. `loadFilterConfig()` reads `~/.config/opencode/skill-filter.jsonc` (JSONC with comments support) — `src/skill-pointer/config-loader.ts`
 5. `filterIndex()` removes skills matching excluded risk levels or IDs — `src/skill-pointer/skill-risk-filter.ts`
@@ -126,7 +126,7 @@
 - Pattern: Options interface
 
 **Pointer Files (`<category>-category-pointer/SKILL.md`):**
-- Purpose: Lightweight Markdown files with YAML frontmatter that list all skills in a category and provide vault path + load instructions for the agent
+- Purpose: The only skills registered with OpenCode. Lightweight Markdown files with YAML frontmatter (name, description — the description is what the model sees when deciding) that list all vault skills in a category plus vault path + `read` instructions for the second load step. Vault skills themselves are never registered
 - Location: Generated at runtime into `~/.config/opencode/skills/<category>-category-pointer/SKILL.md`
 - Pattern: Template-driven code generation
 
