@@ -6,6 +6,7 @@ import {
   afterEach,
   mock,
 } from "bun:test";
+import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
@@ -50,13 +51,47 @@ mock.module("../skill-pointer/index.js", () => ({
 }));
 
 let plugin: PluginDefinition;
+let tmpHome: string;
+
+// os.homedir() on Linux reads /etc/passwd via getpwuid and ignores a
+// runtime-assigned process.env.HOME, so env-swapping cannot isolate it.
+// Instead mock node:os itself: homedir() returns a per-run temp dir, and
+// all other exports pass through to the real module.
+mock.module("node:os", () => {
+  const actual = require("node:os");
+  return {
+    ...actual,
+    // tmpHome is assigned in isolateHome() before any setup()/server() call
+    // in this file; fall back to the real homedir if unset so other test
+    // files sharing the registry never see undefined.
+    homedir: () => tmpHome ?? actual.homedir(),
+  };
+});
 
 function expectedSkillsDir(): string {
   return path.join(os.homedir(), ".config", "opencode", "skills");
 }
 
+function isolateHome(): void {
+  // Must run before src/index.ts resolves paths: homedir() already returns
+  // the temp dir by the time setup()/server() call it.
+  tmpHome = fs.mkdtempSync(path.join(actualTmpdir(), "idx-test-home-"));
+}
+
+function actualTmpdir(): string {
+  // tmpdir() is unaffected by the homedir mock (reads $TMPDIR, not passwd).
+  // require() inside: this helper runs after the node:os mock is registered.
+  const actualOs = require("node:os") as typeof os;
+  return actualOs.tmpdir();
+}
+
+function restoreHome(): void {
+  fs.rmSync(tmpHome, { recursive: true, force: true });
+}
+
 describe("plugin entrypoint (OpenCode V2)", () => {
   beforeEach(async () => {
+    isolateHome();
     ensureDirCalls.length = 0;
     runSkillPointerCalls.length = 0;
     runSkillPointerShouldThrow = false;
@@ -68,6 +103,7 @@ describe("plugin entrypoint (OpenCode V2)", () => {
 
   afterEach(() => {
     runSkillPointerShouldThrow = false;
+    restoreHome();
   });
 
   test("exposes a V2 plugin definition with the collection id", () => {
@@ -113,6 +149,7 @@ describe("plugin entrypoint (OpenCode V2)", () => {
 
 describe("plugin entrypoint (OpenCode V1 back-compat)", () => {
   beforeEach(async () => {
+    isolateHome();
     ensureDirCalls.length = 0;
     runSkillPointerCalls.length = 0;
     runSkillPointerShouldThrow = false;
@@ -122,6 +159,7 @@ describe("plugin entrypoint (OpenCode V1 back-compat)", () => {
 
   afterEach(() => {
     runSkillPointerShouldThrow = false;
+    restoreHome();
   });
 
   test("exposes a server function returning empty hooks", async () => {
