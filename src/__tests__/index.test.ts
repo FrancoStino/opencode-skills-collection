@@ -51,25 +51,34 @@ mock.module("../skill-pointer/index.js", () => ({
 }));
 
 let plugin: PluginDefinition;
-let tmpHome: string;
+let tmpHome: string | undefined;
 
 // os.homedir() on Linux reads /etc/passwd via getpwuid and ignores a
 // runtime-assigned process.env.HOME, so env-swapping cannot isolate it.
 // Instead mock node:os itself: homedir() returns a per-run temp dir, and
 // all other exports pass through to the real module.
-mock.module("node:os", () => {
-  const actual = require("node:os");
-  return {
-    ...actual,
-    // tmpHome is assigned in isolateHome() before any setup()/server() call
-    // in this file; fall back to the real homedir if unset so other test
-    // files sharing the registry never see undefined.
-    homedir: () => tmpHome ?? actual.homedir(),
-  };
-});
+for (const specifier of ["node:os", "os"]) {
+  mock.module(specifier, () => {
+    const actual = require("node:os");
+    return {
+      ...actual,
+      __esModule: true,
+      default: { ...actual, homedir: () => tmpHome ?? actual.homedir() },
+      // tmpHome is assigned in isolateHome() before any setup()/server() call
+      // in this file; fall back to the real homedir if unset so other test
+      // files sharing the registry never see undefined.
+      homedir: () => tmpHome ?? actual.homedir(),
+    };
+  });
+}
 
 function expectedSkillsDir(): string {
-  return path.join(os.homedir(), ".config", "opencode", "skills");
+  // Direct assertion target: tmpHome is the isolated dir, not whatever
+  // os.homedir() resolves to. If the node:os mock silently stopped applying,
+  // tmpHome and the pipeline's homedir() would diverge and this fails —
+  // comparing homedir() against itself would pass either way.
+  if (tmpHome === undefined) throw new Error("isolateHome() must run first");
+  return path.join(tmpHome, ".config", "opencode", "skills");
 }
 
 function isolateHome(): void {
@@ -86,7 +95,11 @@ function actualTmpdir(): string {
 }
 
 function restoreHome(): void {
+  if (tmpHome === undefined) return;
   fs.rmSync(tmpHome, { recursive: true, force: true });
+  // Reset so the process-wide homedir mock falls back to the real homedir
+  // for any later consumer instead of a deleted directory.
+  tmpHome = undefined;
 }
 
 async function loadPlugin(): Promise<void> {
