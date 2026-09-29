@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-28T02:18:06.360Z",
+  "updatedAt": "2026-09-29T03:02:52.069Z",
   "entries": [
     "00-andruia-consultant",
     "007",
@@ -1621,6 +1621,7 @@
     "notebooklm",
     "notion-automation",
     "notion-template-business",
+    "nsfw-ai-spicyapi",
     "nutrition-analyzer",
     "nx-workspace-patterns",
     "object-storage",
@@ -2030,6 +2031,7 @@
     "seo-structure-architect",
     "seo-technical",
     "sequence-psychologist",
+    "serply-search-mcp",
     "server-management",
     "service-mesh",
     "service-mesh-expert",
