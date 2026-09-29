@@ -89,23 +89,57 @@ function restoreHome(): void {
   fs.rmSync(tmpHome, { recursive: true, force: true });
 }
 
+async function loadPlugin(): Promise<void> {
+  // Dynamic import: mock.module() overrides above must be registered before
+  // src/index.ts loads, so a static import cannot be used here.
+  plugin = (await import("../index.js")).default as unknown as PluginDefinition;
+}
+
+function resetPipelineSpies(): void {
+  ensureDirCalls.length = 0;
+  runSkillPointerCalls.length = 0;
+  runSkillPointerShouldThrow = false;
+}
+
+function captureStderr(): { writes: string[]; restore: () => void } {
+  const writes: string[] = [];
+  const originalWrite = process.stderr.write;
+  process.stderr.write = ((chunk: string | Uint8Array) => {
+    writes.push(String(chunk));
+    return true;
+  }) as typeof process.stderr.write;
+  return { writes, restore: () => {
+    process.stderr.write = originalWrite;
+  } };
+}
+
+function expectPipelineRan(expected: string): void {
+  expect(ensureDirCalls).toEqual([expected]);
+  expect(runSkillPointerCalls).toHaveLength(1);
+  expect(runSkillPointerCalls[0].activeSkillsDir).toBe(expected);
+  expect(runSkillPointerCalls[0].bundledSkillsPath).toEndWith(
+    path.join("bundled-skills"),
+  );
+}
+
+function expectStderrReport(writes: string[]): void {
+  expect(writes).toHaveLength(1);
+  expect(writes[0]).toContain("[opencode-skills-collection]");
+  expect(writes[0]).toContain("skill pointer failure");
+}
+
+beforeEach(async () => {
+  isolateHome();
+  resetPipelineSpies();
+  await loadPlugin();
+});
+
+afterEach(() => {
+  resetPipelineSpies();
+  restoreHome();
+});
+
 describe("plugin entrypoint (OpenCode V2)", () => {
-  beforeEach(async () => {
-    isolateHome();
-    ensureDirCalls.length = 0;
-    runSkillPointerCalls.length = 0;
-    runSkillPointerShouldThrow = false;
-    // Dynamic import: mock.module() overrides above must be registered before
-    // src/index.ts loads, so a static import cannot be used here.
-    plugin = (await import("../index.js"))
-      .default as unknown as PluginDefinition;
-  });
-
-  afterEach(() => {
-    runSkillPointerShouldThrow = false;
-    restoreHome();
-  });
-
   test("exposes a V2 plugin definition with the collection id", () => {
     expect(plugin).toBeDefined();
     expect(plugin.id).toBe("opencode-skills-collection");
@@ -114,54 +148,22 @@ describe("plugin entrypoint (OpenCode V2)", () => {
 
   test("setup prepares the active skills dir and runs the pointer pipeline", async () => {
     await plugin.setup(undefined);
-
-    const expected = expectedSkillsDir();
-
-    expect(ensureDirCalls).toEqual([expected]);
-    expect(runSkillPointerCalls).toHaveLength(1);
-    expect(runSkillPointerCalls[0].activeSkillsDir).toBe(expected);
-    expect(runSkillPointerCalls[0].bundledSkillsPath).toEndWith(
-      path.join("bundled-skills"),
-    );
+    expectPipelineRan(expectedSkillsDir());
   });
 
   test("setup reports pipeline errors to stderr without throwing", async () => {
     runSkillPointerShouldThrow = true;
-    const writes: string[] = [];
-    const originalWrite = process.stderr.write;
-
-    process.stderr.write = ((chunk: string | Uint8Array) => {
-      writes.push(String(chunk));
-      return true;
-    }) as typeof process.stderr.write;
-
+    const { writes, restore } = captureStderr();
     try {
       await plugin.setup(undefined);
     } finally {
-      process.stderr.write = originalWrite;
+      restore();
     }
-
-    expect(writes).toHaveLength(1);
-    expect(writes[0]).toContain("[opencode-skills-collection]");
-    expect(writes[0]).toContain("skill pointer failure");
+    expectStderrReport(writes);
   });
 });
 
 describe("plugin entrypoint (OpenCode V1 back-compat)", () => {
-  beforeEach(async () => {
-    isolateHome();
-    ensureDirCalls.length = 0;
-    runSkillPointerCalls.length = 0;
-    runSkillPointerShouldThrow = false;
-    plugin = (await import("../index.js"))
-      .default as unknown as PluginDefinition;
-  });
-
-  afterEach(() => {
-    runSkillPointerShouldThrow = false;
-    restoreHome();
-  });
-
   test("exposes a server function returning empty hooks", async () => {
     expect(typeof plugin.server).toBe("function");
     const hooks = await plugin.server({} as unknown);
@@ -170,37 +172,19 @@ describe("plugin entrypoint (OpenCode V1 back-compat)", () => {
 
   test("server runs the same startup pipeline as setup", async () => {
     await plugin.server({} as unknown);
-
-    const expected = expectedSkillsDir();
-
-    expect(ensureDirCalls).toEqual([expected]);
-    expect(runSkillPointerCalls).toHaveLength(1);
-    expect(runSkillPointerCalls[0].activeSkillsDir).toBe(expected);
-    expect(runSkillPointerCalls[0].bundledSkillsPath).toEndWith(
-      path.join("bundled-skills"),
-    );
+    expectPipelineRan(expectedSkillsDir());
   });
 
   test("server reports pipeline errors to stderr without throwing", async () => {
     runSkillPointerShouldThrow = true;
-    const writes: string[] = [];
-    const originalWrite = process.stderr.write;
-
-    process.stderr.write = ((chunk: string | Uint8Array) => {
-      writes.push(String(chunk));
-      return true;
-    }) as typeof process.stderr.write;
-
+    const { writes, restore } = captureStderr();
     let hooks: unknown;
     try {
       hooks = await plugin.server({} as unknown);
     } finally {
-      process.stderr.write = originalWrite;
+      restore();
     }
-
     expect(hooks).toEqual({});
-    expect(writes).toHaveLength(1);
-    expect(writes[0]).toContain("[opencode-skills-collection]");
-    expect(writes[0]).toContain("skill pointer failure");
+    expectStderrReport(writes);
   });
 });
