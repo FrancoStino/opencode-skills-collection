@@ -42,7 +42,7 @@ opencode-skills-collection/
 │       ├── release.yml               # Manual version bump + GitHub release
 │       ├── merge-branch.yml          # Merge develop → main
 │       └── assign-issue.yml          # Auto-assign newly opened issues
-├── package.json                      # npm package config (@opencode-ai/plugin, strip-json-comments)
+├── package.json                      # npm package config (@opencode/plugin, strip-json-comments)
 ├── tsconfig.json                     # TypeScript config (ES2022, ESNext modules, bundler resolution)
 ├── AGENTS.md                         # AI agent instructions for this repo
 ├── README.md                         # Project documentation

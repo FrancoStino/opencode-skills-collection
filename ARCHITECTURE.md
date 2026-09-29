@@ -7,7 +7,7 @@
 **Key Characteristics:**
 - Plugin lifecycle: runs once at OpenCode startup via `Plugin` hook interface
 - Vault-based storage: full skill content lives in a hidden vault (`~/.config/opencode/skill-libraries/`) to avoid token bloat at startup
-- Pointer indirection: OpenCode reads lightweight `SKILL.md` pointers in `~/.config/opencode/skills/`, each listing available skills and vault path — the agent loads full skill content on-demand via `view_file`
+- Pointer indirection: OpenCode reads lightweight `SKILL.md` pointers in `~/.config/opencode/skills/`, each listing available skills and vault path — the agent loads full skill content on-demand via the `read` tool
 - Content safety: CI-time scanning with regex patterns quarantines dangerous skills before npm publish; runtime patching applies config-driven find/replace fixes
 - Risk-based filtering: user-configurable `skill-filter.jsonc` excludes skills by risk level or ID
 
@@ -16,9 +16,9 @@
 **Plugin Entry:**
 - Purpose: Bootstrap the SkillPointer pipeline, resolve paths, handle top-level errors
 - Location: `src/index.ts`
-- Contains: Path resolution (`resolveBundledSkillsPath`, `resolveActiveSkillsDir`), the `OpenCodeSkillsCollection` plugin function
+- Contains: Path resolution (`resolveBundledSkillsPath`, `resolveActiveSkillsDir`), the shared `runStartupPipeline()` plus the `opencode-skills-collection` V2 `Plugin.define` definition and the V1 `server()` back-compat wrapper
 - Depends on: `src/skill-pointer/index.ts` (`runSkillPointer`), `src/utils/fs.utils.ts` (`ensureDir`)
-- Used by: OpenCode runtime (loads as a plugin via `@opencode-ai/plugin`)
+- Used by: OpenCode runtime (loads as a plugin via `@opencode/plugin`)
 
 **SkillPointer Orchestrator:**
 - Purpose: Sequence the full pipeline — load index, filter, install vault, patch content, generate pointers
@@ -133,7 +133,7 @@
 ## Entry Points
 
 **OpenCode Plugin Hook:**
-- Location: `src/index.ts` (default export `OpenCodeSkillsCollection`)
+- Location: `src/index.ts` (default export via `Plugin.define`, id `opencode-skills-collection`)
 - Triggers: OpenCode startup (plugin system loads the package)
 - Responsibilities: Resolve paths, ensure directories exist, invoke the full SkillPointer pipeline, catch and log errors to stderr
 
