@@ -24,14 +24,21 @@ const ensureDirCalls: string[] = [];
 const runSkillPointerCalls: RunSkillPointerArgs[] = [];
 let runSkillPointerShouldThrow = false;
 
-// Isolate the entrypoint from its downstream side effects. mock.module
-// overrides are scoped to this test file by the Bun runner; there is no
-// cross-file restore to perform here.
-mock.module("../utils/fs.utils.js", () => ({
-  ensureDir: (dir: string) => {
-    ensureDirCalls.push(dir);
-  },
-}));
+// Isolate the entrypoint from the skill-pointer pipeline, but keep the real
+// filesystem side effect: Bun shares the module registry across test files in
+// one run, so a pure no-op mock would break pointer-generator.test.ts which
+// imports the real ensureDir and expects directories to exist.
+mock.module("../utils/fs.utils.js", () => {
+  // require() inside the factory: Bun re-executes the factory isolated,
+  // so it cannot close over outer-scope imports.
+  const fs = require("node:fs");
+  return {
+    ensureDir: (dir: string) => {
+      ensureDirCalls.push(dir);
+      fs.mkdirSync(dir, { recursive: true });
+    },
+  };
+});
 
 mock.module("../skill-pointer/index.js", () => ({
   runSkillPointer: (args: RunSkillPointerArgs) => {

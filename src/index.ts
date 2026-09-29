@@ -4,7 +4,7 @@ import os from "os";
 import path from "path";
 import {fileURLToPath} from "url";
 import {ensureDir} from "./utils/fs.utils.js";
-import {runSkillPointer} from "./skill-pointer";
+import {runSkillPointer} from "./skill-pointer/index.js";
 
 const ACTIVE_SKILLS_PATH_SEGMENTS = [".config", "opencode", "skills"] as const;
 

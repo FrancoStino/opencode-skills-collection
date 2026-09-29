@@ -33,7 +33,7 @@
   ],
   "author": "Davide Ladisa <info@davideladisa.it>",
   "license": "MIT",
-  "packageManager": "bun@1.4.x",
+  "packageManager": "bun@1.4.2",
   "publishConfig": {
     "access": "public",
     "provenance": true

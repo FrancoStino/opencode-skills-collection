@@ -113,7 +113,7 @@ Add the plugin to your global OpenCode configuration file at `~/.config/opencode
 }
 ```
 
-For OpenCode V1, use the `plugin` key instead:
+For OpenCode V1 (>= 1.18.29), use the `plugin` key instead (older V1 releases expect a function entrypoint and cannot load this version):
 
 ```jsonc
 {
@@ -270,7 +270,7 @@ To use the latest beta version, update your `~/.config/opencode/opencode.json`:
 }
 ```
 
-For OpenCode V1:
+For OpenCode V1 (>= 1.18.29):
 
 ```jsonc
 {
