@@ -7,7 +7,7 @@
 **Key Characteristics:**
 - Plugin lifecycle: runs once at OpenCode startup via `Plugin` hook interface
 - Vault-based storage: full skill content lives in a hidden vault (`~/.config/opencode/skill-libraries/`) to avoid token bloat at startup
-- Pointer indirection: OpenCode reads lightweight `SKILL.md` pointers in `~/.config/opencode/skills/`, each listing available skills and vault path — the agent loads full skill content on-demand via `view_file`
+- Pointer indirection: OpenCode reads lightweight `SKILL.md` pointers in `~/.config/opencode/skills/`, each listing available skills and vault path — the agent loads full skill content on-demand via the `read` tool
 - Content safety: CI-time scanning with regex patterns quarantines dangerous skills before npm publish; runtime patching applies config-driven find/replace fixes
 - Risk-based filtering: user-configurable `skill-filter.jsonc` excludes skills by risk level or ID
 
@@ -16,9 +16,9 @@
 **Plugin Entry:**
 - Purpose: Bootstrap the SkillPointer pipeline, resolve paths, handle top-level errors
 - Location: `src/index.ts`
-- Contains: Path resolution (`resolveBundledSkillsPath`, `resolveActiveSkillsDir`), the `OpenCodeSkillsCollection` plugin function
+- Contains: Path resolution (`resolveBundledSkillsPath`, `resolveActiveSkillsDir`), the shared `runStartupPipeline()` plus the `opencode-skills-collection` V2 `Plugin.define` definition and the V1 `server()` back-compat wrapper
 - Depends on: `src/skill-pointer/index.ts` (`runSkillPointer`), `src/utils/fs.utils.ts` (`ensureDir`)
-- Used by: OpenCode runtime (loads as a plugin via `@opencode-ai/plugin`)
+- Used by: OpenCode runtime (loads as a plugin via `@opencode/plugin` on V2, `@opencode-ai/plugin` on V1 >= 1.18.29 which supports the object-form entrypoint)
 
 **SkillPointer Orchestrator:**
 - Purpose: Sequence the full pipeline — load index, filter, install vault, patch content, generate pointers
@@ -133,7 +133,7 @@
 ## Entry Points
 
 **OpenCode Plugin Hook:**
-- Location: `src/index.ts` (default export `OpenCodeSkillsCollection`)
+- Location: `src/index.ts` (default export spreads `Plugin.define`, id `opencode-skills-collection`, plus a V1 `server()` back-compat wrapper; V1 object-form entrypoint requires OpenCode >= 1.18.29)
 - Triggers: OpenCode startup (plugin system loads the package)
 - Responsibilities: Resolve paths, ensure directories exist, invoke the full SkillPointer pipeline, catch and log errors to stderr
 
@@ -144,7 +144,7 @@
 
 ## Error Handling
 
-**Strategy:** Fail-closed at the plugin level with stderr logging. The top-level `try/catch` in `src/index.ts` catches any pipeline failure and writes to `process.stderr`, then returns an empty plugin object — OpenCode continues without skills rather than crashing. Individual pipeline stages use safe defaults:
+**Strategy:** Fail-closed at the plugin level with stderr logging. Both handlers in `src/index.ts` (`server()` on V1, `setup()` on V2) wrap `runStartupPipeline()` in `try/catch` and write failures to `process.stderr` — OpenCode continues without skills rather than crashing. The V1 `server()` handler additionally returns an empty plugin object (`{}`) on both success and caught failure; the V2 `setup()` handler returns nothing. Individual pipeline stages use safe defaults:
 - `loadFilterConfig()` returns empty defaults on missing file, parse errors, or invalid entries
 - `loadSkillsIndex()` falls back to scanning `SKILL.md` frontmatter when `skills_index.json` is missing or corrupt
 - `applySkillPatches()` silently skips invalid regex patterns and unmapped skill IDs

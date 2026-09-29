@@ -41,6 +41,10 @@ describe("Pointer Generator", () => {
     expect(content).toContain("laravel-expert");
     expect(content).toContain("Laravel framework skills");
     expect(content).toContain("1 specialized");
+    // V2 tool names: pointers must instruct the agent to use `read`.
+    expect(content).toContain("`read`");
+    expect(content).not.toContain("view_file");
+    expect(content).not.toContain("list_dir");
   });
 
   test("does not generate pointers when index is empty even if vault has subdirs", () => {

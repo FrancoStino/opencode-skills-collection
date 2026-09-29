@@ -61,7 +61,7 @@ bundled-skills/ (npm package)
 
 **2. On-demand skill loading**
 
-Each pointer file tells the AI: *"there are N skills for this category in the vault — use `list_dir` / `view_file` to
+Each pointer file tells the AI: *"there are N skills for this category in the vault — use `read` to
 retrieve them when needed."*
 The full skill content is only injected into context when the AI actually needs it.
 
@@ -104,8 +104,20 @@ After the first startup, your `~/.config/opencode/` directory looks like this:
 
 Add the plugin to your global OpenCode configuration file at `~/.config/opencode/opencode.json`:
 
-```json
+```jsonc
 {
+  // OpenCode V2
+  "plugins": [
+    "opencode-skills-collection@latest"
+  ]
+}
+```
+
+For OpenCode V1 (>= 1.18.29), use the `plugin` key instead (older V1 releases expect a function entrypoint and cannot load this version):
+
+```jsonc
+{
+  // OpenCode V1
   "plugin": [
     "opencode-skills-collection@latest"
   ]
@@ -249,8 +261,20 @@ Beta versions are published from the `develop` branch for testing before officia
 
 To use the latest beta version, update your `~/.config/opencode/opencode.json`:
 
-```json
+```jsonc
 {
+  // OpenCode V2
+  "plugins": [
+    "opencode-skills-collection@beta"
+  ]
+}
+```
+
+For OpenCode V1 (>= 1.18.29):
+
+```jsonc
+{
+  // OpenCode V1
   "plugin": [
     "opencode-skills-collection@beta"
   ]

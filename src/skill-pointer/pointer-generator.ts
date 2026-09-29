@@ -37,7 +37,7 @@ ${skillList}
 ## How to load a skill
 
 1. Identify the skill name above matching your task.
-2. Use \`view_file\` to read its \`SKILL.md\` from the vault:
+2. Use \`read\` to load its \`SKILL.md\` from the vault:
    \`${normalizedPath}/<skill-name>/SKILL.md\`
 3. Follow those instructions to complete the request.
 
@@ -54,8 +54,7 @@ ${skillList}
  * a lightweight pointer SKILL.md into the active skills directory.
  *
  * Each pointer includes the full list of skill names + descriptions
- * so keyword searches (e.g. "laravel", "wordpress") resolve correctly
- * via get_available_skills without loading every SKILL.md.
+ * so the agent can match tasks to skills without loading every SKILL.md.
  */
 export function generatePointers(
   activeSkillsDir: string,
