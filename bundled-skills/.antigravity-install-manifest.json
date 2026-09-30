@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-29T03:02:52.069Z",
+  "updatedAt": "2026-09-30T02:44:27.590Z",
   "entries": [
     "00-andruia-consultant",
     "007",
@@ -1665,6 +1665,7 @@
     "office-productivity",
     "okta-attack",
     "ollama-stack",
+    "omentir-linkedin-outreach",
     "omp-delegate",
     "on-call-handoff-patterns",
     "onboarding",
@@ -2054,6 +2055,7 @@
     "signup-flow-cro",
     "similarity-search-patterns",
     "simplify-code",
+    "since-cutoff",
     "site-architecture",
     "skill-audit",
     "skill-check",
