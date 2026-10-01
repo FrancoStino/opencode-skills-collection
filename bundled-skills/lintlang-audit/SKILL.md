@@ -40,12 +40,12 @@ behavior are outside this skill.
 ## How It Works
 
 1. Check the runner with `lintlang --version`. Use it when it reports the
-   released `0.8.0` version. If it is missing or reports any other version
+   released `0.8.2` version. If it is missing or reports any other version
    and `uvx` exists, use
    `uvx --from lintlang==0.8.2 lintlang --version`, then keep that exact runner
    for the scan. `uvx` may fetch the pinned package on first use; the scan
    itself reads local files and makes no network or model call. If neither
-   runner provides version `0.8.0`, report the missing prerequisite. Do not install a package or
+   runner provides version `0.8.2`, report the missing prerequisite. Do not install a package or
    change the user's environment as part of an audit.
 2. Scan only the named paths and request JSON. Pass each path as one quoted
    argument; `--` protects filenames beginning with a hyphen:
