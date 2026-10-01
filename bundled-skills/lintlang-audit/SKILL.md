@@ -3,14 +3,14 @@ name: lintlang-audit
 description: Audit named agent instructions, tool definitions, and supported Python prompts with local LintLang checks; return finding codes and locations without changing files.
 category: development
 risk: safe
-source: https://github.com/hermes-labs-ai/lintlang/tree/c0cab00048220286858f227aaf4b13cc043f718b/integrations/claude-code/skills/lintlang-audit
+source: https://github.com/hermes-labs-ai/lintlang/tree/6115fb5b86611b81e18144a9d9ec7111b68978f5/integrations/claude-code/skills/lintlang-audit
 source_repo: hermes-labs-ai/lintlang
 source_type: official
 date_added: "2026-09-26"
 author: Hermes Labs
 tags: [ai-agents, linting, prompts, static-analysis]
 license: Apache-2.0
-license_source: https://github.com/hermes-labs-ai/lintlang/blob/c0cab00048220286858f227aaf4b13cc043f718b/LICENSE
+license_source: https://github.com/hermes-labs-ai/lintlang/blob/6115fb5b86611b81e18144a9d9ec7111b68978f5/LICENSE
 ---
 
 # Audit agent instructions with LintLang
@@ -19,12 +19,12 @@ license_source: https://github.com/hermes-labs-ai/lintlang/blob/c0cab00048220286
 
 Use this skill to check a named agent instruction file, tool definition, or
 supported Python prompt for ambiguous choices, conflicting requirements, schema
-gaps, and missing bounds before an agent runs. It runs LintLang 0.8.0 locally and
+gaps, and missing bounds before an agent runs. It runs LintLang 0.8.2 locally and
 reports actionable finding codes and locations without editing files or calling
 a model. This adapts the [upstream LintLang audit
-skill](https://github.com/hermes-labs-ai/lintlang/tree/c0cab00048220286858f227aaf4b13cc043f718b/integrations/claude-code/skills/lintlang-audit);
+skill](https://github.com/hermes-labs-ai/lintlang/tree/6115fb5b86611b81e18144a9d9ec7111b68978f5/integrations/claude-code/skills/lintlang-audit);
 the Apache-2.0 notice is retained at the pinned
-[upstream LICENSE](https://github.com/hermes-labs-ai/lintlang/blob/c0cab00048220286858f227aaf4b13cc043f718b/LICENSE).
+[upstream LICENSE](https://github.com/hermes-labs-ai/lintlang/blob/6115fb5b86611b81e18144a9d9ec7111b68978f5/LICENSE).
 
 ## When to Use
 
@@ -42,7 +42,7 @@ behavior are outside this skill.
 1. Check the runner with `lintlang --version`. Use it when it reports the
    released `0.8.0` version. If it is missing or reports any other version
    and `uvx` exists, use
-   `uvx --from lintlang==0.8.0 lintlang --version`, then keep that exact runner
+   `uvx --from lintlang==0.8.2 lintlang --version`, then keep that exact runner
    for the scan. `uvx` may fetch the pinned package on first use; the scan
    itself reads local files and makes no network or model call. If neither
    runner provides version `0.8.0`, report the missing prerequisite. Do not install a package or
@@ -52,7 +52,7 @@ behavior are outside this skill.
 
    ```bash
    lintlang scan --format json -- "path with spaces/agent.yaml"
-   uvx --from lintlang==0.8.0 lintlang scan --format json -- "path with spaces/agent.yaml"
+   uvx --from lintlang==0.8.2 lintlang scan --format json -- "path with spaces/agent.yaml"
    ```
 
    Use only the command matching the runner selected in step 1. Add
@@ -76,14 +76,14 @@ behavior are outside this skill.
 For a named agent config, run a read-only audit and inspect the JSON verdict:
 
 ```bash
-uvx --from lintlang==0.8.0 lintlang scan --format json -- "configs/support agent.yaml"
+uvx --from lintlang==0.8.2 lintlang scan --format json -- "configs/support agent.yaml"
 ```
 
 For a CI-style gate over a named instruction file, request the threshold
 explicitly and still inspect `input_error` in the JSON:
 
 ```bash
-uvx --from lintlang==0.8.0 lintlang scan --format json --fail-on fail -- "AGENTS.md"
+uvx --from lintlang==0.8.2 lintlang scan --format json --fail-on fail -- "AGENTS.md"
 ```
 
 ## Limitations

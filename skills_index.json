@@ -35732,7 +35732,7 @@
     "name": "lintlang-audit",
     "description": "Audit named agent instructions, tool definitions, and supported Python prompts with local LintLang checks; return finding codes and locations without changing files.",
     "risk": "safe",
-    "source": "https://github.com/hermes-labs-ai/lintlang/tree/c0cab00048220286858f227aaf4b13cc043f718b/integrations/claude-code/skills/lintlang-audit",
+    "source": "https://github.com/hermes-labs-ai/lintlang/tree/6115fb5b86611b81e18144a9d9ec7111b68978f5/integrations/claude-code/skills/lintlang-audit",
     "date_added": "2026-09-26",
     "plugin": {
       "targets": {
@@ -35749,7 +35749,7 @@
     "source_type": "official",
     "source_repo": "hermes-labs-ai/lintlang",
     "license": "Apache-2.0",
-    "license_source": "https://github.com/hermes-labs-ai/lintlang/blob/c0cab00048220286858f227aaf4b13cc043f718b/LICENSE",
+    "license_source": "https://github.com/hermes-labs-ai/lintlang/blob/6115fb5b86611b81e18144a9d9ec7111b68978f5/LICENSE",
     "tags": [
       "ai-agents",
       "linting",
