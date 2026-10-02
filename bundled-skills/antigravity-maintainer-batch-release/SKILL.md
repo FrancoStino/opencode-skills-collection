@@ -20,7 +20,7 @@ Treat the repository root containing this skill as pull-request-only:
 - Never commit or push directly to `main`, even when the user says “push to main.” That phrase names the final target state.
 - Preserve unrelated dirty work. Use a clean temporary clone or a topic branch for maintainer changes.
 - Use `npm run merge:batch` for accepted source PRs. Do not substitute a raw merge API, generic GitHub skill, or generic push helper.
-- Let `automation/canonical-repo-state` own generated artifacts and contributor-credit convergence after the source batch.
+- Let `automation/canonical-repo-state` own generated artifacts and contributor-credit convergence after the source batch. That lane runs `sync:repo-state`, which now also recomputes the README `## Top Contributors` leaderboards through `sync:top-contributors`: never hand-edit those tables, and treat a stale ranking as a generator or exclusion-list defect instead.
 - Use `release:prepare` and `release:publish` for releases. They never authorize a direct `main` push.
 
 ## Source Checks
@@ -75,6 +75,20 @@ Interpret manifest states from the actual report, not from a workflow badge:
 | `incomplete` | Snapshot rejection, timeout, malformed/missing output, or another caught operational error. Read the recorded error; do not infer a clean result. |
 
 Review findings individually during the pilot. Missing `allowed-tools`, environment credentials sent to an API, low risk scores, and offensive educational examples require context and declared purpose. Do not bulk-accept a baseline or silently suppress reports. Any later suppression policy or blocking rule needs a separately reviewed workflow-contract change. The official skill-content review remains Tessl or exact-head maintainer attestation.
+
+### SkillSpector triage calibration
+
+Calibrate raw finding counts against the repository's own corpus shape before treating them as defect counts. A full static maintenance sweep prints thousands of findings, most of which are the scanner describing documentation, not the skill acting:
+
+- Prose dominates. Roughly nine in ten findings sit in `SKILL.md`, README, and `references/**` prose. A security reference that documents `Ignore all previous instructions` or `.env` handling is describing an attack, not performing one. Triage the executable surface first: a finding in a shipped `.py`/`.js`/`.sh`/`.ts`, not in a `.md`, is the one worth a code review.
+- `Credential Access` on a `.env`, `access_token`, or `keychain` token is usually configuration reading, and can even be a guard such as `--exclude='.env'`. Confirm intent by reading the line before treating it as privilege escalation.
+- Offensive-by-design skills (pentest, exploit, privilege-escalation, reverse-engineering) match offensive patterns because that is their declared purpose and risk label. Do not count them as regressions or use their score to gate them.
+- `partial` / incomplete analysis is the static-mode default, not a repository defect. It means at least one analyzer was degraded or a bounded parser hit its span limit.
+- Bundled fixture trees (generated apps, benchmarks, `examples/**`, recorded sessions) inflate a skill's score with code the skill does not ship as guidance. Clean the packaging; do not patch fixture vulnerabilities.
+
+When a real executable defect is confirmed, fix it in the source skill with the normal validation and PR path, and treat the scanner as advisory input. A near-total reduction in headline findings after calibration is expected and is not an unexplained gap.
+
+The official skill-content review remains Tessl or exact-head maintainer attestation.
 
 ## Maintainer Sweep
 
