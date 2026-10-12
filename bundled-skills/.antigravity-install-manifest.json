@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-11T02:35:51.067Z",
+  "updatedAt": "2026-10-12T03:00:05.001Z",
   "entries": [
     "00-andruia-consultant",
     "007",
@@ -1416,6 +1416,7 @@
     "k8s-manifest-generator",
     "k8s-security-policies",
     "kaizen",
+    "kernel-prompt",
     "keyword-extractor",
     "kimi-delegate",
     "klaviyo-automation",
@@ -2213,6 +2214,7 @@
     "simplify-code",
     "since-cutoff",
     "site-architecture",
+    "skeleton-first",
     "skill-audit",
     "skill-check",
     "skill-creator",
