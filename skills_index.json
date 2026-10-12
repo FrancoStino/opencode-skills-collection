@@ -18921,7 +18921,7 @@
     "path": "skills/datacircle",
     "category": "data",
     "name": "datacircle",
-    "description": "Look up LinkedIn profiles by URL through Datacircle (Up2Data or HarvestAPI, no markup), over its hosted MCP server or REST API, with the user's yes before each paid call.",
+    "description": "Look up LinkedIn profiles by URL through Datacircle (Up2Data, HarvestAPI or Fetchin, no markup), over its hosted MCP server or REST API, with the user's yes before each paid call.",
     "risk": "critical",
     "source": "self",
     "date_added": "2026-10-10",
@@ -35270,6 +35270,38 @@
       },
       "reasons": []
     }
+  },
+  {
+    "id": "kernel-prompt",
+    "path": "skills/kernel-prompt",
+    "category": "productivity",
+    "name": "kernel-prompt",
+    "description": "Use when composing or improving an LLM prompt or agent instruction. Asks one round of questions, then returns only the prompt; never performs the task.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-10-10",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "codegiveness/kernel-prompt",
+    "license": "MIT",
+    "license_source": "https://github.com/codegiveness/kernel-prompt/blob/main/LICENSE",
+    "tags": [
+      "prompt-engineering",
+      "meta-prompting",
+      "prompt-optimization",
+      "agent-handoff"
+    ]
   },
   {
     "id": "keyword-extractor",
@@ -56002,6 +56034,40 @@
       },
       "reasons": []
     }
+  },
+  {
+    "id": "skeleton-first",
+    "path": "skills/skeleton-first",
+    "category": "workflow",
+    "name": "skeleton-first",
+    "description": "Prove a data/AI/agent workflow end to end on a tiny sample, find cheap wins, then scale in cost-gated steps within budget.",
+    "risk": "safe",
+    "source": "self",
+    "date_added": "2026-10-11",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "self",
+    "tags": [
+      "llm",
+      "cost",
+      "pipeline",
+      "etl",
+      "rag",
+      "dbt",
+      "snowflake",
+      "budget",
+      "data-engineering"
+    ]
   },
   {
     "id": "skeuomorphism",
