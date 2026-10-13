@@ -11,7 +11,7 @@ author: masakaai
 tags: [browser, wpe-webkit, automation, docker, jsonl, testing]
 tools: [claude, codex]
 license: Apache-2.0
-license_source: "https://github.com/masakaai/jet-browser/blob/v0.6.7/LICENSE"
+license_source: "https://github.com/masakaai/jet-browser/blob/v0.9.0/LICENSE"
 ---
 
 # Jet Browser
@@ -38,10 +38,10 @@ Confirm that the user wants a separate Jet Browser container rather than their d
 
 For a new checkout or upgrade, identify an immutable release or full commit, inspect the repository's `package.json`, lifecycle scripts, lockfile, Dockerfiles, executable files, symlinks, network access, and credential handling, and summarize what will run. Obtain explicit approval before downloading and again before installing dependencies, building images, or starting containers. A Git commit pin provides reproducibility, not proof of trust.
 
-The v0.6.7 source commit reviewed for this catalog entry is:
+The v0.9.0 source commit reviewed for this catalog entry is:
 
 ```text
-882b17ab1b865560f17dbfeeeea0a7b40b95a146
+b0867303260212eaeb427970b9a7fc6f8eed2fe1
 ```
 
 Review a newer source tree independently before changing that pin.
@@ -82,7 +82,7 @@ After inspecting the pinned source and receiving the required approvals:
 
 ```bash
 git clone --filter=blob:none --no-checkout https://github.com/masakaai/jet-browser.git
-git -C jet-browser checkout --detach 882b17ab1b865560f17dbfeeeea0a7b40b95a146
+git -C jet-browser checkout --detach b0867303260212eaeb427970b9a7fc6f8eed2fe1
 cd jet-browser
 npm ci
 npm run standalone
@@ -103,7 +103,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Verify Jet Browser
-        uses: masakaai/jet-browser@882b17ab1b865560f17dbfeeeea0a7b40b95a146 # v0.6.7
+        uses: masakaai/jet-browser@b0867303260212eaeb427970b9a7fc6f8eed2fe1 # v0.9.0
 ```
 
 This checks the public `linux/amd64` release image on a GitHub-hosted Linux runner. Review the Action source and repository workflow permissions before use.
@@ -122,7 +122,7 @@ This checks the public `linux/amd64` release image on a GitHub-hosted Linux runn
 ## Limitations
 
 - Jet Browser uses WPE WebKit, not Chromium. It does not implement Chrome-only extension, enterprise-policy, or CDP contracts.
-- The published v0.6.7 image targets `linux/amd64`; ARM hosts need compatible emulation or a source build for the host architecture.
+- The published v0.9.0 manifest provides native `linux/amd64` and `linux/arm64` images. Other architectures need compatible emulation or a source build for the host architecture.
 - Docker and Node.js 24+ are required for the documented standalone flow; source development also requires the repository's Rust toolchain.
 - The standalone runtime does not include a hosted control plane, proxy network, account system, persistent daily-browser takeover, or model loop.
 - The published ready-time and memory figures are medians from a pinned offline fixture. They do not measure public-site success, stealth, CAPTCHA handling, model accuracy, or long-running stability.
@@ -139,8 +139,8 @@ This checks the public `linux/amd64` release image on a GitHub-hosted Linux runn
 
 - **Problem:** The task needs an already logged-in personal browser.
   **Solution:** Do not use Jet Browser for that path; use the environment's authorized CDP integration.
-- **Problem:** The image fails on an ARM host.
-  **Solution:** Use Docker's `linux/amd64` emulation when appropriate or build the pinned source for the host architecture.
+- **Problem:** The image fails on a host outside the published architecture set.
+  **Solution:** Let Docker select the native `linux/amd64` or `linux/arm64` manifest entry. For another architecture, use compatible emulation or build the pinned source for that host.
 - **Problem:** A harness assumes Chromium/CDP fields.
   **Solution:** Use the JSONL protocol and `sdk/tools.mjs` declarations shipped by the pinned Jet source.
 - **Problem:** A partial startup is reported as a pass.
@@ -149,7 +149,7 @@ This checks the public `linux/amd64` release image on a GitHub-hosted Linux runn
 ## Additional Resources
 
 - [Jet Browser source](https://github.com/masakaai/jet-browser)
-- [v0.6.7 release](https://github.com/masakaai/jet-browser/releases/tag/v0.6.7)
-- [Standalone demo](https://github.com/masakaai/jet-browser/blob/v0.6.7/docs/demo.md)
-- [Agent tool catalog](https://github.com/masakaai/jet-browser/blob/v0.6.7/docs/agent-tools.md)
-- [Benchmark method](https://github.com/masakaai/jet-browser/blob/v0.6.7/docs/benchmarks.md)
+- [v0.9.0 release](https://github.com/masakaai/jet-browser/releases/tag/v0.9.0)
+- [Standalone demo](https://github.com/masakaai/jet-browser/blob/v0.9.0/docs/demo.md)
+- [Agent tool catalog](https://github.com/masakaai/jet-browser/blob/v0.9.0/docs/agent-tools.md)
+- [Benchmark method](https://github.com/masakaai/jet-browser/blob/v0.9.0/docs/benchmarks.md)
