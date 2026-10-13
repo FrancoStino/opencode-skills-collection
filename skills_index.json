@@ -2194,6 +2194,39 @@
     ]
   },
   {
+    "id": "ai-headshot-studio",
+    "path": "skills/ai-headshot-studio",
+    "category": "media",
+    "name": "ai-headshot-studio",
+    "description": "Install and use the official AI Headshot Generator package, pinned by digest, for paid hosted work on the Beatra service.",
+    "risk": "critical",
+    "source": "community",
+    "date_added": "2026-10-12",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "beatra-ai/ai-headshot-generator-skill",
+    "license": "MIT-0",
+    "license_source": "https://github.com/beatra-ai/ai-headshot-generator-skill/blob/a8818c3568f5c3fe3c0ef65d68498c1ce2e81b3a/LICENSE",
+    "tags": [
+      "headshot",
+      "text-to-image",
+      "mcp",
+      "paid-api",
+      "beatra"
+    ]
+  },
+  {
     "id": "ai-image-generation-studio",
     "path": "skills/ai-image-generation-studio",
     "category": "media",
@@ -5054,6 +5087,39 @@
     "license": "AGPL-3.0-only"
   },
   {
+    "id": "arcmira-find-quotes",
+    "path": "skills/arcmira-find-quotes",
+    "category": "research",
+    "name": "arcmira-find-quotes",
+    "description": "Search indexed YouTube and podcast transcripts for quotes, speakers and clip boundaries with timestamped source links using Arcmira.",
+    "risk": "safe",
+    "source": "https://github.com/arcmira/mcp/tree/v0.10.6/plugins/arcmira/skills/find-quotes",
+    "date_added": "2026-10-12",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "arcmira/mcp",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/arcmira/mcp/blob/v0.10.6/plugins/arcmira/LICENSE",
+    "tags": [
+      "youtube",
+      "transcripts",
+      "quotes",
+      "research",
+      "timestamps"
+    ]
+  },
+  {
     "id": "argocd-gitops",
     "path": "skills/argocd-gitops",
     "category": "devops",
@@ -6190,7 +6256,7 @@
     "path": "skills/awareness-stage-mapper",
     "category": "marketing",
     "name": "awareness-stage-mapper",
-    "description": "One sentence - what this skill does and when to invoke it",
+    "description": "Map audience awareness stages to messaging strategy when planning a campaign, offer, or persuasion sequence.",
     "risk": "safe",
     "source": "community",
     "date_added": "2026-04-04",
@@ -11126,7 +11192,7 @@
     "path": "skills/brand-perception-psychologist",
     "category": "marketing",
     "name": "brand-perception-psychologist",
-    "description": "One sentence - what this skill does and when to invoke it",
+    "description": "Audit visual, verbal, and behavioral brand signals and propose alignment changes when market perception differs from the intended position.",
     "risk": "safe",
     "source": "community",
     "date_added": "2026-04-04",
@@ -11924,6 +11990,40 @@
       },
       "reasons": []
     }
+  },
+  {
+    "id": "build-ui",
+    "path": "skills/build-ui",
+    "category": "frontend",
+    "name": "build-ui",
+    "description": "Step-by-step workflow for UI work: read the project, follow the plan for the job (new screen, dashboard, polish, simplify, review), then render, fix and check again.",
+    "risk": "safe",
+    "source": "https://github.com/uxkin/agent/tree/main/.agents/skills/build-ui",
+    "date_added": "2026-10-12",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "uxkin/agent",
+    "license": "MIT",
+    "license_source": "https://github.com/uxkin/agent/blob/main/LICENSE",
+    "tags": [
+      "ui",
+      "ux",
+      "frontend",
+      "design",
+      "workflow",
+      "review"
+    ]
   },
   {
     "id": "building-native-ui",
@@ -14428,6 +14528,37 @@
     "license_source": "https://github.com/coreyhaines31/marketingskills/blob/main/LICENSE"
   },
   {
+    "id": "cockney",
+    "path": "skills/cockney",
+    "category": "development",
+    "name": "cockney",
+    "description": "Cheeky Cockney coding mode: terse replies, the smallest correct change, plain English for anything risky.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-10-12",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "Kadajett/cockney",
+    "license": "MIT",
+    "license_source": "https://github.com/Kadajett/cockney/blob/master/LICENSE",
+    "tags": [
+      "coding-style",
+      "minimal-diff",
+      "persona"
+    ]
+  },
+  {
     "id": "coda-automation",
     "path": "skills/coda-automation",
     "category": "automation",
@@ -16864,7 +16995,7 @@
     "path": "skills/copywriting-psychologist",
     "category": "content",
     "name": "copywriting-psychologist",
-    "description": "One sentence - what this skill does and when to invoke it",
+    "description": "Write or revise conversion copy using audience awareness, motivations, and credible proof when ads, landing pages, or sales messages feel generic.",
     "risk": "safe",
     "source": "community",
     "date_added": "2026-04-04",
@@ -17953,7 +18084,7 @@
     "path": "skills/customer-psychographic-profiler",
     "category": "marketing",
     "name": "customer-psychographic-profiler",
-    "description": "One sentence - what this skill does and when to invoke it",
+    "description": "Build an evidence-grounded customer profile of motivations, fears, identity, and trust barriers before positioning, copywriting, or funnel design.",
     "risk": "safe",
     "source": "community",
     "date_added": "2026-04-04",
@@ -23054,7 +23185,7 @@
     "path": "skills/emotional-arc-designer",
     "category": "content",
     "name": "emotional-arc-designer",
-    "description": "One sentence - what this skill does and when to invoke it",
+    "description": "Map the emotional progression of a narrative, page, or campaign when content needs a coherent path from attention to action.",
     "risk": "safe",
     "source": "community",
     "date_added": "2026-04-04",
@@ -30087,7 +30218,7 @@
     "path": "skills/headline-psychologist",
     "category": "marketing",
     "name": "headline-psychologist",
-    "description": "One sentence - what this skill does and when to invoke it",
+    "description": "Draft and compare audience-aware headlines when copy needs clearer relevance and curiosity without clickbait or unsupported promises.",
     "risk": "safe",
     "source": "community",
     "date_added": "2026-04-04",
@@ -33323,7 +33454,7 @@
     "path": "skills/identity-mirror",
     "category": "marketing",
     "name": "identity-mirror",
-    "description": "One sentence - what this skill does and when to invoke it",
+    "description": "Map an audience's current and aspirational identity into credible messaging when copy needs stronger personal relevance.",
     "risk": "safe",
     "source": "community",
     "date_added": "2026-04-04",
@@ -34379,6 +34510,39 @@
     ]
   },
   {
+    "id": "invokely-statistics",
+    "path": "skills/invokely-statistics",
+    "category": "data",
+    "name": "invokely-statistics",
+    "description": "Use Invokely MCP to find official statistics, retrieve values and series, compare or rank places, and report each figure with its period, unit, and source citation.",
+    "risk": "safe",
+    "source": "https://github.com/estevecastells/awesome-copilot/blob/9d96d33228f753cf26d7da5115598da2c19ad900/skills/invokely-statistics/SKILL.md",
+    "date_added": "2026-10-12",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "estevecastells/awesome-copilot",
+    "license": "MIT",
+    "license_source": "https://github.com/estevecastells/awesome-copilot/blob/9d96d33228f753cf26d7da5115598da2c19ad900/LICENSE",
+    "tags": [
+      "invokely",
+      "mcp",
+      "statistics",
+      "official-data",
+      "citations"
+    ]
+  },
+  {
     "id": "ios-debugger-agent",
     "path": "skills/ios-debugger-agent",
     "category": "mobile",
@@ -34421,6 +34585,40 @@
       },
       "reasons": []
     }
+  },
+  {
+    "id": "ios-screens",
+    "path": "skills/ios-screens",
+    "category": "frontend",
+    "name": "ios-screens",
+    "description": "Build iPhone app screens that feel native: navigation, sheets, Dynamic Type, dark mode, permissions and paywalls, checked on small and large iPhones.",
+    "risk": "safe",
+    "source": "https://github.com/uxkin/agent/tree/main/.agents/skills/ios-screens",
+    "date_added": "2026-10-12",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "uxkin/agent",
+    "license": "MIT",
+    "license_source": "https://github.com/uxkin/agent/blob/main/LICENSE",
+    "tags": [
+      "ios",
+      "iphone",
+      "swiftui",
+      "react-native",
+      "mobile",
+      "ui"
+    ]
   },
   {
     "id": "iso27001-compliance",
@@ -34845,7 +35043,7 @@
     "source_type": "official",
     "source_repo": "masakaai/jet-browser",
     "license": "Apache-2.0",
-    "license_source": "https://github.com/masakaai/jet-browser/blob/v0.6.7/LICENSE",
+    "license_source": "https://github.com/masakaai/jet-browser/blob/v0.9.0/LICENSE",
     "tags": [
       "browser",
       "wpe-webkit",
@@ -38268,7 +38466,7 @@
     "path": "skills/loss-aversion-designer",
     "category": "design",
     "name": "loss-aversion-designer",
-    "description": "One sentence - what this skill does and when to invoke it",
+    "description": "Compare gain and loss framing and describe credible costs of inaction when an offer needs urgency without fearmongering.",
     "risk": "safe",
     "source": "community",
     "date_added": "2026-04-04",
@@ -43723,7 +43921,7 @@
     "path": "skills/objection-preemptor",
     "category": "marketing",
     "name": "objection-preemptor",
-    "description": "One sentence - what this skill does and when to invoke it",
+    "description": "Map customer objections and address them with evidence and choice-preserving language when a funnel, sales page, or pitch encounters recurring hesitation.",
     "risk": "safe",
     "source": "community",
     "date_added": "2026-04-04",
@@ -47058,7 +47256,7 @@
     "path": "skills/pitch-psychologist",
     "category": "marketing",
     "name": "pitch-psychologist",
-    "description": "One sentence - what this skill does and when to invoke it",
+    "description": "Structure pitches, decks, and talk tracks around audience beliefs, proof, and a clear decision when presentations need stronger progression.",
     "risk": "safe",
     "source": "community",
     "date_added": "2026-04-04",
@@ -48318,7 +48516,7 @@
     "path": "skills/price-psychology-strategist",
     "category": "marketing",
     "name": "price-psychology-strategist",
-    "description": "One sentence - what this skill does and when to invoke it",
+    "description": "Design pricing presentation, anchors, and tiers when an offer needs clearer value and fairness without misleading comparisons.",
     "risk": "safe",
     "source": "community",
     "date_added": "2026-04-04",
@@ -53343,7 +53541,7 @@
     "path": "skills/scarcity-urgency-psychologist",
     "category": "marketing",
     "name": "scarcity-urgency-psychologist",
-    "description": "One sentence - what this skill does and when to invoke it",
+    "description": "Design honest scarcity and urgency messaging when verified inventory, capacity, or deadlines justify a timely decision.",
     "risk": "safe",
     "source": "community",
     "date_added": "2026-04-04",
@@ -55301,7 +55499,7 @@
     "path": "skills/sequence-psychologist",
     "category": "marketing",
     "name": "sequence-psychologist",
-    "description": "One sentence - what this skill does and when to invoke it",
+    "description": "Plan email nurture and multi-touch communication sequences when each message should build trust and prepare the next decision.",
     "risk": "safe",
     "source": "community",
     "date_added": "2026-04-04",
@@ -57127,7 +57325,7 @@
     "path": "skills/social-proof-architect",
     "category": "marketing",
     "name": "social-proof-architect",
-    "description": "One sentence - what this skill does and when to invoke it",
+    "description": "Select and place genuine testimonials, case studies, and other proof when an audience needs evidence at specific trust barriers.",
     "risk": "safe",
     "source": "community",
     "date_added": "2026-04-04",
@@ -58804,7 +59002,7 @@
     "path": "skills/subject-line-psychologist",
     "category": "marketing",
     "name": "subject-line-psychologist",
-    "description": "One sentence - what this skill does and when to invoke it",
+    "description": "Draft email subject lines and notification copy matched to audience and sequence position when earning attention requires clarity and truthful curiosity.",
     "risk": "safe",
     "source": "community",
     "date_added": "2026-04-04",
@@ -61608,6 +61806,40 @@
     }
   },
   {
+    "id": "tokenleak",
+    "path": "skills/tokenleak",
+    "category": "development",
+    "name": "tokenleak",
+    "description": "Token-lean rules for coding agents: cut the context re-sent on every later call (big reads, noisy logs, re-reads, serial calls) without losing correctness.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-10-12",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "Pazificateur69/tokenleak",
+    "license": "MIT",
+    "license_source": "https://github.com/Pazificateur69/tokenleak/blob/main/LICENSE",
+    "tags": [
+      "tokens",
+      "context",
+      "cost",
+      "efficiency",
+      "claude-code",
+      "codex"
+    ]
+  },
+  {
     "id": "tokenwise",
     "path": "skills/tokenwise",
     "category": "developer-tools",
@@ -62290,7 +62522,7 @@
     "path": "skills/trust-calibrator",
     "category": "marketing",
     "name": "trust-calibrator",
-    "description": "One sentence - what this skill does and when to invoke it",
+    "description": "Diagnose audience trust barriers and calibrate proof, certainty, and credibility signals when messaging overclaims or fails to reassure.",
     "risk": "safe",
     "source": "community",
     "date_added": "2026-04-04",
@@ -62617,6 +62849,39 @@
     "license_source": "https://github.com/bitjaru/styleseed/blob/main/LICENSE"
   },
   {
+    "id": "ui-from-screenshot",
+    "path": "skills/ui-from-screenshot",
+    "category": "frontend",
+    "name": "ui-from-screenshot",
+    "description": "Turn a screenshot or mockup into matching UI with the project's own components, then compare the result side by side with the image and fix the differences.",
+    "risk": "safe",
+    "source": "https://github.com/uxkin/agent/tree/main/.agents/skills/ui-from-screenshot",
+    "date_added": "2026-10-12",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "uxkin/agent",
+    "license": "MIT",
+    "license_source": "https://github.com/uxkin/agent/blob/main/LICENSE",
+    "tags": [
+      "ui",
+      "frontend",
+      "screenshot",
+      "mockup",
+      "implementation"
+    ]
+  },
+  {
     "id": "ui-lint",
     "path": "skills/ui-lint",
     "category": "code-quality",
@@ -62845,6 +63110,40 @@
     "source_repo": "ibelick/ui-skills",
     "license": "MIT",
     "license_source": "https://github.com/ibelick/ui-skills/blob/main/LICENSE"
+  },
+  {
+    "id": "ui-states",
+    "path": "skills/ui-states",
+    "category": "frontend",
+    "name": "ui-states",
+    "description": "Design and build the UI states agents forget: first use, empty, loading, error, offline, no results, long content, permission denied and success.",
+    "risk": "safe",
+    "source": "https://github.com/uxkin/agent/tree/main/.agents/skills/ui-states",
+    "date_added": "2026-10-12",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "uxkin/agent",
+    "license": "MIT",
+    "license_source": "https://github.com/uxkin/agent/blob/main/LICENSE",
+    "tags": [
+      "ui",
+      "ux",
+      "edge-cases",
+      "states",
+      "frontend",
+      "quality"
+    ]
   },
   {
     "id": "ui-tokens",
@@ -63969,7 +64268,7 @@
     "path": "skills/ux-persuasion-engineer",
     "category": "design",
     "name": "ux-persuasion-engineer",
-    "description": "One sentence - what this skill does and when to invoke it",
+    "description": "Audit decision friction and propose clear, accessible UX flows when layout, defaults, or sequencing obstruct informed action.",
     "risk": "safe",
     "source": "community",
     "date_added": "2026-04-04",
@@ -64944,7 +65243,7 @@
     "path": "skills/visual-emotion-engineer",
     "category": "design",
     "name": "visual-emotion-engineer",
-    "description": "One sentence - what this skill does and when to invoke it",
+    "description": "Create a visual direction brief for color, typography, imagery, and hierarchy when design must support a defined emotion, culture, and accessibility needs.",
     "risk": "safe",
     "source": "community",
     "date_added": "2026-04-04",
@@ -67168,6 +67467,39 @@
       },
       "reasons": []
     }
+  },
+  {
+    "id": "write-design-md",
+    "path": "skills/write-design-md",
+    "category": "frontend",
+    "name": "write-design-md",
+    "description": "Write or update a project's DESIGN.md from the colors, type, spacing and components it really uses, with rules agents follow so new screens match.",
+    "risk": "safe",
+    "source": "https://github.com/uxkin/agent/tree/main/.agents/skills/design-md",
+    "date_added": "2026-10-12",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "uxkin/agent",
+    "license": "MIT",
+    "license_source": "https://github.com/uxkin/agent/blob/main/LICENSE",
+    "tags": [
+      "design-system",
+      "design-md",
+      "design-tokens",
+      "documentation",
+      "frontend"
+    ]
   },
   {
     "id": "write-in-my-voice",
