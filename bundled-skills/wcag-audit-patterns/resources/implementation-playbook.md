@@ -434,11 +434,13 @@ test('should have no accessibility violations', async ({ page }) => {
 });
 ````
 
+Use CLI tools only if the project already has reviewed, lockfile-pinned installations. Run from that project and replace the example URL with its authorized local/test target. If a binary is absent, report the missing prerequisite; do not download or install a moving package to complete an audit. Browser testing may load third-party resources, so keep real credentials and sensitive records out of test fixtures.
+
 ```bash
-# CLI tools
-npx @axe-core/cli https://example.com
-npx pa11y https://example.com
-lighthouse https://example.com --only-categories=accessibility
+# Existing project-local CLI tools; choose the tool already used by this project.
+./node_modules/.bin/axe http://localhost:3000
+./node_modules/.bin/pa11y http://localhost:3000
+./node_modules/.bin/lighthouse http://localhost:3000 --only-categories=accessibility
 ```
 
 ## Remediation Patterns
@@ -464,14 +466,16 @@ lighthouse https://example.com --only-categories=accessibility
 ### Fix: Insufficient Color Contrast
 
 ```css
-/* Before: 2.5:1 contrast */
+/* Before: #999999 on white is about 2.85:1 */
 .text {
-  color: #767676;
+  color: #999999;
+  background: #fff;
 }
 
-/* After: 4.5:1 contrast */
+/* After: #595959 on white is about 7.00:1 */
 .text {
   color: #595959;
+  background: #fff;
 }
 
 /* Or add background */
@@ -521,7 +525,7 @@ class AccessibleDropdown extends HTMLElement {
 
 - **Start early** - Accessibility from design phase
 - **Test with real users** - Disabled users provide best feedback
-- **Automate what you can** - 30-50% issues detectable
+- **Automate what you can** - Automated checks cover only part of accessibility; retain manual and assistive-technology checks.
 - **Use semantic HTML** - Reduces ARIA needs
 - **Document patterns** - Build accessible component library
 

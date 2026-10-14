@@ -1,6 +1,6 @@
 ---
 name: trust-calibrator
-description: "One sentence - what this skill does and when to invoke it"
+description: "Diagnose audience trust barriers and calibrate proof, certainty, and credibility signals when messaging overclaims or fails to reassure."
 risk: safe
 source: community
 date_added: "2026-04-04"

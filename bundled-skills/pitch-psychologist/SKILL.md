@@ -1,6 +1,6 @@
 ---
 name: pitch-psychologist
-description: "One sentence - what this skill does and when to invoke it"
+description: "Structure pitches, decks, and talk tracks around audience beliefs, proof, and a clear decision when presentations need stronger progression."
 risk: safe
 source: community
 date_added: "2026-04-04"

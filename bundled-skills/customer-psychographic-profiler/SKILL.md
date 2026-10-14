@@ -1,6 +1,6 @@
 ---
 name: customer-psychographic-profiler
-description: "One sentence - what this skill does and when to invoke it"
+description: "Build an evidence-grounded customer profile of motivations, fears, identity, and trust barriers before positioning, copywriting, or funnel design."
 risk: safe
 source: community
 date_added: "2026-04-04"

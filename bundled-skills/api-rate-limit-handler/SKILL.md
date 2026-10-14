@@ -54,22 +54,20 @@ function getRetryDelay(
   if (retryAfter) {
     const seconds = Number(retryAfter);
     if (Number.isFinite(seconds) && seconds >= 0) {
-      return Math.min(seconds * 1000, maxDelayMs);
+      return seconds * 1000;
     }
     // HTTP-date format
     const date = new Date(retryAfter).getTime();
     if (Number.isFinite(date)) {
-      return Math.min(Math.max(0, date - Date.now()), maxDelayMs);
+      return Math.max(0, date - Date.now());
     }
   }
 
   // GitHub documents x-ratelimit-reset as Unix epoch seconds.
-  const githubReset = Number(response.headers.get("x-ratelimit-reset"));
+  const resetHeader = response.headers.get("x-ratelimit-reset");
+  const githubReset = resetHeader === null || resetHeader.trim() === "" ? NaN : Number(resetHeader);
   if (Number.isFinite(githubReset)) {
-    return Math.min(
-      Math.max(0, githubReset * 1000 - Date.now()),
-      maxDelayMs
-    );
+    return Math.max(0, githubReset * 1000 - Date.now());
   }
 
   // Fallback: capped exponential backoff with full jitter.
@@ -77,6 +75,8 @@ function getRetryDelay(
   return Math.floor(Math.random() * cap);
 }
 ```
+
+Upstream hints are minimum waits; never truncate them to retry early. If a hint exceeds the remaining operation budget, stop without scheduling another request. The cap applies only to fallback backoff.
 
 Provider-specific reset headers do not share one unit or format. For example,
 some APIs return durations while GitHub returns epoch seconds. Parse an
@@ -103,7 +103,7 @@ async function fetchWithRetry(
     if (response.ok) return response;
 
     // Terminal errors — do not retry
-    if ([400, 401, 403, 404, 422].includes(response.status)) {
+    if (![408, 429, 500, 502, 503, 504].includes(response.status)) {
       throw new Error(`Terminal error ${response.status}: ${response.statusText}`);
     }
 
@@ -119,9 +119,9 @@ async function fetchWithRetry(
     }
 
     const remaining = maxElapsedMs - (Date.now() - startedAt);
-    const delay = Math.min(getRetryDelay(response, attempt), remaining);
-    if (delay <= 0) {
-      throw new Error(`Retry deadline exceeded after ${maxElapsedMs}ms`);
+    const delay = getRetryDelay(response, attempt);
+    if (remaining <= 0 || delay > remaining) {
+      throw new Error(`Retry cannot be scheduled within ${maxElapsedMs}ms`);
     }
 
     // Release the connection before waiting when the body is not needed.
@@ -214,31 +214,38 @@ mechanism and the same stable idempotency key is reused for every attempt.
 ```python
 import time
 import random
+from datetime import datetime, timezone
+from email.utils import parsedate_to_datetime
 import httpx
 
-def fetch_with_retry(url: str, max_retries: int = 3, **kwargs) -> httpx.Response:
+def fetch_with_retry(url: str, max_retries: int = 3, max_elapsed_s: float = 120, **kwargs) -> httpx.Response:
+    started = time.monotonic()
+    kwargs.setdefault("timeout", 10.0)
     for attempt in range(max_retries + 1):
         response = httpx.request("GET", url, **kwargs)
-
         if response.is_success:
             return response
-
-        if response.status_code in (400, 401, 403, 404, 422):
+        if response.status_code not in (408, 429, 500, 502, 503, 504) or attempt == max_retries:
             response.raise_for_status()
-
-        if attempt == max_retries:
-            response.raise_for_status()
-
-        # Parse Retry-After or compute backoff
         retry_after = response.headers.get("retry-after")
-        if retry_after and retry_after.isdigit():
-            delay = int(retry_after)
-        else:
-            delay = min(2 ** attempt + random.uniform(0, 1), 60)
-
-        print(f"Retrying in {delay:.1f}s (attempt {attempt + 1}/{max_retries})")
+        delay = min(2 ** attempt + random.uniform(0, 1), 60)
+        if retry_after:
+            try:
+                seconds = float(retry_after)
+                if seconds >= 0 and seconds < float("inf"):
+                    delay = seconds
+            except ValueError:
+                try:
+                    retry_at = parsedate_to_datetime(retry_after)
+                    delay = max(0, (retry_at - datetime.now(timezone.utc)).total_seconds())
+                except (ValueError, TypeError, OverflowError):
+                    pass
+        remaining = max_elapsed_s - (time.monotonic() - started)
+        if remaining <= 0 or delay > remaining:
+            response.close()
+            raise TimeoutError("Retry cannot fit the remaining operation budget")
+        response.close()
         time.sleep(delay)
-
     raise RuntimeError("Unreachable")
 ```
 

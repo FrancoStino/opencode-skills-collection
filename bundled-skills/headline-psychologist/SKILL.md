@@ -1,6 +1,6 @@
 ---
 name: headline-psychologist
-description: "One sentence - what this skill does and when to invoke it"
+description: "Draft and compare audience-aware headlines when copy needs clearer relevance and curiosity without clickbait or unsupported promises."
 risk: safe
 source: community
 date_added: "2026-04-04"

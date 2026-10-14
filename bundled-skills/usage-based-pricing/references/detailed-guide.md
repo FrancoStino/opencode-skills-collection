@@ -11,10 +11,12 @@ The best developer pricing is predictable, transparent, and obviously fair. Deve
 
 ## Before You Start
 
-Review the `/devmarketing-skills/skills/free-tier-strategy` skill to understand how free tiers connect to paid pricing. Your pricing model should feel like a natural extension of the free tier, not a completely different experience.
+Read the product's existing plan, free-tier rules, usage meters and constraints. The related `free-tier-strategy` guidance is optional and may not be installed; do not assume an upstream absolute directory exists.
 
 
 ## Pricing Page Clarity
+
+All monetary examples and provider comparisons below are illustrative, not current quotes or promised savings. Use supplied evidence, verified current prices and explicit units; unknown inputs remain unknown. No calculation authorizes changing a plan, charging a customer or making a compliance claim.
 
 ### Essential Pricing Page Elements
 
@@ -186,7 +188,7 @@ Total: $54.12
 **API for usage data:**
 ```bash
 curl https://api.example.com/usage \
-  -H "Authorization: Bearer sk_live_xxx"
+  -H "Authorization: Bearer $API_TOKEN"
 
 {
   "period": "2024-03-01/2024-03-31",
@@ -243,17 +245,17 @@ For enterprise sales, provide ROI tools:
 ```
 Your company:
 - Developers: [10]
-- Hours/week on auth: [5]
+- Hours/week on auth per developer: [5]
 - Fully-loaded cost/hour: [$150]
 
-Current cost: $3,000/week = $156,000/year
+Current cost: 10 × 5 × $150 = $7,500/week = $390,000/year (52 weeks)
 
 With [Product]:
 - Integration: 20 hours one-time = $3,000
 - Annual cost: $12,000
 - Maintenance: Near zero
 
-First year savings: $141,000
+Illustrative first year savings: $390,000 - $3,000 - $12,000 = $375,000
 ```
 
 ### Pricing Justification
@@ -263,7 +265,7 @@ When prices seem high, justify with:
 2. **Reliability** - "99.99% uptime saves you from outages"
 3. **Support** - "Engineering support, not offshore scripts"
 4. **Scale** - "Handles 10x traffic without config changes"
-5. **Security** - "SOC 2, GDPR, HIPAA included"
+5. **Security** - Cite the actual control evidence and the scope/date of any independent assessment; do not call legal compliance "included"
 
 
 ## Competitive Pricing Research
@@ -402,6 +404,6 @@ Developers share horror stories:
 
 ## Related Skills
 
-- `/devmarketing-skills/skills/free-tier-strategy` - Free tier design
-- `/devmarketing-skills/skills/developer-signup-flow` - Getting to the pricing page
-- `/devmarketing-skills/skills/developer-onboarding` - Demonstrating value before price
+- `@free-tier-strategy` - Free tier design
+- `@developer-signup-flow` - Getting to the pricing page
+- `@developer-onboarding` - Demonstrating value before price

@@ -1,6 +1,6 @@
 ---
 name: identity-mirror
-description: "One sentence - what this skill does and when to invoke it"
+description: "Map an audience's current and aspirational identity into credible messaging when copy needs stronger personal relevance."
 risk: safe
 source: community
 date_added: "2026-04-04"
