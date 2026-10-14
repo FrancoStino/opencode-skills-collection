@@ -1,6 +1,6 @@
 ---
 name: emotional-arc-designer
-description: "One sentence - what this skill does and when to invoke it"
+description: "Map the emotional progression of a narrative, page, or campaign when content needs a coherent path from attention to action."
 risk: safe
 source: community
 date_added: "2026-04-04"

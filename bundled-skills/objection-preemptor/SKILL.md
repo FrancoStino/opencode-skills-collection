@@ -1,6 +1,6 @@
 ---
 name: objection-preemptor
-description: "One sentence - what this skill does and when to invoke it"
+description: "Map customer objections and address them with evidence and choice-preserving language when a funnel, sales page, or pitch encounters recurring hesitation."
 risk: safe
 source: community
 date_added: "2026-04-04"

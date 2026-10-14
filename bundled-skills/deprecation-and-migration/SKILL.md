@@ -95,7 +95,7 @@ Don't deprecate without a working alternative. The replacement must:
 ### Migration Guide
 1. Replace `import { client } from 'old-service'` with `import { client } from 'new-service'`
 2. Update configuration (see examples below)
-3. Run the migration verification script: `npx migrate-check`
+3. Run the project-owned migration verification command documented in this guide. Do not execute an unknown package from the registry.
 ```
 
 ### Step 3: Migrate Incrementally
@@ -113,6 +113,8 @@ Migrate consumers one at a time, not all at once. For each consumer:
 **The Churn Rule:** If you own the infrastructure being deprecated, you are responsible for migrating your users — or providing backward-compatible updates that require no migration. Don't announce deprecation and leave users to figure it out.
 
 ### Step 4: Remove the Old System
+
+Use observed usage across a representative window and account for infrequent/offline consumers. Prepare an authorized rollback or archive before destructive removal; a missing recent log entry alone is not proof of zero consumers. Keep historical migration notices discoverable for affected users.
 
 Only after all consumers have migrated:
 

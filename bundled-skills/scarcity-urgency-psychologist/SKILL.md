@@ -1,6 +1,6 @@
 ---
 name: scarcity-urgency-psychologist
-description: "One sentence - what this skill does and when to invoke it"
+description: "Design honest scarcity and urgency messaging when verified inventory, capacity, or deadlines justify a timely decision."
 risk: safe
 source: community
 date_added: "2026-04-04"

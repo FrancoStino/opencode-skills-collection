@@ -1,6 +1,6 @@
 ---
 name: awareness-stage-mapper
-description: "One sentence - what this skill does and when to invoke it"
+description: "Map audience awareness stages to messaging strategy when planning a campaign, offer, or persuasion sequence."
 risk: safe
 source: community
 date_added: "2026-04-04"

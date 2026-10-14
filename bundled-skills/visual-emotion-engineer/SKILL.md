@@ -1,6 +1,6 @@
 ---
 name: visual-emotion-engineer
-description: "One sentence - what this skill does and when to invoke it"
+description: "Create a visual direction brief for color, typography, imagery, and hierarchy when design must support a defined emotion, culture, and accessibility needs."
 risk: safe
 source: community
 date_added: "2026-04-04"

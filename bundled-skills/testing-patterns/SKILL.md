@@ -183,9 +183,8 @@ expect(screen.getByText('Hello')).toBeTruthy();
 expect(screen.queryByText('Goodbye')).toBeNull();
 
 // Element appears asynchronously
-await waitFor(() => {
-  expect(screen.findByText('Loaded')).toBeTruthy();
-});
+// async-appearance-example: await the element, not the Promise
+expect(await screen.findByText('Loaded')).toBeTruthy();
 ```
 
 ## User Interaction Patterns

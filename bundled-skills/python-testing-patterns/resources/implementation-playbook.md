@@ -207,7 +207,10 @@ import pytest
 
 def is_valid_email(email: str) -> bool:
     """Check if email is valid."""
-    return "@" in email and "." in email.split("@")[1]
+    parts = email.split("@")
+    return len(parts) == 2 and bool(parts[0]) and "." in parts[1] and not parts[1].startswith(".") and not parts[1].endswith(".")
+
+# Teaching predicate for these fixtures, not complete RFC email validation.
 
 
 @pytest.mark.parametrize("email,expected", [
@@ -368,6 +371,7 @@ def test_exception_info():
 ```python
 # test_async.py
 import pytest
+import pytest_asyncio
 import asyncio
 
 async def fetch_data(url: str) -> dict:
@@ -395,7 +399,7 @@ async def test_concurrent_fetches():
     assert all("data" in r for r in results)
 
 
-@pytest.fixture
+@pytest_asyncio.fixture
 async def async_client():
     """Async fixture."""
     client = {"connected": True}

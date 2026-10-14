@@ -1,6 +1,6 @@
 ---
 name: social-proof-architect
-description: "One sentence - what this skill does and when to invoke it"
+description: "Select and place genuine testimonials, case studies, and other proof when an audience needs evidence at specific trust barriers."
 risk: safe
 source: community
 date_added: "2026-04-04"

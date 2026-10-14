@@ -1,6 +1,6 @@
 ---
 name: brand-perception-psychologist
-description: "One sentence - what this skill does and when to invoke it"
+description: "Audit visual, verbal, and behavioral brand signals and propose alignment changes when market perception differs from the intended position."
 risk: safe
 source: community
 date_added: "2026-04-04"

@@ -1,6 +1,6 @@
 ---
 name: subject-line-psychologist
-description: "One sentence - what this skill does and when to invoke it"
+description: "Draft email subject lines and notification copy matched to audience and sequence position when earning attention requires clarity and truthful curiosity."
 risk: safe
 source: community
 date_added: "2026-04-04"

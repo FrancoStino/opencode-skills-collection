@@ -109,6 +109,8 @@ Exact permission models vary by platform. Sanity uses role-based access. Content
 
 ## Platform Comparison
 
+These are selection considerations, not a current pricing or feature guarantee. Verify the chosen provider's official documentation, SDK version, quotas, preview authorization and pricing before implementation.
+
 | Feature | Sanity | Contentful | Strapi |
 |---------|--------|------------|--------|
 | Hosting | Cloud (managed) | Cloud (managed) | Self-hosted or Cloud |
@@ -189,6 +191,6 @@ Pull CMS content into email templates for consistent messaging across web and em
 
 ## Relevant Integration Guides
 
-- [Sanity](../../../tools/integrations/sanity.md) — GROQ queries, mutations, CLI
-- [Contentful](../../../tools/integrations/contentful.md) — Delivery/Management APIs, publishing
-- [Strapi](../../../tools/integrations/strapi.md) — REST CRUD, filters, document API
+- [Sanity documentation](https://www.sanity.io/docs) — GROQ queries, mutations, CLI
+- [Contentful documentation](https://www.contentful.com/developers/docs/) — Delivery/Management APIs, publishing
+- [Strapi documentation](https://docs.strapi.io/) — REST CRUD, filters, document API

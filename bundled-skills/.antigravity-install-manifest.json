@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-13T04:15:27.532Z",
+  "updatedAt": "2026-10-14T02:27:22.259Z",
   "entries": [
     "00-andruia-consultant",
     "007",
@@ -155,6 +155,7 @@
     "aomi-transact",
     "api-analyzer",
     "api-and-interface-design",
+    "api-contract-testing",
     "api-design-principles",
     "api-designer",
     "api-documentation",
@@ -1602,6 +1603,7 @@
     "mathguard",
     "matplotlib",
     "maxia",
+    "mcd-secret-menu-lab",
     "mcp-builder",
     "mcp-builder-ms",
     "mcp-dependency-drift-audit",

@@ -1,6 +1,6 @@
 ---
 name: ux-persuasion-engineer
-description: "One sentence - what this skill does and when to invoke it"
+description: "Audit decision friction and propose clear, accessible UX flows when layout, defaults, or sequencing obstruct informed action."
 risk: safe
 source: community
 date_added: "2026-04-04"

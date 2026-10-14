@@ -64,6 +64,8 @@ Apply SRE rigor to AI systems where incidents include quality regressions, unsaf
 
 ## Prometheus Alert Rules
 
+The thresholds below are illustrative. Calibrate them to the declared SLO, metric units, tenant budgets and workload; a groundedness proxy is not a verified quality measurement. Counter rates are per second, so the cost-per-minute alert explicitly multiplies by 60.
+
 ```yaml
 # prometheus-ai-alerts.yaml
 groups:
@@ -91,7 +93,7 @@ groups:
 
       - alert: TokenCostExplosion
         expr: |
-          sum(rate(llm_token_cost_dollars[5m])) by (tenant)
+          60 * sum(rate(llm_token_cost_dollars[5m])) by (tenant)
           > 0.50
         for: 3m
         labels:
@@ -186,7 +188,7 @@ RESPONDER: On-call AI engineer + ML lead
      kubectl rollout undo deployment/llm-inference -n ai
 5. If recent prompt change:
      git revert <commit> && git push  # triggers GitOps redeploy
-6. Increase trace sampling to 100% for affected route:
+6. If authorized, increase redacted trace sampling for the affected route only after checking personal-data exposure and the remaining storage/cost budget:
      kubectl set env deployment/llm-gateway TRACE_SAMPLE_RATE=1.0
 7. Run offline eval suite against current production:
      python run_evals.py --target prod --suite quality --compare baseline
@@ -213,8 +215,7 @@ RESPONDER: On-call platform engineer
      '
 4. Enable semantic cache if disabled:
      kubectl set env deployment/llm-gateway CACHE_ENABLED=true
-5. Route traffic to cheaper model tier:
-     kubectl set env deployment/llm-gateway DEFAULT_MODEL=gpt-4o-mini
+5. If authorized, route only to an already approved fallback meeting the declared quality, privacy and cost constraints. Review the exact change before updating gateway configuration.
 6. Notify affected tenants of temporary limits.
 7. Open postmortem with cost attribution analysis.
 ```

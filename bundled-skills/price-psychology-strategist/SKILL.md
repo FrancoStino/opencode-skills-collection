@@ -1,6 +1,6 @@
 ---
 name: price-psychology-strategist
-description: "One sentence - what this skill does and when to invoke it"
+description: "Design pricing presentation, anchors, and tiers when an offer needs clearer value and fairness without misleading comparisons."
 risk: safe
 source: community
 date_added: "2026-04-04"

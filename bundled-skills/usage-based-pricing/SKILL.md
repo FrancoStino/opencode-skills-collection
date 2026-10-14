@@ -96,9 +96,11 @@ Actual usage is unpredictable.
 
 ## Examples: Pricing That Works
 
+Provider names illustrate pricing structures, not current price/plan endorsements. Verify each current regional plan and fee schedule from its official source before comparison or quoting. Designing a model does not authorize live billing changes.
+
 ### Stripe
 
-- Per-transaction percentage (2.9% + 30¢)
+- Percentage plus fixed-fee structure; verify the current country, currency and payment-method schedule before quoting a rate
 - Aligns with customer revenue
 - Predictable and simple
 - Volume discounts for scale

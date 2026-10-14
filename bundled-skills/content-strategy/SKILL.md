@@ -319,7 +319,7 @@ Score each idea on four factors:
 
 | Idea | Customer Impact (40%) | Content-Market Fit (30%) | Search Potential (20%) | Resources (10%) | Total |
 |------|----------------------|-------------------------|----------------------|-----------------|-------|
-| Topic A | 8 | 9 | 7 | 6 | 8.0 |
+| Topic A | 8 | 9 | 7 | 6 | 7.9 |
 | Topic B | 6 | 7 | 9 | 8 | 7.1 |
 
 ---

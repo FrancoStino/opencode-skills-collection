@@ -172,7 +172,7 @@ Empty states are onboarding opportunities, not dead ends.
 - Profile completeness
 
 **Best practices:**
-- Show early progress (start at 20%, not 0%)
+- Show progress from genuinely completed steps; never invent a completion percentage
 - Quick early wins (first items easy to complete)
 - Clear benefit of completing
 - Don't block features behind completion
@@ -335,7 +335,7 @@ For each issue:
 ### Flow Simplification Experiments
 
 **Reduce Friction**
-- Add or remove email verification during onboarding
+- Preserve required email verification and authentication controls; test the timing of non-security setup steps instead
 - Test empty states vs. pre-populated dummy data
 - Provide pre-filled templates to accelerate setup
 - Add OAuth options for faster account linking
@@ -437,6 +437,10 @@ If you need more context:
 
 ## When to Use
 This skill is applicable to execute the workflow or actions described in the overview.
+
+## Safety and measurement
+
+Use real activation and cohort evidence; recommendations are hypotheses, not guaranteed retention improvements. Preserve authentication, verification, informed choice and notification consent. Sending outreach, changing notification settings or collecting new personal/behavioral data requires authorization for that action and target.
 
 ## Limitations
 - Use this skill only when the task clearly matches the scope described above.

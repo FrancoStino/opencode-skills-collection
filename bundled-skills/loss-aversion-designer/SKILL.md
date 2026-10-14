@@ -1,6 +1,6 @@
 ---
 name: loss-aversion-designer
-description: "One sentence - what this skill does and when to invoke it"
+description: "Compare gain and loss framing and describe credible costs of inaction when an offer needs urgency without fearmongering."
 risk: safe
 source: community
 date_added: "2026-04-04"
