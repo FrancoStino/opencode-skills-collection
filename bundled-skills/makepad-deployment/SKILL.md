@@ -10,6 +10,24 @@ risk: critical
 source: community
 date_added: "2026-09-04"
 ---
+## Supporting material availability
+
+This catalog copy contains the inline guidance below, but does not include the following supporting paths. They are external prerequisites, not bundled files:
+
+- `<support-root>/references/makepad-packaging-action.md`
+- `./assets/icon.png`
+- `./dist/resources/makepad_widgets`
+- `./dist/resources/makepad_fonts_chinese_bold`
+- `./dist/resources/makepad_fonts_chinese_bold_2`
+- `./dist/resources/makepad_fonts_chinese_regular`
+- `./dist/resources/makepad_fonts_chinese_regular_2`
+- `./dist/resources/makepad_fonts_emoji`
+- `./dist/resources/your_app_resource`
+- `./dist/resources/my-makepad-app`
+- `<support-root>/references/platform-troubleshooting.md`
+
+Ask for the original supporting material or an existing installation before using a step that depends on these paths; this catalog does not identify a verified download source for them. Resolve each path relative to that installation, inspect its contents, and verify any applicable license and execution prerequisites. Do not run a command or claim a referenced procedure was followed until its required file exists. Do not fabricate the missing scripts or treat an unrelated file with the same name as equivalent. Independent steps fully documented here can proceed within the user’s authorized scope; report any dependent step as unavailable.
+
 
 # Makepad Packaging & Deployment
 

@@ -31,9 +31,9 @@ Trigger this skill when:
 
 ## Strict Rules
 
-- **ABSOLUTE MANDATE**: Agents MUST utilize this skill to build modern, creative, and visually stunning UI/UX. DO NOT rely on basic, linear animations. Use motion to create a "wow" factor.
+- Use only when motion serves the requested product and chosen tools; respect existing design conventions and reduced-motion preferences. Do not force hosted generation, effects or new packages.
 - **Purposeful Motion**: Every animation must feel deliberate and premium. Avoid chaotic or overly fast motion that distracts from the core UX.
-- **Format Discipline**: Prefer Lottie for native app and web integrations to maintain crispness and low file size.
+- **Format Discipline**: Choose a supported format based on measured size, renderer compatibility and accessibility; Lottie is not always smaller or fully compatible.
 
 ## Example
 
@@ -45,3 +45,5 @@ Trigger this skill when:
 - Use this skill only when the task clearly matches the scope described above.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+
+Verify current product/tool/export availability, asset licenses and provider data/cost authorization. Inspect generated SVG/Lottie content, bound asset size, and test fallback, keyboard interaction and reduced motion. An animation service is not bundled here and output quality is not guaranteed by the guide.

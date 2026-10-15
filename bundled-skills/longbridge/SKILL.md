@@ -1,6 +1,6 @@
 ---
 name: longbridge
-description: "125+ agent skills for Longbridge Securities — real-time quotes, charts, fundamentals, portfolio analysis, options, and more for HK/US/A-share/SG markets. Trilingual: Simplified Chinese, Traditional Chinese, English."
+description: "Guide to using a separately installed Longbridge integration — real-time quotes, charts, fundamentals, portfolio analysis, options, and more for HK/US/A-share/SG markets. Trilingual: Simplified Chinese, Traditional Chinese, English."
 category: finance
 risk: critical
 source: official
@@ -22,9 +22,9 @@ plugin:
 
 ## Overview
 
-Longbridge is the official skill collection for Longbridge Securities, covering 125+ agent skills across real-time market data, chart analysis, company fundamentals, portfolio management, options, sector screening, and more. Supports HK, US, A-share (SH/SZ), and SG markets. All skills are trilingual (Simplified Chinese / Traditional Chinese / English).
+Longbridge is the official skill collection for Longbridge Securities, covering a separately maintained set of skills across real-time market data, chart analysis, company fundamentals, portfolio management, options, sector screening, and more. Supports HK, US, A-share (SH/SZ), and SG markets. All skills are trilingual (Simplified Chinese / Traditional Chinese / English).
 
-Source repository: [github.com/longbridge/skills](https://github.com/longbridge/skills) (~840 stars, MIT)
+Source repository: [github.com/longbridge/skills](https://github.com/longbridge/skills) (verify the selected revision and license)
 
 ## When to Use This Skill
 
@@ -33,6 +33,10 @@ Source repository: [github.com/longbridge/skills](https://github.com/longbridge/
 - Use when the user asks about their portfolio, positions, or account P&L via Longbridge
 - Use when the user wants options analysis, sector rankings, capital flow, or news
 - Use when the user asks in Chinese (Simplified or Traditional) or English about any securities topic
+
+## Scope and data verification
+
+AAS bundles this guide only, not the upstream collection or CLI. Inspect the actual installed version/tool schemas and current data entitlements. Verify market, exchange, currency, timestamp, delay and corporate-action adjustments; broad language support does not establish symbol coverage. Use existing scoped credentials. Reading a portfolio does not authorize orders, watchlist changes, transfers or broader trading permissions. Keep account data private and do not send it to another provider without consent.
 
 ## How It Works
 
@@ -86,7 +90,7 @@ If the `longbridge` CLI binary is not installed, fall back to MCP tools. Inspect
 - Portfolio and account features require login with Trade scope.
 - Real-time data is subject to Longbridge data subscription (delayed data available without subscription).
 - Crypto symbols use `.HAS` suffix on the Longbridge platform.
-- This skill does not place orders — read-only by default unless using the account write scope.
+- The default task is read-only. A trade-capable token is not authorization to place an order; exact account, instrument, side, quantity, order terms and costs require an explicit authorized action and timeout reconciliation.
 
 ## Security & Safety Notes
 

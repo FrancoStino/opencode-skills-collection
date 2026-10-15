@@ -13,7 +13,7 @@ Define strict schemas for every tool's input. Reject anything that does not conf
 import Ajv from "ajv";
 import addFormats from "ajv-formats";
 
-const ajv = new Ajv({ allErrors: true, removeAdditional: true });
+const ajv = new Ajv({ allErrors: true, removeAdditional: false });
 addFormats(ajv);
 
 // Schema registry keyed by tool name
@@ -23,7 +23,7 @@ const toolSchemas: Record<string, object> = {
     properties: {
       path: {
         type: "string",
-        pattern: "^[a-zA-Z0-9_/\\-.]+$",  // No path traversal chars
+        pattern: "^[a-zA-Z0-9_/\\-.]+$",  // Character filter only; resolveSafePath enforces containment
         maxLength: 256,
       },
     },
@@ -33,15 +33,10 @@ const toolSchemas: Record<string, object> = {
   query_database: {
     type: "object",
     properties: {
-      query: { type: "string", maxLength: 2048 },
-      database: { type: "string", enum: ["analytics", "public_catalog"] },
-      parameters: {
-        type: "array",
-        items: { type: ["string", "number", "boolean"] },
-        maxItems: 20,
-      },
+      queryId: { type: "string", enum: ["public_item"] },
+      itemId: { type: "string", minLength: 1, maxLength: 128 },
     },
-    required: ["query", "database"],
+    required: ["queryId", "itemId"],
     additionalProperties: false,
   },
 };
@@ -65,46 +60,28 @@ statement-level restrictions.
 
 ```typescript
 // src/safeSql.ts
-const FORBIDDEN_PATTERNS = [
-  /;\s*(DROP|ALTER|TRUNCATE|DELETE|UPDATE|INSERT|CREATE|GRANT|REVOKE)/i,
-  /UNION\s+SELECT/i,
-  /INTO\s+OUTFILE/i,
-  /LOAD_FILE\s*\(/i,
-  /xp_cmdshell/i,
-];
+// Illustrative handler: db must be a dedicated read-only role with scoped views,
+// statement timeout, and revoked unsafe function privileges. No arbitrary SQL input.
+const QUERIES = {
+  public_item: "SELECT id, name FROM public_catalog WHERE id = $1 LIMIT 1",
+};
 
-export function sanitizeSqlQuery(query: string): { safe: boolean; reason?: string } {
-  for (const pattern of FORBIDDEN_PATTERNS) {
-    if (pattern.test(query)) {
-      return { safe: false, reason: `Query matches forbidden pattern: ${pattern}` };
-    }
-  }
-
-  // Only allow SELECT statements
-  const trimmed = query.trim().toUpperCase();
-  if (!trimmed.startsWith("SELECT")) {
-    return { safe: false, reason: "Only SELECT queries are permitted" };
-  }
-
-  return { safe: true };
-}
-
-// Usage in a database tool handler
-export async function handleDatabaseQuery(params: { query: string; parameters?: any[] }, db: any) {
-  const check = sanitizeSqlQuery(params.query);
-  if (!check.safe) {
-    throw new Error(`Query rejected: ${check.reason}`);
-  }
-  // Always use parameterized execution
-  return db.query(params.query, params.parameters || []);
+export async function handleDatabaseQuery(
+  params: { queryId: string; itemId: string }, db: any
+) {
+  if (params.queryId !== "public_item") throw new Error("Unknown query ID");
+  return db.query(QUERIES.public_item, [params.itemId]);
 }
 ```
+
+The fixed queries, schema and database role must agree. A keyword blacklist cannot establish read-only SQL.
 
 ### 6.3 Filesystem Path Injection Prevention
 
 ```typescript
 // src/safePath.ts
 import path from "path";
+import { realpathSync } from "fs";
 
 const SANDBOX_ROOT = "/home/mcpuser/workspace";
 
@@ -117,17 +94,20 @@ export function resolveSafePath(userPath: string): string {
   }
 
   // Block symlink escape
-  const real = require("fs").realpathSync.native(resolved);
-  if (!real.startsWith(SANDBOX_ROOT)) {
+  const real = realpathSync.native(resolved);
+  const rootReal = realpathSync.native(SANDBOX_ROOT);
+  if (real !== rootReal && !real.startsWith(rootReal + path.sep)) {
     throw new Error(`Symlink escape blocked: "${userPath}" -> "${real}"`);
   }
 
-  return resolved;
+  return real;
 }
 ```
 
 ---
 
+
+Containment applies to existing read targets only. A concurrently mutable directory can still race between checking and opening; use OS confinement and descriptor-based APIs for hostile writers. Do not reuse this helper for creation or writes.
 
 ## 7. Resource Access Control
 
@@ -135,27 +115,7 @@ export function resolveSafePath(userPath: string): string {
 
 Use OS-level controls in addition to application-level path validation.
 
-```bash
-#!/usr/bin/env bash
-# run-mcp-sandboxed.sh - Launch MCP server with Linux namespace sandboxing
-
-exec unshare --map-root-user --mount --pid --fork -- bash -c '
-  # Create a read-only bind mount for the workspace
-  mount --bind /home/mcpuser/workspace /home/mcpuser/workspace
-  mount -o remount,ro,bind /home/mcpuser/workspace
-
-  # Make the writable output directory available
-  mount --bind /home/mcpuser/output /home/mcpuser/output
-
-  # Block access to sensitive host paths
-  mount -t tmpfs tmpfs /etc/ssh
-  mount -t tmpfs tmpfs /root
-  mount -t tmpfs tmpfs /home/mcpuser/.ssh
-
-  # Run the MCP server
-  exec node /opt/mcp-server/dist/index.js
-'
-```
+Use a reviewed container or sandbox policy with a minimal filesystem, scoped mounts, no host credentials, enforced egress and a nonprivileged user. User/mount namespaces alone do not hide the rest of the host or deny networking. Verify denied-path and egress tests in the actual environment before claiming confinement. This guide does not bundle a complete Linux launcher.
 
 ### 7.2 Database Query Restrictions
 
@@ -167,8 +127,8 @@ CREATE ROLE mcp_readonly WITH LOGIN PASSWORD 'use-a-vault-generated-secret';
 
 -- Grant read-only access to specific schemas only
 GRANT USAGE ON SCHEMA public TO mcp_readonly;
-GRANT SELECT ON ALL TABLES IN SCHEMA public TO mcp_readonly;
-ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO mcp_readonly;
+GRANT SELECT ON public.public_catalog TO mcp_readonly;
+-- No blanket present/future-table grants. Review each exposed view and function.
 
 -- Restrict row-level access where needed
 ALTER TABLE customer_data ENABLE ROW LEVEL SECURITY;
@@ -188,16 +148,6 @@ Prevent MCP tools from reaching internal services (SSRF mitigation):
 ```typescript
 // src/networkPolicy.ts
 import { URL } from "url";
-import net from "net";
-
-const BLOCKED_CIDRS = [
-  "10.0.0.0/8",
-  "172.16.0.0/12",
-  "192.168.0.0/16",
-  "127.0.0.0/8",
-  "169.254.169.254/32",   // Cloud metadata endpoint
-  "fd00::/8",
-];
 
 const ALLOWED_DOMAINS = [
   "api.github.com",
@@ -213,7 +163,8 @@ export function validateOutboundUrl(urlString: string): { allowed: boolean; reas
   }
 
   // Block non-HTTPS
-  if (parsed.protocol !== "https:") {
+  if (parsed.protocol !== "https:" || parsed.username || parsed.password ||
+      (parsed.port && parsed.port !== "443")) {
     return { allowed: false, reason: "Only HTTPS is allowed" };
   }
 
@@ -226,8 +177,9 @@ export function validateOutboundUrl(urlString: string): { allowed: boolean; reas
 }
 ```
 
----
+This helper checks URL syntax and exact hosts only. The actual client must disable redirects or revalidate each hop, resolve and reject every private/reserved address, bind the connection to validated addresses, and enforce proxy/egress controls. An allowlisted hostname alone cannot prevent DNS rebinding.
 
+---
 
 ## 8. Rate Limiting
 
@@ -367,13 +319,15 @@ function redactSensitive(params: Record<string, unknown>): Record<string, unknow
 export function logToolInvocation(entry: Omit<AuditEntry, "id" | "timestamp">): AuditEntry {
   const full: AuditEntry = {
     ...entry,
+    error: entry.error ? "tool_failed" : undefined,
     id: randomUUID(),
     timestamp: new Date().toISOString(),
-    parameters: redactSensitive(entry.parameters),
+    // Do not retain tool values: free-text/body/path fields may contain secrets.
+    parameters: { keys: Object.keys(entry.parameters).filter(k => !REDACT_KEYS.some(r => k.toLowerCase().includes(r))) },
   };
 
-  // Write structured JSON to stdout for collection by log aggregator
-  process.stdout.write(JSON.stringify(full) + "\n");
+  // stdio stdout is reserved for MCP protocol frames; send audit to stderr.
+  process.stderr.write(JSON.stringify(full) + "\n");
   return full;
 }
 ```
@@ -388,6 +342,8 @@ import { OTLPTraceExporter } from "@opentelemetry/exporter-trace-otlp-http";
 import { BatchSpanProcessor } from "@opentelemetry/sdk-trace-base";
 import { Resource } from "@opentelemetry/resources";
 
+// SDK-version-specific setup: bind resource/provider APIs to the installed version.
+// Configure a verified collector and authorized telemetry retention before export.
 const provider = new NodeTracerProvider({
   resource: new Resource({
     "service.name": "mcp-server",
@@ -420,8 +376,8 @@ export async function traceToolCall<T>(
       span.setStatus({ code: SpanStatusCode.OK });
       return result;
     } catch (err: any) {
-      span.setStatus({ code: SpanStatusCode.ERROR, message: err.message });
-      span.recordException(err);
+      span.setStatus({ code: SpanStatusCode.ERROR, message: "tool_failed" });
+      // Do not export raw exception messages or stacks containing tool data.
       throw err;
     } finally {
       span.end();
@@ -465,6 +421,8 @@ RUN mkdir -p /home/mcp/workspace /home/mcp/output && \
 
 USER mcp
 
+# HTTP transport example only: implement the authorized health endpoint first.
+# A stdio server does not expose this port. Pin a reviewed base-image digest.
 # Health check
 HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
   CMD node -e "fetch('http://localhost:3001/health').then(r => process.exit(r.ok ? 0 : 1))"
@@ -513,7 +471,7 @@ spec:
       ports:
         - protocol: TCP
           port: 5432
-    # Allow HTTPS outbound to specific external APIs
+    # Broad public IPv4 HTTPS; this cannot restrict destinations by hostname.
     - to:
         - ipBlock:
             cidr: 0.0.0.0/0
@@ -552,7 +510,7 @@ spec:
 }
 ```
 
-Apply the seccomp profile in your Kubernetes pod spec:
+The profile is an illustrative starting point, not a tested Node sandbox. Validate architecture/runtime syscall needs and install the profile on each node before using Localhost. Prefer the platform RuntimeDefault profile unless a measured custom profile is maintained. Apply only after that validation:
 
 ```yaml
 # k8s/deployment.yaml (relevant snippet)
@@ -634,7 +592,12 @@ describe("Input Validation", () => {
   for (const input of maliciousInputs) {
     it(`should reject malicious read_file input: ${JSON.stringify(input)}`, () => {
       const result = validateToolInput("read_file", input);
-      expect(result.valid).toBe(false);
+      // Character validation is separate from existing-target containment.
+      if (input.path === "../../../etc/passwd" || input.path === "/etc/shadow") {
+        expect(result.valid).toBe(true); // resolveSafePath must then reject this target
+      } else {
+        expect(result.valid).toBe(false);
+      }
     });
   }
 
@@ -652,9 +615,7 @@ describe("Input Validation", () => {
   for (const input of sqlInjections) {
     it(`should reject SQL injection: ${input.query.slice(0, 40)}...`, () => {
       const result = validateToolInput("query_database", input);
-      // Even if schema validation passes, the SQL sanitizer should catch it
-      expect(result.valid).toBe(true); // schema is valid
-      // The SQL check happens at the handler level - tested separately
+      expect(result.valid).toBe(false); // raw SQL is not part of the accepted schema
     });
   }
 });

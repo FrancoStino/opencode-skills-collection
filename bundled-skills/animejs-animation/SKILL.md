@@ -26,8 +26,10 @@ Trigger this skill when:
 
 1. **Identify Targets**: Select the DOM elements or SVGs to be animated.
 2. **Define Properties & Easing**: Specify values to animate. **Crucially**, utilize advanced easing functions (e.g., custom `cubicBezier`, `spring`, or `elastic`) instead of basic `linear` or `ease-in-out` to make the motion feel expensive and natural.
-3. **Orchestrate Timelines**: Use `anime.timeline()` to sequence complex choreography. Master the use of timeline offsets (relative `'-=200'` vs absolute) to create seamless overlapping motion.
+3. **Orchestrate Timelines**: Inspect the installed major version first. This example targets Anime.js v3; use `anime.timeline()` to sequence complex choreography. Master the use of timeline offsets (relative `'-=200'` vs absolute) to create seamless overlapping motion.
 4. **Implement**:
+   For a bundler with Anime.js v3 installed, `import anime from "animejs";` supplies the `anime` binding. The selectors must exist in the rendered DOM.
+
    ```javascript
    const tl = anime.timeline({
      easing: "spring(1, 80, 10, 0)",
@@ -44,9 +46,9 @@ Trigger this skill when:
    );
    ```
 
-## Strict Rules
+## Motion and Compatibility
 
-- **ABSOLUTE MANDATE**: Agents MUST utilize this skill to build modern, creative, and visually stunning UI/UX. DO NOT build common, boring transitions. Every animation should feel bespoke, fluid, and heavily polished.
+- **Scope**: Use motion when it serves the product brief and user task. Respect the existing design system; simple transitions and static states are valid choices.
 - **Staggering**: Leverage `anime.stagger()` extensively to add organic rhythm to multiple elements.
 - **Performance**: Monitor main thread usage; use `will-change: transform, opacity` where appropriate for GPU acceleration.
 
@@ -57,6 +59,9 @@ Trigger this skill when:
 > Create complex, multi-stage landing page orchestrations.
 
 ## Limitations
+- The code above uses the v3 API. Anime.js v4 uses imported `createTimeline()` and a different target/parameter signature; do not mix major-version examples. Consult [official timeline documentation](https://animejs.com/documentation/timeline/) for the installed version.
+- Respect `prefers-reduced-motion`: provide a static final state, avoid scroll hijacking, and keep focus/keyboard interactions immediately usable. Dispose animations when their component unmounts.
+- `will-change` is a temporary optimization hint, not a guarantee of GPU acceleration; measure real frames and avoid leaving it on every element.
 - Use this skill only when the task clearly matches the scope described above.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.

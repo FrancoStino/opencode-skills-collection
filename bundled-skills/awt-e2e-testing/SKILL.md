@@ -17,7 +17,7 @@ AWT gives AI coding tools the ability to see and interact with web applications 
 - The test flow depends on visual matching, OCR, or platform auto-detection instead of stable DOM selectors.
 - You want an E2E toolchain that can both execute tests and explain failures for AI coding workflows.
 
-## What works now
+## Upstream Advertised Capabilities
 - YAML scenarios → Playwright with human-like interaction
 - Visual matching: OpenCV template + OCR (no CSS selectors needed)
 - Platform auto-detection: Flutter, React, Next.js, Vue, Angular, Svelte
@@ -25,6 +25,12 @@ AWT gives AI coding tools the ability to see and interact with web applications 
 - Learning DB: failure→fix patterns in SQLite
 - 5 AI providers: Claude, OpenAI, Gemini, DeepSeek, Ollama
 - Skill Mode: no extra AI API key needed
+
+## Execution Boundary
+
+This entrypoint does not bundle the AWT runtime or its YAML schema. Inspect the selected upstream revision and actual installed commands before authoring a scenario. The installation command above is an upstream option, not permission to change global skills. Prefer an explicitly authorized project-scoped installation.
+
+Confirm the target environment, test accounts, permitted browser actions and data retention. A checkout test can place orders or send notifications; use an isolated fixture environment and inspect effects before execution. Do not send screenshots, credentials or application data to a cloud provider without authorization. Record the actual scenario, runtime/version, observed result and artifact paths. If runtime is absent, return a draft and mark execution pending rather than inventing a pass.
 
 ## Links
 - Main repo: https://github.com/ksgisang/AI-Watch-Tester

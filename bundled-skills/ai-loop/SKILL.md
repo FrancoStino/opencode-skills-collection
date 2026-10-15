@@ -33,9 +33,9 @@ Before starting, define:
 
 ### Phase 1: Spec (Planning)
 
-1. Interview the user about the feature or app they want to build. Ask one focused question at a time until you fully understand the goal, the must-have requirements, the constraints, and what "done" looks like.
+1. Reuse the current request, accepted plan and existing artifacts. Ask only for essential missing scope or acceptance criteria; do not repeat answered questions.
 2. **Do not start building yet.**
-3. When you have enough information, write a clear, detailed specification and save it to `specs/<feature-name>.md`.
+3. When you have enough information, use the existing specification or, when needed, save a scoped new one at `specs/<feature-name>.md` without overwriting user work.
 4. The spec must include:
    - The objective
    - The exact requirements
@@ -55,7 +55,7 @@ Before starting, define:
 1. Compare your implementation against `specs/<feature-name>.md`.
 2. Go requirement by requirement and verify if it was met. List every gap, bug, or missing piece, naming the exact spec item each one fails.
 3. If anything fails and the iteration budget is not exhausted, write the specific fixes needed and **loop back to Phase 2 (Build)** to address them.
-4. Stop and ask for human input when the next fix would change the spec, exceed the iteration budget, require risky operations, or depend on product decisions not captured in the spec.
+4. Use the agreed iteration/resource limits and scope. Ask for material product or consequential authorization decisions that are not already resolved; routine repairs within the accepted outcome need no new checkpoint. Continue independent work when a dependent check is unavailable.
 5. Only pass the build and conclude the skill execution when every requirement in the spec is fully met and the declared verification evidence has passed.
 
 ## Examples
@@ -114,7 +114,7 @@ Before starting, define:
 - It is best suited for isolated features or tasks with clear boundaries, rather than open-ended architectural refactoring.
 - The review phase relies on the agent's self-assessment against the generated spec; manual review is still recommended for critical systems.
 - It is not a replacement for human approval on security-sensitive, destructive, production, compliance, or externally visible changes.
-- It should stop rather than continue if requirements conflict, tests cannot run, or verification depends on unavailable credentials or systems.
+- Report conflicting requirements or unavailable verification accurately and continue useful independent work; do not mark missing tests as passed or request credentials in chat.
 
 ## Security & Safety Notes
 

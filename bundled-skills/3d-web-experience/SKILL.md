@@ -1,9 +1,6 @@
 ---
 name: 3d-web-experience
-description: Expert in building 3D experiences for the web - Three.js, React
-  Three Fiber, Spline, WebGL, and interactive 3D scenes. Covers product
-  configurators, 3D portfolios, immersive websites, and bringing depth to web
-  experiences.
+description: "Use when building or debugging web 3D scenes, product configurators or portfolios with Three.js, React Three Fiber or Spline; review assets, loading, controls, fallbacks and performance."
 risk: critical
 source: vibeship-spawner-skills (Apache 2.0)
 date_added: 2026-02-27
@@ -91,6 +88,7 @@ export default function Scene() {
 ```jsx
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, useGLTF } from '@react-three/drei';
+import { Suspense } from 'react';
 
 function Model() {
   const { scene } = useGLTF('/model.glb');
@@ -101,8 +99,10 @@ export default function Scene() {
   return (
     <Canvas>
       <ambientLight />
-      <Model />
-      <OrbitControls />
+      <Suspense fallback={null}>
+        <Model />
+      </Suspense>
+      <OrbitControls enableZoom={false} />
     </Canvas>
   );
 }
@@ -119,7 +119,7 @@ Getting models web-ready
 ### Format Selection
 | Format | Use Case | Size |
 |--------|----------|------|
-| GLB/GLTF | Standard web 3D | Smallest |
+| GLB/GLTF | Standard web 3D | Depends on geometry/textures/compression |
 | FBX | From 3D software | Large |
 | OBJ | Simple meshes | Medium |
 | USDZ | Apple AR | Medium |
@@ -127,28 +127,38 @@ Getting models web-ready
 ### Optimization Pipeline
 ```
 1. Model in Blender/etc
-2. Reduce poly count (< 100K for web)
+2. Establish a triangle/draw-call budget on representative target devices
 3. Bake textures (combine materials)
 4. Export as GLB
 5. Compress with gltf-transform
-6. Test file size (< 5MB ideal)
+6. Measure transfer size, decode time, memory and frame time against the project budget
 ```
 
 ### GLTF Compression
 ```bash
-# Install gltf-transform
-npm install -g @gltf-transform/cli
+# Use the reviewed version already pinned in the project lockfile.
+# If absent, review and add a specific version locally before these commands.
 
 # Compress model
-gltf-transform optimize input.glb output.glb \
+./node_modules/.bin/gltf-transform optimize input.glb output.glb \
   --compress draco \
   --texture-compress webp
 ```
 
 ### Loading in R3F
+
+This component needs the React/R3F/drei versions installed by the project and an
+actual `/model.glb` asset. Add an application error boundary for failed asset loads.
+
 ```jsx
 import { useGLTF, useProgress, Html } from '@react-three/drei';
 import { Suspense } from 'react';
+import { Canvas } from '@react-three/fiber';
+
+function Model() {
+  const { scene } = useGLTF('/model.glb');
+  return <primitive object={scene} />;
+}
 
 function Loader() {
   const { progress } = useProgress();
@@ -158,6 +168,7 @@ function Loader() {
 export default function Scene() {
   return (
     <Canvas>
+      <ambientLight />
       <Suspense fallback={<Loader />}>
         <Model />
       </Suspense>
@@ -177,7 +188,8 @@ export default function Scene() {
 ### R3F + Scroll Controls
 ```jsx
 import { ScrollControls, useScroll } from '@react-three/drei';
-import { useFrame } from '@react-three/fiber';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { useRef } from 'react';
 
 function RotatingModel() {
   const scroll = useScroll();
@@ -185,10 +197,15 @@ function RotatingModel() {
 
   useFrame(() => {
     // Rotate based on scroll position
-    ref.current.rotation.y = scroll.offset * Math.PI * 2;
+    if (ref.current) ref.current.rotation.y = scroll.offset * Math.PI * 2;
   });
 
-  return <mesh ref={ref}>...</mesh>;
+  return (
+    <mesh ref={ref}>
+      <boxGeometry args={[1, 1, 1]} />
+      <meshNormalMaterial />
+    </mesh>
+  );
 }
 
 export default function Scene() {
@@ -206,6 +223,10 @@ export default function Scene() {
 ```javascript
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+// Integration fragment: camera and the section are supplied by your scene.
+// Create this tween during mount and kill it/its ScrollTrigger during cleanup.
 
 gsap.to(camera.position, {
   scrollTrigger: {
@@ -233,6 +254,11 @@ Keeping 3D fast
 ## 3D Performance
 
 ### Performance Targets
+
+The following are illustrative starting budgets, not hardware limits or guarantees.
+Measure GPU time, draw calls, memory and load time; triangle count alone cannot
+establish performance. Respect reduced-motion settings and retain ordinary controls.
+
 | Device | Target FPS | Max Triangles |
 |--------|------------|---------------|
 | Desktop | 60fps | 500K |
@@ -240,43 +266,58 @@ Keeping 3D fast
 | Low-end | 30fps | 50K |
 
 ### Quick Wins
+
+These are independent integration fragments, not one copyable module. Configure
+instances/LOD and lights in your actual scene, and wrap lazy components in Suspense.
+
 ```jsx
 // 1. Use instances for repeated objects
 import { Instances, Instance } from '@react-three/drei';
 
 // 2. Limit lights
-<ambientLight intensity={0.5} />
-<directionalLight /> // Just one
+const lights = (
+  <>
+    <ambientLight intensity={0.5} />
+    <directionalLight />
+  </>
+);
 
 // 3. Use LOD (Level of Detail)
 import { LOD } from 'three';
 
 // 4. Lazy load models
+import { lazy } from 'react';
 const Model = lazy(() => import('./Model'));
 ```
 
-### Mobile Detection
+### Resolution budget
+
+Use a conservative initial DPR and measure actual rendering performance rather
+than inferring device capacity from the user-agent string:
+
 ```jsx
-const isMobile = /iPhone|iPad|Android/i.test(navigator.userAgent);
+import { Canvas } from '@react-three/fiber';
 
-<Canvas
-  dpr={isMobile ? 1 : 2} // Lower resolution on mobile
-  performance={{ min: 0.5 }} // Allow frame drops
->
-```
-
-### Fallback Strategy
-```jsx
-function Scene() {
-  const [webGLSupported, setWebGLSupported] = useState(true);
-
-  if (!webGLSupported) {
-    return <img src="/fallback.png" alt="3D preview" />;
-  }
-
-  return <Canvas onCreated={...} />;
+export default function Scene() {
+  return (
+    <Canvas dpr={[1, 1.5]} fallback={<p>3D preview unavailable.</p>}>
+      <mesh>
+        <boxGeometry />
+        <meshNormalMaterial />
+      </mesh>
+    </Canvas>
+  );
 }
 ```
+
+### Fallback strategy
+
+`Canvas` supports a DOM `fallback` when GL cannot initialize. Also wrap the scene
+in an application error boundary for context crashes and asset errors; Suspense
+handles loading, not failures. Keep product descriptions, variant controls and
+purchase actions in accessible DOM so the task works without the canvas. Test
+keyboard operation, zoom, reduced motion and an unavailable WebGL context.
+See the [Canvas API and fallback guidance](https://r3f.docs.pmnd.rs/api/canvas).
 
 ## Validation Checks
 
@@ -322,16 +363,19 @@ Fix action: Limit DPR to 1 on mobile devices for better performance
 
 ## Collaboration
 
-### Delegation Triggers
+### Optional collaboration areas
+
+These are capability labels; check actual IDs and read their scope in the current
+catalog before recommending them. They do not authorize spawning agents.
 
 - scroll animation|parallax|GSAP -> scroll-experience (Scroll integration)
-- react|next|frontend -> frontend (React integration)
-- performance|slow|fps -> performance-hunter (3D performance optimization)
-- product page|landing|marketing -> landing-page-design (Product landing with 3D)
+- react|next|frontend -> frontend-developer (React integration)
+- performance|slow|fps -> performance-engineer (3D performance optimization)
+- product page|landing|marketing -> frontend-design (Product landing with 3D)
 
 ### Product Configurator
 
-Skills: 3d-web-experience, frontend, landing-page-design
+Skills: 3d-web-experience, frontend-developer, frontend-design
 
 Workflow:
 
@@ -361,18 +405,18 @@ Workflow:
 
 ## Related Skills
 
-Works well with: `scroll-experience`, `interactive-portfolio`, `frontend`, `landing-page-design`
+Works well with: `scroll-experience`, `interactive-portfolio`, `frontend-developer`, `frontend-design`
 
 ## When to Use
-- User mentions or implies: 3D website
-- User mentions or implies: three.js
-- User mentions or implies: WebGL
-- User mentions or implies: react three fiber
-- User mentions or implies: 3D experience
-- User mentions or implies: spline
-- User mentions or implies: product configurator
+
+- Add a navigable product model or configurator to a web page while preserving ordinary product and purchase controls.
+- Diagnose loading, frame-time, asset-size or input problems in an existing Three.js/R3F scene.
+- Choose between a design-authored Spline scene and a code-owned scene based on interaction, deployment and maintenance needs.
+- Plan a scroll-linked portfolio scene with an accessible static alternative and a reduced-motion path. Prefer ordinary DOM content when depth does not help the user's task.
 
 ## Limitations
 - Use this skill only when the task clearly matches the scope described above.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+- Assets and dependencies are project prerequisites, not shipped in this skill. Replace the illustrative Spline scene URL with an authorized asset; do not treat the placeholder as a working scene.
+- Validate compression/decoder compatibility and visual quality using the installed CLI version and real target devices. See the [glTF Transform CLI](https://gltf-transform.dev/cli).
+- Loading, runtime failures, accessible DOM controls and reduced motion require separate checks; a rendered canvas alone does not prove accessibility or performance.

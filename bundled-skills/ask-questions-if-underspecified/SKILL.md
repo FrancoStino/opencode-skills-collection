@@ -31,7 +31,7 @@ Treat a request as underspecified if after exploring how to perform the work, so
 - Identify environment (language/runtime versions, OS, build/test runner)
 - Clarify safety/reversibility (data migration, rollout/rollback, risk)
 
-If multiple plausible interpretations exist, assume it is underspecified.
+Multiple interpretations justify a question only when they materially change the outcome or risk; resolve routine reversible details from the existing context.
 
 ### 2) Ask must-have questions first (keep it small)
 
@@ -52,9 +52,9 @@ Until must-have answers arrive:
 - Do not run commands, edit files, or produce a detailed plan that depends on unknowns
 - Do perform a clearly labeled, low-risk discovery step only if it does not commit you to a direction (e.g., inspect repo structure, read relevant config files)
 
-If the user explicitly asks you to proceed without answers:
-- State your assumptions as a short numbered list
-- Ask for confirmation; proceed only after they confirm or correct them
+If the user explicitly authorizes proceeding with reasonable assumptions:
+- State the assumptions briefly and continue within that authorized scope; do not ask for the same confirmation again.
+- Keep only genuinely missing consequential authorization or indispensable inputs pending, while completing independent safe work.
 
 ### 4) Confirm interpretation, then proceed
 

@@ -24,42 +24,27 @@ If the user has not specified a team, ask:
 
 > Which GitHub team should I filter by? (e.g. `streaming-platform`)
 
-Accept either a team slug (`streaming-platform`) or a display name ("Streaming Platform") — convert to lowercase-hyphenated slug before passing to the script.
+Accept a slug or display name, then resolve it against the authenticated organization's actual teams.
 
-## Step 2: Run the Script
+## Step 2: Read the Actual Queue
+
+No `fetch_review_requests.py` script is bundled in this AAS entrypoint. Use the
+configured GitHub connector or authenticated `gh` API rather than inventing it.
+Confirm the organization and exact team slug from its API; display-name conversion
+alone cannot prove the slug. Do not default every repository to `getsentry`.
 
 ```bash
-uv run ${CLAUDE_SKILL_ROOT}/scripts/fetch_review_requests.py --org getsentry --teams <team-slug>
+gh api notifications --paginate
 ```
 
-To filter by multiple teams, pass a comma-separated list:
+Keep unread `review_requested` notifications whose subject is a pull request.
+Follow the returned subject API URL only after verifying GitHub origin and repository.
+For each candidate, inspect open/unmerged state, requested reviewer teams, and the
+selected team's paginated membership. Being authored by a teammate is distinct from
+being assigned for review. Do not mark notifications read or submit reviews.
 
-```bash
-uv run ${CLAUDE_SKILL_ROOT}/scripts/fetch_review_requests.py --org getsentry --teams <team slugs>
-```
-
-### Script output
-
-```json
-{
-  "total": 3,
-  "prs": [
-    {
-      "notification_id": "12345",
-      "title": "feat(kafka): add workflow to restart a broker",
-      "url": "https://github.com/getsentry/ops/pull/19144",
-      "repo": "getsentry/ops",
-      "pr_number": 19144,
-      "author": "bmckerry",
-      "reasons": ["opened by: bmckerry"]
-    }
-  ]
-}
-```
-
-`reasons` will contain one or both of:
-- `"review requested from: <Team Name>"` — the team is a requested reviewer
-- `"opened by: <login>"` — the PR author is a team member
+Return the actual API results as rows with PR URL, author, and observed reason.
+Missing permissions or incomplete pagination must be reported as incomplete, not zero.
 
 ## Step 3: Present Results
 
@@ -70,19 +55,6 @@ Display results as a markdown table with full URLs:
 | 1 | feat(kafka): add workflow to restart a broker | https://github.com/getsentry/ops/pull/19144 | opened by: evanh |
 
 If `total` is 0, say: "No unread review requests found for that team."
-
-## Fallback
-
-If the script fails, run manually:
-
-```bash
-gh api notifications --paginate
-```
-
-Then for each `review_requested` notification, check:
-- `gh api repos/{repo}/pulls/{number}` — skip if `state == "closed"` or `merged_at` is set
-- `gh api repos/{repo}/pulls/{number}/requested_reviewers` — check `teams[].name`
-- `gh api orgs/{org}/teams/{slug}/members` — check if author is a member
 
 ## Limitations
 - Use this skill only when the task clearly matches the scope described above.

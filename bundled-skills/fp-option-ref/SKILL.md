@@ -25,7 +25,7 @@ import * as O from 'fp-ts/Option'
 O.some(5)              // Some(5)
 O.none                 // None
 O.fromNullable(x)      // null/undefined → None, else Some(x)
-O.fromPredicate(x > 0)(x) // false → None, true → Some(x)
+O.fromPredicate((n: number) => n > 0)(x) // false → None, true → Some(x)
 ```
 
 ## Transform
@@ -39,7 +39,7 @@ O.filter(predicate)    // None if predicate false
 ## Extract
 
 ```typescript
-O.getOrElse(() => default)  // Get value or default
+O.getOrElse(() => fallbackValue)  // Get value or default
 O.toNullable(opt)           // Back to T | null
 O.toUndefined(opt)          // Back to T | undefined
 O.match(onNone, onSome)     // Pattern match
@@ -54,7 +54,7 @@ import * as O from 'fp-ts/Option'
 // Safe property access
 pipe(
   O.fromNullable(user),
-  O.map(u => u.profile),
+  O.flatMap(u => O.fromNullable(u.profile)),
   O.flatMap(p => O.fromNullable(p.avatar)),
   O.getOrElse(() => '/default-avatar.png')
 )
@@ -72,14 +72,14 @@ pipe(
 ## vs Nullable
 
 ```typescript
-// ❌ Nullable - easy to forget checks
+// Nullable: concise and safe for a short access chain
 const name = user?.profile?.name ?? 'Guest'
 
-// ✅ Option - explicit, composable
+// Option: explicit and composable across multiple operations
 pipe(
   O.fromNullable(user),
   O.flatMap(u => O.fromNullable(u.profile)),
-  O.map(p => p.name),
+  O.flatMap(p => O.fromNullable(p.name)),
   O.getOrElse(() => 'Guest')
 )
 ```
@@ -90,3 +90,9 @@ Use Option when you need to **chain** operations on optional values.
 - Use this skill only when the task clearly matches the scope described above.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+
+## Reference scope
+
+These are fp-ts 2.x fragments. Supply application variables, types, validators and imports, and check the installed version. `map` does not catch thrown exceptions. `Task` has no typed error channel; an improperly wrapped promise can still reject. Use `tryCatch` at fallible boundaries.
+
+Official API: [fp-ts modules](https://gcanti.github.io/fp-ts/modules/).

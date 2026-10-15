@@ -16,7 +16,7 @@ license_source: "https://github.com/Sketchjar/stipple-agent-skills/blob/main/LIC
 
 # Find Matching Tenders
 
-Search live AU/NZ government tenders, rank them against what a company actually does (read from its website), and explain why each opportunity is relevant — including the capability gaps to prepare evidence for. Tender search is free forever on the Stipple API; no API key or signup needed.
+Search live AU/NZ government tenders, rank them against what a company actually does (read from its website), and explain why each opportunity is relevant — including the capability gaps to prepare evidence for. The examples use the third-party Stipple API. Verify current access requirements, pricing and feed availability before relying on it.
 
 ## When to use
 
@@ -31,35 +31,35 @@ Search live AU/NZ government tenders, rank them against what a company actually 
 2. **Resolve the company** (optional but improves matching):
 
    ```bash
-   curl -X POST https://www.stipple.sh/v1/companies/resolve \
+   curl --fail-with-body --connect-timeout 10 --max-time 30 -X POST https://www.stipple.sh/v1/companies/resolve \
      -H "Content-Type: application/json" \
      -d '{"query": "https://your-company.com"}'
    ```
 
    Returns the company's registered name, ABN, jurisdiction, and status.
 
-3. **Search open tenders** (free, no key):
+3. **Search open tenders** (verify current access requirements):
 
    ```bash
-   curl "https://www.stipple.sh/v1/tenders?q=construction&jurisdiction=AU&limit=10"
+   curl --fail-with-body --connect-timeout 10 --max-time 30 "https://www.stipple.sh/v1/tenders?q=construction&jurisdiction=AU&limit=10"
    ```
 
    Filters: `q` (keyword), `jurisdiction` (AU, AU-NSW, AU-VIC, NZ, ...), `limit`, `offset`.
 
-4. **Rank against the company** (optional, uses free weekly allowance):
+4. **Rank against the company** (optional; verify cost and obtain authorization for any paid request):
 
    ```bash
-   curl -X POST https://www.stipple.sh/v1/tenders/match \
+   curl --fail-with-body --connect-timeout 10 --max-time 30 -X POST https://www.stipple.sh/v1/tenders/match \
      -H "Content-Type: application/json" \
      -d '{"url": "https://your-company.com", "jurisdiction": "AU", "limit": 5}'
    ```
 
    Returns ranked matches with `why[]` (why it fits) and `gaps[]` (capability evidence to prepare).
 
-5. **Check data provenance** if results seem thin (free):
+5. **Check data provenance** if results seem thin:
 
    ```bash
-   curl "https://www.stipple.sh/v1/tenders/sources"
+   curl --fail-with-body --connect-timeout 10 --max-time 30 "https://www.stipple.sh/v1/tenders/sources"
    ```
 
    Shows which government feeds are indexed and their freshness — explains why a search can be empty.
@@ -67,6 +67,8 @@ Search live AU/NZ government tenders, rank them against what a company actually 
 6. **Report honestly.** Match scores are *fit signals*, not win probabilities. Present `gaps[]` as "prepare evidence for this", not disqualification.
 
 ## Output format
+
+The following is an illustrative format, not a live search result. Replace counts, dates and links with verified current results and include the retrieval time.
 
 ```
 Found 403 open tenders matching "construction" (AU/NZ)
@@ -94,7 +96,6 @@ Found 403 open tenders matching "construction" (AU/NZ)
 
 ## Notes
 
-- Tender search and source listing are free forever — no key, no credits
-- Matching costs a small number of credits on the free weekly allowance
-- For ongoing monitoring, pair with a cron job that re-runs step 3 daily and diffs results
+- Verify current pricing, quotas and authentication with the service; do not promise permanent free access.
+- Configure recurring monitoring only when the user requests it, with an agreed schedule and notification policy.
 - Data sources: NZ GETS, NSW eTendering, VendorPanel, and other government feeds

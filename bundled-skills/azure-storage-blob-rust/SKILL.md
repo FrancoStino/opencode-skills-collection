@@ -10,16 +10,18 @@ date_added: '2026-02-27'
 
 Client library for Azure Blob Storage — Microsoft's object storage solution for the cloud.
 
+The examples below require a reviewed compatible crate set and replacement of every resource placeholder. Do not use production data for demonstration writes.
+
 ## Installation
 
 ```sh
-cargo add azure_storage_blob azure_identity
+cargo add azure_storage_blob@=1.1.0 azure_identity@=1.0.0 azure_core@=1.1.0
 ```
 
 ## Environment Variables
 
 ```bash
-AZURE_STORAGE_ACCOUNT_NAME=<storage-account-name>
+export AZURE_STORAGE_ACCOUNT_NAME="<storage-account-name>"
 # Endpoint: https://<account>.blob.core.windows.net/
 ```
 
@@ -27,13 +29,12 @@ AZURE_STORAGE_ACCOUNT_NAME=<storage-account-name>
 
 ```rust
 use azure_identity::DeveloperToolsCredential;
-use azure_storage_blob::{BlobClient, BlobClientOptions};
+use azure_core::http::Url;
+use azure_storage_blob::clients::{BlobClient, BlobClientOptions};
 
 let credential = DeveloperToolsCredential::new(None)?;
 let blob_client = BlobClient::new(
-    "https://<account>.blob.core.windows.net/",
-    "container-name",
-    "blob-name",
+    Url::parse("https://<account>.blob.core.windows.net/container-name/blob-name")?,
     Some(credential),
     Some(BlobClientOptions::default()),
 )?;
@@ -53,14 +54,13 @@ let blob_client = BlobClient::new(
 
 ```rust
 use azure_core::http::RequestContent;
+use azure_storage_blob::models::BlobClientUploadOptions;
 
 let data = b"hello world";
 blob_client
     .upload(
         RequestContent::from(data.to_vec()),
-        false,  // overwrite
-        u64::try_from(data.len())?,
-        None,
+        Some(BlobClientUploadOptions::if_not_exists()), // fail rather than overwrite an existing blob
     )
     .await?;
 ```
@@ -69,15 +69,17 @@ blob_client
 
 ```rust
 let response = blob_client.download(None).await?;
-let content = response.into_body().collect_bytes().await?;
-println!("Content: {:?}", content);
+// Check the approved size before fetching; use download_into with a bounded buffer for large data.
+let content = response.body.collect().await?;
+// Process authorized bytes; do not log the payload.
 ```
 
 ### Get Blob Properties
 
 ```rust
 let properties = blob_client.get_properties(None).await?;
-println!("Content-Length: {:?}", properties.content_length);
+// Read the version-specific response header trait; properties is a response, not a content_length field.
+// Do not infer a body/size limit from successful metadata access alone.
 ```
 
 ### Delete Blob
@@ -89,11 +91,11 @@ blob_client.delete(None).await?;
 ## Container Operations
 
 ```rust
-use azure_storage_blob::BlobContainerClient;
+use azure_storage_blob::clients::BlobContainerClient;
+use futures::TryStreamExt;
 
 let container_client = BlobContainerClient::new(
-    "https://<account>.blob.core.windows.net/",
-    "container-name",
+    Url::parse("https://<account>.blob.core.windows.net/container-name")?,
     Some(credential),
     None,
 )?;
@@ -103,15 +105,16 @@ container_client.create(None).await?;
 
 // List blobs
 let mut pager = container_client.list_blobs(None)?;
-while let Some(blob) = pager.try_next().await? {
-    println!("Blob: {}", blob.name);
+while let Some(page) = pager.try_next().await? {
+    let listing = page.into_model()?;
+    // Process this listing page; apply an explicit maximum-page budget.
 }
 ```
 
 ## Best Practices
 
 1. **Use Entra ID auth** — `DeveloperToolsCredential` for dev, `ManagedIdentityCredential` for production
-2. **Specify content length** — required for uploads
+2. **Review overwrite behavior** — the reviewed upload API uses options; if_not_exists prevents unintended replacement
 3. **Use `RequestContent::from()`** — to wrap upload data
 4. **Handle async operations** — use `tokio` runtime
 5. **Check RBAC permissions** — ensure "Storage Blob Data Contributor" role
@@ -121,7 +124,11 @@ while let Some(blob) = pager.try_next().await? {
 For Entra ID auth, assign one of these roles:
 - `Storage Blob Data Reader` — read-only
 - `Storage Blob Data Contributor` — read/write
-- `Storage Blob Data Owner` — full access including RBAC
+- `Storage Blob Data Owner` — blob-data access and supported ownership/ACL management; it does not grant general Azure RBAC role-assignment authority
+
+The example API follows [BlobClient 1.1.0](https://docs.rs/azure_storage_blob/1.1.0/azure_storage_blob/clients/struct.BlobClient.html); earlier releases used different constructor/upload signatures. Use the project’s compatible Azure crate versions rather than mixing them.
+
+The reviewed example set uses `azure_storage_blob 1.1.0` and compatible Azure core/credential crates. Record and commit Cargo.lock; source/API review is not a compiler or live-service test.
 
 ## Reference Links
 
@@ -132,9 +139,10 @@ For Entra ID auth, assign one of these roles:
 | crates.io | https://crates.io/crates/azure_storage_blob |
 
 ## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
+Use when a Rust application uploads/downloads a specified Azure blob, reads its properties or manages an authorized container.
 
 ## Limitations
-- Use this skill only when the task clearly matches the scope described above.
+- Examples are fragments inside async application code, with compatible pinned Azure crates and the required Tokio/Serde/Futures dependencies; verify the selected version’s API before use. They were reviewed against official source/reference, not compiled or run against a cloud account here.
+- Use an authorized tenant, resource and identity with least privilege. Writes, overwrites, deletes, backup retrieval and account changes require the corresponding scope; cleanup may remove only explicitly identified disposable resources. Bound requests, retries and downloaded bytes, and do not log payloads, credentials or secret values.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.

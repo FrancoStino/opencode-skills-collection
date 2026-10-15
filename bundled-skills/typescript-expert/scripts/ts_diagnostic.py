@@ -10,13 +10,43 @@ import os
 import json
 from pathlib import Path
 
+TSC = ["npx", "--no-install", "tsc"]
+
 def run_cmd(args):
-    """Run a command as an argument list (no shell) and return its output."""
+    """Run a command as an argument list (no shell). Return (returncode, output)."""
     try:
-        result = subprocess.run(args, capture_output=True, text=True)
-        return result.stdout + result.stderr
-    except Exception as e:
-        return str(e)
+        result = subprocess.run(args, capture_output=True, text=True, errors="replace")
+        return result.returncode, result.stdout + result.stderr
+    except OSError as e:
+        return None, str(e)
+
+def strip_jsonc(text: str) -> str:
+    """Remove // and /* */ comments and trailing commas, which tsconfig.json allows."""
+    out, i, n = [], 0, len(text)
+    while i < n:
+        c = text[i]
+        if c == '"':  # copy a string literal unchanged
+            j = i + 1
+            while j < n and text[j] != '"':
+                j += 2 if text[j] == "\\" else 1
+            out.append(text[i:j + 1])
+            i = j + 1
+        elif text.startswith("//", i):
+            j = text.find("\n", i)
+            i = n if j < 0 else j
+        elif text.startswith("/*", i):
+            j = text.find("*/", i + 2)
+            i = n if j < 0 else j + 2
+        else:
+            if c in "}]":  # drop a trailing comma before the closing bracket
+                k = len(out) - 1
+                while k >= 0 and out[k].isspace():
+                    k -= 1
+                if k >= 0 and out[k] == ",":
+                    del out[k]
+            out.append(c)
+            i += 1
+    return "".join(out)
 
 def grep_source_count(pattern: str, exclude: str | None = None) -> tuple[int, list[str]]:
     """Count and sample lines containing ``pattern`` under ``src/``.
@@ -44,11 +74,11 @@ def check_versions():
     print("\n📦 Versions:")
     print("-" * 40)
     
-    ts_version = run_cmd(["npx", "tsc", "--version"]).strip()
-    node_version = run_cmd(["node", "-v"]).strip()
+    ts_rc, ts_version = run_cmd([*TSC, "--version"])
+    node_rc, node_version = run_cmd(["node", "-v"])
     
-    print(f"  TypeScript: {ts_version or 'Not found'}")
-    print(f"  Node.js: {node_version or 'Not found'}")
+    print(f"  TypeScript: {ts_version.strip() if ts_rc == 0 else 'Not found (no local typescript)'}")
+    print(f"  Node.js: {node_version.strip() if node_rc == 0 else 'Not found'}")
 
 def check_tsconfig():
     """Analyze tsconfig.json settings."""
@@ -61,8 +91,8 @@ def check_tsconfig():
         return
     
     try:
-        with open(tsconfig_path) as f:
-            config = json.load(f)
+        with open(tsconfig_path, encoding="utf-8") as f:
+            config = json.loads(strip_jsonc(f.read()))
         
         compiler_opts = config.get("compilerOptions", {})
         
@@ -155,14 +185,17 @@ def check_type_errors():
     print("\n🔍 Type Check:")
     print("-" * 40)
     
-    result = run_cmd(["npx", "tsc", "--noEmit"])
+    rc, result = run_cmd([*TSC, "--noEmit"])
     lines = result.splitlines()
-    if "error TS" in result:
+    if rc == 0:
+        print("  ✅ No type errors")
+    elif "error TS" in result:
         errors = result.count("error TS")
         print(f"  ❌ {errors}+ type errors found")
         print("\n".join(lines[:20])[:500])
     else:
-        print("  ✅ No type errors")
+        print(f"  ⚠️ Type check did not run (exit code {rc}). Is typescript installed locally?")
+        print("\n".join(lines[:5])[:500])
 
 def check_any_usage():
     """Check for any type usage."""
@@ -193,7 +226,7 @@ def check_performance():
     print("\n⏱️ Type Check Performance:")
     print("-" * 40)
     
-    result = run_cmd(["npx", "tsc", "--extendedDiagnostics", "--noEmit"])
+    _, result = run_cmd([*TSC, "--extendedDiagnostics", "--noEmit"])
     keys = ("Check time", "Files:", "Lines:", "Nodes:")
     lines = [line for line in result.splitlines() if any(k in line for k in keys)]
     if lines:

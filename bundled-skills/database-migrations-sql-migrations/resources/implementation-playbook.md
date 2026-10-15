@@ -1,6 +1,6 @@
 # SQL Database Migration Strategy and Implementation Implementation Playbook
 
-This file contains detailed patterns, checklists, and code samples referenced by the skill.
+This file contains design patterns and illustrative code, not a deployable migration framework. Bind engine/version, schema, trusted identifiers, backup/restore proof, authorization and stop criteria before adapting any example. Python table/column names must come from an explicit reviewed identifier allowlist and be composed using the driver identifier API, never user input or raw f-strings.
 
 # SQL Database Migration Strategy and Implementation
 
@@ -28,36 +28,22 @@ $ARGUMENTS
 
 **Expand-Contract Pattern**
 
+The following PostgreSQL illustration assumes the application records actual verification in `email_verified_at`. A pending confirmation token is not proof of verification. Confirm the real historical evidence before deriving any authentication state; stop if it is unavailable.
+
 ```sql
--- Phase 1: EXPAND (backward compatible)
-ALTER TABLE users ADD COLUMN email_verified BOOLEAN DEFAULT FALSE;
-CREATE INDEX CONCURRENTLY idx_users_email_verified ON users(email_verified);
-
--- Phase 2: MIGRATE DATA (in batches)
-DO $$
-DECLARE
-    batch_size INT := 10000;
-    rows_updated INT;
-BEGIN
-    LOOP
-        UPDATE users
-        SET email_verified = (email_confirmation_token IS NOT NULL)
-        WHERE id IN (
-            SELECT id FROM users
-            WHERE email_verified IS NULL
-            LIMIT batch_size
-        );
-
-        GET DIAGNOSTICS rows_updated = ROW_COUNT;
-        EXIT WHEN rows_updated = 0;
-        COMMIT;
-        PERFORM pg_sleep(0.1);
-    END LOOP;
-END $$;
-
--- Phase 3: CONTRACT (after code deployment)
-ALTER TABLE users DROP COLUMN email_confirmation_token;
+-- Expand without a default: historical rows remain visibly unprocessed.
+ALTER TABLE users ADD COLUMN email_verified BOOLEAN;
+-- Run this bounded statement in a separate transaction per batch.
+WITH batch AS (
+  SELECT id FROM users WHERE email_verified IS NULL ORDER BY id
+  LIMIT 10000 FOR UPDATE SKIP LOCKED
+)
+UPDATE users AS u
+SET email_verified = (u.email_verified_at IS NOT NULL)
+FROM batch WHERE u.id = batch.id;
 ```
+
+Deploy compatible writes first, repeat bounded batches with progress and lock/latency limits, then reconcile against trusted historical evidence. Apply the new-write default and NOT NULL only after validation. Do not drop the old proof or authentication fields until rollback compatibility and retention are reviewed. `CREATE INDEX CONCURRENTLY` is a standalone PostgreSQL operation outside any transaction/DO block; inspect and recover invalid indexes after failure.
 
 **Blue-Green Schema Migration**
 
@@ -210,275 +196,39 @@ def downgrade():
 
 ### 3. Data Integrity Validation
 
-```python
-def validate_pre_migration(db_connection):
-    checks = []
+Use fixed reviewed queries for the actual schema. For example, in PostgreSQL:
 
-    # Check 1: NULL values in critical columns
-    null_check = db_connection.execute("""
-        SELECT table_name, COUNT(*) as null_count
-        FROM users WHERE email IS NULL
-    """).fetchall()
-
-    if null_check[0]['null_count'] > 0:
-        checks.append({
-            'check': 'null_values',
-            'status': 'FAILED',
-            'severity': 'CRITICAL',
-            'message': 'NULL values found in required columns'
-        })
-
-    # Check 2: Duplicate values
-    duplicate_check = db_connection.execute("""
-        SELECT email, COUNT(*) as count
-        FROM users
-        GROUP BY email
-        HAVING COUNT(*) > 1
-    """).fetchall()
-
-    if duplicate_check:
-        checks.append({
-            'check': 'duplicates',
-            'status': 'FAILED',
-            'severity': 'CRITICAL',
-            'message': f'{len(duplicate_check)} duplicate emails'
-        })
-
-    return checks
-
-def validate_post_migration(db_connection, migration_spec):
-    validations = []
-
-    # Row count verification
-    for table in migration_spec['affected_tables']:
-        actual_count = db_connection.execute(
-            f"SELECT COUNT(*) FROM {table['name']}"
-        ).fetchone()[0]
-
-        validations.append({
-            'check': 'row_count',
-            'table': table['name'],
-            'expected': table['expected_count'],
-            'actual': actual_count,
-            'status': 'PASS' if actual_count == table['expected_count'] else 'FAIL'
-        })
-
-    return validations
+```sql
+SELECT COUNT(*) AS null_count FROM users WHERE email IS NULL;
+SELECT email, COUNT(*) FROM users GROUP BY email HAVING COUNT(*) > 1;
+SELECT COUNT(*) FROM user_preferences;
 ```
+
+Record the expected counts and reconciliation rules before execution. Counts alone cannot prove row equivalence; compare keys and selected transformed values against trusted source data. Use a consistent snapshot or explicitly account for concurrent writes. Unknown expectations are an incomplete validation, never PASS.
 
 ### 4. Rollback Procedures
 
-```python
-import psycopg2
-from contextlib import contextmanager
-
-class MigrationRunner:
-    def __init__(self, db_config):
-        self.db_config = db_config
-        self.conn = None
-
-    @contextmanager
-    def migration_transaction(self):
-        try:
-            self.conn = psycopg2.connect(**self.db_config)
-            self.conn.autocommit = False
-
-            cursor = self.conn.cursor()
-            cursor.execute("SAVEPOINT migration_start")
-
-            yield cursor
-
-            self.conn.commit()
-
-        except Exception as e:
-            if self.conn:
-                self.conn.rollback()
-            raise
-        finally:
-            if self.conn:
-                self.conn.close()
-
-    def run_with_validation(self, migration):
-        try:
-            # Pre-migration validation
-            pre_checks = self.validate_pre_migration(migration)
-            if any(c['status'] == 'FAILED' for c in pre_checks):
-                raise MigrationError("Pre-migration validation failed")
-
-            # Create backup
-            self.create_snapshot()
-
-            # Execute migration
-            with self.migration_transaction() as cursor:
-                for statement in migration.forward_sql:
-                    cursor.execute(statement)
-
-                post_checks = self.validate_post_migration(migration, cursor)
-                if any(c['status'] == 'FAIL' for c in post_checks):
-                    raise MigrationError("Post-migration validation failed")
-
-            self.cleanup_snapshot()
-
-        except Exception as e:
-            self.rollback_from_snapshot()
-            raise
-```
+For a transactional migration, use the engine/driver transaction context: validate preconditions, execute only the reviewed statements, validate postconditions inside the same transaction, then commit. An exception rolls back that transaction. Concurrent index operations need their separately reviewed nontransactional procedure. Snapshot creation, retention, restore and cleanup require real platform adapters and a tested recovery plan; they are not implemented by this guide. Do not automatically restore a whole database after an arbitrary error or discard the recovery snapshot immediately after commit.
 
 **Rollback Script**
 
-```bash
-#!/bin/bash
-# rollback_migration.sh
-
-set -e
-
-MIGRATION_VERSION=$1
-DATABASE=$2
-
-# Verify current version
-CURRENT_VERSION=$(psql -d $DATABASE -t -c \
-    "SELECT version FROM schema_migrations ORDER BY applied_at DESC LIMIT 1" | xargs)
-
-if [ "$CURRENT_VERSION" != "$MIGRATION_VERSION" ]; then
-    echo "❌ Version mismatch"
-    exit 1
-fi
-
-# Create backup
-BACKUP_FILE="pre_rollback_${MIGRATION_VERSION}_$(date +%Y%m%d_%H%M%S).sql"
-pg_dump -d $DATABASE -f "$BACKUP_FILE"
-
-# Execute rollback
-if [ -f "migrations/${MIGRATION_VERSION}.down.sql" ]; then
-    psql -d $DATABASE -f "migrations/${MIGRATION_VERSION}.down.sql"
-    psql -d $DATABASE -c "DELETE FROM schema_migrations WHERE version = '$MIGRATION_VERSION';"
-    echo "✅ Rollback complete"
-else
-    echo "❌ Rollback file not found"
-    exit 1
-fi
-```
+Rollback is a reviewed migration artifact, not arbitrary SQL reconstructed from shell input. Confirm the exact database and current version, verify backup restoration, compatibility and possible data loss, and obtain authorization for that target. Select the down script from a trusted manifest keyed by migration ID; reject traversal and unknown IDs. Execute with the engine's stop-on-error mode and check schema/data afterward. Bind any metadata deletion using the driver's value parameters; never interpolate identifiers or migration IDs into SQL. Do not claim rollback complete if schema or ledger reconciliation fails.
 
 ### 5. Performance Optimization
 
 **Batch Processing**
 
-```python
-class BatchMigrator:
-    def __init__(self, db_connection, batch_size=10000):
-        self.db = db_connection
-        self.batch_size = batch_size
-
-    def migrate_large_table(self, source_query, target_query, cursor_column='id'):
-        last_cursor = None
-        batch_number = 0
-
-        while True:
-            batch_number += 1
-
-            if last_cursor is None:
-                batch_query = f"{source_query} ORDER BY {cursor_column} LIMIT {self.batch_size}"
-                params = []
-            else:
-                batch_query = f"{source_query} AND {cursor_column} > %s ORDER BY {cursor_column} LIMIT {self.batch_size}"
-                params = [last_cursor]
-
-            rows = self.db.execute(batch_query, params).fetchall()
-            if not rows:
-                break
-
-            for row in rows:
-                self.db.execute(target_query, row)
-
-            last_cursor = rows[-1][cursor_column]
-            self.db.commit()
-
-            print(f"Batch {batch_number}: {len(rows)} rows")
-            time.sleep(0.1)
-```
+Use a fixed source/target query and a unique, immutable cursor key. Bind the last key and batch limit as values. Composite keys need their complete stable ordering. Validate a positive batch limit, commit each bounded batch, record the checkpoint only with its corresponding successful writes, and make retries idempotent. The expand-contract SQL above illustrates a bounded locked batch without accepting caller-supplied query fragments. Do not append `AND` to arbitrary SQL or interpolate a caller-provided table/column name.
 
 **Parallel Migration**
 
-```python
-from concurrent.futures import ThreadPoolExecutor
-
-class ParallelMigrator:
-    def __init__(self, db_config, num_workers=4):
-        self.db_config = db_config
-        self.num_workers = num_workers
-
-    def migrate_partition(self, partition_spec):
-        table_name, start_id, end_id = partition_spec
-
-        conn = psycopg2.connect(**self.db_config)
-        cursor = conn.cursor()
-
-        cursor.execute(f"""
-            INSERT INTO v2_{table_name} (columns...)
-            SELECT columns...
-            FROM {table_name}
-            WHERE id >= %s AND id < %s
-        """, [start_id, end_id])
-
-        conn.commit()
-        cursor.close()
-        conn.close()
-
-    def migrate_table_parallel(self, table_name, partition_size=100000):
-        # Get table bounds
-        conn = psycopg2.connect(**self.db_config)
-        cursor = conn.cursor()
-
-        cursor.execute(f"SELECT MIN(id), MAX(id) FROM {table_name}")
-        min_id, max_id = cursor.fetchone()
-
-        # Create partitions
-        partitions = []
-        current_id = min_id
-        while current_id <= max_id:
-            partitions.append((table_name, current_id, current_id + partition_size))
-            current_id += partition_size
-
-        # Execute in parallel
-        with ThreadPoolExecutor(max_workers=self.num_workers) as executor:
-            results = list(executor.map(self.migrate_partition, partitions))
-
-        conn.close()
-```
+Only partition a reviewed migration whose key ranges and write semantics support independent workers. Assign disjoint half-open ranges, give each worker its own connection/transaction, close connections even on failure, and reconcile all ranges before declaring completion. Define cancellation, pool limits and lock/replication stop criteria. Empty tables and UUID keys require explicit plans; integer arithmetic is not a universal partitioning strategy. The guide does not supply a parallel executor or backup adapter.
 
 ### 6. Index Management
 
-```sql
--- Drop indexes before bulk insert, recreate after
-CREATE TEMP TABLE migration_indexes AS
-SELECT indexname, indexdef
-FROM pg_indexes
-WHERE tablename = 'large_table'
-  AND indexname NOT LIKE '%pkey%';
+Inventory indexes, uniqueness/foreign-key constraints, schema, dependencies and expected query plans before changing them. Do not indiscriminately drop non-primary indexes: they may enforce uniqueness or protect a critical workload. Prefer an individually reviewed concurrent index addition in PostgreSQL, submitted as a standalone statement with no outer transaction. Verify its validity, definition and plan before scheduling a separately authorized removal of a replaced index. Do not recreate concurrent indexes from a DO block or automatically rewrite stored DDL with a regex.
 
--- Drop indexes
-DO $$
-DECLARE idx_record RECORD;
-BEGIN
-    FOR idx_record IN SELECT indexname FROM migration_indexes
-    LOOP
-        EXECUTE format('DROP INDEX IF EXISTS %I', idx_record.indexname);
-    END LOOP;
-END $$;
-
--- Perform bulk operation
-INSERT INTO large_table SELECT * FROM source_table;
-
--- Recreate indexes CONCURRENTLY
-DO $$
-DECLARE idx_record RECORD;
-BEGIN
-    FOR idx_record IN SELECT indexdef FROM migration_indexes
-    LOOP
-        EXECUTE regexp_replace(idx_record.indexdef, 'CREATE INDEX', 'CREATE INDEX CONCURRENTLY');
-    END LOOP;
-END $$;
-```
+See [PostgreSQL CREATE INDEX](https://www.postgresql.org/docs/current/sql-createindex.html) for concurrency, transaction and failed-build limitations.
 
 ## Output Format
 
@@ -492,8 +242,6 @@ END $$;
 
 Focus on production-ready SQL migrations with zero-downtime deployment strategies, comprehensive validation, and enterprise-grade safety mechanisms.
 
-## Related Plugins
+## Limitations
 
-- **nosql-migrations**: Migration strategies for MongoDB, DynamoDB, Cassandra
-- **migration-observability**: Real-time monitoring and alerting
-- **migration-integration**: CI/CD integration and automated testing
+Zero downtime depends on the database version, workload and compatible application deployments; this guide cannot guarantee it. Related migration and observability integrations must be selected from actually installed tools, with verified permissions and versions.

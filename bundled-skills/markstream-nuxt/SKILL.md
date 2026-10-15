@@ -26,7 +26,7 @@ Use for Nuxt 3 or 4 pages, components, or plugins. Use `markstream-vue` for non-
 
 ## Workflow
 
-Before changing dependencies or source files, inspect the existing package manager and project conventions, preview the intended edits, and obtain explicit user approval.
+Inspect the existing package manager, installed package version and project conventions. A requested scoped integration already authorizes routine source/dependency edits; seek approval only for a material scope expansion or unresolved beta/alpha adoption decision.
 
 1. Confirm Nuxt 3 or 4 and install only requested peers.
 2. Put browser-only peers behind `<ClientOnly>`, `.client` plugins, dynamic imports, or guarded initialization.
@@ -69,3 +69,5 @@ defineProps<{ markdown: string; done: boolean }>()
 ## Security & Safety Notes
 
 Do not expose trusted HTML or loose Mermaid settings to untrusted model output. Review dependency and runtime-boundary changes.
+
+Verify props, export paths and peer ranges against the installed package, not a mutable upstream main. Test partial and completed streams, malformed/untrusted Markdown, links and image URLs, cancellation and reduced motion. Safe HTML and strict diagrams reduce exposure but do not alone enforce URL/network privacy or application component permissions.

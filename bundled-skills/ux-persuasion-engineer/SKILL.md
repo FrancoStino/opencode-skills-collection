@@ -5,11 +5,17 @@ risk: safe
 source: community
 date_added: "2026-04-04"
 ---
-You are a **Behavioral UX Researcher and Choice Architecture Specialist**. Your task is to apply behavioral psychology and persuasive design principles to UX flows. You reduce friction, increase commitment, and guide users toward the intended behavior without coercion.
+Use a marketing planning and audience-research lens. Your task is to apply behavioral psychology and persuasive design principles to UX flows. You reduce friction, increase commitment, and guide users toward the intended behavior without coercion.
 
 ## When to Use
 - Use when a product or page UX should guide decisions more clearly through layout, sequencing, and cues.
 - Use when conversion friction comes from interaction design rather than copy alone.
+
+## Evidence and scope
+
+Use observed audience research and verified product facts. Psychological interpretations and the author-year references below are inherited conceptual context, not validated evidence for this exact workflow or a guaranteed conversion effect. Before using a scientific claim externally, verify the actual publication, method and applicability; omit unsupported claims. This is marketing planning, not clinical diagnosis. Do not infer sensitive traits or exploit vulnerabilities.
+
+Original contribution: [PR 451](https://github.com/sickn33/agentic-awesome-skills/pull/451) by MMEHDI0606; [immutable source snapshot](https://github.com/MMEHDI0606/antigravity-awesome-skills/blob/9c61357e3e6bb167946036f52ac1e28fc82e04d0/skills/ux-persuasion-engineer/SKILL.md). This identifies the contributed instructions, not scientific validation or a new upstream endorsement.
 
 ## CONTEXT GATHERING
 
@@ -31,23 +37,23 @@ Behavior follows motivation, ability, and prompts, but most UX failures happen b
 
 **Step 1 - Define the target behavior**
 Name the one behavior the flow must produce.
-*Research basis: behavior change works best when the desired action is explicit and singular (Fogg; Volpp & Loewenstein, 2020).*
+*Planning hypothesis (verify before presenting as research): behavior change works best when the desired action is explicit and singular (Fogg; Volpp & Loewenstein, 2020).*
 
 **Step 2 - Audit friction**
 List every unnecessary decision, field, screen, and hesitation point.
-*Research basis: cognitive load and choice overload reduce follow-through (Hick's Law; Stawarz et al., 2015).*
+*Planning hypothesis (verify before presenting as research): cognitive load and choice overload reduce follow-through (Hick's Law; Stawarz et al., 2015).*
 
 **Step 3 - Design the default path**
 Make the most helpful path the easiest path.
-*Research basis: defaults, simplification, and commitment devices shape behavior without force (Thaler & Sunstein; Karppinen, 2016).*
+*Planning hypothesis (verify before presenting as research): defaults, simplification, and commitment devices shape behavior without force (Thaler & Sunstein; Karppinen, 2016).*
 
 **Step 4 - Insert commitment points**
 Add small yes-steps that build momentum before the big ask.
-*Research basis: commitment and consistency increase follow-through when effort is staged (Cialdini; Fogg).*
+*Planning hypothesis (verify before presenting as research): commitment and consistency increase follow-through when effort is staged (Cialdini; Fogg).*
 
 **Step 5 - Check for ethical pressure**
 Ensure the design guides, does not trap.
-*Research basis: persuasive systems can become dark patterns if autonomy is weakened (Karppinen, 2016; design ethics literature).*
+*Planning hypothesis (verify before presenting as research): persuasive systems can become dark patterns if autonomy is weakened (Karppinen, 2016; design ethics literature).*
 
 ## DECISION MATRIX
 
@@ -94,7 +100,7 @@ The line between persuasion and manipulation is guiding behavior by making the i
 
 ## SKILL CHAINING
 
-Before invoking this skill, the agent should have completed:
+Optional context from related skills (equivalent supplied research is sufficient; do not create a prerequisite cycle):
 - [ ] `@customer-psychographic-profiler`
 - [ ] `@jobs-to-be-done-analyst`
 - [ ] `@awareness-stage-mapper`
@@ -118,6 +124,8 @@ Before finalizing output, the agent asks:
 **User request:**
 
 > Redesign this product flow so layout, sequencing, and cues guide the decision clearly and ethically.
+
+**Illustrative output:** For a checkout review, make total cost and cancellation visible before commitment; compare task completion and errors without preselecting optional paid add-ons.
 
 ## Limitations
 - Use this skill only when the task clearly matches the scope described above.

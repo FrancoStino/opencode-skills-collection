@@ -436,7 +436,7 @@ If you need more context:
 - **ab-test-setup**: For testing onboarding changes
 
 ## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
+Use when diagnosing where new users abandon onboarding, defining activation events, or planning a measurable first-use experiment.
 
 ## Safety and measurement
 

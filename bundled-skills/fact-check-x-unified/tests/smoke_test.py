@@ -102,7 +102,7 @@ def main() -> int:
             notices,
         ).decode("utf-8")
         assert 'data-fcx-run-notice="1"' in notice_html
-        assert "受影响且无法核验的主张按“疑似误导”呈现" in notice_html
+        assert "受影响且无法核验的主张保持“证据不足”，不得从技术失败推定误导" in notice_html
 
         merge_results = Path(temp) / "merge-results"
         merge_results.mkdir()

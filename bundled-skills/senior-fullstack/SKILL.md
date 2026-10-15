@@ -1,220 +1,44 @@
 ---
 name: senior-fullstack
-description: "Complete toolkit for senior fullstack with modern tools and best practices."
+description: "Coordinate full-stack implementation across interface, service, database and delivery boundaries using the existing project stack and verified checks."
 risk: critical
 source: community
 date_added: "2026-02-27"
 ---
 
-# Senior Fullstack
-
-Complete toolkit for senior fullstack with modern tools and best practices.
-
-## Quick Start
-
-### Main Capabilities
-
-This skill provides three core capabilities through automated scripts:
-
-```bash
-# Script 1: Fullstack Scaffolder
-python scripts/fullstack_scaffolder.py [options]
-
-# Script 2: Project Scaffolder
-python scripts/project_scaffolder.py [options]
-
-# Script 3: Code Quality Analyzer
-python scripts/code_quality_analyzer.py [options]
-```
-
-## Core Capabilities
-
-### 1. Fullstack Scaffolder
-
-Automated tool for fullstack scaffolder tasks.
-
-**Features:**
-- Automated scaffolding
-- Best practices built-in
-- Configurable templates
-- Quality checks
-
-**Usage:**
-```bash
-python scripts/fullstack_scaffolder.py <project-path> [options]
-```
-
-### 2. Project Scaffolder
-
-Comprehensive analysis and optimization tool.
-
-**Features:**
-- Deep analysis
-- Performance metrics
-- Recommendations
-- Automated fixes
-
-**Usage:**
-```bash
-python scripts/project_scaffolder.py <target-path> [--verbose]
-```
-
-### 3. Code Quality Analyzer
-
-Advanced tooling for specialized tasks.
-
-**Features:**
-- Expert-level automation
-- Custom configurations
-- Integration ready
-- Production-grade output
-
-**Usage:**
-```bash
-python scripts/code_quality_analyzer.py [arguments] [options]
-```
-
-## Reference Documentation
-
-### Tech Stack Guide
-
-Comprehensive guide available in `references/tech_stack_guide.md`:
-
-- Detailed patterns and practices
-- Code examples
-- Best practices
-- Anti-patterns to avoid
-- Real-world scenarios
-
-### Architecture Patterns
-
-Complete workflow documentation in `references/architecture_patterns.md`:
-
-- Step-by-step processes
-- Optimization strategies
-- Tool integrations
-- Performance tuning
-- Troubleshooting guide
-
-### Development Workflows
-
-Technical reference guide in `references/development_workflows.md`:
-
-- Technology stack details
-- Configuration examples
-- Integration patterns
-- Security considerations
-- Scalability guidelines
-
-## Tech Stack
-
-**Languages:** TypeScript, JavaScript, Python, Go, Swift, Kotlin
-**Frontend:** React, Next.js, React Native, Flutter
-**Backend:** Node.js, Express, GraphQL, REST APIs
-**Database:** PostgreSQL, Prisma, NeonDB, Supabase
-**DevOps:** Docker, Kubernetes, Terraform, GitHub Actions, CircleCI
-**Cloud:** AWS, GCP, Azure
-
-## Development Workflow
-
-### 1. Setup and Configuration
-
-```bash
-# Install dependencies
-npm install
-# or
-pip install -r requirements.txt
-
-# Configure environment
-cp .env.example .env
-```
-
-### 2. Run Quality Checks
-
-```bash
-# Use the analyzer script
-python scripts/project_scaffolder.py .
-
-# Review recommendations
-# Apply fixes
-```
-
-### 3. Implement Best Practices
-
-Follow the patterns and practices documented in:
-- `references/tech_stack_guide.md`
-- `references/architecture_patterns.md`
-- `references/development_workflows.md`
-
-## Best Practices Summary
-
-### Code Quality
-- Follow established patterns
-- Write comprehensive tests
-- Document decisions
-- Review regularly
-
-### Performance
-- Measure before optimizing
-- Use appropriate caching
-- Optimize critical paths
-- Monitor in production
-
-### Security
-- Validate all inputs
-- Use parameterized queries
-- Implement proper authentication
-- Keep dependencies updated
-
-### Maintainability
-- Write clear code
-- Use consistent naming
-- Add helpful comments
-- Keep it simple
-
-## Common Commands
-
-```bash
-# Development
-npm run dev
-npm run build
-npm run test
-npm run lint
-
-# Analysis
-python scripts/project_scaffolder.py .
-python scripts/code_quality_analyzer.py --analyze
-
-# Deployment
-docker build -t app:latest .
-docker-compose up -d
-kubectl apply -f k8s/
-```
-
-## Troubleshooting
-
-### Common Issues
-
-Check the comprehensive troubleshooting section in `references/development_workflows.md`.
-
-### Getting Help
-
-- Review reference documentation
-- Check script output messages
-- Consult tech stack documentation
-- Review error logs
-
-## Resources
-
-- Pattern Reference: `references/tech_stack_guide.md`
-- Workflow Guide: `references/architecture_patterns.md`
-- Technical Guide: `references/development_workflows.md`
-- Tool Scripts: `scripts/` directory
+# Full-Stack Implementation Review
 
 ## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
+
+Use when a feature spans the browser, backend service and database, or when reviewing an existing full-stack implementation for integration gaps.
+
+## Workflow
+
+1. Inspect the project's actual stack, build commands and conventions. Trace one user journey through interface state, API request, authorization, data access and response handling.
+2. Define the request/response contract, permission checks, input validation and failure states before changing code. Keep database migrations and external side effects explicit.
+3. Implement the smallest coherent slice using existing dependencies. Separate interface presentation, domain logic and persistence; use parameterized queries and server-side authorization.
+4. Run project-owned checks for the changed behavior: unit tests for rules, integration tests for permissions and persistence, and browser tests for the complete journey. Record which checks actually ran and any missing environments.
+5. Prepare a migration, rollback and release plan where needed. Dependency installation, destructive data changes, external notifications and deployments require authorization appropriate to that action.
+
+## Example
+
+User: "Add a billing settings page."
+
+Assistant: Inspect the existing billing integration and account permissions, define the settings API, implement loading/empty/error states, and test that one account cannot modify another account's settings. Prepare provider writes and deployment separately from local implementation; do not create a paid subscription merely to test the interface.
+
+## Bundled references
+
+- [Stack inspection checklist](references/tech_stack_guide.md)
+- [Boundary and contract review](references/architecture_patterns.md)
+- [Implementation and verification workflow](references/development_workflows.md)
+
+## Helper status
+
+The three retained Python helpers are unimplemented historical skeletons. They intentionally fail with a nonzero exit and do not scaffold, analyze quality or certify a project. Use the project's real tools; do not report an empty findings list as a clean audit. No executable installation or production deployment is supplied by this skill.
 
 ## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+
+- Stack and provider compatibility must be checked in the actual project.
+- The references are review checklists, not complete application templates.
+- Passing a subset of tests does not prove security, performance or deployment readiness.
+- Do not infer permission to change accounts, billing or production resources from a request for a code review.

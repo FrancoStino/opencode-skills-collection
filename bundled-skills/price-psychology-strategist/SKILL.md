@@ -5,11 +5,17 @@ risk: safe
 source: community
 date_added: "2026-04-04"
 ---
-You are a **Behavioral Economist specializing in price perception and consumer valuation**. Your task is to apply behavioral economics and price perception psychology to how pricing is structured, presented, and framed.
+Use a marketing planning and audience-research lens. Your task is to apply behavioral economics and price perception psychology to how pricing is structured, presented, and framed.
 
 ## When to Use
 - Use when pricing, packaging, or offer framing needs better perception of value and fairness.
 - Use when testing anchors, tiers, decoys, or price presentation for conversion impact.
+
+## Evidence and scope
+
+Use observed audience research and verified product facts. Psychological interpretations and the author-year references below are inherited conceptual context, not validated evidence for this exact workflow or a guaranteed conversion effect. Before using a scientific claim externally, verify the actual publication, method and applicability; omit unsupported claims. This is marketing planning, not clinical diagnosis. Do not infer sensitive traits or exploit vulnerabilities.
+
+Original contribution: [PR 451](https://github.com/sickn33/agentic-awesome-skills/pull/451) by MMEHDI0606; [immutable source snapshot](https://github.com/MMEHDI0606/antigravity-awesome-skills/blob/9c61357e3e6bb167946036f52ac1e28fc82e04d0/skills/price-psychology-strategist/SKILL.md). This identifies the contributed instructions, not scientific validation or a new upstream endorsement.
 
 ## CONTEXT GATHERING
 
@@ -31,23 +37,23 @@ People judge price relative to anchors, reference points, and perceived pain of 
 
 **Step 1 - Set the reference point**
 Decide what the audience will compare the price against.
-*Research basis: valuation depends on the anchor and the local cognitive frame (Houdek, 2016; Ariely et al., 2003).*
+*Planning hypothesis (verify before presenting as research): valuation depends on the anchor and the local cognitive frame (Houdek, 2016; Ariely et al., 2003).*
 
 **Step 2 - Choose the price structure**
 Pick monthly, annual, per-use, bundle, or tiered framing.
-*Research basis: unit framing and price format shift perceived value (Whitley et al., 2025; Yu et al., 2025).*
+*Planning hypothesis (verify before presenting as research): unit framing and price format shift perceived value (Whitley et al., 2025; Yu et al., 2025).*
 
 **Step 3 - Decide on decoys and anchors**
 Use a decoy only if it clarifies the preferred option.
-*Research basis: asymmetrically dominated alternatives can redirect choice without changing actual value (Ariely et al., 2003; Beggs & Graddy, 2009).*
+*Planning hypothesis (verify before presenting as research): asymmetrically dominated alternatives can redirect choice without changing actual value (Ariely et al., 2003; Beggs & Graddy, 2009).*
 
 **Step 4 - Reduce pain of paying honestly**
 Consider payment timing, bundling, or subscription framing.
-*Research basis: the pain of paying and payment decoupling affect willingness to buy (Bertrand et al., 2010; price perception research).*
+*Planning hypothesis (verify before presenting as research): the pain of paying and payment decoupling affect willingness to buy (Bertrand et al., 2010; price perception research).*
 
 **Step 5 - Check for quality signal collapse**
 Ensure the price presentation does not undermine premium positioning.
-*Research basis: price is also a quality cue; discount framing can damage inference (Houdek, 2016; Yu et al., 2025).*
+*Planning hypothesis (verify before presenting as research): price is also a quality cue; discount framing can damage inference (Houdek, 2016; Yu et al., 2025).*
 
 ## DECISION MATRIX
 
@@ -94,14 +100,14 @@ The line between persuasion and manipulation is framing a real value choice vers
 
 ## SKILL CHAINING
 
-Before invoking this skill, the agent should have completed:
+Optional context from related skills (equivalent supplied research is sufficient; do not create a prerequisite cycle):
 - [ ] `@loss-aversion-designer`
 - [ ] `@trust-calibrator`
 
 This skill's output feeds into:
 - [ ] `@copywriting-psychologist`
 - [ ] `@pitch-psychologist`
-- [ ] `@pricing page`-style outputs
+- [ ] pricing-page drafts
 
 ## OUTPUT QUALITY CHECK
 
@@ -117,6 +123,8 @@ Before finalizing output, the agent asks:
 **User request:**
 
 > Review this pricing and packaging for perceived value, fairness, anchoring, and avoidable confusion.
+
+**Illustrative output:** If approved prices are €12 monthly or €120 billed annually, state the annual charge and €24 annual saving against twelve monthly payments; disclose renewal and cancellation terms.
 
 ## Limitations
 - Use this skill only when the task clearly matches the scope described above.

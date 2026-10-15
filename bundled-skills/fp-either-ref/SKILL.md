@@ -40,7 +40,7 @@ E.filterOrElse(pred, toErr) // Right → Left if pred fails
 ## Extract
 
 ```typescript
-E.getOrElse(err => default)  // Get Right or default
+E.getOrElse(err => fallbackValue)  // Get Right or default
 E.match(onLeft, onRight)     // Pattern match
 E.toUnion(either)            // E | A (loses type info)
 ```
@@ -48,10 +48,10 @@ E.toUnion(either)            // E | A (loses type info)
 ## Common Patterns
 
 ```typescript
-import { pipe } from 'fp-ts/function'
+import { pipe, identity } from 'fp-ts/function'
 import * as E from 'fp-ts/Either'
 
-// Validation
+// Toy validation; an @ check is not complete email validation
 const validateEmail = (s: string): E.Either<string, string> =>
   s.includes('@') ? E.right(s) : E.left('Invalid email')
 
@@ -83,7 +83,7 @@ try {
 // ✅ Either - errors explicit in types
 pipe(
   E.tryCatch(() => JSON.parse(input), String),
-  E.map(process),
+  E.flatMap(data => E.tryCatch(() => process(data), String)),
   E.match(handleError, identity)
 )
 ```
@@ -94,3 +94,9 @@ Use Either when **error type matters** and you want to chain operations.
 - Use this skill only when the task clearly matches the scope described above.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+
+## Reference scope
+
+These are fp-ts 2.x fragments. Supply application variables, types, validators and imports, and check the installed version. `map` does not catch thrown exceptions. `Task` has no typed error channel; an improperly wrapped promise can still reject. Use `tryCatch` at fallible boundaries.
+
+Official API: [fp-ts modules](https://gcanti.github.io/fp-ts/modules/).

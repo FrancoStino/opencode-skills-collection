@@ -53,13 +53,15 @@ git describe --tags --abbrev=0
 
 # List commits since that tag (or since a given ref)
 git log --no-merges --pretty=format:"%h|%s" <last-tag>..HEAD
+# Inspect the actual selected diff too, including changes merged through merge commits.
+git diff --stat <last-tag> HEAD
 ```
 
 If the user supplies a PR number, a branch name, or explicit `from..to` refs, use those instead.
 
 ### 2. Filter noise
 
-Skip commits whose subject matches:
+Use subjects only as triage hints; inspect the actual diff and user impact before skipping anything. Candidate noise includes:
 - `merge`, `Merge`
 - `wip`, `WIP`
 - lint, format, whitespace-only, typo fixes in non-user-facing files
@@ -114,7 +116,7 @@ Rules:
 
 ### 5. Output
 
-Print the finished markdown block ready to paste at the top of CHANGELOG.md, above any existing `## [Unreleased]` section.
+Print a reviewable entry. Merge into an existing Unreleased section rather than creating duplicate headings; a requested version does not prove it was released or that the tag/release date exists.
 
 ## Example Output
 
@@ -130,12 +132,12 @@ Print the finished markdown block ready to paste at the top of CHANGELOG.md, abo
 - Pagination reset on filter change in the dashboard table. (#415)
 
 ### Security
-- Upgraded `semver` to patch CVE-2024-12345 (ReDoS). (#420)
+- Upgraded a dependency to resolve the advisory verified in the release evidence. (#420)
 ```
 
 ## Limitations
 
 - Relies on commit message quality; vague messages produce vague entries.
-- Cannot infer user impact from diff content alone; review output before pasting.
+- Inspect public behavior and actual diff; do not invent CVEs, contributors, counts or release proof from commit subjects. Verify a provided tag/range and use documented empty-repository/no-tag behavior rather than choosing unrelated marketing numbers.
 - Does not write to CHANGELOG.md automatically — output is for manual review and paste.
 - Stop and ask for clarification if the version number, date, or commit range is ambiguous.

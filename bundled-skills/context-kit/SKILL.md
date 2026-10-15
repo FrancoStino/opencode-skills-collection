@@ -11,6 +11,14 @@ author: JDDavenport
 tags: [personal-context, claude-code, memory, knowledge-management, agent-workflows]
 tools: [claude, codex, cursor, gemini]
 ---
+## Supporting material availability
+
+This catalog copy contains the inline guidance below, but does not include the following supporting paths. They are external prerequisites, not bundled files:
+
+- `<support-root>/scripts/install.sh`
+
+Obtain the required material from the [declared upstream source](https://github.com/JDDavenport/context-kit), or from a user-provided installation of that source. Resolve each path relative to that installation, inspect its contents, and verify any applicable license and execution prerequisites. Do not run a command or claim a referenced procedure was followed until its required file exists. Do not fabricate the missing scripts or treat an unrelated file with the same name as equivalent. Independent steps fully documented here can proceed within the user’s authorized scope; report any dependent step as unavailable.
+
 
 # Context Kit
 

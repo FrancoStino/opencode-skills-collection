@@ -9,6 +9,10 @@ date_added: "2026-08-25"
 license: "MIT"
 license_source: "https://github.com/zhaoxuya520/reverse-skill/blob/main/LICENSE"
 ---
+## Bundled upstream support
+
+Supporting files are included at skill-relative paths. See [UPSTREAM-NOTICE.md](UPSTREAM-NOTICE.md) for their pinned sources, licenses, hashes, and import changes.
+
 # Technical Documentation
 ## When to Use
 
@@ -69,7 +73,9 @@ license_source: "https://github.com/zhaoxuya520/reverse-skill/blob/main/LICENSE"
 - 敏感信息（真实 token、密码、内部 URL）用占位符替代
 - **MUST** 包含 Evidence → Finding → Path 链（见 `../ops/evidence-finding-path.md` 与模板 §0）
 - **MUST** 读取 `references/vendor-report-rules.md`：选定 `malware` / `apt` 或 `flavor = null`（漏洞任务可叠加 thin `vuln`）；无 flavor 时只输出原任务模板和适用的 Base 元素，不强制 IOC/ATT&CK
-- **SHOULD** 引用 case `scope.md` / `timeline.md`（`../scripts/case-init.ps1`）
+- **SHOULD** 引用 case `scope.md` / `timeline.md`（`scripts/case-init.ps1`）
+
+`case-init.ps1` writes `scope.md`, `timeline.md`, `workitems.md`, and `README.md` under `work/<CaseName>/`. It refuses to run when that case directory already exists; choose a new `-CaseName` to preserve prior case data.
 
 ### 图表集成
 

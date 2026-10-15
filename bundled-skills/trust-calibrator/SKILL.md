@@ -5,11 +5,17 @@ risk: safe
 source: community
 date_added: "2026-04-04"
 ---
-You are a **Social Psychologist specializing in trust formation and credibility research**. Your task is to diagnose the specific trust barriers a target audience holds toward a brand, offer, or category and prescribe the exact signals needed to build credibility.
+Use a marketing planning and audience-research lens. Your task is to diagnose the specific trust barriers a target audience holds toward a brand, offer, or category and prescribe the exact signals needed to build credibility.
 
 ## When to Use
 - Use when messaging needs the right level of certainty, proof, and claim strength for a skeptical audience.
 - Use when overclaiming, underselling, or weak credibility signals are hurting conversion.
+
+## Evidence and scope
+
+Use observed audience research and verified product facts. Psychological interpretations and the author-year references below are inherited conceptual context, not validated evidence for this exact workflow or a guaranteed conversion effect. Before using a scientific claim externally, verify the actual publication, method and applicability; omit unsupported claims. This is marketing planning, not clinical diagnosis. Do not infer sensitive traits or exploit vulnerabilities.
+
+Original contribution: [PR 451](https://github.com/sickn33/agentic-awesome-skills/pull/451) by MMEHDI0606; [immutable source snapshot](https://github.com/MMEHDI0606/antigravity-awesome-skills/blob/9c61357e3e6bb167946036f52ac1e28fc82e04d0/skills/trust-calibrator/SKILL.md). This identifies the contributed instructions, not scientific validation or a new upstream endorsement.
 
 ## CONTEXT GATHERING
 
@@ -31,23 +37,23 @@ Trust forms when the audience believes the source can deliver, will act in their
 
 **Step 1 - Identify the trust barrier**
 Name what is missing: competence, intent, proof, familiarity, or legitimacy.
-*Research basis: trust formation is multi-dimensional and category-specific (Rowley et al., 2015).*
+*Planning hypothesis (verify before presenting as research): trust formation is multi-dimensional and category-specific (Rowley et al., 2015).*
 
 **Step 2 - Diagnose the category baseline**
 Determine whether the category is naturally trusted, distrusted, or polarized.
-*Research basis: category skepticism changes how much evidence is required before action (Nagy et al., 2022; Nguyen-Viet & Nguyen, 2024).*
+*Planning hypothesis (verify before presenting as research): category skepticism changes how much evidence is required before action (Nagy et al., 2022; Nguyen-Viet & Nguyen, 2024).*
 
 **Step 3 - Select the trust signal**
 Choose proof, transparency, credentials, endorsements, or process visibility.
-*Research basis: different trust signals solve different credibility gaps (Hovland; Bagozzi et al., 2021).*
+*Planning hypothesis (verify before presenting as research): different trust signals solve different credibility gaps (Hovland; Bagozzi et al., 2021).*
 
 **Step 4 - Sequence the signal**
 Place the signal before the highest-risk decision.
-*Research basis: trust grows when the audience receives the right signal at the right point in the funnel (Rowley et al., 2015).*
+*Planning hypothesis (verify before presenting as research): trust grows when the audience receives the right signal at the right point in the funnel (Rowley et al., 2015).*
 
 **Step 5 - Check for trust repair risk**
 Ensure the signal cannot be interpreted as overclaiming or manipulation.
-*Research basis: skepticism and backlash intensify when messages feel defensive or exaggerated (Nguyen-Viet & Nguyen, 2024).*
+*Planning hypothesis (verify before presenting as research): skepticism and backlash intensify when messages feel defensive or exaggerated (Nguyen-Viet & Nguyen, 2024).*
 
 ## DECISION MATRIX
 
@@ -95,7 +101,7 @@ The line between persuasion and manipulation is giving a person the signals they
 
 ## SKILL CHAINING
 
-Before invoking this skill, the agent should have completed:
+Optional context from related skills (equivalent supplied research is sufficient; do not create a prerequisite cycle):
 - [ ] `@customer-psychographic-profiler`
 - [ ] `@awareness-stage-mapper`
 
@@ -119,6 +125,8 @@ Before finalizing output, the agent asks:
 **User request:**
 
 > Calibrate the certainty, proof, and claim strength in this message for a skeptical audience.
+
+**Illustrative output:** Map a reliability concern to the available incident history and recovery procedure; disclose the observation period and avoid an uptime percentage without a measured denominator.
 
 ## Limitations
 - Use this skill only when the task clearly matches the scope described above.

@@ -34,7 +34,7 @@ You are an expert in AWS CloudFormation specializing in template optimization, s
 
 ```yaml
 AWSTemplateFormatVersion: "2010-09-09"
-Description: Production VPC with public and private subnets
+Description: Minimal VPC skeleton; subnet/routing/security resources are not included
 
 Parameters:
   Environment:
@@ -76,9 +76,10 @@ Outputs:
 ## Troubleshooting
 
 **Problem:** Stack stuck in `UPDATE_ROLLBACK_FAILED`
-**Solution:** Use `continue-update-rollback` with `--resources-to-skip` for the failing resource, then fix the root cause.
+**Solution:** Inspect the exact stack events and failed-resource state first. Skipping resources is a last-resort recovery action requiring approval; skipped resources can remain inconsistent with the template and must be reconciled before another update.
 
 ## Limitations
-- Use this skill only when the task clearly matches the scope described above.
+- validate-template checks template form, not deployability, cost, policy or safe replacements. Review an explicit change set in the authorized account/region, especially deletes/replacements and IAM capabilities. DeletionPolicy alone does not protect replacement; evaluate UpdateReplacePolicy and backups.
+- Never execute a deploy/recovery or change a stack merely to validate these examples. The VPC skeleton does not provide production networking or public/private subnet isolation.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.

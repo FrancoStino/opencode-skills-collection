@@ -1,6 +1,6 @@
 ---
 name: security-checklist
-description: Reference document for monopoly security-checklist.
+description: Review a scoped architecture against evidence-based network, identity, data, secrets, dependency and incident-response controls.
 source: community
 date_added: "2026-09-04"
 risk: safe
@@ -10,7 +10,7 @@ reports-to: monopoly
 # MONOPOLY — Security Hardening Checklist
 
 ## When to Use
-- Use this skill when the task matches this description: Reference document for monopoly security-checklist.
+- Use this skill when the task matches this description: Review a scoped architecture against evidence-based network, identity, data, secrets, dependency and incident-response controls.
 
 ## Network Security
 - [ ] All services inside private VPC; only LB/API GW exposed publicly
@@ -21,7 +21,7 @@ reports-to: monopoly
 - [ ] VPN or Private Link for inter-service communication in multi-region
 
 ## Authentication & Authorization
-- [ ] JWT tokens with short expiry (15 min access, 7 day refresh)
+- [ ] Token lifetimes, renewal and revocation follow a threat model; sample lifetimes are not universal requirements
 - [ ] OAuth 2.0 / OIDC for third-party auth
 - [ ] MFA enforced for admin accounts
 - [ ] RBAC or ABAC for authorization
@@ -34,7 +34,7 @@ reports-to: monopoly
 - [ ] SQL injection prevention (parameterized queries, ORM)
 - [ ] XSS prevention (output encoding, CSP headers)
 - [ ] CSRF protection (SameSite cookies, CSRF tokens)
-- [ ] CORS policy locked down (not wildcard `*`)
+- [ ] CORS matches the trust model; private credentialed APIs differ from public non-credentialed resources
 - [ ] HTTP security headers (HSTS, X-Frame-Options, X-Content-Type-Options)
 
 ## Data Security
@@ -60,12 +60,12 @@ reports-to: monopoly
 - [ ] Audit logs for all admin actions and data access
 - [ ] Alerting on anomalous access patterns
 - [ ] Incident response runbook documented
-- [ ] Data breach notification process defined (GDPR 72-hour rule)
+- [ ] Breach assessment and notification process matches the applicable jurisdiction, trigger, recipient and legal timeframe
 - [ ] Regular penetration testing scheduled
 
 ## Compliance (as applicable)
-- [ ] GDPR: data residency, right to deletion, consent tracking
-- [ ] PCI-DSS: if handling card data — never store raw PANs
+- [ ] GDPR: lawful basis, transparency, rights, retention and lawful transfer safeguards where applicable
+- [ ] PCI-DSS: establish card-data scope and current storage, masking, encryption and sensitive-authentication-data restrictions
 - [ ] HIPAA: if health data — encryption, audit logs, BAA with vendors
 - [ ] SOC 2 Type II: access control, availability, confidentiality evidence
 
@@ -77,3 +77,5 @@ reports-to: monopoly
 
 ## Limitations
 - This is a reference document and may not cover all edge cases. Always verify architectures before production.
+
+This checklist is not certification, legal advice or permission to apply controls. Verify current primary standards and actual architecture before marking compliance; a WAF, ORM, token or encrypted database does not prove the corresponding control. Do not force every cloud product onto a smaller system. Link each finding to exact revision, reachable risk and observed evidence.

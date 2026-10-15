@@ -1,15 +1,11 @@
 ---
 name: expo-ui-jetpack-compose
-description: expo-ui-jetpack-compose
+description: Build Android-native Expo SDK 55 UI with Jetpack Compose views/modifiers, Host sizing and platform-specific integration.
 risk: critical
 source: community
 date_added: "2026-09-04"
 ---
 
----
-name: expo-ui-jetpack-compose
-description: `@expo/ui/jetpack-compose` package lets you use Jetpack Compose Views and modifiers in your app.
----
 
 > The instructions in this skill apply to SDK 55 only. For other SDK versions, refer to the Expo UI Jetpack Compose docs for that version for the most accurate information.
 
@@ -48,10 +44,11 @@ import { fillMaxWidth, paddingAll } from "@expo/ui/jetpack-compose/modifiers";
 
 ## Key Components
 
-- **LazyColumn** — Use instead of react-native `ScrollView`/`FlatList` for scrollable lists. Wrap in `<Host style={{ flex: 1 }}>`.
+- **LazyColumn** — Use for a Compose-native list when the platform-specific design calls for it; do not replace React Native lists universally. Wrap in `<Host style={{ flex: 1 }}>`.
 - **Icon** — Use `<Icon source={require('./icon.xml')} size={24} />` with Android XML vector drawables from [Material Symbols](https://fonts.google.com/icons).
 
 ## Limitations
-- Use this skill only when the task clearly matches the scope described above.
+- APIs target SDK 55; check that version’s actual Expo docs and installed package before editing. Android/iOS examples are platform-specific, not interchangeable or proof of real-device behavior. Existing framework and user requirements take precedence.
+- Native rebuilds install/execute dependencies and change the project; review the intended development target first. icon.xml and app code are application assets, not bundled files.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.

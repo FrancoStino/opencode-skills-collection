@@ -17,10 +17,12 @@ Use matched transitions to create smooth continuity between a source view (thumb
 struct MediaPreview: View {
   @Namespace private var namespace
   @State private var selected: MediaAttachment?
+  let attachment: MediaAttachment
 
   var body: some View {
     ThumbnailView()
-      .matchedTransitionSource(id: selected?.id ?? "", in: namespace)
+      .matchedTransitionSource(id: attachment.id, in: namespace)
+      .onTapGesture { selected = attachment }
       .sheet(item: $selected) { item in
         MediaViewer(item: item)
           .navigationTransition(.zoom(sourceID: item.id, in: namespace))

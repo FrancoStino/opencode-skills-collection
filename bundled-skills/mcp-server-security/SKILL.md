@@ -120,20 +120,20 @@ openssl x509 -req -in agent-csr.pem -CA ca-cert.pem -CAkey ca-key.pem \
 
 For local stdio-based servers, the attack surface is the process boundary itself:
 
-```jsonc
-// claude_desktop_config.json - restrict stdio server permissions
+Use an already reviewed, version-pinned local server entrypoint and a separately enforced sandbox. Do not launch a moving `npx -y` package or describe Node flags as a complete host-permission boundary. The server needs runtime/module access in addition to its data root; network, process creation, links and writes need explicit platform controls. A configuration example is not permission to create or replace a user's host entry.
+
+```json
 {
   "mcpServers": {
-    "filesystem": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/home/user/safe-dir"],
-      "env": {
-        "NODE_OPTIONS": "--experimental-permission --allow-fs-read=/home/user/safe-dir --allow-fs-write=/home/user/safe-dir"
-      }
+    "reviewed-filesystem": {
+      "command": "/absolute/path/to/node",
+      "args": ["/absolute/path/to/reviewed-server/index.js", "/absolute/path/to/approved-data"]
     }
   }
 }
 ```
+
+Replace every path with an existing reviewed runtime, bind its content/version, and test actual denied reads/writes/egress in isolation before enabling it.
 
 ---
 
@@ -146,11 +146,11 @@ your server to validate bearer tokens on every request.
 
 ```typescript
 // src/auth.ts - OAuth 2.1 token validation middleware for an MCP server
-import { createServer } from "@modelcontextprotocol/sdk/server/index.js";
-import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
 import express from "express";
 import jwt from "jsonwebtoken";
 
+// Middleware only: supply a verified issuer/key/resource binding, revocation policy,
+// MCP transport/session wiring and authorization before exposing any endpoint.
 const app = express();
 
 // OAuth 2.1 token validation middleware
@@ -167,8 +167,12 @@ function validateBearerToken(req: express.Request, res: express.Response, next: 
       issuer: "https://auth.example.com",
       audience: "mcp-server",
     });
+    if (typeof payload !== "object" || typeof payload.sub !== "string" || !payload.sub ||
+        typeof payload.exp !== "number" || !Number.isFinite(payload.exp) || !Number.isInteger(payload.exp)) {
+      return res.status(403).json({ error: "invalid_token" });
+    }
     // Attach scopes for downstream authorization
-    (req as any).tokenScopes = (payload as any).scope?.split(" ") || [];
+    (req as any).tokenScopes = typeof payload.scope === "string" ? payload.scope.split(" ") : [];
     (req as any).userId = (payload as any).sub;
     next();
   } catch {
@@ -178,6 +182,8 @@ function validateBearerToken(req: express.Request, res: express.Response, next: 
 
 app.use("/mcp", validateBearerToken);
 ```
+
+Require expiry and a nonempty subject in addition to the verified signature, issuer and resource audience. Session IDs are not authentication. Derive roles/scopes from verified server policy, never caller-supplied role names; wildcard admin examples do not grant blanket execution permission. Validate key revocation/rotation and per-tool resource authorization separately.
 
 ### 4.2 API Key Management
 

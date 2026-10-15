@@ -25,7 +25,7 @@ Build comprehensive 3-5 year financial models with revenue projections, cost str
 - Clarify goals, constraints, and required inputs.
 - Apply relevant best practices and validate outcomes.
 - Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
+- Use the examples below; no separate implementation playbook is bundled.
 
 ## Overview
 
@@ -91,8 +91,8 @@ ARR = MRR × 12
 
 **Formula:**
 ```
-Runway = Current Cash Balance / Monthly Burn Rate
-Monthly Burn = Monthly Revenue - Monthly Expenses
+Net Cash Burn = Cash Outflows - Operating Cash Inflows
+Runway = Current Cash Balance / Net Cash Burn  # only when Net Cash Burn > 0
 ```
 
 ### Headcount Planning
@@ -115,24 +115,26 @@ Track headcount by department and role.
 
 ### Three-Scenario Framework
 
-**Conservative Scenario (P10):**
+**Conservative Scenario:**
 - Slower customer acquisition
 - Lower pricing or conversion
 - Higher churn rates
 - Extended sales cycles
 - Used for cash management
 
-**Base Scenario (P50):**
+**Base Scenario:**
 - Most likely outcomes
 - Realistic assumptions
 - Primary planning scenario
 - Used for board reporting
 
-**Optimistic Scenario (P90):**
+**Optimistic Scenario:**
 - Faster growth
 - Better unit economics
 - Lower churn
 - Used for upside planning
+
+These are explicitly chosen scenarios, not measured probability percentiles. Do not label them P10/P50/P90 unless a documented probabilistic model and sampling justify those quantiles.
 
 ### Time Horizon
 
@@ -235,10 +237,11 @@ Beginning Cash
 **Runway Calculation:**
 ```
 If Ending Cash < 0:
-  Funding Need = Negative Cash Balance
+  Funding Need = -Ending Cash
   Runway = 0
 Else:
-  Runway = Ending Cash / Average Monthly Burn
+  Runway = Ending Cash / Average Positive Monthly Net Cash Burn
+If Net Cash Burn <= 0: report runway as not applicable, not a negative duration
 ```
 
 ### Step 6: Calculate Key Metrics
@@ -299,7 +302,7 @@ Create three scenarios with different assumptions.
 
 **Example Projection:**
 ```
-Year 1: $500K ARR, 50 customers, $100K MRR by Dec
+Year 1: $500K ARR, 50 customers, $41.7K MRR by Dec
 Year 2: $2.5M ARR, 200 customers, $208K MRR by Dec
 Year 3: $8M ARR, 600 customers, $667K MRR by Dec
 ```
@@ -432,21 +435,9 @@ Compare key metrics to similar companies at similar stage.
 **Investor Feedback:**
 Share model with advisors or investors for feedback on assumptions.
 
-## Additional Resources
+## Local Resources
 
-### Reference Files
-
-For detailed model structures and advanced techniques:
-- **`references/model-templates.md`** - Complete financial model templates by business model
-- **`references/unit-economics.md`** - Deep dive on CAC, LTV, payback, and efficiency metrics
-- **`references/fundraising-scenarios.md`** - Modeling funding rounds and dilution
-
-### Example Files
-
-Working financial models with formulas:
-- **`examples/saas-financial-model.md`** - Complete 3-year SaaS model with cohort analysis
-- **`examples/marketplace-model.md`** - Marketplace GMV and take rate projections
-- **`examples/scenario-analysis.md`** - Three-scenario framework with sensitivities
+This skill is self-contained. Build a project-owned model from the formulas above; no complete spreadsheet, reference bundle or executable model is included. Treat all percentages and example projections as illustrative assumptions, not verified benchmarks.
 
 ## Quick Start
 
@@ -456,13 +447,13 @@ To create a startup financial model:
 2. **Project revenue** - Cohort-based with retention
 3. **Model costs** - COGS, S&M, R&D, G&A by month
 4. **Plan headcount** - Hiring by role and department
-5. **Calculate cash flow** - Revenue - expenses = burn/runway
+5. **Calculate cash flow** - Separate collections from recognized revenue; net cash burn is cash outflows minus operating cash inflows, and runway is defined only for positive burn.
 6. **Compute metrics** - CAC, LTV, burn multiple, runway
 7. **Create scenarios** - Conservative, base, optimistic
 8. **Validate assumptions** - Sanity check and benchmark
 9. **Integrate fundraising** - Model funding rounds and milestones
 
-For complete templates and formulas, reference the `references/` and `examples/` files.
+Record assumptions and validate formulas in the project-owned model.
 
 ## Limitations
 - Use this skill only when the task clearly matches the scope described above.

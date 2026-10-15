@@ -22,6 +22,12 @@ Use this workflow when:
 - Adding code examples
 - Setting up API portals
 
+## Scope and execution
+
+Choose the phases that match the user’s task; this document is an index, not an instruction to run every listed skill. Read a selected skill before using it. Respect repository and user constraints. Cloud calls, host configuration, publishing, destructive operations and spending require the applicable authorization; a workflow checklist does not grant it.
+
+Base the contract on the actual implementation/specification and keep secrets out of examples. “Try it” can send real requests: use explicit sandbox endpoints and test credentials. Preview documentation locally before publishing; deployment is a separate authorized action.
+
 ## Workflow Phases
 
 ### Phase 1: API Discovery
@@ -159,7 +165,7 @@ Use @api-documenter to set up automated doc generation
 ## Related Workflow Bundles
 
 - `documentation` - Documentation
-- `api-development` - API development
+- `api-design-principles` - API contract design
 - `development` - Development
 
 ## Limitations

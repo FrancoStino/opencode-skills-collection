@@ -10,8 +10,8 @@ source_type: community
 date_added: '2026-09-20'
 license: MIT
 license_source: https://github.com/BagelHole/DevOps-Security-Agent-Skills/blob/main/LICENSE
-compatibility: Checklist and framework guidance; no privileged tooling required. Apply
-  controls through your own change process.
+compatibility: Linux infrastructure examples require the matching logging services and
+  authorized administrator access. Application examples require a writable approved log destination.
 metadata:
   author: devops-skills
   version: '1.0'
@@ -26,7 +26,7 @@ Implement comprehensive audit logging for compliance, security monitoring, and f
 - Setting up centralized logging for compliance frameworks (SOC 2, HIPAA, PCI DSS)
 - Implementing security event monitoring and alerting
 - Building audit trails for regulatory requirements
-- Configuring log retention and tamper-proof storage
+- Configuring log retention and integrity-protected storage
 - Integrating application logs with SIEM platforms
 
 ## Log Categories
@@ -161,10 +161,10 @@ from datetime import datetime, timezone
 from functools import wraps
 
 class AuditLogger:
-    def __init__(self, service_name, logger_name="audit"):
+    def __init__(self, service_name, log_path, logger_name="audit"):
         self.service = service_name
         self.logger = logging.getLogger(logger_name)
-        handler = logging.FileHandler("/var/log/app/audit.log")
+        handler = logging.FileHandler(log_path)
         handler.setFormatter(logging.Formatter("%(message)s"))
         self.logger.addHandler(handler)
         self.logger.setLevel(logging.INFO)
@@ -239,7 +239,7 @@ def audit_trail(audit_logger, resource_name):
                     resource=resource_name,
                     action=func.__name__,
                     result="failure",
-                    metadata={"error": str(e)},
+                    metadata={"error_code": "operation_failed"},
                 )
                 raise
         return wrapper
@@ -337,80 +337,13 @@ def audit_trail(audit_logger, resource_name):
 }
 ```
 
-## Retention Policy by Compliance Framework
+## Retention and integrity requirements
 
-```yaml
-retention_requirements:
-  soc2:
-    minimum: 1 year
-    recommended: 3 years
-    notes: "Based on audit period and report requirements"
+Define a retention register with framework/version, applicable control, data type, purpose, jurisdiction, legal hold, owner, approved period and authoritative evidence. Do not apply a single framework duration to every log type; documentation-retention obligations and operational-log retention differ. Obtain qualified review of legal and contractual requirements before applying deletion or export policies. The 365-day infrastructure examples are capacity-policy illustrations, not minimum compliance requirements.
 
-  hipaa:
-    minimum: 6 years
-    notes: "From date of creation or last effective date"
+Checksums and the illustrative in-process hash chain detect some changes only when compared with a separately protected trusted checkpoint. They do not make storage immutable, survive restart without persistence, prevent a privileged actor rewriting both log and hashes, or establish regulatory compliance. Use independently protected append-only storage, authenticated checkpoints and restoration tests appropriate to the threat model.
 
-  pci_dss:
-    minimum: 1 year
-    immediately_available: 3 months
-    notes: "Req 10.7 - retain for at least one year, 3 months immediately available"
-
-  gdpr:
-    minimum: "As long as necessary for processing purpose"
-    notes: "Apply data minimization; delete when no longer needed"
-
-  fedramp:
-    minimum: 3 years
-    notes: "AU-11 control requirement"
-
-  iso27001:
-    minimum: "Defined by organization policy"
-    recommended: 3 years
-    notes: "A.12.4.1 - retention period must be defined"
-```
-
-## Log Integrity Verification Script
-
-```bash
-#!/usr/bin/env bash
-# verify-log-integrity.sh - Verify log file checksums against stored hashes
-
-LOG_DIR="/var/log/app"
-HASH_FILE="/var/log/app/.checksums"
-ALERT_WEBHOOK="${ALERT_WEBHOOK_URL}"
-
-verify_logs() {
-  local failures=0
-  while IFS='  ' read -r stored_hash filename; do
-    if [ -f "$filename" ]; then
-      current_hash=$(sha256sum "$filename" | awk '{print $1}')
-      if [ "$stored_hash" != "$current_hash" ]; then
-        echo "TAMPER DETECTED: $filename"
-        failures=$((failures + 1))
-        curl -s -X POST "$ALERT_WEBHOOK" \
-          -H "Content-Type: application/json" \
-          -d "{\"text\":\"ALERT: Audit log tamper detected on $(hostname): $filename\"}"
-      fi
-    else
-      echo "MISSING: $filename"
-      failures=$((failures + 1))
-    fi
-  done < "$HASH_FILE"
-
-  return $failures
-}
-
-update_checksums() {
-  find "$LOG_DIR" -name "*.log" -type f -exec sha256sum {} \; > "$HASH_FILE"
-  chmod 440 "$HASH_FILE"
-}
-
-case "${1:-verify}" in
-  verify)  verify_logs ;;
-  update)  update_checksums ;;
-  *)       echo "Usage: $0 {verify|update}" ;;
-esac
-```
+For local verification, use a project-reviewed manifest with a fixed approved directory, reject traversal/symlinks and missing files, and report failures locally. Do not automatically regenerate the trusted baseline after failure. Uploading audit logs, enabling forwarding and sending webhook alerts require explicit destination/data authorization; no notification is sent by this guide itself.
 
 ## SIEM Integration Checklist
 

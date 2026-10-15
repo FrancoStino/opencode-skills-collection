@@ -1,6 +1,6 @@
 ---
 name: code-refactoring-context-restore
-description: "Use when working with code refactoring context restore"
+description: "Resume interrupted project work from a handoff and current checkout evidence; reconcile completed work, pending changes and existing user constraints."
 risk: critical
 source: community
 date_added: "2026-02-27"

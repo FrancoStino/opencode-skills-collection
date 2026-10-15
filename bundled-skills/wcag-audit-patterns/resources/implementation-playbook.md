@@ -8,8 +8,8 @@ This file contains detailed patterns, checklists, and code samples referenced by
 
 | Level   | Description            | Required For      |
 | ------- | ---------------------- | ----------------- |
-| **A**   | Minimum accessibility  | Legal baseline    |
-| **AA**  | Standard conformance   | Most regulations  |
+| **A**   | Minimum WCAG conformance | Applicability depends on jurisdiction and policy    |
+| **AA**  | Standard WCAG conformance | Confirm the exact applicable requirement  |
 | **AAA** | Enhanced accessibility | Specialized needs |
 
 ### 2. POUR Principles
@@ -47,7 +47,6 @@ Moderate:
 
 ### Perceivable (Principle 1)
 
-````markdown
 ## 1.1 Text Alternatives
 
 ### 1.1.1 Non-text Content (Level A)
@@ -69,8 +68,6 @@ Check:
 <img src="chart.png" />
 <img src="decorative-line.png" alt="decorative line" />
 ```
-````
-
 ## 1.2 Time-based Media
 
 ### 1.2.1 Audio-only and Video-only (Level A)
@@ -84,9 +81,9 @@ Check:
 - [ ] Captions are accurate and complete
 - [ ] Speaker identification included
 
-### 1.2.3 Audio Description (Level A)
+### 1.2.3 Audio Description or Media Alternative (Level A)
 
-- [ ] Video has audio description for visual content
+- [ ] Prerecorded synchronized media has an appropriate audio description or full text alternative, subject to the criterion’s exceptions
 
 ## 1.3 Adaptable
 
@@ -171,11 +168,8 @@ Tools: WebAIM Contrast Checker, axe DevTools
 - [ ] Letter spacing 0.12x font size
 - [ ] Word spacing 0.16x font size
 
-````
-
 ### Operable (Principle 2)
 
-```markdown
 ## 2.1 Keyboard Accessible
 
 ### 2.1.1 Keyboard (Level A)
@@ -185,11 +179,10 @@ Tools: WebAIM Contrast Checker, axe DevTools
 - [ ] Custom widgets are keyboard operable
 
 Check:
-```javascript
-// Custom button must be keyboard accessible
-<div role="button" tabindex="0"
-     onkeydown="if(event.key === 'Enter' || event.key === ' ') activate()">
-````
+```html
+<!-- Prefer a native button: keyboard activation and role are built in. -->
+<button type="button" onclick="activate()">Open details</button>
+```
 
 ### 2.1.2 No Keyboard Trap (Level A)
 
@@ -285,11 +278,8 @@ Check:
 - [ ] Focused element not fully hidden
 - [ ] Sticky headers don't obscure focus
 
-````
-
 ### Understandable (Principle 3)
 
-```markdown
 ## 3.1 Readable
 
 ### 3.1.1 Language of Page (Level A)
@@ -298,7 +288,7 @@ Check:
 
 ```html
 <html lang="en">
-````
+```
 
 ### 3.1.2 Language of Parts (Level AA)
 
@@ -360,11 +350,8 @@ Check:
 - [ ] Data checked before submission
 - [ ] User can review before submit
 
-````
-
 ### Robust (Principle 4)
 
-```markdown
 ## 4.1 Compatible
 
 ### 4.1.1 Parsing (Level A) - Obsolete in WCAG 2.2
@@ -378,14 +365,10 @@ Check:
 - [ ] State changes announced
 
 ```html
-<!-- Accessible custom checkbox -->
-<div role="checkbox"
-     aria-checked="false"
-     tabindex="0"
-     aria-labelledby="label">
-</div>
-<span id="label">Accept terms</span>
-````
+<!-- Native checkbox includes keyboard handling and checked state. -->
+<input type="checkbox" id="accept-terms" name="accept-terms" />
+<label for="accept-terms">Accept terms</label>
+```
 
 ### 4.1.3 Status Messages (Level AA)
 
@@ -397,8 +380,6 @@ Check:
 
 <div role="alert" aria-live="assertive">Error: Form submission failed</div>
 ```
-
-````
 
 ## Automated Testing
 
@@ -432,7 +413,7 @@ test('should have no accessibility violations', async ({ page }) => {
 
   expect(results.violations).toHaveLength(0);
 });
-````
+```
 
 Use CLI tools only if the project already has reviewed, lockfile-pinned installations. Run from that project and replace the example URL with its authorized local/test target. If a binary is absent, report the missing prerequisite; do not download or install a moving package to complete an audit. Browser testing may load third-party resources, so keep real credentials and sensitive records out of test fixtures.
 

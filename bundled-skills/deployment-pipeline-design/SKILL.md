@@ -20,7 +20,6 @@ Architecture patterns for multi-stage CI/CD pipelines with approval gates and de
 - Clarify goals, constraints, and required inputs.
 - Apply relevant best practices and validate outcomes.
 - Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
 
 ## Purpose
 
@@ -74,7 +73,7 @@ production-deploy:
         # Deployment commands
 ```
 
-### Pattern 2: Time-Based Approval
+### Pattern 2: Delayed Deployment
 
 ```yaml
 # GitLab CI
@@ -92,27 +91,7 @@ deploy:production:
 
 ### Pattern 3: Multi-Approver
 
-```yaml
-# Azure Pipelines
-stages:
-- stage: Production
-  dependsOn: Staging
-  jobs:
-  - deployment: Deploy
-    environment:
-      name: production
-      resourceType: Kubernetes
-    strategy:
-      runOnce:
-        preDeploy:
-          steps:
-          - task: ManualValidation@0
-            inputs:
-              notifyUsers: 'team-leads@example.com'
-              instructions: 'Review staging metrics before approving'
-```
-
-**Reference:** See `assets/approval-gate-template.yml`
+Configure the platform's actual protected-environment approval policy and verify who may approve or bypass it. For Azure, bind manual validation to the installed task version and its supported agentless job rather than placing it in an arbitrary deployment hook. Record required approvers and evidence; notifications alone are not approval.
 
 ## Deployment Strategies
 
@@ -134,7 +113,7 @@ spec:
 
 **Characteristics:**
 - Gradual rollout
-- Zero downtime
+- Availability depends on readiness, capacity and compatible changes
 - Easy rollback
 - Best for most applications
 
@@ -143,15 +122,15 @@ spec:
 ```yaml
 # Blue (current)
 kubectl apply -f blue-deployment.yaml
-kubectl label service my-app version=blue
+kubectl patch service my-app --type merge -p '{"spec":{"selector":{"app":"my-app","version":"blue"}}}'
 
 # Green (new)
 kubectl apply -f green-deployment.yaml
 # Test green environment
-kubectl label service my-app version=green
+kubectl patch service my-app --type merge -p '{"spec":{"selector":{"app":"my-app","version":"green"}}}'
 
 # Rollback if needed
-kubectl label service my-app version=blue
+kubectl patch service my-app --type merge -p '{"spec":{"selector":{"app":"my-app","version":"blue"}}}'
 ```
 
 **Characteristics:**
@@ -210,74 +189,9 @@ else:
 
 ## Pipeline Orchestration
 
-### Multi-Stage Pipeline Example
+### Multi-stage implementation contract
 
-```yaml
-name: Production Pipeline
-
-on:
-  push:
-    branches: [ main ]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Build application
-        run: make build
-      - name: Build Docker image
-        run: docker build -t myapp:${{ github.sha }} .
-      - name: Push to registry
-        run: docker push myapp:${{ github.sha }}
-
-  test:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Unit tests
-        run: make test
-      - name: Security scan
-        run: trivy image myapp:${{ github.sha }}
-
-  deploy-staging:
-    needs: test
-    runs-on: ubuntu-latest
-    environment:
-      name: staging
-    steps:
-      - name: Deploy to staging
-        run: kubectl apply -f k8s/staging/
-
-  integration-test:
-    needs: deploy-staging
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run E2E tests
-        run: npm run test:e2e
-
-  deploy-production:
-    needs: integration-test
-    runs-on: ubuntu-latest
-    environment:
-      name: production
-    steps:
-      - name: Canary deployment
-        run: |
-          kubectl apply -f k8s/production/
-          kubectl argo rollouts promote my-app
-
-  verify:
-    needs: deploy-production
-    runs-on: ubuntu-latest
-    steps:
-      - name: Health check
-        run: curl -f https://app.example.com/health
-      - name: Notify team
-        run: |
-          curl -X POST ${{ secrets.SLACK_WEBHOOK }} \
-            -d '{"text":"Production deployment successful!"}'
-```
+Build once, record the commit and immutable artifact digest, run tests/security checks on that artifact, deploy to authorized staging, run integration checks, obtain configured production approval, then deploy that same digest with bounded progressive traffic. Each job must establish its own checkout, locked tools, scoped credentials and artifact transfer. Verify rollout and application metrics before promotion; do not immediately promote a canary and thereby skip its observation window. Notifications require an explicitly configured authorized recipient and destination.
 
 ## Pipeline Best Practices
 
@@ -347,25 +261,11 @@ kubectl rollout undo deployment/my-app --to-revision=3
 
 ### Integration with Monitoring
 
-```yaml
-- name: Post-deployment verification
-  run: |
-    # Wait for metrics stabilization
-    sleep 60
+Define a measured baseline, minimum traffic, observation interval and justified thresholds. Query a verified metrics endpoint with bounded timeouts and validate the provider status, result shape and numeric values. Missing/empty/malformed metrics are an incomplete verification, never a healthy result. Stop promotion and escalate when verification is unavailable. A fixed sleep and a shell comparison cannot establish deployment health.
 
-    # Check error rate
-    ERROR_RATE=$(curl -s "$PROMETHEUS_URL/api/v1/query?query=rate(http_errors_total[5m])" | jq '.data.result[0].value[1]')
+## Approval and orchestration checklist
 
-    if (( $(echo "$ERROR_RATE > 0.01" | bc -l) )); then
-      echo "Error rate too high: $ERROR_RATE"
-      exit 1
-    fi
-```
-
-## Reference Files
-
-- `references/pipeline-orchestration.md` - Complex pipeline patterns
-- `assets/approval-gate-template.yml` - Approval workflow templates
+Bind the artifact to an immutable commit/image digest, verify the exact target and existing deploy identity, require protected environment approval for production, and record health criteria and an explicit rollback revision. Every job runs on its own checkout/runtime; transfer verified artifacts rather than assuming the previous runner filesystem remains available. These are schematic examples, not a complete credential or orchestration template. No unbundled playbook is needed.
 
 ## Related Skills
 

@@ -5,11 +5,17 @@ risk: safe
 source: community
 date_added: "2026-04-04"
 ---
-You are a **Cognitive Psychologist specializing in attention, curiosity, and open-rate behavior**. Your task is to engineer email subject lines and notification copy that achieve opens through psychological triggers matched to the audience and sequence position.
+Use a marketing planning and audience-research lens. Your task is to engineer email subject lines and notification copy that achieve opens through psychological triggers matched to the audience and sequence position.
 
 ## When to Use
 - Use when email subject lines need stronger open-rate psychology without losing clarity.
 - Use when you want multiple subject-line angles tuned to curiosity, relevance, or urgency.
+
+## Evidence and scope
+
+Use observed audience research and verified product facts. Psychological interpretations and the author-year references below are inherited conceptual context, not validated evidence for this exact workflow or a guaranteed conversion effect. Before using a scientific claim externally, verify the actual publication, method and applicability; omit unsupported claims. This is marketing planning, not clinical diagnosis. Do not infer sensitive traits or exploit vulnerabilities.
+
+Original contribution: [PR 451](https://github.com/sickn33/agentic-awesome-skills/pull/451) by MMEHDI0606; [immutable source snapshot](https://github.com/MMEHDI0606/antigravity-awesome-skills/blob/9c61357e3e6bb167946036f52ac1e28fc82e04d0/skills/subject-line-psychologist/SKILL.md). This identifies the contributed instructions, not scientific validation or a new upstream endorsement.
 
 ## CONTEXT GATHERING
 
@@ -31,23 +37,23 @@ People open messages when the subject line signals relevance, opens a curiosity 
 
 **Step 1 - Define the open reason**
 Decide whether the subject line should trigger curiosity, identity, urgency, reassurance, or specificity.
-*Research basis: different attention states respond to different cues (attentional capture research; Song et al., 2024).*
+*Planning hypothesis (verify before presenting as research): different attention states respond to different cues (attentional capture research; Song et al., 2024).*
 
 **Step 2 - Build the smallest useful gap**
 Create a gap the reader can plausibly close by opening the message.
-*Research basis: curiosity works when the answer is accessible and relevant (curiosity research; Green & Brock, 2000).*
+*Planning hypothesis (verify before presenting as research): curiosity works when the answer is accessible and relevant (curiosity research; Green & Brock, 2000).*
 
 **Step 3 - Add self-reference when useful**
 Use the reader's own problem, role, or aspiration if it feels natural.
-*Research basis: self-relevance increases attention and processing (Moyer-Gusé et al., 2022; Ooms et al., 2019).*
+*Planning hypothesis (verify before presenting as research): self-relevance increases attention and processing (Moyer-Gusé et al., 2022; Ooms et al., 2019).*
 
 **Step 4 - Check sender trust interaction**
 Make sure the subject line and sender name work together.
-*Research basis: open behavior depends on trust, not just wording (Rowley et al., 2015).*
+*Planning hypothesis (verify before presenting as research): open behavior depends on trust, not just wording (Rowley et al., 2015).*
 
 **Step 5 - Sanity-check for promise continuity**
 Confirm the email body resolves the promise cleanly.
-*Research basis: overpromising harms trust and future opens (Nagy et al., 2022).*
+*Planning hypothesis (verify before presenting as research): overpromising harms trust and future opens (Nagy et al., 2022).*
 
 ## DECISION MATRIX
 
@@ -94,7 +100,7 @@ The line between persuasion and manipulation is using the subject line to earn a
 
 ## SKILL CHAINING
 
-Before invoking this skill, the agent should have completed:
+Optional context from related skills (equivalent supplied research is sufficient; do not create a prerequisite cycle):
 - [ ] `@sequence-psychologist`
 - [ ] `@customer-psychographic-profiler`
 - [ ] `@awareness-stage-mapper`
@@ -117,6 +123,8 @@ Before finalizing output, the agent asks:
 **User request:**
 
 > Rewrite these email subject lines for stronger open-rate psychology while preserving clarity and truthful claims.
+
+**Illustrative output:** For a requested account export, use “Your CSV export is ready” only after the export succeeds; do not disguise a marketing email as a transactional notification.
 
 ## Limitations
 - Use this skill only when the task clearly matches the scope described above.

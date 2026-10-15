@@ -13,7 +13,7 @@ license_source: https://github.com/jonathimer/devmarketing-skills/blob/main/LICE
 # Open Source Marketing
 ## When to Use
 
-Use this skill when you need when the user wants to market an open source project authentically. Trigger phrases include "open source marketing," "OSS marketing," "GitHub marketing," "promote my library," "grow stars," "launch open source," "open source growth," or "contributor marketing.".
+Use this skill when you need to market an open source project authentically. Trigger phrases include "open source marketing," "OSS marketing," "GitHub marketing," "promote my library," "grow stars," "launch open source," "open source growth," or "contributor marketing.".
 
 
 This skill helps you market open source projects without being cringe. Covers GitHub optimization, community building, contributor experience, launch strategies, and sustainable growth.

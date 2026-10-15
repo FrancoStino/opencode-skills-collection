@@ -11,7 +11,6 @@ tags: [csv, export, import, template, operations, data, helper]
 tools: []
 source_repo: WHOISABHISHEKADHIKARI/sme-ops-system-builder
 ---
-
 # CSV Manual Export
 
 **What it is:** a clean, empty CSV of a field list someone already confirmed - the
@@ -199,7 +198,7 @@ that module already confirmed. Read that section - field names, types, order,
 requiredness, options and calculations - and render exactly that. The list below is
 every module that owns a field list, grouped by the layer its catalog gives it, and it
 is generated from those catalogs and the module files, so it cannot name a module that
-does not exist. `references/catalog.md` is the index to show a user; the module's own
+does not exist. `<support-root>/references/catalog.md` is an external collection index, not bundled here; locate and inspect it before depending on it. Do not claim an unavailable lookup succeeded; the module's own
 `SKILL.md` holds the field list.
 
 **Layer 1: Foundation** - 6 modules

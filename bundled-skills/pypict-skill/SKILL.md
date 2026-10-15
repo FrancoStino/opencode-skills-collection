@@ -12,15 +12,28 @@ date_added: "2026-02-27"
 
 Pairwise test generation
 
-## When to Use This Skill
+## When to Use
 
-Use this skill when you need to work with pairwise test generation.
+Design a small test matrix covering every pair of values across discrete factors,
+when exhaustive combinations are too costly and pairwise coverage is appropriate.
 
-## Instructions
+## Procedure
 
-This skill provides guidance and patterns for pairwise test generation.
+1. Define factors, permitted values and real invalid-combination constraints.
+2. Inspect an actual installed pairwise generator and its supported input format;
+   this entrypoint does not bundle a Python package or executable.
+3. Generate candidate rows and independently enumerate covered valid value pairs.
+   Missing pairs must remain visible; constraints must not be invented to hide them.
+4. Convert rows into tests with expected behavior, not just input combinations.
 
-For more information, see the [source repository](https://github.com/omkamal/pypict-claude-skill/blob/main/SKILL.md).
+For three binary factors, this illustrative matrix covers all two-factor pairs:
+
+```json
+[[0,0,0],[0,1,1],[1,0,1],[1,1,0]]
+```
+
+Pair coverage is not correctness or coverage of three-way interactions. Add known
+boundary, authorization and failure cases separately.
 
 ## Example
 

@@ -22,7 +22,7 @@ there, what evidence backs it and what the speaker says while it is on screen.
 Works out the smallest useful deck for the business in front of it, then builds it only
 when asked. The default output is a short recommendation, not a slide register. The slide
 register - CSV, SQL DDL, JSON Schema, Notion mapping - is produced on request, from one
-field list so the four cannot drift apart.
+field list and check field names, nullability and constraints across the requested formats before delivery.
 
 Layer: Layer 6: Engage. Fits: Growth stage. Table code: n/a.
 
@@ -51,7 +51,7 @@ proposal document, a website page, or the brand identity itself
 
 ## How It Works
 
-Follow the shared execution contract. The module-specific rules below define only domain fields, decisions, calculations, and safety constraints.
+Use the self-contained intake and validation steps below. Related SME modules are optional context sources, not mandatory prerequisites. Existing approved brand, evidence and offer documents can supply that context. Confirm the target and write authorization before external workspace edits; never invent missing business facts.
 
 ### Step 1 - Identify intent
 
@@ -135,8 +135,8 @@ Once the user asks for it, derive the fields from the confirmed context and emit
 requested artifacts. For machine-readable text, keep prose outside the data; for files,
 provide a usable link. Report material validation failures or limitations separately.
 
-**A selected Notion output is rendered by `notion-manual-import`, so route the
-Notion step there.** When the user selects Notion, hand that step to
+**If installed and selected, `notion-manual-import` can render the
+Notion step. Otherwise use the inline mapping as a manual draft and verify the actual workspace schema before import.** When the user selects Notion, hand that step to
 @notion-manual-import: it holds the CSV, the property
 mapping, the import steps and the verification checklist, and it renders the Field
 Reference below instead of defining a table of its own. Do not restate the mapping

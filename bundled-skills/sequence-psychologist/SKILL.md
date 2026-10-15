@@ -5,11 +5,17 @@ risk: safe
 source: community
 date_added: "2026-04-04"
 ---
-You are a **Behavioral Psychologist specializing in persuasion sequencing and relationship psychology**. Your task is to design email nurture sequences and multi-touch communication flows using psychological principles of curiosity loops, reciprocity, commitment, and emotional pacing.
+Use a marketing planning and audience-research lens. Your task is to design email nurture sequences and multi-touch communication flows using psychological principles of curiosity loops, reciprocity, commitment, and emotional pacing.
 
 ## When to Use
 - Use when an email, onboarding, or sales sequence needs a better step-by-step persuasion arc.
 - Use when each touchpoint should prepare the next instead of repeating the same appeal.
+
+## Evidence and scope
+
+Use observed audience research and verified product facts. Psychological interpretations and the author-year references below are inherited conceptual context, not validated evidence for this exact workflow or a guaranteed conversion effect. Before using a scientific claim externally, verify the actual publication, method and applicability; omit unsupported claims. This is marketing planning, not clinical diagnosis. Do not infer sensitive traits or exploit vulnerabilities.
+
+Original contribution: [PR 451](https://github.com/sickn33/agentic-awesome-skills/pull/451) by MMEHDI0606; [immutable source snapshot](https://github.com/MMEHDI0606/antigravity-awesome-skills/blob/9c61357e3e6bb167946036f52ac1e28fc82e04d0/skills/sequence-psychologist/SKILL.md). This identifies the contributed instructions, not scientific validation or a new upstream endorsement.
 
 ## CONTEXT GATHERING
 
@@ -31,23 +37,23 @@ People move when messages create a manageable emotional arc: curiosity, recognit
 
 **Step 1 - Define the emotional arc**
 Map each email to a single emotional objective.
-*Research basis: persuasive sequences work better when they pace emotion and cognition instead of repeating the same ask (Cialdini; narrative sequence research).*
+*Planning hypothesis (verify before presenting as research): persuasive sequences work better when they pace emotion and cognition instead of repeating the same ask (Cialdini; narrative sequence research).*
 
 **Step 2 - Open the loop**
 Create a curiosity gap or unresolved question the next email will answer.
-*Research basis: open loops increase attention when the promised payoff is real (Zeigarnik effect; curiosity research).*
+*Planning hypothesis (verify before presenting as research): open loops increase attention when the promised payoff is real (Zeigarnik effect; curiosity research).*
 
 **Step 3 - Give before asking**
 Use useful content, insight, or relief before the ask.
-*Research basis: reciprocity and liking increase receptivity when the audience has already received value (Cialdini).*
+*Planning hypothesis (verify before presenting as research): reciprocity and liking increase receptivity when the audience has already received value (Cialdini).*
 
 **Step 4 - Escalate commitment gradually**
 Move from low-friction responses to higher-friction decisions.
-*Research basis: foot-in-the-door and consistency effects increase compliance when the steps are coherent (Cialdini; behavioral change research).*
+*Planning hypothesis (verify before presenting as research): foot-in-the-door and consistency effects increase compliance when the steps are coherent (Cialdini; behavioral change research).*
 
 **Step 5 - End with a clean decision**
 Make the final email simple, concrete, and autonomy-preserving.
-*Research basis: choice clarity reduces avoidance and supports follow-through (Fogg; Lavoie & Quick, 2013).*
+*Planning hypothesis (verify before presenting as research): choice clarity reduces avoidance and supports follow-through (Fogg; Lavoie & Quick, 2013).*
 
 ## DECISION MATRIX
 
@@ -94,7 +100,7 @@ The line between persuasion and manipulation is pacing a real relationship towar
 
 ## SKILL CHAINING
 
-Before invoking this skill, the agent should have completed:
+Optional context from related skills (equivalent supplied research is sufficient; do not create a prerequisite cycle):
 - [ ] `@customer-psychographic-profiler`
 - [ ] `@awareness-stage-mapper`
 - [ ] `@objection-preemptor`
@@ -118,6 +124,8 @@ Before finalizing output, the agent asks:
 **User request:**
 
 > Rewrite this email sequence with a clearer step-by-step persuasion arc and credible transitions.
+
+**Illustrative output:** Draft three opt-in messages: useful explanation, verified example and optional next step; record consent/stop conditions and do not send anything as part of planning.
 
 ## Limitations
 - Use this skill only when the task clearly matches the scope described above.

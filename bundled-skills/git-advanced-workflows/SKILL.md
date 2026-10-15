@@ -32,6 +32,10 @@ Master advanced Git techniques to maintain clean history, collaborate effectivel
 - Preparing clean PRs for review
 - Synchronizing diverged branches
 
+## Repository and Recovery Boundary
+
+Read repository instructions and branch protection first. A hotfix follows the protected PR/maintainer path when required; urgency does not authorize a direct default-branch commit or push. Preserve dirty and staged work before checkout, rebase, reset or restore. A backup branch protects committed history only, not uncommitted files. Inspect exact targets before destructive operations and obtain authorization for shared-history rewrites. Reflog availability depends on local expiry and garbage collection; it cannot guarantee recovery of every lost file.
+
 ## Core Concepts
 
 ### 1. Interactive Rebase
@@ -175,8 +179,9 @@ git push --force-with-lease origin feature/user-auth
 ### Workflow 2: Apply Hotfix to Multiple Releases
 
 ```bash
-# Create fix on main
-git checkout main
+# Create fix on an authorized topic branch from the current target
+git fetch origin main
+git switch -c hotfix/security origin/main
 git commit -m "fix: critical security patch"
 
 # Apply to release branches
@@ -245,7 +250,7 @@ git worktree remove ../myapp-hotfix
 
 ```bash
 # Accidentally reset to wrong commit
-git reset --hard HEAD~5  # Oh no!
+# Historical incident: a hard reset discarded local work; do not reproduce it.
 
 # Use reflog to find lost commits
 git reflog
@@ -253,8 +258,10 @@ git reflog
 # abc123 HEAD@{0}: reset: moving to HEAD~5
 # def456 HEAD@{1}: commit: my important changes
 
-# Recover lost commits
-git reset --hard def456
+# Preserve the located commit for inspection first
+git branch recovered-commit def456
+# Reset only after saving dirty work and authorizing its loss
+# git reset --hard def456
 
 # Or create branch from lost commit
 git branch recovery def456
@@ -283,7 +290,7 @@ git rebase origin/main
 # Handle conflicts
 git status
 # Fix conflicts in files
-git add .
+git add <resolved-paths>
 git rebase --continue
 
 # Or merge instead
@@ -353,23 +360,23 @@ git commit -m "cherry-pick: apply specific changes from abc123"
 
 ## Best Practices
 
-1. **Always Use --force-with-lease**: Safer than --force, prevents overwriting others' work
+1. **Authorized Rewrites Only**: Use an explicit expected remote SHA with a lease for an authorized topic-branch rewrite; a lease is not permission to rewrite shared history
 2. **Rebase Only Local Commits**: Don't rebase commits that have been pushed and shared
 3. **Descriptive Commit Messages**: Future you will thank present you
 4. **Atomic Commits**: Each commit should be a single logical change
 5. **Test Before Force Push**: Ensure history rewrite didn't break anything
-6. **Keep Reflog Aware**: Remember reflog is your safety net for 90 days
+6. **Keep Reflog Aware**: Remember reflog is a local recovery aid with configurable expiry; unreachable entries may expire sooner
 7. **Branch Before Risky Operations**: Create backup branch before complex rebases
 
 ```bash
-# Safe force push
+# Authorized topic rewrite only; verify the expected remote head
 git push --force-with-lease origin feature/branch
 
 # Create backup before risky operation
 git branch backup-branch
 git rebase -i main
-# If something goes wrong
-git reset --hard backup-branch
+# If something goes wrong, inspect the backup in a separate worktree first
+git worktree add --detach ../rebase-recovery backup-branch
 ```
 
 ## Common Pitfalls
@@ -399,7 +406,7 @@ git reset --soft HEAD^
 # Undo last commit and discard changes
 git reset --hard HEAD^
 
-# Recover deleted branch (within 90 days)
+# Recover deleted branch while the commit remains available locally
 git reflog
 git branch recovered-branch abc123
 ```

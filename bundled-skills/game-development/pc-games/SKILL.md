@@ -41,7 +41,7 @@ What are you building?
 | 2D | Good | Excellent | Limited |
 | 3D | Good | Good | Excellent |
 | Learning | Medium | Easy | Hard |
-| Cost | Revenue share | Free | 5% after $1M |
+| License | Tiered subscription/eligibility; verify current Unity terms | MIT engine; console middleware may cost extra | Royalties or seat terms depend on use; verify current EULA |
 | Team | Any | Solo-Medium | Medium-Large |
 
 ---
@@ -146,9 +146,13 @@ Map ACTIONS, not buttons:
 > **Remember:** Engine is a tool. Master the principles, then adapt to any engine.
 
 ## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
+Use when choosing a PC or console engine, integrating platform features, mapping controller actions, or profiling target hardware.
 
 ## Limitations
 - Use this skill only when the task clearly matches the scope described above.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+
+## Verification
+
+Treat tables as design starting points, not guarantees. Prototype the selected mechanic, test accessibility and recovery paths, and measure frame timing, memory and behavior on target hardware before claiming completion. Store submission and licensing requirements must be checked against current official platform documentation.

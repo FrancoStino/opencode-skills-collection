@@ -32,6 +32,10 @@ Systematic improvement of existing agents through performance analysis, prompt e
 3. Apply prompt and workflow improvements with measurable goals.
 4. Validate with tests and roll out changes in controlled stages.
 
+## Execution boundaries
+
+Do not run hosted evaluations, delegate, message teams, configure recurring reports or deploy merely because a phase names them. Follow the user's existing authorization and actual host workflow. Keep traces private/redacted, cap cost and steps, isolate candidate changes, and require supported exact-version checks. `parallel-test-runner` and named agent roles are not bundled; use a real harness or report the gap.
+
 ## Safety
 
 - Avoid deploying prompt changes without regression testing.
@@ -39,13 +43,14 @@ Systematic improvement of existing agents through performance analysis, prompt e
 
 ## Phase 1: Performance Analysis and Baseline Metrics
 
-Comprehensive analysis of agent performance using context-manager for historical data collection.
+Analyze supplied traces and available metrics. Named roles below are optional roles, not installed executables or permission to delegate.
 
 ### 1.1 Gather Performance Data
 
 ```
 Use: context-manager
-Command: analyze-agent-performance $ARGUMENTS --days 30
+Task: analyze the authorized trace window using actual available tools
+No analyze-agent-performance command is bundled.
 ```
 
 Collect metrics including:
@@ -108,7 +113,7 @@ Technique: chain-of-thought-optimization
 - Add explicit reasoning steps: "Let's approach this step-by-step..."
 - Include self-verification checkpoints: "Before proceeding, verify that..."
 - Implement recursive decomposition for complex tasks
-- Add reasoning trace visibility for debugging
+- Collect concise decision explanations and observable tool traces, not hidden chain-of-thought
 
 ### 2.2 Few-Shot Example Optimization
 
@@ -125,7 +130,7 @@ Example structure:
 ```
 Good Example:
 Input: [User request]
-Reasoning: [Step-by-step thought process]
+Evidence: [Concise rationale and observable checks]
 Output: [Successful response]
 Why this works: [Key success factors]
 
@@ -212,8 +217,8 @@ Config:
 
 Statistical significance testing:
 
-- Minimum sample size: 100 tasks per variant
-- Confidence level: 95% (p < 0.05)
+- Determine sample size from baseline variance/rate, minimum detectable effect and desired power; 100 tasks is only an illustrative dataset size
+- Predefine alpha, confidence intervals, paired/randomized design and multiple-comparison policy; p < 0.05 is not 95% probability a claim is true
 - Effect size calculation (Cohen's d)
 - Power analysis for future tests
 
@@ -321,7 +326,7 @@ Real-time performance tracking:
 
 ## Success Criteria
 
-Agent improvement is successful when:
+The following are illustrative targets, not universal success conditions. Choose the actual criteria before testing, distinguish relative changes from percentage points and report uncertainty:
 
 - Task success rate improves by ≥15%
 - User corrections decrease by ≥25%

@@ -18,7 +18,7 @@ Extract structured, quality-scored domain knowledge from any AI model — in-ses
 
 bdistill turns your AI subscription sessions into a compounding knowledge base. The agent answers targeted domain questions, bdistill structures and quality-scores the responses, and the output accumulates into a searchable, exportable reference dataset.
 
-Adversarial mode challenges the agent's claims — forcing evidence, corrections, and acknowledged limitations — producing validated knowledge entries.
+Adversarial mode challenges the agent's claims — forcing evidence, corrections, and acknowledged limitations — producing model-generated candidates for independent source review; adversarial self-correction is not external validation.
 
 ## When to Use This Skill
 
@@ -65,11 +65,13 @@ Structured reference JSONL — not training data:
   "category": "cardiology",
   "tags": ["mechanistic", "evidence-based"],
   "quality_score": 0.73,
-  "confidence": 1.08,
-  "validated": true,
-  "source_model": "Claude Sonnet 4"
+  "confidence": 0.73,
+  "validated": false,
+  "source_model": "<actual host model recorded at run time>"
 }
 ```
+
+The numeric scores are illustrative, uncalibrated metadata; independent source verification is absent in this example.
 
 ## Tabular ML Data Generation
 
@@ -97,7 +99,7 @@ bdistill extract --domain medical --model qwen3:4b
 
 - In-session extraction uses your existing subscription — no additional API keys
 - Local extraction runs entirely on your machine via Ollama
-- No data is sent to external services
+- In-session extraction uses the host provider and its data policy; it is not offline. A genuinely local Ollama endpoint keeps inference local, but downloading models/installing packages uses the network. Verify endpoints and approved data processing before use
 - Output is reference data, not LLM training format
 
 ## Related Skills
@@ -105,6 +107,7 @@ bdistill extract --domain medical --model qwen3:4b
 - `@bdistill-behavioral-xray` - X-ray a model's behavioral patterns
 
 ## Limitations
-- Use this skill only when the task clearly matches the scope described above.
+- Generated medical, legal, financial or security content needs dated independent authoritative evidence and domain review; quality_score/confidence are not clinical/legal accuracy or calibrated probabilities. Do not put personal records into generated corpora or use synthetic labels as real patient outcomes.
+- Installing MCP or downloading models is separate from extraction; use a reviewed environment and respect host/configuration authorization.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.

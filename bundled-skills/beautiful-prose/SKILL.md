@@ -5,7 +5,6 @@ risk: none
 source: community
 date_added: "2026-09-04"
 ---
-
 # Beautiful Prose (Claude Skill)
 
 A hard-edged writing skill for producing timeless, forceful English prose without modern AI tics.
@@ -194,7 +193,7 @@ Fail the output if any are true:
 
 ## Tests
 
-See `references/test-cases.md`.
+Use the inline good/bad examples and manual lint checklist above. This catalog copy has no automated style test suite.
 
 ## Limitations
 - Use this skill only when the task clearly matches the scope described above.

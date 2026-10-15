@@ -1,7 +1,7 @@
 ---
 name: aegisops-ai
-description: "Autonomous DevSecOps & FinOps Guardrails. Orchestrates Gemini 3 Flash to audit Linux Kernel patches, Terraform cost drifts, and K8s compliance."
-risk: safe
+description: "Autonomous DevSecOps & FinOps Guardrails. Guide to reviewing Linux kernel patches, Terraform cost changes and Kubernetes policy with a separately reviewed upstream tool and configured model."
+risk: critical
 source: community
 author: Champbreed
 date_added: "2026-03-24"
@@ -9,20 +9,20 @@ date_added: "2026-03-24"
 
 # /aegisops-ai — Autonomous Governance Orchestrator
 
-AegisOps-AI is a professional-grade "Living Pipeline" 
-that integrates advanced AI reasoning directly into 
-the SDLC. It acts as an intelligent gatekeeper for 
-systems-level security, cloud infrastructure costs, 
+AegisOps-AI is described by its upstream as a governance pipeline
+that integrates advanced AI reasoning directly into
+the SDLC. It acts as an intelligent gatekeeper for
+systems-level security, cloud infrastructure costs,
 and Kubernetes compliance.
 
 ## Goal
 
 To automate high-stakes security and financial audits by:
-1. Identifying logic-based vulnerabilities (UAF, Stale 
+1. Identifying logic-based vulnerabilities (UAF, Stale
 State) in Linux Kernel patches.
-2. Detecting massive "Silent Disaster" cost drifts in 
+2. Detecting massive "Silent Disaster" cost drifts in
 Terraform plans.
-3. Translating natural language security intent into 
+3. Translating natural language security intent into
 hardened K8s manifests.
 
 ## When to Use
@@ -52,7 +52,7 @@ AegisOps-AI leverages the **Google GenAI SDK** to implement a "Reasoning Path" f
 ### 1. 🐧 Kernel Patch Reviewer (`patch_analyzer.py`)
 
 * **Problem:** Manual review of Linux Kernel memory safety is time-consuming and prone to human error.
-* **Solution:** Gemini 3 performs a "Deep Reasoning" audit on raw Git diffs to detect critical memory corruption vulnerabilities (UAF, Stale State) in seconds.
+* **Solution:** A configured model proposes findings on raw Git diffs; verify each reachable trigger and consequence through code review and appropriate tests. No latency or detection guarantee is made.
 * **Key Output:** `analysis_results.json`
 
 ### 2. 💰 FinOps & Cloud Auditor (`cost_auditor.py`)
@@ -64,10 +64,14 @@ AegisOps-AI leverages the **Google GenAI SDK** to implement a "Reasoning Path" f
 ### 3. ☸️ K8s Policy Hardener (`k8s_policy_generator.py`)
 
 * **Problem:** Implementing "Least Privilege" security contexts in Kubernetes is complex and often neglected.
-* **Solution:** Translates natural language security requirements into production-ready, hardened YAML manifests (Read-only root FS, Non-root enforcement, etc.).
+* **Solution:** Translates natural language security requirements into candidate YAML manifests requiring schema, policy and application validation (Read-only root FS, Non-root enforcement, etc.).
 * **Key Output:** `hardened_deployment.yaml`
 
 ## 🛠️ Setup & Environment
+
+AAS bundles this guide only: `patch_analyzer.py`, `cost_auditor.py`, `k8s_policy_generator.py`, `main.py` and their reports are upstream components, not local bundled files. Verify the upstream repository, a fixed revision, license, dependencies, model availability and actual entry point before using the tool. Treat provider findings as advisory, not an automatic CI merge authority.
+
+Obtain authorization for paid model calls and transmission of private patches, plans or cluster configuration. Redact secrets and personal/account identifiers; do not assume `.env` storage is automatically secure.
 
 ### 1. Clone the Repository
 
@@ -84,15 +88,11 @@ pip install google-genai python-dotenv
 ```
 ### 3. API Configuration
 
-Create a `.env` file in the root directory to securely 
-store your credentials:
+Use the host's existing private credential mechanism for `GEMINI_API_KEY`. If a local `.env` is required by the reviewed upstream implementation, ensure it is owner-only and gitignored, preserve any existing file and never display its contents. Confirm the installed SDK/model combination instead of assuming an old model alias remains available.
 
-```bash
-printf 'GEMINI_API_KEY=%s\n' "$GEMINI_API_KEY" > .env
-```
 ## 🏁 Operational Dashboard
 
-To execute the full suite of agents in sequence and generate all security reports:
+Only after reviewing the fixed upstream checkout and authorizing its network/cost effects, its documented entry point may be run there:
 
 ```bash
 python3 main.py
@@ -119,8 +119,8 @@ python3 main.py
 
 ## Links
 
-+ - **Repository**: https://github.com/Champbreed/AegisOps-AI
-+ - **Documentation**: https://github.com/Champbreed/AegisOps-AI#readme
+- **Repository**: https://github.com/Champbreed/AegisOps-AI
+- **Documentation**: https://github.com/Champbreed/AegisOps-AI#readme
 
 ## Limitations
 - Use this skill only when the task clearly matches the scope described above.

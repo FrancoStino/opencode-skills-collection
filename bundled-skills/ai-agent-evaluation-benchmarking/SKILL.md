@@ -22,8 +22,8 @@ Provides a standardized, auditable framework and data model for **AI Agent Capab
 
 ## When to Use This Skill
 
-- When formalizing architectural contracts, security invariants, or operational limits for AI Agent Capability Evaluation & Benchmarking.
-- When cross-functional review is required between protocol developers, smart contract auditors, and AI engineering agents.
+- When recording agent evaluation runs with a fixed dataset, rubric, runtime/model revision and measured outcomes.
+- When comparing a candidate with a baseline under matched tasks, environment, tool permissions and cost accounting.
 - When generating reproducible CSV, SQL DDL, JSON Schema, and Notion property registers for tracking compliance.
 
 ## How It Works
@@ -36,13 +36,13 @@ Provides a standardized, auditable framework and data model for **AI Agent Capab
 
 | # | Field Name | Type | SQL Type | JSON Schema Type | Notion Property Type | Example Value |
 |---|------------|------|----------|------------------|----------------------|---------------|
-| 1 | Benchmark Run ID | `id` | `SERIAL PRIMARY KEY` | `integer` | Text | `BENCH-001` |
+| 1 | Benchmark Run ID | `id` | `SERIAL PRIMARY KEY` | `integer` | Text | `1` |
 | 2 | Evaluated Agent Model | `select` | `VARCHAR(64)` | `string` | Select | `Claude 3.7 Sonnet` |
 | 3 | Benchmark Suite Domain | `select` | `VARCHAR(64)` | `string` | Select | `SWE-bench Verified` |
-| 4 | Tasks Evaluated Count | `number` | `INTEGER` | `number` | Number | `100` |
+| 4 | Tasks Evaluated Count | `number` | `INTEGER` | `integer` | Number | `100` |
 | 5 | Pass Rate Percentage | `number` | `NUMERIC(5,2)` | `number` | Number | `78.40` |
 | 6 | Tool Hallucination Rate % | `number` | `NUMERIC(5,2)` | `number` | Number | `0.60` |
-| 7 | Average Tokens Per Task | `number` | `INTEGER` | `number` | Number | `42500` |
+| 7 | Average Tokens Per Task | `number` | `INTEGER` | `integer` | Number | `42500` |
 | 8 | Cost Per Solved Task USD | `currency` | `NUMERIC(8,4)` | `number` | Number | `0.3420` |
 | 9 | Regression Verdict | `select` | `VARCHAR(32)` | `string` | Select | `Superior` |
 | 10 | Evaluation Lead | `text` | `VARCHAR(64)` | `string` | Text | `Ranjeet2063` |
@@ -53,7 +53,7 @@ Provides a standardized, auditable framework and data model for **AI Agent Capab
 **Evaluated Agent Model**
 
 ```
-Claude 3.7 Sonnet | Claude 3.5 Sonnet | GPT-4o | Gemini 2.0 Flash | DeepSeek V3
+Use the exact evaluated model/provider/deployment revision; examples are not an availability allowlist.
 ```
 
 **Benchmark Suite Domain**
@@ -65,8 +65,12 @@ SWE-bench Verified | WebArena | AgentBench | HumanEval-Rust | Web3AuditBench
 **Regression Verdict**
 
 ```
-Superior | Parity Baseline | Regression Failure
+Improved with evidence | No demonstrated change | Regressed with evidence | Inconclusive
 ```
+
+## Measurement procedure
+
+Record an immutable run identifier, suite revision, task IDs, model/runtime/tool settings, completed/failed/skipped counts and actual charges. Derive pass rate from eligible completed outcomes under a declared denominator; tool hallucination needs a defined invalid-call denominator. For a regression verdict, use paired outcomes or a justified test and interval, and retain an inconclusive state. Labels and example values below are synthetic, not measured results. Define any relation field in every emitted format only when the target exists and is confirmed.
 
 ## Relations
 
@@ -95,12 +99,13 @@ How do I configure and track AI Agent Capability Evaluation & Benchmarking for o
 
 ## Limitations
 
-- Provides architectural specifications, data models, and verification schemas; does not execute direct transaction signing without authorized external tooling.
-- Requires network connectivity and valid RPC credentials when querying on-chain states.
+- This register does not execute benchmarks, prove compliance or need on-chain RPC credentials. An actual authorized harness and evaluation evidence are external prerequisites.
+- Scores are comparable only with matched suite/revision, eligibility, failure/timeout handling and sampling. Record counts and uncertainty, not merely a percentage.
+- Define cost per solved task as total attributable run cost divided by solved tasks; zero solves means unavailable/infinite cost under an explicit policy, not zero. Token estimates alone omit provider/tool charges.
 
 ## Security & Safety Notes
 
-- All parameters declare `risk: safe`. No unauthorized state modification or privileged credential access is performed.
+- Generating a register is distinct from running paid providers, transmitting private tasks, changing CI or deploying; those effects need actual authorization.
 - Use synthetic dummy keys and mock addresses in test suites and local verification scripts.
 
 ## Common Pitfalls

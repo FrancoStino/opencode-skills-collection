@@ -1,7 +1,7 @@
 ---
 name: conductor-setup
 description: Configure a Rails project to work with Conductor (parallel coding agents)
-allowed-tools: Bash(chmod *), Bash(bundle *), Bash(npm *), Bash(script/server)
+allowed-tools: Read, Write, Edit, Bash(chmod *), Bash(bundle *), Bash(npm *), Bash(script/server)
 context: fork
 risk: critical
 source: community
@@ -11,7 +11,7 @@ metadata:
   version: "1.0"
 ---
 
-Set up this Rails project for Conductor, the Mac app for parallel coding agents.
+Set up the explicitly selected Rails development project for the Conductor app. Frontmatter tool/context hints are host-specific, not authorization to delegate, alter secrets or broaden permissions. Review existing scripts and lockfiles before running installs; preserve unrelated settings.
 
 ## When to Use
 - You need to configure a Rails project so it runs correctly inside Conductor workspaces.
@@ -38,18 +38,31 @@ Create `conductor.json` in the project root if it doesn't already exist:
 Create `bin/conductor-setup` if it doesn't already exist:
 
 ```bash
-#!/bin/bash
-set -e
+#!/usr/bin/env bash
+set -euo pipefail
+: "${CONDUCTOR_ROOT_PATH:?Set the reviewed repository root first}"
 
-# Symlink .env from repo root (where secrets live, outside worktrees)
-[ -f "$CONDUCTOR_ROOT_PATH/.env" ] && ln -sf "$CONDUCTOR_ROOT_PATH/.env" .env
+# Link only an explicitly approved local development secret source.
+# Preserve any existing destination, including dangling symlinks; never use ln -sf.
+link_if_absent() {
+  local source_path="$1" destination="$2"
+  if [[ -f "$source_path" && ! -e "$destination" && ! -L "$destination" ]]; then
+    ln -s -- "$source_path" "$destination"
+  fi
+}
+link_if_absent "$CONDUCTOR_ROOT_PATH/.env" .env
+mkdir -p config
+link_if_absent "$CONDUCTOR_ROOT_PATH/config/master.key" config/master.key
 
-# Symlink Rails master key
-[ -f "$CONDUCTOR_ROOT_PATH/config/master.key" ] && ln -sf "$CONDUCTOR_ROOT_PATH/config/master.key" config/master.key
-
-# Install dependencies
+# Dependency installation may execute trusted project code and access the network.
+# Review Gemfile.lock/package-lock.json and lifecycle behavior before this step.
 bundle install
-npm install
+if [[ -f package-lock.json ]]; then
+  npm ci --ignore-scripts
+elif [[ -f package.json ]]; then
+  printf '%s\n' 'A reviewed npm lockfile is required; no silent npm install.' >&2
+  exit 1
+fi
 ```
 
 Make it executable with `chmod +x bin/conductor-setup`.
@@ -59,19 +72,21 @@ Make it executable with `chmod +x bin/conductor-setup`.
 Create the `script` directory if needed, then create `script/server` if it doesn't already exist:
 
 ```bash
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
 
-# === Port Configuration ===
-export PORT=${CONDUCTOR_PORT:-3000}
+# Reserve distinct ports through the workspace manager, not by assuming uniqueness.
+PORT="${CONDUCTOR_PORT:-3000}"
+[[ "$PORT" =~ ^[0-9]{1,5}$ ]] || { printf '%s\n' 'Invalid port' >&2; exit 1; }
+PORT=$((10#$PORT))
+(( PORT >= 1024 && PORT <= 64535 )) || { printf '%s\n' 'Port outside safe range' >&2; exit 1; }
+export PORT
 export VITE_RUBY_PORT=$((PORT + 1000))
 
-# === Redis Isolation ===
-if [ -n "$CONDUCTOR_WORKSPACE_NAME" ]; then
-  HASH=$(printf '%s' "$CONDUCTOR_WORKSPACE_NAME" | cksum | cut -d' ' -f1)
-  REDIS_DB=$((HASH % 16))
-  export REDIS_URL="redis://localhost:6379/${REDIS_DB}"
-fi
-
+# Supply a dedicated disposable Redis instance/namespace explicitly.
+# Hashing a workspace name modulo 16 causes collisions and is not isolation.
+: "${REDIS_URL:?Set an approved workspace-specific development Redis URL}"
+export REDIS_URL
 exec bin/dev
 ```
 
@@ -117,10 +132,12 @@ Rack::Attack.cache.store = ActiveSupport::Cache::RedisCacheStore.new(url: ENV.fe
 
 After creating the files:
 1. Confirm all Conductor files exist and scripts are executable
-2. Run `script/server` to verify it starts without errors
+2. Validate script syntax first, then start the owned development server with a bounded observation window and a defined shutdown method; verify actual port/Redis separation across workspaces
 3. Check that Rails configs properly reference `ENV['REDIS_URL']` or `ENV.fetch('REDIS_URL', ...)`
 
 ## Limitations
-- Use this skill only when the task clearly matches the scope described above.
+- Secret symlinks share the same sensitive values across workspaces; use only approved development credentials, preserve owner-only source permissions, exclude secrets from Git and do not imply worktrees are a secret sandbox.
+- Sharing one Redis URL across Sidekiq, Cable and cache may still need service namespaces; dedicated instances or explicitly assigned namespaces are safer than modulo hashes. Never flush shared Redis as cleanup.
+- npm/Gem installation and bin/dev execute project dependencies/scripts. Review them first; explicitly required lifecycle steps should be run individually after approval, not re-enabled silently.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.

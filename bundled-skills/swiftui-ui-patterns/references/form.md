@@ -51,7 +51,15 @@ struct AddRemoteServerView: View {
   @Environment(Theme.self) private var theme
 
   @State private var server: String = ""
-  @State private var isValid = false
+  let onAdd: (URL) async throws -> Void // Existing authorized project operation.
+  @State private var isSaving = false
+  @State private var saveError: String?
+  private var validatedURL: URL? {
+    guard let url = URL(string: server.trimmingCharacters(in: .whitespacesAndNewlines)),
+          url.scheme == "https", let host = url.host, !host.isEmpty,
+          url.user == nil, url.password == nil else { return nil }
+    return url
+  }
   @FocusState private var isServerFieldFocused: Bool
 
   var body: some View {
@@ -65,11 +73,19 @@ struct AddRemoteServerView: View {
           .listRowBackground(theme.primaryBackgroundColor)
 
         Button("Add") {
-          guard isValid else { return }
-          dismiss()
+          guard !isSaving, let url = validatedURL else { return }
+          isSaving = true
+          Task {
+            defer { isSaving = false }
+            do {
+              try await onAdd(url)
+              dismiss()
+            } catch { saveError = "Could not add the server. Please try again." }
+          }
         }
-        .disabled(!isValid)
+        .disabled(validatedURL == nil || isSaving)
         .listRowBackground(theme.primaryBackgroundColor)
+        if let saveError { Text(saveError) }
       }
       .formStyle(.grouped)
       .navigationTitle("Add Server")
@@ -83,6 +99,8 @@ struct AddRemoteServerView: View {
   }
 }
 ```
+
+The URL check is form validation, not an SSRF boundary. The injected operation must independently verify the authorized server, identity, redirects, network policy and actual persistence before returning success.
 
 ## Design choices to keep
 

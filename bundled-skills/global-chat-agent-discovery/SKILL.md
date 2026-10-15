@@ -1,6 +1,6 @@
 ---
 name: global-chat-agent-discovery
-description: "Discover and search 18K+ MCP servers and AI agents across 6+ registries using Global Chat's cross-protocol directory and MCP server."
+description: "Discover and compare MCP servers and AI agents using Global Chat's cross-protocol directory and MCP server."
 category: development
 risk: safe
 source: community
@@ -16,7 +16,7 @@ tools: [claude, cursor, gemini, codex]
 
 ## Overview
 
-Global Chat is a cross-protocol AI agent discovery platform that aggregates MCP servers and AI agents from 6+ registries into a single searchable directory. This skill helps you find the right MCP server, A2A agent, or agents.txt endpoint for any task by searching across 18,000+ indexed entries. It also provides an MCP server (`@global-chat/mcp-server`) for programmatic access to the directory from any MCP-compatible client.
+Global Chat is described by its contributed source as a cross-protocol agent discovery directory. Verify current service availability and coverage; directory totals and listings are not independently guaranteed. On 2026-10-14, the declared public source repository returned HTTP 404. Do not install a package or configure a host until its publisher, source, version and current service have been verified. It also provides an MCP server (`@global-chat/mcp-server`) for programmatic access to the directory from any MCP-compatible client.
 
 ## When to Use This Skill
 
@@ -32,7 +32,8 @@ Global Chat is a cross-protocol AI agent discovery platform that aggregates MCP 
 Install the Global Chat MCP server to search the directory programmatically from Claude Code, Cursor, or any MCP client.
 
 ```bash
-npm install -g @global-chat/mcp-server
+npm view @global-chat/mcp-server version repository dist.integrity
+# Inspection only. After publisher/source verification, install a reviewed pinned version in an isolated project.
 ```
 
 Add to your MCP client configuration:
@@ -42,11 +43,13 @@ Add to your MCP client configuration:
   "mcpServers": {
     "global-chat": {
       "command": "npx",
-      "args": ["-y", "@global-chat/mcp-server"]
+      "args": ["@global-chat/mcp-server@REVIEWED_VERSION"]
     }
   }
 }
 ```
+
+The configuration is a template: replace REVIEWED_VERSION with a verified version and apply it only within authorized host setup. Discovery does not authorize installing or invoking a listed tool.
 
 Then ask your agent to search for tools:
 
@@ -65,13 +68,15 @@ Browse the full directory at [https://global-chat.io](https://global-chat.io):
 
 ### Option 3: Validate Your agents.txt
 
-If you maintain an `agents.txt` file, use the free validator:
+If you maintain an `agents.txt` file, verify the current validator and its data policy:
 
 1. Go to [https://global-chat.io/validate](https://global-chat.io/validate)
 2. Enter your domain or paste your agents.txt content
 3. Get instant feedback on format compliance and discoverability
 
 ## Examples
+
+The following responses are illustrative formats, not verified live results or endorsements. Check publisher identity, endpoint ownership, authentication, data retention and requested permissions for each candidate.
 
 ### Example 1: Find MCP Servers for a Task
 
@@ -101,7 +106,7 @@ Agent (via Global Chat MCP): 4 registries carry Kubernetes-related agents (23 to
 
 - Use the MCP server for automated workflows and agent-to-agent discovery
 - Use the web directory for manual exploration and comparison
-- Validate your agents.txt before publishing to ensure maximum discoverability
+- Validate syntax against the relevant current protocol; validation does not guarantee discoverability
 - Check multiple registries — coverage varies significantly by domain
 
 ## Common Pitfalls
@@ -110,7 +115,7 @@ Agent (via Global Chat MCP): 4 registries carry Kubernetes-related agents (23 to
   **Solution:** Add protocol or registry filters to narrow the scope
 
 - **Problem:** MCP server not connecting
-  **Solution:** Ensure `npx` is available and run `npx -y @global-chat/mcp-server` manually first to verify
+  **Solution:** Inspect the verified pinned package and host error first. Do not run an unknown package merely to diagnose a connection.
 
 ## Related Skills
 

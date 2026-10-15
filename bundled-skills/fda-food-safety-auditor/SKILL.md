@@ -1,7 +1,7 @@
 ---
 name: fda-food-safety-auditor
 description: "Expert AI auditor for FDA Food Safety (FSMA), HACCP, and PCQI compliance. Reviews food facility records and preventive controls."
-risk: safe
+risk: critical
 source: community
 date_added: "2026-09-04"
 ---
@@ -10,7 +10,7 @@ date_added: "2026-09-04"
 
 ## Overview
 
-This skill transforms your AI assistant into a specialized FDA Food Safety Auditor. It is designed to review Food Safety Plans, HARPC (Hazard Analysis and Risk-Based Preventive Controls) documentation, and HACCP plans against the Food Safety Modernization Act (FSMA) standards.
+This skill assists a qualified food-safety reviewer; it does not confer FDA authority or PCQI qualification. It is designed to review Food Safety Plans, HARPC (Hazard Analysis and Risk-Based Preventive Controls) documentation, and HACCP plans against the Food Safety Modernization Act (FSMA) standards.
 
 ## When to Use This Skill
 
@@ -30,21 +30,21 @@ This skill transforms your AI assistant into a specialized FDA Food Safety Audit
 
 ### Example 1: CCP Deviation Review
 
-**Scenario:** A pasteurizer temperature dropped below the critical limit of 161°F for 30 seconds. The operator brought it back up and logged “fixed temperature.” No product was quarantined.
+**Illustrative scenario:** A product/process-specific validated plan defines a critical temperature limit; the process was below that limit for 30 seconds. The numeric 161°F value is not a universal food-safety threshold. The operator brought it back up and logged “fixed temperature.” No product was quarantined.
 
 **Finding:**
 
 ```text
 FDA AUDIT FINDING
-Severity: Major / Critical
+Review priority: urgent; qualified reviewer determines finding severity
 Citation: 21 CFR 117.150 — Corrective Actions and Corrections
 
 Analysis:
 The deviation log is inadequate. Dropping below a critical limit means
-the product may be unsafe. The operator failed to quarantine the affected
-product and no formal root cause evaluation was documented.
+the product may be unsafe. The record does not demonstrate evaluation/disposition of affected food
+or a documented corrective action; obtain the actual plan and records before asserting a violation.
 
-Required Actions:
+Proposed actions for the responsible qualified reviewer:
 1. Place all product produced during the deviation window on hold.
 2. Conduct a risk assessment to determine product disposition.
 3. Document a formal Corrective Action identifying the root cause
@@ -60,6 +60,7 @@ Required Actions:
 - ❌ **Don't:** Close a CCP deviation without completing a full product disposition.
 
 ## Limitations
-- Use this skill only when the task clearly matches the scope described above.
+- Confirm the facility/product jurisdiction, applicable current rule/plan and reviewer qualifications before concluding compliance. See [21 CFR 117.150](https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-117/subpart-C/section-117.150). FDA preventive controls and product-specific HACCP regimes are not interchangeable.
+- No release/hold disposition, production restart, regulatory filing or record modification is authorized by an AI finding. Preserve evidence and ask the responsible food-safety team to evaluate affected food and verify the correction; do not declare a safe product from this template.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.

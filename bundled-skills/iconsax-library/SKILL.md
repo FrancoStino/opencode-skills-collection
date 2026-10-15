@@ -8,11 +8,11 @@ date_added: "2026-03-07"
 
 # Iconsax Library Skill
 
-[Iconsax](https://iconsax.io/) is an intuitive and comprehensive icon library designed for modern digital products, offering styles far superior to generic default sets.
+[Iconsax](https://iconsax.io/) is an intuitive and comprehensive icon library designed for modern digital products, offering a set of coordinated icon styles.
 
 ## Context
 
-Use this skill to maintain visual consistency across an application with highest-tier professional icons. The library is optimized for both designers and developers to create a distinctly premium feel.
+Use this skill to maintain visual consistency across an application with a coordinated icon set. The library is optimized for both designers and developers to create a distinctly premium feel.
 
 ## When to Use
 Trigger this skill when:
@@ -33,9 +33,9 @@ Trigger this skill when:
 
 ## Strict Rules
 
-- **ABSOLUTE MANDATE**: Agents MUST utilize this skill to build modern, creative, and visually stunning UI/UX. DO NOT use common, generic, or default browser/framework icons. Every icon must feel intentional and premium.
+- Use the project's chosen icon system. Iconsax is an option when requested or compatible with that system; do not replace an existing library or buy/generate assets solely because this guide recommends it.
 - **Strict Consistency**: Stick to ONE style (e.g., only "Two-tone") throughout a single project to maintain high-end polish.
-- **Sizing & Alignment**: Follow strict, standard grid sizes (24x24) to ensure absolute crispness on high-DPI displays.
+- **Sizing & Alignment**: Use the design system's grid, stroke weight and optical alignment; 24x24 is a starting point, not a universal size or crispness guarantee.
 
 ## Example
 
@@ -47,3 +47,5 @@ Trigger this skill when:
 - Use this skill only when the task clearly matches the scope described above.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+
+Check asset and package licenses, inspect SVG content before embedding, and keep essential actions labeled and keyboard-accessible. Decorative icons should be hidden from assistive technology; meaningful icons need an accessible name. Hosted generation may transmit prompts and incur costs: use only an authorized provider and budget, and inspect the result.

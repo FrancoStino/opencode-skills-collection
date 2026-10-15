@@ -4,7 +4,7 @@ description: "Write internal communications such as status reports, leadership u
 risk: safe
 source: "https://github.com/anthropics/skills"
 date_added: "2026-03-21"
-license: Complete terms in LICENSE.txt
+license: "Apache-2.0"
 ---
 
 ## Compatibility and maintenance

@@ -9,6 +9,13 @@ date_added: 2026-07-01
 license: MIT
 license_source: https://github.com/zxkane/aws-skills/blob/main/LICENSE
 ---
+## Bundled upstream support
+
+Supporting files are included at skill-relative paths. See [UPSTREAM-NOTICE.md](UPSTREAM-NOTICE.md) for their pinned sources, licenses, hashes, and import changes.
+
+## Restored helper safety
+
+`scripts/validate-stack.sh` runs `cdk synth` from the caller-selected project root, which executes that project's CDK application and dependencies, can write `cdk.out`, and may contact AWS context providers if the project requires lookups. Review the project and AWS context before invoking it. The helper does not deploy; deployment needs separate user authorization.
 
 # AWS CDK Development
 

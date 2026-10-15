@@ -9,6 +9,13 @@ date_added: 2026-07-01
 license: MIT
 license_source: https://github.com/LambdaTest/agent-skills/blob/main/LICENSE
 ---
+## Bundled upstream support
+
+Supporting files are included at skill-relative paths. See [UPSTREAM-NOTICE.md](UPSTREAM-NOTICE.md) for their pinned sources, licenses, hashes, and import changes.
+
+## Restored helper safety
+
+`scripts/doctor.js --validate-cli` passes `LT_USERNAME` and `LT_ACCESS_KEY` to the HyperExecute CLI as process arguments, where local process-inspection tools may expose them. Run only on a trusted host and authorized account, and avoid concurrent untrusted users. Treat it as a remote account operation; verify the current CLI's validation behavior and any project data it submits before invoking it.
 
 # HyperExecute Operator
 ## When to Use

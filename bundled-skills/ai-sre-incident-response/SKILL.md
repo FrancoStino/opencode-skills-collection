@@ -164,8 +164,8 @@ RESPONDER: On-call AI platform engineer
      a. Check pod status: kubectl get pods -l app=llm-inference -n ai
      b. Check GPU health: kubectl logs -l app=llm-inference --tail=50
      c. Restart if OOM: kubectl rollout restart deployment/llm-inference -n ai
-6. Freeze all deployments:
-     kubectl annotate deployment --all deploy-freeze=true -n ai
+6. Request the existing deployment-freeze mechanism for the exact affected scope.
+   A Kubernetes annotation by itself does not enforce a freeze; verify that the configured controller/pipeline actually honors it.
 7. Communicate ETA in #incident-channel.
 8. When resolved, unfreeze and run smoke tests.
 ```
@@ -187,11 +187,11 @@ RESPONDER: On-call AI engineer + ML lead
 4. If recent model change:
      kubectl rollout undo deployment/llm-inference -n ai
 5. If recent prompt change:
-     git revert <commit> && git push  # triggers GitOps redeploy
+     Prepare a reviewed revert on a topic branch, verify it in staging, and use the protected deployment path; do not push a production rollback blindly.
 6. If authorized, increase redacted trace sampling for the affected route only after checking personal-data exposure and the remaining storage/cost budget:
      kubectl set env deployment/llm-gateway TRACE_SAMPLE_RATE=1.0
-7. Run offline eval suite against current production:
-     python run_evals.py --target prod --suite quality --compare baseline
+7. Run the existing version-bound evaluation suite against an authorized isolated copy of the model/prompt configuration using synthetic or redacted cases.
+   No run_evals.py helper is bundled; never describe a production call as offline.
 8. Confirm metrics return to baseline before closing.
 ```
 
@@ -213,8 +213,8 @@ RESPONDER: On-call platform engineer
          max_tokens_per_request: "4096"
          rpm_limit: "60"
      '
-4. Enable semantic cache if disabled:
-     kubectl set env deployment/llm-gateway CACHE_ENABLED=true
+4. Review existing cache isolation before any enablement: tenant/user identity, permissions, invalidation and private-content retention must be enforced.
+   Do not turn on a generic shared semantic cache during an incident.
 5. If authorized, route only to an already approved fallback meeting the declared quality, privacy and cost constraints. Review the exact change before updating gateway configuration.
 6. Notify affected tenants of temporary limits.
 7. Open postmortem with cost attribution analysis.
@@ -297,7 +297,7 @@ topk(10, sum(rate(llm_token_cost_dollars[1h])) by (tenant))
 
 ## Chaos Engineering for AI Systems
 
-Regularly test incident readiness:
+Test drills only in a disposable isolated harness or separately authorized staging environment. Use synthetic inputs and a predeclared fault schedule, bounded duration, costs, recovery and notification policy; never deploy a known-bad model or block a real provider in production to create a drill. Regularly test incident readiness:
 
 - **Provider failover drill**: block provider API at network level, verify fallback activates within SLO.
 - **Model rollback drill**: deploy known-bad model version, verify automated quality gate catches it.

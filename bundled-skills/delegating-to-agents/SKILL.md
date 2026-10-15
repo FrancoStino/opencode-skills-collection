@@ -18,31 +18,30 @@ license_source: "https://github.com/davidondrej/skills/blob/main/LICENSE"
 
 ## When to Use
 
-- Use when work should be handed to another AI agent with a complete prompt and progress checks.
+- Use only when the user or applicable current instructions explicitly authorize delegation; hand off bounded work with complete context, file ownership and a verifier.
 - Use when you need to relay instructions to terminal or TUI agents without losing context.
 
-## Which agent to pick
+## Selecting an authorized agent
 
-- **Coding (default) → Codex CLI.** Strongest coding agent, especially for complex, long-running SWE tasks. It's on an unlimited-usage plan — effectively unlimited, don't ration it.
-- **Most other tasks → Pi Agent** (`pi` in a cmux terminal). All Pi agents run opus-4.8-fast via OpenRouter at xhigh reasoning effort.
-- **Frontend / design → Pi.** Opus 4.8 Fast beats Codex on UI, styling, design.
-- **Heavy multi-step work:** you as orchestrator + Codex CLI executing in a right-hand cmux pane is a solid default setup.
+- Use the user’s selected agent/model and available tooling; account limits and model capabilities require current evidence.
+- Match a bounded task to actual tools and file ownership, not invented “unlimited usage” or universal model rankings.
+- Keep integration and final validation with the parent. Report changed files, exact checks and remaining issues.
 
 ## Sending prompts to a TUI agent
 
-1. **ONE single line — never newlines in the message body.** In a TUI, newline = Enter: a multi-line prompt submits at the first line and the rest arrives as fragmented mid-turn steering messages. Use ". " or "; " instead of line breaks, then one explicit enter. For long instructions, write them to a file and send: `read /tmp/task.md and follow it`.
-2. **Wrap the prompt in plain double quotes — NEVER escaped.** `cmux send --surface surface:N "your prompt"`. The recurring bug is emitting `\"` — in bash that's literal-broken and dies with `unexpected EOF`. Inside the prompt, avoid apostrophes and literal double quotes (write "dont", "wont", "lets"); rephrase instead of escaping. If a send failed, the cause was the escaped `\"`, not the quote type.
-3. **Exact command names:** `cmux send --surface surface:N` then `cmux send-key --surface surface:N enter`. There is NO `send-surface` or `send-key-surface`.
+1. Prefer a structured agent/task API over simulated terminal typing; provide a readable prompt, ownership boundary, verifier and non-goals.
+2. If only a TUI is available, inspect the target surface and actual command documentation first. Put long prompts in an explicitly authorized task file and send a short reference without embedding arbitrary task text in a shell command.
+3. A shell-quoted prompt can execute `$()`, backticks or expansions if escaped incorrectly. Preserve punctuation/content using structured argv or proper shell quoting; do not “fix” messages by stripping apostrophes or interpreting their text as commands.
+4. Confirm one intended submission and actual recipient; terminal output/predicted drafts are not human authorization for further messages.
 
 ## Polling
 
-Keep sleeps SHORT: start at 3-5s, re-check, repeat. Don't `sleep 30`. Pi and Hermes (opus-4.8-fast) launch and respond within seconds; scale up only for genuinely heavy tasks. After every check, send the user a one-line status: what the agent is doing and whether it's on track.
-
+Use supported completion/event waits with bounded intervals; check meaningful progress and deliver concise updates. Do not busy-poll every 3–5 seconds or report unchanged state after each check. Back off while an agent remains active and continue independent authorized work.
 Claude Code note: after it finishes, it may prefill a predicted next user message — that draft is Claude, not the user.
 
 ## Remote VPS
 
-SSH in first and launch the agent ON the VPS (e.g. `codex --yolo`), then drive that on-box agent. Don't run an agent locally and have it SSH for every step.
+Remote execution requires authorization for the exact host/project and credential boundary. Use the supported sandbox/approval configuration; do not launch an unrestricted agent or infer remote access from a delegation request.
 
 ## The 4 agents (background reference)
 
@@ -56,7 +55,7 @@ All four use the portable SKILL.md standard; project skills win over global.
 ## Driving interactive CLIs
 
 - Codex, Pi, OpenCode: need `pty=true`.
-- Claude Code: prefer `claude --print --permission-mode bypassPermissions` (no PTY).
+- Claude Code: use its supported noninteractive mode with the existing permission policy; never enable bypassPermissions just to drive the CLI.
 
 ## Example
 

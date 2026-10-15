@@ -2,7 +2,7 @@
 name: kubernetes-deployment
 description: "Kubernetes deployment workflow for container orchestration, Helm charts, service mesh, and production-ready K8s configurations."
 category: granular-workflow-bundle
-risk: safe
+risk: critical
 source: personal
 date_added: "2026-02-27"
 ---
@@ -21,6 +21,10 @@ Use this workflow when:
 - Configuring service mesh
 - Setting up K8s networking
 - Implementing K8s security
+
+## Target and evidence
+
+Select only phases needed for the requested change. Confirm cluster/context, namespace, ownership, API/CRD versions and deployment/cost authorization before registry pushes or cluster writes. Prepare a reviewed immutable image and rendered manifests, validate schema/policy and diff the exact target, then use a tested rollout and rollback strategy. A valid manifest is not a healthy deployment; verify readiness, application flows, metrics and data-migration compatibility. Store secrets through the actual protected platform mechanism, not committed plaintext YAML.
 
 ## Workflow Phases
 

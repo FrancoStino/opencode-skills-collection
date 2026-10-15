@@ -45,7 +45,9 @@ Supply chain attack       Malicious model weights        Signature verification,
 Insecure output           XSS/SQLi from LLM response     Output encoding, parameterized queries
 ```
 
-## Prompt Injection Defense
+## Prompt-injection indicators and authorization boundaries
+
+Regex indicators have false positives and bypasses. They do not establish a prompt-injection security boundary. Keep untrusted content separate, enforce server-side tool/data authorization independent of model text, minimize accessible secrets and require approval for scoped side effects. The examples below are illustrative detectors, not proof an input or output is safe.
 
 ```python
 import re
@@ -143,8 +145,8 @@ def scrub_pii_from_output(text: str) -> str:
     anonymized = anonymizer.anonymize(text=text, analyzer_results=results)
     return anonymized.text
 
-def validate_output_safety(output: str) -> bool:
-    """Check output doesn't contain prompt injection artifacts."""
+def has_no_known_output_indicators(output: str) -> bool:
+    """No known regex match; does not prove SQL, HTML or command safety."""
     dangerous_patterns = [
         r"<\s*script\s*>",         # XSS
         r"javascript:",             # XSS
@@ -159,6 +161,8 @@ def validate_output_safety(output: str) -> bool:
 ```
 
 ## API Security for LLM Endpoints
+
+Schematic example: bind SECRET_KEY, TOKEN_ISSUER and TOKEN_AUDIENCE to a verified trusted configuration. Require explicit scopes and tenant authorization before any model/tool call. The in-process rate map is not a distributed limiter; bound storage and use a shared limiter for multi-worker production. Validate the full request schema and size before indexing messages. Undefined project functions are prerequisites, not bundled implementations.
 
 ```python
 from fastapi import FastAPI, HTTPException, Depends, Request
@@ -186,7 +190,13 @@ async def verify_token(
     credentials: HTTPAuthorizationCredentials = Depends(security)
 ) -> dict:
     try:
-        payload = jwt.decode(credentials.credentials, SECRET_KEY, algorithms=["HS256"])
+        payload = jwt.decode(
+            credentials.credentials, SECRET_KEY, algorithms=["HS256"],
+            issuer=TOKEN_ISSUER, audience=TOKEN_AUDIENCE,
+            options={"require": ["exp", "iss", "aud", "sub"]},
+        )
+        if not isinstance(payload.get("sub"), str) or not payload["sub"]:
+            raise jwt.InvalidTokenError("Invalid subject")
         rate_limit(payload["sub"])
         return payload
     except jwt.ExpiredSignatureError:
@@ -215,25 +225,7 @@ async def chat(request: Request, token: dict = Depends(verify_token)):
 
 ## Model Weight Security
 
-```bash
-# Verify model weights with SHA-256 hash before loading
-MODEL_DIR="./models/llama-3.1-8b"
-EXPECTED_HASH="sha256:abc123..."
-
-# Generate hash of downloaded model
-actual_hash=$(find "$MODEL_DIR" -name "*.safetensors" | sort | xargs sha256sum | sha256sum)
-echo "Model hash: $actual_hash"
-
-# Compare (automate in CI/CD)
-if [ "$actual_hash" != "$EXPECTED_HASH" ]; then
-  echo "ERROR: Model hash mismatch — possible tampering!"
-  exit 1
-fi
-
-# Scan model files for embedded malware (ModelScan)
-pip install modelscan
-modelscan scan -p "$MODEL_DIR"
-```
+Verify the complete artifact inventory against a manifest signed by a trusted publisher: expected relative paths, per-file digest, model/revision identity, configuration and tokenizer assets. Reject traversal, links, extra/missing files and unsupported formats; compare exact bytes before loading. A hash computed from an untrusted download is not provenance. A local aggregate digest or scanner result alone cannot establish verified model identity. Prefer non-executable formats and an isolated loader; verify installed scanner/tool versions and obtain authorization before downloading weights or consuming paid compute.
 
 ## Network Isolation for AI Services
 
@@ -309,7 +301,7 @@ def log_llm_interaction(
 | False positive injection blocks | Overly broad regex | Tune patterns; use ML-based classifier for high-traffic |
 | PII in model outputs | Model trained on PII data | Add Presidio scrubbing to output layer |
 | API key leakage | Keys in logs or responses | Mask keys in logging; use vault for key storage |
-| Model weight tampering | Unverified downloads | Always verify SHA-256; use `modelscan` |
+| Model weight tampering | Unverified downloads | Verify a trusted publisher manifest and full inventory; scanning is supplemental |
 | Rate limit bypass | Per-IP not per-user | Rate limit on authenticated user ID, not IP |
 
 ## Best Practices
@@ -323,7 +315,7 @@ def log_llm_interaction(
 ## Related Skills
 
 - hashicorp-vault (`hashicorp-vault`) - Secrets management for API keys
-- [network-security] (../../network/) - Network-level controls
+- `network-security` - Network-level controls (verify it is installed before use)
 - linux-hardening (`linux-hardening`) - Host hardening
 - agent-observability (`agent-observability`) - AI audit logging
 - llm-gateway (`llm-gateway`) - Centralized access control

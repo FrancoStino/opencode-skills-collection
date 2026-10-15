@@ -193,7 +193,7 @@ see. Silent failures become loud failures later.
 Recommended fix:
 
 Explicit error handling:
-- Return error messages to agent
+- Return bounded redacted error categories and recovery context to the agent
 - Include error type and recovery hints
 - Let agent retry or choose alternative
 - Log errors for debugging
@@ -226,7 +226,7 @@ Selective memory:
 
 Severity: MEDIUM
 
-Situation: Giving agent 20+ tools for flexibility
+Situation: Giving an agent an unmeasured large tool surface for flexibility
 
 Symptoms:
 - Wrong tool selection

@@ -1,0 +1,2 @@
+# AAS adaptation: dotenv autoload removed; lock the reviewed resolution in the caller environment.
+httpx>=0.25.0,<1

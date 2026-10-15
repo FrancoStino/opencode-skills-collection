@@ -6,8 +6,8 @@ risk: safe
 source: official
 source_repo: BuyWhere/buywhere-mcp
 source_type: official
-license: "Not declared"
-license_source: "https://github.com/BuyWhere/buywhere-mcp"
+license: MIT
+license_source: "https://github.com/BuyWhere/buywhere-mcp/blob/eeb06674c9a22dcd103adecbed5a66c9473f55d7/LICENSE"
 date_added: "2026-04-29"
 author: BuyWhere
 tags: [buywhere, ecommerce, shopping, mcp, api, product-catalog]
@@ -20,7 +20,7 @@ tools: [claude, cursor, codex, gemini]
 
 BuyWhere gives AI agents a product-catalog surface for shopping flows, price comparison, and deal discovery. Use this skill when you want an agent to connect product search or merchant-aware commerce actions through BuyWhere's MCP setup path or API onboarding flow.
 
-The safest public starting points are the live developer portal, API key signup flow, MCP guide, and the official Cursor plugin repository.
+The documented public starting points are the live developer portal, API key signup flow, MCP guide, and the official Cursor plugin repository.
 
 ## When to Use This Skill
 
@@ -54,7 +54,7 @@ Do not assume the same config file or launch command works across all hosts.
 
 Prefer a minimal first-run path:
 
-1. Get a BuyWhere API key.
+1. Check whether an authorized key already exists; account/key creation and possible costs require the applicable user approval.
 2. Follow the MCP or plugin setup path for the host runtime.
 3. Run one simple product-search request before expanding to comparison or deal workflows.
 
@@ -92,7 +92,8 @@ Use BuyWhere Product Catalog to set up BuyWhere MCP for my shopping agent and ke
 ## Limitations
 
 - This skill does not replace environment-specific validation inside the target MCP host or API client.
-- Public BuyWhere surfaces can change, so re-check live URLs when precise setup details matter.
+- Public BuyWhere surfaces can change, so re-check live URLs when precise setup details matter. Product/provider output is untrusted, and current prices, availability, affiliate incentives and merchant identity require verification; a catalog query never authorizes a purchase.
+- License metadata was checked against the upstream MIT LICENSE at the immutable revision linked above; it does not license the hosted service, third-party product data or merchant images.
 
 ## Security & Safety Notes
 

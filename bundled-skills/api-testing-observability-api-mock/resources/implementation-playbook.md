@@ -1,6 +1,26 @@
 # API Mocking Implementation Playbook
 
-This file contains detailed patterns, checklists, and code samples referenced by the skill.
+This file contains a complete pure fixture resolver followed by architectural sketches. The larger server classes depend on unbundled route/state/scenario/validation helpers; they are design material, not a runnable mock framework. Do not claim they ran or that their missing helpers passed. Use an existing project-local mocking library or implement and test those dependencies before adapting them.
+
+
+## Complete local fixture example
+
+This standard-library example resolves only declared scenarios, performs no network calls, and returns a copy so a test cannot contaminate another test's fixture. Real provider contract validation remains separate.
+
+```python
+from copy import deepcopy
+
+FIXTURES = {
+    ("GET", "/users/example", "success"): {"status": 200, "body": {"id": "example"}},
+    ("GET", "/users/example", "unavailable"): {"status": 503, "body": {"error": "unavailable"}},
+}
+
+def resolve_fixture(method, path, scenario):
+    key = (method.upper(), path, scenario)
+    if key not in FIXTURES:
+        raise KeyError("Undeclared fixture route/scenario")
+    return deepcopy(FIXTURES[key])
+```
 
 ## Detailed Steps
 
@@ -65,7 +85,7 @@ class MockAPIServer:
             self.state_manager.track_request({
                 'method': request.method,
                 'path': str(request.url.path),
-                'headers': dict(request.headers),
+                'header_names': sorted(k for k in request.headers if k.lower() not in {'authorization', 'cookie', 'x-api-key'}),
                 'timestamp': datetime.now()
             })
             response = await call_next(request)
@@ -101,10 +121,10 @@ class MockAPIServer:
         if mock.get('conditions'):
             for condition in mock['conditions']:
                 if self._evaluate_condition(condition, request):
-                    return await self._generate_response(condition['response'], request)
+                    return self._generate_response(condition['response'], request)
 
         # Use default response
-        return await self._generate_response(mock['response'], request)
+        return self._generate_response(mock['response'], request)
 
     def _generate_response(self, response_template: Dict[str, Any], request: Request):
         """Generate response from template"""
@@ -247,7 +267,7 @@ class DynamicStub:
         request_data = {
             'method': request.method,
             'path': request.url.path,
-            'headers': dict(request.headers),
+            'header_names': sorted(k for k in request.headers if k.lower() not in {'authorization', 'cookie', 'x-api-key'}),
             'query_params': dict(request.query_params),
             'body': await request.json() if request.method in ['POST', 'PUT'] else None
         }
@@ -1147,7 +1167,7 @@ services:
       context: .
       dockerfile: Dockerfile.mock
     ports:
-      - "3001:3001"
+      - "127.0.0.1:3001:3001"
     environment:
       - MOCK_SCENARIO=production
       - MOCK_DATA_PATH=/data/mocks
@@ -1165,7 +1185,7 @@ services:
       context: .
       dockerfile: Dockerfile.admin
     ports:
-      - "3002:3002"
+      - "127.0.0.1:3002:3002"
     environment:
       - MOCK_SERVER_URL=http://mock-api:3001
     depends_on:
@@ -1252,7 +1272,7 @@ class MockDocumentationGenerator:
 **Request**:
 ```json
 {json.dumps(endpoint.get('request_example', {}), indent=2)}
-````
+```
 
 **Response**:
 
@@ -1261,9 +1281,9 @@ class MockDocumentationGenerator:
 ```
 
 **Scenarios**:
-{self.\_format_endpoint_scenarios(endpoint)}
+{self._format_endpoint_scenarios(endpoint)}
 """
-return doc
+        return doc
 
     def create_interactive_docs(self):
         """Create interactive API documentation"""
@@ -1309,7 +1329,7 @@ return doc
 </body>
 </html>
 '''
-```
+````
 
 ## Output Format
 

@@ -1,6 +1,6 @@
 ---
 name: agents-v2-py
-description: "Build container-based Foundry Agents with Azure AI Projects SDK (ImageBasedHostedAgentDefinition). Use when creating hosted agents with custom container images in Azure AI Foundry."
+description: "Build container-based Foundry Agents with Azure AI Projects SDK (HostedAgentDefinition). Use when creating hosted agents with custom container images in Azure AI Foundry."
 risk: critical
 source: community
 date_added: "2026-02-27"
@@ -8,27 +8,27 @@ date_added: "2026-02-27"
 
 ## Compatibility and maintenance
 
-Compatibility alias of `hosted-agents-v2-py`; use that ID for new references when no existing contract requires this one. The full instructions and support files remain local so existing installations
-continue to work offline. This is one shared procedure, not an additional capability.
+Compatibility alias of `hosted-agents-v2-py`; use that ID for new references when no existing contract requires this one. The instruction-only procedure remains local; no executable support files are bundled so existing installations
+continue to work offline. This compatibility guide documents the hosted-agent procedure, not an additional capability; older copies may use retired preview names.
 Preserve the callable ID when an existing manifest or client configuration uses it.
 Modified in AAS on 2026-09-05; original metadata and license notices are retained.
 
 # Azure AI Hosted Agents (Python)
 
-Build container-based hosted agents using `ImageBasedHostedAgentDefinition` from the Azure AI Projects SDK.
+Build container-based hosted agents using `HostedAgentDefinition` from the Azure AI Projects SDK.
 
 ## Installation
 
 ```bash
-pip install 'azure-ai-projects>=2.0.0b3,<3' azure-identity
+pip install 'azure-ai-projects==2.3.0' azure-identity
 ```
 
-These are preview-era SDK v2 sketches. Check the exact installed version and current Azure hosted-agent documentation before provisioning; a broad version range is not an integration test.
+These are SDK 2.3.0 instruction fragments aligned with the current Microsoft hosted-agent guide. Validate the installed schema and service support before provisioning; documentation inspection is not a cloud integration test.
 
 ## Environment Variables
 
 ```bash
-AZURE_AI_PROJECT_ENDPOINT=https://<resource>.services.ai.azure.com/api/projects/<project>
+export AZURE_AI_PROJECT_ENDPOINT="https://<resource>.services.ai.azure.com/api/projects/<project>"
 ```
 
 ## Prerequisites
@@ -36,9 +36,9 @@ AZURE_AI_PROJECT_ENDPOINT=https://<resource>.services.ai.azure.com/api/projects/
 Before creating hosted agents:
 
 1. **Container Image** - Build and push to Azure Container Registry (ACR)
-2. **ACR Pull Permissions** - Grant your project's managed identity `AcrPull` role on the ACR
-3. **Capability Host** - Account-level capability host with `enablePublicHostingEnvironment=true`
-4. **SDK Version** - Ensure `azure-ai-projects>=2.0.0b3`
+2. **ACR Pull Permissions** - Grant the project identity the registry role supported by its permission mode; current hosted-agent guidance uses Container Registry Repository Reader
+3. **Capability Host** - Confirm current project/region hosted-agent availability and the application's network policy; do not enable public hosting automatically
+4. **SDK Version** - Ensure `azure-ai-projects==2.3.0`
 
 ## Authentication
 
@@ -66,9 +66,10 @@ import os
 from azure.identity import DefaultAzureCredential
 from azure.ai.projects import AIProjectClient
 from azure.ai.projects.models import (
-    ImageBasedHostedAgentDefinition,
+    HostedAgentDefinition,
+    ContainerConfiguration,
     ProtocolVersionRecord,
-    AgentProtocol,
+    AgentEndpointProtocol,
 )
 ```
 
@@ -82,17 +83,16 @@ client = AIProjectClient(
 
 agent = client.agents.create_version(
     agent_name="my-hosted-agent",
-    definition=ImageBasedHostedAgentDefinition(
-        container_protocol_versions=[
-            ProtocolVersionRecord(protocol=AgentProtocol.RESPONSES, version="v1")
+    definition=HostedAgentDefinition(
+        protocol_versions=[
+            ProtocolVersionRecord(protocol=AgentEndpointProtocol.RESPONSES, version="2.0.0")
         ],
         cpu="1",
         memory="2Gi",
-        image="myregistry.azurecr.io/my-agent:latest",
-        tools=[{"type": "code_interpreter"}],
+        container_configuration=ContainerConfiguration(image=os.environ["REVIEWED_CONTAINER_IMAGE"]),
         environment_variables={
             "AZURE_AI_PROJECT_ENDPOINT": os.environ["AZURE_AI_PROJECT_ENDPOINT"],
-            "MODEL_NAME": "gpt-4o-mini"
+            "MODEL_NAME": os.environ["MODEL_DEPLOYMENT_NAME"]
         }
     )
 )
@@ -105,55 +105,56 @@ print(f"Created agent: {agent.name} (version: {agent.version})")
 ```python
 versions = client.agents.list_versions(agent_name="my-hosted-agent")
 for version in versions:
-    print(f"Version: {version.version}, State: {version.state}")
+    print(f"Version: {version.version}")  # Inspect supported status fields via get_version
 ```
+
+Inspect the exact returned model for supported fields; a created version is not proof a running container is healthy. Close synchronous client/credential resources through their supported context managers or `close()` methods.
 
 ### 4. Delete Agent Version
 
 ```python
 client.agents.delete_version(
     agent_name="my-hosted-agent",
-    version=agent.version
+    agent_version=agent.version
 )
 ```
 
-## ImageBasedHostedAgentDefinition Parameters
+## HostedAgentDefinition Parameters
 
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
-| `container_protocol_versions` | `list[ProtocolVersionRecord]` | Yes | Protocol versions the agent supports |
-| `image` | `str` | Yes | Full container image path (registry/image:tag) |
+| `protocol_versions` | `list[ProtocolVersionRecord]` | Yes | Protocol versions the agent supports |
+| `container_configuration` | `ContainerConfiguration` | Yes for an image deployment | Reviewed registry image reference |
 | `cpu` | `str` | No | CPU allocation (e.g., "1", "2") |
 | `memory` | `str` | No | Memory allocation (e.g., "2Gi", "4Gi") |
-| `tools` | `list[dict]` | No | Tools available to the agent |
 | `environment_variables` | `dict[str, str]` | No | Environment variables for the container |
 
 ## Protocol Versions
 
-The `container_protocol_versions` parameter specifies which protocols your agent supports:
+The `protocol_versions` parameter specifies which protocols your agent supports:
 
 ```python
-from azure.ai.projects.models import ProtocolVersionRecord, AgentProtocol
+from azure.ai.projects.models import ProtocolVersionRecord, AgentEndpointProtocol
 
 # RESPONSES protocol - standard agent responses
-container_protocol_versions=[
-    ProtocolVersionRecord(protocol=AgentProtocol.RESPONSES, version="v1")
+protocol_versions=[
+    ProtocolVersionRecord(protocol=AgentEndpointProtocol.RESPONSES, version="2.0.0")
 ]
 ```
 
 **Available Protocols:**
 | Protocol | Description |
 |----------|-------------|
-| `AgentProtocol.RESPONSES` | Standard response protocol for agent interactions |
+| `AgentEndpointProtocol.RESPONSES` | Standard response protocol for agent interactions |
 
 ## Resource Allocation
 
 Specify CPU and memory for your container:
 
 ```python
-definition=ImageBasedHostedAgentDefinition(
-    container_protocol_versions=[...],
-    image="myregistry.azurecr.io/my-agent:latest",
+definition=HostedAgentDefinition(
+    protocol_versions=[...],
+    container_configuration=ContainerConfiguration(image=os.environ["REVIEWED_CONTAINER_IMAGE"]),
     cpu="2",      # 2 CPU cores
     memory="4Gi"  # 4 GiB memory
 )
@@ -167,7 +168,7 @@ definition=ImageBasedHostedAgentDefinition(
 
 ## Tools Configuration
 
-Add tools to your hosted agent:
+Configure tool support inside the selected container runtime/framework. The following tool dictionaries describe application-specific intent; do not assume a `tools` field exists on `HostedAgentDefinition` or that defining it provisions a tool or grants permission:
 
 ### Code Interpreter
 
@@ -209,13 +210,13 @@ Pass configuration to your container:
 ```python
 environment_variables={
     "AZURE_AI_PROJECT_ENDPOINT": os.environ["AZURE_AI_PROJECT_ENDPOINT"],
-    "MODEL_NAME": "gpt-4o-mini",
+    "MODEL_NAME": os.environ["MODEL_DEPLOYMENT_NAME"],
     "LOG_LEVEL": "INFO",
     "CUSTOM_CONFIG": "value"
 }
 ```
 
-**Best Practice:** Never hardcode secrets. Use environment variables or Azure Key Vault.
+**Best Practice:** Keep non-secret deployment names and a reviewed immutable image reference in configuration; secrets need the platform's actual protected injection mechanism. Arbitrary environment dictionaries do not establish Key Vault integration.
 
 ## Complete Example
 
@@ -224,9 +225,10 @@ import os
 from azure.identity import DefaultAzureCredential
 from azure.ai.projects import AIProjectClient
 from azure.ai.projects.models import (
-    ImageBasedHostedAgentDefinition,
+    HostedAgentDefinition,
+    ContainerConfiguration,
     ProtocolVersionRecord,
-    AgentProtocol,
+    AgentEndpointProtocol,
 )
 
 def create_hosted_agent():
@@ -239,23 +241,19 @@ def create_hosted_agent():
     
     agent = client.agents.create_version(
         agent_name="data-processor-agent",
-        definition=ImageBasedHostedAgentDefinition(
-            container_protocol_versions=[
+        definition=HostedAgentDefinition(
+            protocol_versions=[
                 ProtocolVersionRecord(
-                    protocol=AgentProtocol.RESPONSES,
-                    version="v1"
+                    protocol=AgentEndpointProtocol.RESPONSES,
+                    version="2.0.0"
                 )
             ],
-            image="myregistry.azurecr.io/data-processor:v1.0",
+            container_configuration=ContainerConfiguration(image=os.environ["REVIEWED_CONTAINER_IMAGE"]),
             cpu="2",
             memory="4Gi",
-            tools=[
-                {"type": "code_interpreter"},
-                {"type": "file_search"}
-            ],
             environment_variables={
                 "AZURE_AI_PROJECT_ENDPOINT": os.environ["AZURE_AI_PROJECT_ENDPOINT"],
-                "MODEL_NAME": "gpt-4o-mini",
+                "MODEL_NAME": os.environ["MODEL_DEPLOYMENT_NAME"],
                 "MAX_RETRIES": "3"
             }
         )
@@ -263,7 +261,7 @@ def create_hosted_agent():
     
     print(f"Created hosted agent: {agent.name}")
     print(f"Version: {agent.version}")
-    print(f"State: {agent.state}")
+    # Poll get_version status with a deadline before treating deployment as active.
     
     return agent
 
@@ -278,9 +276,10 @@ import os
 from azure.identity.aio import DefaultAzureCredential
 from azure.ai.projects.aio import AIProjectClient
 from azure.ai.projects.models import (
-    ImageBasedHostedAgentDefinition,
+    HostedAgentDefinition,
+    ContainerConfiguration,
     ProtocolVersionRecord,
-    AgentProtocol,
+    AgentEndpointProtocol,
 )
 
 async def create_hosted_agent_async():
@@ -293,14 +292,14 @@ async def create_hosted_agent_async():
         ) as client:
             agent = await client.agents.create_version(
                 agent_name="async-agent",
-                definition=ImageBasedHostedAgentDefinition(
-                    container_protocol_versions=[
+                definition=HostedAgentDefinition(
+                    protocol_versions=[
                         ProtocolVersionRecord(
-                            protocol=AgentProtocol.RESPONSES,
-                            version="v1"
+                            protocol=AgentEndpointProtocol.RESPONSES,
+                            version="2.0.0"
                         )
                     ],
-                    image="myregistry.azurecr.io/async-agent:latest",
+                    container_configuration=ContainerConfiguration(image=os.environ["REVIEWED_CONTAINER_IMAGE"]),
                     cpu="1",
                     memory="2Gi"
                 )
@@ -312,10 +311,10 @@ async def create_hosted_agent_async():
 
 | Error | Cause | Solution |
 |-------|-------|----------|
-| `ImagePullBackOff` | ACR pull permission denied | Grant `AcrPull` role to project's managed identity |
+| `ImagePullBackOff` | ACR pull permission denied | Verify registry permission mode and scoped reader role for the project identity |
 | `InvalidContainerImage` | Image not found | Verify image path and tag exist in ACR |
 | `CapabilityHostNotFound` | No capability host configured | Create account-level capability host |
-| `ProtocolVersionNotSupported` | Invalid protocol version | Use `AgentProtocol.RESPONSES` with version `"v1"` |
+| `ProtocolVersionNotSupported` | Invalid protocol version | Use `AgentEndpointProtocol.RESPONSES` with version `"2.0.0"` |
 
 ## Best Practices
 
@@ -328,7 +327,7 @@ async def create_hosted_agent_async():
 ## Reference Links
 
 - [Azure AI Projects SDK](https://pypi.org/project/azure-ai-projects/)
-- [Hosted Agents Documentation](https://learn.microsoft.com/azure/ai-services/agents/how-to/hosted-agents)
+- [Hosted Agents Documentation](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/deploy-hosted-agent?pivots=python)
 - [Azure Container Registry](https://learn.microsoft.com/azure/container-registry/)
 
 ## When to Use

@@ -20,7 +20,6 @@ Comprehensive GitLab CI/CD pipeline patterns for automated testing, building, an
 - Clarify goals, constraints, and required inputs.
 - Apply relevant best practices and validate outcomes.
 - Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
 
 ## Purpose
 
@@ -97,7 +96,7 @@ build-docker:
   services:
     - docker:24-dind
   before_script:
-    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - printf '%s' "$CI_REGISTRY_PASSWORD" | docker login --username "$CI_REGISTRY_USER" --password-stdin "$CI_REGISTRY"
   script:
     - docker build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA .
     - docker build -t $CI_REGISTRY_IMAGE:latest .
@@ -114,7 +113,7 @@ build-docker:
 .deploy_template: &deploy_template
   image: bitnami/kubectl:latest
   before_script:
-    - kubectl config set-cluster k8s --server="$KUBE_URL" --insecure-skip-tls-verify=true
+    - kubectl config set-cluster k8s --server="$KUBE_URL" --certificate-authority="$KUBE_CA_FILE"
     - kubectl config set-credentials admin --token="$KUBE_TOKEN"
     - kubectl config set-context default --cluster=k8s --user=admin
     - kubectl config use-context default
@@ -206,7 +205,7 @@ trivy-scan:
   image: aquasec/trivy:latest
   script:
     - trivy image --exit-code 1 --severity HIGH,CRITICAL $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
-  allow_failure: true
+  allow_failure: false
 ```
 
 ## Caching Strategies
@@ -261,10 +260,9 @@ trigger-child:
     strategy: depend
 ```
 
-## Reference Files
+## Template scope
 
-- `assets/gitlab-ci.yml.template` - Complete pipeline template
-- `references/pipeline-stages.md` - Stage organization patterns
+The examples are inline scaffolds. Use verified image digests and installed command versions, a protected scoped kubeconfig and protected production environments. `KUBE_CA_FILE` must point to a verified CI file variable. Do not deploy from untrusted merge requests or automatically grant new credentials. No external template is required by the inline examples.
 
 ## Best Practices
 

@@ -1,6 +1,6 @@
 ---
 name: deterministic-design
-description: "Render the UI and prove it's balanced + usable: a deterministic layout audit (centroid / optical-center / pixel-oracle balance via explicit math + annotated screenshot) plus a vision-judged Nielsen usability audit by a separate fresh-eyes judge. The measurement layer taste-only design skills lack."
+description: "Measure rendered UI layout with reproducible spatial metrics and a separately assessed usability review; distinguish measurements from subjective judgments and user tests."
 risk: safe
 source: community
 source_type: community
@@ -24,7 +24,7 @@ tools:
 ---
 ## When to Use
 
-Use to catch AI-generated UI that "looks off", is misaligned or centered-mush, or fails usability — when you need to PROVE a layout is balanced and usable instead of trusting the model's eye. Compose it with any taste/token design skill before reporting design "done".
+Use to catch AI-generated UI that "looks off", is misaligned or centered-mush, or fails usability — when you need reproducible spatial measurements and an evidence-based usability review. Metrics do not prove user success, accessibility or overall design quality. Compose it with any taste/token design skill before reporting design "done".
 
 _Source: [connerkward/deterministic-design-skill](https://github.com/connerkward/deterministic-design-skill) (MIT)._
 
@@ -39,7 +39,7 @@ Two sub-skills (load as needed):
   balance and draws an annotated screenshot. **Numbers, not vibes.** Plus a render-then-
   critique vision loop.
 - **[design-ux](https://github.com/connerkward/deterministic-design-skill/blob/main/design-ux/SKILL.md)** — usability audit: scores the rendered UI against
-  Nielsen's 10 + interaction heuristics via a SEPARATE fresh-eyes judge → prioritized fix list.
+  Nielsen's 10 + interaction heuristics via an authorized separate judge or clearly disclosed self-review → prioritized fix list.
 
 This **improves** existing design skills (including the default Anthropic one) by adding the
 layer they lack — it doesn't just advise on taste, it renders, measures, and judges the
@@ -58,5 +58,6 @@ flagship narratives — the *determinism* one; its sibling is human-in-the-loop 
 ## Limitations
 
 - Layout metrics and vision-judged audits catch many spatial and usability failures, but they are not a substitute for product judgment or user testing.
-- The workflow requires a rendered UI or screenshot; it cannot validate components that have not been built or captured.
+- The workflow requires a rendered UI or screenshot; record viewport, scale, fonts, capture state and measurement definitions. Separate layout measurements, subjective vision judgments and actual user/accessibility tests.
+- The linked sub-skills and layout-audit.js are external, not bundled. Read and pin them before use; the link is not executable availability. Delegation requires existing explicit authorization, and screenshots may contain private data.
 - Automated scoring can miss brand nuance, copy tone, accessibility needs, and domain-specific user expectations.

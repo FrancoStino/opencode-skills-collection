@@ -16,11 +16,17 @@ Makepad UI development skills for Rust apps: setup, patterns, shaders, packaging
 
 Use this skill when you need to work with makepad ui development skills for rust apps: setup, patterns, shaders, packaging, and troubleshooting..
 
-## Instructions
+## Procedure
 
-This skill provides guidance and patterns for makepad ui development skills for rust apps: setup, patterns, shaders, packaging, and troubleshooting..
-
-For more information, see the [source repository](https://github.com/ZhangHanDong/makepad-skills).
+This entrypoint is a directory guide, not the full upstream Rust UI library.
+Identify the target platform, Rust toolchain, installed Makepad revision and desired
+UI behavior. Prefer the specific installed AAS skill (`makepad-basics`,
+`makepad-widgets`, or `makepad-deployment`) matching the task after verifying it is
+available. Inspect actual project manifests and compile the smallest affected
+example before broad integration; do not assume upstream APIs match the installed
+version. For shader/layout issues, inspect actual rendered output when available.
+Packaging, signing, device deployment and provider downloads require their own scope.
+Return changed paths, actual build results and unverified platform behavior.
 
 ## Example
 

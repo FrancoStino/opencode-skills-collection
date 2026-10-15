@@ -57,7 +57,7 @@ for approval. Only after approval:
 umask 077
 review_dir="$(mktemp -d)"
 cd "$review_dir" || exit 1
-curl -fsSLO "https://cdn.beatra.ai/agent-packages/ai-podcast-voiceover/v0.1.7/ai-podcast-voiceover-skill-0.1.7.zip"
+curl --connect-timeout 10 --max-time 60 -fsSO "https://cdn.beatra.ai/agent-packages/ai-podcast-voiceover/v0.1.7/ai-podcast-voiceover-skill-0.1.7.zip"
 printf '%s  %s\n' \
   '571a9b48f7e32e5350a4916f502ed78c66b16f6bffdde33dda1c4c1b00996c87' \
   'ai-podcast-voiceover-skill-0.1.7.zip' | shasum -a 256 -c -
@@ -68,15 +68,19 @@ catalog entry, not from a file on the same CDN.
 
 ### Step 2: Inspect before activation
 
+Before extraction, reject absolute/traversing or out-of-package member paths, duplicates/case collisions, links/devices/executable/binary files and excessive member count/expanded sizes. Extract only after this ZIP preflight passes into a fresh private directory; later link checks do not prevent an escape.
+
 ```bash
 unzip -l ai-podcast-voiceover-skill-0.1.7.zip
+
+# Only after complete member preflight passes:
 unzip -q ai-podcast-voiceover-skill-0.1.7.zip
 find ai-podcast-voiceover -type l -print            # expect no output
 find ai-podcast-voiceover -type f -perm -111 -print # expect no output
 grep -n '"auto_update": True' ai-podcast-voiceover/scripts/mcp_client.py
 ```
 
-Optionally confirm byte identity with the public source tree (a second,
+Confirm byte identity before activation with the public source tree (a second,
 independent host):
 
 ```bash
@@ -103,7 +107,7 @@ turn off silent self-update for that exact path:
 
 ```bash
 dest="$HOME/.claude/skills/ai-podcast-voiceover"
-test ! -e "$dest" || { echo "destination exists; stop and ask the user"; exit 1; }
+test ! -e "$dest" && test ! -L "$dest" || { echo "destination exists; stop and ask the user"; exit 1; }
 cp -R ai-podcast-voiceover "$dest"
 python3 "$dest/scripts/mcp_client.py" update --auto off
 ```
@@ -257,3 +261,5 @@ days idle and can be revoked at once in the Beatra Console under Agents.
 - [Source tree at the pinned commit](https://github.com/beatra-ai/ai-podcast-voiceover-skill/tree/ddca11ec6853184468eab57a5b4b3649e5293f4d/skills/ai-podcast-voiceover)
 - [Product page](https://beatra.ai/skills/ai-podcast-voiceover)
 - [Terms](https://beatra.ai/en/terms) and [privacy policy](https://beatra.ai/en/privacy)
+
+Listen to the complete output and compare against the approved script for omissions, pronunciation, speaker rights and timing before claiming a publishable episode. An MP3 download does not authorize publishing it.

@@ -26,7 +26,9 @@ tools:
 Use when this workflow matches the user request: A relentless interview to sharpen a plan or design, which also creates docs (ADR's and glossary) as we go.
 
 
-_Source: [mattpocock/skills](https://github.com/mattpocock/skills) (MIT)._Run a `/grilling` session, using the `/domain-modeling` skill.
+_Source: [mattpocock/skills](https://github.com/mattpocock/skills) (MIT)._
+
+Use the installed `grilling` procedure to ask one meaningful question at a time. Inspect existing ADR/glossary conventions first. Record only confirmed answers in authorized project docs, mark open proposals as Proposed, preserve conflicting alternatives and review the resulting diff. Use `domain-modeling` only if installed and relevant; do not invent a slash-command dependency.
 
 ## Example
 

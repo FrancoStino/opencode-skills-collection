@@ -424,6 +424,7 @@ Users may experience errors when accessing the application.
 3. Check database connectivity: `kubectl exec -it myapp -- nc -zv postgres 5432`
 4. Review error traces in APM dashboard
 
+```
 
 ## Contents
 

@@ -378,7 +378,7 @@ Announce document completion. Provide a few final tips:
 - The goal is a document that actually works for readers
 
 ## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
+Use when drafting a substantial proposal, specification, RFC or decision document from supplied sources through iterative author feedback.
 
 ## Example
 

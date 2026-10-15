@@ -10,17 +10,19 @@ date_added: '2026-02-27'
 
 Client library for Azure Event Hubs — big data streaming platform and event ingestion service.
 
+The examples below require a reviewed compatible crate set and replacement of every resource placeholder. Do not use production data for demonstration writes.
+
 ## Installation
 
 ```sh
-cargo add azure_messaging_eventhubs azure_identity
+cargo add azure_messaging_eventhubs@=0.16.0 azure_identity@=1.1.0-beta.1 azure_core@=1.2.0-beta.1
 ```
 
 ## Environment Variables
 
 ```bash
-EVENTHUBS_HOST=<namespace>.servicebus.windows.net
-EVENTHUB_NAME=<eventhub-name>
+export EVENTHUBS_HOST="<namespace>.servicebus.windows.net"
+export EVENTHUB_NAME="<eventhub-name>"
 ```
 
 ## Key Concepts
@@ -55,8 +57,12 @@ producer.send_event(vec![1, 2, 3, 4], None).await?;
 
 ```rust
 let batch = producer.create_batch(None).await?;
-batch.try_add_event_data(b"event 1".to_vec(), None)?;
-batch.try_add_event_data(b"event 2".to_vec(), None)?;
+if !batch.try_add_event_data(b"event 1".to_vec(), None)? {
+    return Err("Event does not fit in the batch".into());
+}
+if !batch.try_add_event_data(b"event 2".to_vec(), None)? {
+    return Err("Send the existing batch and retry the remaining event in a new batch".into());
+}
 
 producer.send_batch(batch, None).await?;
 ```
@@ -78,12 +84,16 @@ let consumer = ConsumerClient::builder()
 
 ```rust
 // Open receiver for specific partition
-let receiver = consumer.open_partition_receiver("0", None).await?;
-
-// Receive events
-let events = receiver.receive_events(100, None).await?;
-for event in events {
-    println!("Event data: {:?}", event.body());
+use futures::StreamExt;
+let receiver = consumer.open_receiver_on_partition("0".to_string(), None).await?;
+let mut events = receiver.stream_events();
+// Bound the receive loop and handle the no-event timeout without logging payloads.
+for _ in 0..100 {
+    match tokio::time::timeout(std::time::Duration::from_secs(10), events.next()).await {
+        Ok(Some(Ok(event))) => { /* process the authorized event and checkpoint safely */ }
+        Ok(Some(Err(error))) => return Err(error.into()),
+        Ok(None) | Err(_) => break,
+    }
 }
 ```
 
@@ -118,6 +128,10 @@ For distributed consumers with checkpointing:
 cargo add azure_messaging_eventhubs_checkpointstore_blob
 ```
 
+Event Hubs 0.16 uses the Azure core beta line, so pair it with the published matching identity beta; do not mix credential traits from the stable core line.
+
+The reviewed example set uses `azure_messaging_eventhubs 0.16.0` and compatible Azure core/credential crates. Record and commit Cargo.lock; source/API review is not a compiler or live-service test.
+
 ## Reference Links
 
 | Resource | Link |
@@ -127,9 +141,10 @@ cargo add azure_messaging_eventhubs_checkpointstore_blob
 | crates.io | https://crates.io/crates/azure_messaging_eventhubs |
 
 ## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
+Use when a Rust application publishes individual/batched events or consumes a specific Event Hubs partition with an explicit consumer group and checkpoint policy.
 
 ## Limitations
-- Use this skill only when the task clearly matches the scope described above.
+- Examples are fragments inside async application code, with compatible pinned Azure crates and the required Tokio/Serde/Futures dependencies; verify the selected version’s API before use. They were reviewed against official source/reference, not compiled or run against a cloud account here.
+- Use an authorized tenant, resource and identity with least privilege. Writes, overwrites, deletes, backup retrieval and account changes require the corresponding scope; cleanup may remove only explicitly identified disposable resources. Bound requests, retries and downloaded bytes, and do not log payloads, credentials or secret values.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.

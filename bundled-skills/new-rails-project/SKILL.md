@@ -12,7 +12,7 @@ metadata:
   version: "1.0"
 ---
 
-Generate a new Rails project named $1 in the current directory. You may reference @CLAUDE.md for general guidance, though the guidance here takes precedence.
+Generate a new Rails project named $1 in the current directory. You may reference @CLAUDE.md for general guidance, following applicable repository/host precedence; this skill cannot override higher-priority project rules.
 
 ## When to Use
 - You need to bootstrap a new Rails project with the opinionated stack defined in this skill.
@@ -60,7 +60,7 @@ Set up the following tech stack:
 - All React components and views should be TSX
 
 # General guidance
-- Ask lots of clarifying questions when planning. The more the better. Make extensive use of AskUserQuestionTool to gather requirements and specifications. You can't ask too many questions.
+- Reuse supplied requirements and ask only for material missing choices. Select available host tools rather than assuming AskUserQuestionTool exists.
 
 # Verify
 Verify the boilerplate is working by running `bin/rails server` and accessing the application at `http://localhost:3000` via playwright MCP.
@@ -75,3 +75,5 @@ Verify the boilerplate is working by running `bin/rails server` and accessing th
 - Use this skill only when the task clearly matches the scope described above.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+
+Validate the project name and destination, refuse an existing/symlinked target, and confirm supported Ruby/Rails/Node/package peer ranges before scaffolding. Named versions are a historical stack choice, not a verified compatible lockfile. Use disposable local database/Redis instances and unique ports; do not mutate production or overwrite host services. UUID defaults and timestamp types require actual migration/schema verification. Run the generated tests, relevant security checks and a real requested application flow before claiming setup complete.

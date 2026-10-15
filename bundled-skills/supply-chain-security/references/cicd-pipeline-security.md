@@ -94,44 +94,8 @@ cosign verify-blob --key cosign.pub --signature artifact.tar.gz.sig artifact.tar
 
 ## 自动化检查 Pipeline
 
-```yaml
-# .github/workflows/supply-chain.yml
-name: Supply Chain Security
-on: [push, pull_request]
+通过项目已有且锁定版本的工具运行本地 SBOM、SCA、镜像和密钥扫描。外部 Actions 必须绑定经核验的完整提交 SHA；扫描失败保持非零退出，不将失败当作成功。不要安装 @latest 工具、执行未固定 Action 或默认上传结果。
 
-jobs:
-  sca:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      
-      - name: SBOM Generate
-        run: |
-          npm install -g @cyclonedx/cdxgen
-          cdxgen -o sbom.json
-      
-      - name: OSV Scan
-        run: |
-          go install github.com/google/osv-scanner/cmd/osv-scanner@latest
-          osv-scanner scan --sbom sbom.json --format sarif > osv-results.sarif
-      
-      - name: Trivy Scan
-        uses: aquasecurity/trivy-action@master
-        with:
-          scan-type: fs
-          severity: CRITICAL,HIGH
-          exit-code: 1
-      
-      - name: Secret Scan
-        run: |
-          docker run --rm -v $PWD:/src ghcr.io/gitleaks/gitleaks:latest \
-            detect --source /src --verbose
-      
-      - name: Dependency-Track Upload
-        run: |
-          curl -X POST https://dtrack.example.com/api/v1/bom \
-            -H "X-Api-Key: ${{ secrets.DTRACK_API_KEY }}" \
-            -F "autoCreate=true" -F "project=myapp" -F "bom=@sbom.json"
-```
+上传 SBOM 到 Dependency-Track 或其他服务前，核对接收方、项目身份、私有依赖泄露风险及许可；获得授权后才能单独配置上传步骤。使用环境变量传递秘密，不把 Actions 表达式直接插入 shell 代码；通知和定时监控需明确授权。当前文档不提供未经验证的第三方自动执行流水线。
 
 Source: SLSA Framework, OWASP CI/CD Top 10, GitHub Security Lab

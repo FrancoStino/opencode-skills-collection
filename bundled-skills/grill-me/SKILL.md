@@ -26,7 +26,9 @@ tools:
 Use when this workflow matches the user request: A relentless interview to sharpen a plan or design.
 
 
-_Source: [mattpocock/skills](https://github.com/mattpocock/skills) (MIT)._Run a `/grilling` session.
+_Source: [mattpocock/skills](https://github.com/mattpocock/skills) (MIT)._
+
+Use the locally available `grilling` skill to interview the user about the plan. If the host does not expose slash commands, follow its question-by-question procedure directly. Establish the intended outcome, challenge assumptions and dependencies, and stop when the user-defined decision criteria are resolved or the user ends the interview. Do not claim `/grilling` executed merely because it was printed.
 
 ## Example
 

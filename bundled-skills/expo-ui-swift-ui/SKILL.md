@@ -1,15 +1,11 @@
 ---
 name: expo-ui-swift-ui
-description: expo-ui-swift-ui
+description: Build iOS-native Expo SDK 55 UI with SwiftUI views/modifiers, Host/RNHostView embedding and native rebuild prerequisites.
 risk: critical
 source: community
 date_added: "2026-09-04"
 ---
 
----
-name: expo-ui-swift-ui
-description: `@expo/ui/swift-ui` package lets you use SwiftUI Views and modifiers in your app.
----
 
 > The instructions in this skill apply to SDK 55 only. For other SDK versions, refer to the Expo UI SwiftUI docs for that version for the most accurate information.
 
@@ -36,13 +32,13 @@ A native rebuild is required after installation (`npx expo run:ios`).
 - `RNHostView` is specifically for embedding RN components inside a SwiftUI tree. Example:
 
 ```jsx
-import { Host, VStack, RNHostView } from "@expo-ui/swift-ui";
+import { Host, VStack, RNHostView } from "@expo/ui/swift-ui";
 import { Pressable } from "react-native";
 
 <Host matchContents>
   <VStack>
     <RNHostView matchContents>
-      // Here, `Pressable` is an RN component so it is wrapped in `RNHostView`.
+      {/* Pressable is a React Native component, embedded through RNHostView. */}
       <Pressable />
     </RNHostView>
   </VStack>
@@ -52,6 +48,7 @@ import { Pressable } from "react-native";
 - If a required modifier or View is missing in Expo UI, it can be extended via a local Expo module. See: https://docs.expo.dev/guides/expo-ui-swift-ui/extending/index.md. Confirm with the user before extending.
 
 ## Limitations
-- Use this skill only when the task clearly matches the scope described above.
+- APIs target SDK 55; check that version’s actual Expo docs and installed package before editing. Android/iOS examples are platform-specific, not interchangeable or proof of real-device behavior. Existing framework and user requirements take precedence.
+- Native rebuilds install/execute dependencies and change the project; review the intended development target first. icon.xml and app code are application assets, not bundled files.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.

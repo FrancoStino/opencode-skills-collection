@@ -19,7 +19,7 @@ metadata:
 
 # CIS Benchmarks
 
-Implement and audit CIS security benchmarks.
+Assess a selected benchmark/version against explicitly authorized systems. Scanner output is partial evidence, not certification; verify applicability, documented exceptions and operational impact before remediation.
 
 ## When to Use This Skill
 
@@ -37,12 +37,16 @@ Use this skill when:
 # Install
 apt install openscap-scanner scap-security-guide
 
-# Run CIS benchmark scan
+# Confirm installed content matches the actual OS and required benchmark/version.
+SCAP_FILE="<approved-installed-datastream.xml>"
+oscap info "$SCAP_FILE"
+PROFILE_ID="<exact-CIS-profile-listed-by-oscap-info>"
+# Run the selected assessment only after scope and report-location approval.
 oscap xccdf eval \
-  --profile xccdf_org.ssgproject.content_profile_cis \
+  --profile "$PROFILE_ID" \
   --results results.xml \
   --report report.html \
-  /usr/share/xml/scap/ssg/content/ssg-ubuntu2204-ds.xml
+  "$SCAP_FILE"
 ```
 
 ### Lynis
@@ -55,7 +59,7 @@ apt install lynis
 lynis audit system
 
 # Generate report
-lynis audit system --report-file /tmp/lynis-report.dat
+lynis audit system --report-file "$PRIVATE_AUDIT_DIR/lynis-report.dat"
 ```
 
 ### InSpec
@@ -91,10 +95,11 @@ inspec exec cis-profile -t ssh://user@target
 ```bash
 # kube-bench
 docker run --rm -v /etc:/etc:ro -v /var:/var:ro \
-  aquasec/kube-bench:latest run --targets node
+  aquasec/kube-bench@sha256:<reviewed-image-digest> run --targets node
 
 # Check specific sections
-kube-bench run --targets master --check 1.1,1.2
+kube-bench --help
+# Select role/sections supported by the reviewed version and actual cluster; do not assume master is a current target name.
 ```
 
 ## Remediation Workflow
@@ -137,14 +142,16 @@ workflow:
 
 ## Limitations
 
-- Apply guidance only within authorized scope; test destructive steps in non-production first.
+- An OpenSCAP/Lynis assessment may require privileges and read sensitive host configuration; approve the exact host, profile, privileges, private outputs and limits first. Do not enable auto-remediation or mount all host paths without reviewing necessity. A generic Lynis audit is not a complete CIS benchmark.
+- Benchmark/profile identifiers and installed SCAP content vary; use [OpenSCAP’s documented info/eval flow](https://static.open-scap.org/openscap-1.4.1/oscap_user_manual.html). Test changes and preserve rollback/access before hardening production.
 - Docs-only import: upstream scripts and templates not bundled.
 
 ### Example
 
 ```bash
 # Read-only first: inventory before any active step.
-which <tool> && <tool> --help | head -n 20
+command -v oscap
+oscap --version
 ```
 
 > Adapted from [BagelHole/DevOps-Security-Agent-Skills](https://github.com/BagelHole/DevOps-Security-Agent-Skills) (MIT); frontmatter, When to Use/Limitations, and safety boundaries added for upstream compliance. Docs-only import: helper scripts and templates not bundled.

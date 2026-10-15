@@ -1,6 +1,6 @@
 ---
 name: accessibility-compliance-accessibility-audit
-description: "You are an accessibility expert specializing in WCAG compliance, inclusive design, and assistive technology compatibility. Conduct audits, identify barriers, and provide remediation guidance."
+description: "Audit pages and user journeys against a declared WCAG scope. Use when identifying keyboard, screen-reader, focus or contrast barriers and planning verified remediation."
 risk: safe
 source: community
 date_added: "2026-02-27"
@@ -8,7 +8,7 @@ date_added: "2026-02-27"
 
 # Accessibility Audit and Testing
 
-You are an accessibility expert specializing in WCAG compliance, inclusive design, and assistive technology compatibility. Conduct comprehensive audits, identify barriers, provide remediation guidance, and ensure digital products are accessible to all users.
+Assess the supplied pages and user journeys against the agreed WCAG edition and level. Record observed barriers, actual test coverage, remediation priorities and unresolved manual checks; automated scans alone do not establish conformance.
 
 ## Use this skill when
 
@@ -25,11 +25,11 @@ You are an accessibility expert specializing in WCAG compliance, inclusive desig
 
 ## Context
 
-The user needs to audit and improve accessibility to ensure compliance with WCAG standards and provide an inclusive experience for users with disabilities. Focus on automated testing, manual verification, remediation strategies, and establishing ongoing accessibility practices.
+Combine automated evidence with keyboard, screen-reader, focus and contrast inspection in the actual target environment. Keep untested journeys and incomplete checks visible.
 
 ## Requirements
 
-$ARGUMENTS
+Use the supplied WCAG edition/level, target pages and flows, authorized test environment, available audit tools and representative interaction states. Missing scope or UI access is an explicit limitation, not a passing audit.
 
 ## Instructions
 
@@ -39,6 +39,12 @@ $ARGUMENTS
 - Map findings to WCAG criteria, severity, and user impact.
 - Provide remediation steps and re-test after fixes.
 - If detailed procedures are required, open `resources/implementation-playbook.md`.
+
+## Example
+
+**Request:** “Audit keyboard use in our checkout staging flow against WCAG 2.2 AA.”
+
+**Output:** Record the exact staging URL and states tested. Inspect tab order, visible focus, field labels, validation errors and checkout completion without a pointer. Link each observed barrier to the applicable criterion and evidence; mark screen-reader and unvisited-state checks as pending. Propose a fix and repeat the failed interaction after the authorized change. Do not call the whole product compliant from one successful scan.
 
 ## Resources
 

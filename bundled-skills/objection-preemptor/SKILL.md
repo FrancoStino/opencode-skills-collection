@@ -5,11 +5,17 @@ risk: safe
 source: community
 date_added: "2026-04-04"
 ---
-You are a **Cognitive Behavioral Psychologist and Persuasion Researcher**. Your task is to surface the psychological objections, doubts, and resistance patterns a specific customer will experience before they arise, then neutralize them without triggering reactance.
+Use a marketing planning and audience-research lens. Your task is to surface the psychological objections, doubts, and resistance patterns a specific customer will experience before they arise, then neutralize them without triggering reactance.
 
 ## When to Use
 - Use when a funnel, sales page, or pitch keeps failing on the same doubts or hesitations.
 - Use when you want to surface and neutralize objections before the audience voices them.
+
+## Evidence and scope
+
+Use observed audience research and verified product facts. Psychological interpretations and the author-year references below are inherited conceptual context, not validated evidence for this exact workflow or a guaranteed conversion effect. Before using a scientific claim externally, verify the actual publication, method and applicability; omit unsupported claims. This is marketing planning, not clinical diagnosis. Do not infer sensitive traits or exploit vulnerabilities.
+
+Original contribution: [PR 451](https://github.com/sickn33/agentic-awesome-skills/pull/451) by MMEHDI0606; [immutable source snapshot](https://github.com/MMEHDI0606/antigravity-awesome-skills/blob/9c61357e3e6bb167946036f52ac1e28fc82e04d0/skills/objection-preemptor/SKILL.md). This identifies the contributed instructions, not scientific validation or a new upstream endorsement.
 
 ## CONTEXT GATHERING
 
@@ -31,23 +37,23 @@ People defend existing beliefs when they feel pressured, cornered, or talked dow
 
 **Step 1 - List likely objections**
 Separate practical, emotional, trust, cost, effort, and identity objections.
-*Research basis: resistance patterns differ by threat type and cannot be handled with one reassurance block (Quick et al., 2018; Rowley et al., 2015).*
+*Planning hypothesis (verify before presenting as research): resistance patterns differ by threat type and cannot be handled with one reassurance block (Quick et al., 2018; Rowley et al., 2015).*
 
 **Step 2 - Rank by psychological intensity**
 Prioritize objections that create the most defensiveness, not the ones that are easiest to answer.
-*Research basis: reactance and dissonance can overpower rational argument when the objection is identity-linked (Grandpre et al., 2003).*
+*Planning hypothesis (verify before presenting as research): reactance and dissonance can overpower rational argument when the objection is identity-linked (Grandpre et al., 2003).*
 
 **Step 3 - Choose the neutralization mode**
 Use proof, reframing, comparison, limitation, or guided choice depending on the objection.
-*Research basis: two-sided messages and inoculation work better when they acknowledge concern without amplifying it (Lavoie & Quick, 2013).*
+*Planning hypothesis (verify before presenting as research): two-sided messages and inoculation work better when they acknowledge concern without amplifying it (Lavoie & Quick, 2013).*
 
 **Step 4 - Preempt inside the content**
 Embed the answer where the doubt naturally appears in the reader journey.
-*Research basis: resistance declines when people feel understood rather than cornered (Du et al., 2023).*
+*Planning hypothesis (verify before presenting as research): resistance declines when people feel understood rather than cornered (Du et al., 2023).*
 
 **Step 5 - Verify reactance safety**
 Check that the wording does not sound patronizing, coercive, or defensive.
-*Research basis: heavy-handed reassurance can strengthen the original objection (Brehm; Quick et al., 2018).*
+*Planning hypothesis (verify before presenting as research): heavy-handed reassurance can strengthen the original objection (Brehm; Quick et al., 2018).*
 
 ## DECISION MATRIX
 
@@ -96,7 +102,7 @@ The line between persuasion and manipulation is using objection handling to clar
 
 ## SKILL CHAINING
 
-Before invoking this skill, the agent should have completed:
+Optional context from related skills (equivalent supplied research is sufficient; do not create a prerequisite cycle):
 - [ ] `@customer-psychographic-profiler`
 - [ ] `@awareness-stage-mapper`
 - [ ] `@trust-calibrator`
@@ -121,6 +127,8 @@ Before finalizing output, the agent asks:
 **User request:**
 
 > Identify the recurring objections blocking this offer and revise the pitch to address them with evidence.
+
+**Illustrative output:** Given a documented objection about setup time, state the observed setup steps and available support; disclose unknown timing rather than claiming effortless installation.
 
 ## Limitations
 - Use this skill only when the task clearly matches the scope described above.

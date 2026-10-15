@@ -36,9 +36,9 @@ What type of multiplayer?
 
 | Architecture | Latency | Cost | Security |
 |--------------|---------|------|----------|
-| **Dedicated** | Low | High | Strong |
-| **P2P** | Variable | Low | Weak |
-| **Host-based** | Medium | Low | Medium |
+| **Dedicated** | Region and load dependent | Hosting dependent | Can enforce server authority |
+| **P2P** | Topology dependent | Relay costs may apply | Peers require validation |
+| **Host-based** | Host location dependent | Relay costs may apply | Host remains a trust boundary |
 
 ---
 
@@ -101,7 +101,7 @@ Server: Validate → did projectile actually hit?
 | Cheat | Prevention |
 |-------|------------|
 | Speed hack | Server validates movement |
-| Aimbot | Server validates sight line |
+| Aimbot | Validate legal shots; this alone does not detect automated aiming |
 | Item dupe | Server owns inventory |
 | Wall hack | Don't send hidden data |
 
@@ -134,9 +134,13 @@ Server: Validate → did projectile actually hit?
 > **Remember:** Never trust the client. The server is the source of truth.
 
 ## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
+Use when selecting multiplayer authority, synchronizing state, testing latency compensation, or preventing inventory duplication.
 
 ## Limitations
 - Use this skill only when the task clearly matches the scope described above.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+
+## Verification
+
+Treat tables as design starting points, not guarantees. Prototype the selected mechanic, test accessibility and recovery paths, and measure frame timing, memory and behavior on target hardware before claiming completion. Store submission and licensing requirements must be checked against current official platform documentation.

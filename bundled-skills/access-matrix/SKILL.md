@@ -44,11 +44,13 @@ Also use it when the user says "what each role can see and change", or describes
 spreadsheet, a document or someone inboxes.
 
 Do not use it for: payroll calculation, tax filing, or legal advice. This skill produces
-empty templates only - it never holds or processes real employee or customer data.
+empty templates by default. A requested review may use supplied data transiently; do not imply that the host never processes it.
 
 ## How It Works
 
 Follow the shared execution contract. The module-specific rules below define only domain fields, decisions, calculations, and safety constraints.
+
+The upstream shared contract is not bundled here; this procedure must remain usable on its own.
 
 ### Step 1 - Identify intent
 
@@ -138,7 +140,7 @@ CREATE TABLE access_matrix (
   module VARCHAR(255),
   module_id SERIAL PRIMARY KEY,
   layer VARCHAR(255),
-  sme_tier VARCHAR(100) NOT NULL,
+  sme_tier VARCHAR(100),
   owner_ceo VARCHAR(255),
   board VARCHAR(255),
   finance VARCHAR(255),
@@ -150,7 +152,7 @@ CREATE TABLE access_matrix (
   employee VARCHAR(255),
   intern VARCHAR(255),
   client VARCHAR(255),
-  confidential VARCHAR(100) NOT NULL,
+  confidential VARCHAR(100),
   created_at TIMESTAMP DEFAULT NOW(),
   updated_at TIMESTAMP DEFAULT NOW()
 );
@@ -180,10 +182,7 @@ CREATE TABLE access_matrix (
       "Client": { "type": "string" },
       "Confidential": { "type": "string" }
   },
-  "required": [
-      "SME Tier",
-      "Confidential"
-  ]
+  "required": []
 }
 ```
 
@@ -210,6 +209,8 @@ CREATE TABLE access_matrix (
 
 The rows above are documentation examples only. Emit empty templates unless the user explicitly requests examples. Money stays `currency`, dates stay `date`,
 and anything pointing at another table stays `relation`.
+
+The shown schema is illustrative. Derive required fields from confirmed record identity and access-review requirements; `SME Tier` is not intrinsically required to represent a permission. The SQL uses PostgreSQL `SERIAL`/`NOW()`; adapt identity and timestamp syntax to the confirmed engine. A matrix row describes intended permissions, not proof of enforced permissions.
 
 ## Field Reference
 

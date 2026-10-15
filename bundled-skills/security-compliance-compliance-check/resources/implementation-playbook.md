@@ -1,6 +1,6 @@
 # Regulatory Compliance Check Implementation Playbook
 
-This file contains detailed patterns, checklists, and code samples referenced by the skill.
+This is a control-design scaffold, not a compliance implementation or certification. Methods such as storage, authorization, applicability checks and cryptographic operations are project dependencies and are not bundled. Do not run these class sketches or report a control implemented without independent evidence. Bind the framework/version, jurisdiction, scope, accountable reviewer and evidence before any consequential assessment.
 
 # Regulatory Compliance Check
 
@@ -100,12 +100,7 @@ class ComplianceAnalyzer:
                     'Store card data',
                     'Transmit card data'
                 ],
-                'compliance_levels': {
-                    'Level 1': '>6M transactions/year',
-                    'Level 2': '1M-6M transactions/year',
-                    'Level 3': '20K-1M transactions/year',
-                    'Level 4': '<20K transactions/year'
-                }
+                'assessment_scope': 'Confirm merchant/provider category, payment-brand/acquirer rules and current edition with a qualified reviewer'
             }
         }
     
@@ -183,50 +178,13 @@ class ConsentManager:
 '''
 
         # 2. Right to Erasure (Right to be Forgotten)
-        controls['right_to_erasure'] = '''
-class DataErasureService:
-    def process_erasure_request(self, user_id, verification_token):
-        """
-        Process GDPR Article 17 erasure request
-        """
-        # Verify request authenticity
-        if not self.verify_erasure_token(user_id, verification_token):
-            raise ValueError("Invalid erasure request")
-        
-        erasure_log = {
-            'user_id': user_id,
-            'requested_at': datetime.utcnow(),
-            'data_categories': []
-        }
-        
-        # 1. Personal data
-        self.erase_user_profile(user_id)
-        erasure_log['data_categories'].append('profile')
-        
-        # 2. User-generated content (anonymize instead of delete)
-        self.anonymize_user_content(user_id)
-        erasure_log['data_categories'].append('content_anonymized')
-        
-        # 3. Analytics data
-        self.remove_from_analytics(user_id)
-        erasure_log['data_categories'].append('analytics')
-        
-        # 4. Backup data (schedule deletion)
-        self.schedule_backup_deletion(user_id)
-        erasure_log['data_categories'].append('backups_scheduled')
-        
-        # 5. Notify third parties
-        self.notify_processors_of_erasure(user_id)
-        
-        # Keep minimal record for legal compliance
-        self.store_erasure_record(erasure_log)
-        
-        return {
-            'status': 'completed',
-            'erasure_id': erasure_log['id'],
-            'categories_erased': erasure_log['data_categories']
-        }
-'''
+        controls['right_to_erasure'] = """
+Verify the requester and exact tenant/user scope, assess applicable exceptions and
+legal holds, then create a reviewed erasure plan across primary data, processors
+and backups. Record each destination's actual result; scheduled backup expiry is
+pending, not completed erasure. Retain minimal authorized audit evidence and report
+partial failures explicitly. Identity, retention and processor adapters are not bundled.
+"""
 
         # 3. Data Portability
         controls['data_portability'] = '''
@@ -347,6 +305,8 @@ class MFAEnforcement:
         elif user.mfa_method == 'sms':
             factors.append(self.verify_sms_code(user))
             
+        else:
+            return False  # Missing/unsupported second factor must not pass MFA
         # Factor 3: Biometric (something you are) - optional
         if user.biometric_enabled:
             factors.append(self.verify_biometric(user))
@@ -456,7 +416,7 @@ class ComplianceAuditLogger:
     
     def log_event(self, event_type, details):
         """
-        Create tamper-proof audit log entry
+        Construct an illustrative audit entry; storage integrity remains unimplemented
         """
         log_entry = {
             'id': str(uuid.uuid4()),
@@ -466,33 +426,32 @@ class ComplianceAuditLogger:
             'ip_address': self._get_ip_address(),
             'user_agent': request.headers.get('User-Agent'),
             'session_id': session.get('id'),
-            'details': details,
+            'details': {key: details[key] for key in ('event_code', 'correlation_id') if key in details},
             'compliance_flags': self._get_compliance_flags(event_type)
         }
         
         # Add integrity check
         log_entry['checksum'] = self._calculate_checksum(log_entry)
         
-        # Store in immutable log
+        # Store via a separately verified, access-controlled append-only implementation
         self._store_audit_log(log_entry)
         
         # Real-time alerting for critical events
-        if self._is_critical_event(event_type):
-            self._send_security_alert(log_entry)
+        # Notifications require an authorized destination and separately reviewed
+        # sanitized payload. This scaffold does not send external alerts.
         
         return log_entry
     
     def _calculate_checksum(self, entry):
         """
-        Create tamper-evident checksum
+        Compute an illustrative digest; this does not create immutable storage
         """
         # Include previous entry hash for blockchain-like integrity
         previous_hash = self._get_previous_entry_hash()
         
         content = json.dumps(entry, sort_keys=True)
-        return hashlib.sha256(
-            f"{previous_hash}{content}{SECRET_KEY}".encode()
-        ).hexdigest()
+        # A digest does not bind a trusted checkpoint or prevent rewriting.
+        return hashlib.sha256(f"{previous_hash}:{content}".encode()).hexdigest()
 ```
 
 **Compliance Reporting**
@@ -585,14 +544,14 @@ class PHIAccessControl:
 class PHIEncryption:
     def encrypt_phi_at_rest(self, phi_data):
         """
-        HIPAA-compliant encryption for PHI
+        Illustrative PHI encryption design; validate the actual module and policy
         """
         # Use FIPS 140-2 validated encryption
         encryption_config = {
             'algorithm': 'AES-256-CBC',
             'key_derivation': 'PBKDF2',
             'iterations': 100000,
-            'validation': 'FIPS-140-2-Level-2'
+            'validation': None  # Requires a real validated module/certificate and configuration
         }
         
         # Encrypt PHI fields
@@ -680,7 +639,7 @@ class CardDataProtection:
         
     def handle_card_data(self, card_info):
         """
-        PCI-DSS compliant card data handling
+        Illustrative card-data minimization; assessment still required
         """
         # Immediately tokenize
         token = self.tokenize_card(card_info)
@@ -769,12 +728,7 @@ class PCIVulnerabilityManagement:
                 'scope': 'All external-facing IP addresses',
                 'passing_criteria': 'Clean scan with no failures'
             },
-            'remediation_timeline': {
-                'critical': '24 hours',
-                'high': '7 days',
-                'medium': '30 days',
-                'low': '90 days'
-            }
+            'remediation_policy': 'Verify exact applicable requirements and approved risk policy; no universal illustrative deadlines'
         }
         
         return scan_config
@@ -788,116 +742,27 @@ class PCIVulnerabilityManagement:
 
 Set up automated compliance monitoring:
 
-**Compliance Dashboard**
+**Evidence register rather than fictional dashboard metrics**
+
 ```python
-class ComplianceDashboard:
-    def generate_realtime_dashboard(self):
-        """
-        Real-time compliance status dashboard
-        """
-        dashboard = {
-            'timestamp': datetime.utcnow(),
-            'overall_compliance_score': 0,
-            'regulations': {}
-        }
-        
-        # GDPR Compliance Metrics
-        dashboard['regulations']['GDPR'] = {
-            'score': self.calculate_gdpr_score(),
-            'status': 'COMPLIANT',
-            'metrics': {
-                'consent_rate': '87%',
-                'data_requests_sla': '98% within 30 days',
-                'privacy_policy_version': '2.1',
-                'last_dpia': '2025-06-15',
-                'encryption_coverage': '100%',
-                'third_party_agreements': '12/12 signed'
-            },
-            'issues': [
-                {
-                    'severity': 'medium',
-                    'issue': 'Cookie consent banner update needed',
-                    'due_date': '2025-08-01'
-                }
-            ]
-        }
-        
-        # HIPAA Compliance Metrics
-        dashboard['regulations']['HIPAA'] = {
-            'score': self.calculate_hipaa_score(),
-            'status': 'NEEDS_ATTENTION',
-            'metrics': {
-                'risk_assessment_current': True,
-                'workforce_training_compliance': '94%',
-                'baa_agreements': '8/8 current',
-                'encryption_status': 'All PHI encrypted',
-                'access_reviews': 'Completed 2025-06-30',
-                'incident_response_tested': '2025-05-15'
-            },
-            'issues': [
-                {
-                    'severity': 'high',
-                    'issue': '3 employees overdue for training',
-                    'due_date': '2025-07-25'
-                }
-            ]
-        }
-        
-        return dashboard
+def build_control_register(control_ids, evidence_by_id):
+    rows = []
+    for control_id in control_ids:
+        evidence = evidence_by_id.get(control_id)
+        rows.append({
+            "control_id": control_id,
+            "status": "evidence_recorded" if evidence else "unknown",
+            "evidence": evidence,
+            "assessment": "requires_qualified_review",
+        })
+    return rows
 ```
+
+Missing evidence is unknown, never zero or compliant. Validate evidence provenance, freshness, scope and control applicability before assessment. A record merely points to evidence; neither a numeric score nor successful code execution certifies compliance.
 
 **Automated Compliance Checks**
-```yaml
-# .github/workflows/compliance-check.yml
-name: Compliance Checks
+Use the project's existing locked scanners and protected CI, validate report coverage and execution status, and retain results only in an authorized evidence store. The guide does not bundle compliance scripts or a certification workflow. Approval, notifications and artifact uploads require their actual configured scope.
 
-on:
-  push:
-    branches: [main, develop]
-  pull_request:
-  schedule:
-    - cron: '0 0 * * *'  # Daily compliance check
-
-jobs:
-  compliance-scan:
-    runs-on: ubuntu-latest
-    
-    steps:
-    - uses: actions/checkout@v3
-    
-    - name: GDPR Compliance Check
-      run: |
-        python scripts/compliance/gdpr_checker.py
-        
-    - name: Security Headers Check
-      run: |
-        python scripts/compliance/security_headers.py
-        
-    - name: Dependency License Check
-      run: |
-        license-checker --onlyAllow 'MIT;Apache-2.0;BSD-3-Clause;ISC'
-        
-    - name: PII Detection Scan
-      run: |
-        # Scan for hardcoded PII
-        python scripts/compliance/pii_scanner.py
-        
-    - name: Encryption Verification
-      run: |
-        # Verify all sensitive data is encrypted
-        python scripts/compliance/encryption_checker.py
-        
-    - name: Generate Compliance Report
-      if: always()
-      run: |
-        python scripts/compliance/generate_report.py > compliance-report.json
-        
-    - name: Upload Compliance Report
-      uses: actions/upload-artifact@v3
-      with:
-        name: compliance-report
-        path: compliance-report.json
-```
 
 ### 8. Compliance Documentation
 
@@ -907,7 +772,7 @@ Generate required documentation:
 ```python
 def generate_privacy_policy(company_info, data_practices):
     """
-    Generate GDPR-compliant privacy policy
+    Draft privacy-policy inputs for qualified review
     """
     policy = f"""
 # Privacy Policy
@@ -918,7 +783,7 @@ def generate_privacy_policy(company_info, data_practices):
 {company_info['name']}
 {company_info['address']}
 Email: {company_info['privacy_email']}
-DPO: {company_info.get('dpo_contact', 'privacy@company.com')}
+DPO: {company_info.get('dpo_contact', 'Not established; verify applicability and actual contact')}
 
 ## 2. Data We Collect
 {generate_data_collection_section(data_practices['data_types'])}
@@ -961,3 +826,7 @@ To exercise your rights, contact: {company_info['privacy_email']}
 8. **Training Materials**: Workforce compliance training resources
 
 Focus on practical implementation that balances compliance requirements with business operations and user experience.
+
+## Evidence and legal boundaries
+
+Regulatory mapping examples are prompts for applicability review, not a complete statement of obligations. [GDPR](https://eur-lex.europa.eu/eli/reg/2016/679/oj) requires contextual purpose, legal basis, storage limitation and rights handling. [HHS Security Rule guidance](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html) distinguishes required documentation retention from a universal operational-log period. Identify the exact applicable PCI/SOC/ISO scope with a qualified reviewer; do not infer certification from software controls. Hashes need independently protected checkpoints, durable append-only storage and recovery tests; the sketch provides none of these. Do not describe its storage as tamper-proof or a fictional dashboard as measured evidence.

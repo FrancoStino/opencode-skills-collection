@@ -6,127 +6,34 @@ source: community
 date_added: "2026-02-27"
 ---
 
-# Manifest Setup
+# Manifest setup and verification
 
-Follow these steps **in order**. Do not skip ahead.
+## When to Use
 
-## Use this skill when
+- Configure an explicitly requested Manifest telemetry or gateway integration.
+- Diagnose missing authorized telemetry without changing unrelated provider routing.
 
-- User wants to set up observability or telemetry for their agent
-- User wants to connect their agent to Manifest for monitoring
-- User needs to configure a Manifest API key or custom endpoint
-- User is troubleshooting Manifest plugin connection issues
-- User wants to verify the Manifest plugin is running
+## Availability
 
-## Do not use this skill when
+This AAS tree bundles instructions, not a plugin, CLI or gateway. Identify the actual host, installed versions and current supported Manifest integration from [official documentation](https://manifest.build/llm-gateway/docs/introduction/). The historical `claude gateway` / `claude plugins` commands in earlier copies are not a verified Claude Code setup contract; do not run them or infer a host configuration path.
 
-- User needs general observability design (use `observability-engineer` instead)
-- User wants to build custom dashboards or alerting rules
-- User is not using the Manifest platform
+Telemetry-only setup and routing all inference through a gateway are distinct changes. Use the user's requested scope and preserve existing providers, credentials and other host entries.
 
-## Instructions
+## Procedure
 
-### Step 1 — Stop the gateway
+1. Inspect the current authorized integration and target account/endpoint. Verify available tools or CLI help and the exact package/source version. Back up affected configuration privately before a scoped edit.
+2. Reuse an existing authorized credential through the host's private credential mechanism. If absent, let the user enter it in the service or a supported local secret interface; never ask them to paste a key in chat or put it in shell arguments. A prefix check is not authentication proof.
+3. Establish what data will leave the host: prompts, responses, account identifiers, costs, tool traces and error payloads. Choose actual redaction/retention controls and obtain authorization for private transmission and provider charges. Do not assume metadata-only telemetry when full-body logging is enabled.
+4. Prepare the concrete supported configuration for the selected integration. Use HTTPS for remote endpoints and reject userinfo/unintended redirects; local loopback may be appropriate for a separately reviewed self-hosted service. Change only the authorized entries. Restart only the relevant service when the integration actually requires it; preserve other running tasks.
+5. Send one approved synthetic fixture only if a provider call is authorized. Verify the exact request/trace, returned model or telemetry receipt, charge and secret-redacted logs at both ends. A startup log or three-second wait alone does not prove delivery. An unavailable authentication or provider check remains unverified.
+6. Return the changed configuration path, backup, observed receipt and remaining limitations. Verify the rollback/disable path; do not disable a competing diagnostic plugin merely because its name looks similar.
 
-Stop the gateway first to avoid hot-reload issues during configuration.
+## Example
 
-```bash
-claude gateway stop
-```
-
-### Step 2 — Install the plugin
-
-```bash
-claude plugins install manifest
-```
-
-If it fails, check that the CLI is installed and available in the PATH.
-
-### Step 3 — Get an API key
-
-Ask the user:
-
-> To connect your agent, you need a Manifest API key. Here's how to get one:
->
-> 1. Go to **https://app.manifest.build** and create an account (or sign in)
-> 2. Once logged in, click **"Connect Agent"** to create a new agent
-> 3. Copy the API key that starts with `mnfst_`
-> 4. Paste it here
-
-Wait for a key starting with `mnfst_`. If the key doesn't match, tell the user the format looks incorrect and ask them to try again.
-
-### Step 4 — Configure the plugin
-
-```bash
-claude config set plugins.entries.manifest.config.apiKey "USER_API_KEY"
-```
-
-Replace `USER_API_KEY` with the actual key the user provided.
-
-Ask the user if they have a custom endpoint. If not, the default (`https://app.manifest.build/api/v1/otlp`) is used automatically. If they do:
-
-```bash
-claude config set plugins.entries.manifest.config.endpoint "USER_ENDPOINT"
-```
-
-### Step 5 — Start the gateway
-
-```bash
-claude gateway install
-```
-
-### Step 6 — Verify
-
-Wait 3 seconds for the gateway to fully start, then check the logs:
-
-```bash
-grep "manifest" ~/.claude/logs/gateway.log | tail -5
-```
-
-Look for:
-
-```
-[manifest] Observability pipeline active
-```
-
-If it appears, tell the user setup is complete. If not, check the error messages and troubleshoot.
-
-## Safety
-
-- Never log or echo the API key in plain text after configuration
-- Verify the key format (`mnfst_` prefix) before writing to config
-
-## Troubleshooting
-
-| Error | Fix |
-|-------|-----|
-| Missing apiKey | Re-run step 4 |
-| Invalid apiKey format | The key must start with `mnfst_` |
-| Connection refused | The endpoint is unreachable. Check the URL or ask if they self-host |
-| Duplicate OTel registration | Disable the conflicting built-in plugin: `claude plugins disable diagnostics-otel` |
-
-## Examples
-
-### Example 1: Basic setup
-
-```
-Use @manifest to set up observability for my agent.
-```
-
-### Example 2: Custom endpoint
-
-```
-Use @manifest to connect my agent to my self-hosted Manifest instance at https://manifest.internal.company.com/api/v1/otlp
-```
-
-## Best Practices
-
-- Always stop the gateway before making configuration changes
-- The default endpoint works for most users — only change it if self-hosting
-- API keys always start with `mnfst_` — any other format is invalid
-- Check gateway logs first when debugging any plugin issue
+The user requests telemetry for an existing local agent. Identify its supported exporter, draft the exact endpoint and private credential mapping, apply the authorized scoped change, and verify one synthetic trace without altering the default model provider. If only a gateway integration is available, explain that difference before making a routing change.
 
 ## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+
+- Current Manifest keys, endpoints, plans and integrations can change; use the actual account instructions and official schemas.
+- Gateway fallback or automatic request repair may change provider, data destination, parameters and retry costs; configure them only within the authorized scope.
+- This guide does not prove authentication, production delivery, billing accuracy or privacy merely by being installed.

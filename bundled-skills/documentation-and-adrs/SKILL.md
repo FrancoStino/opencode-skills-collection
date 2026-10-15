@@ -42,13 +42,13 @@ ADRs capture the reasoning behind significant technical decisions. They're the h
 
 ### ADR Template
 
-Store ADRs in `docs/decisions/` with sequential numbering:
+Follow the repository's existing ADR location and numbering; use `docs/decisions/` only if no convention exists. The following decision and alternatives are fictional project assumptions, not universal database rankings:
 
 ```markdown
 # ADR-001: Use PostgreSQL for primary database
 
 ## Status
-Accepted | Superseded by ADR-XXX | Deprecated
+Proposed | Accepted | Superseded by ADR-XXX | Deprecated
 
 ## Date
 2025-01-15
@@ -73,7 +73,7 @@ Use PostgreSQL with Prisma ORM.
 ### SQLite
 - Pros: Zero configuration, embedded, fast for reads
 - Cons: Limited concurrent write support, no managed hosting for production
-- Rejected: Not suitable for multi-user web application in production
+- Rejected: Our measured concurrent-write requirements exceed the selected deployment's constraints; assess SQLite for the actual workload before rejecting it
 
 ### MySQL
 - Pros: Mature, widely supported
@@ -108,8 +108,8 @@ Comment the *why*, not the *what*:
 counter += 1;
 
 // GOOD: Explains non-obvious intent
-// Rate limit uses a sliding window — reset counter at window boundary,
-// not on a fixed schedule, to prevent burst attacks at window edges
+// This simple counter resets its window on the first request after expiry.
+// It is not a sliding-window limiter; assess bursts near the boundary.
 if (now - windowStart > WINDOW_SIZE_MS) {
   counter = 0;
   windowStart = now;
@@ -274,6 +274,8 @@ Special consideration for AI agent context:
 - Documentation that restates the code instead of explaining intent
 
 ## Verification
+
+Validate statements against actual code and test output. Draft unresolved decisions as Proposed; do not infer team acceptance. OpenAPI and TypeScript snippets below are excerpts with intentionally omitted schemas/implementations, not standalone runnable files.
 
 After documenting:
 

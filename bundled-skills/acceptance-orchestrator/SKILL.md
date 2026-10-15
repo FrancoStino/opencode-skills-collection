@@ -1,7 +1,7 @@
 ---
 name: acceptance-orchestrator
 description: Use when a coding task should be driven end-to-end from issue intake through implementation, review, deployment, and acceptance verification with minimal human re-intervention.
-risk: safe
+risk: critical
 source: community
 date_added: "2026-03-12"
 ---
@@ -25,11 +25,9 @@ Core rule: **do not optimize for "code changed"; optimize for "DoD proven".**
 - `closed-loop-delivery`
 - `verification-before-completion`
 
-Optional supporting skills:
-- `deploy-dev`
-- `pr-watch`
-- `pr-review-autopilot`
-- `git-ship`
+Deployment and PR monitoring are project-specific capabilities, not bundled sub-skills.
+Use the repository's actual deployment and review procedures; the legacy names
+`deploy-dev`, `pr-watch`, `pr-review-autopilot`, and `git-ship` are not available in AAS.
 
 ## Inputs
 
@@ -74,7 +72,8 @@ Fixed defaults:
    - After the `10m` round, stop waiting and process all visible comments together.
 
 5. **Deploy and runtime verification**
-   - If DoD depends on runtime behavior, deploy only to `dev` by default.
+   - If DoD depends on runtime behavior, verify the explicitly authorized environment.
+   - A `dev` label does not grant deployment permission; inspect effects and use the project's deployment gate before changing any shared environment.
    - Verify with real logs/API/Lambda behavior, not assumptions.
 
 6. **Completion gate**

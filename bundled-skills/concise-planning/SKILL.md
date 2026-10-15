@@ -30,7 +30,7 @@ Use the following structure:
 
 - **Approach**: 1-3 sentences on what and why.
 - **Scope**: Bullet points for "In" and "Out".
-- **Action Items**: A list of 6-10 atomic, ordered tasks (Verb-first).
+- **Action Items**: A list sized to the actual task, with atomic, ordered actions (Verb-first).
 - **Validation**: At least one item for testing.
 
 ## Plan Template
@@ -47,11 +47,11 @@ Use the following structure:
 
 ## Action Items
 
-[ ] <Step 1: Discovery>
-[ ] <Step 2: Implementation>
-[ ] <Step 3: Implementation>
-[ ] <Step 4: Validation/Testing>
-[ ] <Step 5: Rollout/Commit>
+- [ ] <Step 1: Discovery>
+- [ ] <Step 2: Implementation>
+- [ ] <Step 3: Implementation>
+- [ ] <Step 4: Validation/Testing>
+- [ ] <Step 5: Rollout/Commit>
 
 ## Open Questions
 
@@ -65,7 +65,7 @@ Use the following structure:
 - **Concrete**: Name specific files or modules when possible.
 
 ## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
+Use when the user asks for a coding plan and the outcome, scope, dependencies and verification should become a short ordered checklist.
 
 ## Limitations
 - Use this skill only when the task clearly matches the scope described above.

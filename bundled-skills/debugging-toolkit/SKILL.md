@@ -1,7 +1,7 @@
 ---
 name: debugging-toolkit
 description: "Use when working with debugging toolkit smart debug (Alias for debugging-toolkit-smart-debug)"
-risk: none
+risk: critical
 source: "alias"
 date_added: "2026-06-02"
 ---
@@ -12,7 +12,7 @@ date_added: "2026-06-02"
 
 This skill redirects to `debugging-toolkit-smart-debug`. Load it from the vault:
 
-`skill-libraries/code-quality/debugging-toolkit-smart-debug/SKILL.md`
+`../debugging-toolkit-smart-debug/SKILL.md` relative to this installed skill directory. If that target is not installed, report the missing dependency rather than claiming the alias executed.
 
 ## When to Use
 - Use this skill when working with debugging toolkit smart debug (Alias for debugging-toolkit-smart-debug)

@@ -29,7 +29,7 @@ Always launch coroutines within a defined `CoroutineScope`. Use `coroutineScope`
 suspend fun loadDashboardData(): DashboardData = coroutineScope {
     val userDeferred = async { userRepo.getUser() }
     val settingsDeferred = async { settingsRepo.getSettings() }
-    
+
     DashboardData(
         user = userDeferred.await(),
         settings = settingsDeferred.await()
@@ -76,12 +76,13 @@ val uiState: StateFlow<UiState> = _uiState.asStateFlow()
 
 ```kotlin
 suspend fun fetchDataWithErrorHandling() = supervisorScope {
-    val task1 = async { 
-        try { api.fetchA() } catch (e: Exception) { null } 
+    val task1 = async {
+        try { api.fetchA() } catch (e: CancellationException) { throw e } catch (e: IOException) { null }
     }
     val task2 = async { api.fetchB() }
-    
-    // If task2 fails, task1 is NOT cancelled because of supervisorScope
+
+    // A child failure does not directly cancel its siblings.
+    // But an uncaught exception from await escapes the supervisor block and cancels it.
     val result1 = task1.await()
     val result2 = task2.await() // May throw
 }
@@ -104,3 +105,5 @@ suspend fun fetchDataWithErrorHandling() = supervisorScope {
 - Use this skill only when the task clearly matches the scope described above.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+
+Examples are fragments: supply imports, repository interfaces, Android lifecycle dependencies and the installed coroutines version. Handle each awaited failure deliberately and rethrow cancellation. `SharedFlow` replay/buffer choices determine delivery while no collector is active; it is not a guaranteed event queue. `StateFlow` conflates state changes. Test cancellation and slow/absent collectors, not only happy paths. [Official exception behavior](https://kotlinlang.org/docs/exception-handling.html).

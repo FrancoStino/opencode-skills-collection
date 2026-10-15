@@ -29,7 +29,7 @@ Form {
 ```swift
 Section("Font Size") {
   Slider(value: $fontSizeScale, in: 0.5...1.5, step: 0.1)
-  Text("Scale: \(String(format: \"%.1f\", fontSizeScale))")
+  Text("Scale: \(String(format: "%.1f", fontSizeScale))")
     .font(.scaledBody)
 }
 ```

@@ -12,7 +12,7 @@ Transform messy input (error logs, voice notes, screenshots) into clean, actiona
 
 ## Output Template
 
-```markdown
+````markdown
 ## Summary
 [One-line description of the issue]
 
@@ -45,11 +45,11 @@ Transform messy input (error logs, voice notes, screenshots) into clean, actiona
 
 ## Additional Context
 [Any other relevant details]
-```
+````
 
 ## Output Location
 
-**Create issues as markdown files** in `/issues/` directory at the repo root. Use naming convention: `YYYY-MM-DD-short-description.md`
+**Draft issues as Markdown files** in the project's existing issue-draft location (or `issues/` relative to the repository root when appropriate), not filesystem-root `/issues/`. Creating a public GitHub issue requires explicit publication authorization. Use naming convention: `YYYY-MM-DD-short-description.md`
 
 ## Guidelines
 
@@ -57,7 +57,7 @@ Transform messy input (error logs, voice notes, screenshots) into clean, actiona
 
 **Extract structure from chaos**: Voice dictation and raw notes often contain the facts buried in casual language. Pull them out.
 
-**Infer missing context**: If user mentions "same project" or "the dashboard", use context from conversation or memory to fill in specifics.
+**Preserve uncertainty**: If user mentions "same project" or "the dashboard", use confirmed conversation context; label missing or inferred details instead of inventing a product, region, successful run or reproduction.
 
 **Placeholder sensitive data**: Use `[PROJECT_NAME]`, `[USER_ID]`, etc. for anything that might be sensitive.
 
@@ -67,7 +67,7 @@ Transform messy input (error logs, voice notes, screenshots) into clean, actiona
 - Medium: Feature impaired, workaround exists
 - Low: Minor inconvenience, cosmetic
 
-**Image/GIF handling**: Reference attachments inline. Format: `!Description`
+**Image/GIF handling**: Reference attachments inline. Format: `![Description](https://example.com/attachment.png)` (syntax example; replace with the actual attachment reference); never invent an attachment URL.
 
 ## Examples
 
@@ -75,13 +75,13 @@ Transform messy input (error logs, voice notes, screenshots) into clean, actiona
 > so I was trying to deploy the agent and it just failed silently no error nothing the workflow ran but then poof gone from the list had to refresh and try again three times
 
 **Output**:
-```markdown
+````markdown
 ## Summary
 Agent deployment fails silently - no error displayed, agent disappears from list
 
 ## Environment
-- **Product/Service**: Azure AI Foundry
-- **Region/Version**: westus2
+- **Product/Service**: Unknown from supplied note
+- **Region/Version**: Unknown
 
 ## Reproduction Steps
 1. Navigate to agent deployment
@@ -100,7 +100,7 @@ Agent disappears from list. No error message. Requires page refresh and retry.
 
 ## Additional Context
 Required 3 retry attempts before successful deployment
-```
+````
 
 ---
 
@@ -108,12 +108,12 @@ Required 3 retry attempts before successful deployment
 > Error: PERMISSION_DENIED when publishing to Teams channel. Code: 403. Was working yesterday.
 
 **Output**:
-```markdown
+````markdown
 ## Summary
 403 PERMISSION_DENIED error when publishing to Teams channel
 
 ## Environment
-- **Product/Service**: Copilot Studio → Teams integration
+- **Product/Service**: Teams integration; originating product unconfirmed
 - **Region/Version**: [REGION]
 
 ## Reproduction Steps
@@ -137,7 +137,7 @@ Code: 403
 
 ## Additional Context
 Was working yesterday - possible permission/config change or service regression
-```
+````
 
 ## When to Use
 Use this skill when you have unstructured bug input such as pasted errors, support notes, screenshots, or voice dictation and need to turn it into a clean GitHub issue with a summary, reproduction steps, expected vs actual behavior, impact, and attachment references.

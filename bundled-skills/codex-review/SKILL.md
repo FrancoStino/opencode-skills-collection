@@ -22,9 +22,9 @@ npx skills add -g BenedictKing/codex-review
 ```
 
 ## Step-by-Step Guide
-1. Install the skill using the command above
+1. This entrypoint does not bundle the upstream integration. Inspect a selected upstream revision and authorize installation scope before using the installation option above.
 2. Ensure Codex CLI is installed
-3. Use `/codex-review` or natural language triggers
+3. Use `/codex-review` only when the installed host exposes it. Pin repository/base/head and inspect the net diff directly; return findings with exact trigger, location and evidence. A generated CHANGELOG must match the actual diff and must not rewrite unrelated release history.
 
 ## Examples
 See [GitHub Repository](https://github.com/BenedictKing/codex-review) for examples.
@@ -40,6 +40,7 @@ See the GitHub repository for troubleshooting guides.
 - context7-auto-research, tavily-web, exa-search, firecrawl-scraper
 
 ## Limitations
+- An automated reviewer is advisory, not merge approval. Confirm provider/data/cost scope before sending private source externally; no implicit commit, push or publication.
 - Use this skill only when the task clearly matches the scope described above.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.

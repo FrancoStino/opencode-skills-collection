@@ -11,112 +11,13 @@ Your goal is to **diagnose why a page is or is not converting**, assess readines
 You do **not** guarantee conversion lifts.
 You do **not** recommend changes without explaining *why they matter*.
 ---
-## Phase 0: Page Conversion Readiness & Impact Index (Required)
+## Phase 0: Evidence and constraints
 
-Before giving CRO advice, calculate the **Page Conversion Readiness & Impact Index**.
-
-### Purpose
-
-This index answers:
-
-> **Is this page structurally capable of converting, and where are the biggest constraints?**
-
-It prevents:
-
-* cosmetic CRO
-* premature A/B testing
-* optimizing the wrong thing
-
----
-
-## 🔢 Page Conversion Readiness & Impact Index
-
-### Total Score: **0–100**
-
-This is a **diagnostic score**, not a success metric.
-
----
-
-### Scoring Categories & Weights
-
-| Category                    | Weight  |
-| --------------------------- | ------- |
-| Value Proposition Clarity   | 25      |
-| Conversion Goal Focus       | 20      |
-| Traffic–Message Match       | 15      |
-| Trust & Credibility Signals | 15      |
-| Friction & UX Barriers      | 15      |
-| Objection Handling          | 10      |
-| **Total**                   | **100** |
-
----
-
-### Category Definitions
-
-#### 1. Value Proposition Clarity (0–25)
-
-* Visitor understands what this is and why it matters in ≤5 seconds
-* Primary benefit is specific and differentiated
-* Language reflects user intent, not internal jargon
-
----
-
-#### 2. Conversion Goal Focus (0–20)
-
-* One clear primary conversion action
-* CTA hierarchy is intentional
-* Commitment level matches page stage
-
----
-
-#### 3. Traffic–Message Match (0–15)
-
-* Page aligns with visitor intent (organic, paid, email, referral)
-* Headline and hero match upstream messaging
-* No bait-and-switch dynamics
-
----
-
-#### 4. Trust & Credibility Signals (0–15)
-
-* Social proof exists and is relevant
-* Claims are substantiated
-* Risk is reduced at decision points
-
----
-
-#### 5. Friction & UX Barriers (0–15)
-
-* Page loads quickly and works on mobile
-* No unnecessary form fields or steps
-* Navigation and next steps are clear
-
----
-
-#### 6. Objection Handling (0–10)
-
-* Likely objections are anticipated
-* Page addresses “Will this work for me?”
-* Uncertainty is reduced, not ignored
-
----
-
-### Conversion Readiness Bands (Required)
-
-| Score  | Verdict                  | Interpretation                                 |
-| ------ | ------------------------ | ---------------------------------------------- |
-| 85–100 | **High Readiness**       | Page is structurally sound; test optimizations |
-| 70–84  | **Moderate Readiness**   | Fix key issues before testing                  |
-| 55–69  | **Low Readiness**        | Foundational problems limit conversions        |
-| <55    | **Not Conversion-Ready** | CRO will not work yet                          |
-
-If score < 70, **testing is not recommended**.
-
----
+Establish the page goal, audience, acquisition source, observed baseline and available data before diagnosis. Record missing evidence as unknown. Use value proposition, goal focus, message match, trust, friction and objection handling as qualitative prompts, not a calibrated 0–100 score. No invented threshold determines whether a page can convert or whether testing is allowed.
 
 ## Phase 1: Context & Goal Alignment
 
-(Proceed only after scoring)
+(Use confirmed context; ask only for missing inputs that affect the recommendation.)
 
 ### 1. Page Type
 
@@ -235,7 +136,7 @@ Analyze in **impact order**, not arbitrarily.
 
 All recommendations must map to:
 
-* a **scoring category**
+* a **diagnostic category**
 * a **conversion constraint**
 * a **measurable hypothesis**
 
@@ -245,8 +146,8 @@ All recommendations must map to:
 
 ### Conversion Readiness Summary
 
-* Overall Score: XX / 100
-* Verdict: High / Moderate / Low / Not Ready
+* Observed baseline and evidence gaps
+* Constraint, supporting observation and confidence
 * Key limiting factors
 
 ---
@@ -308,10 +209,9 @@ Each with rationale tied to user intent.
 
 ## Experiment Guardrails
 
-Do **not** recommend A/B testing when:
+Choose experimentation based on sample size, detectable effect, duration and guardrail metrics. Resolve these gaps before committing to a test:
 
 * Traffic is too low
-* Page score < 70
 * Value proposition is unclear
 * Conversion goal is ambiguous
 
@@ -337,10 +237,14 @@ Fix fundamentals first.
 * **copywriting** – If messaging needs a full rewrite
 * **ab-test-setup** – For test execution and instrumentation
 
-```
-
 ## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
+Use when evaluating a specific landing or product page against its audience, conversion goal and observed funnel evidence.
+
+## Example
+
+**Request:** “Visitors reach our trial page but few submit. Review the copy and suggest a test.”
+
+**Output:** First record the actual page, audience, trial terms, observation period and funnel counts. If no measurements exist, label the suspected friction as a hypothesis: clarify the trial commitment near the form and measure submitted trials per eligible visit, with sample/duration and guardrails agreed before launch. Deliver the copy draft and experiment plan; do not invent a conversion lift or publish changes without the requested target authorization.
 
 ## Limitations
 - Use this skill only when the task clearly matches the scope described above.

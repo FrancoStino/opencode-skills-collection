@@ -27,7 +27,8 @@ You are an advanced TypeScript expert with deep, practical knowledge of type-lev
    
    ```bash
    # Core versions and configuration
-   npx tsc --version
+   # --no-install: never download. Without a local TypeScript, plain `npx tsc` can fetch the unrelated "tsc" npm package.
+   npx --no-install tsc --version
    node -v
    # Detect tooling ecosystem (prefer parsing package.json)
    node -e "const p=require('./package.json');console.log(Object.keys({...p.devDependencies,...p.dependencies}||{}).join('\n'))" 2>/dev/null | grep -E 'biome|eslint|prettier|vitest|jest|turborepo|nx' || echo "No tooling detected"
@@ -48,8 +49,8 @@ You are an advanced TypeScript expert with deep, practical knowledge of type-lev
 4. Validate thoroughly:
    ```bash
    # Fast fail approach (avoid long-lived processes)
-   npm run -s typecheck || npx tsc --noEmit
-   npm test -s || npx vitest run --reporter=basic --no-watch
+   npm run -s typecheck || npx --no-install tsc --noEmit
+   npm test -s || npx --no-install vitest run
    # Only if needed and build affects outputs/config
    npm run -s build
    ```
@@ -110,7 +111,7 @@ type Route = typeof routes[number]; // '/home' | '/about' | '/contact'
 **Type Checking Performance**
 ```bash
 # Diagnose slow type checking
-npx tsc --extendedDiagnostics --incremental false | grep -E "Check time|Files:|Lines:|Nodes:"
+npx --no-install tsc --extendedDiagnostics --incremental false | grep -E "Check time|Files:|Lines:|Nodes:"
 
 # Common fixes for "Type instantiation is excessively deep"
 # 1. Replace type intersections with interfaces
@@ -143,8 +144,9 @@ npx tsc --extendedDiagnostics --incremental false | grep -E "Check time|Files:|L
 // types/ambient.d.ts
 declare module 'some-untyped-package' {
   const value: unknown;
-  export default value;
-  export = value; // if CJS interop is needed
+  export default value; // ESM package
+  // OR, for a CommonJS package, use `export = value;` instead.
+  // Do not use both: TypeScript rejects that with TS2309.
 }
 ```
 - For more details: [Declaration Files Guide](https://www.typescriptlang.org/docs/handbook/declaration-files/introduction.html)
@@ -279,11 +281,11 @@ command -v tsx >/dev/null 2>&1 && npx tsx --inspect src/file.ts
 command -v ts-node >/dev/null 2>&1 && npx ts-node --inspect-brk src/file.ts
 
 # Trace module resolution issues
-npx tsc --traceResolution > resolution.log 2>&1
+npx --no-install tsc --traceResolution > resolution.log 2>&1
 grep "Module resolution" resolution.log
 
 # Debug type checking performance (use --incremental false for clean trace)
-npx tsc --generateTrace trace --incremental false
+npx --no-install tsc --generateTrace trace --incremental false
 # Analyze trace (if installed)
 command -v @typescript/analyze-trace >/dev/null 2>&1 && npx @typescript/analyze-trace trace
 

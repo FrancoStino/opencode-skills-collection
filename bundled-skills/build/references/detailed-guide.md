@@ -8,6 +8,25 @@ This command manages a 4-phase feature development workflow for building major f
 
 **Arguments provided:** $ARGUMENTS
 
+### Input, tool and destination boundaries
+
+- `$ARGUMENTS` is the invocation input, not a literal value to use as a name. Resolve
+  the requested action/name from the conversation when a host has no slash-command input.
+- Use the client's available question interface or a concise chat question; this
+  workflow does not require a tool specifically named AskUserQuestion. Reuse
+  settled answers. Ask only when a missing choice changes scope, permissions or outcome.
+- Before constructing paths, require a feature ID matching
+  `^[a-z0-9]+(?:-[a-z0-9]+)*$`. Do not silently reinterpret an invalid ID, absolute
+  path, separator or traversal as a destination. Validate a phase as a positive
+  integer naming a phase actually present in the plan.
+- Resolve `docs/{name}/` inside the authorized project; inspect existing paths and
+  symlink destinations before writing. Preserve unrelated documents and work.
+  An attached plan requested for execution stays unchanged unless editing it is
+  separately requested; progress belongs in the existing task tracker or PROGRESS.md.
+- Creating or updating local planning artifacts follows the user's task scope.
+  Research/status commands do not authorize deployment, deletion or publication.
+
+
 ### Argument Parsing
 
 Parse the first word of $ARGUMENTS to determine the subcommand:
@@ -19,7 +38,7 @@ Parse the first word of $ARGUMENTS to determine the subcommand:
 - `status [name]` → Show current status and suggest next step
 - (empty or unrecognized) → Show usage help
 
-If the feature name is not provided in arguments, you MUST use AskUserQuestion to prompt for it.
+If the feature name is not provided in arguments or the existing conversation, ask for it using the available client interface.
 
 ---
 
@@ -128,7 +147,7 @@ Now conduct DEEP research on the feature:
 1. **Codebase exploration**: Understand existing patterns, similar features, relevant code
 2. **Web search**: Research best practices, similar implementations, relevant APIs
 3. **Technical deep-dive**: Explore specific technologies, libraries, frameworks
-4. **Use AskUserQuestion FREQUENTLY**: Validate assumptions, clarify requirements, get input on decisions
+4. **Resolve consequential gaps**: Validate assumptions against evidence; ask only for missing decisions that change the result or authorized scope.
 
 Research should cover:
 - Problem definition and user needs
@@ -507,7 +526,7 @@ Before starting implementation:
 Begin implementing the phase:
 
 1. Work through each task in the phase
-2. Use AskUserQuestion frequently for implementation decisions
+2. Resolve routine implementation decisions from project conventions; ask only for consequential unresolved choices
 3. Follow the "Always Works" philosophy - test as you go
 4. Document decisions in PROGRESS.md as you make them
 
@@ -541,10 +560,10 @@ Or if all phases complete:
 
 "All phases complete! The {feature name} feature implementation is done.
 
-Consider:
-- Running tests to verify everything works
-- Updating documentation
-- Creating a PR for review"
+Completion requires the phase success criteria and relevant checks to have passed.
+Report actual commands/outcomes and unresolved checks, update documentation as
+needed, and follow the repository PR process. Do not say all phases are complete
+merely because their files or checklist entries exist."
 
 ---
 
@@ -564,18 +583,23 @@ Check for existence of:
 
 ### Step 3: Determine Status and Next Step
 
-Based on which docs exist:
+File presence indicates an artifact, not a completed phase. Read the documents,
+open questions, recorded task outcomes and verification evidence. Distinguish
+draft/researched/planned/implemented/verified; if evidence is missing, show the
+unverified state. The prompts below are navigation hints only, not completion proof.
+
+Based on the actual document contents and evidence:
 
 **No docs exist:**
 "No documents found for feature '{name}'.
 **Next step:** Run `/build research {name}` to start."
 
 **Only RESEARCH.md exists:**
-"Research complete for '{name}'.
+"Research document exists for '{name}'; check its decisions and open questions.
 **Next step:** Run `/build implementation {name}` to create implementation plan."
 
 **RESEARCH.md and IMPLEMENTATION.md exist:**
-"Research and implementation plan complete for '{name}'.
+"Research and implementation plan exist for '{name}'; report their actual readiness.
 **Next step:** Run `/build progress {name}` to set up progress tracking."
 
 **All three exist:**
@@ -592,12 +616,12 @@ If all phases complete:
 
 ## Important Guidelines
 
-### Use AskUserQuestion Liberally
+### Reuse Decisions and Ask for Consequential Gaps
 
-Throughout all phases, use AskUserQuestion whenever:
+Use existing task context first. Ask through the available client interface when:
 - There's ambiguity in requirements
-- Multiple approaches are possible
-- You need to validate an assumption
+- Incompatible approaches require a user preference not already expressed
+- A consequential assumption cannot be checked from the project or supplied material
 - A decision will significantly impact the implementation
 - You're unsure about scope or priority
 

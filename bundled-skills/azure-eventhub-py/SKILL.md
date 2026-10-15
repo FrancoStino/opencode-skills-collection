@@ -5,6 +5,13 @@ risk: critical
 source: community
 date_added: '2026-02-27'
 ---
+## Bundled upstream support
+
+Supporting files are included at skill-relative paths. See [UPSTREAM-NOTICE.md](UPSTREAM-NOTICE.md) for their pinned sources, licenses, hashes, and import changes.
+
+## Restored helper safety
+
+`scripts/setup_consumer.py` authenticates to the configured Event Hub. `send` publishes event data; `receive` prints event bodies and properties and can write or advance a Blob checkpoint. Confirm the exact namespace, hub, payload/count, starting position, data handling, and checkpoint destination before live use.
 
 # Azure Event Hubs SDK for Python
 

@@ -1,6 +1,6 @@
 ---
 name: ai-engineering-toolkit
-description: "6 production-ready AI engineering workflows: prompt evaluation (8-dimension scoring), context budget planning, RAG pipeline design, agent security audit (65-point checklist), eval harness building, and product sense coaching."
+description: "Overview of six AI engineering workflows: prompt evaluation (8-dimension scoring), context budget planning, RAG pipeline design, agent security audit (65-point checklist), eval harness building, and product sense coaching."
 category: data-ai
 risk: offensive
 source: community
@@ -30,7 +30,7 @@ tools: [claude, cursor, gemini, copilot]
 
 A collection of 6 structured, expert-level workflows that turn your AI coding assistant into a senior AI engineering partner. Each skill encodes a repeatable methodology — not just "ask AI to help," but a step-by-step decision framework with quantitative scoring, checklists, and decision trees.
 
-The key difference from ad-hoc AI assistance: **every workflow produces consistent, reproducible results** regardless of who runs it or when. You can use the scoring systems as team baselines and write them into CI/CD pipelines.
+The key difference from ad-hoc AI assistance: Scores and qualitative outputs can vary by evaluator, model and context; calibrate rubrics and record versions before making comparisons. You can use the scoring systems as team baselines and write them into CI/CD pipelines.
 
 ## When to Use This Skill
 
@@ -41,11 +41,15 @@ The key difference from ad-hoc AI assistance: **every workflow produces consiste
 - Use when building evaluation frameworks for LLM applications
 - Use when thinking through product strategy before writing code
 
+## Availability and scope
+
+This AAS tree bundles this overview only; the six named workflow packages, 65 test cases and CI templates are not included here. Do not claim a 65-test run or a scored assessment without actual supplied rubric, cases, harness and recorded execution. The upstream collection is an optional separately reviewed source; its installation does not validate a production system.
+
 ## How It Works
 
 ### Skill 1: Prompt Evaluator
 
-Scores prompts across 8 dimensions (Clarity, Specificity, Completeness, Conciseness, Structure, Grounding, Safety, Robustness) on a 1-10 scale with weighted aggregation to a 0-100 score. Identifies the 3 weakest dimensions, generates targeted rewrites, and re-evaluates. Supports single prompt, A/B comparison, and batch evaluation modes.
+A defined evaluator can score prompts across 8 dimensions (Clarity, Specificity, Completeness, Conciseness, Structure, Grounding, Safety, Robustness) on a 1-10 scale with weighted aggregation to a 0-100 score. Identifies the 3 weakest dimensions, generates targeted rewrites, and re-evaluates. Supports single prompt, A/B comparison, and batch evaluation modes.
 
 ### Skill 2: Context Budget Planner
 
@@ -77,13 +81,13 @@ Ask: "Evaluate this system prompt"
 You are a customer support agent. Help users with their questions. Be nice and helpful.
 ```
 
-Result: Overall score **28/100**. Weakest dimensions: Safety (1/10, zero injection protection), Specificity (2/10, no output format), Structure (2/10, no sections). Auto-rewrite scores **82/100** with added scope boundaries, response format, escalation rules, and safety guardrails.
+Illustrative response format, not a measured assessment: Overall score **28/100**. Weakest dimensions: Safety (1/10, zero injection protection), Specificity (2/10, no output format), Structure (2/10, no sections). A hypothetical rewrite scores **82/100** with added scope boundaries, response format, escalation rules, and safety guardrails.
 
 ### Example 2: Security Audit
 
 Ask: "Run a security audit on my customer support agent"
 
-Result: 65 tests executed. 3 critical failures found: Base64-encoded instruction bypass, path traversal via tool calls, system prompt extraction via role-play. Fix recommendations provided for each.
+Illustrative report format only: 65 tests executed. 3 critical failures found: Base64-encoded instruction bypass, path traversal via tool calls, system prompt extraction via role-play. Fix recommendations provided for each.
 
 ## Best Practices
 
@@ -96,7 +100,7 @@ Result: 65 tests executed. 3 critical failures found: Base64-encoded instruction
 
 ## Security & Safety Notes
 
-- All skills are read-only analysis and advisory workflows. No skills modify files or make network requests.
+- This overview is advisory. Executing an external harness may read/write files, transmit prompts or incur costs; those effects require actual scope and authorization.
 - The agent-safety-guard skill constructs adversarial test prompts for evaluation purposes only — these are contained within the evaluation context and do not interact with external systems.
 - **agent-safety-guard is classified as an offensive skill**: it generates attack payloads (prompt injection, SQL injection, command injection) for authorized security testing. The skill requires explicit user confirmation before executing each test phase. Run in a sandboxed environment when possible.
 - No weaponized payloads are included. All adversarial prompts are educational in nature.
@@ -109,7 +113,7 @@ Result: 65 tests executed. 3 critical failures found: Base64-encoded instruction
 
 # Manual
 git clone https://github.com/viliawang-pm/ai-engineering-toolkit.git
-cp -r ai-engineering-toolkit/skills/* ~/.claude/skills/
+# Review a fixed upstream revision/license and install selected files only into the authorized workspace, preserving existing files.
 ```
 
 **Repository**: [github.com/viliawang-pm/ai-engineering-toolkit](https://github.com/viliawang-pm/ai-engineering-toolkit)

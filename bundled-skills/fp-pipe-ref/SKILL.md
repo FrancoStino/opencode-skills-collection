@@ -58,7 +58,7 @@ import * as A from 'fp-ts/Array'
 // Option chain
 pipe(
   O.fromNullable(user),
-  O.map(u => u.email),
+  O.flatMap(u => O.fromNullable(u.email)),
   O.getOrElse(() => 'no email')
 )
 
@@ -88,3 +88,9 @@ getActiveNames(users2)
 - Use this skill only when the task clearly matches the scope described above.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+
+## Reference scope
+
+These are fp-ts 2.x fragments. Supply application variables, types, validators and imports, and check the installed version. `map` does not catch thrown exceptions. `Task` has no typed error channel; an improperly wrapped promise can still reject. Use `tryCatch` at fallible boundaries.
+
+Official API: [fp-ts modules](https://gcanti.github.io/fp-ts/modules/).

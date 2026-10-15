@@ -2,17 +2,19 @@
 name: agentic-actions-auditor
 description: >
   Audits GitHub Actions workflows for security
-  vulnerabilities in AI agent integrations 
-  including Claude Code Action, 
+  vulnerabilities in AI agent integrations
+  including Claude Code Action,
   Gemini CLI, OpenAI Codex, and GitHub AI 
-  Inference. 
+  Inference.
   Detects attack vectors where attacker-controlled 
-  input reaches.
-  AI agents running in CI/CD pipelines.
+  input reaches AI agents running in CI/CD pipelines.
 risk: safe
 source: community
 date_added: 2026-03-18
 ---
+## Supporting material availability
+
+This AAS tree bundles the inline methodology only. The contributed guide named a foundations file, action profiles, cross-file resolution and nine vector reference files, but those files and an independently verified upstream source are absent. Do not claim they were read. Apply the inline checks below and report unsupported action-version details as unverified; recover external materials only from a verified source with a confirmed license.
 
 # Agentic Actions Auditor
 
@@ -80,7 +82,7 @@ Use a two-step approach with `gh api`:
    ```
    gh api repos/{owner}/{repo}/contents/.github/workflows --paginate --jq '.[].name'
    ```
-   If a ref is specified, append `?ref={ref}` to the URL.
+   Resolve the requested/default ref to a full SHA and use that SHA on every fetch; URL-encode path/ref components and pass endpoints as quoted structured arguments.
 
 2. **Filter for YAML files:** Keep only filenames ending in `.yml` or `.yaml`.
 
@@ -88,7 +90,7 @@ Use a two-step approach with `gh api`:
    ```
    gh api repos/{owner}/{repo}/contents/.github/workflows/{filename} --jq '.content | @base64d'
    ```
-   If a ref is specified, append `?ref={ref}` to this URL too. The ref must be included on EVERY API call, not just the directory listing.
+   If a ref is specified, append `?ref={ref}` to this URL too. Use the same resolved SHA on EVERY call, not just the directory listing.
 
 4. Report: "Found N workflow files in owner/repo: file1.yml, file2.yml, ..."
 5. Proceed to Step 2 with the fetched YAML content.
@@ -144,7 +146,7 @@ For each workflow file, examine every job and every step within each job. Check 
 
 **Matching rules:**
 
-- Match the `uses:` value as a PREFIX before the `@` sign. Ignore the version or ref after `@` (e.g., `@v1`, `@main`, `@abc123` are all valid).
+- Compare the exact repository/action path before `@`, not a string prefix (similarly named repositories are different). Record the ref, resolve it to a full SHA where available, and inspect that revision's action inputs and implementation; mutable refs affect supply-chain risk.
 - Match step-level `uses:` within `jobs.<job_id>.steps[]` for AI action identification. Also note any job-level `uses:` -- those are reusable workflow calls that need cross-file resolution.
 - A step-level `uses:` appears inside a `steps:` array item. A job-level `uses:` appears at the same indentation as `runs-on:` and indicates a reusable workflow call.
 
@@ -156,7 +158,7 @@ For each workflow file, examine every job and every step within each job. Check 
 - Action reference (the full `uses:` value including the version ref)
 - Action type (from the table above)
 
-If no AI action steps are found across all workflows, report "No AI action steps found in N workflow files" and stop.
+Before concluding no AI integration exists, inspect reachable composite/reusable references and `run:` scripts that invoke agent CLIs or APIs. Record unresolved references and the depth limit; a known-action table is not exhaustive.
 
 #### Cross-File Resolution
 
@@ -166,7 +168,7 @@ After identifying AI action steps, check for `uses:` references that may contain
 2. **Job-level `uses:`**: Resolve the reusable workflow (local or remote) and analyze it through Steps 2-4
 3. **Depth limit**: Only resolve one level deep. References found inside resolved files are logged as unresolved, not followed
 
-For the complete resolution procedures including `uses:` format classification, composite action type discrimination, input mapping traces, remote fetching, and edge cases, see {baseDir}/references/cross-file-resolution.md.
+For the complete resolution procedures including `uses:` format classification, composite action type discrimination, input mapping traces, remote fetching, and edge cases, see optional upstream `cross-file-resolution.md` (not bundled).
 
 ### Step 3: Capture Security Context
 
@@ -234,23 +236,23 @@ Include the security context captured for each instance in the detailed output.
 
 ### Step 4: Analyze for Attack Vectors
 
-First, read {baseDir}/references/foundations.md to understand the attacker-controlled input model, env block mechanics, and data flow paths.
+Use the inline input-boundary and data-flow procedure. The optional upstream foundations file is absent and cannot be a prerequisite.
 
 Then check each vector against the security context captured in Step 3:
 
 | Vector | Name | Quick Check | Reference |
 |--------|------|-------------|-----------|
-| A | Env Var Intermediary | `env:` block with `${{ github.event.* }}` value + prompt reads that env var name | {baseDir}/references/vector-a-env-var-intermediary.md |
-| B | Direct Expression Injection | `${{ github.event.* }}` inside prompt or system-prompt field | {baseDir}/references/vector-b-direct-expression-injection.md |
-| C | CLI Data Fetch | `gh issue view`, `gh pr view`, or `gh api` commands in prompt text | {baseDir}/references/vector-c-cli-data-fetch.md |
-| D | PR Target + Checkout | `pull_request_target` trigger + checkout with `ref:` pointing to PR head | {baseDir}/references/vector-d-pr-target-checkout.md |
-| E | Error Log Injection | CI logs, build output, or `workflow_dispatch` inputs passed to AI prompt | {baseDir}/references/vector-e-error-log-injection.md |
-| F | Subshell Expansion | Tool restriction list includes commands supporting `$()` expansion | {baseDir}/references/vector-f-subshell-expansion.md |
-| G | Eval of AI Output | `eval`, `exec`, or `$()` in `run:` step consuming `steps.*.outputs.*` | {baseDir}/references/vector-g-eval-of-ai-output.md |
-| H | Dangerous Sandbox Configs | `danger-full-access`, `Bash(*)`, `--yolo`, `safety-strategy: unsafe` | {baseDir}/references/vector-h-dangerous-sandbox-configs.md |
-| I | Wildcard Allowlists | `allowed_non_write_users: "*"`, `allow-users: "*"` | {baseDir}/references/vector-i-wildcard-allowlists.md |
+| A | Env Var Intermediary | `env:` block with `${{ github.event.* }}` value + prompt reads that env var name | optional upstream `vector-a-env-var-intermediary.md` (not bundled) |
+| B | Direct Expression Injection | `${{ github.event.* }}` inside prompt or system-prompt field | optional upstream `vector-b-direct-expression-injection.md` (not bundled) |
+| C | CLI Data Fetch | `gh issue view`, `gh pr view`, or `gh api` commands in prompt text | optional upstream `vector-c-cli-data-fetch.md` (not bundled) |
+| D | PR Target + Checkout | `pull_request_target` trigger + checkout with `ref:` pointing to PR head | optional upstream `vector-d-pr-target-checkout.md` (not bundled) |
+| E | Error Log Injection | CI logs, build output, or `workflow_dispatch` inputs passed to AI prompt | optional upstream `vector-e-error-log-injection.md` (not bundled) |
+| F | Subshell Expansion | Tool restriction list includes commands supporting `$()` expansion | optional upstream `vector-f-subshell-expansion.md` (not bundled) |
+| G | Eval of AI Output | `eval`, `exec`, or `$()` in `run:` step consuming `steps.*.outputs.*` | optional upstream `vector-g-eval-of-ai-output.md` (not bundled) |
+| H | Dangerous Sandbox Configs | `danger-full-access`, `Bash(*)`, `--yolo`, `safety-strategy: unsafe` | optional upstream `vector-h-dangerous-sandbox-configs.md` (not bundled) |
+| I | Wildcard Allowlists | `allowed_non_write_users: "*"`, `allow-users: "*"` | optional upstream `vector-i-wildcard-allowlists.md` (not bundled) |
 
-For each vector, read the referenced file and apply its detection heuristic against the security context captured in Step 3. For each finding, record: the vector letter and name, the specific evidence from the workflow, the data flow path from attacker input to AI agent, and the affected workflow file and step.
+For each vector, apply the inline quick check and inspect the actual data flow and action implementation. The optional absent reference files cannot be required or counted as reviewed. For each finding, record: the vector letter and name, the specific evidence from the workflow, the data flow path from attacker input to AI agent, and the affected workflow file and step.
 
 ### Step 5: Report Findings
 
@@ -267,7 +269,7 @@ Each finding uses this section order:
 - **Impact:** One sentence stating what an attacker can achieve
 - **Evidence:** YAML code snippet from the workflow showing the vulnerable pattern, with line number comments
 - **Data Flow:** Annotated numbered steps (see 5c for format)
-- **Remediation:** Action-specific guidance. For action-specific remediation details (exact field names, safe defaults, dangerous patterns), consult {baseDir}/references/action-profiles.md to look up the affected action's secure configuration defaults, dangerous patterns, and recommended fixes.
+- **Remediation:** Action-specific guidance. For action-specific remediation details (exact field names, safe defaults, dangerous patterns), consult optional upstream `action-profiles.md` (not bundled) to look up the affected action's secure configuration defaults, dangerous patterns, and recommended fixes.
 
 #### 5b. Severity Judgment
 
@@ -289,7 +291,7 @@ Each finding includes a numbered data flow trace. Follow these rules:
 1. **Start from the attacker-controlled source** -- the GitHub event context where the attacker acts (e.g., "Attacker creates an issue with malicious content in the body"), not a YAML line.
 2. **Show every intermediate hop** -- env blocks, step outputs, runtime fetches, file reads. Include YAML line references where applicable.
 3. **Annotate runtime boundaries** -- when a step occurs at runtime rather than YAML parse time, add a note: "> Note: Step N occurs at runtime -- not visible in static YAML analysis."
-4. **Name the specific consequence** in the final step (e.g., "Claude executes with tainted prompt -- attacker achieves arbitrary code execution"), not just the YAML element.
+4. **Name the specific consequence** in the final step (e.g., "attacker text reaches Claude; command execution is possible only through the identified enabled tool path"), not just the YAML element.
 
 For Vectors H and I (configuration findings), replace the data flow section with an impact amplification note explaining what the configuration weakness enables if a co-occurring injection vector is present.
 
@@ -323,13 +325,19 @@ When analyzing a remote repository, add these elements to the report:
 - **Source attribution:** Each finding includes `Source: owner/repo/.github/workflows/{filename}`
 - **Summary:** Uses the same format as local analysis with repo context: "Analyzed N workflows, M AI action instances, P findings in owner/repo"
 
+## Inline cross-file procedure
+
+Resolve local composite paths under the exact repository snapshot, reject escaping paths, read `action.yml` or `action.yaml`, and distinguish composite steps from Docker/JavaScript implementations. Map caller `with` inputs to callee expressions and inherited environment/permissions/secrets, following the action's implementation and referenced scripts as needed. For reusable workflows, record caller/callee SHAs and check passed inputs/secrets and effective permissions. Track visited references to avoid cycles; log every depth-limited or unavailable edge. Never run fetched workflow code.
+
+Prompt injection exposure is distinct from demonstrated command execution or secret exfiltration: record the reachable tool, secret or network boundary and uncertainty. Fetch/auth failures are incomplete coverage, not zero-workflow clean reports. Raw log or event text remains untrusted even when placed in environment variables.
+
 ## Detailed References
 
 For complete documentation beyond this methodology overview:
 
-- **Action Security Profiles:** See {baseDir}/references/action-profiles.md for per-action security field documentation, default configurations, and dangerous configuration patterns.
-- **Detection Vectors:** See {baseDir}/references/foundations.md for the shared attacker-controlled input model, and individual vector files `{baseDir}/references/vector-{a..i}-*.md` for per-vector detection heuristics.
-- **Cross-File Resolution:** See {baseDir}/references/cross-file-resolution.md for `uses:` reference classification, composite action and reusable workflow resolution procedures, input mapping traces, and depth-1 limit.
+- **Action Security Profiles:** See optional upstream `action-profiles.md` (not bundled) for per-action security field documentation, default configurations, and dangerous configuration patterns.
+- **Detection Vectors:** See optional upstream `foundations.md` (not bundled) for the shared attacker-controlled input model, and individual vector files optional upstream vector reference files (not bundled) for per-vector detection heuristics.
+- **Cross-File Resolution:** See optional upstream `cross-file-resolution.md` (not bundled) for `uses:` reference classification, composite action and reusable workflow resolution procedures, input mapping traces, and depth-1 limit.
 
 ## Example
 

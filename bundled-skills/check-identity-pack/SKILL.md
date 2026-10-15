@@ -16,7 +16,7 @@ license_source: "https://github.com/Sketchjar/stipple-agent-skills/blob/main/LIC
 
 # Check Identity Pack
 
-Run an AFP 100-point or AUSTRAC safe-harbour identity check over a document set. Reports the points attained, per-document status, and **exactly what's missing** — so the user can request only the absent documents and re-run. Uses the Stipple API (free anonymous tier).
+Run an AFP 100-point or AUSTRAC safe-harbour identity check over a document set. Reports the points attained, per-document status, and **exactly what's missing** — so the user can request only the absent documents and re-run. Uses an external Stipple API; verify current access, costs and data-processing terms before uploading.
 
 ## When to use
 
@@ -29,13 +29,13 @@ Run an AFP 100-point or AUSTRAC safe-harbour identity check over a document set.
 1. **Get the documents.** Multiple file paths or URLs (PDF/images): passport, driver's licence, medicare card, bank statement, utility bill, etc.
 
 2. **Choose the scheme:**
-   - `afp_100_point` — the standard Australian 100-point system
-   - `austrac_safe_harbour` — AUSTRAC safe-harbour identity verification
+   - `afp_100_point` — the provider’s AFP checklist mode; it is not a universal Australian onboarding rule
+   - `austrac_safe_harbour` — a provider mode name, not proof of current AUSTRAC due-diligence compliance
 
 3. **Run the check.** POST the document set (multipart, multiple `files` parts):
 
    ```bash
-   curl -X POST "https://www.stipple.sh/v1/identity-check?scheme=afp_100_point" \
+   curl --fail --show-error --silent --max-time 30 -X POST "https://www.stipple.sh/v1/identity-check?scheme=afp_100_point" \
      -F "files=@passport.pdf" \
      -F "files=@medicare-card.jpg" \
      -F "files=@bank-statement.pdf" \
@@ -51,7 +51,7 @@ Run an AFP 100-point or AUSTRAC safe-harbour identity check over a document set.
 
 5. **Report with the gap list front and centre.** The product here is the *exactly-what's-missing* list — the user's onboarding UX can loop on it: request only what's absent, re-run, done.
 
-6. **Important caveat.** Identity check answers *who is this* — it does NOT answer *is this document genuine*. A forged passport that matches the name scores points. For genuineness, pair with the `verify-document` skill on each document first.
+6. **Important caveat.** Document consistency checking proposes an identity association — it does NOT answer *is this document genuine*. A forged passport that matches the name scores points. For genuineness, pair with the `verify-document` skill on each document first.
 
 ## Output format
 
@@ -61,7 +61,6 @@ AFP 100-point check: incomplete
   points attained: 95/100
   - passport: 70 pts — ok
   - medicare_card: 25 pts — ok
-  - drivers_licence: 40 pts — ok
 
   exactly what is missing:
     -> evidence of current residential address within last 3 months
@@ -82,7 +81,7 @@ AFP 100-point check: incomplete
 
 ## Notes
 
-- Costs 2 credits per check; free weekly allowance applies
-- Point values: passport 70, citizenship certificate 70, birth certificate 70, driver's licence 40, medicare card 25, bank statement 25, utility bill 25, council rates 25
+- Costs/allowances are provider-specific and mutable; check current pricing rather than assuming two credits or free checks
+- Use the actual applicable scheme/version and document acceptance rules; do not sum generic type weights without duplicate, category, expiry, address and identity-consistency rules. The 70+25=95 example is arithmetic only, not a completed legal decision. See [AFP’s checklist](https://www.afp.gov.au/sites/default/files/PDF/NPC-100PointChecklist-18042019.pdf) and [current AUSTRAC customer due diligence](https://www.austrac.gov.au/industry-and-business/obligations-and-guidance/your-amlctf-program/customer-due-diligence).
 - The check maps documents to the scheme and reports gaps — it does not verify document authenticity (use `verify-document` for that)
 - Free key at https://www.stipple.sh for metering beyond the anonymous allowance

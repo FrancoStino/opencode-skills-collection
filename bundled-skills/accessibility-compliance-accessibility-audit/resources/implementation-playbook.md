@@ -1,6 +1,6 @@
 # Accessibility Audit and Testing Implementation Playbook
 
-This file contains detailed patterns, checklists, and code samples referenced by the skill.
+These are integration sketches requiring project-local, lockfile-pinned tools, real component fixtures and an authorized test target. Browser navigation may fetch remote subresources; do not use private records or real credentials. A DOM heuristic or zero automated violations does not establish WCAG/legal conformance. Keep manual, assistive-technology and incomplete checks explicit.
 
 ## Instructions
 
@@ -14,21 +14,20 @@ const puppeteer = require("puppeteer");
 class AccessibilityAuditor {
   constructor(options = {}) {
     this.wcagLevel = options.wcagLevel || "AA";
+    if (this.wcagLevel !== "AA") throw new Error("This automated illustration targets AA only");
     this.viewport = options.viewport || { width: 1920, height: 1080 };
   }
 
   async runFullAudit(url) {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
+    try {
     await page.setViewport(this.viewport);
     await page.goto(url, { waitUntil: "networkidle2" });
 
     const results = await new AxePuppeteer(page)
-      .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
-      .exclude(".no-a11y-check")
+      .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"])
       .analyze();
-
-    await browser.close();
 
     return {
       url,
@@ -45,18 +44,14 @@ class AccessibilityAuditor {
           failureSummary: n.failureSummary,
         })),
       })),
-      score: this.calculateScore(results),
+      scope: "automated checks only",
+      incomplete: results.incomplete,
+      manualChecks: "not_run",
     };
+    } finally { await browser.close(); }
   }
 
-  calculateScore(results) {
-    const weights = { critical: 10, serious: 5, moderate: 2, minor: 1 };
-    let totalWeight = 0;
-    results.violations.forEach((v) => {
-      totalWeight += weights[v.impact] || 0;
-    });
-    return Math.max(0, 100 - totalWeight);
-  }
+
 }
 
 // Component testing with jest-axe
@@ -309,7 +304,7 @@ const ariaPatterns = {
 
   tabs: `
 <div role="tablist" aria-label="Navigation">
-    <button role="tab" aria-selected="true" aria-controls="panel-1">Tab 1</button>
+    <button id="tab-1" role="tab" aria-selected="true" aria-controls="panel-1">Tab 1</button>
 </div>
 <div role="tabpanel" id="panel-1" aria-labelledby="tab-1">Content</div>`,
 
@@ -363,21 +358,10 @@ const ariaPatterns = {
 ### 6. Remediation Examples
 
 ```javascript
-// Fix missing alt text
-document.querySelectorAll("img:not([alt])").forEach((img) => {
-  const isDecorative =
-    img.role === "presentation" || img.closest('[role="presentation"]');
-  img.setAttribute("alt", isDecorative ? "" : img.title || "Image");
-});
-
-// Fix missing labels
-document
-  .querySelectorAll("input:not([aria-label]):not([id])")
-  .forEach((input) => {
-    if (input.placeholder) {
-      input.setAttribute("aria-label", input.placeholder);
-    }
-  });
+// Do not auto-fill missing alt text with "Image" or infer decoration from ancestry.
+// Inspect the image's actual purpose and supply reviewed text; use alt="" only
+// for a genuinely decorative image. Labels must reflect the real field purpose,
+// not blindly copy a placeholder. Native semantic controls are preferred.
 
 // React accessible components
 const AccessibleButton = ({ children, onClick, ariaLabel, ...props }) => (
@@ -426,13 +410,13 @@ jobs:
       - name: Start server
         run: |
           npm start &
-          npx wait-on http://localhost:3000
+          ./node_modules/.bin/wait-on http://localhost:3000 --timeout 30000
 
       - name: Run axe tests
         run: npm run test:a11y
 
       - name: Run pa11y
-        run: npx pa11y http://localhost:3000 --standard WCAG2AA --threshold 0
+        run: ./node_modules/.bin/pa11y http://localhost:3000 --standard WCAG2AA --threshold 0
 
       - name: Upload report
         uses: actions/upload-artifact@v3
@@ -445,55 +429,24 @@ jobs:
 ### 8. Reporting
 
 ```javascript
-// report-generator.js
-class AccessibilityReportGenerator {
-  generateHTMLReport(auditResults) {
-    return `
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Accessibility Audit</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        .summary { background: #f0f0f0; padding: 20px; border-radius: 8px; }
-        .score { font-size: 48px; font-weight: bold; }
-        .violation { margin: 20px 0; padding: 15px; border: 1px solid #ddd; }
-        .critical { border-color: #f00; background: #fee; }
-        .serious { border-color: #fa0; background: #ffe; }
-    </style>
-</head>
-<body>
-    <h1>Accessibility Audit Report</h1>
-    <p>Generated: ${new Date().toLocaleString()}</p>
-
-    <div class="summary">
-        <h2>Summary</h2>
-        <div class="score">${auditResults.score}/100</div>
-        <p>Total Violations: ${auditResults.violations.length}</p>
-    </div>
-
-    <h2>Violations</h2>
-    ${auditResults.violations
-      .map(
-        (v) => `
-        <div class="violation ${v.impact}">
-            <h3>${v.help}</h3>
-            <p><strong>Impact:</strong> ${v.impact}</p>
-            <p>${v.description}</p>
-            <a href="${v.helpUrl}">Learn more</a>
-        </div>
-    `,
-      )
-      .join("")}
-</body>
-</html>`;
-  }
+// Render findings as text, not trusted HTML. Pure helper; no browser/network needed.
+function escapeReportText(value) {
+  return String(value ?? "").replace(/[&<>"']/g, char => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+  })[char]);
+}
+function renderFindings(violations) {
+  return violations.map(v => `<section><h2>${escapeReportText(v.help)}</h2>` +
+    `<p>${escapeReportText(v.description)}</p>` +
+    `<p>Impact: ${escapeReportText(v.impact)}</p></section>`).join("");
 }
 ```
 
+Retain the target, tool/version, scanned pages, exclusions (with reasons), incomplete automated checks, manual checks and actual evidence references. Do not render arbitrary finding HTML/URLs or award a 100-point compliance score. The contrast and keyboard classes above have missing application adapters and are partial heuristics, not complete validators or screen-reader simulations.
+
 ## Output Format
 
-1. **Accessibility Score**: Overall compliance with WCAG levels
+1. **Audit Scope**: WCAG edition/level, actual tools, tested pages and untested coverage
 2. **Violation Report**: Detailed issues with severity and fixes
 3. **Test Results**: Automated and manual test outcomes
 4. **Remediation Guide**: Step-by-step fixes for each issue

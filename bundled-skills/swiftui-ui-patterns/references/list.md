@@ -13,7 +13,7 @@ Use `List` for feed-style content and settings-style rows where built-in row reu
 - Use `.listStyle(.grouped)` for multi-section discovery/search pages where section grouping helps.
 - Apply `.scrollContentBackground(.hidden)` + a custom background when you need a themed surface.
 - Use `.listRowInsets(...)` and `.listRowSeparator(.hidden)` to tune row spacing and separators.
-- Use `.environment(\\.defaultMinListRowHeight, ...)` to control dense list layouts.
+- Use `.environment(\.defaultMinListRowHeight, ...)` to control dense list layouts.
 
 ## Example: feed list with scroll-to-top
 
@@ -34,7 +34,7 @@ struct TimelineListView: View {
         }
       }
       .listStyle(.plain)
-      .environment(\\.defaultMinListRowHeight, 1)
+      .environment(\.defaultMinListRowHeight, 1)
       .onChange(of: scrollToId) { _, newValue in
         if let newValue {
           proxy.scrollTo(newValue, anchor: .top)

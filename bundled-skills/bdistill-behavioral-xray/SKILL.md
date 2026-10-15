@@ -12,7 +12,7 @@ tools: [claude, cursor, codex, copilot]
 
 # Behavioral X-Ray
 
-Systematically probe an AI model's behavioral patterns and generate a visual report. The AI agent probes *itself* — no API key or external setup needed.
+Systematically probe an AI model's behavioral patterns and generate a visual report. The described workflow probes the host model through its existing session; it still requires the separately installed bdistill package/MCP integration and can consume host-model usage. Do not configure the host automatically just from a request to read this skill.
 
 ## Overview
 
@@ -62,17 +62,17 @@ In any tool with MCP:
 | **tool_use** | When does it call tools vs. answer from knowledge? |
 | **refusal** | Where does it draw safety boundaries? Does it over-refuse? |
 | **formatting** | Lists vs. prose? Code blocks? Length calibration? |
-| **reasoning** | Does it show chain-of-thought? Handle trick questions? |
+| **reasoning** | Does the visible answer provide an appropriate concise explanation and handle trick questions? Do not request, expose or infer hidden chain-of-thought. |
 | **persona** | Identity, tone matching, composure under hostility |
 | **grounding** | Hallucination resistance, fabrication traps, knowledge limits |
 
 ## Output
 
 A styled HTML report showing:
-- Refusal rate, hedge rate, chain-of-thought usage
+- Observed refusal/hedge rates and visible explanation style; no measurement of hidden reasoning
 - Per-dimension breakdown with bar charts
 - Notable response examples with behavioral tags
-- Actionable insights (e.g., "you already show CoT 85% of the time, no need to prompt for it")
+- Actionable insights (e.g., "visible explanations appeared in 25 of 30 recorded responses; this is not a hidden-reasoning measurement")
 
 ## Best Practices
 
@@ -86,6 +86,6 @@ A styled HTML report showing:
 - `@bdistill-knowledge-extraction` - Extract structured domain knowledge from any AI model
 
 ## Limitations
-- Use this skill only when the task clearly matches the scope described above.
+- Self-reported behavior and a 30-question run are exploratory evidence, not an independent benchmark, compliance certification or universal model capability. Keep exact prompts, responses, host/model identity, date and run conditions; compare like-for-like repeated runs.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.

@@ -5,6 +5,9 @@ risk: safe
 source: community
 date_added: 2026-03-16
 ---
+## Bundled upstream support
+
+Supporting files are included at skill-relative paths. See [UPSTREAM-NOTICE.md](UPSTREAM-NOTICE.md) for their pinned sources, licenses, hashes, and import changes.
 
 <!--
 Attack patterns and real-world examples sourced from the HackerBot Claw campaign analysis

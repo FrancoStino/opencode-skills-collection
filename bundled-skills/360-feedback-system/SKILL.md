@@ -61,8 +61,7 @@ Not for payroll, tax, legal, or employment-decision work. This skill does not au
 
 Follow the shared execution contract. The module-specific rules below define only domain fields, decisions, calculations, and safety constraints.
 
-The rules below stand on their own. If the shared execution contract at
-`../../references/execution-contract.md` is unavailable, follow this file directly; a missing
+The rules below stand on their own. If the upstream shared execution contract (not bundled here) is unavailable, follow this file directly; a missing
 reference never blocks basic execution.
 
 ### Step 1 - Identify intent
@@ -78,7 +77,7 @@ here and in the context block with the same spelling:
 | `convert` | "move it from our sheet/forms" | Capture their process, then Step 2 |
 | `export` | "give me the CSV / SQL / JSON / Notion" for confirmed rules | Step 5 |
 
-One message, one question, no batching. Never ask a question whose answer would not change the
+Prefer one concise question for a material ambiguity; bundle related missing facts when the user prefers it. Never ask a question whose answer would not change the
 recommendation or the requested artifact.
 
 ### Scope boundary
@@ -161,7 +160,7 @@ When scoring is mentioned but its policy is incomplete, label each missing input
 `Missing-score behavior: Unknown`, `Not-applicable handling: Unknown`, `Rounding: Unknown`. Do not
 compute an overall figure until all six are resolved.
 
-Do not build unprompted. End with an offer naming the artifacts not yet requested.
+For advice-only requests, offer useful artifacts. A request to build already authorizes artifact generation; do not stop for a second request.
 
 ### Step 5 - Build only on request
 
@@ -291,7 +290,7 @@ was requested.
 
 | # | Field | Type | SQL | JSON Schema | Notion | CSV example |
 |---:|---|---|---|---|---|---|
-| 1 | Feedback ID | `id` | `SERIAL PRIMARY KEY` | `integer` | Text | `(blank)` |
+| 1 | Feedback ID | `id` | `SERIAL PRIMARY KEY` | `integer` | Title (render imported IDs as text) | `(blank)` |
 | 2 | Feedback Type | `select` | `VARCHAR(100) NOT NULL` | `string` | Select (add options after import) | `Peer` |
 | 3 | Feedback Subject | `text` | `VARCHAR(255)` | `string` | Text | `Example Subject 01` |
 | 4 | Reviewer | `text` | `VARCHAR(255)` | `string` | Text | `Example Reviewer` |
@@ -343,9 +342,7 @@ Identified | Confidential | Anonymous
 Not Launched | Collecting | Consolidated | Shared | Closed
 ```
 
-The Status list is a minimal default lifecycle. Use it only when the user confirms a cycle with
-those stages; otherwise derive the statuses from the process they described, or omit the field
-when nothing needs tracking.
+The Status list is an illustrative lifecycle. If the process has no status field, omit it consistently from CSV, SQL, JSON Schema (including `required`) and Notion. The displayed three-field required set applies only to the illustrated schema, not every generated response model.
 
 ## Relations
 
@@ -410,8 +407,8 @@ process facts supplied, not carried over from a template:
 >
 > Workflow: Google Form to Sheet, manager reads the summary, team discussion
 >
-> Rounding is still `Unknown`. Tell me the decimal places and I can build the CSV, SQL DDL, JSON
-> Schema and Notion mapping.
+> Included scores, missing-score behavior, not-applicable handling and rounding remain `Unknown`;
+> do not compute an overall score. A template can still represent the confirmed fields.
 
 ## Best Practices
 

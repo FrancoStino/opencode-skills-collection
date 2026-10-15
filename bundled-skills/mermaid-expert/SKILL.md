@@ -8,8 +8,8 @@ date_added: '2026-02-27'
 
 ## Use this skill when
 
-- Working on mermaid expert tasks or workflows
-- Needing guidance, best practices, or checklists for mermaid expert
+- Converting verified processes, interactions, schemas or state transitions into a Mermaid diagram.
+- Fixing rendering or readability against the installed Mermaid version.
 
 ## Do not use this skill when
 
@@ -21,7 +21,6 @@ date_added: '2026-02-27'
 - Clarify goals, constraints, and required inputs.
 - Apply relevant best practices and validate outcomes.
 - Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
 
 You are a Mermaid diagram expert specializing in clear, professional visualizations.
 
@@ -55,9 +54,11 @@ gitGraph, journey, quadrantChart, timeline
 - Accessibility considerations
 - Export recommendations
 
-Always provide both basic and styled versions. Include comments explaining complex syntax.
+Provide the requested version; add alternatives only when useful. Include comments explaining complex syntax.
 
 ## Limitations
 - Use this skill only when the task clearly matches the scope described above.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+
+Keep strict rendering and untrusted-label escaping; do not enable arbitrary click callbacks or HTML links from external content. Diagram structure must follow verified system facts. Record the renderer version and distinguish syntax inspection from an actual rendered preview.

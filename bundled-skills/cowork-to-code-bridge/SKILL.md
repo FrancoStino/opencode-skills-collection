@@ -9,6 +9,15 @@ license: MIT
 license_source: https://github.com/abhinaykrupa/cowork-to-code-bridge/blob/97f515d425df587c281effb02cda9ad0fd470790/LICENSE
 date_added: "2026-07-30"
 ---
+## Supporting material availability
+
+This catalog copy contains the inline guidance below, but does not include the following supporting paths. They are external prerequisites, not bundled files:
+
+- `<support-root>/scripts/git_status.sh`
+- `<support-root>/scripts/run_claude.sh`
+
+Obtain the required material from the [declared upstream source](https://github.com/abhinaykrupa/cowork-to-code-bridge), or from a user-provided installation of that source. Resolve each path relative to that installation, inspect its contents, and verify any applicable license and execution prerequisites. Do not run a command or claim a referenced procedure was followed until its required file exists. Do not fabricate the missing scripts or treat an unrelated file with the same name as equivalent. Independent steps fully documented here can proceed within the user’s authorized scope; report any dependent step as unavailable.
+
 
 # cowork-to-code-bridge
 

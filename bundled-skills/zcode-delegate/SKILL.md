@@ -18,6 +18,10 @@ compatibility: Requires the `zcode` CLI (Z.AI ZCode) with a configured model pro
 metadata:
   version: 0.5.0
 ---
+## Bundled upstream support
+
+Supporting files are included at skill-relative paths. See [UPSTREAM-NOTICE.md](UPSTREAM-NOTICE.md) for their pinned sources, licenses, hashes, and import changes.
+
 # ZCode Delegate
 
 ## When to Use
@@ -169,7 +173,7 @@ Full checklist: [references/review-and-land.md](references/review-and-land.md).
 
 ## Read-only second opinions
 
-The relay doubles as a way to get an adversarial second opinion with no write risk: dispatch
+The relay doubles as a way to get an adversarial second opinion with write detection, not a sandbox: dispatch
 `--read-only` with a brief listing the agreed points, then each contested point with both positions,
 and ask ZCode to defend or concede each. Because plan mode's guarantee is measured rather than
 enforced here, verify `touchedFiles` came back empty instead of assuming no edits.
@@ -196,7 +200,11 @@ correct completion needs going beyond the brief, ask). The full treatment is in
 
 ## Limitations
 
-- Docs-only import — executable `scripts/relay.mjs` not included; see upstream for full runtime. Requires `zcode` CLI, Node 18+, git.
+- `.cmd`/`.bat` shell shims are refused before version probing or dispatch. On Windows select a reviewed ZCode Node CLI entry (`.cjs`/`.mjs`/`.js`) or native executable using `--zcode-path`; arguments are passed directly with shell execution disabled. Local refusal regressions do not prove native Windows execution.
+
+- Runtime helper `scripts/relay.mjs` is bundled from the revision recorded in `UPSTREAM-NOTICE.md`. Requires the corresponding installed and authenticated CLI, Node 18+, and git.
 - Relay never commits — it only returns structured result JSON; you review and land the commit.
 
-> Adapted from [amElnagdy/delegate-skills](https://github.com/amElnagdy/delegate-skills) (MIT) — docs-only, runtime not bundled.
+> Adapted from [amElnagdy/delegate-skills](https://github.com/amElnagdy/delegate-skills) (MIT). The relay runtime and support references are bundled; the authenticated ZCode CLI is not.
+
+Run artifacts use a fresh private temporary directory by default. A supplied `--out-dir` must be a new path; existing directories and links are rejected to preserve prior briefs/results. The directory is owner-only on POSIX; verify equivalent ACLs on Windows.

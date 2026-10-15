@@ -4,7 +4,7 @@
     "path": "skills/00-andruia-consultant",
     "category": "andruia",
     "name": "00-andruia-consultant",
-    "description": "Arquitecto de Soluciones Principal y Consultor Tecnológico de Andru.ia. Diagnostica y traza la hoja de ruta óptima para proyectos de IA en español.",
+    "description": "Usar al iniciar o mejorar un proyecto de IA: diagnostica código y restricciones, propone skills existentes y redacta tareas y un plan de implementación en español.",
     "risk": "safe",
     "source": "personal",
     "date_added": "2026-02-27",
@@ -56,7 +56,7 @@
     "path": "skills/10-andruia-skill-smith",
     "category": "andruia",
     "name": "10-andruia-skill-smith",
-    "description": "Ingeniero de Sistemas de Andru.ia. Diseña, redacta y despliega nuevas habilidades (skills) dentro del repositorio siguiendo el Estándar de Diamante.",
+    "description": "Usar para crear o mejorar una skill de Andru.ia: define entradas y resultados, redacta SKILL.md con ejemplos y límites, valida la estructura y prepara una PR.",
     "risk": "safe",
     "source": "personal",
     "date_added": "2026-02-25",
@@ -78,7 +78,7 @@
     "path": "skills/20-andruia-niche-intelligence",
     "category": "andruia",
     "name": "20-andruia-niche-intelligence",
-    "description": "Estratega de Inteligencia de Dominio de Andru.ia. Analiza el nicho específico de un proyecto para inyectar conocimientos, regulaciones y estándares únicos del sector. Actívalo tras definir el nicho.",
+    "description": "Usar tras definir el sector de un proyecto: prepara un dossier en español con contexto, normas aplicables, patrones UX y riesgos, distinguiendo fuentes verificadas de hipótesis.",
     "risk": "safe",
     "source": "personal",
     "date_added": "2026-02-27",
@@ -235,7 +235,7 @@
     "path": "skills/3d-web-experience",
     "category": "design",
     "name": "3d-web-experience",
-    "description": "Expert in building 3D experiences for the web - Three.js, React Three Fiber, Spline, WebGL, and interactive 3D scenes. Covers product configurators, 3D portfolios, immersive websites, and bringing depth to web experiences.",
+    "description": "Use when building or debugging web 3D scenes, product configurators or portfolios with Three.js, React Three Fiber or Spline; review assets, loading, controls, fallbacks and performance.",
     "risk": "critical",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -393,7 +393,7 @@
     "category": "workflow",
     "name": "acceptance-orchestrator",
     "description": "Use when a coding task should be driven end-to-end from issue intake through implementation, review, deployment, and acceptance verification with minimal human re-intervention.",
-    "risk": "safe",
+    "risk": "critical",
     "source": "community",
     "date_added": "2026-03-12",
     "plugin": {
@@ -474,7 +474,7 @@
     "path": "skills/accessibility-compliance-accessibility-audit",
     "category": "design",
     "name": "accessibility-compliance-accessibility-audit",
-    "description": "You are an accessibility expert specializing in WCAG compliance, inclusive design, and assistive technology compatibility. Conduct audits, identify barriers, and provide remediation guidance.",
+    "description": "Audit pages and user journeys against a declared WCAG scope. Use when identifying keyboard, screen-reader, focus or contrast barriers and planning verified remediation.",
     "risk": "safe",
     "source": "community",
     "date_added": "2026-02-27",
@@ -541,7 +541,7 @@
     "category": "design",
     "name": "accesslint-scan",
     "description": "Audit a live page for accessibility issues, locate each WCAG violation precisely, and return a selector-grounded fix worklist without editing.",
-    "risk": "safe",
+    "risk": "critical",
     "source": "https://github.com/AccessLint/skills",
     "date_added": "2026-06-02",
     "plugin": {
@@ -841,7 +841,7 @@
     "date_added": "2026-03-25",
     "plugin": {
       "targets": {
-        "codex": "blocked",
+        "codex": "supported",
         "claude": "supported"
       },
       "setup": {
@@ -849,9 +849,7 @@
         "summary": "",
         "docs": null
       },
-      "reasons": [
-        "target_specific_home_path"
-      ]
+      "reasons": []
     }
   },
   {
@@ -1003,10 +1001,10 @@
   {
     "id": "aegisops-ai",
     "path": "skills/aegisops-ai",
-    "category": "devops",
+    "category": "uncategorized",
     "name": "aegisops-ai",
-    "description": "Autonomous DevSecOps & FinOps Guardrails. Orchestrates Gemini 3 Flash to audit Linux Kernel patches, Terraform cost drifts, and K8s compliance.",
-    "risk": "safe",
+    "description": "Autonomous DevSecOps & FinOps Guardrails. Guide to reviewing Linux kernel patches, Terraform cost changes and Kubernetes policy with a separately reviewed upstream tool and configured model.",
+    "risk": "critical",
     "source": "community",
     "date_added": "2026-03-24",
     "plugin": {
@@ -1182,7 +1180,7 @@
     "path": "skills/agent-manager-skill",
     "category": "ai-agents",
     "name": "agent-manager-skill",
-    "description": "Manage multiple local CLI agents via tmux sessions (start/stop/monitor/assign) with cron-friendly scheduling.",
+    "description": "Manage multiple local CLI agents via tmux sessions (start/stop/monitor/assign) in an explicitly authorized workspace.",
     "risk": "critical",
     "source": "community",
     "date_added": "2026-02-27",
@@ -1285,7 +1283,7 @@
     "path": "skills/agent-memory-systems",
     "category": "memory",
     "name": "agent-memory-systems",
-    "description": "Memory is the cornerstone of intelligent agents. Without it, every interaction starts from zero. This skill covers the architecture of agent memory: short-term (context window), long-term (vector stores), and the cognitive architectures that organize them.",
+    "description": "Design tenant-scoped memory, retrieval and retention for agents. Use when planning RAG, conversation history, vector stores or remembering across sessions.",
     "risk": "safe",
     "source": "vibeship-spawner-skills (Apache 2.0)",
     "date_added": "2026-02-27",
@@ -1378,7 +1376,7 @@
     "category": "ai-ml",
     "name": "agent-orchestrator",
     "description": "Meta-skill que orquestra todos os agentes do ecossistema. Scan automatico de skills, match por capacidades, coordenacao de workflows multi-skill e registry management.",
-    "risk": "safe",
+    "risk": "critical",
     "source": "community",
     "date_added": "2026-03-06",
     "plugin": {
@@ -1612,8 +1610,8 @@
     "path": "skills/agentflow",
     "category": "agent-orchestration",
     "name": "agentflow",
-    "description": "Orchestrate autonomous AI development pipelines through your Kanban board (Asana, GitHub Projects, Linear). Manages multi-worker Claude Code dispatch, deterministic quality gates, adversarial review, per-task cost tracking, and crash-proof pipeline execution.",
-    "risk": "safe",
+    "description": "Orchestrate autonomous AI development pipelines through your Kanban board (Asana, GitHub Projects, Linear). Manages multi-worker Claude Code dispatch, deterministic quality gates, adversarial review, per-task cost tracking, and recoverable pipeline design.",
+    "risk": "critical",
     "source": "community",
     "date_added": "2026-04-02",
     "plugin": {
@@ -1658,7 +1656,7 @@
     "path": "skills/agentic-actions-auditor",
     "category": "ai-ml",
     "name": "agentic-actions-auditor",
-    "description": "Audits GitHub Actions workflows for security vulnerabilities in AI agent integrations  including Claude Code Action,  Gemini CLI, OpenAI Codex, and GitHub AI  Inference.  Detects attack vectors where attacker-controlled  input reaches. AI agents running in CI/CD pipelines.\n",
+    "description": "Audits GitHub Actions workflows for security vulnerabilities in AI agent integrations including Claude Code Action, Gemini CLI, OpenAI Codex, and GitHub AI  Inference. Detects attack vectors where attacker-controlled  input reaches AI agents running in CI/CD pipelines.\n",
     "risk": "safe",
     "source": "community",
     "date_added": "2026-03-18",
@@ -1680,8 +1678,8 @@
     "path": "skills/agentmail",
     "category": "ai-ml",
     "name": "agentmail",
-    "description": "Email infrastructure for AI agents. Create accounts, send/receive emails, manage webhooks, and check karma balance via the AgentMail API.",
-    "risk": "safe",
+    "description": "Email infrastructure for AI agents. Create accounts, send/receive emails, manage webhooks, and inspect billing balance via the AgentMail API.",
+    "risk": "critical",
     "source": "community",
     "date_added": "2026-09-04",
     "plugin": {
@@ -1779,7 +1777,7 @@
     "path": "skills/agents-v2-py",
     "category": "ai-ml",
     "name": "agents-v2-py",
-    "description": "Build container-based Foundry Agents with Azure AI Projects SDK (ImageBasedHostedAgentDefinition). Use when creating hosted agents with custom container images in Azure AI Foundry.",
+    "description": "Build container-based Foundry Agents with Azure AI Projects SDK (HostedAgentDefinition). Use when creating hosted agents with custom container images in Azure AI Foundry.",
     "risk": "critical",
     "source": "community",
     "date_added": "2026-02-27",
@@ -1977,7 +1975,7 @@
     "path": "skills/ai-agent-tool-routing",
     "category": "engineering",
     "name": "ai-agent-tool-routing",
-    "description": "Autonomous AI agent tool router register: schema registration, runtime parameter coercion, idempotency keys, and error recovery policies.",
+    "description": "Use when designing or reviewing an AI agent tool registry or MCP router: document parameter schemas, caller authorization, execution limits, replay-safe retries and verification evidence.",
     "risk": "safe",
     "source": "self",
     "date_added": "2026-10-01",
@@ -2032,7 +2030,7 @@
     "path": "skills/ai-analyzer",
     "category": "ai-ml",
     "name": "ai-analyzer",
-    "description": "AI驱动的综合健康分析系统，整合多维度健康数据、识别异常模式、预测健康风险、提供个性化建议。支持智能问答和AI健康报告生成。",
+    "description": "AI驱动的综合健康分析系统，整合多维度健康数据、识别异常模式、整理风险因素、提供一般性健康信息。支持智能问答和AI健康报告生成。",
     "risk": "critical",
     "source": "community",
     "date_added": "2026-09-04",
@@ -2054,7 +2052,7 @@
     "path": "skills/ai-code-generation-guardrails",
     "category": "engineering",
     "name": "ai-code-generation-guardrails",
-    "description": "Autonomous AI code generation safety guardrail register: static AST analysis, forbidden import filters, and zero-day vulnerability checks.",
+    "description": "Use when reviewing AI-generated code before merge or execution: plan AST/security checks, isolated behavior tests and evidence, with language-specific coverage limits.",
     "risk": "safe",
     "source": "self",
     "date_added": "2026-10-01",
@@ -2112,7 +2110,7 @@
     "path": "skills/ai-dev-jobs-mcp",
     "category": "mcp",
     "name": "ai-dev-jobs-mcp",
-    "description": "Search 8,400+ AI and ML jobs across 489 companies, inspect listings and employers, match roles, and view salary and market stats via AI Dev Jobs MCP",
+    "description": "Search indexed AI and ML jobs, inspect listings and employers, match roles, and view salary and market stats via AI Dev Jobs MCP",
     "risk": "safe",
     "source": "https://aidevboard.com",
     "date_added": "2026-04-16",
@@ -2166,13 +2164,13 @@
     "path": "skills/ai-engineering-toolkit",
     "category": "data-ai",
     "name": "ai-engineering-toolkit",
-    "description": "6 production-ready AI engineering workflows: prompt evaluation (8-dimension scoring), context budget planning, RAG pipeline design, agent security audit (65-point checklist), eval harness building, and product sense coaching.",
+    "description": "Overview of six AI engineering workflows: prompt evaluation (8-dimension scoring), context budget planning, RAG pipeline design, agent security audit (65-point checklist), eval harness building, and product sense coaching.",
     "risk": "offensive",
     "source": "community",
     "date_added": "2026-03-15",
     "plugin": {
       "targets": {
-        "codex": "blocked",
+        "codex": "supported",
         "claude": "supported"
       },
       "setup": {
@@ -2180,9 +2178,7 @@
         "summary": "",
         "docs": null
       },
-      "reasons": [
-        "target_specific_home_path"
-      ]
+      "reasons": []
     },
     "tags": [
       "prompt-engineering",
@@ -2264,7 +2260,7 @@
     "path": "skills/ai-inference-service-mesh",
     "category": "devops",
     "name": "ai-inference-service-mesh",
-    "description": "Use service mesh patterns for AI inference traffic management, mTLS, canary releases, policy enforcement, and cross-cluster resilience.",
+    "description": "Use verified service mesh patterns for AI inference traffic management, mTLS, canary releases, policy enforcement, and cross-cluster resilience.",
     "risk": "critical",
     "source": "https://github.com/BagelHole/DevOps-Security-Agent-Skills",
     "date_added": "2026-09-20",
@@ -2594,7 +2590,7 @@
     "path": "skills/ai-prompt-regression-testing",
     "category": "engineering",
     "name": "ai-prompt-regression-testing",
-    "description": "Prompt engineering regression test matrix register: baseline outputs, semantic drift thresholds, judge evaluations, and golden dataset.",
+    "description": "Use when comparing prompt changes against a fixed evaluation set: record actual model settings, required checks, missing results, judge limitations and case-level regression evidence.",
     "risk": "safe",
     "source": "self",
     "date_added": "2026-10-01",
@@ -2627,7 +2623,7 @@
     "category": "security",
     "name": "ai-red-teaming",
     "description": "Run structured AI red team exercises for jailbreak resistance, data exfiltration risk, harmful output controls, and agent tool abuse resilience.",
-    "risk": "safe",
+    "risk": "offensive",
     "source": "https://github.com/BagelHole/DevOps-Security-Agent-Skills",
     "date_added": "2026-09-20",
     "plugin": {
@@ -2847,7 +2843,7 @@
     "category": "security",
     "name": "akf-trust-metadata",
     "description": "The AI native file format. EXIF for AI — stamps every file with trust scores, source provenance, and compliance metadata. Embeds into 20+ formats (DOCX, PDF, images, code). EU AI Act, SOX, HIPAA auditing.",
-    "risk": "safe",
+    "risk": "critical",
     "source": "community",
     "date_added": "2026-03-27",
     "plugin": {
@@ -3571,7 +3567,7 @@
     "path": "skills/anti-reversing-techniques",
     "category": "security",
     "name": "anti-reversing-techniques",
-    "description": "AUTHORIZED USE ONLY: This skill contains dual-use security techniques. Before proceeding with any bypass or analysis: > 1.",
+    "description": "Analyze anti-debugging, obfuscation, and anti-tamper techniques during authorized binary analysis and reverse engineering.",
     "risk": "offensive",
     "source": "community",
     "date_added": "2026-02-27",
@@ -4348,28 +4344,6 @@
     "description": "Implement secure API design patterns including authentication, authorization, input validation, rate limiting, and protection against common API vulnerabilities",
     "risk": "critical",
     "source": "community",
-    "date_added": "2026-02-27",
-    "plugin": {
-      "targets": {
-        "codex": "supported",
-        "claude": "supported"
-      },
-      "setup": {
-        "type": "none",
-        "summary": "",
-        "docs": null
-      },
-      "reasons": []
-    }
-  },
-  {
-    "id": "api-security-testing",
-    "path": "skills/api-security-testing",
-    "category": "granular-workflow-bundle",
-    "name": "api-security-testing",
-    "description": "API security testing workflow for REST and GraphQL APIs covering authentication, authorization, rate limiting, input validation, and security best practices.",
-    "risk": "safe",
-    "source": "personal",
     "date_added": "2026-02-27",
     "plugin": {
       "targets": {
@@ -6262,9 +6236,9 @@
   {
     "id": "avoid-ai-writing",
     "path": "skills/avoid-ai-writing",
-    "category": "content",
+    "category": "uncategorized",
     "name": "avoid-ai-writing",
-    "description": "Audit and rewrite content to remove 21 categories of AI writing patterns with a 43-entry replacement table",
+    "description": "Audit and rewrite prose for repetitive, vague, or formulaic wording while preserving meaning, evidence, and the writer's voice.",
     "risk": "none",
     "source": "https://github.com/conorbronsdon/avoid-ai-writing",
     "date_added": "2026-03-06",
@@ -6859,7 +6833,7 @@
     "path": "skills/aws-skills",
     "category": "cloud",
     "name": "aws-skills",
-    "description": "AWS development with infrastructure automation and cloud architecture patterns",
+    "description": "Plan and review AWS architecture and infrastructure changes using the upstream AWS skill collection.",
     "risk": "safe",
     "source": "https://github.com/zxkane/aws-skills",
     "date_added": "2026-02-27",
@@ -7463,7 +7437,7 @@
     "path": "skills/azure-ai-transcription-py",
     "category": "cloud",
     "name": "azure-ai-transcription-py",
-    "description": "Azure AI Transcription SDK for Python. Use for real-time and batch speech-to-text transcription with timestamps and diarization.",
+    "description": "Azure AI Transcription SDK for Python. Use for audio-file transcription with timestamps; distinguish this client from streaming and asynchronous batch Speech APIs.",
     "risk": "critical",
     "source": "community",
     "date_added": "2026-02-27",
@@ -7798,7 +7772,7 @@
     "category": "cloud",
     "name": "azure-communication-callingserver-java",
     "description": "⚠️ DEPRECATED: This SDK has been renamed to Call Automation. For new projects, use azure-communication-callautomation instead. This skill is for maintaining legacy code only.",
-    "risk": "safe",
+    "risk": "critical",
     "source": "community",
     "date_added": "2026-02-27",
     "plugin": {
@@ -11618,6 +11592,42 @@
     }
   },
   {
+    "id": "browser-bridge",
+    "path": "skills/browser-bridge",
+    "category": "automation",
+    "name": "browser-bridge",
+    "description": "Inspect, control, and automate tasks in your real Microsoft Edge or Google Chrome browser via Chrome DevTools Protocol (CDP) with bilingual UI, native tab grouping, and self-healing daemon.",
+    "risk": "critical",
+    "source": "community",
+    "date_added": "2026-10-14",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "AshenJyy/antigravity-browser-bridge",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/AshenJyy/antigravity-browser-bridge/blob/main/LICENSE",
+    "tags": [
+      "browser",
+      "automation",
+      "cdp",
+      "edge",
+      "chrome",
+      "antigravity",
+      "gemini",
+      "i18n"
+    ]
+  },
+  {
     "id": "browser-extension-builder",
     "path": "skills/browser-extension-builder",
     "category": "web-development",
@@ -12004,7 +12014,7 @@
     "path": "skills/build",
     "category": "workflow",
     "name": "build",
-    "description": "build",
+    "description": "Use when developing a major feature: research the project, create a phased implementation plan, track progress and verify phase outcomes before declaring completion.",
     "risk": "critical",
     "source": "community",
     "date_added": "2026-09-04",
@@ -12416,8 +12426,8 @@
     },
     "source_type": "official",
     "source_repo": "BuyWhere/buywhere-mcp",
-    "license": "Not declared",
-    "license_source": "https://github.com/BuyWhere/buywhere-mcp",
+    "license": "MIT",
+    "license_source": "https://github.com/BuyWhere/buywhere-mcp/blob/eeb06674c9a22dcd103adecbed5a66c9473f55d7/LICENSE",
     "tags": [
       "buywhere",
       "ecommerce",
@@ -12488,7 +12498,7 @@
     "path": "skills/c-pro",
     "category": "code",
     "name": "c-pro",
-    "description": "Write efficient C code with proper memory management, pointer",
+    "description": "Review and implement C systems code with explicit memory ownership, pointer bounds, error handling, and measured performance.",
     "risk": "critical",
     "source": "community",
     "date_added": "2026-02-27",
@@ -13602,7 +13612,7 @@
     "path": "skills/clarvia-aeo-check",
     "category": "tool-quality",
     "name": "clarvia-aeo-check",
-    "description": "Score any MCP server, API, or CLI for agent-readiness using Clarvia AEO (Agent Experience Optimization). Search 15,400+ indexed tools before adding them to your workflow.",
+    "description": "Score any MCP server, API, or CLI for agent-readiness using Clarvia AEO (Agent Experience Optimization). Use current provider evidence as advisory input when evaluating a tool.",
     "risk": "safe",
     "source": "community",
     "date_added": "2026-03-27",
@@ -13633,7 +13643,7 @@
     "category": "ai-ml",
     "name": "claude-ally-health",
     "description": "A health assistant skill for medical information analysis, symptom tracking, and wellness guidance.",
-    "risk": "safe",
+    "risk": "critical",
     "source": "https://github.com/huifer/Claude-Ally-Health",
     "date_added": "2026-02-27",
     "plugin": {
@@ -13899,8 +13909,8 @@
     "path": "skills/claude-win11-speckit-update-skill",
     "category": "ai-ml",
     "name": "claude-win11-speckit-update-skill",
-    "description": "Windows 11 system management",
-    "risk": "safe",
+    "description": "Review updates to GitHub SpecKit on Windows 11 with PowerShell, preserving local templates and customizations",
+    "risk": "critical",
     "source": "https://github.com/NotMyself/claude-win11-speckit-update-skill",
     "date_added": "2026-02-27",
     "plugin": {
@@ -14746,7 +14756,7 @@
     "path": "skills/code-refactoring-context-restore",
     "category": "development",
     "name": "code-refactoring-context-restore",
-    "description": "Use when working with code refactoring context restore",
+    "description": "Resume interrupted project work from a handoff and current checkout evidence; reconcile completed work, pending changes and existing user constraints.",
     "risk": "critical",
     "source": "community",
     "date_added": "2026-02-27",
@@ -15580,7 +15590,7 @@
     "path": "skills/commit",
     "category": "workflow",
     "name": "commit",
-    "description": "ALWAYS use this skill when committing code changes — never commit directly without it. Creates commits following Sentry conventions with proper conventional commit format and issue references. Trigger on any commit, git commit, save changes, or commit message task.",
+    "description": "Prepare or create commits using Sentry-style message conventions when the repository requests them; inspect staged scope and honor its protected branch workflow.",
     "risk": "critical",
     "source": "community",
     "date_added": "2026-09-04",
@@ -16014,7 +16024,7 @@
     "path": "skills/computer-vision-expert",
     "category": "ai-ml",
     "name": "computer-vision-expert",
-    "description": "SOTA Computer Vision Expert (2026). Specialized in YOLO26, Segment Anything 3 (SAM 3), Vision Language Models, and real-time spatial analysis.",
+    "description": "Computer vision pipeline design and evaluation. Specialized in YOLO26, Segment Anything 3 (SAM 3), Vision Language Models, and real-time spatial analysis.",
     "risk": "critical",
     "source": "community",
     "date_added": "2026-02-27",
@@ -16675,7 +16685,7 @@
     "path": "skills/context-management-context-restore",
     "category": "ai-ml",
     "name": "context-management-context-restore",
-    "description": "Use when working with context management context restore",
+    "description": "Resume interrupted project work from a handoff and current checkout evidence; reconcile completed work, pending changes and existing user constraints.",
     "risk": "critical",
     "source": "community",
     "date_added": "2026-02-27",
@@ -17927,7 +17937,7 @@
     "path": "skills/crypto-bd-agent",
     "category": "blockchain",
     "name": "crypto-bd-agent",
-    "description": "Production-tested patterns for building AI agents that autonomously discover, > evaluate, and acquire token listings for cryptocurrency exchanges.",
+    "description": "Production-tested patterns for building AI agents that autonomously discover, evaluate, and acquire token listings for cryptocurrency exchanges.",
     "risk": "safe",
     "source": "community",
     "date_added": "2026-02-27",
@@ -17971,7 +17981,7 @@
     "path": "skills/csharp-pro",
     "category": "code",
     "name": "csharp-pro",
-    "description": "Write modern C# code with advanced features like records, pattern matching, and async/await. Optimizes .NET applications, implements enterprise patterns, and ensures comprehensive testing.",
+    "description": "Write modern C# code with advanced features like records, pattern matching, and async/await. Use for version-compatible .NET implementation and evidence-based testing/performance review.",
     "risk": "critical",
     "source": "community",
     "date_added": "2026-02-27",
@@ -19552,7 +19562,7 @@
     "category": "development",
     "name": "debugging-toolkit",
     "description": "Use when working with debugging toolkit smart debug (Alias for debugging-toolkit-smart-debug)",
-    "risk": "none",
+    "risk": "critical",
     "source": "alias",
     "date_added": "2026-06-02",
     "plugin": {
@@ -19573,7 +19583,7 @@
     "path": "skills/debugging-toolkit-smart-debug",
     "category": "development",
     "name": "debugging-toolkit-smart-debug",
-    "description": "Use when working with debugging toolkit smart debug",
+    "description": "Diagnose failures from reproduction steps, traces, logs and code; test hypotheses and verify a scoped fix without inventing production evidence.",
     "risk": "critical",
     "source": "community",
     "date_added": "2026-02-27",
@@ -19619,21 +19629,25 @@
     "category": "ai-ml",
     "name": "deep-research",
     "description": "Run autonomous research tasks that plan, search, read, and synthesize information into comprehensive reports.",
-    "risk": "safe",
+    "risk": "critical",
     "source": "https://github.com/sanjay3290/ai-skills/tree/main/skills/deep-research",
     "date_added": "2026-02-27",
     "plugin": {
       "targets": {
-        "codex": "supported",
-        "claude": "supported"
+        "codex": "blocked",
+        "claude": "blocked"
       },
       "setup": {
         "type": "none",
         "summary": "",
         "docs": null
       },
-      "reasons": []
-    }
+      "reasons": [
+        "undeclared_runtime_dependency"
+      ]
+    },
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/sanjay3290/ai-skills/blob/281d88df199357e3091a3be5c743a0fca9a9ae1b/LICENSE"
   },
   {
     "id": "deep-research-framework",
@@ -19907,7 +19921,7 @@
     "category": "agent-squad",
     "name": "dep",
     "description": "Handles containerization, CI/CD pipelines, and deployment setup.",
-    "risk": "safe",
+    "risk": "critical",
     "source": "community",
     "date_added": "2026-06-11",
     "plugin": {
@@ -20113,7 +20127,7 @@
     "path": "skills/deployment-validation-config-validate",
     "category": "devops",
     "name": "deployment-validation-config-validate",
-    "description": "You are a configuration management expert specializing in validating, testing, and ensuring the correctness of application configurations. Create comprehensive validation schemas, implement configurat",
+    "description": "Validate application configurations with schemas, configuration tests, and checks for security and environment consistency.",
     "risk": "critical",
     "source": "community",
     "date_added": "2026-02-27",
@@ -20490,7 +20504,7 @@
     "path": "skills/deterministic-design",
     "category": "design",
     "name": "deterministic-design",
-    "description": "Render the UI and prove it's balanced + usable: a deterministic layout audit (centroid / optical-center / pixel-oracle balance via explicit math + annotated screenshot) plus a vision-judged Nielsen usability audit by a separate fresh-eyes judge. The measurement layer taste-only design skills lack.",
+    "description": "Measure rendered UI layout with reproducible spatial metrics and a separately assessed usability review; distinguish measurements from subjective judgments and user tests.",
     "risk": "safe",
     "source": "community",
     "date_added": "2026-06-16",
@@ -21395,7 +21409,7 @@
     "path": "skills/django-access-review",
     "category": "backend",
     "name": "django-access-review",
-    "description": "django-access-review",
+    "description": "Use when reviewing Django or DRF access control: trace authorization flows, IDOR risks, object permissions, query scoping and tenant isolation before proposing a verified fix.",
     "risk": "critical",
     "source": "community",
     "date_added": "2026-09-04",
@@ -21433,7 +21447,7 @@
       },
       "reasons": []
     },
-    "license": "LICENSE"
+    "license": "Apache-2.0"
   },
   {
     "id": "django-pro",
@@ -22356,7 +22370,7 @@
     "path": "skills/dx-optimizer",
     "category": "development",
     "name": "dx-optimizer",
-    "description": "Developer Experience specialist. Improves tooling, setup, and workflows. Use PROACTIVELY when setting up new projects, after team feedback, or when development friction is noticed.",
+    "description": "Developer Experience specialist. Improves tooling, setup, and workflows. Use for requested project setup or measured development friction; respect existing team conventions.",
     "risk": "critical",
     "source": "community",
     "date_added": "2026-02-27",
@@ -22577,8 +22591,8 @@
     "path": "skills/eas-workflows",
     "category": "mobile",
     "name": "eas-workflows",
-    "description": "Curated upstream guidance for Eas Workflows; use when the workflow matches the user goal.",
-    "risk": "unknown",
+    "description": "Use when writing or reviewing Expo EAS workflow YAML: inspect current schema and job syntax, validate configuration, and separate draft edits from launching builds or submissions.",
+    "risk": "critical",
     "source": "expo",
     "date_added": "2026-09-21",
     "plugin": {
@@ -22594,7 +22608,8 @@
       "reasons": []
     },
     "source_type": "official",
-    "source_repo": "expo/skills"
+    "source_repo": "expo/skills",
+    "license": "MIT"
   },
   {
     "id": "ebpf-observability",
@@ -23550,7 +23565,7 @@
     "path": "skills/error-debugging-multi-agent-review",
     "category": "development",
     "name": "error-debugging-multi-agent-review",
-    "description": "Use when working with error debugging multi agent review",
+    "description": "Review a defined code diff from relevant correctness, authorization and performance perspectives; delegate only when authorized and reproduce findings centrally.",
     "risk": "safe",
     "source": "community",
     "date_added": "2026-02-27",
@@ -23638,7 +23653,7 @@
     "path": "skills/error-diagnostics-smart-debug",
     "category": "development",
     "name": "error-diagnostics-smart-debug",
-    "description": "Use when working with error diagnostics smart debug",
+    "description": "Diagnose failures from reproduction steps, traces, logs and code; test hypotheses and verify a scoped fix without inventing production evidence.",
     "risk": "critical",
     "source": "community",
     "date_added": "2026-02-27",
@@ -24477,7 +24492,7 @@
     "path": "skills/expo-ui-jetpack-compose",
     "category": "mobile",
     "name": "expo-ui-jetpack-compose",
-    "description": "expo-ui-jetpack-compose",
+    "description": "Build Android-native Expo SDK 55 UI with Jetpack Compose views/modifiers, Host sizing and platform-specific integration.",
     "risk": "critical",
     "source": "community",
     "date_added": "2026-09-04",
@@ -24499,7 +24514,7 @@
     "path": "skills/expo-ui-swift-ui",
     "category": "mobile",
     "name": "expo-ui-swift-ui",
-    "description": "expo-ui-swift-ui",
+    "description": "Build iOS-native Expo SDK 55 UI with SwiftUI views/modifiers, Host/RNHostView embedding and native rebuild prerequisites.",
     "risk": "critical",
     "source": "community",
     "date_added": "2026-09-04",
@@ -24617,7 +24632,7 @@
     "category": "agent-orchestration",
     "name": "fact-check-x-unified",
     "description": "Fact-Check-X 流程编排能力，依次组织各方答案汇总、各方答案聚合（未核验）、权威核验后的最终答案和各方答案测评，生成可打开、可审计、可迁移的阶段产物与完整报告包。",
-    "risk": "unknown",
+    "risk": "critical",
     "source": "asi2030",
     "date_added": "2026-09-21",
     "plugin": {
@@ -24756,7 +24771,7 @@
     "category": "voice-agents",
     "name": "fal-audio",
     "description": "Text-to-speech and speech-to-text using fal.ai audio models",
-    "risk": "safe",
+    "risk": "critical",
     "source": "https://github.com/fal-ai-community/skills/blob/main/skills/claude.ai/fal-audio/SKILL.md",
     "date_added": "2026-02-27",
     "plugin": {
@@ -24778,7 +24793,7 @@
     "category": "ai-ml",
     "name": "fal-generate",
     "description": "Generate images and videos using fal.ai AI models",
-    "risk": "safe",
+    "risk": "critical",
     "source": "https://github.com/fal-ai-community/skills/blob/main/skills/claude.ai/fal-generate/SKILL.md",
     "date_added": "2026-02-27",
     "plugin": {
@@ -24800,7 +24815,7 @@
     "category": "ai-ml",
     "name": "fal-image-edit",
     "description": "AI-powered image editing with style transfer and object removal",
-    "risk": "safe",
+    "risk": "critical",
     "source": "https://github.com/fal-ai-community/skills/blob/main/skills/claude.ai/fal-image-edit/SKILL.md",
     "date_added": "2026-02-27",
     "plugin": {
@@ -24822,7 +24837,7 @@
     "category": "ai-ml",
     "name": "fal-platform",
     "description": "Platform APIs for model management, pricing, and usage tracking",
-    "risk": "safe",
+    "risk": "critical",
     "source": "https://github.com/fal-ai-community/skills/blob/main/skills/claude.ai/fal-platform/SKILL.md",
     "date_added": "2026-02-27",
     "plugin": {
@@ -24844,7 +24859,7 @@
     "category": "ai-ml",
     "name": "fal-upscale",
     "description": "Upscale and enhance image and video resolution using AI",
-    "risk": "safe",
+    "risk": "critical",
     "source": "https://github.com/fal-ai-community/skills/blob/main/skills/claude.ai/fal-upscale/SKILL.md",
     "date_added": "2026-02-27",
     "plugin": {
@@ -24866,7 +24881,7 @@
     "category": "ai-ml",
     "name": "fal-workflow",
     "description": "Generate workflow JSON files for chaining AI models",
-    "risk": "safe",
+    "risk": "critical",
     "source": "https://github.com/fal-ai-community/skills/blob/main/skills/claude.ai/fal-workflow/SKILL.md",
     "date_added": "2026-02-27",
     "plugin": {
@@ -24921,7 +24936,7 @@
     "path": "skills/family-health-analyzer",
     "category": "health",
     "name": "family-health-analyzer",
-    "description": "分析家族病史、评估遗传风险、识别家庭健康模式、提供个性化预防建议",
+    "description": "整理家族病史和已知健康记录，识别需要医生或遗传咨询师评估的线索，不计算未经验证的个体发病概率",
     "risk": "critical",
     "source": "community",
     "date_added": "2026-09-04",
@@ -25065,7 +25080,7 @@
     "category": "legal",
     "name": "fda-food-safety-auditor",
     "description": "Expert AI auditor for FDA Food Safety (FSMA), HACCP, and PCQI compliance. Reviews food facility records and preventive controls.",
-    "risk": "safe",
+    "risk": "critical",
     "source": "community",
     "date_added": "2026-09-04",
     "plugin": {
@@ -25087,7 +25102,7 @@
     "category": "legal",
     "name": "fda-medtech-compliance-auditor",
     "description": "Expert AI auditor for Medical Device (SaMD) compliance, IEC 62304, and 21 CFR Part 820. Reviews DHFs, technical files, and software validation.",
-    "risk": "none",
+    "risk": "critical",
     "source": "community",
     "date_added": "2026-09-04",
     "plugin": {
@@ -25226,7 +25241,7 @@
     "category": "security",
     "name": "ffuf-claude-skill",
     "description": "Web fuzzing with ffuf",
-    "risk": "safe",
+    "risk": "offensive",
     "source": "https://github.com/jthack/ffuf_claude_skill",
     "date_added": "2026-02-27",
     "plugin": {
@@ -25291,7 +25306,7 @@
     "path": "skills/file-organizer",
     "category": "productivity",
     "name": "file-organizer",
-    "description": "6. Reduces Clutter: Identifies old files you probably don't need anymore",
+    "description": "Organize files and folders by inspecting their contents, proposing a structure, and reviewing duplicates before authorized changes.",
     "risk": "critical",
     "source": "community",
     "date_added": "2026-02-27",
@@ -26868,7 +26883,7 @@
     "path": "skills/frontend-mobile-development-component-scaffold",
     "category": "app-builder",
     "name": "frontend-mobile-development-component-scaffold",
-    "description": "You are a React component architecture expert specializing in scaffolding production-ready, accessible, and performant components. Generate complete component implementations with TypeScript, tests, s",
+    "description": "Scaffold React and React Native components with TypeScript, accessibility, tests, styles, and documentation.",
     "risk": "critical",
     "source": "community",
     "date_added": "2026-02-27",
@@ -26888,9 +26903,9 @@
   {
     "id": "frontend-mobile-security-xss-scan",
     "path": "skills/frontend-mobile-security-xss-scan",
-    "category": "web-development",
+    "category": "security",
     "name": "frontend-mobile-security-xss-scan",
-    "description": "You are a frontend security specialist focusing on Cross-Site Scripting (XSS) vulnerability detection and prevention. Analyze React, Vue, Angular, and vanilla JavaScript code to identify injection poi",
+    "description": "Inspect frontend code for XSS injection points, unsafe DOM manipulation, and missing sanitization.",
     "risk": "critical",
     "source": "community",
     "date_added": "2026-02-27",
@@ -28701,7 +28716,7 @@
     "path": "skills/git-pr-workflows-pr-enhance",
     "category": "workflow",
     "name": "git-pr-workflows-pr-enhance",
-    "description": "You are a PR optimization expert specializing in creating high-quality pull requests that facilitate efficient code reviews. Generate comprehensive PR descriptions, automate review processes, and ensu",
+    "description": "Improve pull request descriptions, reviewability, change scope, and supporting validation evidence.",
     "risk": "none",
     "source": "community",
     "date_added": "2026-02-27",
@@ -28868,7 +28883,7 @@
     "category": "devops",
     "name": "github-actions-debugger",
     "description": "Specialized skill for diagnosing, analyzing, and fixing failing GitHub Actions workflows by parsing run logs and pipeline definitions.",
-    "risk": "safe",
+    "risk": "critical",
     "source": "community",
     "date_added": "2026-06-25",
     "plugin": {
@@ -29158,7 +29173,7 @@
     "path": "skills/global-chat-agent-discovery",
     "category": "development",
     "name": "global-chat-agent-discovery",
-    "description": "Discover and search 18K+ MCP servers and AI agents across 6+ registries using Global Chat's cross-protocol directory and MCP server.",
+    "description": "Discover and compare MCP servers and AI agents using Global Chat's cross-protocol directory and MCP server.",
     "risk": "safe",
     "source": "community",
     "date_added": "2026-04-06",
@@ -30226,7 +30241,7 @@
     "path": "skills/haskell-pro",
     "category": "code",
     "name": "haskell-pro",
-    "description": "Expert Haskell engineer specializing in advanced type systems, pure",
+    "description": "Design and review Haskell types, pure domain logic, parsing, exception-safe concurrency, Cabal/Stack builds and measured performance.",
     "risk": "safe",
     "source": "community",
     "date_added": "2026-02-27",
@@ -31026,7 +31041,7 @@
     "path": "skills/hosted-agents-v2-py",
     "category": "ai-agents",
     "name": "hosted-agents-v2-py",
-    "description": "Build hosted agents using Azure AI Projects SDK with ImageBasedHostedAgentDefinition. Use when creating container-based agents in Azure AI Foundry.",
+    "description": "Build hosted agents using Azure AI Projects SDK with HostedAgentDefinition. Use when creating container-based agents in Azure AI Foundry.",
     "risk": "critical",
     "source": "community",
     "date_added": "2026-02-27",
@@ -31301,8 +31316,7 @@
         "docs": null
       },
       "reasons": []
-    },
-    "license": "Complete terms in LICENSE.txt"
+    }
   },
   {
     "id": "hugging-face-model-trainer",
@@ -33653,7 +33667,7 @@
     "category": "graphics-processing",
     "name": "imagen",
     "description": "AI image generation skill powered by Google Gemini, enabling seamless visual content creation for UI placeholders, documentation, and design assets.",
-    "risk": "safe",
+    "risk": "critical",
     "source": "https://github.com/sanjay3290/ai-skills/tree/main/skills/imagen",
     "date_added": "2026-02-27",
     "plugin": {
@@ -33667,7 +33681,9 @@
         "docs": null
       },
       "reasons": []
-    }
+    },
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/sanjay3290/ai-skills/blob/281d88df199357e3091a3be5c743a0fca9a9ae1b/LICENSE"
   },
   {
     "id": "implement",
@@ -33849,7 +33865,7 @@
     "path": "skills/incident-response-smart-fix",
     "category": "devops",
     "name": "incident-response-smart-fix",
-    "description": "[Extended thinking: This workflow implements a sophisticated debugging and resolution pipeline that leverages AI-assisted debugging tools and observability platforms to systematically diagnose and res",
+    "description": "Investigate production issues, reproduce root causes, implement scoped fixes, and verify recovery using tests and observability.",
     "risk": "critical",
     "source": "community",
     "date_added": "2026-02-27",
@@ -33871,7 +33887,7 @@
     "path": "skills/incident-runbook-templates",
     "category": "devops",
     "name": "incident-runbook-templates",
-    "description": "Production-ready templates for incident response runbooks covering detection, triage, mitigation, resolution, and communication.",
+    "description": "Adaptable templates for incident response runbooks covering detection, triage, mitigation, resolution, and communication.",
     "risk": "critical",
     "source": "community",
     "date_added": "2026-02-27",
@@ -33979,7 +33995,7 @@
     "path": "skills/infinite-gratitude",
     "category": "ai-ml",
     "name": "infinite-gratitude",
-    "description": "Multi-agent research skill for parallel research execution (10 agents, battle-tested with real case studies).",
+    "description": "Plan and synthesize multi-perspective research; use parallel agents only when authorized and verify findings against sources.",
     "risk": "safe",
     "source": "https://github.com/sstklen/infinite-gratitude",
     "date_added": "2026-02-27",
@@ -34247,7 +34263,7 @@
       },
       "reasons": []
     },
-    "license": "Complete terms in LICENSE.txt"
+    "license": "Apache-2.0"
   },
   {
     "id": "internal-comms-anthropic",
@@ -34332,7 +34348,7 @@
     "path": "skills/interview-coach",
     "category": "productivity",
     "name": "interview-coach",
-    "description": "Full job search coaching system — JD decoding, resume, storybank, mock interviews, transcript analysis, comp negotiation. 23 commands, persistent state.",
+    "description": "Full job search coaching system — JD decoding, resume, storybank, mock interviews, transcript analysis, comp negotiation. Coaching guide with an optional separately installed command package and scoped state.",
     "risk": "safe",
     "source": "community",
     "date_added": "2026-03-11",
@@ -34980,7 +34996,7 @@
     "path": "skills/javascript-typescript-typescript-scaffold",
     "category": "app-builder",
     "name": "javascript-typescript-typescript-scaffold",
-    "description": "You are a TypeScript project architecture expert specializing in scaffolding production-ready Node.js and frontend applications. Generate complete project structures with modern tooling (pnpm, Vite, N",
+    "description": "Scaffold TypeScript projects with build tooling, type checking, testing, and configuration.",
     "risk": "critical",
     "source": "community",
     "date_added": "2026-02-27",
@@ -35793,7 +35809,7 @@
     "category": "granular-workflow-bundle",
     "name": "kubernetes-deployment",
     "description": "Kubernetes deployment workflow for container orchestration, Helm charts, service mesh, and production-ready K8s configurations.",
-    "risk": "safe",
+    "risk": "critical",
     "source": "personal",
     "date_added": "2026-02-27",
     "plugin": {
@@ -36433,8 +36449,8 @@
     "path": "skills/legal-advisor",
     "category": "legal",
     "name": "legal-advisor",
-    "description": "Draft privacy policies, terms of service, disclaimers, and legal notices. Creates GDPR-compliant texts, cookie policies, and data processing agreements.",
-    "risk": "none",
+    "description": "Draft privacy policies, terms of service, disclaimers, and legal notices. Prepares jurisdiction-aware drafts for qualified review, cookie policies, and data processing agreements.",
+    "risk": "critical",
     "source": "community",
     "date_added": "2026-02-27",
     "plugin": {
@@ -37360,7 +37376,7 @@
     "path": "skills/llm-application-dev-ai-assistant",
     "category": "ai-ml",
     "name": "llm-application-dev-ai-assistant",
-    "description": "You are an AI assistant development expert specializing in creating intelligent conversational interfaces, chatbots, and AI-powered applications. Design comprehensive AI assistant solutions with natur",
+    "description": "Design and implement conversational AI assistants with context management, integration boundaries, and validation.",
     "risk": "safe",
     "source": "community",
     "date_added": "2026-02-27",
@@ -37404,7 +37420,7 @@
     "path": "skills/llm-application-dev-prompt-optimize",
     "category": "ai-ml",
     "name": "llm-application-dev-prompt-optimize",
-    "description": "You are an expert prompt engineer specializing in crafting effective prompts for LLMs through advanced techniques including constitutional AI, chain-of-thought reasoning, and model-specific optimizati",
+    "description": "Improve LLM prompts using task-specific evaluation, structured instructions, and regression checks.",
     "risk": "safe",
     "source": "community",
     "date_added": "2026-02-27",
@@ -38114,7 +38130,7 @@
     "path": "skills/longbridge",
     "category": "finance",
     "name": "longbridge",
-    "description": "125+ agent skills for Longbridge Securities — real-time quotes, charts, fundamentals, portfolio analysis, options, and more for HK/US/A-share/SG markets. Trilingual: Simplified Chinese, Traditional Chinese, English.",
+    "description": "Guide to using a separately installed Longbridge integration — real-time quotes, charts, fundamentals, portfolio analysis, options, and more for HK/US/A-share/SG markets. Trilingual: Simplified Chinese, Traditional Chinese, English.",
     "risk": "critical",
     "source": "official",
     "date_added": "2026-05-29",
@@ -39324,7 +39340,7 @@
     "path": "skills/makepad-reference",
     "category": "development",
     "name": "makepad-reference",
-    "description": "This category provides reference materials for debugging, code quality, and advanced layout patterns.",
+    "description": "Guide to diagnosing Makepad build, widget, redraw and layout issues against the exact runtime revision.",
     "risk": "critical",
     "source": "community",
     "date_added": "2026-09-04",
@@ -39514,7 +39530,7 @@
     "date_added": "2026-02-27",
     "plugin": {
       "targets": {
-        "codex": "blocked",
+        "codex": "supported",
         "claude": "supported"
       },
       "setup": {
@@ -39522,9 +39538,7 @@
         "summary": "",
         "docs": null
       },
-      "reasons": [
-        "target_specific_home_path"
-      ]
+      "reasons": []
     }
   },
   {
@@ -41131,7 +41145,7 @@
     "category": "devops",
     "name": "mirrord",
     "description": "Run a local process inside a live Kubernetes cluster's network, env and traffic with mirrord, so changes are tested against real services without deploying.",
-    "risk": "safe",
+    "risk": "critical",
     "source": "https://github.com/metalbear-co/skills",
     "date_added": "2026-09-29",
     "plugin": {
@@ -41761,7 +41775,7 @@
     "path": "skills/monorepo-architect",
     "category": "development",
     "name": "monorepo-architect",
-    "description": "Expert in monorepo architecture, build systems, and dependency management at scale. Masters Nx, Turborepo, Bazel, and Lerna for efficient multi-project development. Use PROACTIVELY for monorepo setup,",
+    "description": "Expert in monorepo architecture, build systems, and dependency management at scale. Masters Nx, Turborepo, Bazel, and Lerna for efficient multi-project development. Use for scoped monorepo setup, build or dependency review.",
     "risk": "safe",
     "source": "community",
     "date_added": "2026-02-27",
@@ -42806,7 +42820,7 @@
     "category": "presentation-processing",
     "name": "nanobanana-ppt-skills",
     "description": "AI-powered PPT generation with document analysis and styled images",
-    "risk": "safe",
+    "risk": "critical",
     "source": "https://github.com/op7418/NanoBanana-PPT-Skills",
     "date_added": "2026-02-27",
     "plugin": {
@@ -43032,7 +43046,7 @@
     "path": "skills/nerdzao-elite",
     "category": "development",
     "name": "nerdzao-elite",
-    "description": "Senior Elite Software Engineer (15+) and Senior Product Designer. Full workflow with planning, architecture, TDD, clean code, and pixel-perfect UX validation.",
+    "description": "Software engineering and product design workflow and Senior Product Designer. Full workflow with planning, architecture, TDD, clean code, and pixel-perfect UX validation.",
     "risk": "safe",
     "source": "community",
     "date_added": "2026-02-27",
@@ -44096,7 +44110,7 @@
     "path": "skills/observability-monitoring-monitor-setup",
     "category": "devops",
     "name": "observability-monitoring-monitor-setup",
-    "description": "You are a monitoring and observability expert specializing in implementing comprehensive monitoring solutions. Set up metrics collection, distributed tracing, log aggregation, and create insightful da",
+    "description": "Set up metrics, distributed tracing, log aggregation, and dashboards for application and infrastructure monitoring.",
     "risk": "critical",
     "source": "community",
     "date_added": "2026-02-27",
@@ -44858,8 +44872,8 @@
     },
     "source_type": "community",
     "source_repo": "elementalsouls/Claude-BugHunter",
-    "license": "MIT",
-    "license_source": "https://github.com/elementalsouls/Claude-BugHunter/blob/main/LICENSE"
+    "license": "CC-BY-4.0",
+    "license_source": "https://github.com/elementalsouls/Claude-BugHunter/blob/58eec1dcfa705268b66eb9129c579b128772adea/LICENSE-CONTENT"
   },
   {
     "id": "offer-appointment",
@@ -46778,7 +46792,7 @@
     "path": "skills/performance-engineer",
     "category": "development",
     "name": "performance-engineer",
-    "description": "Expert performance engineer specializing in modern observability,",
+    "description": "Diagnose performance bottlenecks using profiling, traces, load tests, and observability; verify latency and capacity improvements.",
     "risk": "critical",
     "source": "community",
     "date_added": "2026-02-27",
@@ -46926,7 +46940,7 @@
     "path": "skills/performance-testing-review-multi-agent-review",
     "category": "development",
     "name": "performance-testing-review-multi-agent-review",
-    "description": "Use when working with performance testing review multi agent review",
+    "description": "Review a defined code diff from relevant correctness, authorization and performance perspectives; delegate only when authorized and reproduce findings centrally.",
     "risk": "critical",
     "source": "community",
     "date_added": "2026-02-27",
@@ -50346,7 +50360,7 @@
     "path": "skills/agent-squad/quinn",
     "category": "agent-squad",
     "name": "quinn",
-    "description": "Proves the system works by writing and executing comprehensive test suites.",
+    "description": "Verifies specified behavior through appropriate tests and truthful coverage reports.",
     "risk": "safe",
     "source": "community",
     "date_added": "2026-06-11",
@@ -53787,8 +53801,8 @@
     "path": "skills/score-eval",
     "category": "testing",
     "name": "score-eval",
-    "description": "Imported skill `score-eval` from upstream source.",
-    "risk": "unknown",
+    "description": "Use when scoring an evaluation diff against a supplied rubric and baseline fixture: retain evidence for detected/fixed findings and report unscorable or unexecuted checks.",
+    "risk": "critical",
     "source": "neondatabase",
     "date_added": "2026-09-21",
     "plugin": {
@@ -54181,7 +54195,7 @@
     "path": "skills/monopoly/security-checklist",
     "category": "monopoly",
     "name": "security-checklist",
-    "description": "Reference document for monopoly security-checklist.",
+    "description": "Review a scoped architecture against evidence-based network, identity, data, secrets, dependency and incident-response controls.",
     "risk": "safe",
     "source": "community",
     "date_added": "2026-09-04",
@@ -56751,7 +56765,7 @@
     "path": "skills/skill-seekers",
     "category": "meta",
     "name": "skill-seekers",
-    "description": "-Automatically convert documentation websites, GitHub repositories, and PDFs into Claude AI skills in minutes.",
+    "description": "Convert approved documentation, repositories, or PDFs into an agent skill using the Skill Seekers workflow, then review the generated content.",
     "risk": "safe",
     "source": "https://github.com/yusufkaraaslan/Skill_Seekers",
     "date_added": "2026-02-27",
@@ -59251,7 +59265,7 @@
     "path": "skills/superpowers-lab",
     "category": "ai-agents",
     "name": "superpowers-lab",
-    "description": "Lab environment for Claude superpowers",
+    "description": "Evaluate experimental Claude workflow skills in an isolated lab with reproducible tasks, observed results, and explicit adoption criteria.",
     "risk": "safe",
     "source": "https://github.com/obra/superpowers-lab",
     "date_added": "2026-02-27",

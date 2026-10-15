@@ -44,11 +44,13 @@ Also use it when the user says "who holds admin rights on each system, with a ba
 spreadsheet, a document or someone inboxes.
 
 Do not use it for: payroll calculation, tax filing, or legal advice. This skill produces
-empty templates only - it never holds or processes real employee or customer data.
+empty templates by default. A requested review may transiently use supplied data; minimize it rather than promising the host never processes it.
 
 ## How It Works
 
 Follow the shared execution contract. The module-specific rules below define only domain fields, decisions, calculations, and safety constraints.
+
+The upstream shared execution contract is not bundled; use this file directly. For an account-by-account register, derive a separate confirmed account identifier and grain instead of repeating the system aggregate counts on every account. Store a vault reference only, never passwords, tokens or recovery codes.
 
 ### Step 1 - Identify intent
 
@@ -100,7 +102,7 @@ open_questions: []      # the unanswered ones, in the order worth asking
 
 If an artifact was requested, build it after resolving essential missing facts. Otherwise give a short recommendation and offer the relevant artifact.
 
-**Recommended approach:** Keep one row per named admin account with a system, an owner and a last-reviewed date. Shared logins are the first thing to fix.
+**Recommended approach:** Keep one row per system with named main and backup admins, aggregate admin count and review dates. Shared logins are the first thing to fix.
 
 **Why this one:** Privileged accounts are the ones that matter after someone leaves. Naming an owner per account is what makes removal possible.
 
@@ -136,25 +138,25 @@ Example Product,General,Example Admin,Example Backup Admin,Delivery,Full,3,Examp
 ```sql
 CREATE TABLE admin_access_register (
   system_or_tool VARCHAR(255),
-  category VARCHAR(100) NOT NULL,
+  category VARCHAR(100),
   main_admin VARCHAR(255),
   backup_admin VARCHAR(255),
   department VARCHAR(255),
-  access_level VARCHAR(100) NOT NULL,
-  number_of_admin_users NUMERIC NOT NULL,
+  access_level VARCHAR(100),
+  number_of_admin_users NUMERIC,
   billing_owner VARCHAR(255),
   plan VARCHAR(255),
-  seats NUMERIC NOT NULL,
-  renewal_date DATE NOT NULL,
-  company_owned_account BOOLEAN NOT NULL,
-  shared_login BOOLEAN NOT NULL,
+  seats NUMERIC,
+  renewal_date DATE,
+  company_owned_account BOOLEAN,
+  shared_login BOOLEAN,
   password_manager_entry VARCHAR(255),
-  two_factor_on BOOLEAN NOT NULL,
-  last_access_review DATE NOT NULL,
-  next_access_review DATE NOT NULL,
+  two_factor_on BOOLEAN,
+  last_access_review DATE,
+  next_access_review DATE,
   offboarding_checklist_item VARCHAR(255),
-  risk_level VARCHAR(100) NOT NULL,
-  status VARCHAR(100) NOT NULL,
+  risk_level VARCHAR(100),
+  status VARCHAR(100),
   notes TEXT,
   admin_id SERIAL PRIMARY KEY,
   created_at TIMESTAMP DEFAULT NOW(),
@@ -194,17 +196,7 @@ CREATE INDEX idx_admin_access_register_status ON admin_access_register (status);
       "Notes": { "type": "string" },
       "Admin ID": { "type": "integer" }
   },
-  "required": [
-      "Category",
-      "Access Level",
-      "Number of Admin Users",
-      "Seats",
-      "Renewal Date",
-      "Last Access Review",
-      "Next Access Review",
-      "Risk Level",
-      "Status"
-  ]
+  "required": []
 }
 ```
 
@@ -237,6 +229,8 @@ CREATE INDEX idx_admin_access_register_status ON admin_access_register (status);
 
 The rows above are documentation examples only. Emit empty templates unless the user explicitly requests examples. Money stays `currency`, dates stay `date`,
 and anything pointing at another table stays `relation`.
+
+The illustrated optional-field schema has no universal required set; choose business-required identity fields from confirmed requirements and keep SQL/JSON aligned. Counts of users and seats must be nonnegative integers when provided; unknowns are absent/null according to the confirmed import policy, never zero by default. SQL identity/timestamps shown use PostgreSQL.
 
 ## Field Reference
 
@@ -313,7 +307,7 @@ We have admin accounts for people who left two years ago.
 
 **Recommended next step** - offered, not built:
 
-> Keep one row per named admin account with a system, an owner and a last-reviewed date. Shared logins are the first thing to fix.
+> Keep one row per system with named main and backup admins, aggregate admin count and review dates. Shared logins are the first thing to fix.
 >
 > Workflow: System listed → Admin account → Owner and approver → Periodic review → Removal
 >

@@ -1,6 +1,6 @@
 ---
 name: error-diagnostics-smart-debug
-description: "Use when working with error diagnostics smart debug"
+description: "Diagnose failures from reproduction steps, traces, logs and code; test hypotheses and verify a scoped fix without inventing production evidence."
 risk: critical
 source: community
 date_added: "2026-02-27"
@@ -8,8 +8,8 @@ date_added: "2026-02-27"
 
 ## Use this skill when
 
-- Working on error diagnostics smart debug tasks or workflows
-- Needing guidance, best practices, or checklists for error diagnostics smart debug
+- A reproducible failure or intermittent incident needs evidence-driven debugging.
+- Existing telemetry must be compared with source and deployment changes before patching.
 
 ## Do not use this skill when
 
@@ -21,7 +21,6 @@ date_added: "2026-02-27"
 - Clarify goals, constraints, and required inputs.
 - Apply relevant best practices and validate outcomes.
 - Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
 
 You are an expert AI-assisted debugging specialist with deep knowledge of modern debugging tools, observability platforms, and automated root cause analysis.
 
@@ -40,7 +39,7 @@ Parse for:
 ## Workflow
 
 ### 1. Initial Triage
-Use Task tool (subagent_type="debugger") for AI-powered analysis:
+Analyze directly; use a debugger subagent only when the user authorizes delegation and the host exposes that capability:
 - Error pattern recognition
 - Stack trace analysis with probable causes
 - Component dependency analysis
@@ -66,7 +65,7 @@ Query for:
 
 ### 3. Hypothesis Generation
 For each hypothesis include:
-- Probability score (0-100%)
+- Qualitative confidence and what evidence would change it; do not invent calibrated probabilities
 - Supporting evidence from logs/traces/code
 - Falsification criteria
 - Testing approach
@@ -86,7 +85,7 @@ Select based on issue characteristics:
 **Interactive Debugging**: Reproducible locally → VS Code/Chrome DevTools, step-through
 **Observability-Driven**: Production issues → Sentry/DataDog/Honeycomb, trace analysis
 **Time-Travel**: Complex state issues → rr/Redux DevTools, record & replay
-**Chaos Engineering**: Intermittent under load → Chaos Monkey/Gremlin, inject failures
+**Controlled Fault Reproduction**: Use an isolated test environment and bounded authorized faults; never infer permission for production chaos tests
 **Statistical**: Small % of cases → Delta debugging, compare success vs failure
 
 ### 5. Intelligent Instrumentation
@@ -99,7 +98,9 @@ AI suggests optimal breakpoint/logpoint locations:
 
 Use conditional breakpoints and logpoints for production-like environments.
 
-### 6. Production-Safe Techniques
+### 6. Production Techniques Requiring Review
+
+Instrumentation, debug endpoints and traffic shifts are changes with privacy, cost and availability effects. Confirm authorization, data redaction, duration, rollback and target before applying; these techniques are not automatically safe.
 **Dynamic Instrumentation**: OpenTelemetry spans, non-invasive attributes
 **Feature-Flagged Debug Logging**: Conditional logging for specific users
 **Sampling-Based Profiling**: Continuous profiling with minimal overhead (Pyroscope)
@@ -143,7 +144,9 @@ Success criteria:
 - Add monitoring/alerts for similar issues
 - Document troubleshooting steps in runbook
 
-## Example: Minimal Debug Session
+## Example: Illustrative Debug Session
+
+The helpers, spans and metrics below are pseudocode for a hypothetical case; no implementation, telemetry integration or measured improvement is bundled. Replace them with actual configured tools, and never report the example numbers as observed evidence.
 
 ```typescript
 // Issue: "Checkout timeout errors (intermittent)"
@@ -170,7 +173,7 @@ const ddTraces = await getDataDogTraces({
 
 // 4. Add instrumentation
 span.setAttribute('debug.queryCount', queryCount);
-span.setAttribute('debug.paymentMethodId', methodId);
+// Avoid storing payment identifiers in debug telemetry; use an approved aggregate.
 
 // 5. Deploy to 10% traffic, monitor
 // Confirmed: N+1 pattern in payment verification
@@ -200,6 +203,7 @@ Focus on actionable insights. Use AI assistance throughout for pattern recogniti
 Issue to debug: $ARGUMENTS
 
 ## Limitations
+- No supporting scripts or references are bundled in this entrypoint. Tool availability and real trace results must be checked in the current environment.
 - Use this skill only when the task clearly matches the scope described above.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.

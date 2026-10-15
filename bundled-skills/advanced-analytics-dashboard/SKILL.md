@@ -44,11 +44,13 @@ Also use it when the user says "predictive insights", or describes the same proc
 spreadsheet, a document or someone inboxes.
 
 Do not use it for: payroll calculation, tax filing, or legal advice. This skill produces
-empty templates only - it never holds or processes real employee or customer data.
+empty templates by default. A requested review may transiently use supplied data; minimize it rather than claiming the host never processes it.
 
 ## How It Works
 
 Follow the shared execution contract. The module-specific rules below define only domain fields, decisions, calculations, and safety constraints.
+
+The upstream shared contract is not bundled; use this file directly. Confirm metric units, aggregation grain, period, timezone and source freshness. Missing values are not zero; show targets only when supplied.
 
 ### Step 1 - Identify intent
 
@@ -130,21 +132,21 @@ that need a number, date or currency format applied.
 
 ```csv
 Metric,Category,Source Module,Formula or Method,Period,Value,Target,Trend,Owner,Last Updated,Metric ID
-Net revenue,General,Invoices & Billing,"Revenue invoiced minus credits, divided by active clients.",2026-03,1000,100,Up 3 months running,Example Owner,2026-01-15,
+Net revenue,General,Invoices & Billing,"Revenue invoiced minus credits in the stated period.",Example Period,1000,1100,Example trend (not calculated),Example Owner,2026-01-15,
 ```
 
 ```sql
 CREATE TABLE advanced_analytics_dashboard (
   metric VARCHAR(255),
-  category VARCHAR(100) NOT NULL,
+  category VARCHAR(100),
   source_module VARCHAR(255),
   formula_or_method VARCHAR(255),
   period VARCHAR(255),
-  value NUMERIC NOT NULL,
-  target NUMERIC NOT NULL,
+  value NUMERIC,
+  target NUMERIC,
   trend VARCHAR(255),
   owner VARCHAR(255),
-  last_updated DATE NOT NULL,
+  last_updated DATE,
   metric_id SERIAL PRIMARY KEY,
   created_at TIMESTAMP DEFAULT NOW(),
   updated_at TIMESTAMP DEFAULT NOW()
@@ -170,12 +172,7 @@ CREATE TABLE advanced_analytics_dashboard (
       "Last Updated": { "type": "string", "format": "date" },
       "Metric ID": { "type": "integer" }
   },
-  "required": [
-      "Category",
-      "Value",
-      "Target",
-      "Last Updated"
-  ]
+  "required": []
 }
 ```
 
@@ -198,6 +195,8 @@ CREATE TABLE advanced_analytics_dashboard (
 The rows above are documentation examples only. Emit empty templates unless the user explicitly requests examples. Money stays `currency`, dates stay `date`,
 and anything pointing at another table stays `relation`.
 
+Illustrative SQL uses PostgreSQL identity/timestamp syntax. Derive optional/required fields from confirmed business needs; an unknown target is not a reason to fabricate a value. A nonzero denominator is required for per-client metrics, which are distinct from total net revenue.
+
 ## Field Reference
 
 | # | Field | Type | SQL | JSON Schema | Notion | CSV example |
@@ -205,7 +204,7 @@ and anything pointing at another table stays `relation`.
 | 1 | Metric | `text` | `VARCHAR(255)` | `string` | Text | `Net revenue` |
 | 2 | Category | `select` | `VARCHAR(100)` | `string` | Select (add options after import) | `General` |
 | 3 | Source Module | `text` | `VARCHAR(255)` | `string` | Text | `Invoices & Billing` |
-| 4 | Formula or Method | `text` | `VARCHAR(255)` | `string` | Text | `Revenue invoiced minus credits, divided by active clients.` |
+| 4 | Formula or Method | `text` | `VARCHAR(255)` | `string` | Text | `Revenue invoiced minus credits in the stated period.` |
 | 5 | Period | `text` | `VARCHAR(255)` | `string` | Text | `2026-03` |
 | 6 | Value | `number` | `NUMERIC` | `number` | Number | `1000` |
 | 7 | Target | `number` | `NUMERIC` | `number` | Number | `100` |

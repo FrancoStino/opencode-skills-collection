@@ -26,7 +26,7 @@ Use for React/Next setup, root/`next`/`server` entrypoints, streaming, component
 
 ## Workflow
 
-Before changing dependencies or source files, inspect the existing package manager and project conventions, preview the intended edits, and obtain explicit user approval.
+Inspect the existing package manager, installed package version and project conventions. A requested scoped integration already authorizes routine source/dependency edits; seek approval only for a material scope expansion or unresolved beta/alpha adoption decision.
 
 1. Confirm React 18+ and acceptance of a beta package.
 2. Install only requested peers and import `markstream-react/index.css`.
@@ -40,6 +40,8 @@ Before changing dependencies or source files, inspect the existing package manag
 ## Example
 
 ```tsx
+'use client' // Required when this example is used in a Next.js App Router client boundary
+
 import MarkdownRender from 'markstream-react'
 import 'markstream-react/index.css'
 
@@ -72,3 +74,5 @@ export function StreamingAnswer({
 ## Security & Safety Notes
 
 Review dependencies and never opt untrusted model output into trusted HTML or loose diagram rendering.
+
+Verify props, export paths and peer ranges against the installed package, not a mutable upstream main. Test partial and completed streams, malformed/untrusted Markdown, links and image URLs, cancellation and reduced motion. Safe HTML and strict diagrams reduce exposure but do not alone enforce URL/network privacy or application component permissions.

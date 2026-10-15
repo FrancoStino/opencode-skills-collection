@@ -6,11 +6,13 @@ source_repo: asi2030/fact-check-x
 source_type: official
 source: asi2030
 date_added: '2026-09-21'
-risk: unknown
+risk: critical
+compatibility: Requires Python 3, separately reviewed sibling skills and their runtime; online collection/search needs authorized accounts and data-sharing approval.
 ---
 ## When to Use
-- Use when this upstream workflow matches the user's stated goal.
-- Use when the task requires the procedures documented in this skill.
+- 用户需要比较一个或多个平台的回答、区分未核验草案与已核验结论，并保留来源、逐知识点裁决和可迁移报告。
+- 已有采集结果或准备好独立安装并审查的三个依赖技能；联网、账户配置和本机写入必须符合用户授权。
+- 中文是原始工作流的目标语言；用户指定其他语言时用其语言交互，保留数据契约中的字段名。
 
 # Fact-Check-X 统一入口
 
@@ -24,13 +26,15 @@ risk: unknown
 
 ## 依赖定位
 
-四个技能放在同一目录时可直接运行。也可设置：
+AAS 仅分发本编排技能的脚本与测试，**未分发** `llm-answer-reference-compare`、`fact-check-x-knowledge-compare`、`fact-check-x-authoritative-verify` 的采集器、渲染器和夹具。因此单独安装本技能不能运行完整流水线，也不能假称已经打开登录页面。
+
+依赖恢复：从 [已核对的官方来源](https://github.com/asi2030/fact-check-x/tree/0984307468e58113220215a2639392d6627eb8da) 取得四个完整技能及其依赖。先审查固定修订的来源、许可证、锁文件、浏览器与账户数据边界；不要由本技能静默下载或安装。单独安装的完整三个依赖目录可通过以下变量定位；自动配置组件使用相同的目录：
 
 ```bash
-export FACTCHECK_SKILLS_DIR="<四个技能的父目录>"
+export FACTCHECK_SKILLS_DIR="<已审查的完整上游分发包的 skills 绝对目录>"
 ```
 
-检查依赖：
+脚本路径相对于本技能安装目录；执行前进入该目录。先检查依赖（缺少可执行入口时明确失败，不以仅存在 SKILL.md 作为就绪证明）：
 
 ```bash
 python3 scripts/fact_check_x.py locate
@@ -56,11 +60,11 @@ python3 scripts/fact_check_x.py acknowledge-stage \
   --token <checkpoint.acknowledgement.token> --decision continue
 ```
 
-未确认时，下一阶段命令会直接失败。即使用户最初要求完整连续执行，也必须依次展示每个阶段产物并取得确认；不存在可绕过确认的自动推进模式。
+未确认时，下一阶段命令会直接失败。当前程序实现的是逐阶段确认模式；执行完整流程前说明这一约束。用户要求连续执行时不要假称已经支持自动模式，也不要伪造确认令牌。
 
 当前智能体读取 `<run>/comparison-task.json`，写入 `<run>/comparison-analysis.json`，再执行：
 
-`comparison-task.json` 是自包含的紧凑工作集。阶段确认后只允许“读取任务包一次、写入分析一次、执行验收一次”，最多三次工具调用；不得读取技能源码、契约或完整 `results.json` 探路，不得打印或转储完整任务包。`capturedText` 只是有界原文预览，完整正文由程序在验收时从 `results.json` 校验和重建。
+`comparison-task.json` 是自包含的紧凑工作集。阶段确认后只允许“读取任务包一次、写入分析一次、执行验收一次”，以紧凑任务包为主要输入，避免无必要的重复读取或完整转储。发生错误、歧义或契约问题时应读取必要的源码或证据定位原因；三次调用是上游效率建议，不得用它阻止正确性或安全检查。`capturedText` 只是有界原文预览，完整正文由程序在验收时从 `results.json` 校验和重建。
 
 拆解时，原子性同时约束知识点和各平台 `claim`。一个原句包含多个独立义务、条件、对象、数值或后果时必须拆点，每个 `claim` 只保留当前事实；平台独有的实质新增事实也要另起无锚点知识点，不能并入宽泛知识点后复用深知晓锚点免查。每个知识点同时标明 `claimType=fact|recommendation`：纯操作建议可标为 `recommendation`，不因缺少逐句脚标而判引用不忠实；建议中包含的制度事实、条件、数字或时效必须拆成独立 `fact`。
 
@@ -81,7 +85,7 @@ python3 scripts/fact_check_x.py search-authority --run-dir <run> --max-workers 1
 
 深知晓采集同时保留回答内逐句脚标和“知识专库”中的回答级来源；相同 URL 合并为 `inline_and_global`。回答级来源只有经当前知识点逐条语义匹配且原文可定位时才可支持该事实，不得整库继承。知识点已有深知晓/深知晓（深度溯源）本次回答所附的官方材料，或其他平台本次回答所附的 `gov.cn` 材料，且原文确实支持当前事实主张时，直接复用为官方证据，不调用可信搜索。纯操作建议同样不调用可信搜索；除此之外，已有材料不足以裁决的事实知识点才是非免查知识点。
 
-若存在非免查知识点但本机尚无可信搜索配置，`prepare-authority` 和 `search-authority` 会返回 `status=configuration_required`、`userPrompt` 与 `configuration.command` 并以非零状态退出。调用方先展示登录提示，再前台执行该命令。用户只需在自动打开的深知 MaaS 页面完成登录；组件会自动复用已有完整 Key，没有时创建 `Fact-Check-X` 专用 Key，验证后保存到 `~/.fact-check-x/credentials/trusted-search-key`。Codex、Claude Code、WorkBuddy 等载体共享该配置，检测到已有 Key 时直接跳过登录。配置成功后调用方自动重跑 `prepare-authority`，不得要求用户复制 Key、编辑 shell 配置、回复“已配置”，也不得改用深知晓来源或普通搜索绕过。
+若存在非免查知识点但本机尚无可信搜索配置，`prepare-authority` 和 `search-authority` 会返回 `status=configuration_required`、`userPrompt` 与 `configuration.command` 并以非零状态退出。调用方先展示登录提示和外部提供方、账户/Key 创建、可能费用、发送数据范围及本机保存位置，获得授权后再前台执行该命令。不得把“配置缺失”当成自动创建账户凭据或联网的授权。用户只需在自动打开的深知 MaaS 页面完成登录；组件会自动复用已有完整 Key，没有时创建 `Fact-Check-X` 专用 Key，验证后保存到 `~/.fact-check-x/credentials/trusted-search-key`。Codex、Claude Code、WorkBuddy 等载体共享该配置，检测到已有 Key 时直接跳过登录。配置成功后调用方自动重跑 `prepare-authority`，不得要求用户复制 Key、编辑 shell 配置、回复“已配置”，也不得改用深知晓来源或普通搜索绕过。
 
 只有可信搜索返回 401/403 时才把现有 Key 视为失效并进入自动配置。超时、断网或服务异常保留现有配置并自动重试；重试后仍失败则停留在搜索阶段返回技术错误，不要求用户重新登录，也不转成人工事实复核。
 
@@ -158,21 +162,27 @@ python3 scripts/fact_check_x.py deliver --results <results.json> --run-dir <run>
 ## 交付门禁
 
 ```bash
+# 本地边界检查可离线执行；完整冒烟测试需要上面的三个已审查依赖与夹具。
 python3 tests/smoke_test.py
-python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-creator/scripts/quick_validate.py" .
+# quick_validate.py 属于可选宿主工具，未随 AAS 分发；仅在当前宿主确实存在且已审查时使用。
 ```
 
-完整标准见 [验收标准]。
+完整标准见 [验收标准](references/acceptance-criteria.md) 和 [编排契约](references/contracts.md)。
 
 
 ## Examples
 
 ```text
-User: Apply this skill to my current task.
-Assistant: Follow the workflow in this skill, cite limitations, and ask before risky steps.
+用户：比较两份已有回答，区分来源支持、事实核验和证据不足，先生成未核验草案。
+助手：确认输入/私有输出目录，检查依赖，准备第一阶段报告；不自动登录云服务、创建 Key 或把证据不足标为误导。
 ```
 
 ## Limitations
 
-- Imported upstream skill; verify credentials, permissions, and safety boundaries before execution.
-- Does not replace environment-specific validation, testing, or maintainer review.
+- 本技能会写入/清理运行目录，调用外部子技能，配置流程可能创建和保存账户 Key；仅使用专用私有运行目录和已授权账户。`risk: critical` 描述这些能力，不是对内容质量或服务安全的评分。
+- 不自动安装所有依赖；安装前审查固定来源、锁文件和生命周期脚本，`prepare-runtime` 默认禁用 npm 生命周期脚本。
+- 外部搜索验证会发送请求并可能消耗配额；仅在获授权后执行，禁止向未知地址或重定向传送 Key。
+- JSON 摘要门禁防止意外或后续改动，不构成抗恶意本机攻击的签名；运行目录、输入和子技能必须可信。不得在收到第三方产物后直接执行子技能。
+- 官方域名不是自动正确性的证明；已获得原文必须支持当前原子主张，技术采集失败保留证据不足。
+- 完整 smoke、多平台、阶段门禁测试依赖完整上游分发包；AAS 未包含这些外部夹具，缺失时应说明先决条件，不伪造通过。
+- 本地测试/夹具不能证明实际登录、提供方调用或真实平台端到端行为。

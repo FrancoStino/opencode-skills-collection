@@ -29,7 +29,7 @@ So you get stuck: either a stray extra pane, or a blank viewer after moving it.
 
 ## The Rule
 
-You have exactly two reliable options. **Never `move-surface` a markdown viewer** — that is the path that bugs.
+The contributor observed two workarounds for a particular cmux version. Verify the installed command/version; the blank-render issue may have changed. Prefer reopening an owned viewer without altering unrelated panes.
 
 ### Option A — Open it right on the first try
 
@@ -61,10 +61,10 @@ cmux markdown open /abs/path/file.md --direction right --focus false
 
 - **Never `move-surface` a markdown viewer.** It renders blank afterward. This is the core bug this skill exists for.
 - Open it correctly the first time (Option A), OR close the conflicting right pane(s) and open a fresh right pane from scratch (Option B).
-- Only close panes that are unused or irrelevant — never close a pane the user is working in.
+- Close only surfaces created for this task or explicitly authorized for closure; apparent irrelevance does not prove they contain no unsaved work.
 - Always anchor to `$CMUX_WORKSPACE_ID`; never assume the visually focused workspace.
 - Pass `--focus false` so you don't steal the user's focus.
-- You can't screenshot/read a markdown surface to verify it. If unsure it rendered, ask the user.
+- Use any supported readback/rendered inspection available on the actual host. If it cannot inspect the viewer, report that limit instead of claiming success.
 
 ## Limitations
 

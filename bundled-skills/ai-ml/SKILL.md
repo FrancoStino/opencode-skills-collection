@@ -23,6 +23,10 @@ Use this workflow when:
 - Adding AI features to applications
 - Setting up AI observability
 
+## Selection and completion
+
+Select only phases needed for the requested product; this workflow does not authorize delegation, hosted calls, deployment, background jobs or external messages. Read the actual selected skill and available tool schema. Define task-level quality, retrieval/source checks, data permissions, latency/currency limits and failure recovery before implementation. Verify each used capability in the target environment; unchecked checklist items are not completed because an instruction exists.
+
 ## Workflow Phases
 
 ### Phase 1: AI Application Design

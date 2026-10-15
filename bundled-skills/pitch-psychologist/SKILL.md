@@ -5,11 +5,17 @@ risk: safe
 source: community
 date_added: "2026-04-04"
 ---
-You are a **Persuasion Scientist and Narrative Psychologist**. Your task is to structure sales pitches, decks, and presentations using psychological sequencing that builds desire before introducing the solution and makes the offer feel inevitable.
+Use a marketing planning and audience-research lens. Your task is to structure sales pitches, decks, and presentations using psychological sequencing that builds desire before introducing the solution and makes the choice and its tradeoffs clear.
 
 ## When to Use
 - Use when a sales, investor, or product pitch needs stronger belief progression and audience alignment.
 - Use when the pitch must move from attention to trust to commitment with less resistance.
+
+## Evidence and scope
+
+Use observed audience research and verified product facts. Psychological interpretations and the author-year references below are inherited conceptual context, not validated evidence for this exact workflow or a guaranteed conversion effect. Before using a scientific claim externally, verify the actual publication, method and applicability; omit unsupported claims. This is marketing planning, not clinical diagnosis. Do not infer sensitive traits or exploit vulnerabilities.
+
+Original contribution: [PR 451](https://github.com/sickn33/agentic-awesome-skills/pull/451) by MMEHDI0606; [immutable source snapshot](https://github.com/MMEHDI0606/antigravity-awesome-skills/blob/9c61357e3e6bb167946036f52ac1e28fc82e04d0/skills/pitch-psychologist/SKILL.md). This identifies the contributed instructions, not scientific validation or a new upstream endorsement.
 
 ## CONTEXT GATHERING
 
@@ -31,23 +37,23 @@ People are more persuadable when they first feel the problem, the aspiration, an
 
 **Step 1 - Open with the audience's world**
 Start from the customer's current reality and stakes.
-*Research basis: self-relevance and narrative transportation increase receptivity (Green & Brock, 2000; Dragojevic et al., 2024).*
+*Planning hypothesis (verify before presenting as research): self-relevance and narrative transportation increase receptivity (Green & Brock, 2000; Dragojevic et al., 2024).*
 
 **Step 2 - Build desire before solution**
 Show the better future and the cost of not getting there.
-*Research basis: desire-first sequencing reduces defensive processing and improves belief change (Monroe's motivated sequence; narrative persuasion studies).*
+*Planning hypothesis (verify before presenting as research): desire-first sequencing reduces defensive processing and improves belief change (Monroe's motivated sequence; narrative persuasion studies).*
 
 **Step 3 - Frame the contrast**
 Make the current state and proposed state visibly different.
-*Research basis: contrast and anchoring shape evaluation by shifting the reference point (Ariely et al., 2003; Houdek, 2016).*
+*Planning hypothesis (verify before presenting as research): contrast and anchoring shape evaluation by shifting the reference point (Ariely et al., 2003; Houdek, 2016).*
 
 **Step 4 - Introduce the solution as the bridge**
 Position the offer as the path through the tension you already established.
-*Research basis: people accept solutions more readily when the problem has been emotionally and cognitively prepared (Bagozzi et al., 2021).*
+*Planning hypothesis (verify before presenting as research): people accept solutions more readily when the problem has been emotionally and cognitively prepared (Bagozzi et al., 2021).*
 
 **Step 5 - End with remembered clarity**
 Close on the key idea, proof, and next step.
-*Research basis: the peak-end rule shapes what audiences recall after the pitch (memory and decision research; Chen & Bell, 2022).*
+*Planning hypothesis (verify before presenting as research): the peak-end rule shapes what audiences recall after the pitch (memory and decision research; Chen & Bell, 2022).*
 
 ## DECISION MATRIX
 
@@ -96,16 +102,16 @@ The line between persuasion and manipulation is sequencing ideas to help a perso
 
 ## SKILL CHAINING
 
-Before invoking this skill, the agent should have completed:
+Optional context from related skills (equivalent supplied research is sufficient; do not create a prerequisite cycle):
 - [ ] `@customer-psychographic-profiler`
 - [ ] `@jobs-to-be-done-analyst`
 - [ ] `@awareness-stage-mapper`
 - [ ] `@trust-calibrator`
 
 This skill's output feeds into:
-- [ ] `@deck-writing`
-- [ ] `@sales-page`
-- [ ] `@presentation-script`
+- [ ] a deck outline
+- [ ] a sales-page draft
+- [ ] a presentation script
 
 ## OUTPUT QUALITY CHECK
 
@@ -121,6 +127,8 @@ Before finalizing output, the agent asks:
 **User request:**
 
 > Rewrite this sales pitch with a clearer belief progression and stronger alignment to the audience.
+
+**Illustrative output:** Build an outline from a supplied problem, verified result and proposed next step; attach the source to each number and include a limitations slide when it changes the decision.
 
 ## Limitations
 - Use this skill only when the task clearly matches the scope described above.

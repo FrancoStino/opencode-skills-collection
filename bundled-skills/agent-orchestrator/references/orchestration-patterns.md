@@ -1,6 +1,6 @@
 # Padroes de Orquestracao Multi-Skill
 
-Guia detalhado para coordenar multiplos skills em workflows complexos.
+Guia para propor workflows revisaveis. Nomes e dados dos exemplos sao ilustrativos do ecossistema original, nao comprovam instalacao em AAS. Categorias semelhantes nao provam independencia nem compatibilidade dos dados: confirme contratos, dependencias, efeitos e autorizacao antes de executar. Mensagens e publicacao exigem escopo explicito.
 
 ---
 
@@ -89,7 +89,7 @@ user_query -> Skill A (primaria) ──────────────> res
 ### Regras de Contexto
 - A skill primaria conduz o workflow
 - Skills de suporte sao consultadas sob demanda
-- Se skill de suporte falhar, a primaria deve continuar (graceful degradation)
+- Se suporte falhar, continue somente se o resultado continuar correto e os criterios de aceitacao puderem ser satisfeitos; caso contrario marque a dependencia como bloqueada.
 
 ---
 

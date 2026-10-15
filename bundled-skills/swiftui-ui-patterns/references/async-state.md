@@ -22,7 +22,7 @@ struct DetailView: View {
 
   var body: some View {
     content
-      .task {
+      .task(id: id) {
         await load()
       }
   }
@@ -42,10 +42,13 @@ struct DetailView: View {
   private func load() async {
     state = .loading
     do {
-      state = .loaded(try await client.fetch(id: id))
+      let item = try await client.fetch(id: id)
+      try Task.checkCancellation()
+      state = .loaded(item)
     } catch is CancellationError {
       return
     } catch {
+      guard !Task.isCancelled else { return }
       state = .failed(error)
     }
   }
@@ -66,16 +69,19 @@ struct SearchView: View {
     }
     .searchable(text: $query)
     .task(id: query) {
-      try? await Task.sleep(for: .milliseconds(250))
-      guard !Task.isCancelled, !query.isEmpty else {
-        results = []
-        return
-      }
+      let requestedQuery = query
       do {
-        results = try await client.search(query)
+        try await Task.sleep(for: .milliseconds(250))
+        try Task.checkCancellation()
+        guard !requestedQuery.isEmpty else { results = []; return }
+        let fetched = try await client.search(requestedQuery)
+        try Task.checkCancellation()
+        guard query == requestedQuery else { return }
+        results = fetched
       } catch is CancellationError {
         return
       } catch {
+        guard !Task.isCancelled, query == requestedQuery else { return }
         results = []
       }
     }
