@@ -35,6 +35,7 @@ You are an expert in AWS Cloud Development Kit (CDK) specializing in reusable pa
 
 ```typescript
 import { Construct } from "constructs";
+import * as cdk from "aws-cdk-lib";
 import * as apigateway from "aws-cdk-lib/aws-apigateway";
 import * as lambda from "aws-cdk-lib/aws-lambda";
 import * as dynamodb from "aws-cdk-lib/aws-dynamodb";
@@ -63,6 +64,12 @@ export class ServerlessApiPattern extends Construct {
   }
 }
 ```
+
+The `lambda/` asset directory must contain the project's actual handler before synthesis.
+The snippet is a construct illustration, not a deployable complete application: review
+API authorization, input validation, logging, cost, account/region, and IAM scope first.
+Run project tests, `cdk synth`, and inspect `cdk diff`; deployment requires authorization
+for the named environment. An L2 construct alone does not establish safe defaults.
 
 ## Best Practices
 

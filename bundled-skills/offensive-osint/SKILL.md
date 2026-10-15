@@ -7,11 +7,11 @@ source: https://github.com/elementalsouls/Claude-BugHunter
 source_repo: elementalsouls/Claude-BugHunter
 source_type: community
 date_added: '2026-09-20'
-license: MIT
-license_source: https://github.com/elementalsouls/Claude-BugHunter/blob/main/LICENSE
+license: CC-BY-4.0
+license_source: https://github.com/elementalsouls/Claude-BugHunter/blob/58eec1dcfa705268b66eb9129c579b128772adea/LICENSE-CONTENT
 compatibility: Requires explicit written authorization for a target scope plus the
-  relevant testing tools for this technique. Docs-only; helper scripts and commands
-  not bundled.
+  relevant testing tools for this technique. Includes 15 reference documents; no executable helpers or testing tools are
+  bundled. Review and install external tools separately before authorized use.
 sources: hackerone_public, community, public_research
 version: 3.0.0
 triggers:
@@ -143,6 +143,10 @@ triggers:
 - prior disclosures
 - bug bounty reference
 ---
+## Bundled upstream support
+
+Supporting files are included at skill-relative paths. See [UPSTREAM-NOTICE.md](UPSTREAM-NOTICE.md) for their pinned sources, licenses, hashes, and import changes.
+
 > **⚠️ AUTHORIZED USE ONLY**
 > This skill is for educational purposes or authorized security assessments only.
 > You must have explicit, written permission from the system owner before using this tool.
@@ -178,7 +182,7 @@ triggers:
 
 ## 1. Authorization & Legal Posture
 
-For assets the operator owns or has written authorization to assess. Soft scope check before acting against an unverified third-party target — see methodology skill §1 for the full posture.
+For assets the operator owns or has written authorization to assess. The mandatory confirmation gate above applies to every active request and credential use. Modes, scores, discovered assets and companion skills never grant authorization. Keep passive source research distinct from requests to target systems; obtain approval before sending private target identifiers to a third-party provider.
 
 ---
 
@@ -192,20 +196,20 @@ For assets the operator owns or has written authorization to assess. Soft scope 
 
 ## 3. Output Format Conventions
 
-Findings should carry: `id`, `module`, `asset_key`, `category`, `severity` (info/low/medium/high/critical), `confidence`, `title`, `description`, `evidence` (url + UTC timestamp + sha256 + raw ≤ 2 KiB), `references`, `remediation`. UTC timestamps everywhere.
+Findings should carry: `id`, `module`, `asset_key`, `category`, `severity` (info/low/medium/high/critical), `confidence`, `title`, `description`, `evidence` (url + UTC timestamp + sha256 + redacted excerpt ≤ 2 KiB; protected raw evidence stored separately), `references`, `remediation`. UTC timestamps everywhere.
 
 ---
 
 ## 4. Source Hygiene & Citations
 
-URL + UTC timestamp + SHA-256 + tool version + run_id, every artifact. PNG screenshots, JSONL run logs, raw HTTP captures capped at 2 KiB body.
+URL + UTC timestamp + SHA-256 + tool version + run_id, every artifact. PNG screenshots, JSONL run logs, redacted report excerpts capped at 2 KiB body. Collect only the minimum approved evidence; raw captures belong in a private engagement directory with restrictive permissions, retention and access controls.
 
 ---
 
 ## 5. Do NOT
 
 - Don't paste creds/PII/session tokens into cloud LLMs.
-- Don't run destructive probes outside DEEP/`--aggressive`.
+- Do not run destructive probes in this reconnaissance skill. DEEP/`--aggressive` is not authorization; exploitation, writes, persistence and credential cracking require a separately approved assessment or controlled lab.
 - Don't use validated credentials for anything except read-only liveness check.
 - Don't single-source attribute.
 - Don't assume vendor labels are ground truth.
@@ -247,58 +251,58 @@ This skill is a **lean operational index**. Most concrete data (wordlists, regex
 
 | File | Coverage | Trigger phrases |
 |---|---|---|
-| `probes-and-wordlists.md` | API/Swagger/GraphQL paths, cloud-bucket arsenal, JS guess-paths, vendor & cloud-native fingerprints, K8s/CI-CD exposure, doc/wiki leaks, WHOIS/RDAP, DNS catalog, Wayback CDX, copy-paste curl probes, email security analysis, origin/CDN bypass | swagger discovery, graphql introspection, subdomain takeover, cloud bucket enum, S3/GCS/Azure enum, kubernetes exposure, CI CD exposure, vendor fingerprint, WHOIS RDAP, Wayback CDX, copy paste probes, curl one-liner |
-| `identity-fabric.md` | Concrete endpoints for Entra/Okta/ADFS/Google/SAML, M365 deep (Teams federation, SharePoint, OneDrive), GraphQL field-suggestion enumeration, user-enum patterns | identity fabric, SSO discovery, IdP fingerprinting, okta enum, entra enum, azure AD enum, ADFS enum, SAML metadata, Microsoft 365 deep, Teams federation, SharePoint enum, OneDrive enum, graphql field suggestion |
-| `secret-patterns.md` | 48-pattern secret-regex catalog (AWS, GCP, GitHub PATs, Stripe, Slack, JWT, private keys, Anthropic/OpenAI/HuggingFace, Cloudflare, DigitalOcean, npm, PyPI, Docker Hub, Atlassian, DataDog, Sentry, ngrok) with severity & FP notes | secret scanning, secret leak, leaked credential, JWT triage, AWS key triage, Anthropic API key, OpenAI API key |
-| `secret-validators.md` | 9 read-only secret validators + post-discovery enumeration workflows for AWS/GitHub/Slack/Postman/JWT/Anthropic/OpenAI/npm/Atlassian/DataDog | secret validation, post discovery workflow, AWS key triage, JWT triage |
-| `dork-corpus.md` | 80+ Google/Bing/DDG dork templates across 9 categories + 13 GitHub code-search dorks tailored for targets | google dorking, bing dorking, github dorking, dork corpus |
-| `recon-stack.md` | Subdomain-source stack (passive & active), infrastructure & attack-surface OSINT (Shodan/Censys/crt.sh/JARM/favicon mmh3), TLS deep audit, reverse DNS, IPv6 enumeration | subdomain enumeration, certificate transparency, crt.sh, shodan recon, censys recon, JARM, favicon mmh3, TLS deep audit, JA3 JA4, reverse DNS sweep, IPv6 enumeration |
-| `breach-and-credentials.md` | Breach & leak data sources (HudsonRock, HIBP, DeHashed, IntelX, infostealer logs), email-pattern inference, email-harvest source stack | breach lookup, have I been pwned, HudsonRock cavalier, infostealer, dehashed, intelx, email harvest |
-| `people-osint.md` | Search engines, username & email investigation, people search, phone OSINT, social media, public records & company info | username investigation, people search, phone OSINT, social media OSINT, public records |
-| `saas-public-surfaces.md` | Postman public workspace search (verified endpoint), Stack Exchange OSINT sweep, public SaaS dork stack (Notion, Confluence, Trello) | postman workspace, stack exchange OSINT, Notion public, Confluence anonymous, Trello board |
-| `specialized-osint.md` | Threat intel & IOCs, cryptocurrency OSINT, media intelligence, geospatial intelligence, regional search engines, Telegram & messaging intelligence | threat intel, IOCs, cryptocurrency OSINT, media intelligence, geospatial OSINT, regional search, Telegram intelligence |
-| `recon-techniques.md` | LinkedIn employee enumeration, job-posting tech-stack analysis, Slack/Discord/Telegram workspace discovery, package-registry leak hunting (npm/PyPI/Docker Hub/Quay/GHCR), sat imagery for physical recon | LinkedIn enumeration, job posting tech stack, Slack workspace discovery, Discord server discovery, npm token leak, PyPI token leak, Docker Hub leak, sat imagery physical recon |
-| `severity-matrix.md` | 80+ worked examples mapping observed conditions → finding severity (CRITICAL/HIGH/MEDIUM/LOW/INFO) | severity decision, finding severity, severity matrix |
-| `sector-notes.md` | Recon notes for healthcare (DICOM), finance (SWIFT), ICS/SCADA (Modbus/BACnet), IoT, government | sector specific recon, healthcare DICOM, finance SWIFT, ICS SCADA, Modbus, BACnet |
-| `tooling-install.md` | Quick-install one-liners for Subfinder, Amass, httpx, nuclei, gau, katana, gowitness, dnsx, mapcidr, naabu, sslyze, testssl.sh, etc. | tooling install, install subfinder, install nuclei, install httpx |
-| `helpers-and-automation.md` | AI-assisted OSINT, archiving & evidence preservation, automation & workflow patterns, cross-module sidecar coordination, runnable secret_scan.py / h1_reference.py / dashboard.py helper notes | AI-assisted OSINT, evidence preservation, automation, sidecar, hacktivity reference, recon console |
+| [probes-and-wordlists.md](references/probes-and-wordlists.md) | API/Swagger/GraphQL paths, cloud-bucket arsenal, JS guess-paths, vendor & cloud-native fingerprints, K8s/CI-CD exposure, doc/wiki leaks, WHOIS/RDAP, DNS catalog, Wayback CDX, copy-paste curl probes, email security analysis, origin/CDN bypass | swagger discovery, graphql introspection, subdomain takeover, cloud bucket enum, S3/GCS/Azure enum, kubernetes exposure, CI CD exposure, vendor fingerprint, WHOIS RDAP, Wayback CDX, copy paste probes, curl one-liner |
+| [identity-fabric.md](references/identity-fabric.md) | Concrete endpoints for Entra/Okta/ADFS/Google/SAML, M365 deep (Teams federation, SharePoint, OneDrive), GraphQL field-suggestion enumeration, user-enum patterns | identity fabric, SSO discovery, IdP fingerprinting, okta enum, entra enum, azure AD enum, ADFS enum, SAML metadata, Microsoft 365 deep, Teams federation, SharePoint enum, OneDrive enum, graphql field suggestion |
+| [secret-patterns.md](references/secret-patterns.md) | 48-pattern secret-regex catalog (AWS, GCP, GitHub PATs, Stripe, Slack, JWT, private keys, Anthropic/OpenAI/HuggingFace, Cloudflare, DigitalOcean, npm, PyPI, Docker Hub, Atlassian, DataDog, Sentry, ngrok) with severity & FP notes | secret scanning, secret leak, leaked credential, JWT triage, AWS key triage, Anthropic API key, OpenAI API key |
+| [secret-validators.md](references/secret-validators.md) | 9 read-only secret validators + post-discovery enumeration workflows for AWS/GitHub/Slack/Postman/JWT/Anthropic/OpenAI/npm/Atlassian/DataDog | secret validation, post discovery workflow, AWS key triage, JWT triage |
+| [dork-corpus.md](references/dork-corpus.md) | 80+ Google/Bing/DDG dork templates across 9 categories + 13 GitHub code-search dorks tailored for targets | google dorking, bing dorking, github dorking, dork corpus |
+| [recon-stack.md](references/recon-stack.md) | Subdomain-source stack (passive & active), infrastructure & attack-surface OSINT (Shodan/Censys/crt.sh/JARM/favicon mmh3), TLS deep audit, reverse DNS, IPv6 enumeration | subdomain enumeration, certificate transparency, crt.sh, shodan recon, censys recon, JARM, favicon mmh3, TLS deep audit, JA3 JA4, reverse DNS sweep, IPv6 enumeration |
+| [breach-and-credentials.md](references/breach-and-credentials.md) | Breach & leak data sources (HudsonRock, HIBP, DeHashed, IntelX, infostealer logs), email-pattern inference, email-harvest source stack | breach lookup, have I been pwned, HudsonRock cavalier, infostealer, dehashed, intelx, email harvest |
+| [people-osint.md](references/people-osint.md) | Search engines, username & email investigation, people search, phone OSINT, social media, public records & company info | username investigation, people search, phone OSINT, social media OSINT, public records |
+| [saas-public-surfaces.md](references/saas-public-surfaces.md) | Postman public workspace search (verified endpoint), Stack Exchange OSINT sweep, public SaaS dork stack (Notion, Confluence, Trello) | postman workspace, stack exchange OSINT, Notion public, Confluence anonymous, Trello board |
+| [specialized-osint.md](references/specialized-osint.md) | Threat intel & IOCs, cryptocurrency OSINT, media intelligence, geospatial intelligence, regional search engines, Telegram & messaging intelligence | threat intel, IOCs, cryptocurrency OSINT, media intelligence, geospatial OSINT, regional search, Telegram intelligence |
+| [recon-techniques.md](references/recon-techniques.md) | LinkedIn employee enumeration, job-posting tech-stack analysis, Slack/Discord/Telegram workspace discovery, package-registry leak hunting (npm/PyPI/Docker Hub/Quay/GHCR), sat imagery for physical recon | LinkedIn enumeration, job posting tech stack, Slack workspace discovery, Discord server discovery, npm token leak, PyPI token leak, Docker Hub leak, sat imagery physical recon |
+| [severity-matrix.md](references/severity-matrix.md) | 80+ worked examples mapping observed conditions → finding severity (CRITICAL/HIGH/MEDIUM/LOW/INFO) | severity decision, finding severity, severity matrix |
+| [sector-notes.md](references/sector-notes.md) | Recon notes for healthcare (DICOM), finance (SWIFT), ICS/SCADA (Modbus/BACnet), IoT, government | sector specific recon, healthcare DICOM, finance SWIFT, ICS SCADA, Modbus, BACnet |
+| [tooling-install.md](references/tooling-install.md) | Quick-install one-liners for Subfinder, Amass, httpx, nuclei, gau, katana, gowitness, dnsx, mapcidr, naabu, sslyze, testssl.sh, etc. | tooling install, install subfinder, install nuclei, install httpx |
+| [helpers-and-automation.md](references/helpers-and-automation.md) | AI-assisted OSINT, archiving & evidence preservation, automation & workflow patterns, cross-module sidecar coordination, runnable secret_scan.py / h1_reference.py / dashboard.py helper notes | AI-assisted OSINT, evidence preservation, automation, sidecar, hacktivity reference, recon console |
 
 
 ---
 
 ## 20. Endpoint Interest Score — 0–100 rubric
 
-For every classified endpoint (§22 in methodology skill), apply this rubric:
+For every classified endpoint (§22 in methodology skill), apply this advisory prioritization rubric, only to observations already authorized and collected. It is not CVSS, a vulnerability verdict or permission to perform a write:
 
 | Signal | Points | Conditions |
 |---|---|---|
-| **Unauth write** | +40 | POST/PUT/DELETE/PATCH endpoint returns 200/201/202/204 anonymously. |
+| **Unauth write** | +40 | An approved disposable fixture demonstrates an unintended state change without required authorization; a 2xx response alone is insufficient. Do not issue writes merely to calculate this score. |
 | **Open GraphQL introspection** | +35 | `__schema` query returns full type list anonymously. |
-| **Verb tampering bypass** | +30 | OPTIONS reveals method not documented; that method is accessible. |
+| **Verb tampering bypass** | +30 | An approved fixture demonstrates a method-specific authorization failure. OPTIONS/Allow and method reachability alone are leads. |
 | **Reflected CORS + credentials** | +25 | `Access-Control-Allow-Origin` reflects request `Origin` AND `Access-Control-Allow-Credentials: true`. |
 | **Sensitive keyword in path** | +20 | Path matches one of: `admin`, `internal`, `debug`, `user`, `password`, `token`, `key`, `export`, `upload`, `backup`, `config`, `secret`, `private`, `delete`, `purge`, `wipe`. |
 | **Schema leak in error** | +20 | Response body contains stack trace, ORM error class, framework signature (e.g., `ActiveRecord::RecordNotFound`, `org.hibernate.exception.*`, `django.db.utils.IntegrityError`). |
 | **API key in URL** | +15 | Path or query string contains `api_key=`, `apikey=`, `token=`, `access_token=`. |
 | **Wildcard CORS** | +10 | `Access-Control-Allow-Origin: *`. |
-| **Missing rate-limit headers** | +10 | No `RateLimit-*` / `X-RateLimit-*` headers; no `Retry-After` after rapid requests. |
+| **Missing rate-limit headers** | +10 | Observed absence of rate-limit headers is a hardening lead only; assign no points without an independently demonstrated limit failure. Do not send rapid requests to generate evidence. |
 
 **Thresholds:**
 
-| Score | Severity |
+| Score | Review priority (not severity) |
 |---|---|
-| ≥ 90 | **CRITICAL** |
-| 70–89 | **HIGH** |
-| 50–69 | MEDIUM |
-| 25–49 | LOW |
-| < 25 | INFO |
+| ≥ 90 | Highest |
+| 70–89 | High |
+| 50–69 | Medium |
+| 25–49 | Low |
+| < 25 | Background |
 
-For score ≥ 70, attach an `attack_path_hint` in evidence (see §29).
+For score ≥ 70, attach an evidence-bounded review question (see §39). Assign finding severity separately from demonstrated impact, affected data, prerequisites and scope.
 
 ---
 
 ## 21. Mobile App Ownership Confidence — 0–100 rubric
 
-Before running deep APK static analysis, score whether the discovered app actually belongs to the target. Threshold: **≥70 = accept**.
+Before running deep APK static analysis, score whether the discovered app actually belongs to the target. Threshold: **≥70 = candidate for operator review**, never acceptance or authorization.
 
 | Signal | Points |
 |---|---|
@@ -306,9 +310,9 @@ Before running deep APK static analysis, score whether the discovered app actual
 | Developer email is `<anything>@<target-domain>` | +25 |
 | Developer website URL is the target domain (or a confirmed sibling brand domain) | +20 |
 | App name contains a brand keyword from operator-supplied brand list | +10 |
-| App has ≥ minimum review-score threshold (default 20 reviews) | +5 |
+| App has ≥ minimum review-score threshold (default 20 reviews) | +0 (popularity is not ownership evidence) |
 
-Apps below threshold are tagged `mobile_review_pending` and shown but not analyzed. Operator can re-score with `--mobile-ownership-threshold 50` for noisier collection.
+Keep app IDs, developer identity, source URLs and timestamps; corroborate with the organization’s official app link and approved package inventory. Both high- and low-score candidates require operator confirmation before download or analysis. `--mobile-ownership-threshold` is an upstream implementation option, not an AAS command or scope override.
 
 ---
 
@@ -317,41 +321,41 @@ Apps below threshold are tagged `mobile_review_pending` and shown but not analyz
 
 ## 39. Attack-Path Hint Patterns
 
-When emitting a HIGH/CRITICAL API endpoint finding (score ≥ 70), include a one-sentence `attack_path_hint` in evidence so the operator knows where to start exploiting. Templates:
+Use the following review questions after collecting approved evidence. A priority score is not severity. Do not automatically execute exploitation, bulk reads, writes, registration, credential validation or data extraction from these hints; those require distinct confirmation and appropriate scope.
 
 | Trigger | Attack-path hint |
 |---|---|
-| Unauth POST / PUT / DELETE | *"Unauthenticated {method} {path} — try IDOR + privilege escalation; check whether numeric IDs are sequential or guessable."* |
-| Open GraphQL introspection | *"Open GraphQL introspection on {path} — enumerate mutations, look for `createUser`, `setRole`, `transferFunds`-shaped names; pivot to broken-auth or business-logic flaws."* |
-| Reflected CORS + creds | *"Reflected CORS with credentials on {path} — host CSRF page on attacker-controlled origin; victim's browser will leak {sensitive-data-hint}."* |
-| Wildcard CORS + sensitive | *"Wildcard CORS on {path} returning user-tied data without creds — exfiltrate via cross-origin fetch from any page victim visits."* |
-| Verb tampering | *"Verb tampering: {hidden-method} allowed on documented-{visible-method}-only endpoint → likely missing-method-check authz bug; try {hidden-method} {path} with valid auth."* |
+| Unauth POST / PUT / DELETE | Confirm the intended authentication requirement and demonstrated effect on an approved disposable fixture; do not infer authorization bypass from status alone. |
+| Open GraphQL introspection | Check whether the schema is intentionally public and whether it reveals restricted information; a mutation name does not prove an executable unauthorized action. |
+| Reflected CORS + creds | Assess credentialed cross-origin access with an owned test account and approved origin; headers alone do not prove sensitive browser-readable data. |
+| Wildcard CORS + sensitive | Determine whether returned data is public by design; wildcard origins cannot grant credentialed browser reads by themselves. |
+| Verb tampering | Compare authorization across explicitly approved methods on a disposable fixture; undocumented method availability is not a bypass. |
 | API key in URL | *"API key in URL: `?{param}=...` — token leaks to access logs, browser history, Referer headers, third-party CDNs. Check Wayback / Google for cached copies."* |
 | Schema leak in error | *"Schema leak in error response — framework signature `{framework}` exposed; map to known {framework} vulns and craft targeted payloads."* |
 | Sensitive keyword | *"Path contains '{keyword}' — review for direct object reference, mass-assignment, or hidden admin functionality."* |
-| Open RTDB Firebase | *"Open Firebase RTDB at https://{project}.firebaseio.com/.json — read everything, then test write at `/<random-key>.json` with PUT to gauge ACL scope."* |
-| Listable cloud bucket | *"Listable {provider} bucket `{bucket}` — recursive object listing + content-type analysis; look for backups, logs, customer data, AWS keys in JSON configs."* |
-| .git exposed | *"Exposed .git/config on {host} — reconstruct repository with git-dumper or githacker; full source history."* |
-| .env exposed | *"Exposed .env on {host} — grep for `_KEY`, `_SECRET`, `_TOKEN`, `_PASSWORD`; validate all credentials read-only via §23 validators."* |
-| /actuator/env | *"Spring Boot /actuator/env exposed — dump environment variables; look for `spring.datasource.password`, JWT secrets, cloud creds."* |
-| /actuator/heapdump | *"Spring Boot /actuator/heapdump exposed — download HPROF, run `jhat` or VisualVM, search for cleartext secrets in heap strings."* |
-| Open Elasticsearch | *"Open Elasticsearch on {host}:9200 — `/_cat/indices?v` for index list; sample documents from each high-value index; test write to `/test-idx/_doc` to gauge ACL."* |
-| Open Redis | *"Open Redis on {host}:6379 — `INFO`, `KEYS *`, sample reads; check for write access via `CONFIG SET` then `BGSAVE` to write `authorized_keys`."* |
-| Open MongoDB | *"Open MongoDB on {host}:27017 — `show dbs`, `show collections`, sample find queries; check user collection for password hashes."* |
-| Subdomain takeover | *"CNAME for {host} points to unclaimed {provider} resource → register `{takeover-target}` on {provider} to serve content from {host}; pivot to phishing or content injection on the trusted domain."* |
-| Open kubelet | *"Open kubelet on {host}:10250 — `GET /pods` to list; `POST /run/<ns>/<pod>/<container>` for in-container exec without K8s API auth."* |
-| Open etcd | *"Open etcd on {host}:2379 — `etcdctl get / --prefix --keys-only` for full cluster state; secrets stored under `/registry/secrets/`."* |
-| K8s API anonymous | *"Kubernetes API on {host}:6443 with anonymous-auth — `kubectl --server=https://{host}:6443 --insecure-skip-tls-verify get pods --all-namespaces`."* |
+| Open RTDB Firebase | Record the minimal approved response and intended access policy; do not read the database recursively or test writes in reconnaissance. |
+| Listable cloud bucket | Confirm intended public access and minimum exposed metadata; do not recursively download objects or search customer data without separate approval. |
+| .git exposed | Record the exposed marker and risk; repository reconstruction and history recovery are separate data-collection actions requiring approval. |
+| .env exposed | Redact the minimum evidence and notify the owner; do not validate every discovered credential automatically. |
+| /actuator/env | Establish whether sensitive values are actually visible or masked; redact evidence and avoid dumping the environment. |
+| /actuator/heapdump | Flag potential memory disclosure from metadata; obtain explicit byte-limit and sensitive-data approval before any heap download. |
+| Open Elasticsearch | Check intended authentication using minimal metadata; do not sample every index or create test documents during reconnaissance. |
+| Open Redis | Review authentication and network exposure with the owner; do not enumerate all keys, change configuration, save databases or write SSH keys. |
+| Open MongoDB | Review authentication and network policy; do not enumerate user collections or retrieve password hashes. |
+| Subdomain takeover | Corroborate the provider’s current custom-domain controls and dangling binding; do not claim resources or publish content without separate authorization. |
+| Open kubelet | Review kubelet authentication and authorized metadata only; pod execution is outside reconnaissance. |
+| Open etcd | Review network and authentication configuration; do not retrieve cluster secrets or dump keyspaces. |
+| K8s API anonymous | Distinguish public health/discovery endpoints from privileged anonymous permissions; verify TLS and do not enumerate all namespaces automatically. |
 | Citrix unpatched | *"Citrix NetScaler version {ver} on {host} — vulnerable to CVE-{cve} (KEV-listed); see vendor advisory; do not exploit but flag for client immediate patching."* |
-| F5 BIG-IP TMUI exposed | *"F5 BIG-IP TMUI on {host} reachable; CVE-2022-1388 / CVE-2023-46747 KEV applicable; advise immediate patching to vendor-released hotfix."* |
+| F5 BIG-IP TMUI exposed | Reachability is an asset observation. Verify exact version and vendor advisory prerequisites before reporting a CVE as applicable. |
 | VMware vCenter accessible | *"vCenter at {host} accessible without VPN; CVE-2021-21972 RCE if unpatched; check version banner."* |
 | Cloud function URL unauth | *"AWS Lambda Function URL at {url} accessible anonymously — review IAM auth configuration; if unauthenticated by design, audit input validation aggressively."* |
-| npm typosquat candidate | *"Package name `{candidate}` is unregistered + similar to target's published `{official}` — typosquat takeover risk; advise client to defensively register."* |
-| DMARC missing/permissive | *"DMARC `p=none` on {domain} — spoof of `{anything}@{domain}` deliverable to recipients; recommend enforcement to `p=quarantine` or `p=reject` after observing reports."* |
-| Live AI API key (Anthropic/OpenAI) | *"Validated `sk-{provider}-...` key with model access — quota cost can be exfiltrated; rotate immediately + audit usage logs in provider console."* |
-| Public Slack invite link | *"Slack workspace invite link discoverable via search engine — anyone can join the workspace without approval; trivially access internal channels."* |
-| Open Docker registry | *"Public Docker registry at {host} — `GET /v2/_catalog` lists images; pull and scan layers for embedded secrets."* |
-| Telegram bot token live | *"Telegram bot token validated — `getUpdates` reveals bot recipients (admin chats); if `getMe` shows bot is in channels, full message read access."* |
+| npm typosquat candidate | Record name similarity and publisher evidence; similarity or an available name alone does not prove malicious registration. |
+| DMARC missing/permissive | Review alignment, sender inventory and receiver behavior; p=none alone does not prove deliverable impersonation. Stage enforcement with the domain owner. |
+| Live AI API key (Anthropic/OpenAI) | Ask the owner to revoke or rotate the disclosed key and audit usage. Model access does not prove unrestricted spending or historical data access. |
+| Public Slack invite link | Verify whether the invite is intended for a public community; discovery does not authorize joining or prove access to private channels or DMs. |
+| Open Docker registry | Confirm whether the catalog is intentionally public. Only acquire explicitly approved, bounded artifacts and inspect inert layers without starting containers. |
+| Telegram bot token live | Ask the owner to revoke the exposed token. Identity metadata does not establish channel access; do not consume getUpdates, which may affect pending updates. |
 | Sourcemap with `sourcesContent[]` | *"Sourcemap on {host} includes embedded original sources — full frontend code reconstructable; grep for inline secrets and internal hostnames."* |
 
 ---
@@ -406,7 +410,9 @@ Drop these prompts into a fresh Claude session to verify the skill loads correct
 
 ---
 
-## 50. Changelog
+## 50. Historical upstream changelog
+
+These are upstream historical claims, not AAS execution evidence. Current authorization, evidence and severity corrections above supersede the old escalation and automatic-workflow descriptions.
 
 - **v2.1.1 (2026-04-27)** — battle-test gap fixes from real-engagement smoke run. Added: §15.0.1 HudsonRock Cavalier direct-API recipe (curl + PowerShell, full JSON shape, free-tier redaction caveats, rate-limit guidance). §15.2 expanded with legacy-mail-decommissioned escalation pattern (NXDOMAIN legacy mail + breach corpus + autodiscover-confirmed cloud migration → CRITICAL SSO_EXPOSURE). §16.14 expanded with DMARC reporting-vendor table (Kratikal kdmarc / dmarcian / Valimail / Agari / EasyDMARC / DMARC Analyzer / Postmark) + full Windows/PowerShell parallel for the entire email security audit + caveat that PS 5.1 `Resolve-DnsName -Type CAA` errors (use PS 7+ or `nslookup -type=CAA`). §16.22 expanded TXT verification token catalog with 17 new tokens (zscaler-verification, cloudflare-verify, autosect, cisco-site-verification, mscid, _amazonses, salesforce-domain-verification, workday/shopify/klaviyo/mailchimp/hubspot/zendesk/freshworks/intercom/loom/miro/gitlab) + new "Autodiscover-as-confirmation" pattern for M365 detection when MX is wrapped by Mimecast/Proofpoint/Barracuda. §22.1 added passive Autodiscover IP correlation pattern with Microsoft Exchange Online IP ranges. §22.8 added clarification: SharePoint HEAD HTTP 200 = tenant exists, NOT anonymous access granted (operators commonly misread). New §16.23 legacy-app pivot block (when Wayback `*.js` returns empty for brochure-ware sites, pivot to .asp/.php/.jsp/.cfm/.aspx/.json/.xml/.yml/.ini/.conf — with full broad-sweep one-liner). New §16.24 Common-Prefix Subdomain Sweep — formalized active prefix-probe technique with 100+ ordered prefix list, PowerShell + bash + puredns recipes, and real-engagement validation note (passive enum misses 20-40% of high-value subdomains; always pair with active prefix probe). §27.0.1 added crt.sh fallback chain (Censys, CertSpotter, Calidog, Subfinder, OTX, ThreatMiner, URLScan, Anubis-DB) with PowerShell wrapper that retries crt.sh 3× then falls back to Subfinder. §28.1 added Bulk IP→ASN recipes (Cymru bulk WHOIS, RIPEstat, bgp.tools, IPinfo Lite) + caveat that bgpview.io API has aggressive rate limits unsuitable for bulk. §40 severity matrix gained 8 rows: vendor procurement portal exposed + breach corpus hits (HIGH), PII-collection portal over plain HTTP (HIGH), decommissioned legacy mail + breach + cloud migration (CRITICAL), public-facing intranet without VPN (MEDIUM), staging/preprod publicly resolvable (MEDIUM), vpn.<domain> resolves but vendor unknown (INFO escalating to HIGH-CRITICAL on KEV match), DMARC RUA → third-party vendor (INFO). §49 self-test expanded from 30 → 40 prompts targeting all new content.
 - **v2.1 (2026-04-27)** — comprehensive expansion based on 32-test smoke-test gap analysis. Added: copy-paste curl probes for every check (§16.13), email security analysis with SPF/DMARC/DKIM/BIMI/MTA-STS/DNSSEC parsing + SaaS tenant inference (§16.14), origin discovery / CDN bypass via DNS history + cert SAN + favicon hash + JARM + Host-header probe (§16.15), vendor product fingerprints for Citrix/F5/Pulse/Fortinet/PaloAlto/Cisco/VMware/Exchange + KEV CVE associations (§16.16), cloud-native service URL fingerprints — Lambda Function URLs, Cloud Run, Cloud Functions, Azure Functions, Vercel, Netlify, Cloudflare Workers, etc. (§16.17), container & Kubernetes exposure (kubelet, etcd, K8s API, dashboard, Helm Tiller, container registries) (§16.18), CI/CD platform exposure (Jenkins deeper, GitLab, GitHub Actions, CircleCI, TeamCity, Argo CD, Spinnaker) (§16.19), documentation/wiki leak paths (Notion, Confluence, Trello, Miro, Lucidchart, Figma, ReadTheDocs, GitBook, Slab, Coda, etc.) (§16.20), WHOIS/RDAP/historical-WHOIS recipes + reverse-WHOIS pivots (§16.21), DNS record catalog with TXT verification token table → SaaS tenant inference (§16.22), Wayback CDX deep usage with all filter parameters (§16.23). Expanded: §17 secret catalog from 29 → 48 patterns adding modern AI API keys (Anthropic, OpenAI legacy + project, HuggingFace), infra (Cloudflare, DigitalOcean), package registries (npm, PyPI, Docker Hub), SaaS (Atlassian, Linear), observability (New Relic, DataDog, Sentry DSN), bot tokens (Discord, Telegram), and ngrok. Expanded §18 dork corpus from 50+ → 80+ with internal-tool exposure (Splunk/Grafana/Kibana/Argo CD/Sonarqube/Confluence/Jira/GitLab/Gitea), backup-file extensions, and sector-specific dorks (healthcare/finance/gov). Added §22.8 Microsoft 365 deep enumeration (Teams federation, SharePoint subdomain probe, OneDrive personal-site probe, OAuth client_id discovery, device-code phishing target check, Power Platform). Added §22.9 GraphQL field-suggestion enumeration recipe + alias batching, query-depth bypass, subscription enumeration, batched-query bypass. Added §23.5–23.9 read-only validators for Anthropic, OpenAI, npm, Atlassian, DataDog (5 new). Added §23.12 post-discovery enumeration workflows (AWS IAM enum, GitHub PAT scope/repo enum, Slack workspace enum, JWT full triage with algorithm-confusion + brute-force + none-bypass, Postman PMAK workspace enum, Anthropic + OpenAI usage enum, generic key provenance enum). Pinned §24 Postman search endpoint with verified shape + DevTools fallback recipe. Added §27.1 wordlist sources (Assetnote, SecLists, jhaddix, OneListForAll, raft-large-words, fuzzdb, etc.) + size guidance. Added §28.4 TLS deep audit (sslyze + testssl.sh + nmap + JA3/JA4 + cipher/protocol/cert checks). Added §28.5 reverse DNS sweep + IPv6 enumeration + BGP route observation. Added §29.2 vulnerability prioritization data sources (NVD/EPSS/CISA KEV/ExploitDB/Metasploit/InTheWild/OpenCVE/Trickest CVE+POC mapping/OSV.dev/VulnCheck KEV) + bulk prioritization workflow. Expanded §39 attack-path hints with 15 more templates (open kubelet/etcd, K8s API anonymous, Citrix/F5/vCenter/Cloud Function unauth, npm typosquat, DMARC missing, live AI keys, Slack invite, sourcemap with sourcesContent). Expanded §40 severity matrix with 30 more worked examples covering Kubernetes/container, vendor products with KEV CVEs, M365/cloud-native, CI/CD misconfig, documentation leaks, email-security gaps, AI/package-registry credentials, TLS issues. Added §41 LinkedIn employee enumeration tradecraft (search techniques + role inference + email-pattern derivation + sock-puppet considerations). Added §42 job posting tech-stack analysis (sources + extraction + tooling). Added §43 Slack/Discord/Telegram/Mattermost workspace discovery. Added §44 package registry leak hunting (npm/PyPI/RubyGems/Cargo/Packagist/NuGet/Maven Central + workflow + typosquat surveillance). Added §45 sat imagery for physical recon (sources + extraction + LinkedIn/Glassdoor/Instagram/conference intel + vehicle/fleet intel). Added §46 tooling quick-install (subdomain, HTTP probing, vuln scanning, content discovery, JS extraction, Wayback, cloud, identity, mobile, TLS, utilities, frameworks). Added §47 sector-specific recon notes (healthcare DICOM/HL7/FHIR/EHR + finance SWIFT/FIX/Bloomberg/banking middleware + ICS-SCADA Modbus/BACnet/S7/DNP3 + IoT MQTT/CoAP/UPnP + government FedRAMP/FISMA + maritime/aviation/auto). Renumbered Runnable Helper → §48, Self-Test → §49 (refreshed for v2.1), Changelog → §50.
@@ -418,19 +424,19 @@ Drop these prompts into a fresh Claude session to verify the skill loads correct
 
 - **`web2-recon`** — When the arsenal needs to be executed against a live host set. Workflow primitive: this skill provides the probe paths and wordlists; `web2-recon` runs the actual subfinder → dnsx → httpx → katana pipeline that consumes them.
 - **`osint-methodology`** — When this skill's concrete probes need a planning framework. Workflow primitive: `osint-methodology` is the planning skeleton (5-stage pipeline, asset graph, findings rubric); this skill is the operational arsenal that fills each stage with curl one-liners and regexes.
-- **`hunt-subdomain`** — When this skill's subdomain enumeration finds stale CNAMEs. Workflow primitive: subdomains discovered via §27 / `references/recon-stack.md` get auto-routed to `hunt-subdomain` for takeover validation.
-- **`hunt-cloud-misconfig`** — When this skill's cloud-bucket enum surfaces listable buckets / Firebase / actuator endpoints. Workflow primitive: §39 attack-path hints (listable bucket, /actuator/env, open Elasticsearch) hand off to `hunt-cloud-misconfig` for exploitation.
-- **`m365-entra-attack`** / **`okta-attack`** — When identity-fabric fingerprinting finds Entra/Okta. Workflow primitive: `references/identity-fabric.md` fingerprints the IdP; matched platform skill (loaded by `hunt-dispatch`) takes over for active enumeration.
+- **`hunt-subdomain`** — When this skill's subdomain enumeration finds stale CNAMEs. Workflow primitive: subdomains discovered via §27 / `references/recon-stack.md` can be proposed for `hunt-subdomain` review; do not register resources or dispatch testing automatically.
+- **`hunt-cloud-misconfig`** — When this skill's cloud-bucket enum surfaces listable buckets / Firebase / actuator endpoints. Workflow primitive: §39 attack-path hints (listable bucket, /actuator/env, open Elasticsearch) can inform a separately authorized `hunt-cloud-misconfig` assessment; discovery does not authorize exploitation.
+- **`m365-entra-attack`** / **`okta-attack`** — When identity-fabric fingerprinting finds Entra/Okta. Workflow primitive: `references/identity-fabric.md` fingerprints the IdP; a platform skill can be proposed only after its own scope and confirmation requirements are met; no automatic dispatch or active enumeration.
 
 ## When to Use
 
 - You have explicit, written authorization to assess the target in scope, and the task matches this skill's vulnerability class or technique within a bug-bounty or penetration-test engagement.
-- You need the recon, exploitation, or validation workflow described below — executed strictly inside the approved scope.
+- You need an individual reconnaissance reference or evidence triage; active verification stays inside the specific approved target and technique.
 
 ## Limitations
 
 - Authorized scope only: the confirmation gate above is mandatory before any probing, exploitation, or credential-access command.
-- Docs-only import: upstream helper scripts, commands, engine, and research assets are not bundled; reinstall tooling from the source repo when needed.
+- The 15 reference documents are bundled; executable upstream helpers, engines and external testing tools are not. Source examples are not runtime availability or observed test results. Review pinned external tooling in an isolated environment before installation; never install everything automatically.
 - Validate every finding (see `triage-validation`) before reporting; report via `report-writing`. Prefer a sandbox, disposable VM, or controlled lab.
 
 ### Example
@@ -440,4 +446,4 @@ Drop these prompts into a fresh Claude session to verify the skill loads correct
 cat scope.txt  # target list from the authorized engagement brief
 ```
 
-> Adapted from [elementalsouls/Claude-BugHunter](https://github.com/elementalsouls/Claude-BugHunter) (MIT); frontmatter, When to Use/Limitations, and safety boundaries added for upstream compliance. Docs-only import: executable helpers, commands, engine, and research assets not bundled.
+> Adapted from [elementalsouls/Claude-BugHunter](https://github.com/elementalsouls/Claude-BugHunter) by Sachin Sharma, under CC-BY-4.0 for methodology and documentation. AAS modifies safety boundaries, evidence interpretation, examples and availability notes; see the attribution notice and preserved license. Executable helpers and engines are not bundled.

@@ -21,7 +21,7 @@ date_added: '2026-02-27'
 - Clarify goals, constraints, and required inputs.
 - Apply relevant best practices and validate outcomes.
 - Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
+- Use the examples below; no separate implementation playbook is bundled.
 
 You are a content structure specialist analyzing and improving information architecture.
 
@@ -54,7 +54,7 @@ You are a content structure specialist analyzing and improving information archi
 
 ## Schema Markup Priority
 
-**High-Impact Schemas:**
+**Schema types to consider only when they match visible content:**
 - Article/BlogPosting
 - FAQ Schema
 - HowTo Schema
@@ -105,6 +105,10 @@ H1: Primary Keyword Focus
 - Step-by-step for processes
 
 Focus on logical flow and scannable content. Create clear information hierarchy for users and search engines.
+
+## Structured-data scope
+
+Valid Schema.org markup does not guarantee a Google rich result. Verify current feature eligibility in [Google’s structured-data gallery](https://developers.google.com/search/docs/appearance/structured-data/search-gallery); HowTo rich results are deprecated; [Google’s May 2026 update](https://developers.google.com/search/updates) states that FAQ rich results stopped appearing on May 7, 2026. Keep semantic markup only where it describes real visible content; do not promise either rich-result feature. Mark up only visible, truthful content and genuine reviews; never fabricate rating totals or customer evidence. Validate the exact JSON-LD and actual rendered page. Prepare changes as a draft; publishing, canonical/redirect changes and new plugins require target authorization.
 
 ## Limitations
 - Use this skill only when the task clearly matches the scope described above.

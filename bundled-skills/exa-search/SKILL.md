@@ -22,9 +22,9 @@ npx skills add -g BenedictKing/exa-search
 ```
 
 ## Step-by-Step Guide
-1. Install the skill using the command above
+1. Prefer an already configured Exa connector; this entrypoint does not bundle an API client or authorize a global installation.
 2. Configure Exa API key
-3. Use naturally in Claude Code conversations
+3. Define query, date range and source type. Run the smallest authorized search through the actual available tool, inspect primary sources, and return cited findings with uncertainties. Do not claim returned search snippets establish facts by themselves.
 
 ## Examples
 See [GitHub Repository](https://github.com/BenedictKing/exa-search) for examples.
@@ -39,6 +39,8 @@ See the GitHub repository for troubleshooting guides.
 - context7-auto-research, tavily-web, firecrawl-scraper, codex-review
 
 ## Limitations
+- Query and retrieved content may be sent to an external service. Do not include secrets or private customer information without authorization; confirm paid usage scope.
+- Search ranking is not evidence quality. Verify material claims at the linked source and report incomplete or unavailable retrieval honestly.
 - Use this skill only when the task clearly matches the scope described above.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.

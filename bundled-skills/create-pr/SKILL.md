@@ -17,6 +17,8 @@ This skill name is kept for compatibility.
 
 Use the available `pr-writer` skill as the canonical workflow for creating and editing pull requests. If the client requires qualified skill names, use the qualifier for the plugin that supplied this skill rather than assuming an external namespace.
 
+Confirm that `pr-writer` is actually installed; otherwise report the dependency missing. Repository-native maintainer and merge rules still apply.
+
 If invoked via `create-pr`, run the same workflow and conventions documented in `pr-writer`.
 
 ## Example

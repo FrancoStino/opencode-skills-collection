@@ -5,11 +5,17 @@ risk: safe
 source: community
 date_added: "2026-04-04"
 ---
-You are a **Identity Psychologist and Self-Concept Researcher**. Your task is to identify the aspirational identity the target customer wants to inhabit, then rewrite outputs so the brand or offer reflects that identity back.
+Use a marketing planning and audience-research lens. Your task is to identify the aspirational identity the target customer wants to inhabit, then rewrite outputs so the brand or offer reflects that identity back.
 
 ## When to Use
 - Use when messaging needs to reflect the audience's self-image, aspirations, or in-group identity.
 - Use when you want copy to feel personally resonant rather than broadly persuasive.
+
+## Evidence and scope
+
+Use observed audience research and verified product facts. Psychological interpretations and the author-year references below are inherited conceptual context, not validated evidence for this exact workflow or a guaranteed conversion effect. Before using a scientific claim externally, verify the actual publication, method and applicability; omit unsupported claims. This is marketing planning, not clinical diagnosis. Do not infer sensitive traits or exploit vulnerabilities.
+
+Original contribution: [PR 451](https://github.com/sickn33/agentic-awesome-skills/pull/451) by MMEHDI0606; [immutable source snapshot](https://github.com/MMEHDI0606/antigravity-awesome-skills/blob/9c61357e3e6bb167946036f52ac1e28fc82e04d0/skills/identity-mirror/SKILL.md). This identifies the contributed instructions, not scientific validation or a new upstream endorsement.
 
 ## CONTEXT GATHERING
 
@@ -31,23 +37,23 @@ People gravitate toward brands and messages that validate who they believe they 
 
 **Step 1 - Identify the current self-concept**
 State how the customer sees themselves now.
-*Research basis: self-identity predicts consumer behavior beyond demographics (Smith et al., 2008).*
+*Planning hypothesis (verify before presenting as research): self-identity predicts consumer behavior beyond demographics (Smith et al., 2008).*
 
 **Step 2 - Identify the aspirational identity**
 State who they want to become or be seen as.
-*Research basis: self-brand connection strengthens preference when the brand matches the desired self (Bagozzi et al., 2021; Quach et al., 2025).*
+*Planning hypothesis (verify before presenting as research): self-brand connection strengthens preference when the brand matches the desired self (Bagozzi et al., 2021; Quach et al., 2025).*
 
 **Step 3 - Define the identity gap**
 Determine whether the gap is small, medium, or large.
-*Research basis: identity messages must feel achievable or they trigger defensiveness (identity and self-concept research).*
+*Planning hypothesis (verify before presenting as research): identity messages must feel achievable or they trigger defensiveness (identity and self-concept research).*
 
 **Step 4 - Mirror the language**
 Use words, imagery, and proof that make the aspirational self feel recognized.
-*Research basis: self-relevance and similarity increase persuasion and belonging (Ooms et al., 2019; Moyer-Gusé et al., 2022).*
+*Planning hypothesis (verify before presenting as research): self-relevance and similarity increase persuasion and belonging (Ooms et al., 2019; Moyer-Gusé et al., 2022).*
 
 **Step 5 - Keep the promise believable**
 Ensure the product can genuinely support the identity.
-*Research basis: overclaiming identity fit creates dissonance and distrust (Bagozzi et al., 2021).*
+*Planning hypothesis (verify before presenting as research): overclaiming identity fit creates dissonance and distrust (Bagozzi et al., 2021).*
 
 ## DECISION MATRIX
 
@@ -94,7 +100,7 @@ The line between persuasion and manipulation is helping people see a real identi
 
 ## SKILL CHAINING
 
-Before invoking this skill, the agent should have completed:
+Optional context from related skills (equivalent supplied research is sufficient; do not create a prerequisite cycle):
 - [ ] `@customer-psychographic-profiler`
 - [ ] `@jobs-to-be-done-analyst`
 
@@ -118,6 +124,8 @@ Before finalizing output, the agent asks:
 **User request:**
 
 > Rewrite this message so it reflects the audience identity and aspirations without inventing claims.
+
+**Illustrative output:** If interviews describe the audience as independent shop owners, test language about running their own business; do not invent status aspirations or promise a changed identity.
 
 ## Limitations
 - Use this skill only when the task clearly matches the scope described above.

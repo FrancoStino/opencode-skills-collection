@@ -1,8 +1,8 @@
 ---
 name: django-perf-review
+license: Apache-2.0
 description: Django performance code review. Use when asked to "review Django performance", "find N+1 queries", "optimize Django", "check queryset performance", "database performance", "Django ORM issues", or audit Django code for performance problems.
 allowed-tools: Read, Grep, Glob, Bash, Task
-license: LICENSE
 risk: critical
 source: community
 date_added: "2026-09-04"

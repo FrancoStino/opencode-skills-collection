@@ -1,16 +1,11 @@
 ---
 name: django-access-review
-description: django-access-review
+description: "Use when reviewing Django or DRF access control: trace authorization flows, IDOR risks, object permissions, query scoping and tenant isolation before proposing a verified fix."
 risk: critical
 source: community
 date_added: "2026-09-04"
 ---
 
----
-name: django-access-review
-description: Django access control and IDOR security review. Use when reviewing Django views, DRF viewsets, ORM queries, or any Python/Django code handling user authorization. Trigger keywords: "IDOR", "access control", "authorization", "Django permissions", "object permissions", "tenant...
---- LICENSE
----
 
 <!--
 Reference material based on OWASP Cheat Sheet Series (CC BY-SA 4.0)
@@ -237,7 +232,7 @@ Only report issues you've confirmed through investigation.
 A comment or docstring does not enforce authorization. Your suggested fix must include actual code that:
 - Validates the user has permission before proceeding
 - Raises an exception or returns an error if unauthorized
-- Makes unauthorized access impossible, not just discouraged
+- Enforces the stated ownership/tenant policy on the shown path, with negative tests; a small helper does not prove every endpoint is protected.
 
 Example of a BAD fix suggestion:
 ```python
@@ -248,12 +243,24 @@ def get_resource(resource_id):
 
 Example of a GOOD fix suggestion:
 ```python
+from django.core.exceptions import PermissionDenied
+from django.shortcuts import get_object_or_404
+from app.models import Resource  # Replace with the project's actual model.
+
+
 def get_resource(resource_id, user):
-    resource = Resource.objects.get(pk=resource_id)
-    if resource.owner_id != user.id:
-        raise PermissionDenied("Access denied")
-    return resource
+    if user is None or not user.is_authenticated:
+        raise PermissionDenied("Authentication required")
+    return get_object_or_404(Resource, pk=resource_id, owner_id=user.pk)
 ```
+
+This example assumes individually owned resources and a `user` supplied by the
+server's authenticated request context, never by a user-controlled request body.
+For organization roles or shared resources, use the actual verified membership
+policy instead of replacing it with a simplistic ownership check. The scoped
+lookup returns 404 for an absent or unowned resource and does not expose its data.
+Test anonymous access, the owner, another user and another tenant, including bulk,
+create and custom-action paths; importing a permission class alone is not proof.
 
 If you can't determine the right enforcement mechanism, say so - but never suggest documentation as the fix.
 
@@ -354,4 +361,5 @@ Use this to guide your review, not as a pass/fail checklist:
 ## Limitations
 - Use this skill only when the task clearly matches the scope described above.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+- Review code read-only by default. Exercise negative requests only against authorized disposable/staging resources; do not probe real users’ objects merely to demonstrate an IDOR.
+- Examples are project integration patterns, not a complete Django application; adapt imports, relationships and permission semantics to the actual models.

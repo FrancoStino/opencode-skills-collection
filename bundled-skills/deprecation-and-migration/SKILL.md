@@ -122,7 +122,7 @@ Only after all consumers have migrated:
 1. Verify zero active usage (metrics, logs, dependency analysis)
 2. Remove the code
 3. Remove associated tests, documentation, and configuration
-4. Remove the deprecation notices
+4. Archive completed deprecation notices while keeping migration history discoverable
 5. Celebrate — removing code is an achievement
 ```
 
@@ -212,7 +212,7 @@ After completing a deprecation:
 - [ ] All active consumers have been migrated (verified by metrics/logs)
 - [ ] Old code, tests, documentation, and configuration are fully removed
 - [ ] No references to the deprecated system remain in the codebase
-- [ ] Deprecation notices are removed (they served their purpose)
+- [ ] Completed notices are archived; affected users can still find migration history
 
 ## Limitations
 

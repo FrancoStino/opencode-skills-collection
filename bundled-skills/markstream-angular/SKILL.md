@@ -26,7 +26,7 @@ Use for Angular-specific standalone imports, CSS, signals, custom tags or compon
 
 ## Workflow
 
-Before changing dependencies or source files, inspect the existing package manager and project conventions, preview the intended edits, and obtain explicit user approval.
+Inspect the existing package manager, installed package version and project conventions. A requested scoped integration already authorizes routine source/dependency edits; seek approval only for a material scope expansion or unresolved beta/alpha adoption decision.
 
 1. Confirm Angular 20+ and record that `markstream-angular` is alpha.
 2. Install the package plus only requested peers. Import `markstream-angular/index.css`; add KaTeX CSS only for math.
@@ -74,3 +74,5 @@ export class AnswerComponent {
 ## Security & Safety Notes
 
 Review dependency changes before installation. Never broaden HTML or Mermaid trust settings for untrusted model output.
+
+Verify props, export paths and peer ranges against the installed package, not a mutable upstream main. Test partial and completed streams, malformed/untrusted Markdown, links and image URLs, cancellation and reduced motion. Safe HTML and strict diagrams reduce exposure but do not alone enforce URL/network privacy or application component permissions.

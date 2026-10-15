@@ -26,7 +26,7 @@ Use when Vue 2 runs on Vue CLI or Webpack 4 and package export maps or Vite work
 
 ## Workflow
 
-Before changing dependencies or source files, inspect the existing package manager and project conventions, preview the intended edits, and obtain explicit user approval.
+Inspect the existing package manager, installed package version and project conventions. A requested scoped integration already authorizes routine source/dependency edits; seek approval only for a material scope expansion or unresolved beta/alpha adoption decision.
 
 1. Confirm Vue 2 plus Vue CLI/Webpack 4.
 2. Install `markstream-vue2` and only requested peers.
@@ -68,3 +68,7 @@ export default {
 ## Security & Safety Notes
 
 Do not introduce CDN workers without reviewing CSP, network policy, and dependency trust. Preserve safe rendering defaults.
+
+Verify props, export paths and peer ranges against the installed package, not a mutable upstream main. Test partial and completed streams, malformed/untrusted Markdown, links and image URLs, cancellation and reduced motion. Safe HTML and strict diagrams reduce exposure but do not alone enforce URL/network privacy or application component permissions.
+
+Vue 2 is end-of-life; preserve a requested legacy integration and document its maintenance/support decision rather than silently upgrading the whole application. Prefer reviewed locally bundled workers over mutable CDN code where feasible.

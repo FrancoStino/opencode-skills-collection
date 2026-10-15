@@ -32,11 +32,8 @@ ForEach(Array(items.enumerated()), id: \.offset) { _, item in
 
 ```swift
 struct FeedView: View {
-  let items: [FeedItem]
-
-  private var sortedItems: [FeedItem] {
-    items.sorted(using: KeyPathComparator(\.createdAt, order: .reverse))
-  }
+  // Sorted and cached by the owning store when its input changes.
+  let sortedItems: [FeedItem]
 
   var body: some View {
     List(sortedItems) { item in

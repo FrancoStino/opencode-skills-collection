@@ -23,6 +23,10 @@ Use this workflow when:
 - Creating user guides
 - Maintaining wikis
 
+## Scope
+
+Select only the phases needed for the request; this bundle does not authorize every referenced skill or external publication. Verify each ID and local prerequisites before invocation. Preserve existing docs, distinguish proposed from accepted decisions, keep private data out of public examples, and run the project's actual documentation checks.
+
 ## Workflow Phases
 
 ### Phase 1: Documentation Planning
@@ -183,7 +187,7 @@ Use @wiki-onboarding to create onboarding docs
 2. Categorize changes
 3. Generate changelog
 4. Create release notes
-5. Publish updates
+5. Prepare updates; publish only to the explicitly authorized destination
 
 #### Copy-Paste Prompts
 ```

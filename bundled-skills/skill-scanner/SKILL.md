@@ -5,12 +5,15 @@ risk: safe
 source: community
 date_added: "2026-09-04"
 ---
+## Bundled upstream support
+
+Supporting files are included at skill-relative paths. See [UPSTREAM-NOTICE.md](UPSTREAM-NOTICE.md) for their pinned sources, licenses, hashes, and import changes.
 
 # Skill Security Scanner
 
 Scan agent skills for security issues before adoption. Detects prompt injection, malicious code, excessive permissions, secret exposure, and supply chain risks.
 
-**Important**: Run all scripts from the repository root using the full path via `${CLAUDE_SKILL_ROOT}`.
+Resolve this installed skill directory explicitly. Run the bundled helper with an already reviewed Python environment containing PyYAML; no repository-root working directory or implicit dependency download is required.
 
 ## When to Use
 - You need to evaluate a skill for prompt injection, malicious code, over-broad permissions, or supply-chain risk before adopting it.
@@ -21,13 +24,19 @@ Scan agent skills for security issues before adoption. Detects prompt injection,
 
 ### `scripts/scan_skill.py`
 
-Static analysis scanner that detects deterministic patterns. Outputs structured JSON.
+Static analysis scanner that detects deterministic patterns. Outputs structured JSON (`skill-scanner.locators.v2`). It reports fixed finding descriptions, local file/line locators, counts, recognized tools and metadata field presence/types. It omits raw metadata values, source excerpts, decoded payloads, commands, symlink targets and complete URLs. Inspect those privately at the reported location. Relative filenames, the selected directory identifier and URL hostnames remain visible identifiers; the report is not an anonymizer for sensitive names. Unsupported inputs remain incomplete, not safe.
 
 ```bash
-uv run ${CLAUDE_SKILL_ROOT}/scripts/scan_skill.py <skill-directory>
+python3 "<installed-skill-dir>/scripts/scan_skill.py" "<authorized-inert-skill-directory>"
 ```
 
-Returns JSON with findings, URLs, structure info, and severity counts. The script catches patterns mechanically — your job is to evaluate intent and filter false positives.
+Returns JSON with findings, URL host/line locators, structure info, and severity counts. The script catches patterns mechanically — your job is to evaluate intent and filter false positives.
+
+## Scanner Coverage and Report Privacy
+
+Use a private inert snapshot: this helper is static inspection, not an execution sandbox. It refuses final symlinks/non-regular files and bounds a file to 1 MiB, a tree to 1,000 files / 16 MiB. Hosts without guarded no-follow file opens report incomplete rather than silently following links. Nested regular text files are included; binary/unreadable inputs remain explicit coverage gaps. A scan error or incomplete coverage exits nonzero, not a clean pass.
+
+Source payloads are omitted from the report rather than relying on recognition of every secret format. Visible filenames and hostnames can still be confidential identifiers; inspect reports locally before sharing. No target script, lifecycle hook, test or external URL is executed. Domain familiarity and lexical overlap do not satisfy semantic review or merge authority.
 
 ## Workflow
 
@@ -52,7 +61,7 @@ ls <skill-directory>/scripts/ 2>/dev/null
 Run the bundled scanner:
 
 ```bash
-uv run ${CLAUDE_SKILL_ROOT}/scripts/scan_skill.py <skill-directory>
+python3 "<installed-skill-dir>/scripts/scan_skill.py" "<authorized-inert-skill-directory>"
 ```
 
 Parse the JSON output. The script produces findings with severity levels, URL analysis, and structure information. Use these as leads for deeper analysis.
@@ -71,7 +80,7 @@ Read the SKILL.md and check:
 
 ### Phase 4: Prompt Injection Analysis
 
-Load `${CLAUDE_SKILL_ROOT}/references/prompt-injection-patterns.md` for context.
+Load the installed skill's `references/prompt-injection-patterns.md` for context.
 
 Review scanner findings in the "Prompt Injection" category. For each finding:
 
@@ -108,7 +117,7 @@ This phase is agent-only — no pattern matching. Read the full SKILL.md instruc
 
 If the skill has a `scripts/` directory:
 
-1. Load `${CLAUDE_SKILL_ROOT}/references/dangerous-code-patterns.md` for context
+1. Load the installed skill's `references/dangerous-code-patterns.md` for context
 2. Read each script file fully (do not skip any)
 3. Check scanner findings in the "Malicious Code" category
 4. For each finding, evaluate:
@@ -124,9 +133,9 @@ If the skill has a `scripts/` directory:
 
 ### Phase 7: Supply Chain Assessment
 
-Review URLs from the scanner output and any additional URLs found in scripts:
+Review URL domains and file/line locators from the scanner output; inspect complete URLs locally in the source:
 
-- **Trusted domains**: GitHub, PyPI, official docs — normal
+- **Familiar domains**: GitHub, PyPI and documentation sites are discovery context, not proof that a particular repository/package is trustworthy
 - **Untrusted domains**: Unknown domains, personal sites, URL shorteners — flag for review
 - **Remote instruction loading**: Any URL that fetches content to be executed or interpreted as instructions is high risk
 - **Dependency downloads**: Scripts that download and execute binaries or code at runtime
@@ -134,7 +143,7 @@ Review URLs from the scanner output and any additional URLs found in scripts:
 
 ### Phase 8: Permission Analysis
 
-Load `${CLAUDE_SKILL_ROOT}/references/permission-analysis.md` for the tool risk matrix.
+Load the installed skill's `references/permission-analysis.md` for the tool risk matrix.
 
 Evaluate:
 
@@ -164,7 +173,7 @@ Example assessments:
 
 ### Summary
 - **Findings**: X (Y Critical, Z High, ...)
-- **Risk Level**: Critical / High / Medium / Low / Clean
+- **Risk Level**: Critical / High / Medium / Low / No pattern matches
 - **Skill Structure**: SKILL.md only / +references / +scripts / full
 
 ### Findings
@@ -174,7 +183,7 @@ Example assessments:
 - **Confidence**: High
 - **Category**: Prompt Injection / Malicious Code / Excessive Permissions / Secret Exposure / Supply Chain / Validation
 - **Issue**: [What was found]
-- **Evidence**: [code snippet]
+- **Evidence**: [local file/line and matched pattern; omit secret-bearing source snippets]
 - **Risk**: [What could happen]
 - **Remediation**: [How to fix]
 
@@ -182,7 +191,7 @@ Example assessments:
 [Medium-confidence items needing human review]
 
 ### Assessment
-[Safe to install / Install with caution / Do not install]
+[Scoped review recommendation / More evidence required / Do not adopt]
 [Brief justification for the assessment]
 ```
 
@@ -191,7 +200,7 @@ Example assessments:
 - **High**: High-confidence high-severity findings or multiple medium findings
 - **Medium**: Medium-confidence findings or minor permission concerns
 - **Low**: Only best-practice suggestions
-- **Clean**: No findings after thorough analysis
+- **No pattern matches**: None matched within reported coverage; this does not establish safety or completeness
 
 ## Reference Files
 

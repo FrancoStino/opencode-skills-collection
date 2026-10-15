@@ -21,16 +21,18 @@ license_source: "https://github.com/davidondrej/skills/blob/main/LICENSE"
 - Use when the user asks for recurring, scheduled, heartbeat, or looped agent work.
 - Use when you need to choose between cron, external schedulers, hooks, or built-in agent scheduling.
 
-First question: does the agent have a built-in scheduler (Hermes → Camp B), or do you own the clock (everything else → Camp A)?
+Scheduling requires a direct user request; a guide or task-list entry is not permission to create background work. Preserve timezone, cadence, notification preferences and stop conditions; update an existing matching job instead of duplicating it. External messages and posting require explicit authorization.
 
-Universal floor: cron is 1 minute minimum (5-field expr, no seconds) — every camp. For sub-minute you MUST use a `while ...; sleep N; done` loop, a TS extension, or an event hook. Never put an LLM on a tight timer.
+First inspect the actual host: prefer its supported scheduler/heartbeat when available (including Codex automations); otherwise use an explicitly authorized external clock. Host capabilities are not determined solely by the runtime name.
+
+Traditional five-field cron has one-minute granularity; other schedulers differ. Prefer event-driven checks and an appropriate cadence. Avoid tight LLM timers and indefinite loops.
 
 ## Camp A — one-shot agents, you own the clock
 
 These run once and exit (amnesiac unless resumed). Schedule them externally.
 
 ```bash
-claude -p "PROMPT" --output-format json --allowedTools "Read,Edit,Bash"  # Claude Code
+claude -p "PROMPT" --output-format json --allowedTools "Read"  # Claude Code
 codex exec --json "PROMPT"                                                # Codex
 pi run "PROMPT"                                                           # Pi
 ```
@@ -42,13 +44,14 @@ Wrap in a clock:
 */10 * * * * cd /path/to/project && pi run "check X and report" >> ~/agent.log 2>&1
 # 2. systemd timer (Linux, survives reboot, better logging) — OnUnitActiveSec=10min
 # 3. dumb loop (sub-minute, or no cron available)
-while true; do pi run "check X"; sleep 30; done
+# If an external loop is required, bound its lifetime and implement a stop flag and overlap lock.
+# Do not install an indefinite model-calling loop by default.
 ```
 
 Gotchas (each breaks unattended runs if ignored):
-- **Permissions hang forever.** Pass `--allowedTools` (Claude) or sandbox/auto-approve flags (Codex), or the run blocks on a prompt.
+- **Permissions hang forever.** Use the host's supported narrowly scoped permissions for the agreed task. Do not disable sandboxing or broadly auto-approve commands to avoid an unattended prompt; report unavailable required approval.
 - **Use JSON output** (`--output-format json` / `--json`) so the wrapper parses results deterministically.
-- **Runs are amnesiac.** Resume (`codex exec resume --last`) or persist state to a file the next run reads.
+- **Runs are amnesiac.** Resume the exact recorded task/session ID or persist private scoped state. `--last` can select an unrelated task and is unsuitable for an unattended multi-project schedule.
 
 Pi has NO built-in scheduler/loop/heartbeat by design — external clock only (or a TS extension for agent-side timers).
 
@@ -56,7 +59,7 @@ Pi has NO built-in scheduler/loop/heartbeat by design — external clock only (o
 
 cmux has no timer/watch/cron. Three ways to loop it: orchestrator-driven (`send` → `sleep` → `read-screen` on your own clock), a dumb while-sleep wrapper, or — preferred — event-driven via `cmux notify` + OSC terminal hooks, which is cheaper and more responsive than polling. `read-screen` is non-interruptive, safe to poll.
 
-If a loop checks another agent, send the user a one-line status each check: what the agent is doing, on track or not. (Claude Code may prefill a predicted next user message after finishing — that's Claude, not the user.)
+For a monitor, stay quiet while state is unchanged unless the user requests periodic updates; notify on meaningful change, completion, failure or needed input. (Claude Code may prefill a predicted next user message after finishing — that's Claude, not the user.)
 
 ## Camp B — Hermes built-in scheduler
 
@@ -79,7 +82,7 @@ One fast recurring tick gates many slower per-task checks: the tick reads a task
 
 1. Camp A: log file grows after one interval, or run the wrapped command once by hand → clean JSON, exit 0.
 2. Camp B: `hermes cron list` shows the job + sane `next_run`; trigger a run-now to confirm delivery.
-3. Confirm permission/sandbox flags are present — the #1 silent failure is a hung permission prompt.
+3. Confirm least-privilege permissions, overlap protection, bounded retries/timeouts, private logs and a working disable/remove path. An unavailable approval is a reported failure, not justification for a bypass.
 4. Heartbeats: confirm a nothing-due tick stays silent.
 
 ## Limitations

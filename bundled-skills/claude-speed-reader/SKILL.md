@@ -14,13 +14,23 @@ date_added: "2026-02-27"
 
 ## When to Use This Skill
 
-Use this skill when you need to work with -speed read claude's responses at 600+ wpm using rsvp with spritz-style orp highlighting.
+Use when the user wants an RSVP reader for an existing response or supplied text and a compatible upstream reader is available.
 
 ## Instructions
 
-This skill provides guidance and patterns for -speed read claude's responses at 600+ wpm using rsvp with spritz-style orp highlighting.
+This AAS entrypoint is a guide to the upstream reader, not the bundled reader itself.
+Verify an installed, reviewed upstream copy before invoking its command. In Claude
+Code, upstream documents `/speed` for the last response and `/speed "text"` for
+custom text. Other hosts may not implement that slash command.
 
-For more information, see the [source repository](https://github.com/SeanZoR/claude-speed-reader).
+1. Confirm the text the user wants displayed; exclude sensitive response history
+   from external tools unless sharing is authorized.
+2. Use the reader's adjustable speed and pause controls; start at a comfortable rate.
+3. Check that the actual reader opens and displays the intended text. Do not claim
+   it ran merely because the command was printed.
+
+RSVP presentation rate is not proof of comprehension. This skill does not guarantee
+600 WPM reading ability and does not install browser assets automatically.
 
 ## Example
 

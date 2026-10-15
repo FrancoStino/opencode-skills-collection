@@ -1,6 +1,6 @@
 ---
 name: clarvia-aeo-check
-description: "Score any MCP server, API, or CLI for agent-readiness using Clarvia AEO (Agent Experience Optimization). Search 15,400+ indexed tools before adding them to your workflow."
+description: "Score any MCP server, API, or CLI for agent-readiness using Clarvia AEO (Agent Experience Optimization). Use current provider evidence as advisory input when evaluating a tool."
 category: tool-quality
 risk: safe
 source: community
@@ -14,7 +14,7 @@ tools: [claude, cursor, windsurf, cline]
 
 ## Overview
 
-Before adding any MCP server, API, or CLI tool to your agent workflow, use Clarvia to score its agent-readiness. Clarvia evaluates 15,400+ AI tools across four AEO dimensions: API accessibility, data structuring, agent compatibility, and trust signals.
+When the user selects Clarvia, use its current index and scoring model as advisory input. Do not make a vendor score a mandatory prerequisite or security approval. Clarvia describes tools across four AEO dimensions: API accessibility, data structuring, agent compatibility, and trust signals.
 
 ## Prerequisites
 
@@ -25,7 +25,7 @@ Add Clarvia MCP server to your config:
   "mcpServers": {
     "clarvia": {
       "command": "npx",
-      "args": ["-y", "clarvia-mcp-server"]
+      "args": ["--yes", "clarvia-mcp-server@<reviewed-version>"]
     }
   }
 }
@@ -56,7 +56,7 @@ Clarvia returns a 0-100 AEO score with breakdown across four dimensions.
 Find the top-rated database MCP servers using Clarvia
 ```
 
-Returns ranked results from 15,400+ indexed tools.
+Returns provider-ranked results; record query date, index coverage and scoring limitations rather than a hardcoded total.
 
 ### Step 3: Compare tools head-to-head
 
@@ -92,10 +92,10 @@ top-rated options and compare the top 3.
 
 ### Example 3: CI/CD quality gate
 
-Add to your CI pipeline using the GitHub Action:
+Optional example for an explicitly requested advisory CI integration; verify the action’s repository, inputs and immutable revision before use:
 
 ```yaml
-- uses: clarvia-project/clarvia-action@v1
+- uses: clarvia-project/clarvia-action@<reviewed-full-commit-SHA>
   with:
     url: https://your-api.com
     fail-under: 70
@@ -109,14 +109,14 @@ Add to your CI pipeline using the GitHub Action:
 | 70-89 | Agent Friendly | Works well, minor gaps |
 | 50-69 | Agent Compatible | Works but needs improvement |
 | 30-49 | Agent Partial | Significant limitations |
-| 0-29 | Not Agent Ready | Avoid for agentic workflows |
+| 0-29 | Provider low score | Inspect the actual gaps and task fit; this is not an eligibility ban |
 
 ## Best Practices
 
 - ✅ Score tools before adding them to long-running agent workflows
 - ✅ Use Clarvia's leaderboard to discover alternatives you haven't considered
 - ✅ Re-check scores periodically — tools improve over time
-- ❌ Don't skip scoring for "well-known" tools — even popular tools can score poorly
+- ✅ Compare scores with actual protocol compatibility, required functionality and source/security review; scoring is optional
 - ❌ Don't use tools scoring below 50 in production agent pipelines without understanding the limitations
 
 ## Common Pitfalls
@@ -133,6 +133,6 @@ Add to your CI pipeline using the GitHub Action:
 - `@agent-evaluation` - Broader agent quality evaluation framework
 
 ## Limitations
-- Use this skill only when the task clearly matches the scope described above.
+- Do not add an MCP host entry or mandatory CI threshold merely to read this guide. Tool lookup/URL scanning sends data to the provider; confirm scope before sending private endpoints or triggering active scans. A 0–100 score is neither a vulnerability audit nor permission to install/execute a tool.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.

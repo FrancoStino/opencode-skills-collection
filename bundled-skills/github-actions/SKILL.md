@@ -31,6 +31,10 @@ Use this skill when:
 - Managing workflow secrets and variables
 - Debugging failed workflow runs
 
+## Scope and Fragment Prerequisites
+
+Examples are independent YAML fragments, not a complete deployable pipeline. Each new job needs its own checkout, tool setup, locked dependency installation and artifact transfer; jobs do not share a working directory. Review untrusted event inputs, least-privilege permissions, protected environments and secret exposure before adoption. Image push, deployment and runner registration require authorization.
+
 ## Prerequisites
 
 - GitHub repository with write access
@@ -58,7 +62,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
       - run: npm ci
       - run: npm test
@@ -113,7 +117,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [18, 20, 22]
+        node-version: [22, 24]
         os: [ubuntu-latest, windows-latest]
     steps:
       - uses: actions/checkout@v4
@@ -259,7 +263,10 @@ jobs:
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
     steps:
-      - run: echo "Deploying to ${{ inputs.environment }}"
+      - name: Report selected environment
+        env:
+          DEPLOY_ENVIRONMENT: ${{ inputs.environment }}
+        run: printf 'Deploying to %s\n' "$DEPLOY_ENVIRONMENT"
 ```
 
 ### Call Reusable Workflow
@@ -278,18 +285,11 @@ jobs:
 
 ### Register Runner
 
-```bash
-# Download runner
-mkdir actions-runner && cd actions-runner
-curl -o actions-runner-linux-x64.tar.gz -L https://github.com/actions/runner/releases/download/v2.311.0/actions-runner-linux-x64-2.311.0.tar.gz
-tar xzf actions-runner-linux-x64.tar.gz
-
-# Configure
-./config.sh --url https://github.com/OWNER/REPO --token TOKEN
-
-# Run
-./run.sh
-```
+Use the selected repository's current runner setup instructions. Verify the official
+release checksum before extracting or executing it, choose the intended architecture,
+and use a short-lived registration token without printing it. Do not use a historical
+hardcoded runner version. Treat self-hosted runner access as host code execution:
+never run untrusted fork PR code on a persistent privileged runner.
 
 ### Use Self-Hosted Runner
 
@@ -311,12 +311,8 @@ Set repository secrets:
 
 ### Debug Step
 
-```yaml
-- name: Debug
-  run: |
-    echo "GitHub context: ${{ toJson(github) }}"
-    echo "Job context: ${{ toJson(job) }}"
-```
+Print only explicitly selected non-secret fields needed for the failure. Full GitHub/job
+context dumps can reveal tokens and sensitive metadata; do not copy them into logs.
 
 ## Common Issues
 
@@ -340,11 +336,11 @@ permissions:
 
 ## Best Practices
 
-- Pin action versions to specific commits or tags
+- Pin reviewed third-party actions to full immutable commit SHAs; example tags below describe interfaces, not production trust pins
 - Use caching for dependencies to speed up builds
 - Minimize secrets exposure with environment scoping
 - Use matrix builds for cross-platform testing
-- Implement proper error handling with `continue-on-error`
+- Required tests and security checks must fail the job when they fail. Use `continue-on-error` only for declared nonblocking advisory checks and report their actual outcome.
 - Keep workflows DRY with reusable workflows and composite actions
 
 ## Related Skills
@@ -362,7 +358,7 @@ permissions:
 
 ```bash
 git status && git diff --stat
-kubectl diff -f manifest.yaml
+gh run view <actual-run-id> --log-failed
 ```
 
 > Adapted from [BagelHole/DevOps-Security-Agent-Skills](https://github.com/BagelHole/DevOps-Security-Agent-Skills) (MIT); frontmatter, When to Use/Limitations, and safety boundaries added for upstream compliance. Docs-only import: helper scripts and templates not bundled.

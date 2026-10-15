@@ -22,6 +22,10 @@ Use this workflow when:
 - Testing across browsers
 - Integrating tests with CI/CD
 
+## Scope and proof
+
+Choose phases needed for the current task, not every listed skill. Use dedicated test accounts, isolated fixtures and approved sandbox endpoints; clicks can send messages, make purchases or delete data. Review browser installation/downloads and CI permissions first. Traces, screenshots, videos and storage-state files can contain credentials or private data; keep them private and redact artifacts before sharing. A Playwright WebKit run is not proof on actual Safari/iOS, and mobile emulation is not a real-device test. Keep visual baselines fixed until differences are reviewed; do not overwrite them merely to get a pass.
+
 ## Workflow Phases
 
 ### Phase 1: Test Setup

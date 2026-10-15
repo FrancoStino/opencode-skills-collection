@@ -9,6 +9,20 @@ author: amalsam18
 tags: [playwright, java, e2e-testing, junit5, page-object-model, allure, selenium-alternative]
 tools: [claude, cursor,antigravity]
 ---
+## Supporting material availability
+
+This catalog copy contains the inline guidance below, but does not include the following supporting paths. They are external prerequisites, not bundled files:
+
+- `<support-root>/references/config.md`
+- `<support-root>/references/page-objects.md`
+- `<support-root>/references/assertions.md`
+- `<support-root>/references/fixtures.md`
+- `<support-root>/templates/BaseTest.java`
+- `<support-root>/templates/BasePage.java`
+- `src/test/resources/junit-platform.properties`
+
+Ask for the original supporting material or an existing installation before using a step that depends on these paths; this catalog does not identify a verified download source for them. Resolve each path relative to that installation, inspect its contents, and verify any applicable license and execution prerequisites. Do not run a command or claim a referenced procedure was followed until its required file exists. Do not fabricate the missing scripts or treat an unrelated file with the same name as equivalent. Independent steps fully documented here can proceed within the user’s authorized scope; report any dependent step as unavailable.
+
 
 # Playwright Java – Advanced Test Automation
 

@@ -25,7 +25,7 @@ Generate a commit message from the actual staged changes (`git diff --cached`). 
 
 ## Workflow
 
-1. **Look at the changes**: run `git status --short` and `git diff --cached --stat` to confirm there is something staged. If the staging area is empty, stop and ask the user — never invent a commit message out of nothing.
+1. **Look at the changes**: run `git status --short`, `git diff --cached --stat`, and `git diff --cached` to confirm there is something staged. If staging is empty, use an explicitly supplied diff or change description when available and label that evidence; otherwise request the intended changes. Do not stage files implicitly.
 2. **Pick a type**: choose exactly one type prefix based on the changes (if one commit mixes types, ask the user to split it):
    - `feat`: new feature
    - `fix`: bug fix
@@ -35,7 +35,7 @@ Generate a commit message from the actual staged changes (`git diff --cached`). 
    - `chore`: build, dependencies, misc
 3. **Write the subject**: format `type: English imperative phrase`, ≤50 characters. Start with a verb: "Add…", "Fix…", "Remove…", "Unify…". Ban empty subjects like "update code", "some changes", "fix bug".
 4. **Write the body (optional but recommended)**: 1–3 lines explaining *why*, not a play-by-play of *how*. Bug fixes must state the trigger conditions; features should describe the user-visible change.
-5. **Output**: give a ready-to-run command, not bare text the user has to assemble.
+5. **Output**: return the message in the format requested. If supplying a shell command, quote it safely: commit text containing `$()`, backticks, or quotes must not execute as shell code. For a multiline message prefer writing it verbatim to a temporary file and using `git commit -F <message-file>`.
 
 ## Rules
 

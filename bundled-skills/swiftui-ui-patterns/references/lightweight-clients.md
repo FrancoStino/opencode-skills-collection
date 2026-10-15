@@ -16,13 +16,13 @@ struct SomeClient {
 
 extension SomeClient {
     static func live(baseURL: URL = URL(string: "https://example.com")!) -> SomeClient {
-        let session = URLSession.shared
+        // Scaffold only: no live network implementation is bundled.
         return SomeClient(
             fetchItems: { limit in
-                // build URL, call session, decode
+                throw URLError(.unsupportedURL) // Implement and test the project adapter before use.
             },
             search: { query, limit in
-                // build URL, call session, decode
+                throw URLError(.unsupportedURL) // Implement and test the project adapter before use.
             }
         )
     }

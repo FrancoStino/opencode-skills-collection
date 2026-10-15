@@ -41,7 +41,7 @@ import { pipe, flow } from 'fp-ts/function'
 import * as O from 'fp-ts/Option'      // Maybe exists
 import * as E from 'fp-ts/Either'      // Success or failure
 import * as TE from 'fp-ts/TaskEither' // Async + failure
-import * as T from 'fp-ts/Task'        // Async (no failure)
+import * as T from 'fp-ts/Task'        // Lazy async; no typed error channel
 import * as A from 'fp-ts/Array'       // Array utilities
 ```
 
@@ -50,7 +50,7 @@ import * as A from 'fp-ts/Array'       // Array utilities
 | Need | Code |
 |------|------|
 | Wrap nullable | `O.fromNullable(value)` |
-| Default value | `O.getOrElse(() => default)` |
+| Default value | `O.getOrElse(() => fallbackValue)` |
 | Transform if exists | `O.map(fn)` |
 | Chain optionals | `O.flatMap(fn)` |
 | Wrap try/catch | `E.tryCatch(() => risky(), toError)` |
@@ -77,3 +77,9 @@ pipe(result, E.match(
 - Use this skill only when the task clearly matches the scope described above.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+
+## Reference scope
+
+These are fp-ts 2.x fragments. Supply application variables, types, validators and imports, and check the installed version. `map` does not catch thrown exceptions. `Task` has no typed error channel; an improperly wrapped promise can still reject. Use `tryCatch` at fallible boundaries.
+
+Official API: [fp-ts modules](https://gcanti.github.io/fp-ts/modules/).

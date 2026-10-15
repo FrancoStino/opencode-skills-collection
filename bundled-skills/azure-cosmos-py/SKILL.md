@@ -5,6 +5,17 @@ risk: critical
 source: community
 date_added: '2026-02-27'
 ---
+## Bundled upstream support
+
+Supporting files are included at skill-relative paths. See [UPSTREAM-NOTICE.md](UPSTREAM-NOTICE.md) for their pinned sources, licenses, hashes, and import changes.
+
+## Supporting material availability
+
+These paths remain unavailable in this catalog copy:
+
+- `<support-root>/scripts/setup_cosmos_container.py`
+
+Do not invoke a step that requires one of these files. Obtain the original material and review its dependencies, license, and effects before use. Independent inline steps and the bundled helpers can proceed within the user’s authorized scope.
 
 # Azure Cosmos DB SDK for Python
 

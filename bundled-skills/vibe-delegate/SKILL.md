@@ -13,6 +13,10 @@ license_source: https://github.com/amElnagdy/delegate-skills/blob/master/LICENSE
 metadata:
   version: 0.5.0
 ---
+## Bundled upstream support
+
+Supporting files are included at skill-relative paths. See [UPSTREAM-NOTICE.md](UPSTREAM-NOTICE.md) for their pinned sources, licenses, hashes, and import changes.
+
 # Vibe Delegate
 
 ## When to Use
@@ -141,7 +145,7 @@ mandate). See [references/review-and-land.md](references/review-and-land.md).
 
 ## Limitations
 
-- Docs-only import — executable `scripts/relay.mjs` not included; see upstream for full runtime. Requires `vibe` CLI, Node 18+, git.
+- Runtime helper `scripts/relay.mjs` is bundled from the revision recorded in `UPSTREAM-NOTICE.md`. Requires the corresponding installed and authenticated CLI, Node 18+, and git.
 - Relay never commits — it only returns structured result JSON; you review and land the commit.
 
 > Adapted from [amElnagdy/delegate-skills](https://github.com/amElnagdy/delegate-skills) (MIT) — docs-only, runtime not bundled.

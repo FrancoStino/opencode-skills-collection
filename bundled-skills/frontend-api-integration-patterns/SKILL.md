@@ -148,25 +148,27 @@ useEffect(() => {
 
 ### 4. Retry with Exponential Backoff
 
-Retry only transient failures (5xx or network errors).
+Retry only explicitly replay-safe operations and classified transient failures. The default performs one attempt. Do not classify arbitrary programming or parsing exceptions as network errors. Honor provider Retry-After and a total deadline in the real adapter; do not enable this simple backoff for rate-limit responses. The POST prediction example intentionally does not enable retries unless the backend contract independently guarantees replay safety.
 
 ```js id="8n3zcf"
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-const fetchWithBackoff = async (fn, retries = 3, delay = 300) => {
+const fetchWithBackoff = async (fn, retries = 3, delay = 300, replaySafe = false) => {
   try {
     return await fn();
   } catch (err) {
     const isAbort = err.name === "AbortError";
     const isHttpError = typeof err.status === "number";
-    const isRetryable = !isAbort && (!isHttpError || err.status >= 500);
+    const isNetworkFailure = err.code === "NETWORK_ERROR";
+    const isRetryable = replaySafe && !isAbort &&
+      (isNetworkFailure || (isHttpError && err.status >= 500));
 
     if (retries <= 0 || !isRetryable) throw err;
 
     const nextDelay = delay * 2 + Math.random() * 100;
     await sleep(nextDelay);
 
-    return fetchWithBackoff(fn, retries - 1, nextDelay);
+    return fetchWithBackoff(fn, retries - 1, nextDelay, replaySafe);
   }
 };
 ```
@@ -219,21 +221,22 @@ const controllerRef = useRef(null);
 
 const handlePredict = async (input) => {
   controllerRef.current?.abort();
-  controllerRef.current = new AbortController();
+  const controller = new AbortController();
+  controllerRef.current = controller;
 
   try {
     const result = await fetchWithBackoff(() =>
       apiClient("/predict", {
         method: "POST",
         body: JSON.stringify({ text: input }),
-        signal: controllerRef.current.signal,
+        signal: controller.signal,
       })
     );
 
-    setOutput(result);
+    if (!controller.signal.aborted && controllerRef.current === controller) setOutput(result);
   } catch (err) {
     if (err.name === "AbortError") return;
-    setError(err.message);
+    if (controllerRef.current === controller) setError(err.message);
   }
 };
 ```

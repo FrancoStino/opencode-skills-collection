@@ -47,12 +47,12 @@ Expert in event sourcing, CQRS, and event-driven architecture patterns. Masters 
 
 ## Safety
 
-- Never mutate or delete committed events in production.
+- Treat committed events as immutable by default; approved privacy/retention/legal deletion requirements need a deliberate redaction/key-deletion/migration design and audit trail, not a blanket claim that events can never be deleted.
 - Rebuild projections in staging before running in production.
 
 ## Best Practices
 
-- Events are facts - never delete or modify them
+- Events record domain assertions with version/provenance; corrections are new events by default, not proof that every recorded assertion was objectively true
 - Keep events small and focused
 - Version events from day one
 - Design for eventual consistency
@@ -72,6 +72,7 @@ Works well with: `saga-orchestration`, `architecture-patterns`, `dbos-*`
 > Build systems requiring complete audit trails.
 
 ## Limitations
-- Use this skill only when the task clearly matches the scope described above.
+- Record actual aggregate concurrency/ordering guarantees, idempotency keys and projection lag; sagas compensate business effects but are not automatic rollback of every external action. Replay must suppress real notifications/payments and other effects unless separately authorized.
+- Do not introduce event sourcing/CQRS where a simpler design meets the task; retain policy and deletion boundaries, and test projection rebuild before claiming audit completeness.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.

@@ -5,6 +5,13 @@ risk: critical
 source: community
 date_added: "2026-02-27"
 ---
+## Bundled upstream support
+
+Supporting files are included at skill-relative paths. See [UPSTREAM-NOTICE.md](UPSTREAM-NOTICE.md) for their pinned sources, licenses, hashes, and import changes.
+
+## Restored helper safety
+
+`scripts/run_batch_evaluation.py` uploads the entire selected JSONL file to the configured Azure AI project, creates a remote evaluation and run, and may incur model or cloud charges. Before invocation, review the data classification and confirm the exact file, endpoint, deployment, evaluators, and expected cost with the user. Do not run it during documentation-only work.
 
 # Azure AI Projects Python SDK (Foundry SDK)
 

@@ -5,6 +5,17 @@ risk: critical
 source: community
 date_added: "2026-02-27"
 ---
+## Bundled upstream support
+
+Supporting files are included at skill-relative paths. See [UPSTREAM-NOTICE.md](UPSTREAM-NOTICE.md) for their pinned sources, licenses, hashes, and import changes.
+
+## Supporting material availability
+
+These paths remain unavailable in this catalog copy:
+
+- `<support-root>/assets/cost-analysis-template.xlsx`
+
+Do not invoke a step that requires one of these files. Obtain the original material and review its dependencies, license, and effects before use. Independent inline steps and the bundled helpers can proceed within the user’s authorized scope.
 
 # Cloud Cost Optimization
 
@@ -20,7 +31,6 @@ Strategies and patterns for optimizing cloud costs across AWS, Azure, and GCP.
 - Clarify goals, constraints, and required inputs.
 - Apply relevant best practices and validate outcomes.
 - Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
 
 ## Purpose
 

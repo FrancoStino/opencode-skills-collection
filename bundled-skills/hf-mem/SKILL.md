@@ -21,9 +21,13 @@ license_source: https://github.com/huggingface/skills/blob/main/LICENSE
 ## What are the requirements?
 
 - `uv` installed (for `uvx`)
-- `HF_TOKEN` env var or `--hf-token` flag (for gated or private models only)
+- `HF_TOKEN` from the host's private credential handling for gated/private repositories; avoid putting tokens in command arguments, logs or reports.
+- A reviewed pinned `hf-mem` package version and permission to access the requested model metadata. This skill does not bundle the executable.
 
 ## How to run?
+
+The angle-bracket and square-bracket forms below are usage notation, not shell commands to paste literally. Quote actual model IDs and file paths. Inspect the selected package's `--help`, choose a reviewed version (for example with `uvx --from "hf-mem==REVIEWED_VERSION" hf-mem ...`) and use a private cache where metadata is sensitive. Do not print credentials.
+
 
 Run with `--model-id` pointing to the Hugging Face Hub repository which will check that it either contains Safetensors (via `model.safetensors`, `model.safetensors.index.json` if sharded, or `model_index.json` for Diffusers) or GGUF model weights within.
 
@@ -90,3 +94,7 @@ uvx hf-mem --model-id unsloth/Qwen3.5-397B-A17B-GGUF --gguf-file Q4_K_M --experi
 - Use this skill only when the task clearly matches its upstream product or API scope.
 - Verify commands, API behavior, pricing, quotas, credentials, and deployment effects against current official documentation before making changes.
 - Do not treat generated examples as a substitute for environment-specific tests, security review, or user approval for destructive or costly actions.
+
+## Interpretation and verification
+
+Report the model revision, selected weight file or quantization, batch size, context length and KV-cache dtype alongside the estimate. Weight/header estimates are not a guarantee that a model fits: runtime workspaces, activations, allocator fragmentation, offloading and concurrent processes add memory. Confirm with the intended inference backend on target hardware before making a purchase or deployment decision. HTTP metadata access still contacts the Hub and can reveal private model identifiers; it does not run inference. Experimental KV estimates depend on supported architectures.

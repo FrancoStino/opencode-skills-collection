@@ -2,6 +2,10 @@
 
 > This file contains the detailed procedure and reference material extracted from `SKILL.md` for focused loading. The root skill defines activation, examples, safety constraints, and limitations.
 
+## Execution and example status
+
+Only fenced pure helpers explicitly described as complete are runnable without project dependencies. Historical SDK sketches below are pseudocode: verify package/version signatures, configure indexes and bind every read/write to authenticated tenant/user identity before adapting them. Undefined helpers, decorators and external providers are not bundled. Never execute a sketch or claim a tested integration merely because it names an SDK.
+
 ## Principles
 
 - Memory quality = retrieval quality, not storage quantity
@@ -45,16 +49,16 @@
 
 ### Vector_stores
 
-- Pinecone - When: Managed, enterprise-scale (billions of vectors) Note: Best query performance, highest cost
+- Pinecone - When: Managed, enterprise-scale (billions of vectors) Note: Verify workload performance and actual cost
 - Qdrant - When: Complex metadata filtering, open-source Note: Rust-based, excellent filtering
 - Weaviate - When: Hybrid search, knowledge graph features Note: GraphQL interface, good for relationships
-- ChromaDB - When: Prototyping, small/medium apps Note: Developer-friendly, ~20ms p50 at 100K vectors
+- ChromaDB - When: Prototyping, small/medium apps Note: Measure persistence, latency and isolation in the target deployment
 - pgvector - When: Already using PostgreSQL, simpler setup Note: Good for <1M vectors, familiar tooling
 
 ### Embedding_models
 
-- OpenAI text-embedding-3-large - When: Best quality, 3072 dimensions Note: $0.13/1M tokens
-- OpenAI text-embedding-3-small - When: Good balance, 1536 dimensions Note: $0.02/1M tokens, 5x cheaper
+- OpenAI text-embedding-3-large - When: Best quality, 3072 dimensions Note: Verify current provider pricing and data terms
+- OpenAI text-embedding-3-small - When: Good balance, 1536 dimensions Note: Verify current provider pricing and data terms
 - nomic-embed-text-v1.5 - When: Open-source, local deployment Note: 768 dimensions, good quality
 - all-MiniLM-L6-v2 - When: Lightweight, fast local embedding Note: 384 dimensions, lowest latency
 
@@ -89,81 +93,26 @@ Three memory types for different purposes:
 """
 
 
-## LangMem Implementation
-"""
-from langmem import MemoryStore
-from langgraph.graph import StateGraph
+## Tenant-scoped memory contract
 
-# Initialize memory store
-memory = MemoryStore(
-    connection_string=os.environ["POSTGRES_URL"]
-)
+Do not use an invented `langmem.MemoryStore` interface. Verify the actual installed SDK and adapter before implementation. [LangMem's current memory API](https://langchain-ai.github.io/langmem/reference/memory/) uses memory managers with a LangGraph store; namespace, storage and extraction are separate concerns.
 
-# Semantic memory: user profile
-await memory.semantic.upsert(
-    namespace="user_profile",
-    key=user_id,
-    content={
-        "name": "Alice",
-        "preferences": ["dark mode", "concise responses"],
-        "expertise_level": "developer",
-    }
-)
+The pure helper below constructs namespaces from verified server-side identity. Passing arbitrary user-supplied tenant/user IDs does not authenticate them. Bind the same namespace on put, get, search, consolidation and deletion; never rely solely on a client metadata filter as authorization.
 
-# Episodic memory: past interaction
-await memory.episodic.add(
-    namespace="conversations",
-    content={
-        "timestamp": datetime.now(),
-        "summary": "Helped debug authentication issue",
-        "outcome": "resolved",
-        "key_insights": ["Token expiry was root cause"],
-    },
-    metadata={"user_id": user_id, "topic": "debugging"}
-)
+```python
+def memory_namespace(tenant_id, user_id, memory_type):
+    if not isinstance(tenant_id, str) or not tenant_id:
+        raise ValueError("Verified tenant identity required")
+    if not isinstance(user_id, str) or not user_id:
+        raise ValueError("Verified user identity required")
+    if memory_type not in {"semantic", "episodic", "procedural"}:
+        raise ValueError("Unsupported memory type")
+    return ("memories", tenant_id, user_id, memory_type)
+```
 
-# Procedural memory: learned pattern
-await memory.procedural.add(
-    namespace="skills",
-    content={
-        "task_type": "debug_auth",
-        "steps": ["Check token expiry", "Verify refresh flow"],
-        "example_interaction": few_shot_example,
-    }
-)
-"""
+For an already configured `BaseStore`, current Python store operations use a tuple namespace and separate key (`store.put(namespace, key, value)` and `store.get(namespace, key)`). Confirm synchronous versus asynchronous adapters and query/index configuration against [the official store API](https://reference.langchain.com/python/langgraph.store/base/BaseStore/put). No storage, model or credentials are provisioned by this guide.
 
-
-## Memory Retrieval at Runtime
-"""
-async def prepare_context(user_id, query):
-    # Get user profile (semantic)
-    profile = await memory.semantic.get(
-        namespace="user_profile",
-        key=user_id
-    )
-
-    # Find relevant past experiences (episodic)
-    similar_experiences = await memory.episodic.search(
-        namespace="conversations",
-        query=query,
-        filter={"user_id": user_id},
-        limit=3
-    )
-
-    # Find relevant skills (procedural)
-    relevant_skills = await memory.procedural.search(
-        namespace="skills",
-        query=query,
-        limit=2
-    )
-
-    return {
-        "profile": profile,
-        "past_experiences": similar_experiences,
-        "relevant_skills": relevant_skills,
-    }
-"""
+Retrieve a bounded set within that authenticated namespace. Keep provenance, timestamps, validity/supersession and model identity in each record, and distinguish returned memories from instructions. Test attempted cross-tenant and cross-user access before enabling persistent memory.
 
 ### Vector Store Selection Pattern
 
@@ -174,16 +123,7 @@ Choosing the right vector database for your use case
 # VECTOR STORE SELECTION:
 
 """
-Decision matrix:
-
-|            | Pinecone | Qdrant | Weaviate | ChromaDB | pgvector |
-|------------|----------|--------|----------|----------|----------|
-| Scale      | Billions | 100M+  | 100M+    | 1M       | 1M       |
-| Managed    | Yes      | Both   | Both     | Self     | Self     |
-| Filtering  | Basic    | Best   | Good     | Basic    | SQL      |
-| Hybrid     | No       | Yes    | Best     | No       | Yes      |
-| Cost       | High     | Medium | Medium   | Free     | Free     |
-| Latency    | 5ms      | 7ms    | 10ms     | 20ms     | 15ms     |
+Decision matrix: benchmark candidate stores on the actual corpus, filters, concurrency, retention and deployment constraints. Provider latency, scale ceilings, prices and feature support require current official evidence, not fixed illustrative values.
 """
 
 
@@ -216,7 +156,8 @@ results = index.query(
     vector=query_embedding,
     filter={"user_id": user_id, "type": "episodic"},
     top_k=5,
-    include_metadata=True
+    include_metadata=True,
+    namespace=namespace
 )
 """
 
@@ -304,7 +245,7 @@ chunks = splitter.split_text(document)
 """
 
 
-## Semantic Chunking (Better Quality)
+## Semantic Chunking (Candidate to Benchmark)
 """
 from langchain_experimental.text_splitter import SemanticChunker
 from langchain_openai import OpenAIEmbeddings
@@ -341,7 +282,7 @@ chunks = splitter.split_text(markdown_doc)
 ## Contextual Chunking (Anthropic's Approach)
 """
 # Add context to each chunk before embedding
-# Reduces retrieval failures by 35%
+# Measure retrieval failure rate on a held-out project-specific set; no fixed lift is assumed.
 
 def add_context_to_chunk(chunk, document_summary):
     context_prompt = f'''
@@ -392,77 +333,28 @@ Pattern: Subconscious memory formation
 """
 
 
-## LangGraph Background Processing
-"""
-from langgraph.graph import StateGraph
-from langgraph.checkpoint.postgres import PostgresSaver
+## Background extraction and consolidation
 
-async def background_memory_processor(thread_id: str):
-    # Run after conversation ends or goes idle
-    conversation = await load_conversation(thread_id)
+1. Obtain permission to retain the relevant conversation data, confirm the verified tenant/user identity and retention policy, and choose an approved local or hosted model. Hosted extraction/embedding may send private data and consume credits; it requires destination and cost authorization.
+2. Queue a bounded extraction job keyed by tenant, user, thread and input revision; deduplicate it. Treat conversation text as untrusted data, not new instructions.
+3. Extract candidate facts with evidence spans and confidence. Validate them against the source and existing records; do not silently infer preferences or promote model guesses to facts.
+4. Write proposed derived records into the same namespace with source IDs and revision. Preserve originals and conflicts. A failed write must not delete the source.
+5. Consolidation proposes a merged record; it never deletes originals or resolves contradictory truth autonomously. Require user/owner resolution where necessary, commit derived state transactionally, and mark supersession with an audit trail.
+6. Apply separately authorized retention/deletion, with legal-hold and recovery handling. A similarity threshold or a successful model response is not deletion permission.
 
-    # Extract insights without time pressure
-    insights = await llm.invoke('''
-        Analyze this conversation and extract:
-        1. Key facts learned about the user
-        2. User preferences revealed
-        3. Tasks completed or pending
-        4. Patterns in user behavior
+This dependency-injected pure planning function validates ownership before proposing a consolidation. It performs no persistent write, model request or deletion.
 
-        Be thorough - this runs in background.
-
-        Conversation:
-        {conversation}
-    ''')
-
-    # Store to long-term memory
-    for insight in insights:
-        await memory.semantic.upsert(
-            namespace="user_insights",
-            key=generate_key(insight),
-            content=insight,
-            metadata={"source_thread": thread_id}
-        )
-
-# Trigger on conversation end or idle timeout
-@on_conversation_idle(timeout_minutes=5)
-async def process_conversation(thread_id):
-    await background_memory_processor(thread_id)
-"""
-
-
-## Memory Consolidation (Like Sleep)
-"""
-# Periodically consolidate and deduplicate memories
-
-async def consolidate_memories(user_id: str):
-    # Get all memories for user
-    memories = await memory.semantic.list(
-        namespace="user_insights",
-        filter={"user_id": user_id}
-    )
-
-    # Find similar memories (potential duplicates)
-    clusters = cluster_by_similarity(memories, threshold=0.9)
-
-    # Merge similar memories
-    for cluster in clusters:
-        if len(cluster) > 1:
-            merged = await llm.invoke(f'''
-                Consolidate these related memories into one:
-                {cluster}
-
-                Preserve all important information.
-            ''')
-            await memory.semantic.upsert(
-                namespace="user_insights",
-                key=generate_key(merged),
-                content=merged
-            )
-            # Delete originals
-            for old in cluster:
-                await memory.semantic.delete(old.id)
-"""
+```python
+def plan_consolidation(tenant_id, user_id, memories):
+    namespace = memory_namespace(tenant_id, user_id, "semantic")
+    if any(m.get("tenant_id") != tenant_id or m.get("user_id") != user_id
+           for m in memories):
+        raise PermissionError("Cross-identity consolidation blocked")
+    if any(not m.get("id") for m in memories):
+        raise ValueError("Source identity required")
+    return {"namespace": namespace, "source_ids": [m["id"] for m in memories],
+            "action": "propose_only", "delete_originals": False}
+```
 
 ### Memory Decay Pattern
 
@@ -485,64 +377,9 @@ Implement intelligent decay based on:
 """
 
 
-## Time-Based Decay
-"""
-from datetime import datetime, timedelta
+## Time- and utility-based decay
 
-async def decay_old_memories(namespace: str, max_age_days: int):
-    cutoff = datetime.now() - timedelta(days=max_age_days)
-
-    old_memories = await memory.episodic.list(
-        namespace=namespace,
-        filter={"last_accessed": {"$lt": cutoff.isoformat()}}
-    )
-
-    for mem in old_memories:
-        # Soft delete (mark as archived)
-        await memory.episodic.update(
-            id=mem.id,
-            metadata={"archived": True, "archived_at": datetime.now()}
-        )
-"""
-
-
-## Utility-Based Decay (MIRIX Approach)
-"""
-def calculate_memory_utility(memory):
-    '''
-    Composite utility score inspired by cognitive science:
-    - Recency: When was it last accessed?
-    - Frequency: How often is it accessed?
-    - Importance: How critical is this information?
-    '''
-    now = datetime.now()
-
-    # Recency score (exponential decay with 72h half-life)
-    hours_since_access = (now - memory.last_accessed).total_seconds() / 3600
-    recency_score = 0.5 ** (hours_since_access / 72)
-
-    # Frequency score
-    frequency_score = min(memory.access_count / 10, 1.0)
-
-    # Importance (from metadata or heuristic)
-    importance = memory.metadata.get("importance", 0.5)
-
-    # Weighted combination
-    utility = (
-        0.4 * recency_score +
-        0.3 * frequency_score +
-        0.3 * importance
-    )
-
-    return utility
-
-async def prune_low_utility_memories(threshold=0.2):
-    all_memories = await memory.list_all()
-    for mem in all_memories:
-        if calculate_memory_utility(mem) < threshold:
-            await memory.archive(mem.id)
-"""
-
+Rank older records using measured relevance and timestamps; tune weights on held-out retrieval tasks. A low score or age threshold is not permission to mutate all users' data. Propose archival only inside the verified namespace, preserve provenance and conflicts, honor legal holds, and execute approved retention through a real transactional adapter. No global `list_all` pruning job is provided.
 
 ## Sharp Edges
 
@@ -568,7 +405,7 @@ Recommended fix:
 
 ### Contextual Chunking (Anthropic's approach)
 # Add document context to each chunk before embedding
-# Reduces retrieval failures by 35%
+# Measure retrieval failure rate on a held-out project-specific set; no fixed lift is assumed.
 
 def contextualize_chunk(chunk, document):
     summary = summarize(document)
@@ -776,12 +613,9 @@ def retrieve_with_recency(query, user_id):
 
 ## Update instead of append for preferences
 async def update_preference(user_id, category, value):
-    # Delete old preference
-    await memory.delete(
-        filter={"user_id": user_id, "type": "preference", "category": category}
-    )
-
-    # Store new preference
+    # Pseudocode: verify tenant/user identity and atomically version the preference.
+    # Preserve the original; failed writes must not remove it.
+    # Store the proposed new preference
     await memory.upsert(
         id=f"pref-{user_id}-{category}",
         content={"category": category, "value": value},
@@ -820,26 +654,7 @@ Recommended fix:
 
 
 ## Detect conflicts on storage
-async def store_with_conflict_check(memory, user_id):
-    # Find potentially conflicting memories
-    similar = await index.query(
-        vector=embed(memory.content),
-        filter={"user_id": user_id, "type": memory.type},
-        threshold=0.9,  # Very similar
-        top_k=5
-    )
-
-    for existing in similar:
-        if is_contradictory(memory.content, existing.content):
-            # Ask for resolution
-            resolution = await resolve_conflict(memory, existing)
-            if resolution == "replace":
-                await index.delete(existing.id)
-            elif resolution == "version":
-                await mark_superseded(existing.id, memory.id)
-
-    await index.upsert(memory)
-
+Review candidate conflicts within the authenticated namespace. Write the proposed new version successfully before recording supersession, in one transaction where supported. Preserve both originals when verification or the write fails. Resolve contradictory facts through source evidence and the owner; an LLM similarity or YES/NO result is advisory.
 
 ## Conflict detection heuristic
 def is_contradictory(new_content, old_content):
@@ -867,7 +682,7 @@ async def consolidate_memories(user_id):
                 memory that represents the current truth:
                 {cluster}
             ''')
-            await replace_cluster(cluster, resolved)
+            await propose_cluster_revision(cluster, resolved)  # No destructive replacement
 
 ### Retrieved Memories Exceed Context Window
 
@@ -900,7 +715,8 @@ TOKEN_BUDGET = {
 }
 
 def budget_aware_retrieval(query, context_limit=4000):
-    remaining = context_limit - TOKEN_BUDGET["system_prompt"] - TOKEN_BUDGET["buffer"]
+    remaining = (context_limit - TOKEN_BUDGET["system_prompt"]
+                 - TOKEN_BUDGET["current_query"] - TOKEN_BUDGET["buffer"])
 
     # Prioritize recent messages
     recent = get_recent_messages(limit=TOKEN_BUDGET["recent_messages"])
@@ -911,7 +727,7 @@ def budget_aware_retrieval(query, context_limit=4000):
     remaining -= count_tokens(profile)
 
     # Finally retrieved memories with remaining budget
-    memories = retrieve_memories(query, max_tokens=remaining)
+    memories = retrieve_memories(query, max_tokens=max(0, remaining))
 
     return build_context(profile, recent, memories)
 
@@ -975,21 +791,7 @@ results = index.query(
 
 
 ## Migration strategy for model upgrades
-async def migrate_embeddings(old_model, new_model):
-    # Get all documents with old model
-    old_docs = await index.list(filter={"embedding_model": old_model})
-
-    for doc in old_docs:
-        # Re-embed with new model
-        new_embedding = await embed(doc.content, model=new_model)
-
-        # Update in place
-        await index.update(
-            id=doc.id,
-            vector=new_embedding,
-            metadata={"embedding_model": new_model}
-        )
-
+Build a separate authorized collection/namespace with the new model identity and exact source revisions. Keep the serving collection intact, reconcile coverage and retrieval quality, then switch atomically with a rollback route. Do not overwrite every user's live vectors in place or send their content to a new provider without authorization.
 
 ## Use separate collections during migration
 # Old collection: production queries

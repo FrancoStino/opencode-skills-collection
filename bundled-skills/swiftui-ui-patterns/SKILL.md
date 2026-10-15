@@ -32,6 +32,10 @@ Choose a track based on your goal:
 - Choose the next component reference based on the UI you need first (TabView, NavigationStack, Sheets).
 - Expand the route and sheet enums as new screens are added.
 
+## Example prerequisites
+
+The references contain application sketches, not a complete app. Supply the named project views, models, adapters and theme tokens; verify imports, actual error contracts and minimum OS with the installed SDK before adapting them. Bind every visible action to a real tested handler, make persistence failures observable and use inert preview data. A successful code example is not evidence of a tested screen or deployed service.
+
 ## General rules to follow
 
 - Use modern SwiftUI state (`@State`, `@Binding`, `@Observable`, `@Environment`) and avoid unnecessary view models.

@@ -5,11 +5,17 @@ risk: safe
 source: community
 date_added: "2026-04-04"
 ---
-You are a **Behavioral Psychologist specializing in motivation, reactance, and temporal decision-making**. Your task is to engineer genuine scarcity and urgency mechanics that create real psychological motivation to act now.
+Use a marketing planning and audience-research lens. Your task is to engineer genuine scarcity and urgency mechanics that create real psychological motivation to act now.
 
 ## When to Use
 - Use when you need urgency or scarcity messaging that feels credible instead of manipulative.
 - Use when timing, stock, access, or deadlines should push action without damaging trust.
+
+## Evidence and scope
+
+Use observed audience research and verified product facts. Psychological interpretations and the author-year references below are inherited conceptual context, not validated evidence for this exact workflow or a guaranteed conversion effect. Before using a scientific claim externally, verify the actual publication, method and applicability; omit unsupported claims. This is marketing planning, not clinical diagnosis. Do not infer sensitive traits or exploit vulnerabilities.
+
+Original contribution: [PR 451](https://github.com/sickn33/agentic-awesome-skills/pull/451) by MMEHDI0606; [immutable source snapshot](https://github.com/MMEHDI0606/antigravity-awesome-skills/blob/9c61357e3e6bb167946036f52ac1e28fc82e04d0/skills/scarcity-urgency-psychologist/SKILL.md). This identifies the contributed instructions, not scientific validation or a new upstream endorsement.
 
 ## CONTEXT GATHERING
 
@@ -31,23 +37,23 @@ Scarcity works when the audience believes the opportunity is genuinely limited a
 
 **Step 1 - Verify the scarcity is real**
 Check whether the limit is inventory, capacity, time, access, or attention.
-*Research basis: fake scarcity destroys trust when detected (Omar et al., 2021; Wang et al., 2025).*
+*Planning hypothesis (verify before presenting as research): fake scarcity destroys trust when detected (Omar et al., 2021; Wang et al., 2025).*
 
 **Step 2 - Decide whether urgency is needed**
 Not every scarce offer needs a deadline.
-*Research basis: urgency is effective only when delay has a real cost (temporal discounting research; Brehm).*
+*Planning hypothesis (verify before presenting as research): urgency is effective only when delay has a real cost (temporal discounting research; Brehm).*
 
 **Step 3 - Match the frame to cynicism**
 Use softer language when the audience is skeptical and stronger language when the limit is obvious.
-*Research basis: reactance increases as the audience perceives pressure or manipulation (Grandpre et al., 2003; Quick et al., 2018).*
+*Planning hypothesis (verify before presenting as research): reactance increases as the audience perceives pressure or manipulation (Grandpre et al., 2003; Quick et al., 2018).*
 
 **Step 4 - State the consequence clearly**
 Explain what happens if the user waits.
-*Research basis: visible opportunity cost increases action more than vague urgency (Houdek, 2016; Suvarna & Malagi, 2025).*
+*Planning hypothesis (verify before presenting as research): visible opportunity cost increases action more than vague urgency (Houdek, 2016; Suvarna & Malagi, 2025).*
 
 **Step 5 - Keep the tone calm**
 Avoid panic language.
-*Research basis: high-pressure scarcity can trigger avoidance and doubt (Brehm; Lavoie & Quick, 2013).*
+*Planning hypothesis (verify before presenting as research): high-pressure scarcity can trigger avoidance and doubt (Brehm; Lavoie & Quick, 2013).*
 
 ## DECISION MATRIX
 
@@ -95,7 +101,7 @@ The line between persuasion and manipulation is making a real opportunity timely
 
 ## SKILL CHAINING
 
-Before invoking this skill, the agent should have completed:
+Optional context from related skills (equivalent supplied research is sufficient; do not create a prerequisite cycle):
 - [ ] `@loss-aversion-designer`
 - [ ] `@trust-calibrator`
 
@@ -118,6 +124,8 @@ Before finalizing output, the agent asks:
 **User request:**
 
 > Rewrite this urgency message so the deadline is credible, specific, and persuasive without manipulation.
+
+**Illustrative output:** If an authorized inventory check confirms three seats at a stated time, mention that snapshot; if the quantity or deadline cannot be verified, omit the urgency claim.
 
 ## Limitations
 - Use this skill only when the task clearly matches the scope described above.

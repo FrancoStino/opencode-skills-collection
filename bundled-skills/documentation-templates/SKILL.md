@@ -55,7 +55,7 @@ Brief one-line description.
 
 ## License
 
-MIT
+[Link to the actual project license; do not infer MIT]
 ```
 
 ---
@@ -156,16 +156,16 @@ What are the trade-offs?
 
 ### llms.txt Template
 
-For AI crawlers and agents:
+For AI crawlers and agents (the example.com links illustrate syntax; replace them with actual published project URLs):
 
 ```markdown
 # Project Name
 > One-line objective.
 
 ## Core Files
-- [src/index.ts]: Main entry
-- [src/api/]: API routes
-- [docs/]: Documentation
+- [Main entry](https://example.com/project/src/index.ts): Application entry
+- [API routes](https://example.com/project/src/api/): Endpoint implementation
+- [Documentation](https://example.com/project/docs/): User and contributor guides
 
 ## Key Concepts
 - Concept 1: Brief explanation
@@ -196,9 +196,11 @@ For RAG indexing:
 > **Remember:** Templates are starting points. Adapt to your project's needs.
 
 ## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
+Use when an actual project needs a README, endpoint reference, changelog, ADR or agent-readable index, and you need a structure adapted to its existing conventions.
 
 ## Limitations
+- Replace illustrative paths, commands, dates and defaults with verified project facts. Templates are not installed workflows or evidence that links and examples work.
+- Preserve the actual license and confidentiality scope; do not publish private endpoints or invent accepted ADR decisions.
 - Use this skill only when the task clearly matches the scope described above.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.

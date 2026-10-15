@@ -126,9 +126,9 @@ CREATE TABLE data_privacy_controls (
   retention_period VARCHAR(255),
   access_roles VARCHAR(255),
   encryption VARCHAR(255),
-  consent_required BOOLEAN NOT NULL,
+  consent_required BOOLEAN, -- NULL means applicability is unknown
   owner VARCHAR(255),
-  last_reviewed DATE NOT NULL,
+  last_reviewed DATE, -- NULL means no review has been recorded
   status VARCHAR(100) NOT NULL,
   control_id SERIAL PRIMARY KEY,
   created_at TIMESTAMP DEFAULT NOW(),
@@ -152,15 +152,14 @@ CREATE INDEX idx_data_privacy_controls_status ON data_privacy_controls (status);
       "Retention Period": { "type": "string" },
       "Access Roles": { "type": "string" },
       "Encryption": { "type": "string" },
-      "Consent Required": { "type": "boolean" },
+      "Consent Required": { "type": ["boolean", "null"] },
       "Owner": { "type": "string" },
-      "Last Reviewed": { "type": "string", "format": "date" },
+      "Last Reviewed": { "type": ["string", "null"], "format": "date" },
       "Status": { "type": "string" },
       "Control ID": { "type": "integer" }
   },
   "required": [
       "Data Category",
-      "Last Reviewed",
       "Status"
   ]
 }
@@ -176,7 +175,7 @@ CREATE INDEX idx_data_privacy_controls_status ON data_privacy_controls (status);
 | Retention Period | Text | Leave as Text |
 | Access Roles | Text | Leave as Text |
 | Encryption | Text | Leave as Text |
-| Consent Required | Checkbox | Convert to Checkbox |
+| Consent Required | Select | Use Unknown / Required / Not required; a Checkbox would collapse unknown into false |
 | Owner | Text | Leave as Text |
 | Last Reviewed | Date | Convert to Date |
 | Status | Select (add options after import) | Convert to Select, add options: "Draft", "In Review", "Approved", "Implemented", "Retired" |
@@ -197,9 +196,9 @@ and anything pointing at another table stays `relation`.
 | 5 | Retention Period | `text` | `VARCHAR(255)` | `string` | Text | `24 months after last activity` |
 | 6 | Access Roles | `text` | `VARCHAR(255)` | `string` | Text | `People team, Finance` |
 | 7 | Encryption | `text` | `VARCHAR(255)` | `string` | Text | `At rest and in transit` |
-| 8 | Consent Required | `checkbox` | `BOOLEAN` | `boolean` | Checkbox | `FALSE` |
+| 8 | Consent Required | `nullable boolean` | `BOOLEAN NULL` | `boolean or null` | Select: Unknown / Required / Not required | `FALSE` |
 | 9 | Owner | `text` | `VARCHAR(255)` | `string` | Text | `Sneha Iyer` |
-| 10 | Last Reviewed | `date` | `DATE` | `string, format: date` | Date | `2026-01-15` |
+| 10 | Last Reviewed | `nullable date` | `DATE NULL` | `string or null, format: date` | Date | `2026-01-15` |
 | 11 | Status | `select` | `VARCHAR(100)` | `string` | Select (add options after import) | `Implemented` |
 | 12 | Control ID | `id` | `SERIAL PRIMARY KEY` | `integer` | Text (preserve source ID) | `(blank)` |
 

@@ -65,7 +65,7 @@ Otherwise run it as a background Bash task. Never block your own foreground shel
 ```bash
 pgrep -fl caffeinate                       # is it running? shows exact flags
 ps -o etime= -p <PID>                      # how long it's been running
-pmset -g assertions | grep -i deny        # confirm sleep assertions are active
+pmset -g assertions    # inspect PreventUserIdleSystemSleep / PreventUserIdleDisplaySleep        # confirm sleep assertions are active
 ```
 
 **Gotcha:** `caffeinate` prints nothing and holds the prompt — it looks "stuck" or like Enter wasn't pressed. It isn't stuck. Verify with `pgrep`, not by looking at the terminal.
@@ -79,8 +79,10 @@ pmset -g assertions | grep -i deny        # confirm sleep assertions are active
 ## Stop early
 
 ```bash
-pkill -f "caffeinate -d -i"    # or Ctrl+C in the pane running it
+kill <recorded-caffeinate-PID>    # or Ctrl+C in the pane running this task
 ```
+
+Record the PID of the process started for this task; verify its command before stopping it. Do not stop unrelated caffeinate sessions by a broad pattern.
 
 After starting: confirm to the user the PID, the flags, and the wall-clock time it will expire.
 

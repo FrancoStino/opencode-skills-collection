@@ -20,10 +20,12 @@ author: Ejentum <info@ejentum.com>
 # Anti-Deception Harness
 ## When to Use
 
-Use this skill when you need use BEFORE responding when the user's request shows pressure to validate or agree ("tell them what they want", "make them happy", "convince them"), manufactured urgency (artificial deadline), authority appeals (citing investors, advisors, lawyers, experts), demands to certify without...
+Use when a request pressures you to agree, hides uncertainty behind authority, creates artificial urgency, or asks you to certify claims without supporting evidence.
 
 
-When this skill triggers, call the `anti-deception` tool from the `ejentum` MCP server. Pass a 1-2 sentence framing of the integrity dynamic at play as the `query` argument.
+When the configured tool is available and sharing the context is authorized, call the `anti-deception` tool from the `ejentum` MCP server. Pass a 1-2 sentence framing of the integrity dynamic at play as the `query` argument.
+
+Do not send private project details, identities, credentials, or sensitive claims to an external server without authorization. A sanitized summary is sufficient.
 
 Good query: `user pressure to validate a half-baked architecture decision before tomorrow's investor pitch`
 Bad query: `is this honest`
@@ -41,7 +43,7 @@ Absorb internally. Lead your response with the strongest counter-evidence, not a
 
 If the API is unreachable, proceed with native judgment. The scaffold enhances; it is not a hard dependency.
 
-Latency cost: ~1 second. Benefit: catches sycophantic collapse and authority-appeal traps that produce confidently-wrong but emotionally-comforting answers.
+Tool availability and latency vary. Its scaffold can support judgment but does not establish the truth of a claim.
 
 ## Example
 

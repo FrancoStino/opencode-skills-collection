@@ -1,6 +1,6 @@
 # Error Handling Patterns Implementation Playbook
 
-This file contains detailed patterns, checklists, and code samples referenced by the skill.
+This file contains separate illustrative patterns, not one executable application. Application types, imports, databases, provider adapters and error classifications must be supplied and tested. The circuit breaker is synchronous and single-threaded; a failed half-open probe must reopen it. Never use fallback or retry to conceal an ambiguous mutation result.
 
 # Error Handling Patterns
 
@@ -51,13 +51,15 @@ Build resilient applications with robust error handling strategies that graceful
 
 **Custom Exception Hierarchy:**
 ```python
+from datetime import datetime, timezone
+
 class ApplicationError(Exception):
     """Base exception for all application errors."""
     def __init__(self, message: str, code: str = None, details: dict = None):
         super().__init__(message)
         self.code = code
         self.details = details or {}
-        self.timestamp = datetime.utcnow()
+        self.timestamp = datetime.now(timezone.utc)
 
 class ValidationError(ApplicationError):
     """Raised when validation fails."""
@@ -119,9 +121,12 @@ T = TypeVar('T')
 def retry(
     max_attempts: int = 3,
     backoff_factor: float = 2.0,
-    exceptions: tuple = (Exception,)
+    exceptions: tuple = (TimeoutError, ConnectionError),
+    safe_to_retry: bool = False
 ):
-    """Retry decorator with exponential backoff."""
+    """Retry only an explicitly replay-safe operation and classified failures."""
+    if not safe_to_retry or max_attempts < 1 or backoff_factor < 1:
+        raise ValueError("Require replay safety and valid retry bounds")
     def decorator(func: Callable[..., T]) -> Callable[..., T]:
         @wraps(func)
         def wrapper(*args, **kwargs) -> T:
@@ -141,7 +146,7 @@ def retry(
     return decorator
 
 # Usage
-@retry(max_attempts=3, exceptions=(NetworkError,))
+@retry(max_attempts=3, exceptions=(NetworkError,), safe_to_retry=True)
 def fetch_data(url: str) -> dict:
     response = requests.get(url, timeout=5)
     response.raise_for_status()
@@ -267,7 +272,7 @@ function fetchData(url: string): Promise<Data> {
             return response.json();
         })
         .catch(error => {
-            console.error('Fetch failed:', error);
+            console.error('fetch_failed');
             throw error;
         });
 }
@@ -445,6 +450,9 @@ class CircuitBreaker:
                 self.success_count = 0
 
     def on_failure(self):
+        if self.state == CircuitState.HALF_OPEN:
+            self.state = CircuitState.OPEN
+            self.success_count = 0
         self.failure_count += 1
         self.last_failure_time = datetime.now()
         if self.failure_count >= self.failure_threshold:
@@ -533,7 +541,7 @@ def with_fallback(
         return primary()
     except Exception as e:
         if log_error:
-            logger.error(f"Primary function failed: {e}")
+            logger.error("primary_read_failed")
         return fallback()
 
 # Usage
@@ -543,20 +551,9 @@ def get_user_profile(user_id: str) -> UserProfile:
         fallback=lambda: fetch_from_database(user_id)
     )
 
-# Multiple fallbacks
-def get_exchange_rate(currency: str) -> float:
-    return (
-        try_function(lambda: api_provider_1.get_rate(currency))
-        or try_function(lambda: api_provider_2.get_rate(currency))
-        or try_function(lambda: cache.get_rate(currency))
-        or DEFAULT_RATE
-    )
-
-def try_function(func: Callable[[], Optional[T]]) -> Optional[T]:
-    try:
-        return func()
-    except Exception:
-        return None
+# Financial data cannot silently fall back to an arbitrary DEFAULT_RATE.
+# Return source, as-of time and freshness; if every verified source fails,
+# report unavailable and stop any decision that requires a current rate.
 ```
 
 ## Best Practices
@@ -570,50 +567,7 @@ def try_function(func: Callable[[], Optional[T]]) -> Optional[T]:
 7. **Don't Swallow Errors**: Log or re-throw, don't silently ignore
 8. **Type-Safe Errors**: Use typed errors when possible
 
-```python
-# Good error handling example
-def process_order(order_id: str) -> Order:
-    """Process order with comprehensive error handling."""
-    try:
-        # Validate input
-        if not order_id:
-            raise ValidationError("Order ID is required")
-
-        # Fetch order
-        order = db.get_order(order_id)
-        if not order:
-            raise NotFoundError("Order", order_id)
-
-        # Process payment
-        try:
-            payment_result = payment_service.charge(order.total)
-        except PaymentServiceError as e:
-            # Log and wrap external service error
-            logger.error(f"Payment failed for order {order_id}: {e}")
-            raise ExternalServiceError(
-                f"Payment processing failed",
-                service="payment_service",
-                details={"order_id": order_id, "amount": order.total}
-            ) from e
-
-        # Update order
-        order.status = "completed"
-        order.payment_id = payment_result.id
-        db.save(order)
-
-        return order
-
-    except ApplicationError:
-        # Re-raise known application errors
-        raise
-    except Exception as e:
-        # Log unexpected errors
-        logger.exception(f"Unexpected error processing order {order_id}")
-        raise ApplicationError(
-            "Order processing failed",
-            code="INTERNAL_ERROR"
-        ) from e
-```
+For order/payment processing, validate and authorize the exact tenant/order, record a durable operation with a stable provider idempotency key, and reconcile uncertain timeouts before another charge. A successful charge followed by a failed local save needs reconciliation, not a blind retry. Provider, transaction, outbox and ledger adapters are application-specific and not bundled here. Report an ambiguous result explicitly; log only stable event codes and a safe correlation ID.
 
 ## Common Pitfalls
 
@@ -625,11 +579,6 @@ def process_order(order_id: str) -> Order:
 - **Returning Error Codes**: Use exceptions or Result types
 - **Ignoring Async Errors**: Unhandled promise rejections
 
-## Resources
+## Bundled guidance
 
-- **references/exception-hierarchy-design.md**: Designing error class hierarchies
-- **references/error-recovery-strategies.md**: Recovery patterns for different scenarios
-- **references/async-error-handling.md**: Handling errors in concurrent code
-- **assets/error-handling-checklist.md**: Review checklist for error handling
-- **assets/error-message-guide.md**: Writing helpful error messages
-- **scripts/error-analyzer.py**: Analyze error patterns in logs
+The exception hierarchy, recovery, asynchronous handling and review examples are inline in this playbook. No external checklist or message guide is bundled. Before enabling retries, classify retryable provider errors, honor Retry-After without shortening it, enforce a total deadline, and verify idempotency for any mutation. Log stable error codes and correlation IDs, not raw exceptions, request bodies, tokens or customer records.

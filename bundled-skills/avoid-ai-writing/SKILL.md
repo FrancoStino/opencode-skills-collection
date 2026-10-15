@@ -1,6 +1,6 @@
 ---
 name: avoid-ai-writing
-description: "Audit and rewrite content to remove 21 categories of AI writing patterns with a 43-entry replacement table"
+description: "Audit and rewrite prose for repetitive, vague, or formulaic wording while preserving meaning, evidence, and the writer's voice."
 risk: none
 source: https://github.com/conorbronsdon/avoid-ai-writing
 date_added: "2026-03-06"
@@ -8,7 +8,7 @@ date_added: "2026-03-06"
 
 # Avoid AI Writing — Audit & Rewrite
 
-Detects and fixes AI writing patterns ("AI-isms") that make text sound machine-generated. Covers 21 pattern categories with a 43-entry word/phrase replacement table that maps each flagged term to a specific, plainer alternative.
+Detects and fixes AI writing patterns ("AI-isms") that make text sound machine-generated. Covers 21 pattern categories with examples of plainer alternatives. The full upstream pattern catalog is not bundled in this AAS entrypoint; do not claim a complete 43-entry table is present.
 
 ## When to Use This Skill
 
@@ -37,6 +37,8 @@ Audit this for AI writing patterns:
 4. **Second-pass audit** — re-reads the rewrite to catch any surviving tells
 
 ## Limitations
+- These are editorial heuristics, not proof of AI authorship. Preserve factual claims, uncertainty, attributed quotations, code, identifiers, and the requested scope.
+- For audit-only requests, report findings without rewriting. Avoid replacing a precise technical term merely because it appears on a word list.
 
 - Does not detect AI-generated code, only prose
 - Pattern matching is guideline-based, not absolute — some flagged words are fine in context

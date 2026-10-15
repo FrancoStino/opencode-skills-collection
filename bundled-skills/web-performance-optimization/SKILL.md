@@ -15,9 +15,9 @@ Read [the detailed guide](references/detailed-guide.md) before executing this sk
 ## When to Use This Skill
 
 - Use when website or app is loading slowly
-- Use when optimizing for Core Web Vitals (LCP, FID, CLS)
+- Use when optimizing for Core Web Vitals (LCP, INP, CLS)
 - Use when reducing JavaScript bundle size
-- Use when improving Time to Interactive (TTI)
+- Use when reducing main-thread blocking and slow interactions (INP)
 - Use when optimizing images and assets
 - Use when implementing caching strategies
 - Use when debugging performance bottlenecks
@@ -32,14 +32,14 @@ Read [the detailed guide](references/detailed-guide.md) before executing this sk
 
 ### Current Metrics (Before Optimization)
 - **LCP (Largest Contentful Paint):** 4.2s ❌ (should be < 2.5s)
-- **FID (First Input Delay):** 180ms ❌ (should be < 100ms)
+- **INP (Interaction to Next Paint):** 350ms ❌ (should be ≤ 200ms)
 - **CLS (Cumulative Layout Shift):** 0.25 ❌ (should be < 0.1)
 - **Lighthouse Score:** 62/100
 
 ### Issues Identified
 
 1. **LCP Issue:** Hero image (2.5MB) loads slowly
-2. **FID Issue:** Large JavaScript bundle (850KB) blocks main thread
+2. **INP Issue:** Large JavaScript bundle (850KB) blocks main thread
 3. **CLS Issue:** Images without dimensions cause layout shifts
 
 ### Optimization Plan
@@ -73,7 +73,7 @@ Read [the detailed guide](references/detailed-guide.md) before executing this sk
 - Use CDN for faster delivery
 - Preload hero image: `<link rel="preload" as="image" href="/hero.avif">`
 
-#### Fix FID (First Input Delay)
+#### Fix INP (Interaction to Next Paint)
 
 **Problem:** 850KB JavaScript bundle blocks main thread
 
@@ -157,7 +157,7 @@ npm install date-fns
 ### Results After Optimization
 
 - **LCP:** 1.8s ✅ (improved by 57%)
-- **FID:** 45ms ✅ (improved by 75%)
+- **INP:** 150ms ✅ (improved by 57%)
 - **CLS:** 0.05 ✅ (improved by 80%)
 - **Lighthouse Score:** 94/100 ✅
 ```
@@ -247,18 +247,18 @@ const AdminPanel = dynamic(() => import('./AdminPanel'), {
 #### 4. Remove Dead Code
 
 \`\`\`javascript
-// Enable tree shaking in webpack.config.js
+// Tree shaking in webpack.config.js: production mode already enables
+// optimization.usedExports and optimization.sideEffects.
+// Do not set optimization.sideEffects to false: that turns the optimization off.
 module.exports = {
-  mode: 'production',
-  optimization: {
-    usedExports: true,
-    sideEffects: false
-  }
+  mode: 'production'
 };
 
-// In package.json
+// In package.json: mark modules as side-effect-free, but list the files
+// that must run when imported (CSS, polyfills). A blanket
+// "sideEffects": false lets the bundler drop `import './styles.css'`.
 {
-  "sideEffects": false
+  "sideEffects": ["*.css", "*.scss", "./src/polyfills.js"]
 }
 \`\`\`
 
@@ -376,7 +376,7 @@ images.forEach(img => {
     alt="Hero image"
     width="1200"
     height="600"
-    loading="lazy"
+    fetchpriority="high"
   >
 </picture>
 \`\`\`

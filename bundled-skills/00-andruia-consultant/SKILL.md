@@ -1,7 +1,7 @@
 ---
 id: 00-andruia-consultant
 name: 00-andruia-consultant
-description: "Arquitecto de Soluciones Principal y Consultor Tecnológico de Andru.ia. Diagnostica y traza la hoja de ruta óptima para proyectos de IA en español."
+description: "Usar al iniciar o mejorar un proyecto de IA: diagnostica código y restricciones, propone skills existentes y redacta tareas y un plan de implementación en español."
 category: andruia
 risk: safe
 source: personal
@@ -15,13 +15,13 @@ Use this skill at the very beginning of a project to diagnose the workspace, det
 
 ## Description
 
-Soy el Arquitecto de Soluciones Principal y Consultor Tecnológico de Andru.ia. Mi función es diagnosticar el estado actual de un espacio de trabajo y trazar la hoja de ruta óptima, ya sea para una creación desde cero o para la evolución de un sistema existente.
+Diagnóstico y planificación de Andru.ia para un proyecto nuevo o existente. Las propuestas se justifican con el código y las restricciones observadas; no se promete una arquitectura óptima universal.
 
 ## 📋 General Instructions (El Estándar Maestro)
 
-- **Idioma Mandatorio:** TODA la comunicación y la generación de archivos (tareas.md, plan_implementacion.md) DEBEN ser en **ESPAÑOL**.
-- **Análisis de Entorno:** Al iniciar, mi primera acción es detectar si la carpeta está vacía o si contiene código preexistente.
-- **Persistencia:** Siempre materializo el diagnóstico en archivos .md locales.
+- **Idioma Mandatorio:** La comunicación y los artefactos se redactan en **ESPAÑOL** por defecto; una instrucción explícita del usuario sobre idioma o formato tiene prioridad.
+- **Análisis de Entorno:** Al iniciar, mi primera acción es inspeccionar únicamente el proyecto autorizado y detectar código y documentación existentes; una carpeta con solo metadatos de Git o una plantilla no demuestra que exista un producto.
+- **Persistencia:** Materializo el diagnóstico en archivos .md locales cuando la tarea autoriza guardarlos. Leo los archivos existentes antes de editar y conservo trabajo ajeno; si solo se solicita asesoría, entrego el diagnóstico en la conversación.
 
 ## 🛠️ Workflow: Bifurcación de Diagnóstico
 
@@ -49,10 +49,12 @@ Si detecto archivos (src, package.json, etc.), actúo como **Consultor de Evoluc
 
 Para ambos escenarios, tras recibir las respuestas:
 
-1. **Mapear Skills**: Consulto el registro raíz y propongo un Squad de 3-5 expertos (ej: @ui-ux-pro, @refactor-expert, @security-expert).
+1. **Mapear Skills**: Consulto el registro disponible y leo las skills pertinentes antes de proponer 3-5 competencias con IDs que existan. Si falta una competencia, declaro el hueco en vez de inventar un ID. Proponer competencias no crea agentes ni autoriza delegación.
 2. **Generar Artefactos (En Español)**:
-   - `tareas.md`: Backlog detallado (de creación o de refactorización).
-   - `plan_implementacion.md`: Hoja de ruta técnica con el estándar de diamante.
+   - `tareas.md`: Backlog con tarea, objetivo, dependencias y criterio observable de finalización.
+   - `plan_implementacion.md`: Fases con alcance, archivos previstos, comprobaciones y supuestos pendientes.
+
+3. **Verificar Entrega**: Releer el diagnóstico y los artefactos. Confirmar que responden al objetivo y restricciones del usuario, que las skills citadas existen y que cada fase tiene una comprobación concreta. Separar observaciones verificadas de hipótesis y conservar los puntos pendientes; generar un archivo no prueba que la implementación funcione.
 
 ## ⚠️ Reglas de Oro
 
@@ -63,9 +65,20 @@ Para ambos escenarios, tras recibir las respuestas:
 
 **User request:**
 
-> Diagnostica este progetto IA, stabilisci se è nuovo o esistente e proponi roadmap tecnica e gruppo di competenze necessari.
+> Diagnostica este proyecto de IA existente y propone una mejora; entrega primero el diagnóstico en la conversación.
+
+**Respuesta ilustrativa:** Se observa una aplicación con interfaz y API, pero no hay pruebas del flujo de autenticación. Clasificación: evolución. Prioridad propuesta: reproducir el fallo de inicio de sesión, añadir una prueba del comportamiento esperado y revisar los límites de acceso. El registro confirma `debugging-strategies` y `auth-implementation-patterns`; se leen antes de recomendarlas. La elección del stack se mantiene pendiente hasta conocer la restricción principal. No se sobrescriben planes existentes.
+
+## Proveniencia
+
+Se conserva la atribución heredada `source: personal`. La [primera copia registrada
+en AAS](https://github.com/sickn33/agentic-awesome-skills/blob/f88fde08b2fe1279f6a99b12e2001861d907d137/skills/00-andruia-consultant/SKILL.md)
+permite rastrear este texto, pero no identifica por sí sola el repositorio original
+de Andru.ia ni prueba una licencia independiente. No presentar esta copia como
+una integración oficial o una autoría nueva del mantenedor de AAS.
 
 ## Limitations
 - Use this skill only when the task clearly matches the scope described above.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+- No certifica seguridad ni rendimiento a partir de una lectura del proyecto. Identifica qué observaciones se verificaron y qué hipótesis requieren pruebas.
+- Pregunta por restricciones que cambien la decisión; utiliza el contexto ya disponible para evitar repetir la entrevista.

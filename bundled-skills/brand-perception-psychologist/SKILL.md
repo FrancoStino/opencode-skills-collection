@@ -5,11 +5,17 @@ risk: safe
 source: community
 date_added: "2026-04-04"
 ---
-You are a **Brand Psychologist and Semiotics Researcher**. Your task is to diagnose what a brand's current visual, verbal, and behavioral identity signals subconsciously to its target audience and prescribe alignment changes to close the perception gap.
+Use a marketing planning and audience-research lens. Your task is to diagnose what a brand's current visual, verbal, and behavioral identity signals subconsciously to its target audience and prescribe alignment changes to close the perception gap.
 
 ## When to Use
 - Use when you need to diagnose how a market currently perceives a brand and how to reposition it.
 - Use when messaging, visual identity, or proof points need to shift trust or status perceptions.
+
+## Evidence and scope
+
+Use observed audience research and verified product facts. Psychological interpretations and the author-year references below are inherited conceptual context, not validated evidence for this exact workflow or a guaranteed conversion effect. Before using a scientific claim externally, verify the actual publication, method and applicability; omit unsupported claims. This is marketing planning, not clinical diagnosis. Do not infer sensitive traits or exploit vulnerabilities.
+
+Original contribution: [PR 451](https://github.com/sickn33/agentic-awesome-skills/pull/451) by MMEHDI0606; [immutable source snapshot](https://github.com/MMEHDI0606/antigravity-awesome-skills/blob/9c61357e3e6bb167946036f52ac1e28fc82e04d0/skills/brand-perception-psychologist/SKILL.md). This identifies the contributed instructions, not scientific validation or a new upstream endorsement.
 
 ## CONTEXT GATHERING
 
@@ -31,23 +37,23 @@ People do not evaluate a brand only by what it says. They infer a schema from re
 
 **Step 1 - Identify the current brand schema**
 Describe the subconscious impression the audience is likely forming now.
-*Research basis: brand meaning is built from repeated signals, not from mission statements alone (Bagozzi et al., 2021).*
+*Planning hypothesis (verify before presenting as research): brand meaning is built from repeated signals, not from mission statements alone (Bagozzi et al., 2021).*
 
 **Step 2 - Compare to intended position**
 State the desired perception in the same terms.
-*Research basis: perception shifts when the audience sees congruent evidence across touchpoints (congruence theory).*
+*Planning hypothesis (verify before presenting as research): perception shifts when the audience sees congruent evidence across touchpoints (congruence theory).*
 
 **Step 3 - Find the largest mismatch**
 Locate the strongest signal conflict across visual, verbal, or behavioral layers.
-*Research basis: one strong mismatch can create cognitive dissonance and weaken trust (halo effect and schema theory).*
+*Planning hypothesis (verify before presenting as research): one strong mismatch can create cognitive dissonance and weaken trust (halo effect and schema theory).*
 
 **Step 4 - Prescribe the smallest useful correction**
 Change the signal that will most efficiently move perception.
-*Research basis: brand meaning changes fastest when the highest-salience signal changes first (Aaker; semiotics research).*
+*Planning hypothesis (verify before presenting as research): brand meaning changes fastest when the highest-salience signal changes first (Aaker; semiotics research).*
 
 **Step 5 - Verify cross-touchpoint consistency**
 Check that the new position is supported everywhere the audience interacts.
-*Research basis: consistency across channels reduces ambiguity and builds stronger category placement (Bagozzi et al., 2021).*
+*Planning hypothesis (verify before presenting as research): consistency across channels reduces ambiguity and builds stronger category placement (Bagozzi et al., 2021).*
 
 ## DECISION MATRIX
 
@@ -94,7 +100,7 @@ The line between persuasion and manipulation is changing perception through real
 
 ## SKILL CHAINING
 
-Before invoking this skill, the agent should have completed:
+Optional context from related skills (equivalent supplied research is sufficient; do not create a prerequisite cycle):
 - [ ] `@customer-psychographic-profiler`
 - [ ] `@visual-emotion-engineer`
 - [ ] `@trust-calibrator`
@@ -118,6 +124,8 @@ Before finalizing output, the agent asks:
 **User request:**
 
 > Diagnose how a market currently perceives a brand and how to reposition it.
+
+**Illustrative output:** Compare an approved brand promise with the supplied homepage and two interview excerpts; name one observable mismatch, propose one correction and a perception-test question.
 
 ## Limitations
 - Use this skill only when the task clearly matches the scope described above.

@@ -1,6 +1,6 @@
 ---
 name: file-organizer
-description: "6. Reduces Clutter: Identifies old files you probably don't need anymore"
+description: "Organize files and folders by inspecting their contents, proposing a structure, and reviewing duplicates before authorized changes."
 risk: critical
 source: community
 date_added: "2026-02-27"

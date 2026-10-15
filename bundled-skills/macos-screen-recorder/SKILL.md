@@ -46,7 +46,7 @@ ScreenCaptureKit.
 ./sck-record <out.mp4> <seconds>
 ```
 
-**The one true differentiator:** system audio from the CLI with **zero install** — no
+**Intended use:** system audio from the CLI after a reviewed local build — no
 BlackHole / loopback virtual device, no sudo; only the standard Screen Recording permission
 (granted once to whatever app shells out). It is *not* a general "better than OBS/Screen
 Studio" tool — it fills exactly the headless-CLI-with-system-audio gap.
@@ -59,6 +59,10 @@ record with `sck-record --no-cursor <out.mp4> <seconds>`, then run its post-prod
 pass on the resulting mp4. (Auto-zoom and keystroke overlays additionally need an
 input-event log captured *during* recording, which that skill supplies; `sck-record`'s
 pixels alone cover idle speed-up, cursor smoothing, and vertical export.)
+
+## Availability and capture scope
+
+This AAS tree contains the guide only: `sck-record.swift`, the compiled binary and `setup-machine` are not bundled. Obtain the exact reviewed upstream source/license and confirm OS/Swift/CLI support before compiling or claiming a recording. Existing permission alone does not authorize capturing the user's screen or system audio: confirm display/window, duration, destination and privacy scope. Use a new private output, hide unrelated sensitive surfaces, stop on schedule and inspect actual video/audio tracks before reporting success. Do not record input-event logs or upload the capture without the corresponding authorization.
 
 ## Limitations
 

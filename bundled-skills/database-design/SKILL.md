@@ -54,7 +54,11 @@ Before designing schema:
 ❌ Ignore N+1 queries
 
 ## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
+Use when selecting a database model, reviewing schema relationships and indexes, or assessing a proposed schema with the bundled advisory tools.
+
+## Schema helper
+
+`scripts/schema_validator.py` is a read-only heuristic inventory, not a Prisma or Drizzle parser. Missing schemas, unsupported formats and heuristic-only results return nonzero with `passed: false` and `analysis_complete: false`. Use the project-local ORM validator for syntax and type checks; review migration and constraint semantics separately.
 
 ## Limitations
 - Use this skill only when the task clearly matches the scope described above.

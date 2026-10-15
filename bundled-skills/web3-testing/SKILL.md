@@ -5,6 +5,22 @@ risk: critical
 source: community
 date_added: "2026-02-27"
 ---
+## Supporting material availability
+
+This catalog copy contains the inline guidance below, but does not include the following supporting paths. They are external prerequisites, not bundled files:
+
+- `<support-root>/references/hardhat-setup.md`
+- `<support-root>/references/foundry-setup.md`
+- `<support-root>/references/test-patterns.md`
+- `<support-root>/references/mainnet-forking.md`
+- `<support-root>/references/contract-verification.md`
+- `<support-root>/assets/hardhat-config.js`
+- `<support-root>/assets/test-suite.js`
+- `<support-root>/assets/foundry.toml`
+- `<support-root>/scripts/test-contract.sh`
+
+Ask for the original supporting material or an existing installation before using a step that depends on these paths; this catalog does not identify a verified download source for them. Resolve each path relative to that installation, inspect its contents, and verify any applicable license and execution prerequisites. Do not run a command or claim a referenced procedure was followed until its required file exists. Do not fabricate the missing scripts or treat an unrelated file with the same name as equivalent. Independent steps fully documented here can proceed within the user’s authorized scope; report any dependent step as unavailable.
+
 
 # Web3 Smart Contract Testing
 
@@ -20,7 +36,6 @@ Master comprehensive testing strategies for smart contracts using Hardhat, Found
 - Clarify goals, constraints, and required inputs.
 - Apply relevant best practices and validate outcomes.
 - Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
 
 ## Use this skill when
 

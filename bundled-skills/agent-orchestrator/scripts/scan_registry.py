@@ -22,6 +22,8 @@ import sys
 import json
 import hashlib
 import re
+import tempfile
+import argparse
 from pathlib import Path
 from datetime import datetime
 
@@ -31,7 +33,12 @@ from datetime import datetime
 _SCRIPT_DIR = Path(__file__).resolve().parent
 ORCHESTRATOR_DIR = _SCRIPT_DIR.parent
 SKILLS_ROOT = ORCHESTRATOR_DIR.parent
-DATA_DIR = ORCHESTRATOR_DIR / "data"
+_data_directory = os.environ.get("AGENT_ORCHESTRATOR_DATA_DIR")
+if not _data_directory or not Path(_data_directory).is_absolute():
+    raise ValueError("Set AGENT_ORCHESTRATOR_DATA_DIR to an authorized absolute storage directory")
+DATA_DIR = Path(_data_directory)
+if DATA_DIR.is_symlink():
+    raise ValueError("Storage directory must not be a symlink")
 REGISTRY_PATH = DATA_DIR / "registry.json"
 HASHES_PATH = DATA_DIR / "registry_hashes.json"
 
@@ -143,33 +150,17 @@ def sha256_file(path: Path) -> str:
 
 def parse_yaml_frontmatter(path: Path) -> dict:
     """Extract YAML frontmatter from a SKILL.md file."""
-    try:
-        text = path.read_text(encoding="utf-8")
-    except Exception:
-        return {}
+    text = path.read_text(encoding="utf-8")
 
     match = re.match(r"^---\s*\n(.*?)\n---", text, re.DOTALL)
     if not match:
         return {}
 
-    try:
-        import yaml
-        return yaml.safe_load(match.group(1)) or {}
-    except Exception:
-        # Fallback: manual parsing for name/description
-        result = {}
-        block = match.group(1)
-        for key in ("name", "description", "version"):
-            m = re.search(rf'^{key}:\s*["\']?(.+?)["\']?\s*$', block, re.MULTILINE)
-            if m:
-                result[key] = m.group(1).strip()
-            else:
-                # Handle multi-line description with >- or >
-                m2 = re.search(rf'^{key}:\s*>-?\s*\n((?:\s+.+\n?)+)', block, re.MULTILINE)
-                if m2:
-                    lines = m2.group(1).strip().split("\n")
-                    result[key] = " ".join(line.strip() for line in lines)
-        return result
+    import yaml  # required dependency; do not approximate malformed YAML
+    metadata = yaml.safe_load(match.group(1)) or {}
+    if not isinstance(metadata, dict):
+        raise ValueError("Skill frontmatter must be a mapping")
+    return metadata
 
 
 def find_skill_files() -> list[Path]:
@@ -179,7 +170,9 @@ def find_skill_files() -> list[Path]:
     for base in SEARCH_PATHS:
         if not base.exists():
             continue
-        for root, dirs, files in os.walk(base):
+        def fail_walk(error):
+            raise error
+        for root, dirs, files in os.walk(base, onerror=fail_walk):
             depth = len(Path(root).relative_to(base).parts)
             if depth > MAX_DEPTH:
                 dirs.clear()
@@ -190,7 +183,14 @@ def find_skill_files() -> list[Path]:
                 continue
 
             if "SKILL.md" in files:
-                found.add(Path(root) / "SKILL.md")
+                candidate = Path(root) / "SKILL.md"
+                if candidate.is_symlink():
+                    raise ValueError("Refusing symlink skill entrypoint")
+                if candidate.stat().st_size > 1024 * 1024:
+                    raise ValueError("Skill entrypoint exceeds 1 MiB")
+                found.add(candidate)
+                if len(found) > 10000:
+                    raise ValueError("Scan exceeds 10000 entrypoints")
 
     return sorted(found)
 
@@ -289,55 +289,88 @@ def is_registered(skill_dir: Path) -> bool:
 
 # ── Main Logic ─────────────────────────────────────────────────────────────
 
+def read_cache(path: Path, default: dict) -> dict:
+    if path.is_symlink():
+        raise ValueError("Cache file must not be a symlink")
+    if not path.exists():
+        return default
+    if path.stat().st_size > 16 * 1024 * 1024:
+        raise ValueError("Cache exceeds 16 MiB")
+    data = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(data, dict):
+        raise ValueError("Cache must be a JSON object")
+    return data
+
+
+def write_cache(path: Path, data: dict):
+    # Caller chooses private storage; refuse existing linked ancestors/targets.
+    for ancestor in [DATA_DIR, *DATA_DIR.parents]:
+        if ancestor.is_symlink():
+            raise ValueError("Storage ancestors must not be symlinks")
+    DATA_DIR.mkdir(parents=True, exist_ok=True, mode=0o700)
+    if path.is_symlink():
+        raise ValueError("Cache target must not be a symlink")
+    temporary = None
+    try:
+        with tempfile.NamedTemporaryFile(mode="w", encoding="utf-8", dir=DATA_DIR,
+                                         prefix=".registry-", delete=False) as stream:
+            temporary = Path(stream.name)
+            json.dump(data, stream, indent=2, ensure_ascii=False)
+            stream.flush()
+            os.fsync(stream.fileno())
+        os.replace(temporary, path)
+    finally:
+        if temporary is not None:
+            temporary.unlink(missing_ok=True)
+
+
 def load_hashes() -> dict:
-    """Load stored hashes from registry_hashes.json."""
-    if HASHES_PATH.exists():
-        try:
-            return json.loads(HASHES_PATH.read_text(encoding="utf-8"))
-        except Exception:
-            pass
-    return {}
+    data = read_cache(HASHES_PATH, {})
+    if any(not isinstance(k, str) or not isinstance(v, str) for k, v in data.items()):
+        raise ValueError("Hash cache entries must be strings")
+    return data
 
 
 def save_hashes(hashes: dict):
-    """Save hashes to registry_hashes.json."""
-    DATA_DIR.mkdir(parents=True, exist_ok=True)
-    HASHES_PATH.write_text(json.dumps(hashes, indent=2), encoding="utf-8")
+    write_cache(HASHES_PATH, hashes)
 
 
 def load_registry() -> dict:
-    """Load existing registry.json."""
-    if REGISTRY_PATH.exists():
-        try:
-            return json.loads(REGISTRY_PATH.read_text(encoding="utf-8"))
-        except Exception:
-            pass
-    return {"generated_at": None, "skills_root": str(SKILLS_ROOT), "skills": []}
+    data = read_cache(REGISTRY_PATH, {"generated_at": None, "skills_root": str(SKILLS_ROOT), "skills": []})
+    if not isinstance(data.get("skills"), list) or any(not isinstance(v, dict) for v in data["skills"]):
+        raise ValueError("Registry skills must be objects")
+    return data
 
 
 def save_registry(registry: dict):
-    """Save registry.json."""
-    DATA_DIR.mkdir(parents=True, exist_ok=True)
     registry["generated_at"] = datetime.now().isoformat()
-    REGISTRY_PATH.write_text(json.dumps(registry, indent=2, ensure_ascii=False), encoding="utf-8")
+    write_cache(REGISTRY_PATH, registry)
 
 
 def build_skill_entry(skill_md_path: Path) -> dict:
     """Build a registry entry from a SKILL.md file."""
     skill_dir = skill_md_path.parent
     meta = parse_yaml_frontmatter(skill_md_path)
+    name = meta.get("name", skill_dir.name)
+    if not isinstance(name, str) or not name.strip():
+        raise ValueError("Skill name must be a nonempty string")
     description = meta.get("description", "")
+    if not isinstance(description, str):
+        raise ValueError("Skill description must be a string")
 
     # Support explicit capabilities in frontmatter
     explicit_caps = meta.get("capabilities", [])
     if isinstance(explicit_caps, str):
         explicit_caps = [c.strip() for c in explicit_caps.split(",")]
 
+    if not isinstance(explicit_caps, list) or any(not isinstance(c, str) for c in explicit_caps):
+        raise ValueError("Capabilities must be strings")
+
     auto_caps = extract_capabilities(description)
     all_caps = sorted(set(auto_caps + explicit_caps))
 
     return {
-        "name": meta.get("name", skill_dir.name),
+        "name": name,
         "description": description,
         "version": meta.get("version", ""),
         "location": str(skill_dir),
@@ -377,6 +410,9 @@ def scan(force: bool = False) -> dict:
     for entry in registry.get("skills", []):
         existing_by_path[entry.get("skill_md", "")] = entry
 
+    registry["complete_inventory"] = False
+    registry["coverage"] = {"max_depth": MAX_DEPTH, "roots": [str(p) for p in SEARCH_PATHS], "metadata_only": True}
+
     # Compute current hashes
     new_hashes = {}
     changed = False
@@ -401,27 +437,9 @@ def scan(force: bool = False) -> dict:
     if set(new_hashes.keys()) != set(stored_hashes.keys()):
         changed = True
 
-    # Deduplicate by skill name (case-insensitive).
-    # When the same skill exists in both skills/ and .claude/skills/,
-    # prefer the primary location (skills/) over the registered copy.
+    # Preserve distinct paths even when names coincide; names are not identities.
     if changed or not REGISTRY_PATH.exists():
-        by_name = {}
-        for entry in existing_by_path.values():
-            name = entry.get("name", "").lower()
-            if not name:
-                continue
-            if name not in by_name:
-                by_name[name] = entry
-            else:
-                # Prefer the version NOT in .claude/skills/ (the primary source)
-                existing = by_name[name]
-                existing_is_registered = existing.get("registered", False)
-                new_is_registered = entry.get("registered", False)
-                if existing_is_registered and not new_is_registered:
-                    by_name[name] = entry
-                # If both are primary or both registered, keep first found
-
-        registry["skills"] = sorted(by_name.values(), key=lambda s: s.get("name", ""))
+        registry["skills"] = sorted(existing_by_path.values(), key=lambda s: s.get("skill_md", ""))
         save_registry(registry)
         save_hashes(new_hashes)
         return registry
@@ -478,8 +496,12 @@ def print_status(registry: dict):
 # ── CLI Entry Point ────────────────────────────────────────────────────────
 
 def main():
-    force = "--force" in sys.argv
-    show_status = "--status" in sys.argv
+    parser = argparse.ArgumentParser(description="Scan bounded local skill metadata")
+    parser.add_argument("--force", action="store_true")
+    parser.add_argument("--status", action="store_true")
+    args = parser.parse_args()
+    force = args.force
+    show_status = args.status
 
     registry = scan(force=force)
 
@@ -489,6 +511,8 @@ def main():
         # Default: output JSON summary for Claude to parse
         skills = registry.get("skills", [])
         summary = {
+            "complete_inventory": False,
+            "coverage": "Explicit local roots, bounded depth; metadata only",
             "total": len(skills),
             "active": len([s for s in skills if s.get("status") == "active"]),
             "incomplete": len([s for s in skills if s.get("status") == "incomplete"]),

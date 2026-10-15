@@ -22,6 +22,12 @@ Use this workflow when:
 - Developing backup solutions
 - Creating CI/CD scripts
 
+## Scope and execution
+
+Choose the phases that match the user’s task; this document is an index, not an instruction to run every listed skill. Read a selected skill before using it. Respect repository and user constraints. Cloud calls, host configuration, publishing, destructive operations and spending require the applicable authorization; a workflow checklist does not grant it.
+
+The template is a starting point, not a completed script: it does not implement argument parsing or rollback. Validate paths, quote expansions, test in a disposable directory, and make retries bounded and safe for the specific command. Never log credentials or imply strict mode catches every failure.
+
 ## Workflow Phases
 
 ### Phase 1: Script Design
@@ -158,8 +164,10 @@ Use @documentation-templates to document bash script
 #!/usr/bin/env bash
 set -euo pipefail
 
-readonly SCRIPT_NAME=$(basename "$0")
-readonly SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
+SCRIPT_NAME=$(basename -- "$0")
+readonly SCRIPT_NAME
+SCRIPT_DIR=$(cd -- "$(dirname -- "$0")" && pwd)
+readonly SCRIPT_DIR
 
 log() { echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*"; }
 error() { log "ERROR: $*" >&2; exit 1; }

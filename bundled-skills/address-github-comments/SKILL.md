@@ -32,24 +32,30 @@ Fetch the comments for the current branch's PR.
 gh pr view --comments
 ```
 
-Or use a custom script if available to list threads.
+`--comments` shows conversation comments; it does not enumerate every inline review thread.
+Use the available GitHub connector or the GraphQL `pullRequest.reviewThreads` connection
+with pagination to inspect inline comments, file/line anchors, and resolution state.
+Record the repository, PR number, current head SHA, thread IDs, and requested changes.
 
 ### 2. Categorize and Plan
 
 - List the comments and review threads.
 - Propose a fix for each.
-- **Wait for user confirmation** on which comments to address first if there are many.
+- Address feedback already covered by the user's requested scope. Ask only when feedback conflicts, expands scope, or requires a consequential choice.
 
 ### 3. Apply Fixes
 
-Apply the code changes for the selected comments.
+Read the surrounding implementation, preserve unrelated edits, and apply the changes for the selected comments. Run the relevant repository checks and bind the result to the updated head before reporting a fix.
 
 ### 4. Respond to Comments
 
-Once fixed, respond to the threads as resolved.
+When the user authorizes posting replies, respond with the commit and verification evidence.
+A conversation comment does not resolve an inline review thread. Resolve the specific thread
+through the supported GitHub API only after its request is actually addressed and resolution
+is authorized; otherwise leave a proposed reply for the user.
 
 ```bash
-gh pr comment <PR_NUMBER> --body "Addressed in latest commit."
+gh pr comment <PR_NUMBER> --body "Addressed in <commit SHA>; verified with <check and result>."
 ```
 
 ## Common Mistakes
@@ -58,7 +64,7 @@ gh pr comment <PR_NUMBER> --body "Addressed in latest commit."
 - **Not verifying auth**: Check `gh auth status` before starting.
 
 ## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
+Use when an existing PR has review threads or issue comments that require a scoped code repair and an evidence-backed response.
 
 ## Limitations
 - Use this skill only when the task clearly matches the scope described above.

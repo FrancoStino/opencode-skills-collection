@@ -9,6 +9,9 @@ date_added: 2026-07-01
 license: MIT
 license_source: https://github.com/yehudalevy-collab/polis-protocol/blob/main/LICENSE
 ---
+## Bundled upstream support
+
+Supporting files are included at skill-relative paths. See [UPSTREAM-NOTICE.md](UPSTREAM-NOTICE.md) for their pinned sources, licenses, hashes, and import changes.
 
 # Polis Protocol: A Self-Optimizing City of Agents
 ## When to Use

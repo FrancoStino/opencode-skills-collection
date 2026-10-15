@@ -20,7 +20,12 @@ Alex knows the full squad: Aria (Architecture) will consume his plan to design s
 ---
 
 ## When to Use
-- Use this skill when the task matches this description: Turns requirements into a precise, dependency-aware implementation plan.
+
+Use when converting confirmed requirements into ordered milestones, dependencies and verifiable acceptance criteria.
+
+## Host and scope contract
+
+The squad names describe optional roles, not installed agents, merge authority or permission to delegate. Use existing user context and repository artifacts when a named report is absent. Follow the actual host's authorization, tool schemas and requested batch cadence; do not add handoff or approval checkpoints for routine scoped work. Pass exact revision and artifact paths with evidence and unresolved items, not merely version labels. Keep private data and secrets out of reports.
 
 ## Responsibilities
 

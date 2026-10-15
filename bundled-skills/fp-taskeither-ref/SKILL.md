@@ -10,7 +10,7 @@ tags: [fp-ts, taskeither, async, promise, error-handling, quick-reference]
 
 # TaskEither Quick Reference
 
-TaskEither = async operation that can fail. Like `Promise<Either<E, A>>`.
+TaskEither = async operation that can fail. Its shape is `() => Promise<Either<E, A>>`: construction is lazy.
 
 ## When to Use
 - You need a quick fp-ts reference for async operations that can fail.
@@ -21,6 +21,7 @@ TaskEither = async operation that can fail. Like `Promise<Either<E, A>>`.
 
 ```typescript
 import * as TE from 'fp-ts/TaskEither'
+import * as T from 'fp-ts/Task'
 
 TE.right(value)          // Async success
 TE.left(error)           // Async failure
@@ -58,16 +59,22 @@ await pipe(
 ```typescript
 import { pipe } from 'fp-ts/function'
 import * as TE from 'fp-ts/TaskEither'
+import * as T from 'fp-ts/Task'
 
 // Wrap fetch
-const fetchUser = (id: string) => TE.tryCatch(
-  () => fetch(`/api/users/${id}`).then(r => r.json()),
+const fetchUser = (id: string, signal: AbortSignal) => TE.tryCatch(
+  async () => {
+    const response = await fetch(`/api/users/${encodeURIComponent(id)}`, { signal })
+    if (!response.ok) throw new Error(`HTTP ${response.status}`)
+    const body: unknown = await response.json()
+    return validateUser(body) // Application schema validator; throws on invalid data
+  },
   (e) => ({ type: 'NETWORK_ERROR', message: String(e) })
 )
 
 // Chain async calls
 pipe(
-  fetchUser('123'),
+  fetchUser('123', signal),
   TE.flatMap(user => fetchPosts(user.id)),
   TE.map(posts => posts.length)
 )
@@ -75,16 +82,16 @@ pipe(
 // Parallel calls
 import { sequenceT } from 'fp-ts/Apply'
 sequenceT(TE.ApplyPar)(
-  fetchUser('1'),
+  fetchUser('1', signal),
   fetchPosts('1'),
   fetchComments('1')
 )
 
 // With recovery
 pipe(
-  fetchUser('123'),
+  fetchUser('123', signal),
   TE.orElse(() => TE.right(defaultUser)),
-  TE.getOrElse(() => defaultUser)
+  TE.getOrElse(() => T.of(defaultUser))
 )
 ```
 
@@ -102,9 +109,12 @@ async function getUser(id: string) {
 }
 
 // ✅ TaskEither - errors typed and composable
-const getUser = (id: string) => pipe(
-  TE.tryCatch(() => fetch(`/api/users/${id}`), toNetworkError),
-  TE.flatMap(res => TE.tryCatch(() => res.json(), toParseError))
+const getUser = (id: string, signal: AbortSignal) => pipe(
+  TE.tryCatch(() => fetch(`/api/users/${encodeURIComponent(id)}`, { signal }), toNetworkError),
+  TE.flatMap(res => TE.tryCatch(async () => {
+    if (!res.ok) throw new Error(`HTTP ${res.status}`)
+    return validateUser(await res.json())
+  }, toParseError))
 )
 ```
 
@@ -114,3 +124,11 @@ Use TaskEither when you need **typed errors** for async operations.
 - Use this skill only when the task clearly matches the scope described above.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+
+## Reference scope
+
+These are fp-ts 2.x fragments. Supply application variables, types, validators and imports, and check the installed version. `map` does not catch thrown exceptions. `Task` has no typed error channel; an improperly wrapped promise can still reject. Use `tryCatch` at fallible boundaries.
+
+Supply a caller-owned timeout/abort signal and validate response schemas. Parallel application calls need bounded concurrency and authorization for their data, costs and effects; `ApplyPar` does not cancel work automatically on failure. Error callbacks must redact secrets and private payloads.
+
+Official API: [fp-ts modules](https://gcanti.github.io/fp-ts/modules/).

@@ -12,8 +12,8 @@ cat brief.txt | node "<skill-dir>/scripts/relay.mjs" --cd /path/to/repo
 ZCode does not install a `zcode` binary on PATH and does not publish one to npm — the CLI ships
 inside the desktop app. The relay resolves it in this order, first hit wins:
 
-1. `zcode` on **PATH** — if you made a shim or alias, this is used.
-2. **`--zcode-path <file>`**, else the **`ZCODE_CLI`** environment variable.
+1. **`--zcode-path <file>`**, else the **`ZCODE_CLI`** environment variable.
+2. `zcode` on **PATH** — an actual executable/shim, not a shell alias.
 3. The installed **app bundle**: `%LOCALAPPDATA%\Programs\ZCode\resources\glm\zcode.cjs` on Windows,
    `/Applications/ZCode.app/…` (and `~/Applications/…`) on macOS. Linux ships an AppImage with no
    fixed install path, so there is nothing to auto-discover there — use option 1 or 2.
@@ -87,8 +87,8 @@ The run is finished when `result.json` exists with a `status` *and* the process 
 
 ZCode's `--json` prints a single JSON document at the end rather than a stream of events, and the
 relay parses it tolerantly: the bundled AI SDK sometimes prints a warning banner on stdout ahead of
-the JSON, so leading non-JSON lines are skipped. The raw stdout is preserved at `outputPath` and the
-final report at `finalPath`, so nothing is lost if parsing degrades.
+the JSON, so leading non-JSON lines are skipped. The bounded stdout head is preserved at `outputPath` and the
+final report at `finalPath`, and truncation is reported. Output beyond the relay buffer limit is not retained; do not claim complete raw-stream preservation.
 
 If the document cannot be parsed at all:
 

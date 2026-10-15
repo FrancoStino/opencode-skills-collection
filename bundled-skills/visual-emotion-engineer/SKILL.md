@@ -5,11 +5,17 @@ risk: safe
 source: community
 date_added: "2026-04-04"
 ---
-You are a **Visual Psychologist and Environmental Psychology Researcher**. Your task is to map colors, typography, spacing, imagery style, and layout patterns to specific target emotions, demographic groups, and conversion goals.
+Use a marketing planning and audience-research lens. Your task is to map colors, typography, spacing, imagery style, and layout patterns to specific target emotions, demographic groups, and conversion goals.
 
 ## When to Use
 - Use when visuals need to reinforce a specific emotional response or brand feeling.
 - Use when color, imagery, and composition should support persuasion instead of acting as decoration.
+
+## Evidence and scope
+
+Use observed audience research and verified product facts. Psychological interpretations and the author-year references below are inherited conceptual context, not validated evidence for this exact workflow or a guaranteed conversion effect. Before using a scientific claim externally, verify the actual publication, method and applicability; omit unsupported claims. This is marketing planning, not clinical diagnosis. Do not infer sensitive traits or exploit vulnerabilities.
+
+Original contribution: [PR 451](https://github.com/sickn33/agentic-awesome-skills/pull/451) by MMEHDI0606; [immutable source snapshot](https://github.com/MMEHDI0606/antigravity-awesome-skills/blob/9c61357e3e6bb167946036f52ac1e28fc82e04d0/skills/visual-emotion-engineer/SKILL.md). This identifies the contributed instructions, not scientific validation or a new upstream endorsement.
 
 ## CONTEXT GATHERING
 
@@ -31,28 +37,28 @@ Visual systems influence attention and feeling through arousal, valence, familia
 
 **Step 1 - Define the target emotion**
 Choose the primary feeling: calm, trust, urgency, prestige, warmth, or excitement.
-*Research basis: visual design works when emotion is explicitly defined rather than implied (Bower et al., 2022).*
+*Planning hypothesis (verify before presenting as research): visual design works when emotion is explicitly defined rather than implied (Bower et al., 2022).*
 
 **Step 2 - Map color to context**
 Select colors by audience, culture, and category, not by personal taste.
-*Research basis: color-emotion associations are real but culturally variable (Song et al., 2024; Damiano et al., 2023).*
+*Planning hypothesis (verify before presenting as research): color-emotion associations are real but culturally variable (Song et al., 2024; Damiano et al., 2023).*
 
 **Step 3 - Set the typography personality**
 Choose type that matches the brand's emotional register and readability needs.
-*Research basis: form and brightness affect emotional interpretation and attention; type should support, not fight, the message (Liu et al., 2022; visual aesthetics research).*
+*Planning hypothesis (verify before presenting as research): form and brightness affect emotional interpretation and attention; type should support, not fight, the message (Liu et al., 2022; visual aesthetics research).*
 
 **Step 4 - Control whitespace and hierarchy**
 Use spacing and layout to reduce load and direct attention.
-*Research basis: visual hierarchy and cognitive load change how safe and usable a design feels (Li et al., 2024; Bower et al., 2023).*
+*Planning hypothesis (verify before presenting as research): visual hierarchy and cognitive load change how safe and usable a design feels (Li et al., 2024; Bower et al., 2023).*
 
 **Step 5 - Choose imagery intentionally**
 Use images that reinforce the emotional state and identity of the target audience.
-*Research basis: visual cues and artistic style alter emotional response and perceived meaning (Damiano et al., 2023; Song et al., 2024).*
+*Planning hypothesis (verify before presenting as research): visual cues and artistic style alter emotional response and perceived meaning (Damiano et al., 2023; Song et al., 2024).*
 
 ## DECISION MATRIX
 
 ### Variable: emotional goal
-- If calm -> use low contrast, clear hierarchy, and generous whitespace.
+- If calm -> use restrained visual emphasis, clear hierarchy and generous whitespace while maintaining accessible text/control contrast.
 - If trust -> use restrained color, transparent structure, and realistic imagery.
 - If urgency -> use higher contrast and tighter focal points.
 - If prestige -> use minimalism, controlled spacing, and premium cues.
@@ -96,7 +102,7 @@ The line between persuasion and manipulation is using visuals to clarify a real 
 
 ## SKILL CHAINING
 
-Before invoking this skill, the agent should have completed:
+Optional context from related skills (equivalent supplied research is sufficient; do not create a prerequisite cycle):
 - [ ] `@customer-psychographic-profiler`
 
 This skill's output feeds into:
@@ -118,6 +124,8 @@ Before finalizing output, the agent asks:
 **User request:**
 
 > Revise this visual direction so every major choice reinforces the intended emotion and brand character.
+
+**Illustrative output:** Propose a calm composition with generous spacing; maintain the applicable text and control contrast, then test readability and user response instead of assigning universal emotions to colors.
 
 ## Limitations
 - Use this skill only when the task clearly matches the scope described above.

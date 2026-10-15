@@ -26,7 +26,7 @@ Use for a plain Vue 3 application after the package has been selected. Use `mark
 
 ## Workflow
 
-Before changing dependencies or source files, inspect the existing package manager and project conventions, preview the intended edits, and obtain explicit user approval.
+Inspect the existing package manager, installed package version and project conventions. A requested scoped integration already authorizes routine source/dependency edits; seek approval only for a material scope expansion or unresolved beta/alpha adoption decision.
 
 1. Confirm Vue 3 and not Nuxt. Install only requested peers and import `markstream-vue/index.css` after resets.
 2. Start with `content`. Use `mode="chat"` for AI streams, `docs` for rich documents, and `minimal` for lightweight non-chat surfaces.
@@ -69,3 +69,5 @@ defineProps<{ content: string; isDone: boolean }>()
 ## Security & Safety Notes
 
 Review dependency changes. Never enable trusted HTML or loose Mermaid rendering for untrusted model output.
+
+Verify props, export paths and peer ranges against the installed package, not a mutable upstream main. Test partial and completed streams, malformed/untrusted Markdown, links and image URLs, cancellation and reduced motion. Safe HTML and strict diagrams reduce exposure but do not alone enforce URL/network privacy or application component permissions.

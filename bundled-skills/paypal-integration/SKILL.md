@@ -5,6 +5,9 @@ risk: critical
 source: community
 date_added: "2026-02-27"
 ---
+## Supporting material availability
+
+The following are external prerequisites, not bundled files: `<support-root>/references/express-checkout.md`, `<support-root>/references/ipn-handling.md`, `<support-root>/references/refund-workflows.md`, `<support-root>/references/billing-agreements.md`, `<support-root>/assets/paypal-client.py`, `<support-root>/assets/ipn-processor.py`, `<support-root>/assets/recurring-billing.py`. Obtain them from the original source or an existing installation and inspect them before use. Do not execute or claim completion of a dependent step until its required file exists; report unavailable steps. The fully documented inline workflow remains usable within the authorized scope.
 
 # PayPal Integration
 
@@ -20,7 +23,6 @@ Master PayPal payment integration including Express Checkout, IPN handling, recu
 - Clarify goals, constraints, and required inputs.
 - Apply relevant best practices and validate outcomes.
 - Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
 
 ## Use this skill when
 

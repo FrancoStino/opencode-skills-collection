@@ -30,7 +30,7 @@ Spectral vector search that augments nearest-neighbour search with graph Laplaci
 ### Step 1: Install and import
 
 ```bash
-pip install arrowspace
+python3 -m pip install "arrowspace==0.28.1" numpy  # review/pin remaining dependencies in an isolated environment
 ```
 
 ```python
@@ -43,17 +43,16 @@ import numpy as np
 Pass an (N, d) float64 NumPy array of embedding vectors:
 
 ```python
-items = np.array([[0.1, 0.2, 0.3],
-                  [0.0, 0.5, 0.1],
-                  [0.9, 0.1, 0.0]], dtype=np.float64)
+rng = np.random.default_rng(7)
+items = rng.normal(size=(32, 8)).astype(np.float64)
+items /= np.linalg.norm(items, axis=1, keepdims=True)
 ```
 
 ### Step 3: Configure graph parameters
 
 ```python
-graph_params = {"eps": 0.2, "k": 6, "topk": 3, "p": 2.0, "sigma": 1.0}
-builder = ArrowSpaceBuilder(items, graph_params=graph_params)
-aspace = builder.build()
+graph_params = {"eps": 0.5, "k": 6, "topk": 3, "p": 2.0, "sigma": None}
+aspace, graph = ArrowSpaceBuilder().build(graph_params, items)
 ```
 
 ### Step 4: Query
@@ -63,18 +62,19 @@ lambdas = aspace.lambdas()           # array indexed by insertion order
 sorted_res = aspace.lambdas_sorted()  # (score, index) pairs ascending
 ```
 
-Higher λτ values indicate items that are both semantically close and structurally central.
+These are per-item spectral signatures, not graph eigenvalues or query-dependent relevance scores. Sorting them alone is not nearest-neighbor retrieval; do not infer closeness to a query or graph centrality from a large signature.
 
 ## Examples
 
 ### Example 1: Basic spectral retrieval
 
 ```python
-items = np.random.randn(100, 64).astype(np.float64)
-builder = ArrowSpaceBuilder(items, graph_params={"eps": 0.5, "k": 10, "topk": 5, "p": 2.0, "sigma": None})
-aspace = builder.build()
-scores = aspace.lambdas()
-top_indices = np.argsort(scores)[-5:]
+# Reuse the normalized corpus and graph above; verify degenerate scores first.
+if np.any(np.abs(aspace.lambdas()) < 1e-12):
+    raise ValueError("Tune graph parameters for this corpus before searching")
+query = items[0].copy()
+hits = aspace.search(query, graph, tau=0.7, k=5)
+# hits contains query-dependent (item_index, score) pairs, not a lambda-only ranking.
 ```
 
 ### Example 2: Compare spectral vs cosine ranking
@@ -82,28 +82,30 @@ top_indices = np.argsort(scores)[-5:]
 ```python
 from sklearn.metrics.pairwise import cosine_similarity
 cos_sim = cosine_similarity(items)
-cosine_order = np.argsort(cos_sim[0])[::-1]
-spectral_order = np.argsort(aspace.lambdas())[::-1]
+cosine_order = np.argsort(cos_sim[0])[::-1][:5]
+spectral_order = [index for index, score in aspace.search(items[0], graph, tau=0.7, k=5)]
+# For retrieval evaluation, exclude self-matches and use held-out relevance labels.
 ```
 
 ## Best Practices
 
 - ✅ Normalise embeddings to unit norm before passing to ArrowSpace
-- ✅ Start with eps proportional to 1/sqrt(dim) and tune from there
-- ✅ Use k between 3 and 25 depending on dataset size (rule: N/50)
-- ✅ Set sigma=None to auto-select kernel width from distance distribution
-- ❌ Don't use with fewer than 10 items (graph structure is not meaningful)
+- ✅ Treat graph parameters as corpus-dependent; inspect disconnected/degenerate scores and tune using an explicitly selected objective
+- ✅ Choose k relative to the actual corpus and library constraints; N/50 is not a universal quality guarantee
+- ✅ In the reviewed 0.28 API, sigma=None uses the eps-dependent default; it is not automatic distribution fitting
+- ✅ Small corpora can illustrate the API, but retrieval quality requires corpus-appropriate evaluation; ten items is not a mathematical validity threshold
 - ❌ Don't use for real-time streaming data (ArrowSpace is batch-oriented)
 
 ## Limitations
 
-- This skill does not replace environment-specific validation, testing, or expert review.
+- API examples target the reviewed 0.28 interface; [immutable upstream skill](https://github.com/Genefold/arrowspace-skills/blob/8d9e8e30be314292e2ee60b84f0c163963660d41/SKILL.md) documents the builder, graph return value and query-aware search. These examples were checked against source documentation, not executed here.
+- Fit graph parameters and tau on held-out retrieval evidence; λτ signatures alone do not prove better recall or structural importance.
 - ArrowSpace is batch-oriented and not designed for real-time indexing of streaming data.
 
 ## Common Pitfalls
 
 - **Problem:** eps is too small, producing a disconnected graph
-  **Solution:** Increase eps, or set it proportional to 1/sqrt(embedding_dim)
+  **Solution:** Inspect graph connectivity and degenerate scores, then tune eps against the actual data; no dimension-only formula is guaranteed
 
 - **Problem:** k is too large, producing a dense graph with washed-out spectral features
   **Solution:** Keep k ≤ 25 for most datasets

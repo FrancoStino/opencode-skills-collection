@@ -31,6 +31,10 @@ Use this skill when:
 - Configuring Docker networking and volumes
 - Implementing container security best practices
 
+## Execution Scope
+
+Confirm the selected Docker context and project before any operation. Build instructions execute contributed commands; inspect the Dockerfile, build context, scripts and downloaded dependencies first. Image publication, shared-container stops and volume deletion need authorization for the exact target. Do not expose environment values, image history or logs containing credentials. These examples are independent fragments with project-specific assets, not a complete deployment.
+
 ## Prerequisites
 
 - Docker Engine installed (20.10+)
@@ -46,15 +50,15 @@ Use this skill when:
 FROM node:20-alpine AS builder
 WORKDIR /app
 COPY package*.json ./
-RUN npm ci --only=production
+RUN npm ci
 COPY . .
-RUN npm run build
+RUN npm run build && npm prune --omit=dev
 
 # Production stage
 FROM node:20-alpine AS production
 WORKDIR /app
 RUN addgroup -g 1001 -S nodejs && \
-    adduser -S nodejs -u 1001
+    adduser -S nodejs -u 1001 -G nodejs
 COPY --from=builder --chown=nodejs:nodejs /app/dist ./dist
 COPY --from=builder --chown=nodejs:nodejs /app/node_modules ./node_modules
 USER nodejs
@@ -161,7 +165,7 @@ docker volume create mydata
 docker run -v mydata:/app/data myapp:latest
 
 # Bind mount
-docker run -v $(pwd)/config:/app/config:ro myapp:latest
+docker run -v "$(pwd)/config:/app/config:ro" myapp:latest
 
 # tmpfs mount (memory)
 docker run --tmpfs /tmp:rw,noexec,nosuid myapp:latest
@@ -258,7 +262,7 @@ docker export myapp > myapp-fs.tar
 
 ```dockerfile
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-  CMD curl -f http://localhost:3000/health || exit 1
+  CMD ["node", "-e", "fetch('http://localhost:3000/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
 ```
 
 ```bash
@@ -287,7 +291,7 @@ docker pull myregistry.com/myapp:v1.0
 # Remove unused images
 docker image prune -a
 
-# Remove all unused resources
+# Destructive broad cleanup: only after explicit scope approval and verified backups
 docker system prune -a --volumes
 
 # Remove specific image
@@ -314,7 +318,6 @@ docker scout cves myapp:latest
 
 ```yaml
 # docker-compose.yml
-version: '3.8'
 
 services:
   app:
@@ -322,7 +325,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "3000:3000"
+      - "127.0.0.1:3000:3000"
     environment:
       - NODE_ENV=production
     volumes:
@@ -334,7 +337,7 @@ services:
   db:
     image: postgres:15-alpine
     environment:
-      POSTGRES_PASSWORD: secret
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set a local fixture password}
     volumes:
       - db-data:/var/lib/postgresql/data
 
@@ -349,13 +352,13 @@ volumes:
 
 ```dockerfile
 # Use specific version tags
-FROM node:20.10-alpine3.18
+FROM node:22-alpine
 
 # Don't run as root
 USER nobody
 
 # Remove unnecessary packages
-RUN apk del --purge build-dependencies
+RUN apk del --purge .build-deps  # only if this virtual build-dependency group was created earlier
 
 # Use COPY instead of ADD
 COPY . .
@@ -388,7 +391,7 @@ docker run -d \
 
 ### Issue: Out of Disk Space
 **Problem**: Docker using too much disk
-**Solution**: Run `docker system prune -a --volumes`, check for large unused images
+**Solution**: Inspect `docker system df` and named resources first. Remove only explicitly authorized unused targets; broad volume pruning can destroy data
 
 ### Issue: Build Cache Not Working
 **Problem**: Every build downloads dependencies
@@ -420,7 +423,8 @@ docker run -d \
 
 ```bash
 git status && git diff --stat
-kubectl diff -f manifest.yaml
+docker context show
+docker compose config --quiet
 ```
 
 > Adapted from [BagelHole/DevOps-Security-Agent-Skills](https://github.com/BagelHole/DevOps-Security-Agent-Skills) (MIT); frontmatter, When to Use/Limitations, and safety boundaries added for upstream compliance. Docs-only import: helper scripts and templates not bundled.

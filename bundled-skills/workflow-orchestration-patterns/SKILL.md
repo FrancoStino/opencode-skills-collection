@@ -25,7 +25,6 @@ Master workflow orchestration architecture with Temporal, covering fundamental d
 - Clarify goals, constraints, and required inputs.
 - Apply relevant best practices and validate outcomes.
 - Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
 
 ## When to Use Workflow Orchestration
 
@@ -220,7 +219,7 @@ For each step:
 
 **Solutions**:
 
-1. **Versioning API**: Use `workflow.get_version()` for safe changes
+1. **Versioning API**: Bind the procedure to the actual SDK language and installed version. Python uses `workflow.patched` / `workflow.deprecate_patch`; other SDKs have different APIs. Replay existing histories before deployment; follow [official Python versioning guidance](https://docs.temporal.io/develop/python/versioning).
 2. **New Workflow Type**: Create new workflow, route new executions to it
 3. **Backward Compatibility**: Ensure old events replay correctly
 

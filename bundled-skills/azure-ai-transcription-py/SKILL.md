@@ -1,77 +1,57 @@
 ---
 name: azure-ai-transcription-py
-description: Azure AI Transcription SDK for Python. Use for real-time and batch speech-to-text transcription with timestamps and diarization.
+description: Azure AI Transcription SDK for Python. Use for audio-file transcription with timestamps; distinguish this client from streaming and asynchronous batch Speech APIs.
 risk: critical
 source: community
 date_added: '2026-02-27'
 ---
 
-# Azure AI Transcription SDK for Python
+# Azure AI Speech Transcription for Python
 
-Client library for Azure AI Transcription (speech-to-text) with real-time and batch transcription.
+## When to Use
 
-## Installation
+- Transcribe an authorized audio file with the `azure-ai-transcription` client.
+- Review timestamped output and options supported by the installed SDK version.
+- For streaming or asynchronous batch jobs, select the appropriate Speech API instead.
 
-```bash
-pip install azure-ai-transcription
-```
+## Prerequisites
 
-## Environment Variables
+Use a project-pinned SDK in an isolated Python environment. Confirm the Speech
+resource, endpoint, permissions, audio consent, cost and retention before upload.
+Do not log keys, audio contents, or full transcripts by default.
 
-```bash
-TRANSCRIPTION_ENDPOINT=https://<resource>.cognitiveservices.azure.com
-TRANSCRIPTION_KEY=<your-key>
-```
-
-## Authentication
-
-Use subscription key authentication (DefaultAzureCredential is not supported for this client):
+## File Example
 
 ```python
 import os
+from azure.core.credentials import AzureKeyCredential
 from azure.ai.transcription import TranscriptionClient
+from azure.ai.transcription.models import TranscriptionContent, TranscriptionOptions
 
 client = TranscriptionClient(
     endpoint=os.environ["TRANSCRIPTION_ENDPOINT"],
-    credential=os.environ["TRANSCRIPTION_KEY"]
+    credential=AzureKeyCredential(os.environ["TRANSCRIPTION_KEY"]),
 )
+with client:
+    with open("audio.wav", "rb") as audio:
+        result = client.transcribe(TranscriptionContent(
+            definition=TranscriptionOptions(locales=["en-US"]), audio=audio,
+        ))
+# Inspect result locally; handle empty output and service errors explicitly.
 ```
 
-## Transcription (Batch)
+## Authentication and API Boundary
 
-```python
-job = client.begin_transcription(
-    name="meeting-transcription",
-    locale="en-US",
-    content_urls=["https://<storage>/audio.wav"],
-    diarization_enabled=True
-)
-result = job.result()
-print(result.status)
-```
+`DefaultAzureCredential` is also supported when the identity has the required
+resource role. The previous `begin_transcription` and `begin_stream_transcription`
+examples did not match this client. Do not invent a streaming adapter.
 
-## Transcription (Real-time)
+## Example Request
 
-```python
-stream = client.begin_stream_transcription(locale="en-US")
-stream.send_audio_file("audio.wav")
-for event in stream:
-    print(event.text)
-```
-
-## Best Practices
-
-1. **Enable diarization** when multiple speakers are present
-2. **Use batch transcription** for long files stored in blob storage
-3. **Capture timestamps** for subtitle generation
-4. **Specify language** to improve recognition accuracy
-5. **Handle streaming backpressure** for real-time transcription
-6. **Close transcription sessions** when complete
-
-## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
+“Transcribe this consented local recording; keep the transcript private.”
 
 ## Limitations
-- Use this skill only when the task clearly matches the scope described above.
-- Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
-- Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+
+Verify installed signatures and service limits against [Microsoft's SDK guide](https://learn.microsoft.com/en-us/python/api/overview/azure/ai-transcription-readme?view=azure-python).
+This illustration has not contacted Azure; availability, accuracy and costs require
+verification in the authorized environment.

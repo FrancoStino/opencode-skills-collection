@@ -9,6 +9,9 @@ date_added: 2026-07-01
 license: MIT
 license_source: https://github.com/longbridge/skills/blob/main/LICENSE
 ---
+## Bundled upstream support
+
+Supporting files are included at skill-relative paths. See [UPSTREAM-NOTICE.md](UPSTREAM-NOTICE.md) for their pinned sources, licenses, hashes, and import changes.
 
 # Longbridge Content
 

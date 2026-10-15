@@ -1,6 +1,6 @@
 ---
 name: ai-inference-service-mesh
-description: Use service mesh patterns for AI inference traffic management, mTLS,
+description: Use verified service mesh patterns for AI inference traffic management, mTLS,
   canary releases, policy enforcement, and cross-cluster resilience.
 category: devops
 risk: critical
@@ -32,8 +32,11 @@ Apply Istio/Linkerd mesh controls to secure and optimize east-west AI traffic ac
 
 ## Prerequisites
 
+Confirm the exact cluster/context, mesh version, CRD schemas, owned namespace and authorized mutation scope. Examples are alternative fragments, not a manifest to apply wholesale: multiple DestinationRules for the same host must be consolidated under the installed version's merge rules. Preview and validate in a disposable environment; protect production routes and rollback evidence.
+
+
 ```bash
-# Install Istio with production profile
+# Illustrative mutating install; default is not a validated production configuration
 istioctl install --set profile=default \
   --set meshConfig.accessLogFile=/dev/stdout \
   --set meshConfig.defaultConfig.holdApplicationUntilProxyStarts=true
@@ -136,38 +139,12 @@ spec:
     protocol: TLS
   resolution: DNS
   location: MESH_EXTERNAL
----
-apiVersion: networking.istio.io/v1alpha3
-kind: DestinationRule
-metadata:
-  name: openai-api-tls
-  namespace: ai-inference
-spec:
-  host: api.openai.com
-  trafficPolicy:
-    tls:
-      mode: SIMPLE
-    connectionPool:
-      http:
-        h2UpgradePolicy: UPGRADE
-      tcp:
-        maxConnections: 50
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: restrict-egress
-  namespace: ai-inference
-spec:
-  action: ALLOW
-  rules:
-  - to:
-    - operation:
-        hosts:
-        - "api.openai.com"
-        - "models.anthropic.com"
-        - "*.blob.core.windows.net"
+
 ```
+
+A `ServiceEntry` registers a service; it is not a complete egress firewall. Namespace `AuthorizationPolicy` controls requests to selected workloads, not arbitrary outbound HTTPS by destination host. Enforce approved egress through a verified gateway/network policy and test bypass routes. For application-originated HTTPS, do not also originate TLS in a DestinationRule without a designed HTTP-to-TLS route (double TLS breaks the connection).
+
+Official guidance: [Istio egress control](https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/).
 
 ## Traffic Management
 
@@ -331,7 +308,7 @@ spec:
     timeout: 300s
     retries:
       attempts: 0
-  # Embeddings endpoint: safe to retry, short timeout
+  # Embeddings: retries can duplicate billed computation; enable only with a verified deduplication policy
   - match:
     - uri:
         prefix: /v1/embeddings
@@ -367,9 +344,7 @@ spec:
           to:
             "us-east-1/us-east-1a/*": 80
             "us-east-1/us-east-1b/*": 20
-        failover:
-        - from: us-east-1
-          to: us-west-2
+        # Choose distribution OR a separately designed failover policy, not both.
     outlierDetection:
       consecutive5xxErrors: 3
       interval: 10s
@@ -397,9 +372,7 @@ spec:
         model_name:
           operation: UPSERT
           value: "request.headers['x-model-name']"
-        tenant_id:
-          operation: UPSERT
-          value: "request.headers['x-tenant-id']"
+        # Do not expose raw tenant IDs as unbounded metric labels.
   tracing:
   - providers:
     - name: zipkin
@@ -425,10 +398,10 @@ istioctl proxy-config cluster deploy/model-server -n ai-inference
 
 ## Pitfalls to Avoid
 
-- Aggressive timeouts that break streaming responses -- set 300s+ for generation endpoints
+- Aggressive or unlimited streaming timeouts: choose tested idle/overall limits with the provider and gateway, not a universal 300-second value
 - Blanket retries that amplify expensive generation calls -- disable retries on non-idempotent routes
 - Missing identity boundaries between tenant-facing and internal services
-- Forgetting to exempt health check and metrics ports from strict mTLS
+- Assuming metrics/health ports need plaintext exceptions: prefer authenticated scrapers and the platform's supported probe rewrite; any exception requires an explicit trust model
 - Setting outlier ejection too aggressively on small pools (maxEjectionPercent too high)
 - Not using `holdApplicationUntilProxyStarts` causing race conditions on startup
 
@@ -440,10 +413,12 @@ istioctl proxy-config cluster deploy/model-server -n ai-inference
 
 ## When to Use
 
-- You are provisioning, configuring, or troubleshooting the infrastructure component covered by this skill (servers, storage, databases, networking, cloud, local AI).
+- Design or troubleshoot mTLS identity, model-version routing, inference retry budgets, mesh egress or observable latency on an actual supported cluster.
 
 ## Limitations
 
 - Infrastructure commands can disrupt services: confirm target host/scope and have backups/snapshots before mutating state.
 - Docs-only import: upstream scripts and templates not bundled.
 
+
+Strip/validate routing headers at a trusted gateway before using them for model, cohort or tenant decisions. Test identities, authorized/denied requests, egress bypass, streaming disconnects and duplicate billable retries. Keep prompts, credentials and user/tenant identifiers out of access logs and high-cardinality telemetry. Record observed checks, not assumed cluster health.

@@ -22,6 +22,12 @@ Use this workflow when:
 - Adding tool integration to agents
 - Setting up agent memory
 
+## Scope and execution
+
+Choose the phases that match the user’s task; this document is an index, not an instruction to run every listed skill. Read a selected skill before using it. Respect repository and user constraints. Cloud calls, host configuration, publishing, destructive operations and spending require the applicable authorization; a workflow checklist does not grant it.
+
+Multi-agent phases describe the product being built. They do not authorize the assistant to spawn or delegate to agents during this task. Use an existing single-agent architecture when appropriate and record evaluation inputs, observed results and limitations.
+
 ## Workflow Phases
 
 ### Phase 1: Agent Design

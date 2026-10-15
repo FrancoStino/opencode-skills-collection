@@ -12,10 +12,16 @@ references/
 ```
 
 
+The snippets are separate integration examples: supply application types/components, React/Expo imports, verified API origins, schema parsers and an actual refresh adapter. A generic TypeScript return type does not validate JSON. Scope query keys to the authenticated tenant/user and clear private cached/persisted data on logout or identity changes. SecureStore requires a supported native platform; web needs a separately reviewed session strategy. Persistence does not make mutations a durable offline queue.
+
 ## Preferences
 
 - Avoid axios, prefer expo/fetch
 
+
+## Loading, empty, failure and saved content
+
+Restore the separate screen states from the current [upstream fetching skill](https://github.com/expo/skills/blob/main/plugins/expo/skills/expo-data-fetching/SKILL.md): treat absent data separately from a resolved empty response, retain saved content during a failed refresh, and preserve an unsaved form after failed submission. Hydrate identity before private requests. These are application responsibilities, not states supplied by this guide.
 
 ## Common Issues & Solutions
 
@@ -24,8 +30,8 @@ references/
 **Simple GET request**:
 
 ```tsx
-const fetchUser = async (userId: string) => {
-  const response = await fetch(`https://api.example.com/users/${userId}`);
+const fetchUser = async (userId: string, signal?: AbortSignal) => {
+  const response = await fetch(`https://api.example.com/users/${encodeURIComponent(userId)}`, { signal });
 
   if (!response.ok) {
     throw new Error(`HTTP error! status: ${response.status}`);
@@ -91,15 +97,20 @@ export default function RootLayout() {
 import { useQuery } from "@tanstack/react-query";
 
 function UserProfile({ userId }: { userId: string }) {
-  const { data, isLoading, error, refetch } = useQuery({
+  const { data, fetchStatus, error, refetch } = useQuery({
     queryKey: ["user", userId],
-    queryFn: () => fetchUser(userId),
+    queryFn: ({ signal }) => fetchUser(userId, signal),
   });
 
-  if (isLoading) return <Loading />;
-  if (error) return <Error message={error.message} />;
-
-  return <Profile user={data} />;
+  if (data === undefined) {
+    if (error) return <ErrorState onRetry={refetch} />;
+    if (fetchStatus === "paused") return <OfflineState />;
+    return <Loading />;
+  }
+  return <>
+    {error && <RefreshWarning onRetry={refetch} />}
+    {data === null ? <EmptyState /> : <Profile user={data} />}
+  </>;
 }
 ```
 
@@ -120,10 +131,10 @@ function CreateUserForm() {
   });
 
   const handleSubmit = (data: UserData) => {
-    mutation.mutate(data);
+    if (!mutation.isPending) mutation.mutate(data);
   };
 
-  return <Form onSubmit={handleSubmit} isLoading={mutation.isPending} />;
+  return <Form onSubmit={handleSubmit} isLoading={mutation.isPending} error={mutation.error} />;
 }
 ```
 
@@ -159,7 +170,8 @@ const fetchWithErrorHandling = async (url: string, options?: RequestInit) => {
     if (error instanceof ApiError) {
       throw error;
     }
-    // Network error (no internet, timeout, etc.)
+    if (options?.signal?.aborted || !(error instanceof TypeError)) throw error;
+    // Fetch rejects network failures with TypeError; do not classify JSON parse errors as retryable.
     throw new ApiError("Network error", 0, "NETWORK_ERROR");
   }
 };
@@ -173,11 +185,17 @@ const fetchWithRetry = async (
   options?: RequestInit,
   retries = 3
 ) => {
+  if (!Number.isInteger(retries) || retries < 1 || retries > 5) throw new Error("Invalid attempt limit");
   for (let i = 0; i < retries; i++) {
+    options?.signal?.throwIfAborted();
     try {
       return await fetchWithErrorHandling(url, options);
     } catch (error) {
-      if (i === retries - 1) throw error;
+      const method = (options?.method ?? "GET").toUpperCase();
+      const status = error instanceof ApiError ? error.status : -1;
+      const transient = status === 0 || status === 408 || status >= 500;
+      if (!["GET", "HEAD"].includes(method) || !transient ||
+          options?.signal?.aborted || i === retries - 1) throw error;
       // Exponential backoff
       await new Promise((r) => setTimeout(r, Math.pow(2, i) * 1000));
     }
@@ -206,13 +224,14 @@ export const auth = {
 const authFetch = async (url: string, options: RequestInit = {}) => {
   const token = await auth.getToken();
 
-  return fetch(url, {
-    ...options,
-    headers: {
-      ...options.headers,
-      Authorization: token ? `Bearer ${token}` : "",
-    },
-  });
+  const target = new URL(url);
+  if (target.origin !== "https://api.example.com" || target.username || target.password) {
+    throw new Error("Untrusted authenticated API destination");
+  }
+  const headers = new Headers(options.headers);
+  if (!token) throw new Error("Authentication required");
+  headers.set("Authorization", `Bearer ${token}`);
+  return fetch(target, { ...options, headers, redirect: "error" });
 };
 ```
 
@@ -376,9 +395,9 @@ useEffect(() => {
 
   fetch(url, { signal: controller.signal })
     .then((response) => response.json())
-    .then(setData)
+    .then((data) => { if (!controller.signal.aborted) setData(data); })
     .catch((error) => {
-      if (error.name !== "AbortError") {
+      if (!controller.signal.aborted && error.name !== "AbortError") {
         setError(error);
       }
     });
@@ -390,8 +409,8 @@ useEffect(() => {
 **With React Query** (automatic):
 
 ```tsx
-// React Query automatically cancels requests when queries are invalidated
-// or components unmount
+// Pass the query function signal to fetch; unmount/invalidation alone
+// does not guarantee cancellation of the underlying network operation.
 ```
 
 ---

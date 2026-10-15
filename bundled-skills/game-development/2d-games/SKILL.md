@@ -67,7 +67,7 @@ date_added: "2026-02-27"
 | Capsule | Characters |
 | Polygon | Complex shapes |
 
-- Pixel-perfect vs physics-based: pick one approach per game
+- Choose a movement/collision model per mechanic; pixel-art rendering can coexist with physics
 - Fixed timestep for consistency
 - Layers for filtering
 
@@ -114,7 +114,7 @@ date_added: "2026-02-27"
 | Separate textures | Use atlases |
 | Complex collision shapes | Simplified collision |
 | Jittery camera | Smooth following |
-| Pixel-perfect on physics | Choose one approach |
+| Uncoordinated movement and physics | Define one authority per body |
 | Orphaned RAF/listeners after a guest closes | Full teardown |
 
 ---
@@ -129,7 +129,7 @@ Use for canvas/Phaser/Kaplay/Pixi 2D systems, or guest viewports inside hybrid w
 
 **User request:**
 
-> Use @2d-games for this task: 2D game development principles.
+> Add coyote time and jump buffering to our platformer while preserving the fixed physics timestep and testing corner collisions.
 
 ## Limitations
 

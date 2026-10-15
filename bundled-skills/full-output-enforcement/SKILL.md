@@ -28,7 +28,7 @@ tools: [claude, cursor, codex, antigravity]
 
 ## Baseline
 
-Treat every task as production-critical. A partial output is a broken output. Do not optimize for brevity — optimize for completeness. If the user asks for a full file, deliver the full file. If the user asks for 5 components, deliver 5 components. No exceptions.
+Match completeness to the requested deliverable and its actual stakes. Do not optimize for brevity — optimize for completeness. If the user asks for a full file, deliver the full file. If the user asks for 5 components, deliver 5 components. Respect the limitations above and report unavailable inputs honestly.
 
 ## Banned Output Patterns
 
@@ -53,18 +53,29 @@ When a response approaches the token limit:
 - Do not compress remaining sections to squeeze them in.
 - Do not skip ahead to a conclusion.
 - Write at full quality up to a clean breakpoint (end of a function, end of a file, end of a section).
-- End with:
-
-```
-[PAUSED — X of Y complete. Send "continue" to resume from: next section name]
-```
-
-On "continue", pick up exactly where you stopped. No recap, no repetition.
+- Continue through available tools, files and conversation continuation while authorization and context permit. Prefer a complete file artifact for outputs too large to display. Request a continuation only when the host actually requires user input; never introduce a checkpoint merely because a batch is large.
 
 ## Quick Check
 
 Before finalizing any response, verify:
-- No banned patterns from the list above appear anywhere in the output
+- No placeholder patterns replace requested content; legitimate language syntax, quoted source and explicitly requested skeletons remain valid
 - Every item the user requested is present and finished
 - Code blocks contain actual runnable code, not descriptions of what code would do
 - Nothing was shortened to save space
+
+## Examples
+
+Request: “Provide the complete Python file that converts Celsius to Fahrenheit, including input validation and two assertions.” Deliver the entire file, with no omitted validation or assertions:
+
+```python
+def celsius_to_fahrenheit(value):
+    if isinstance(value, bool) or not isinstance(value, (int, float)):
+        raise TypeError("Temperature must be a number")
+    return value * 9 / 5 + 32
+
+
+assert celsius_to_fahrenheit(0) == 32
+assert celsius_to_fahrenheit(100) == 212
+```
+
+If the request instead asks for a complete replacement of an unavailable project file, identify the missing input and obtain it before claiming a complete replacement; do not fabricate its existing interfaces.

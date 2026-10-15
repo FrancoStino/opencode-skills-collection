@@ -61,12 +61,12 @@ Layer 6: 事件响应 → 供应链攻击应急、回滚策略
 osv-scanner scan -r . --format json
 
 # OWASP Dependency-Track（企业级持续监控）
-docker run -p 8080:8080 dependencytrack/apiserver
+# Deployment requires reviewed configuration, digest, access controls and authorization.
 # → 上传 SBOM → 自动匹配 NVD/OSV/GitHub Advisory
 
 # Snyk（商业）
 snyk test --all-projects
-snyk monitor  # 持续监控
+# Persistent monitoring is a separately authorized operation.
 
 # Trivy（容器 + 依赖 + IaC）
 trivy fs .          # 文件系统扫描
@@ -77,7 +77,7 @@ trivy config .      # IaC 配置
 ### 3. 漏洞可达性验证
 
 ```text
-SCA 告警 ≠ 实际风险！大多数 SCA 工具只有 ~15% 的告警是实际可达的。
+SCA 告警需要结合实际版本、暴露面和调用路径验证。未提供可复现样本时，不声称固定的可达比例。
 
 验证步骤：
 1. 用 Dependency-Track 或 Trivy 获取 CVE 列表
@@ -147,17 +147,9 @@ cosign verify --key cosign.pub myimage:tag
 
 ## 工具链
 
-| 工具 | 用途 | 获取 |
-|------|------|------|
-| OWASP Dependency-Track | 企业级持续 SCA | `docker pull dependencytrack/apiserver` |
-| OSV-Scanner | 免费 SCA（OSV.dev 生态） | `go install github.com/google/osv-scanner` |
-| Trivy | 镜像 + 依赖 + IaC 扫描 | `apt install trivy` |
-| Syft | SBOM 生成 | `curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh` |
-| cdxgen | CycloneDX SBOM 生成 | `npm install -g @cyclonedx/cdxgen` |
-| Cosign | 容器签名 | `go install github.com/sigstore/cosign/v2/cmd/cosign` |
-| Gitleaks | 密钥/凭证扫描 | `go install github.com/gitleaks/gitleaks/v8` |
-| Snyk | 商业 SCA + 可达性 | `npm install -g snyk` |
-| CodeQL | 代码查询 + 数据流 | GitHub Actions 内置 |
+使用项目已安装并锁定版本的 OSV-Scanner、Trivy、Syft、cdxgen、Cosign、Gitleaks 或 CodeQL。核对真实可执行路径及官方版本说明；安装新工具需先审核来源、不可变版本和校验和，不执行在线下载脚本或自动全局安装。工具能力、付费条件和可达性支持取决于实际版本，不能从工具名推断。
+
+扫描私有依赖、上传 SBOM、持续监控、公开镜像拉取、签名及推送均有网络、数据或成本边界。先确认目标和授权；默认仅在获准的本地目录生成报告，不启动服务或注册监控。
 
 ## 参考
 

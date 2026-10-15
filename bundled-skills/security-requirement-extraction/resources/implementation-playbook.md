@@ -1,6 +1,6 @@
 # Security Requirement Extraction Implementation Playbook
 
-This file contains detailed patterns, checklists, and code samples referenced by the skill.
+These are candidate-requirement and traceability templates, not evidence that controls are implemented or a compliance assessment. Framework control IDs are historical illustrations: verify the exact framework edition, applicability and authoritative control text before reuse. More mapped requirements do not prove stronger coverage; evaluate implementation evidence and tests with the control owner.
 
 # Security Requirement Extraction
 
@@ -333,8 +333,10 @@ class RequirementExtractor:
     def _calculate_priority(self, impact: str, likelihood: str) -> Priority:
         """Calculate requirement priority from threat attributes."""
         score_map = {"LOW": 1, "MEDIUM": 2, "HIGH": 3, "CRITICAL": 4}
-        impact_score = score_map.get(impact.upper(), 2)
-        likelihood_score = score_map.get(likelihood.upper(), 2)
+        if impact.upper() not in score_map or likelihood.upper() not in score_map:
+            raise ValueError("Unknown impact/likelihood; obtain an assessment")
+        impact_score = score_map[impact.upper()]
+        likelihood_score = score_map[likelihood.upper()]
 
         combined = impact_score * likelihood_score
 
@@ -524,7 +526,7 @@ class ComplianceMapper:
         framework: ComplianceFramework
     ) -> Dict[str, List[str]]:
         """Identify compliance gaps."""
-        gaps = {"missing_controls": [], "weak_coverage": []}
+        gaps = {"missing_controls": [], "assessment_required": []}
         framework_controls = self.FRAMEWORK_CONTROLS.get(framework, {})
 
         for domain, controls in framework_controls.items():
@@ -535,8 +537,8 @@ class ComplianceMapper:
                 )
                 if not matching:
                     gaps["missing_controls"].append(f"{framework.value}:{control}")
-                elif len(matching) < 2:
-                    gaps["weak_coverage"].append(f"{framework.value}:{control}")
+                else:
+                    gaps["assessment_required"].append(f"{framework.value}:{control}")
 
         return gaps
 ```

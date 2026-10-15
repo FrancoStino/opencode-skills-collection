@@ -2,7 +2,7 @@
 name: github-actions-debugger
 description: "Specialized skill for diagnosing, analyzing, and fixing failing GitHub Actions workflows by parsing run logs and pipeline definitions."
 category: devops
-risk: safe
+risk: critical
 source: community
 source_type: community
 date_added: "2026-06-25"
@@ -39,7 +39,7 @@ This skill is designed to act as an expert CI/CD diagnostician. It focuses speci
 ## Best Practices
 
 - **Provide Full Context:** Always review both the workflow definition (`.yml` file) and the failure log simultaneously to ensure accurate diagnosis.
-- **Check Action Versions:** Many failures are caused by deprecated runtime versions (e.g., Node.js 16) in older third-party actions (e.g., `actions/checkout@v2`). Always recommend upgrading to the latest major versions (e.g., `v4`).
+- **Check Action Versions:** Many failures are caused by deprecated runtime versions (e.g., Node.js 16) in older third-party actions (e.g., `actions/checkout@v2`). Inspect the installed runner requirements and supported action release, verify upstream changes, and pin the reviewed full commit SHA. Do not assume a historical v4 example is latest.
 - **Permissions Audit:** Ensure the workflow has the correct `permissions:` block if it's attempting to write to the repository, packages, or deploy environments.
 - **Reproducibility:** If a test fails in CI but passes locally, investigate environment differences such as timezone, headless browser state, memory limits, or parallel execution race conditions.
 
@@ -76,6 +76,10 @@ Error: API Key is required for deployment. Process exited with code 1.
 +          DEPLOY_API_KEY: ${{ secrets.DEPLOY_API_KEY }}
 ```
 
+## Exact Run Binding
+
+Record repository, run ID, attempt, event, head SHA, runner and failing step. Read the workflow and referenced scripts from that same commit, not merely current main. Separate source errors, permissions, missing tools and observation timeouts. Never weaken tests or required checks to obtain a green badge.
+
 ## Security & Safety Notes
 
 - **Credential Exposure & Raw Log Redaction**: Under no circumstances should raw logs containing unmasked secrets, private URLs, deployment targets, or tokens be processed without prior redaction. Always ensure the user or agent redacts all sensitive info before ingestion.
@@ -89,7 +93,7 @@ Error: API Key is required for deployment. Process exited with code 1.
 
 ## Common Pitfalls
 
-- **Ignoring Transient Failures**: Mistaking temporary network dropouts or registry downtime (e.g., npm or pip install errors) for actual code or configuration bugs. Always check if a rerun succeeds before attempting heavy changes.
+- **Ignoring Transient Failures**: Mistaking temporary network dropouts or registry downtime (e.g., npm or pip install errors) for actual code or configuration bugs. Inspect evidence before rerunning: deployment or publication steps may repeat side effects. A passing rerun does not erase a reproducible deterministic defect.
 - **Hardcoding Tokens**: Fixing authentication errors by hardcoding secrets or API tokens directly into the YAML files instead of utilizing GitHub Secrets (`${{ secrets.SECRET_NAME }}`).
 - **Overlooking Caching Side Effects**: Forgetting that outdated cache keys can keep corrupt dependencies loaded. If dependency installation is failing, try running a job with actions caching bypassed.
 

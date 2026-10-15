@@ -1,6 +1,6 @@
 ---
 name: error-debugging-multi-agent-review
-description: "Use when working with error debugging multi agent review"
+description: "Review a defined code diff from relevant correctness, authorization and performance perspectives; delegate only when authorized and reproduce findings centrally."
 risk: safe
 source: community
 date_added: "2026-02-27"

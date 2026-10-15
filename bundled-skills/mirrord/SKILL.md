@@ -2,7 +2,7 @@
 name: mirrord
 description: "Run a local process inside a live Kubernetes cluster's network, env and traffic with mirrord, so changes are tested against real services without deploying."
 category: devops
-risk: safe
+risk: critical
 source: "https://github.com/metalbear-co/skills"
 source_repo: "metalbear-co/skills"
 source_type: official
@@ -57,10 +57,10 @@ Incoming traffic is mirrored by default. To take over the target's traffic inste
 ### Step 4: Verify
 
 ```bash
-mirrord exec --target deployment/<name> -- env
+# Verify an explicitly selected non-secret variable or service identity without printing the pod environment.
 ```
 
-The output should include the pod's environment variables.
+Confirm the exact target and mode through sanitized configuration/status, then an approved synthetic read. Never dump environment credentials.
 
 ## Examples
 
@@ -88,3 +88,5 @@ mirrord exec --target deployment/api -- python main.py
 
 - Needs kubectl access to the target cluster and a Linux node kernel 4.20+
 - Team features (concurrent steal on one target, database branching, queue splitting, preview environments) need the mirrord Operator. On a cluster without a license, an agent can offer the user a trial; see https://metalbear.com/agents.md and ask before starting it.
+
+Running locally can still modify shared databases, send messages, consume queues or incur provider charges through mirrored network/environment access. Confirm a staging context/namespace and isolated data, inspect the actual mirrord mode/version, and disable unneeded filesystem/environment/network capabilities. Mirror mode is not an automatic read-only sandbox; stealing traffic or trial/license activation needs specific authorization. Reconcile side effects before retries.

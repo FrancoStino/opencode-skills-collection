@@ -1,6 +1,6 @@
 # Dependency Audit and Security Analysis Implementation Playbook
 
-This file contains detailed patterns, checklists, and code samples referenced by the skill.
+These are separate architecture sketches, not a complete scanner: parsers, version comparison, provider adapters and legal review are not bundled. Record unsupported ecosystems, unresolved versions, provider failures and scan coverage explicitly. No findings cannot establish security or license compliance when inspection is incomplete. Network scans require approved destinations and must not disclose private package names without authorization.
 
 ## Instructions
 
@@ -109,7 +109,7 @@ def build_dependency_tree(dependencies):
                 }
                 continue
                 
-            visited.add(dep_name)
+            branch_visited = visited | {dep_name}
             
             node['dependencies'][dep_name] = {
                 'version': dep_info['version'],
@@ -122,7 +122,7 @@ def build_dependency_tree(dependencies):
                 add_dependencies(
                     node['dependencies'][dep_name],
                     dep_info['dependencies'],
-                    visited.copy()
+                    branch_visited
                 )
     
     add_dependencies(tree['root'], dependencies)
@@ -133,78 +133,9 @@ def build_dependency_tree(dependencies):
 
 Check dependencies against vulnerability databases:
 
-**CVE Database Check**
-```python
-import requests
-from datetime import datetime
+**Advisory collection**
 
-class VulnerabilityScanner:
-    def __init__(self):
-        self.vulnerability_apis = {
-            'npm': 'https://registry.npmjs.org/-/npm/v1/security/advisories/bulk',
-            'pypi': 'https://pypi.org/pypi/{package}/json',
-            'rubygems': 'https://rubygems.org/api/v1/gems/{package}.json',
-            'maven': 'https://ossindex.sonatype.org/api/v3/component-report'
-        }
-        
-    def scan_vulnerabilities(self, dependencies):
-        """
-        Scan dependencies for known vulnerabilities
-        """
-        vulnerabilities = []
-        
-        for package_name, package_info in dependencies.items():
-            vulns = self._check_package_vulnerabilities(
-                package_name,
-                package_info['version'],
-                package_info.get('ecosystem', 'npm')
-            )
-            
-            if vulns:
-                vulnerabilities.extend(vulns)
-                
-        return self._analyze_vulnerabilities(vulnerabilities)
-    
-    def _check_package_vulnerabilities(self, name, version, ecosystem):
-        """
-        Check specific package for vulnerabilities
-        """
-        if ecosystem == 'npm':
-            return self._check_npm_vulnerabilities(name, version)
-        elif ecosystem == 'pypi':
-            return self._check_python_vulnerabilities(name, version)
-        elif ecosystem == 'maven':
-            return self._check_java_vulnerabilities(name, version)
-            
-    def _check_npm_vulnerabilities(self, name, version):
-        """
-        Check NPM package vulnerabilities
-        """
-        # Using npm audit API
-        response = requests.post(
-            'https://registry.npmjs.org/-/npm/v1/security/advisories/bulk',
-            json={name: [version]}
-        )
-        
-        vulnerabilities = []
-        if response.status_code == 200:
-            data = response.json()
-            if name in data:
-                for advisory in data[name]:
-                    vulnerabilities.append({
-                        'package': name,
-                        'version': version,
-                        'severity': advisory['severity'],
-                        'title': advisory['title'],
-                        'cve': advisory.get('cves', []),
-                        'description': advisory['overview'],
-                        'recommendation': advisory['recommendation'],
-                        'patched_versions': advisory['patched_versions'],
-                        'published': advisory['created']
-                    })
-                    
-        return vulnerabilities
-```
+Use the ecosystem's installed, version-bound audit tool against the resolved lockfile. Record its exit status, advisory database timestamp, exact dependency versions and unresolved packages. Metadata registries such as PyPI package JSON are not universal vulnerability databases. A provider timeout, non-success response or unsupported ecosystem is `analysis_incomplete`, never an empty clean result. Verify the provider response schema before translating it into findings; set a bounded timeout and validate affected version ranges.
 
 **Severity Analysis**
 ```python
@@ -271,110 +202,9 @@ def analyze_vulnerability_severity(vulnerabilities):
 
 Analyze dependency licenses for compatibility:
 
-**License Detection**
-```python
-class LicenseAnalyzer:
-    def __init__(self):
-        self.license_compatibility = {
-            'MIT': ['MIT', 'BSD', 'Apache-2.0', 'ISC'],
-            'Apache-2.0': ['Apache-2.0', 'MIT', 'BSD'],
-            'GPL-3.0': ['GPL-3.0', 'GPL-2.0'],
-            'BSD-3-Clause': ['BSD-3-Clause', 'MIT', 'Apache-2.0'],
-            'proprietary': []
-        }
-        
-        self.license_restrictions = {
-            'GPL-3.0': 'Copyleft - requires source code disclosure',
-            'AGPL-3.0': 'Strong copyleft - network use requires source disclosure',
-            'proprietary': 'Cannot be used without explicit license',
-            'unknown': 'License unclear - legal review required'
-        }
-        
-    def analyze_licenses(self, dependencies, project_license='MIT'):
-        """
-        Analyze license compatibility
-        """
-        issues = []
-        license_summary = {}
-        
-        for package_name, package_info in dependencies.items():
-            license_type = package_info.get('license', 'unknown')
-            
-            # Track license usage
-            if license_type not in license_summary:
-                license_summary[license_type] = []
-            license_summary[license_type].append(package_name)
-            
-            # Check compatibility
-            if not self._is_compatible(project_license, license_type):
-                issues.append({
-                    'package': package_name,
-                    'license': license_type,
-                    'issue': f'Incompatible with project license {project_license}',
-                    'severity': 'high',
-                    'recommendation': self._get_license_recommendation(
-                        license_type,
-                        project_license
-                    )
-                })
-            
-            # Check for restrictive licenses
-            if license_type in self.license_restrictions:
-                issues.append({
-                    'package': package_name,
-                    'license': license_type,
-                    'issue': self.license_restrictions[license_type],
-                    'severity': 'medium',
-                    'recommendation': 'Review usage and ensure compliance'
-                })
-        
-        return {
-            'summary': license_summary,
-            'issues': issues,
-            'compliance_status': 'FAIL' if issues else 'PASS'
-        }
-```
+**License evidence register**
 
-**License Report**
-```markdown
-## License Compliance Report
-
-### Summary
-- **Project License**: MIT
-- **Total Dependencies**: 245
-- **License Issues**: 3
-- **Compliance Status**: ⚠️ REVIEW REQUIRED
-
-### License Distribution
-| License | Count | Packages |
-|---------|-------|----------|
-| MIT | 180 | express, lodash, ... |
-| Apache-2.0 | 45 | aws-sdk, ... |
-| BSD-3-Clause | 15 | ... |
-| GPL-3.0 | 3 | [ISSUE] package1, package2, package3 |
-| Unknown | 2 | [ISSUE] mystery-lib, old-package |
-
-### Compliance Issues
-
-#### High Severity
-1. **GPL-3.0 Dependencies**
-   - Packages: package1, package2, package3
-   - Issue: GPL-3.0 is incompatible with MIT license
-   - Risk: May require open-sourcing your entire project
-   - Recommendation: 
-     - Replace with MIT/Apache licensed alternatives
-     - Or change project license to GPL-3.0
-
-#### Medium Severity
-2. **Unknown Licenses**
-   - Packages: mystery-lib, old-package
-   - Issue: Cannot determine license compatibility
-   - Risk: Potential legal exposure
-   - Recommendation:
-     - Contact package maintainers
-     - Review source code for license information
-     - Consider replacing with known alternatives
-```
+For each resolved dependency, record the exact package/version, source license file or expression, copyright/notice obligations, distribution/linking/network-use context and unresolved questions. License labels alone cannot establish compatibility; there is no universal MIT/GPL/Apache matrix. Preserve `unknown` when evidence is absent and request qualified review for the actual use. Do not infer a legal PASS from an empty heuristic findings list or assert that one GPL dependency automatically requires publishing an entire application. A sample report must label hypothetical counts and conclusions as examples.
 
 ### 4. Outdated Dependencies
 
@@ -458,16 +288,19 @@ const analyzeBundleSize = async (dependencies) => {
         totalSize: 0,
         totalGzipped: 0,
         packages: [],
-        recommendations: []
+        recommendations: [],
+        unresolved: []
     };
     
     for (const [packageName, info] of Object.entries(dependencies)) {
         try {
             // Fetch package stats
             const response = await fetch(
-                `https://bundlephobia.com/api/size?package=${packageName}@${info.version}`
+                `https://bundlephobia.com/api/size?package=${encodeURIComponent(`${packageName}@${info.version}`)}`
             );
+            if (!response.ok) throw new Error("Size provider failed");
             const data = await response.json();
+            if (!Number.isFinite(data.size) || !Number.isFinite(data.gzip)) throw new Error("Incomplete size response");
             
             const packageSize = {
                 name: packageName,
@@ -493,7 +326,7 @@ const analyzeBundleSize = async (dependencies) => {
                 });
             }
         } catch (error) {
-            console.error(`Failed to analyze ${packageName}:`, error);
+            sizeAnalysis.unresolved.push(packageName);
         }
     }
     
@@ -503,6 +336,8 @@ const analyzeBundleSize = async (dependencies) => {
     // Add top offenders
     sizeAnalysis.topOffenders = sizeAnalysis.packages.slice(0, 10);
     
+    sizeAnalysis.analysisComplete = sizeAnalysis.unresolved.length === 0;
+    // Summed package sizes are not the application bundle size (shared deps/tree shaking).
     return sizeAnalysis;
 };
 ```
@@ -579,55 +414,20 @@ def check_typosquatting(package_name):
 
 Generate automated fixes:
 
-**Update Scripts**
+**Reviewable remediation**
+
+1. Record the manifest, lockfile, current branch and dirty state. Preserve user changes; use an isolated topic checkout for edits.
+2. Run the ecosystem's audit with approved network access. Reports can reveal private package names; keep them local unless upload is authorized.
+3. Select exact affected dependencies and reviewed target versions. Do not force major upgrades or automatically rewrite unrelated dependencies.
+4. Apply the scoped update using the project's lockfile/toolchain, inspect the complete diff, then run compatibility, build and regression tests.
+5. A failed test means the repair is incomplete. Keep the diff for review; do not restore a user's lockfile or overwrite requirements automatically.
+6. Re-audit the resulting lockfile and report residual findings. Publication/deployment remains a separate authorized operation.
+
 ```bash
-#!/bin/bash
-# Auto-update dependencies with security fixes
-
-echo "🔒 Security Update Script"
-echo "========================"
-
-# NPM/Yarn updates
-if [ -f "package.json" ]; then
-    echo "📦 Updating NPM dependencies..."
-    
-    # Audit and auto-fix
-    npm audit fix --force
-    
-    # Update specific vulnerable packages
-    npm update package1@^2.0.0 package2@~3.1.0
-    
-    # Run tests
-    npm test
-    
-    if [ $? -eq 0 ]; then
-        echo "✅ NPM updates successful"
-    else
-        echo "❌ Tests failed, reverting..."
-        git checkout package-lock.json
-    fi
-fi
-
-# Python updates
-if [ -f "requirements.txt" ]; then
-    echo "🐍 Updating Python dependencies..."
-    
-    # Create backup
-    cp requirements.txt requirements.txt.backup
-    
-    # Update vulnerable packages
-    pip-compile --upgrade-package package1 --upgrade-package package2
-    
-    # Test installation
-    pip install -r requirements.txt --dry-run
-    
-    if [ $? -eq 0 ]; then
-        echo "✅ Python updates successful"
-    else
-        echo "❌ Update failed, reverting..."
-        mv requirements.txt.backup requirements.txt
-    fi
-fi
+# Read-only report; run within the authorized project scope.
+npm audit --json > dependency-audit.json
+# An audit may return nonzero because findings exist. Inspect that status/report;
+# do not interpret it as permission to perform an automatic forced update.
 ```
 
 **Pull Request Generation**
@@ -676,7 +476,7 @@ This PR updates {len(updates)} dependencies to address security vulnerabilities 
 - [ ] No unexpected dependencies added
 - [ ] Performance impact assessed
 
-cc @security-team
+Reviewers: select the actual authorized project reviewers.
 """
     
     return {
@@ -691,66 +491,9 @@ cc @security-team
 
 Set up continuous dependency monitoring:
 
-**GitHub Actions Workflow**
-```yaml
-name: Dependency Audit
+**CI design checklist**
 
-on:
-  schedule:
-    - cron: '0 0 * * *'  # Daily
-  push:
-    paths:
-      - 'package*.json'
-      - 'requirements.txt'
-      - 'Gemfile*'
-      - 'go.mod'
-  workflow_dispatch:
-
-jobs:
-  security-audit:
-    runs-on: ubuntu-latest
-    
-    steps:
-    - uses: actions/checkout@v3
-    
-    - name: Run NPM Audit
-      if: hashFiles('package.json')
-      run: |
-        npm audit --json > npm-audit.json
-        if [ $(jq '.vulnerabilities.total' npm-audit.json) -gt 0 ]; then
-          echo "::error::Found $(jq '.vulnerabilities.total' npm-audit.json) vulnerabilities"
-          exit 1
-        fi
-    
-    - name: Run Python Safety Check
-      if: hashFiles('requirements.txt')
-      run: |
-        pip install safety
-        safety check --json > safety-report.json
-        
-    - name: Check Licenses
-      run: |
-        npx license-checker --json > licenses.json
-        python scripts/check_license_compliance.py
-    
-    - name: Create Issue for Critical Vulnerabilities
-      if: failure()
-      uses: actions/github-script@v6
-      with:
-        script: |
-          const audit = require('./npm-audit.json');
-          const critical = audit.vulnerabilities.critical;
-          
-          if (critical > 0) {
-            github.rest.issues.create({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              title: `🚨 ${critical} critical vulnerabilities found`,
-              body: 'Dependency audit found critical vulnerabilities. See workflow run for details.',
-              labels: ['security', 'dependencies', 'critical']
-            });
-          }
-```
+Use read-only job permissions, reviewed immutable action revisions and the project's locked scanner dependencies. Initialize each job's checkout/toolchain explicitly. Run each selected scanner without suppressing its exit status; validate report structure and distinguish findings from execution failures. Do not download moving tools during a security check or claim an unbundled compliance script exists. Store reports only in authorized destinations with appropriate retention; issue creation, notifications and scheduled monitoring are separate opt-in actions. Never create duplicate issues merely because a scanner command failed.
 
 ## Output Format
 

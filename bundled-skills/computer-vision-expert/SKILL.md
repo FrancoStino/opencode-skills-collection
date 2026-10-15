@@ -1,12 +1,12 @@
 ---
 name: computer-vision-expert
-description: "SOTA Computer Vision Expert (2026). Specialized in YOLO26, Segment Anything 3 (SAM 3), Vision Language Models, and real-time spatial analysis."
+description: "Computer vision pipeline design and evaluation. Specialized in YOLO26, Segment Anything 3 (SAM 3), Vision Language Models, and real-time spatial analysis."
 risk: critical
 source: community
 date_added: "2026-02-27"
 ---
 
-# Computer Vision Expert (SOTA 2026)
+# Computer Vision Pipeline Review
 
 **Role**: Advanced Vision Systems Architect & Spatial Intelligence Expert
 
@@ -29,8 +29,8 @@ To provide expert guidance on designing, implementing, and optimizing state-of-t
 
 ### 2. Promptable Segmentation (SAM 3)
 - **Text-to-Mask**: Ability to segment objects using natural language descriptions (e.g., "the blue container on the right").
-- **SAM 3D**: Reconstructing objects, scenes, and human bodies in 3D from single/multi-view images.
-- **Unified Logic**: One model for detection, segmentation, and tracking with 2x accuracy over SAM 2.
+- **SAM 3D**: separate Objects/Body repositories and checkpoints address 3D reconstruction; they are not an automatic SAM 3 segmentation capability. See [SAM 3D Body](https://github.com/facebookresearch/sam-3d-body).
+- **Unified Logic**: Use [SAM 3’s documented task interfaces](https://github.com/facebookresearch/sam3) and task-specific benchmark conditions; do not generalize an upstream metric into “2x accuracy” for every dataset.
 
 ### 3. Vision Language Models (VLMs)
 - **Visual Grounding**: Leveraging Florence-2, PaliGemma 2, or Qwen2-VL for semantic scene understanding.
@@ -49,10 +49,10 @@ To provide expert guidance on designing, implementing, and optimizing state-of-t
 
 ### 2. Deployment-First Design
 - Leverage YOLO26's simplified ONNX/TensorRT exports (NMS-free).
-- Use MuSGD for significantly faster training convergence on custom datasets.
+- Evaluate MuSGD against a fixed baseline on the actual dataset; convergence improvements are empirical, not guaranteed. [Official YOLO26 guide](https://docs.ultralytics.com/models/yolo26) documents architecture/training choices.
 
 ### 3. Progressive 3D Scene Reconstruction
-- Integrate monocular depth maps with geometric homographies to build accurate 2.5D/3D representations of scenes.
+- Monocular depth has scale/domain ambiguity; homographies model planar geometry, not arbitrary metric 3D scenes. Calibrate and use camera geometry/multiple views when measurement accuracy matters.
 
 ## Anti-Patterns
 
@@ -67,7 +67,7 @@ To provide expert guidance on designing, implementing, and optimizing state-of-t
 | SAM 3 VRAM Usage | Medium | Use quantized/distilled versions for local GPU inference. |
 | Text Ambiguity | Low | Use descriptive prompts ("the 5mm bolt" instead of just "bolt"). |
 | Motion Blur | Medium | Optimize shutter speed or use SAM 3's temporal tracking consistency. |
-| Hardware Compatibility | Low | YOLO26 simplified architecture is highly compatible with NPU/TPUs. |
+| Hardware Compatibility | Low | Verify the exact exporter, operators, precision and device runtime; a simplified architecture does not guarantee NPU/TPU support. |
 
 ## Related Skills
 `ai-engineer`, `robotics-expert`, `research-engineer`, `embedded-systems`
@@ -79,6 +79,7 @@ To provide expert guidance on designing, implementing, and optimizing state-of-t
 > Design high-performance real-time detection systems (YOLO26).
 
 ## Limitations
-- Use this skill only when the task clearly matches the scope described above.
+- Model names are choices to evaluate, not a universal SOTA claim. Preserve dataset splits, version/checkpoint, preprocessing, latency hardware/precision and measured task metrics. Review each model/code/data license before distribution or deployment; do not infer commercial permission from a public repository.
+- No models/checkpoints are bundled or downloaded here. Image/person data and safety-critical/medical uses require approved processing, consent and appropriate validation; model output is not guaranteed ground truth.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.

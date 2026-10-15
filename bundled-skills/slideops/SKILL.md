@@ -13,6 +13,9 @@ tools: [claude-code, codex-cli, copilot, opencode]
 license: "MIT"
 license_source: "https://github.com/glukicov/slideops/blob/main/LICENSE"
 ---
+## Bundled upstream support
+
+Supporting files are included at skill-relative paths. See [UPSTREAM-NOTICE.md](UPSTREAM-NOTICE.md) for their pinned sources, licenses, hashes, and import changes.
 
 # SlideOps: slides from a repo, that tell you when they go stale
 

@@ -27,7 +27,11 @@ tools:
 Use when this workflow matches the user request: Compact the current conversation into a handoff document for another agent to pick up.
 
 
-_Source: [mattpocock/skills](https://github.com/mattpocock/skills) (MIT)._Write a handoff document summarising the current conversation so a fresh agent can continue the work. Save to the temporary directory of the user's OS - not the current workspace.
+_Source: [mattpocock/skills](https://github.com/mattpocock/skills) (MIT)._
+
+Write a handoff document summarising the current conversation so a fresh agent can continue the work. Save in a fresh private temporary directory, with owner-only access where supported. Return its absolute path and note that temporary storage can be removed by the OS. Use an explicitly requested durable destination instead when the user supplies one.
+
+Include verified state, uncompleted tasks, exact branch/commit and artifact paths, checks actually performed, authorization boundaries, known blockers and the next concrete action. Distinguish observed results from assumptions. A handoff does not authorize messaging another agent.
 
 Include a "suggested skills" section in the document, which suggests skills that the agent should invoke.
 

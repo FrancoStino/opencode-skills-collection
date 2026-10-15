@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-14T02:27:22.259Z",
+  "updatedAt": "2026-10-15T02:08:21.652Z",
   "entries": [
     "00-andruia-consultant",
     "007",
@@ -463,6 +463,7 @@
     "brooks-test",
     "browser-act",
     "browser-automation",
+    "browser-bridge",
     "browser-extension-builder",
     "browser-extension-launch",
     "browser-extension-reverse",

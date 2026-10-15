@@ -26,6 +26,9 @@ struct MediaPreviewRow: View {
           LazyImage(url: attachment.previewURL) { state in
             if let image = state.image {
               image.resizable().aspectRatio(contentMode: .fill)
+            } else if state.error != nil {
+              Image(systemName: "photo.badge.exclamationmark")
+                .accessibilityLabel("Image unavailable")
             } else {
               ProgressView()
             }

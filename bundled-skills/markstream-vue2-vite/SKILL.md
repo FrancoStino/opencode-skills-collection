@@ -26,7 +26,7 @@ Use when the host is Vue 2 with Vite and needs bundled Mermaid or KaTeX workers.
 
 ## Workflow
 
-Before changing dependencies or source files, inspect the existing package manager and project conventions, preview the intended edits, and obtain explicit user approval.
+Inspect the existing package manager, installed package version and project conventions. A requested scoped integration already authorizes routine source/dependency edits; seek approval only for a material scope expansion or unresolved beta/alpha adoption decision.
 
 1. Confirm Vue 2 with Vite and install only requested peers.
 2. Import `markstream-vue2/index.css` after reset, Tailwind, or UnoCSS layers.
@@ -67,3 +67,7 @@ export default {
 ## Security & Safety Notes
 
 Review worker source, CSP, dependency changes, and bundle impact. Do not relax safe rendering defaults.
+
+Verify props, export paths and peer ranges against the installed package, not a mutable upstream main. Test partial and completed streams, malformed/untrusted Markdown, links and image URLs, cancellation and reduced motion. Safe HTML and strict diagrams reduce exposure but do not alone enforce URL/network privacy or application component permissions.
+
+Vue 2 is end-of-life; preserve a requested legacy integration and document its maintenance/support decision rather than silently upgrading the whole application. Prefer reviewed locally bundled workers over mutable CDN code where feasible.

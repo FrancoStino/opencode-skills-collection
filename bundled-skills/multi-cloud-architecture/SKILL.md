@@ -5,6 +5,9 @@ risk: safe
 source: community
 date_added: "2026-02-27"
 ---
+## Bundled upstream support
+
+Supporting files are included at skill-relative paths. See [UPSTREAM-NOTICE.md](UPSTREAM-NOTICE.md) for their pinned sources, licenses, hashes, and import changes.
 
 # Multi-Cloud Architecture
 
@@ -20,7 +23,6 @@ Decision framework and patterns for architecting applications across AWS, Azure,
 - Clarify goals, constraints, and required inputs.
 - Apply relevant best practices and validate outcomes.
 - Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
 
 ## Purpose
 

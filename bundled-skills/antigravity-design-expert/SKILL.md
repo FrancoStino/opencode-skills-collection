@@ -35,8 +35,8 @@ When asked to build or generate UI components, default to the following stack un
 
 ## 🎬 Motion & Animation Rules
 
-- **Never snap instantly:** All state changes (hover, focus, active) must have smooth transitions (minimum `0.3s ease-out`).
-- **Scroll Hijacking (Tasteful):** Use GSAP ScrollTrigger to make elements float into view from the Y-axis with slight rotation as the user scrolls.
+- **Responsive feedback:** Keep focus, active, and validation feedback immediately visible. Animate decorative changes only when useful; reduced-motion users receive static states.
+- **Native scrolling:** Preserve scrolling behavior and keyboard navigation. Use GSAP ScrollTrigger to make elements float into view from the Y-axis with slight rotation as the user scrolls.
 - **Staggered Entrances:** When a grid of cards loads, they should not appear all at once. Stagger their entrance animations by `0.1s` so they drop in like dominoes.
 - **Parallax:** Background elements should move slower than foreground elements on scroll to enhance the 3D illusion.
 
@@ -44,7 +44,7 @@ When asked to build or generate UI components, default to the following stack un
 
 - Always write modular, reusable components.
 - Ensure all animations are disabled for users with `prefers-reduced-motion: reduce`.
-- Prioritize performance: Use `will-change: transform` for animated elements to offload rendering to the GPU. Do not animate expensive properties like `box-shadow` or `filter` continuously.
+- Prioritize performance: Apply `will-change: transform` only around measured animations and remove it afterward; it does not guarantee GPU rendering. Do not animate expensive properties like `box-shadow` or `filter` continuously.
 
 ## Example
 

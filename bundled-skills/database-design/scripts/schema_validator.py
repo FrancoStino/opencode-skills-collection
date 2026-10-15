@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Schema Validator - Database schema validation
-Validates Prisma schemas and checks for common issues.
+Provides incomplete Prisma regex hints. Never certifies schema validity.
 
 Usage:
     python schema_validator.py <project_path>
@@ -102,6 +102,9 @@ def main():
     print("-"*60)
     
     # Find schema files
+    if not project_path.is_dir():
+        print(json.dumps({"passed": False, "analysis_complete": False, "message": "Project directory missing"}))
+        sys.exit(2)
     schemas = find_schema_files(project_path)
     print(f"Found {len(schemas)} schema files")
     
@@ -111,14 +114,16 @@ def main():
             "project": str(project_path),
             "schemas_checked": 0,
             "issues_found": 0,
-            "passed": True,
-            "message": "No schema files found"
+            "passed": False,
+            "analysis_complete": False,
+            "message": "No schema files found; nothing validated"
         }
         print(json.dumps(output, indent=2))
-        sys.exit(0)
+        sys.exit(2)
     
     # Validate each schema
     all_issues = []
+    unsupported = []
     
     for schema_type, file_path in schemas:
         print(f"\nValidating: {file_path.name} ({schema_type})")
@@ -126,7 +131,8 @@ def main():
         if schema_type == 'prisma':
             issues = validate_prisma_schema(file_path)
         else:
-            issues = []  # Drizzle validation could be added
+            issues = ["Drizzle validation is not implemented"]
+            unsupported.append(str(file_path))
         
         if issues:
             all_issues.append({
@@ -148,11 +154,11 @@ def main():
             if len(item["issues"]) > 5:
                 print(f"  ... and {len(item['issues']) - 5} more issues")
     else:
-        print("No schema issues found!")
+        print("No heuristic issues found; schema validity remains unverified.")
     
     total_issues = sum(len(item["issues"]) for item in all_issues)
     # Schema issues are warnings, not failures
-    passed = True
+    passed = False  # Regex hints cannot establish schema validity.
     
     output = {
         "script": "schema_validator",
@@ -160,12 +166,15 @@ def main():
         "schemas_checked": len(schemas),
         "issues_found": total_issues,
         "passed": passed,
+        "analysis_complete": False,
+        "unsupported": unsupported,
+        "message": "Heuristic inventory only; run the project-local ORM validator",
         "issues": all_issues
     }
     
     print("\n" + json.dumps(output, indent=2))
     
-    sys.exit(0)
+    sys.exit(2)
 
 
 if __name__ == "__main__":

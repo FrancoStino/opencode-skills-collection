@@ -16,7 +16,7 @@ license_source: https://github.com/ibelick/ui-skills/blob/main/LICENSE
 Use this skill when you need quickly deslop UI code by fixing spacing, hierarchy, typography, and small layout issues. Use when the interface needs a fast cleanup or polish pass.
 
 
-Enforces an opinionated UI baseline to prevent AI-generated interface slop.
+Applies an opinionated baseline for a scoped polish pass. Existing product design, accessibility requirements, framework choices and explicit user preferences take precedence; do not migrate the stack or add dependencies just to satisfy this list.
 
 ## How to use
 
@@ -63,7 +63,7 @@ Enforces an opinionated UI baseline to prevent AI-generated interface slop.
 - SHOULD use `ease-out` on entrance
 - NEVER exceed `200ms` for interaction feedback
 - MUST pause looping animations when off-screen
-- SHOULD respect `prefers-reduced-motion`
+- MUST respect `prefers-reduced-motion`
 - NEVER introduce custom easing curves unless explicitly requested
 - SHOULD avoid animating large images or full-screen surfaces
 

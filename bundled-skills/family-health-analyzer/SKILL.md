@@ -1,6 +1,6 @@
 ---
 name: family-health-analyzer
-description: 分析家族病史、评估遗传风险、识别家庭健康模式、提供个性化预防建议
+description: 整理家族病史和已知健康记录，识别需要医生或遗传咨询师评估的线索，不计算未经验证的个体发病概率
 allowed-tools: Read, Write, Grep, Glob
 risk: critical
 source: community
@@ -64,20 +64,18 @@ date_added: "2026-09-04"
 **识别算法:**
 1. 家族聚集性分析
 2. 遗传模式识别
-3. 早发病例识别(通常<50岁)
+3. 记录发病年龄；“早发”阈值依具体疾病和已验证指南，不统一设为50岁
 
-### 步骤5: 风险计算算法
+### 步骤5: 描述性汇总，不计算临床风险
 
-**加权计算:**
-```python
-遗传风险评分 = (一级亲属患病数 × 0.4) +
-              (早发病例数 × 0.3) +
-              (家族聚集度 × 0.3)
+**禁止使用未经验证的加权公式生成百分比。** 亲属人数、早发病例数和聚集度不是同量纲且未归一化的数据；原先0.4/0.3/0.3权重和70%阈值没有临床校准依据。只记录实际已知关系、诊断来源、发病年龄和缺失项，由专业人员判断是否需要进一步评估。
 
-风险等级:
-- 高风险: ≥70%
-- 中风险: 40%-69%
-- 低风险: <40%
+**记录示例（不是可执行计算算法）:**
+```text
+已知一级亲属病史：按疾病、关系和发病年龄逐条列出
+来源：本人确认／医疗记录／待核实
+缺失信息：明确列出，不推定为阴性
+后续：向医生或遗传咨询师提出待评估问题，不输出发病概率
 ```
 
 ### 步骤6: 生成预防建议
@@ -92,8 +90,8 @@ date_added: "2026-09-04"
 {
   "category": "screening",
   "action": "定期血压监测",
-  "frequency": "每周3次",
-  "start_age": 35,
+  "frequency": "由医生依据实际情况确定",
+  "start_age": null,
   "priority": "high"
 }
 ```
@@ -102,7 +100,7 @@ date_added: "2026-09-04"
 
 **HTML报告组件:**
 1. 家谱树(ECharts树图)
-2. 遗传风险热力图
+2. 已知病史分布图（不得标成个人遗传风险概率）
 3. 疾病分布饼图
 4. 预防建议时间线
 
@@ -145,6 +143,9 @@ date_added: "2026-09-04"
 **维护者**: WellAlly Tech
 
 ## Limitations
-- Use this skill only when the task clearly matches the scope described above.
+- 中文是原始受众语言，不是缺陷；按用户指定语言交互。原文已包含明确医学免责声明，必须保留。
+- data/*.json 和 /family 命令属于外部应用约定，AAS未分发这些数据、运行时或算法；先定位用户明确授权的真实数据源，不伪造成功命令。
+- 家庭/遗传信息高度敏感，仅收集获得同意的最小字段，匿名化亲属记录并私有保存；不得因亲属关联推定某人诊断。
+- [CDC家族健康史说明](https://www.cdc.gov/family-health-history/about/index.html)强调与医疗专业人员讨论；此技能不提供医学诊断、治疗或自行更改筛查方案。
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.

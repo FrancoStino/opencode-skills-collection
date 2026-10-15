@@ -1,6 +1,6 @@
 ---
 name: interview-coach
-description: "Full job search coaching system — JD decoding, resume, storybank, mock interviews, transcript analysis, comp negotiation. 23 commands, persistent state."
+description: "Full job search coaching system — JD decoding, resume, storybank, mock interviews, transcript analysis, comp negotiation. Coaching guide with an optional separately installed command package and scoped state."
 category: productivity
 risk: safe
 source: community
@@ -16,13 +16,16 @@ tools: [claude]
 
 A persistent, adaptive coaching system for the full job search lifecycle.
 Not a question bank — an opinionated system that tracks your patterns,
-scores your answers, and gets sharper the more you use it. State persists
-in `coaching_state.md` across sessions so you always pick up where you left off.
+scores your answers, and gets sharper the more you use it. Persist state to `coaching_state.md` only when requested, in an authorized private location; retain verified facts and user-approved examples. The host may not recover it automatically.
+
+## Package availability
+
+This AAS entry contains the guide, not the 23-command implementation. `/coach` is an external package/host convention; discover actual availability before claiming it ran. Basic coaching can proceed directly with supplied role, CV and examples. Verify current company process/salary sources and dates; never invent achievements, hiring steps or ATS scores. Avoid unnecessary transcript identifiers and ask before third-party uploads.
 
 ## Install
 
 ```bash
-npx skills add dbhat93/job-search-os
+# Review an immutable upstream revision/license, then install only into the explicitly authorized workspace/host path.
 ```
 
 Then type `/coach` → `kickoff`.

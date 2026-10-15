@@ -5,11 +5,17 @@ risk: safe
 source: community
 date_added: "2026-04-04"
 ---
-You are a **Cognitive Psychologist specializing in persuasion and belief change**. Your task is to diagnose precisely where a customer sits on the awareness ladder and calibrate the psychological approach, language register, and persuasion strategy accordingly.
+Use a marketing planning and audience-research lens. Your task is to diagnose precisely where a customer sits on the awareness ladder and calibrate the psychological approach, language register, and persuasion strategy accordingly.
 
 ## When to Use
 - Use when you need to identify how aware an audience already is before writing messaging or offers.
 - Use when a campaign needs stage-specific language, sequencing, or persuasion strategy.
+
+## Evidence and scope
+
+Use observed audience research and verified product facts. Psychological interpretations and the author-year references below are inherited conceptual context, not validated evidence for this exact workflow or a guaranteed conversion effect. Before using a scientific claim externally, verify the actual publication, method and applicability; omit unsupported claims. This is marketing planning, not clinical diagnosis. Do not infer sensitive traits or exploit vulnerabilities.
+
+Original contribution: [PR 451](https://github.com/sickn33/agentic-awesome-skills/pull/451) by MMEHDI0606; [immutable source snapshot](https://github.com/MMEHDI0606/antigravity-awesome-skills/blob/9c61357e3e6bb167946036f52ac1e28fc82e04d0/skills/awareness-stage-mapper/SKILL.md). This identifies the contributed instructions, not scientific validation or a new upstream endorsement.
 
 ## CONTEXT GATHERING
 
@@ -31,23 +37,23 @@ Awareness determines whether the audience can process central arguments or will 
 
 **Step 1 - Classify the awareness stage**
 Label the audience as unaware, problem aware, solution aware, product aware, or most aware.
-*Research basis: message processing differs sharply by prior knowledge and perceived relevance (ELM; Zhang et al., 2024).*
+*Planning hypothesis (verify before presenting as research): message processing differs sharply by prior knowledge and perceived relevance (ELM; Zhang et al., 2024).*
 
 **Step 2 - Assess motivation and ability**
-Decide whether the audience has enough motivation and cognitive capacity for detailed argument.
-*Research basis: the central route works when involvement and ability are high; otherwise peripheral cues dominate (Quick et al., 2018; SanJose-Cabezudo et al., 2009).*
+Use observable evidence of interest and familiarity: questions prospects actually asked, concepts they can explain, and the time/format available. If that evidence is absent, record motivation and familiarity as unknown and propose a simple message test. Do not infer intelligence or mental capacity from demographic labels.
+*Planning hypothesis (verify before presenting as research): the central route works when involvement and ability are high; otherwise peripheral cues dominate (Quick et al., 2018; SanJose-Cabezudo et al., 2009).*
 
 **Step 3 - Select the persuasion route**
 Choose educational framing for unaware/problem aware audiences and comparative proof for later-stage audiences.
-*Research basis: premature solution pitching can trigger reactance and weak processing (Lavoie & Quick, 2013; Grandpre et al., 2003).*
+*Planning hypothesis (verify before presenting as research): premature solution pitching can trigger reactance and weak processing (Lavoie & Quick, 2013; Grandpre et al., 2003).*
 
 **Step 4 - Calibrate language register**
 Match vocabulary depth, jargon, and specificity to the stage.
-*Research basis: familiarity and self-relevance shape attention and acceptance (Zhang et al., 2024; Moyer-Gusé et al., 2022).*
+*Planning hypothesis (verify before presenting as research): familiarity and self-relevance shape attention and acceptance (Zhang et al., 2024; Moyer-Gusé et al., 2022).*
 
 **Step 5 - Choose the entry point**
 Recommend the best first touchpoint for downstream content: education, proof, demo, comparison, or direct offer.
-*Research basis: stage-appropriate sequencing improves narrative transportation and belief change (Green & Brock, 2000; Chen & Bell, 2022).*
+*Planning hypothesis (verify before presenting as research): stage-appropriate sequencing improves narrative transportation and belief change (Green & Brock, 2000; Chen & Bell, 2022).*
 
 ## DECISION MATRIX
 
@@ -96,7 +102,7 @@ The line between persuasion and manipulation is using stage-appropriate language
 
 ## SKILL CHAINING
 
-Before invoking this skill, the agent should have completed:
+Optional context from related skills (equivalent supplied research is sufficient; do not create a prerequisite cycle):
 - [ ] `@customer-psychographic-profiler`
 - [ ] `@jobs-to-be-done-analyst`
 
@@ -121,6 +127,8 @@ Before finalizing output, the agent asks:
 **User request:**
 
 > Identify how aware an audience already is before writing messaging or offers.
+
+**Illustrative output:** Given an interview where buyers name the problem but no solution, label problem-aware as a provisional inference; propose an explanatory message and list what evidence would change the classification.
 
 ## Limitations
 - Use this skill only when the task clearly matches the scope described above.

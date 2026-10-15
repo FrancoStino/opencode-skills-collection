@@ -30,6 +30,10 @@ Use this skill when:
 - Configuring network policies
 - Meeting security compliance
 
+## Scope and validation
+
+Confirm the exact cluster/namespace/version and authorized writes before applying policies. Examples are fragments: validate the reviewed image, namespace, service accounts, labels and required runtime storage. Pin the policy version to the target Kubernetes release where supported. Restricted admission controls new/updated pods; it does not retroactively fix running workloads or establish compliance.
+
 ## Pod Security Standards
 
 ```yaml
@@ -51,6 +55,8 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: secure-pod
+  labels:
+    app: web
 spec:
   securityContext:
     runAsNonRoot: true
@@ -61,7 +67,7 @@ spec:
       type: RuntimeDefault
   containers:
   - name: app
-    image: myapp:latest
+    image: registry.example.invalid/myapp:REVIEWED_IMMUTABLE_TAG
     securityContext:
       allowPrivilegeEscalation: false
       readOnlyRootFilesystem: true
@@ -152,3 +158,5 @@ which <tool> && <tool> --help | head -n 20
 ```
 
 > Adapted from [BagelHole/DevOps-Security-Agent-Skills](https://github.com/BagelHole/DevOps-Security-Agent-Skills) (MIT); frontmatter, When to Use/Limitations, and safety boundaries added for upstream compliance. Docs-only import: helper scripts and templates not bundled.
+
+NetworkPolicy enforcement requires a supporting CNI. The default-deny example also blocks DNS and dependencies until narrowly scoped rules are added; same-namespace pod selectors do not authorize arbitrary namespaces. Test allowed and denied flows from the real source identities and preserve recovery access. `readOnlyRootFilesystem` may require bounded writable temporary volumes; do not disable it blindly after a startup error. [Kubernetes NetworkPolicy behavior](https://kubernetes.io/docs/concepts/services-networking/network-policies/).

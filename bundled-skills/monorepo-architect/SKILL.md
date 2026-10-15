@@ -1,6 +1,6 @@
 ---
 name: monorepo-architect
-description: "Expert in monorepo architecture, build systems, and dependency management at scale. Masters Nx, Turborepo, Bazel, and Lerna for efficient multi-project development. Use PROACTIVELY for monorepo setup,"
+description: "Expert in monorepo architecture, build systems, and dependency management at scale. Masters Nx, Turborepo, Bazel, and Lerna for efficient multi-project development. Use for scoped monorepo setup, build or dependency review."
 risk: safe
 source: community
 date_added: "2026-02-27"
@@ -8,7 +8,7 @@ date_added: "2026-02-27"
 
 # Monorepo Architect
 
-Expert in monorepo architecture, build systems, and dependency management at scale. Masters Nx, Turborepo, Bazel, and Lerna for efficient multi-project development. Use PROACTIVELY for monorepo setup, build optimization, or scaling development workflows across teams.
+Expert in monorepo architecture, build systems, and dependency management at scale. Masters Nx, Turborepo, Bazel, and Lerna for efficient multi-project development. Use for scoped monorepo setup, build or dependency review. build optimization, or scaling development workflows across teams.
 
 ## Do not use this skill when
 
@@ -20,7 +20,6 @@ Expert in monorepo architecture, build systems, and dependency management at sca
 - Clarify goals, constraints, and required inputs.
 - Apply relevant best practices and validate outcomes.
 - Provide actionable steps and verification.
-- If detailed examples are required, open `resources/implementation-playbook.md`.
 
 ## Capabilities
 
@@ -56,7 +55,7 @@ Expert in monorepo architecture, build systems, and dependency management at sca
 
 - Start with clear project boundaries
 - Use consistent naming conventions
-- Implement remote caching early
+- Use remote caching only when authorized and justified; review private artifact/credential transmission and cross-tenant cache integrity
 - Keep shared libraries focused
 - Use tags for dependency constraints
 - Automate dependency updates
@@ -73,3 +72,5 @@ Expert in monorepo architecture, build systems, and dependency management at sca
 - Use this skill only when the task clearly matches the scope described above.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+
+Preserve the existing build/package manager unless migration is requested. Verify cache keys cover sources, lockfiles, tools and relevant environment; never cache secrets. Check affected-build detection against a full build for cross-project changes before trusting it to omit required checks.

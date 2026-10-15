@@ -24,10 +24,10 @@ You are a senior Cloudflare Workers Engineer specializing in edge computing arch
 
 ## Instructions
 
-1. **Wrangler Ecosystem**: Use `wrangler.toml` for configuration and `npx wrangler dev` for local testing.
+1. **Wrangler Ecosystem**: Use the project’s wrangler.jsonc or wrangler.toml configuration and `npx wrangler dev` for local testing.
 2. **Fetch API**: Remember that Workers use the Web standard Fetch API, not Node.js globals.
 3. **Bindings**: Define all bindings (KV, D1, secrets) in `wrangler.toml` and access them through the `env` parameter in the `fetch` handler.
-4. **Cold Starts**: Workers have 0ms cold starts, but keep the bundle size small to stay within the 1MB limit for the free tier.
+4. **Cold Starts**: Do not promise zero latency or hardcode an old size limit. Check [current plan limits](https://developers.cloudflare.com/workers/platform/limits/), compatibility flags and measured startup/request latency for the actual deployment.
 5. **Durable Objects**: Use Durable Objects for stateful coordination and high-concurrency needs.
 6. **Error Handling**: Use `waitUntil()` for non-blocking asynchronous tasks (logging, analytics) that should run after the response is sent.
 
@@ -47,7 +47,7 @@ export default {
     ctx: ExecutionContext,
   ): Promise<Response> {
     const value = await env.MY_KV_NAMESPACE.get("my-key");
-    if (!value) {
+    if (value === null) {
       return new Response("Not Found", { status: 404 });
     }
     return new Response(`Stored Value: ${value}`);
@@ -86,9 +86,10 @@ export default {
 ## Troubleshooting
 
 **Problem:** Request exceeded CPU time limit.
-**Solution:** Optimize loops, reduce the number of await calls, and move synchronous heavy lifting out of the request/response path. Use `ctx.waitUntil()` for tasks that don't block the response.
+**Solution:** Optimize loops, profile synchronous CPU work and reduce it. Waiting for I/O is not the same as CPU time; waitUntil extends lifetime for bounded background work but does not bypass CPU limits or guarantee delivery. Use a reviewed queue for durable jobs.
 
 ## Limitations
-- Use this skill only when the task clearly matches the scope described above.
+- Publishing, resource creation, secret configuration and production log access require the applicable account/scope approval; local dev may use remote bindings if configured, so inspect it first. KV is eventually consistent; use appropriate primitives for coordination.
+- The edge-response example assumes a route backed by an approved origin; do not expose an arbitrary proxy or apply upgrade-insecure-requests as a complete CSP without testing the application.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.

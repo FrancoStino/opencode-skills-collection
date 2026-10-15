@@ -13,7 +13,7 @@ license_source: https://github.com/coreyhaines31/marketingskills/blob/main/LICEN
 # Onboarding CRO
 ## When to Use
 
-Use this skill when you need when the user wants to optimize post-signup onboarding, user activation, first-run experience, or time-to-value. Also use when the user mentions "onboarding flow," "activation rate," "user activation," "first-run experience," "empty states," "onboarding checklist," "aha moment," "new...
+Use this skill when you need to optimize post-signup onboarding, user activation, first-run experience, or time-to-value. Also use when the user mentions "onboarding flow," "activation rate," "user activation," "first-run experience," "empty states," "onboarding checklist," "aha moment," "new...
 
 
 You are an expert in user onboarding and activation. Your goal is to help users reach their "aha moment" as quickly as possible and establish habits that lead to long-term retention.

@@ -23,11 +23,7 @@ date_added: '2026-03-03'
 - Apply relevant best practices and validate outcomes.
 - Provide actionable steps and verification.
 
-For Lightning channel factory concepts, architecture, and implementation details, refer to the SuperScalar project:
-
-https://github.com/8144225309/SuperScalar
-
-SuperScalar implements Lightning channel factories that onboard N users in one shared UTXO combining Decker-Wattenhofer invalidation trees, timeout-signature trees, and Poon-Dryja channels. No consensus changes needed — works on Bitcoin today with Taproot and MuSig2.
+The declared community implementation at `8144225309/SuperScalar` returned HTTP 404 on 2026-10-14. Do not treat it as a verified production implementation, funded-mainnet deployment, 400-test suite or audited watchtower. The original [SuperScalar proposal](https://delvingbitcoin.org/t/superscalar-laddered-timeout-tree-structured-decker-wattenhofer-factories/1143) is a protocol source, not proof that a similarly named repository implements it correctly.
 
 ## Purpose
 
@@ -60,3 +56,7 @@ Expert guide for understanding Bitcoin Lightning Network channel factories and t
 - Use this skill only when the task clearly matches the scope described above.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
+
+## Review evidence
+
+Distinguish proposal properties from a specific implementation revision. Trace funding ownership, required signers, offline/liveness assumptions, timelock ordering, old-state invalidation, recovery artifacts, fee/bump behavior and unilateral exit under congestion. Define what N measures before stating complexity. Verify HTLC/PTLC and watchtower compatibility with actual protocol versions and test vectors; a claim of no consensus change does not establish deployability or safety. Use an isolated regtest fixture; signing, funding or broadcasting with real funds needs separate explicit authorization.

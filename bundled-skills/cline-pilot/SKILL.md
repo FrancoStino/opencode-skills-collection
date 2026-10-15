@@ -21,6 +21,16 @@ compatibility: Requires the `cline` CLI (v3.x) installed with an LLM endpoint co
 metadata:
   version: 0.3.9
 ---
+## Supporting material availability
+
+This catalog copy contains the inline guidance below, but does not include the following supporting paths. They are external prerequisites, not bundled files:
+
+- `<support-root>/references/local-config.md`
+- `<support-root>/references/project-profiles.md`
+- `<support-root>/references/decision-log.md`
+
+Obtain the required material from the [declared upstream source](https://github.com/gongdear/cline-pilot), or from a user-provided installation of that source. Resolve each path relative to that installation, inspect its contents, and verify any applicable license and execution prerequisites. Do not run a command or claim a referenced procedure was followed until its required file exists. Do not fabricate the missing scripts or treat an unrelated file with the same name as equivalent. Independent steps fully documented here can proceed within the user’s authorized scope; report any dependent step as unavailable.
+
 
 # Cline Pilot — 代用户调度 Cline 的"领航员"
 

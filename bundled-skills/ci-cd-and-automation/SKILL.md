@@ -60,6 +60,10 @@ Pull Request Opened
 
 **No gate can be skipped.** If lint fails, fix lint — don't disable the rule. If a test fails, fix the code — don't skip the test.
 
+## Execution boundary
+
+These are separate templates for a project with the named scripts and locked CLIs already installed. Pin reviewed action revisions and use least-privilege permissions. Production and preview jobs need their own authorized identity, target and environment protections; untrusted PRs must not receive deployment secrets. Verify artifact transfer and recovery scope before applying. Auto-merge is optional and must follow the repository’s actual maintainer policy.
+
 ## GitHub Actions Configuration
 
 ### Basic CI Pipeline
@@ -211,7 +215,9 @@ deploy-preview:
   steps:
     - uses: actions/checkout@v4
     - name: Deploy preview
-      run: npx vercel --token=${{ secrets.VERCEL_TOKEN }}
+      env:
+        VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      run: ./node_modules/.bin/vercel --token "$VERCEL_TOKEN"
 ```
 
 ### Feature Flags
@@ -270,9 +276,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Rollback deployment
+        env:
+          ROLLBACK_VERSION: ${{ inputs.version }}
         run: |
-          # Deploy the specified previous version
-          npx vercel rollback ${{ inputs.version }}
+          set -eu
+          case "$ROLLBACK_VERSION" in
+            ""|*[!a-zA-Z0-9._-]*) echo "Invalid deployment identifier" >&2; exit 1 ;;
+          esac
+          # Protected environment approval and target verification required.
+          ./node_modules/.bin/vercel rollback "$ROLLBACK_VERSION"
 ```
 
 ## Environment Management

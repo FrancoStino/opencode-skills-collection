@@ -22,10 +22,15 @@ struct AppRootView: View {
         if let toast {
           ToastView(toast: toast)
             .transition(.move(edge: .top).combined(with: .opacity))
-            .onAppear {
-              DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            .task(id: toast.id) {
+              do {
+                try await Task.sleep(for: .seconds(2))
+                try Task.checkCancellation()
+                guard self.toast?.id == toast.id else { return }
                 withAnimation { self.toast = nil }
-              }
+              } catch is CancellationError {
+                return
+              } catch { return }
             }
         }
       }

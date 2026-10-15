@@ -46,3 +46,7 @@ Macro-trends are mapped to Opportunities and Threats, while internal user data i
 - **Expert Review Required**: This skill provides strategic frameworks but does not substitute for professional financial, legal, or management consulting.
 - **Data Freshness**: The quality of the output depends on the real-time availability of data from search tools; results may vary in rapidly shifting economic environments.
 - **Scope**: The analysis focuses on macro-level factors and does not include detailed internal operational auditing.
+
+## Evidence record
+
+Confirm country/region, industry, decision and horizon. For each factor record a primary source, observation date, unit, geographic coverage and causal relevance. Keep forecasts/scenarios distinct from observed indicators, conflicting evidence visible, and source-derived inference separate. SWOT strengths/weaknesses require verified internal evidence; do not infer them from macro trends. The Kotler-style framing is an adaptation, not an endorsement or exact quotation from a specified book edition.

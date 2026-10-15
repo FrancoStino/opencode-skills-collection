@@ -25,6 +25,6 @@ What's the context?
 | ORM | Best For | Trade-offs |
 |-----|----------|------------|
 | **Drizzle** | Edge, TypeScript | Newer, less examples |
-| **Prisma** | DX, schema management | Heavier, not edge-ready |
+| **Prisma** | Schema management and tooling | Driver, adapter and edge runtime compatibility depend on the installed version |
 | **Kysely** | Type-safe SQL builder | Manual migrations |
 | **Raw SQL** | Complex queries, control | Manual type safety |

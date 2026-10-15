@@ -8,6 +8,9 @@ risk: critical
 source: "https://github.com/biopython/biopython"
 date_added: "2026-09-04"
 ---
+## Bundled upstream support
+
+Supporting files are included at skill-relative paths. See [UPSTREAM-NOTICE.md](UPSTREAM-NOTICE.md) for their pinned sources, licenses, hashes, and import changes.
 
 # Biopython: Computational Molecular Biology in Python
 

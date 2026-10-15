@@ -9,6 +9,21 @@ date_added: 2026-07-01
 license: MIT
 license_source: https://github.com/zarazhangrui/frontend-slides/blob/main/LICENSE
 ---
+## Bundled upstream support
+
+Supporting files are included at skill-relative paths. See [UPSTREAM-NOTICE.md](UPSTREAM-NOTICE.md) for their pinned sources, licenses, hashes, and import changes.
+
+## Restored helper safety
+
+The PDF exporter starts a loopback-only server restricted to the selected deck directory. Playwright and Chromium must already be installed in the deck project; the helper does not download them. Review the HTML and local assets before opening them in a browser.
+
+## Supporting material availability
+
+These paths remain unavailable in this catalog copy:
+
+- `<support-root>/scripts/deploy.sh`
+
+Do not invoke a step that requires one of these files. Obtain the original material and review its dependencies, license, and effects before use. Independent inline steps and the bundled helpers can proceed within the user’s authorized scope.
 
 # Frontend Slides
 ## When to Use

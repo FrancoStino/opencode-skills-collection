@@ -30,6 +30,10 @@ Use this skill when:
 - Managing application stacks with multiple services
 - Creating reproducible development setups
 
+## Execution Scope
+
+Confirm the selected Docker context and project before any operation. Build instructions execute contributed commands; inspect the Dockerfile, build context, scripts and downloaded dependencies first. Image publication, shared-container stops and volume deletion need authorization for the exact target. Do not expose environment values, image history or logs containing credentials. These examples are independent fragments with project-specific assets, not a complete deployment.
+
 ## Prerequisites
 
 - Docker Engine with Compose plugin (v2)
@@ -42,16 +46,15 @@ Use this skill when:
 
 ```yaml
 # docker-compose.yml
-version: '3.8'
 
 services:
   web:
     build: .
     ports:
-      - "3000:3000"
+      - "127.0.0.1:3000:3000"
     environment:
       - NODE_ENV=development
-      - DATABASE_URL=postgres://postgres:secret@db:5432/myapp
+      - DATABASE_URL=postgres://postgres:${POSTGRES_PASSWORD:?set a local fixture password}@db:5432/myapp
     depends_on:
       - db
       - redis
@@ -60,17 +63,17 @@ services:
     image: postgres:15-alpine
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: secret
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set a local fixture password}
       POSTGRES_DB: myapp
     volumes:
       - postgres-data:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - "127.0.0.1:5432:5432"
 
   redis:
     image: redis:7-alpine
     ports:
-      - "6379:6379"
+      - "127.0.0.1:6379:6379"
 
 volumes:
   postgres-data:
@@ -113,7 +116,7 @@ services:
 services:
   web:
     ports:
-      - "3000:3000"           # HOST:CONTAINER
+      - "127.0.0.1:3000:3000"           # HOST:CONTAINER
       - "127.0.0.1:9229:9229" # Bind to localhost only
       - "8080-8090:8080-8090" # Port range
     expose:
@@ -227,7 +230,7 @@ services:
   web:
     image: myapp:latest
     ports:
-      - "3000:3000"
+      - "127.0.0.1:3000:3000"
 
 # docker-compose.override.yml (development - auto-loaded)
 services:
@@ -309,7 +312,7 @@ docker compose stop
 # Stop and remove containers
 docker compose down
 
-# Stop and remove everything including volumes
+# Destructive: deletes project data volumes; require exact-scope approval and backups
 docker compose down -v --rmi all
 
 # Restart services
@@ -415,6 +418,8 @@ services:
 
 ### Reverse Proxy
 
+The socket mount below grants access to the Docker daemon API. `:ro` does not make API calls read-only. Use a reviewed restricted socket proxy or static routing configuration for a less privileged design; do not apply this illustration to an untrusted proxy.
+
 ```yaml
 services:
   proxy:
@@ -455,7 +460,7 @@ services:
 - Use named volumes for persistent data
 - Define healthchecks for database dependencies
 - Use profiles to separate optional services
-- Keep secrets in .env files (not committed)
+- Keep local fixture credentials out of Git; for sensitive deployments prefer supported per-service secret files and application-specific readers. Environment files are not a secret vault.
 - Use override files for environment-specific config
 - Pin image versions for reproducibility
 - Use networks to isolate service groups
@@ -476,7 +481,8 @@ services:
 
 ```bash
 git status && git diff --stat
-kubectl diff -f manifest.yaml
+docker context show
+docker compose config --quiet
 ```
 
 > Adapted from [BagelHole/DevOps-Security-Agent-Skills](https://github.com/BagelHole/DevOps-Security-Agent-Skills) (MIT); frontmatter, When to Use/Limitations, and safety boundaries added for upstream compliance. Docs-only import: helper scripts and templates not bundled.

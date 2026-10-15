@@ -31,6 +31,10 @@ Use this skill when:
 - Building ETL pipelines that feed into AI models
 - Managing dependencies between data preparation and model serving
 
+## Execution contract
+
+These are application design fragments: adapters, datasets, model files, secrets, vector schemas and deployment handlers are not bundled. Pin supported framework/provider versions, select the actual target and permissions, and authorize schedules, provider charges and writes separately. Use synthetic fixtures first; preserve private data, validate fetched sources, and persist versioned checkpoints to avoid repeating side effects.
+
 ## Tool Selection
 
 | Tool | Best For | Complexity | GPU Jobs |
@@ -52,9 +56,9 @@ prefect server start
 prefect worker start --pool default-agent-pool
 ```
 
-## Prefect: RAG Ingestion Pipeline
+## Prefect: RAG ingestion design sketch (not executable)
 
-```python
+```text
 from prefect import flow, task, get_run_logger
 from prefect.tasks import task_input_hash
 from datetime import timedelta
@@ -115,15 +119,15 @@ if __name__ == "__main__":
 
 ```python
 from prefect import flow, task
-from prefect.concurrency.sync import concurrency
+from prefect.concurrency.asyncio import concurrency
 import asyncio
 from openai import AsyncOpenAI
 
-@task(retries=3, retry_delay_seconds=60)
-async def process_batch(items: list[dict], model: str = "gpt-4o-mini") -> list[dict]:
+@task(retries=0)  # A batch retry can repeat successful billable calls
+async def process_batch(items: list[dict], model: str) -> list[dict]:
     """Process a batch of items through LLM with rate limit protection."""
-    client = AsyncOpenAI()
-    async with concurrency("openai-api", occupy=len(items)):  # rate limit
+    client = AsyncOpenAI(timeout=60.0, max_retries=0)
+    async with concurrency("openai-api", occupy=len(items), timeout_seconds=30, strict=True):  # Concurrent slots, not requests per minute
         tasks = [
             client.chat.completions.create(
                 model=model,
@@ -134,34 +138,48 @@ async def process_batch(items: list[dict], model: str = "gpt-4o-mini") -> list[d
         ]
         responses = await asyncio.gather(*tasks, return_exceptions=True)
 
+    await client.close()
     results = []
     for item, response in zip(items, responses):
         if isinstance(response, Exception):
-            results.append({**item, "error": str(response), "output": None})
+            results.append({**item, "error": type(response).__name__, "output": None})
         else:
             results.append({**item, "output": response.choices[0].message.content})
     return results
 
 @flow(name="batch-llm-inference")
-async def batch_inference_flow(input_file: str, output_file: str, batch_size: int = 50):
+async def batch_inference_flow(input_file: str, output_file: str, model: str, batch_size: int = 10):
     import json
-    items = [json.loads(line) for line in open(input_file)]
+    if not 1 <= batch_size <= 10:
+        raise ValueError("batch_size must be between 1 and 10")
+    with open(input_file, encoding="utf-8") as source:
+        items = []
+        for line in source:
+            if len(line.encode("utf-8")) > 32768 or len(items) >= 10000:
+                raise ValueError("Input exceeds reviewed fixture limits")
+            item = json.loads(line)
+            if not isinstance(item, dict) or not isinstance(item.get("prompt"), str):
+                raise ValueError("Invalid input item")
+            items.append(item)
     batches = [items[i:i+batch_size] for i in range(0, len(items), batch_size)]
 
     all_results = []
     for batch in batches:
-        results = await process_batch(batch)
+        results = await process_batch(batch, model)
         all_results.extend(results)
 
-    with open(output_file, "w") as f:
+    with open(output_file, "x", encoding="utf-8") as f:
         for result in all_results:
             f.write(json.dumps(result) + "\n")
-    return len(all_results)
+    failed = sum(result.get("output") is None for result in all_results)
+    return {"total": len(all_results), "failed_or_empty": failed, "completed": len(all_results) - failed}
 ```
 
-## Airflow: Model Training DAG
+The async batch fragment requires a pre-created limit large enough for each batch; it fails if absent. Store outputs in an authorized private directory, handle existing/partial files explicitly, and reconcile every provider call on timeout before retrying. Close the client in a `finally` block in a full implementation. Semaphore slots do not alone enforce token/RPM or currency budgets.
 
-```python
+## Airflow: training DAG design sketch (not executable)
+
+```text
 from airflow.decorators import dag, task
 from airflow.providers.cncf.kubernetes.operators.pod import KubernetesPodOperator
 from datetime import datetime
@@ -188,7 +206,7 @@ def llm_fine_tuning_dag():
         namespace="ml",
         image="nvcr.io/nvidia/pytorch:24.05-py3",
         cmds=["accelerate", "launch", "-m", "axolotl.cli.train", "/config/config.yaml"],
-        resources=k8s.V1ResourceRequirements(
+        container_resources=k8s.V1ResourceRequirements(
             limits={"nvidia.com/gpu": "4", "memory": "320Gi"},
             requests={"nvidia.com/gpu": "4"},
         ),
@@ -221,9 +239,9 @@ def llm_fine_tuning_dag():
 llm_fine_tuning_dag()
 ```
 
-## Dagster: Asset-Based AI Pipeline
+## Dagster: asset pipeline design sketch (not executable)
 
-```python
+```text
 from dagster import asset, AssetExecutionContext, define_asset_job, ScheduleDefinition
 
 @asset(description="Raw documents fetched from knowledge sources")

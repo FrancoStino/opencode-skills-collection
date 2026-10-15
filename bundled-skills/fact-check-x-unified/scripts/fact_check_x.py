@@ -241,7 +241,7 @@ def locate_skills() -> dict[str, Path]:
     for key, directory in DEPENDENCIES.items():
         for parent in skill_candidates():
             candidate = parent / directory
-            if (candidate / "SKILL.md").exists() or (candidate / DEPENDENCY_ENTRYPOINTS[key]).exists():
+            if (candidate / DEPENDENCY_ENTRYPOINTS[key]).is_file():
                 found[key] = candidate
                 break
         if key not in found:
@@ -319,7 +319,7 @@ def prepare_runtime(skills: dict[str, Path]) -> dict:
     environment["PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD"] = "1"
     try:
         install = subprocess.run(
-            [npm, "ci", "--omit=dev", "--no-audit", "--no-fund"],
+            [npm, "ci", "--ignore-scripts", "--omit=dev", "--no-audit", "--no-fund"],
             cwd=tool_root,
             text=True,
             capture_output=True,
@@ -383,6 +383,7 @@ def trusted_search_configuration() -> dict:
         "interaction": "browser_login_only",
         "requiresChatSecret": False,
         "autoResume": True,
+        "requiresAccountAndDataApproval": True,
         "sharedAcrossCarriers": True,
     }
 
@@ -550,7 +551,8 @@ def require_comparison_provenance(run_dir: Path) -> dict:
 
 def expected_request_ids(manifest: dict) -> list[str]:
     ids = [str(entry.get("requestId") or "") for entry in manifest.get("requests") or []]
-    if not ids or any(not value for value in ids) or len(ids) != len(set(ids)):
+    if (not ids or len(ids) != len(set(ids))
+        or any(not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_-]{0,63}", value) for value in ids)):
         raise PipelineError("权威核验请求清单包含空 ID 或重复 ID")
     return ids
 
@@ -641,7 +643,7 @@ def render_run_notices(notices) -> str:
         "<strong>本次运行存在未完成的技术动作</strong>"
         f"<ul>{items}</ul>"
         '<span class="fcx-run-notice-tail">判定口径不因此改变；'
-        "以上项目可能影响相关结论的证据完整性，受影响且无法核验的主张按“疑似误导”呈现。</span></div>"
+        "以上项目可能影响相关结论的证据完整性，受影响且无法核验的主张保持“证据不足”，不得从技术失败推定误导。</span></div>"
     )
 
 
@@ -897,7 +899,8 @@ def complete_comparison(args: argparse.Namespace, skills: dict[str, Path]) -> di
     run_dir = require_run(args.run_dir)
     require_stage_acknowledged(run_dir, "capture")
     results_path = Path(args.results).resolve()
-    results = validate_and_gate_capture(run_dir, results_path)
+    require_capture_gate(run_dir, results_path)
+    results = validate_capture_results(results_path)
     sync_capture_evidence(run_dir, results_path, results)
     analysis_source = (
         Path(args.analysis).resolve()
@@ -998,6 +1001,7 @@ def build_requests(comparison: dict, requests_dir: Path) -> dict:
     points = comparison.get("knowledgePoints") or []
     if not points:
         raise PipelineError("comparison.json 没有知识点")
+    expected_request_ids({"requests": [{"requestId": point.get("id")} for point in points]})
     requests_dir.mkdir(parents=True, exist_ok=True)
     expected = {f"{point['id']}.json" for point in points}
     stale = [path.name for path in requests_dir.glob("*.json") if path.name not in expected and path.name != "manifest.json"]
@@ -1428,6 +1432,7 @@ def merge_verification(comparison: dict, results_dir: Path) -> dict:
     gov_exempt_count = 0
     downgraded_anchor_ids: list[str] = []
     authority_verdicts: dict[tuple[str, str], str] = {}
+    expected_request_ids({"requests": [{"requestId": point.get("id")} for point in comparison.get("knowledgePoints") or []]})
     for point in comparison.get("knowledgePoints") or []:
         path = results_dir / f"{point['id']}.json"
         if not path.exists():

@@ -29,18 +29,21 @@ Use this skill when:
 - Implementing security baselines
 - Configuring secure SSH access
 
+## Target and recovery
+
+Confirm distribution/version, selected CIS profile, current service config and user-authorized changes. Keep a known-working access session and out-of-band recovery, back up affected files privately, preview changes and validate before reload. These examples are fragments, not a universal CIS-compliance script. Do not apply firewall/default-deny rules before verifying management access and IPv4/IPv6 requirements.
+
 ## SSH Hardening
 
-```bash
-# /etc/ssh/sshd_config
+```text
+# Example sshd configuration; merge with existing policy
 PermitRootLogin no
 PasswordAuthentication no
 PubkeyAuthentication yes
 MaxAuthTries 3
 ClientAliveInterval 300
 ClientAliveCountMax 2
-AllowUsers deploy admin
-Protocol 2
+AllowUsers <confirmed-management-users>
 ```
 
 ## User Security
@@ -55,11 +58,13 @@ ucredit = -1
 ocredit = -1
 lcredit = -1
 
-# Lock inactive accounts
+# Set the default for FUTURE accounts: inactivity after password expiry,
+# not 30 days since last login; review service-account consequences first.
 useradd -D -f 30
 
 # Audit sudo usage
-echo "Defaults logfile=/var/log/sudo.log" >> /etc/sudoers
+# Edit a reviewed /etc/sudoers.d/ fragment with visudo and validate with visudo -c.
+# Do not append blindly to /etc/sudoers.
 ```
 
 ## Firewall Configuration
@@ -72,17 +77,15 @@ ufw allow ssh
 ufw allow 443/tcp
 ufw enable
 
-# Or iptables
-iptables -P INPUT DROP
-iptables -P FORWARD DROP
-iptables -A INPUT -i lo -j ACCEPT
-iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
-iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+# Alternative iptables changes require an isolated validated ruleset,
+# management allow rules, conntrack, DNS/IPv6 decisions and timed rollback.
+# Do not set INPUT DROP first on a live remote host.
+
 ```
 
 ## Kernel Hardening
 
-```bash
+```text
 # /etc/sysctl.d/99-security.conf
 net.ipv4.conf.all.send_redirects = 0
 net.ipv4.conf.all.accept_redirects = 0
@@ -91,27 +94,25 @@ net.ipv4.icmp_echo_ignore_broadcasts = 1
 kernel.randomize_va_space = 2
 fs.suid_dumpable = 0
 
-# Apply
-sysctl -p
+# After reviewing a supported value set, apply the exact file separately:
+# sudo sysctl -p /etc/sysctl.d/99-security.conf
 ```
 
 ## File Permissions
 
 ```bash
-# Critical files
-chmod 600 /etc/shadow
-chmod 644 /etc/passwd
-chmod 700 /root
-chmod 600 /etc/ssh/sshd_config
-
+# Inspect distro-prescribed owner/group/mode before any authorized repair.
+# /etc/shadow group readability may be required; do not blanket chmod it.
 # Find world-writable files
-find / -type f -perm -0002 -ls
+find / -xdev -type f -perm -0002 -ls
 
 # Find SUID files
-find / -perm -4000 -type f -ls
+find / -xdev -perm -4000 -type f -ls
 ```
 
 ## Audit Configuration
+
+Package installation and audit rules are separate steps. Validate and load the actual rules file through the installed audit tooling; execve auditing can capture secret command arguments and large volumes, so scope access and retention.
 
 ```bash
 # Install auditd

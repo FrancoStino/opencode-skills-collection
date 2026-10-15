@@ -163,6 +163,8 @@ review, immutable PR/workflow binding and strict branch protection all remain
 mandatory. Missing or malformed ledger data fails closed. Further exceptions or
 policy expansions need explicit maintainer authorization and protected review.
 
+Tessl setup is bounded to two minutes, separately from the ten-minute review invocation. Failed or timed-out setup skips automated review and routes to `manual-review-required`; it never produces a passing review. Exact-head maintainer attestation and all protected checks remain required.
+
 ## Workflow Contract Change Gate
 
 When changing maintainer scripts, workflows, or policy, update the canonical skill, maintainer documentation, and regression tests in the same source PR. Add a negative test for every failure mode being fixed, run the relevant dry-run path, and reject any implementation/documentation mismatch. Source PRs must exclude generated registries and plugin mirrors; the protected canonical-sync PR owns that derived state, except for files intentionally staged by the scripted protected-release flow.
@@ -172,6 +174,8 @@ When changing maintainer scripts, workflows, or policy, update the canonical ski
 When auditing repository documentation, compare operational guides and translations with exact-base scripts and workflow behavior. Check local links, heading anchors and documented npm commands with `tools/scripts/tests/test_documentation_consistency.py`; dated evidence and backup snapshots are historical, not current instructions. Keep canonical guides discoverable from `docs/README.md`, distinguish source merge from release availability, and report the scope of the audit without claiming that all skill procedures or external integrations ran.
 
 ## Specialized Plugin Consistency
+
+For offer consolidation, use editorial `migrations` to bind each retired ID to one active target and its complete preserved skill inventory. Validate missing targets, active or repeated retired IDs, lost skills and ambiguous aliases. Keep retired IDs out of generated marketplaces and plugin directories; activation lookup aliases are not marketplace redirects. Document manual installation migration in `docs/users/plugin-migration.md`. Derive the public plugin list, prerender and live-verifier counts from all active editorial bundles, not just the specialized candidate subset. Keep source maintenance distinct from release availability.
 
 Use `data/specialized-plugin-candidates.json` for specialized-plugin membership and `data/editorial-bundles.json` for the installable composition, descriptions, limits and starter prompts. Keep compositions within 5–20 distinct skills, with a concrete workflow rationale for each addition; reject duplicate filler and inspect every newly selected skill tree. Review changes against canonical `skills_index.json`; keep IDs stable unless a migration is explicitly requested. Derive the web catalog and prerender/live-verifier counts from these sources instead of maintaining copied lists or fixed counts. Verify full skill-list expansion, source-to-web parity and a negative stale-count case. The specialized-resource regression must reject missing prose-declared local support paths and verify their bytes in generated specialized bundles; fenced application examples remain a separate semantic review. Run the pure-example regressions when editing documented calculations or chunking behavior. Regenerate plugin artifacts as evidence, but leave their commit to the protected canonical-sync lane. A source refresh does not authorize release or deployment.
 
@@ -219,6 +223,8 @@ For AAS CLI, MCP, stack, catalog-cache, or Workbench changes:
 Release only when requested.
 
 Every stable or prerelease version requires full release alignment. Creating the tag, GitHub Release, or npm package is an intermediate milestone, never the completion condition.
+
+Before prepare or publish, validate exact SemVer before any Git or filesystem side effect. Keep release subprocesses shell-free (`shell: false`); on Windows invoke npm through the current Node executable and a validated `npm-cli.js`. Preserve the negative regression proving argument metacharacters remain inert.
 
 1. Include the target changelog entry in the maintainer batch PR so it is already on protected `main`; avoid a separate release-notes-only PR.
 2. From clean, current `main`, run `npm run release:preflight` and required security checks.

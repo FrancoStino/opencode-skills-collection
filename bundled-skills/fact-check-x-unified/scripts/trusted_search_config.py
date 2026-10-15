@@ -5,10 +5,12 @@ import argparse
 import json
 import os
 import ssl
+import stat
 import subprocess
 import sys
 import urllib.error
 import urllib.request
+from urllib.parse import urlsplit
 from pathlib import Path
 
 
@@ -64,6 +66,7 @@ def _validate_key_shape(key: str) -> str:
     normalized = key.strip()
     if (
         len(normalized) < 16
+        or len(normalized) > 1024
         or any(character.isspace() for character in normalized)
         or "*" in normalized
     ):
@@ -73,11 +76,24 @@ def _validate_key_shape(key: str) -> str:
 
 def _shared_trusted_search_key() -> str:
     path = credential_path()
-    if not path.is_file():
+    if not path.exists() and not path.is_symlink():
         return ""
-    if os.name != "nt" and path.stat().st_mode & 0o077:
-        raise ConfigurationError("本机可信搜索配置权限不安全，请重新执行自动配置。")
-    return _validate_key_shape(path.read_text(encoding="utf-8"))
+    if path.is_symlink():
+        raise ConfigurationError("本机可信搜索配置必须是普通文件，不能是链接。")
+    descriptor = os.open(path, os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0) | getattr(os, "O_NONBLOCK", 0))
+    try:
+        information = os.fstat(descriptor)
+        if not stat.S_ISREG(information.st_mode):
+            raise ConfigurationError("本机可信搜索配置必须是普通文件。")
+        if os.name != "nt" and information.st_mode & 0o077:
+            raise ConfigurationError("本机可信搜索配置权限不安全，请重新执行自动配置。")
+        with os.fdopen(descriptor, "rb", closefd=False) as handle:
+            data = handle.read(4097)
+        if len(data) > 4096:
+            raise ConfigurationError("本机可信搜索配置超过大小限制。")
+        return _validate_key_shape(data.decode("utf-8"))
+    finally:
+        os.close(descriptor)
 
 
 def trusted_search_key_candidates() -> list[tuple[str, str]]:
@@ -164,9 +180,25 @@ def clear_trusted_search_key() -> bool:
     return existed
 
 
+class RejectCredentialRedirects(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, request, response, code, message, headers, new_url):
+        raise ServiceUnavailableError("可信搜索重定向已拒绝，Key 不会发送到其他地址。")
+
+
+def open_trusted_search(request, *, timeout, context):
+    opener = urllib.request.build_opener(
+        urllib.request.HTTPSHandler(context=context), RejectCredentialRedirects()
+    )
+    return opener.open(request, timeout=timeout)
+
+
 def validate_trusted_search_key(key: str) -> None:
     normalized = _validate_key_shape(key)
     endpoint = os.getenv("FACTCHECK_TRUSTED_SEARCH_URL", DEFAULT_ENDPOINT).strip()
+    parsed = urlsplit(endpoint)
+    loopback_fixture = parsed.scheme == "http" and parsed.hostname in {"127.0.0.1", "::1"}
+    if (parsed.scheme != "https" and not loopback_fixture) or not parsed.hostname or parsed.username or parsed.password or parsed.fragment:
+        raise ConfigurationError("可信搜索地址必须是无用户凭据的 HTTPS 地址；HTTP 仅供本机测试。")
     payload = {
         "query": "住房公积金管理条例",
         "segmentCount": 1,
@@ -180,18 +212,21 @@ def validate_trusted_search_key(key: str) -> None:
         headers={"Content-Type": "application/json", "api-key": normalized},
     )
     try:
-        with urllib.request.urlopen(
+        with open_trusted_search(
             request,
             timeout=20,
             context=trusted_search_ssl_context(),
         ) as response:
-            raw = response.read().decode("utf-8")
+            raw_bytes = response.read(1024 * 1024 + 1)
+            if len(raw_bytes) > 1024 * 1024:
+                raise ServiceUnavailableError("可信搜索响应超过大小限制。")
+            raw = raw_bytes.decode("utf-8")
             status = response.status
     except urllib.error.HTTPError as exc:
         if exc.code in {401, 403}:
             raise InvalidCredentialError("MaaS 返回的 Key 无效或无可信搜索权限。") from None
         raise ServiceUnavailableError(f"可信搜索服务暂时不可用（HTTP {exc.code}）。") from None
-    except (urllib.error.URLError, TimeoutError, OSError):
+    except (urllib.error.URLError, TimeoutError, OSError, UnicodeError):
         raise ServiceUnavailableError("暂时无法连接可信搜索服务，请检查网络后重试。") from None
     try:
         data = json.loads(raw)
@@ -252,6 +287,9 @@ def onboarding_script_candidates() -> list[Path]:
         / "dist"
         / "trusted-search-onboarding.js",
     ]
+    selected_root = os.getenv("FACTCHECK_SKILLS_DIR", "").strip()
+    if selected_root:
+        candidates.insert(0, Path(selected_root).expanduser() / "llm-answer-reference-compare" / "assets" / "tool" / "dist" / "trusted-search-onboarding.js")
     output = []
     for candidate in candidates:
         resolved = candidate.resolve()
@@ -302,7 +340,10 @@ def run_onboarding(*, force: bool = False) -> dict:
         if not message:
             message = "可信搜索自动配置未完成，请保持浏览器打开并完成登录。"
         raise ConfigurationError(message)
-    load_trusted_search_key()
+    key = load_trusted_search_key()
+    if not key:
+        raise ConfigurationError("自动配置未保存有效 Key。")
+    validate_trusted_search_key(key)
     return {
         "status": result["status"],
         "providerUrl": PROVIDER_URL,

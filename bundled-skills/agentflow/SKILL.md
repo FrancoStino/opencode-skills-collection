@@ -1,7 +1,7 @@
 ---
 name: agentflow
-description: "Orchestrate autonomous AI development pipelines through your Kanban board (Asana, GitHub Projects, Linear). Manages multi-worker Claude Code dispatch, deterministic quality gates, adversarial review, per-task cost tracking, and crash-proof pipeline execution."
-risk: safe
+description: "Orchestrate autonomous AI development pipelines through your Kanban board (Asana, GitHub Projects, Linear). Manages multi-worker Claude Code dispatch, deterministic quality gates, adversarial review, per-task cost tracking, and recoverable pipeline design."
+risk: critical
 source: community
 date_added: "2026-04-02"
 ---
@@ -12,7 +12,7 @@ date_added: "2026-04-02"
 
 AgentFlow turns your existing Kanban board into a fully autonomous AI development pipeline. Instead of building custom orchestration infrastructure, it treats your project management tool (Asana, GitHub Projects, Linear) as a distributed state machine — tasks move through stages, AI agents read and write state via comments, and humans intervene through the same UI they already use.
 
-The result is complete pipeline observability from your phone, free crash recovery (state lives in your PM tool, not in memory), and human override at any point by dragging a card.
+The result is complete pipeline observability from your phone, recoverable task state (state lives in your PM tool, not in memory), and human override at any point by dragging a card.
 
 ## When to Use This Skill
 
@@ -20,7 +20,7 @@ The result is complete pipeline observability from your phone, free crash recove
 - Use when you want deterministic quality gates (tsc/eslint/tests) before AI review on AI-generated code
 - Use when you want full pipeline visibility from your Kanban board or phone
 - Use when running a solo or team project that needs autonomous task dispatch with cost tracking
-- Use when you need crash-proof orchestration that survives session restarts
+- Use when you need orchestration designed to recover after session restarts
 
 ## Core Concepts
 
@@ -34,15 +34,21 @@ A crontab-driven one-shot sweep runs every 15 minutes. No daemon, no session dep
 
 ### Deterministic Before Probabilistic
 
-Hard gates (tsc + eslint + tests) run before any AI review, catching roughly 60% of issues at near-zero cost. AI review comes after, as a second layer.
+Hard gates (tsc + eslint + tests) run before any AI review, catching detectable errors before the more expensive review; coverage and cost must be measured. AI review comes after, as a second layer.
 
 ### Adversarial Review
 
-A different AI agent reviews code and must list 3 things wrong before deciding to pass. This prevents rubber-stamp approvals.
+An independent review should report only substantiated findings and incomplete coverage. Do not require an arbitrary number of flaws or fabricate issues to pass a gate.
 
 ### Transitive Priority Dispatch
 
 Tasks that unblock the most downstream work get built first, automatically computing the critical path.
+
+## Prerequisites and authorization
+
+This AAS tree contains the guide only. Slash commands, cron script, worker runtime, board integration and templates named below belong to the separately reviewed upstream installation; do not claim they exist locally. Verify a fixed upstream revision, license, schemas and setup first. Creating board tasks/comments, spawning workers, configuring schedules, paid model calls, merging and publishing each require the user's applicable authorization. Preserve existing host files and use the current repository maintainer gates.
+
+For concurrent workers, require atomic task claims or leases, disjoint write ownership, bounded concurrency and verified artifact SHAs. A stale heartbeat does not prove a worker stopped; prevent duplicate paid jobs or writes before reassignment.
 
 ## Skills / Commands
 
@@ -98,7 +104,7 @@ claude -p "/sdlc-worker --slot T5"
 ```bash
 # Add to crontab (runs every 15 minutes)
 crontab -e
-# Add: */15 * * * * ~/.claude/sdlc/agentflow-cron.sh >> /tmp/agentflow-orchestrate.log 2>&1
+# Add: */15 * * * * ~/.claude/sdlc/agentflow-cron.sh >> /path/to/private/agentflow-orchestrate.log 2>&1
 ```
 
 ### 5. Monitor and Intervene
@@ -116,11 +122,13 @@ claude -p "/sdlc-stop"
 Each stage enforces specific gates before promotion:
 
 - **Build to Review**: `tsc` + `eslint` + `npm test` must all pass (deterministic)
-- **Review to Test**: Adversarial reviewer must list 3 issues before passing
+- **Review to Test**: Evidence-based review resolves blocking findings and records coverage
 - **Test to Integrate**: 80% coverage threshold on new files
-- **Integrate to Done**: Full test suite on main after merge; auto-reverts on failure
+- **Integrate to Done**: Required protected merge checks plus post-merge verification; scoped rollback follows the repository workflow
 
 ## Cost Tracking
+
+The following contributed numbers are historical illustrations, not current prices or implemented guarantees. Determine provider/model/tool charges, reserve the agreed currency budget before dispatch, track retries and parallel costs, then reconcile actual billing.
 
 Per-task cost tracking with stage ceilings (Sonnet defaults):
 
@@ -134,7 +142,7 @@ Automatic guardrails: warning at $3/$8, hard stop at $10/$20 (Sonnet/Opus) with 
 
 ## Safety and Recovery
 
-- **Auto-revert**: Integration failures trigger `git revert` (new commit, never force-push)
+- **Auto-revert**: Integration failures require a verified scoped rollback; a revert may not undo database changes or external effects
 - **Blocked tasks**: After 2 failed attempts, tasks escalate to human review
 - **Dead agent detection**: Heartbeat every 5 min, reassign after 10 min timeout
 - **Graceful shutdown**: `/sdlc-stop` drains workers, returns unstarted tasks to backlog
@@ -148,9 +156,8 @@ Automatic guardrails: warning at $3/$8, hard stop at $10/$20 (Sonnet/Opus) with 
 git clone https://github.com/UrRhb/agentflow.git
 
 # Copy skills and prompts to your Claude Code config
-cp -r agentflow/skills/* ~/.claude/skills/
-cp -r agentflow/prompts/* ~/.claude/sdlc/prompts/
-cp agentflow/conventions.md ~/.claude/sdlc/conventions.md
+# Inspect the fixed checkout, license and host-supported setup.
+# Copy only explicitly selected files to the authorized host location, preserving existing files.
 ```
 
 Or install as a Claude Code plugin:
@@ -167,7 +174,7 @@ Or install as a Claude Code plugin:
 - Do: Monitor from your Kanban board and drag cards to "Needs Human" when needed
 - Do: Review LEARNINGS.md periodically — it captures common failure patterns
 - Don't: Skip the deterministic quality gates — they catch most issues cheaply
-- Don't: Force-push to main — AgentFlow uses `git revert` for safety
+- Don't: Force-push to main — AgentFlow uses protected scoped rollback for recovery
 - Don't: Run more workers than your project's parallelism supports
 
 ## Troubleshooting
@@ -182,7 +189,7 @@ Or install as a Claude Code plugin:
 
 ### Problem: Integration test failure after merge
 **Symptoms:** Task auto-reverted from main
-**Solution:** The auto-revert preserves main stability. Check the task's retry context in comments, which carries what was tried and what failed. The next worker assigned will use this context.
+**Solution:** A verified revert may restore source behavior, but does not by itself restore data or guarantee stability. Check the task's retry context in comments, which carries what was tried and what failed. The next worker assigned will use this context.
 
 ## Related Skills
 

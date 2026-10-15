@@ -97,7 +97,7 @@ See `condition-based-waiting-example.ts` in this directory for complete implemen
 
 ```typescript
 // Tool ticks every 100ms - need 2 ticks to verify partial output
-await waitForEvent(manager, 'TOOL_STARTED'); // First: wait for condition
+await waitForEvent(manager, threadId, 'TOOL_CALL'); // First: wait for condition
 await new Promise(r => setTimeout(r, 200));   // Then: wait for timed behavior
 // 200ms = 2 ticks at 100ms intervals - documented and justified
 ```

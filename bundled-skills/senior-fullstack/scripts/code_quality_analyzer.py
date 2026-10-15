@@ -58,19 +58,11 @@ class CodeQualityAnalyzer:
             print(f"✓ Target validated: {self.target_path}")
     
     def analyze(self):
-        """Perform the main analysis or operation"""
-        if self.verbose:
-            print("📊 Analyzing...")
-        
-        # Main logic here
-        self.results['status'] = 'success'
-        self.results['target'] = str(self.target_path)
-        self.results['findings'] = []
-        
-        # Add analysis results
-        if self.verbose:
-            print(f"✓ Analysis complete: {len(self.results.get('findings', []))} findings")
-    
+        """Fail closed: this historical helper has no implementation."""
+        raise NotImplementedError(
+            "This helper is an unimplemented skeleton; use the project's real tools."
+        )
+
     def generate_report(self):
         """Generate and display the report"""
         print("\n" + "="*50)

@@ -11,6 +11,14 @@ author: 274326424
 tags: [video, ocr, ffmpeg, tesseract, frame-extraction, media]
 tools: [codex]
 ---
+## Supporting material availability
+
+This catalog copy contains the inline guidance below, but does not include the following supporting paths. They are external prerequisites, not bundled files:
+
+- `scripts/extract_video.py`
+
+Obtain the required material from the [declared upstream source](https://github.com/274326424/video-content-extractor), or from a user-provided installation of that source. Resolve each path relative to that installation, inspect its contents, and verify any applicable license and execution prerequisites. Do not run a command or claim a referenced procedure was followed until its required file exists. Do not fabricate the missing scripts or treat an unrelated file with the same name as equivalent. Independent steps fully documented here can proceed within the user’s authorized scope; report any dependent step as unavailable.
+
 
 # Video Content Extractor
 

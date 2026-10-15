@@ -18,7 +18,7 @@ date_added: "2026-05-31"
 
 ## Zero-Inference Protocol (Mandatory)
 
-1. **Closed World** — if it is not stated in the document, it does not exist in output
+1. **Closed World** — do not assert unstated facts or numeric values. Structural notation implied by source phrasing may be proposed only with the explicit inference tag required below
 2. **Grounding Rule** — every element must cite the exact source phrase (`"evidence"` field)
 3. **No Silent Filling** — unknown values use `null`; ambiguous types use `"ambiguous"`
 4. **Inference Tagging** — structural inferences tagged `"inferred": true` with `"inference_basis"`
@@ -69,21 +69,21 @@ Identify what the document implies but doesn't state: `missing_information[]` wi
 
 ## Output Format
 
-Produce the complete MPS as a JSON object:
+Produce an MPS JSON object. The empty schema example below is not a complete formalization; populate only grounded entries and report missing information:
 
 ```json
 {
   "mps_version": "1.0",
   "source_title": "...",
   "problem_class": "optimization",
-  "variables": [...],
-  "operators": [...],
-  "constraints": [...],
-  "objectives": [...],
-  "uncertainty": [...],
-  "missing_information": [...],
+  "variables": [],
+  "operators": [],
+  "constraints": [],
+  "objectives": [],
+  "uncertainty": [],
+  "missing_information": [],
   "validation_flags": {
-    "overall_formalizability": "HIGH"
+    "overall_formalizability": "LOW"
   }
 }
 ```
@@ -97,6 +97,7 @@ Produce the complete MPS as a JSON object:
 
 ## Additional Resources
 
+- External hosted BYOK tools are optional and not bundled; using them may transmit documents/keys and incur costs. Obtain the applicable data/account approval instead of following the link automatically.
 - Repository: [thebrierfox/doc2math-skill](https://github.com/thebrierfox/doc2math-skill)
 - Full BYOK tool: [ace-license-server-production.up.railway.app/byok/doc2math](https://ace-license-server-production.up.railway.app/byok/doc2math)
 - Built by [IntuiTek¹](https://intuitek.ai) (~K¹) — MIT License

@@ -1,7 +1,7 @@
 ---
 name: azure-communication-callingserver-java
 description: "⚠️ DEPRECATED: This SDK has been renamed to Call Automation. For new projects, use azure-communication-callautomation instead. This skill is for maintaining legacy code only."
-risk: safe
+risk: critical
 source: community
 date_added: "2026-02-27"
 ---
@@ -44,7 +44,7 @@ date_added: "2026-02-27"
 import com.azure.communication.callingserver.CallingServerClient;
 import com.azure.communication.callingserver.CallingServerClientBuilder;
 
-CallingServerClient client = new CallingServerClientBuilder()
+CallingServerClient legacyClient = new CallingServerClientBuilder()
     .connectionString("<connection-string>")
     .buildClient();
 
@@ -52,7 +52,7 @@ CallingServerClient client = new CallingServerClientBuilder()
 import com.azure.communication.callautomation.CallAutomationClient;
 import com.azure.communication.callautomation.CallAutomationClientBuilder;
 
-CallAutomationClient client = new CallAutomationClientBuilder()
+CallAutomationClient automationClient = new CallAutomationClientBuilder()
     .connectionString("<connection-string>")
     .buildClient();
 ```
@@ -64,12 +64,12 @@ CallAutomationClient client = new CallAutomationClientBuilder()
 StartRecordingOptions options = new StartRecordingOptions(serverCallId)
     .setRecordingStateCallbackUri(callbackUri);
 
-StartCallRecordingResult result = client.startRecording(options);
+StartCallRecordingResult result = legacyClient.startRecording(options);
 String recordingId = result.getRecordingId();
 
-client.pauseRecording(recordingId);
-client.resumeRecording(recordingId);
-client.stopRecording(recordingId);
+legacyClient.pauseRecording(recordingId);
+legacyClient.resumeRecording(recordingId);
+legacyClient.stopRecording(recordingId);
 
 // NEW WAY - see azure-communication-callautomation skill
 ```
@@ -93,9 +93,10 @@ See the `azure-communication-callautomation-java` skill for:
 - "migrate callingserver to callautomation"
 
 ## When to Use
-This skill is applicable to execute the workflow or actions described in the overview.
+Use only when maintaining historical CallingServer code or planning migration to azure-communication-callautomation-java; do not start new integrations with the retired package.
 
 ## Limitations
-- Use this skill only when the task clearly matches the scope described above.
+- Legacy and new snippets are alternative fragments, not a drop-in migration. Pin reviewed package versions and verify the exact replacement API; the legacy recording options are not assumed compatible with Call Automation.
+- Call control and recording can affect real participants, costs and sensitive communications. Obtain call/account authorization and required participant consent, keep credentials out of code/logs, and never place or record a call merely to validate these examples.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.

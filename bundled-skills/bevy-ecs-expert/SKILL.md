@@ -23,7 +23,7 @@ A guide to building high-performance game logic using Bevy's data-oriented ECS a
 
 ### 1. Defining Components
 
-Use simple structs for data. Derive `Component` and `Reflect`.
+Use simple structs for data. Import `bevy::prelude::*`; add Reflect only when reflection/inspection is needed. The snippets are alternatives and do not duplicate Player/Velocity definitions in one scope.
 
 ```rust
 #[derive(Component, Reflect, Default)]
@@ -47,8 +47,8 @@ fn movement_system(
     mut query: Query<(&mut Transform, &Velocity), With<Player>>,
 ) {
     for (mut transform, velocity) in &mut query {
-        transform.translation.x += velocity.x * time.delta_seconds();
-        transform.translation.y += velocity.y * time.delta_seconds();
+        transform.translation.x += velocity.x * time.delta_secs();
+        transform.translation.y += velocity.y * time.delta_secs();
     }
 }
 ```
@@ -58,7 +58,7 @@ fn movement_system(
 Use `Resource` for global data (score, game state).
 
 ```rust
-#[derive(Resource)]
+#[derive(Resource, Default)]
 struct GameState {
     score: u32,
 }
@@ -67,6 +67,8 @@ fn score_system(mut game_state: ResMut<GameState>) {
     game_state.score += 10;
 }
 ```
+
+The toy score_system increments each Update; use gameplay events or an explicit timer for meaningful scoring, rather than implying frame-rate-independent score behavior.
 
 ### 4. Scheduling Systems
 
@@ -128,14 +130,14 @@ fn enemy_behavior(
 - ✅ **Do:** Prefer `Res` over `ResMut` when read-only access is sufficient to allow parallel execution.
 - ✅ **Do:** Use `Bundle` to spawn complex entities atomically.
 - ❌ **Don't:** Store heavy logic inside Components; keep them as pure data.
-- ❌ **Don't:** Use `RefCell` or interior mutability inside components; let the ECS handle borrowing.
+- ❌ **Don't:** Use `RefCell` or interior mutability inside components; prefer normal ECS borrowing; any interior-mutability design still needs valid Send/Sync and a clear synchronization reason.
 
 ## Troubleshooting
 
 **Problem:** System panic with "Conflict" error.
-**Solution:** You are likely trying to access the same component mutably in two systems running in parallel. Use `.chain()` to order them or split the logic.
+**Solution:** The scheduler normally orders conflicting systems. Bevy B0001 often concerns incompatible queries inside one system; use disjoint With/Without filters or ParamSet as appropriate. Chaining two systems does not repair conflicting parameters inside a system. See [Bevy B0001](https://bevy.org/learn/errors/b0001/).
 
 ## Limitations
-- Use this skill only when the task clearly matches the scope described above.
+- Pin the project’s Bevy version and check its migration/API guide. Current examples use delta_secs and required components; older Bevy versions may differ. Enemy/Dead are application-owned component markers and player.png is an application asset, not a bundled file. No engine compilation/performance benchmark is claimed here.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.

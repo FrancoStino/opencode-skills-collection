@@ -22,7 +22,7 @@ import json
 import sys
 import os
 import re
-import subprocess
+import argparse
 from pathlib import Path
 
 # ── Configuration ──────────────────────────────────────────────────────────
@@ -31,7 +31,12 @@ from pathlib import Path
 _SCRIPT_DIR = Path(__file__).resolve().parent
 ORCHESTRATOR_DIR = _SCRIPT_DIR.parent
 SKILLS_ROOT = ORCHESTRATOR_DIR.parent
-DATA_DIR = ORCHESTRATOR_DIR / "data"
+_data_directory = os.environ.get("AGENT_ORCHESTRATOR_DATA_DIR")
+if not _data_directory or not Path(_data_directory).is_absolute():
+    raise ValueError("Set AGENT_ORCHESTRATOR_DATA_DIR to an authorized absolute storage directory")
+DATA_DIR = Path(_data_directory)
+if DATA_DIR.is_symlink():
+    raise ValueError("Storage directory must not be a symlink")
 REGISTRY_PATH = DATA_DIR / "registry.json"
 PROJECTS_PATH = DATA_DIR / "projects.json"
 SCAN_SCRIPT = _SCRIPT_DIR / "scan_registry.py"
@@ -130,34 +135,36 @@ CAPABILITY_KEYWORDS = {
 # ── Functions ──────────────────────────────────────────────────────────────
 
 def ensure_registry():
-    """Run scan if registry doesn't exist."""
-    if not REGISTRY_PATH.exists():
-        subprocess.run(
-            [sys.executable, str(SCAN_SCRIPT)],
-            capture_output=True, text=True
-        )
+    """Require an explicit completed scan, not an implicit subprocess."""
+    if not REGISTRY_PATH.is_file() or REGISTRY_PATH.is_symlink():
+        raise ValueError("Registry unavailable; run an explicit scan in the authorized scope")
 
 
 def load_registry() -> list[dict]:
-    """Load skills from registry.json."""
     ensure_registry()
-    if not REGISTRY_PATH.exists():
-        return []
-    try:
-        data = json.loads(REGISTRY_PATH.read_text(encoding="utf-8"))
-        return data.get("skills", [])
-    except Exception:
-        return []
+    data = json.loads(REGISTRY_PATH.read_text(encoding="utf-8"))
+    if not isinstance(data, dict) or not isinstance(data.get("skills"), list):
+        raise ValueError("Malformed registry")
+    return data["skills"]
 
 
 def load_projects() -> dict:
-    """Load project assignments."""
+    if PROJECTS_PATH.is_symlink():
+        raise ValueError("Project assignments must not be a symlink")
     if not PROJECTS_PATH.exists():
         return {"projects": []}
-    try:
-        return json.loads(PROJECTS_PATH.read_text(encoding="utf-8"))
-    except Exception:
-        return {"projects": []}
+    if PROJECTS_PATH.stat().st_size > 1024 * 1024:
+        raise ValueError("Project assignments exceed 1 MiB")
+    data = json.loads(PROJECTS_PATH.read_text(encoding="utf-8"))
+    if not isinstance(data, dict) or not isinstance(data.get("projects"), list):
+        raise ValueError("Malformed project assignments")
+    for project in data["projects"]:
+        if not isinstance(project, dict) or not isinstance(project.get("name"), str):
+            raise ValueError("Project requires a string name")
+        assigned = project.get("skills", [])
+        if not isinstance(assigned, list) or any(not isinstance(v, str) for v in assigned):
+            raise ValueError("Project skill names must be strings")
+    return data
 
 
 def get_project_skills(project_name: str) -> set:
@@ -198,6 +205,15 @@ def score_skill(skill: dict, query: str, project_skills: set = None) -> dict:
 
     Returns dict with score, reasons, and skill info.
     """
+    if not isinstance(skill, dict):
+        raise ValueError("Skill candidate must be an object")
+    for key in ("name", "description"):
+        if not isinstance(skill.get(key, ""), str):
+            raise ValueError("Candidate names and descriptions must be strings")
+    for key in ("triggers", "capabilities"):
+        value = skill.get(key, [])
+        if not isinstance(value, list) or any(not isinstance(v, str) for v in value):
+            raise ValueError("Candidate tags must be strings")
     q_lower = query.lower()
     score = 0
     reasons = []
@@ -208,7 +224,7 @@ def score_skill(skill: dict, query: str, project_skills: set = None) -> dict:
     capabilities = skill.get("capabilities", [])
 
     # 1. Skill name in query (+15)
-    if name.lower() in q_lower or name.lower().replace("-", " ") in q_lower:
+    if name and (name.lower() in q_lower or name.lower().replace("-", " ") in q_lower):
         score += 15
         reasons.append(f"name:{name}")
 
@@ -282,27 +298,14 @@ def match(query: str, project: str = None, top_n: int = 5, threshold: int = 5) -
 # ── CLI Entry Point ────────────────────────────────────────────────────────
 
 def main():
-    args = sys.argv[1:]
-    project = None
-    query_parts = []
-
-    i = 0
-    while i < len(args):
-        if args[i] == "--project" and i + 1 < len(args):
-            project = args[i + 1]
-            i += 2
-        else:
-            query_parts.append(args[i])
-            i += 1
-
-    query = " ".join(query_parts)
-
-    if not query:
-        print(json.dumps({
-            "error": "No query provided",
-            "usage": 'python match_skills.py "your query here"'
-        }, indent=2))
-        sys.exit(1)
+    parser = argparse.ArgumentParser(description="Inspect heuristic skill candidates")
+    parser.add_argument("--project")
+    parser.add_argument("query", nargs="+")
+    args = parser.parse_args()
+    project = args.project
+    query = " ".join(args.query)
+    if not query.strip() or len(query) > 16384:
+        parser.error("Query must contain 1–16384 characters")
 
     results = match(query, project=project)
 
@@ -313,14 +316,9 @@ def main():
         "skills": results,
     }
 
-    if len(results) == 0:
-        output["recommendation"] = "No skills matched. Operate without skills or suggest creating a new one."
-    elif len(results) == 1:
-        output["recommendation"] = f"Single skill match: use '{results[0]['name']}' directly."
-        output["action"] = "load_skill"
-    else:
-        output["recommendation"] = f"Multiple skills matched ({len(results)}). Use orchestration."
-        output["action"] = "orchestrate"
+    output["recommendation"] = "Heuristic candidates only; inspect scope, provenance, prerequisites and user authorization before selecting."
+    output["action"] = "review_candidates"
+    output["complete_inventory"] = False
 
     print(json.dumps(output, indent=2, ensure_ascii=False))
 

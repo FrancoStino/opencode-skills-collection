@@ -78,10 +78,16 @@ def main() -> int:
             assert existing["source"] == "shared_local_credential"
             assert existing["created"] is False
             assert existing["validated"] is True
-            assert locate_onboarding_script().name == "trusted-search-onboarding.js"
+            # AAS does not bundle the external collector; exercise locator against an inert fixture.
+            dependency_root = Path(temp) / "reviewed-skills"
+            onboarding = dependency_root / "llm-answer-reference-compare/assets/tool/dist/trusted-search-onboarding.js"
+            onboarding.parent.mkdir(parents=True)
+            onboarding.write_text("// inert locator fixture; never executed\n", encoding="utf-8")
+            os.environ["FACTCHECK_SKILLS_DIR"] = str(dependency_root)
+            assert locate_onboarding_script() == onboarding.resolve()
 
             with patch(
-                "trusted_search_config.urllib.request.urlopen",
+                "trusted_search_config.open_trusted_search",
                 side_effect=OSError("The read operation timed out"),
             ):
                 executable, executable_source, validation = (

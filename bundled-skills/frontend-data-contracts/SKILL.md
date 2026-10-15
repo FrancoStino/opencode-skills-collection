@@ -13,7 +13,7 @@ license_source: https://github.com/stareezy-1/frontend-architecture-skill/blob/m
 # Frontend Data Contracts (typed network boundary)
 ## When to Use
 
-Use this skill when you need a portable, framework-agnostic discipline for type safety at the network edge of any React or React Native app. Establishes one typed API client as the single fetch boundary, a parse-don't-validate rule that turns wire JSON into trusted domain types before it enters the app, a single...
+Use this skill when you need a portable, framework-agnostic discipline for type safety at the network edge of any React or React Native app. Establishes one typed API client as the single fetch boundary, a parse-don't-validate rule that turns wire JSON into trusted domain types before it enters the app, runtime parsing, normalized errors and branded identifiers.
 
 
 > Portable skill — readable by Claude Code, OpenCode, Codex, Cursor, Windsurf, and others.
@@ -27,6 +27,10 @@ JSON and becomes a **trusted, typed domain value** — or it becomes a **single,
 There is exactly one place this transformation happens, and nothing untyped escapes it.
 
 ---
+
+## Example contract
+
+The snippets marked “essence” are architecture sketches with omitted project dependencies and methods, not a complete client. A generic `get<Invoice>` type parameter is only a compile-time assertion: it cannot establish runtime validity. Require the actual schema parse before treating a value as an Invoice, normalize parser failures into the project error type, and keep authorization independent of both schema validation and branded IDs. Bind adapter behavior to the installed library version; do not assume an unsupported per-query callback exists.
 
 ## 0. The five core ideas
 
