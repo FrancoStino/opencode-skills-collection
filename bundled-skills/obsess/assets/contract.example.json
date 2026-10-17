@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "contract_id": "illustrative-run-not-real-data",
+  "evaluator_revision": "example-evaluator-v1",
+  "comparison_key": "example-fixtures/example-environment",
+  "primary_metric": {
+    "name": "median_runtime_ms",
+    "direction": "minimise",
+    "min_delta": 2.0
+  },
+  "required_gates": [
+    "correctness",
+    "scope",
+    "evaluation_integrity",
+    "measurement_quality"
+  ],
+  "target": "REPLACE_WITH_ONE_TARGET",
+  "editable_paths": [
+    "REPLACE_WITH_AUTHORISED_PATH"
+  ],
+  "read_only_paths": [
+    "REPLACE_WITH_EVALUATOR_PATH"
+  ],
+  "budget": {
+    "max_experiments": 12,
+    "max_wall_minutes": 30
+  },
+  "note": "Illustrative configuration. Numeric receipts are synthetic, not measurements. The gate only reads its documented subset of this contract."
+}

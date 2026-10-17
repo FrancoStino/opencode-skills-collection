@@ -1,0 +1,26 @@
+{
+  "schema_version": 2,
+  "run_id": "REPLACE_WITH_RUN_ID",
+  "status": "awaiting_plan",
+  "mode": null,
+  "profile": "normal",
+  "original_snapshot": null,
+  "incumbent_snapshot": null,
+  "incumbent_verification_level": "unverified",
+  "working_tree_status": "original",
+  "active_candidate": null,
+  "budget": {
+    "max_experiments": null,
+    "max_active_minutes": null
+  },
+  "experiments_started": 0,
+  "experiments_evaluated": 0,
+  "consecutive_no_gain": 0,
+  "pivot_attempts_remaining": 0,
+  "elapsed_seconds": null,
+  "elapsed_time_measured": false,
+  "remaining_experiments": null,
+  "archive": [],
+  "stop_reason": null,
+  "note": "Template only. Fill the authorised mode/budget before edits. Null means unknown or unset. Reconcile real files and attempt records on resume."
+}

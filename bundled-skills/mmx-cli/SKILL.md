@@ -108,15 +108,18 @@ Agent notes:
 
 ### video generate
 
-Generate video. Default model: `MiniMax-Hailuo-2.3`. Async task — polls until completion by default.
+Generate video. The current v2 default is `MiniMax-H3` (2K, 4–15 seconds); the legacy v1 Hailuo models remain available when explicitly selected. Requests use the regional v2 endpoint: `https://api.minimax.io/v2/video_generation` (global) or `https://api.minimaxi.com/v2/video_generation` (China).
 
 ```bash
 mmx video generate --prompt <text> [flags]
 ```
 
+For MiniMax-H3, the request content is an ordered array of `{type, role, ...}` items. Text content is required (up to 7,000 characters); image, video, and audio URLs may use `first_frame`, `last_frame`, `reference_image`, `reference_video`, and `reference_audio` roles. Frame roles and reference roles are mutually exclusive, and reference audio requires an image or video. Set `--resolution 2K`, `--duration` to an integer from 4 through 15, and `--ratio` to `adaptive`, `21:9`, `16:9`, `4:3`, `1:1`, `3:4`, or `9:16`. China requests may also set `aigc_watermark`. The create response returns `task_id`; query with `GET /v2/query/video_generation/{task_id}`, list with `GET /v2/query/video_generation`, and delete with `DELETE /v2/video_generation/{task_id}`. Query responses expose status, error, output URL, resolution, duration, ratio, task type/modality, and usage seconds/image count.
+Pricing for MiniMax-H3 video is metered by 2K output seconds: global USD 0.13/second, China CNY 0.8/second. Reference video input is global USD 0.02/second and China CNY 0.8/second; reference audio is free; five reference images are free, then global USD 0.03/image or China CNY 0.2/image.
+
 ```bash
 # Non-blocking: get task ID
-mmx video generate --prompt "A robot." --async --quiet
+mmx video generate --model MiniMax-H3 --prompt "A robot." --duration 6 --resolution 2K --ratio 16:9 --async --quiet
 
 # Blocking: wait and save file
 mmx video generate --prompt "Ocean waves." --download ocean.mp4 --quiet
@@ -141,7 +144,7 @@ echo "Breaking news." | mmx speech synthesize --text-file - --out news.mp3
 
 ### music generate
 
-Generate music. Model: `music-2.6-free`.
+Generate music with model `music-3.0` (the retired `music-2.6-free` default should not be used).
 
 ```bash
 mmx music generate --prompt <text> [--lyrics <text>] [flags]
@@ -149,7 +152,7 @@ mmx music generate --prompt <text> [--lyrics <text>] [flags]
 
 ```bash
 # Instrumental
-mmx music generate --prompt "Cinematic orchestral, building tension" --instrumental --out bgm.mp3 --quiet
+mmx music generate --model music-3.0 --prompt "Cinematic orchestral, building tension" --instrumental --out bgm.mp3 --quiet
 
 # With auto-generated lyrics
 mmx music generate --prompt "Upbeat pop about summer" --lyrics-optimizer --out summer.mp3 --quiet

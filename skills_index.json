@@ -1674,6 +1674,73 @@
     }
   },
   {
+    "id": "agentic-test-audit",
+    "path": "skills/agentic-test-audit",
+    "category": "testing",
+    "name": "agentic-test-audit",
+    "description": "Audit a pytest suite: surviving mutants and untested code, flaky, order-dependent and slow tests, and removal candidates checked on held-out mutants. Report-only.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-10-16",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "timini/agentic-verification",
+    "license": "MIT",
+    "license_source": "https://github.com/timini/agentic-verification/blob/v0.3.0/LICENSE",
+    "tags": [
+      "testing",
+      "pytest",
+      "mutation-testing",
+      "python",
+      "flaky-tests",
+      "test-audit"
+    ]
+  },
+  {
+    "id": "agentic-verify",
+    "path": "skills/agentic-verify",
+    "category": "testing",
+    "name": "agentic-verify",
+    "description": "Check that a Python change is caught by tests: run every mutant of the changed lines and write tests until they catch them. Reports evidence instead of a diff to read.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-10-16",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "timini/agentic-verification",
+    "license": "MIT",
+    "license_source": "https://github.com/timini/agentic-verification/blob/v0.3.0/LICENSE",
+    "tags": [
+      "testing",
+      "pytest",
+      "mutation-testing",
+      "python",
+      "verification"
+    ]
+  },
+  {
     "id": "agentmail",
     "path": "skills/agentmail",
     "category": "ai-ml",
@@ -3006,6 +3073,40 @@
     "source_repo": "jonathimer/devmarketing-skills",
     "license": "MIT",
     "license_source": "https://github.com/jonathimer/devmarketing-skills/blob/main/LICENSE"
+  },
+  {
+    "id": "altorank",
+    "path": "skills/altorank",
+    "category": "seo",
+    "name": "altorank",
+    "description": "Run AltoRank through its hosted MCP server: readiness audits, Search Console, keyword research, and SEO drafts into a review queue.",
+    "risk": "safe",
+    "source": "https://github.com/AltoRank/altorank/tree/main/plugins/altorank/skills/altorank",
+    "date_added": "2026-10-16",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "AltoRank/altorank",
+    "license": "AGPL-3.0",
+    "license_source": "https://github.com/AltoRank/altorank/blob/main/LICENSE",
+    "tags": [
+      "seo",
+      "geo",
+      "mcp",
+      "content",
+      "search-console",
+      "keyword-research"
+    ]
   },
   {
     "id": "alumni-re-hire-tracker",
@@ -4649,6 +4750,41 @@
       },
       "reasons": []
     }
+  },
+  {
+    "id": "apify-reddit-scraper",
+    "path": "skills/apify-reddit-scraper",
+    "category": "data",
+    "name": "apify-reddit-scraper",
+    "description": "Scrape Reddit posts, comments, subreddits and users with the harshmaur/reddit-scraper Apify Actor. No Reddit API key. Keyword search, date windows, full threads.",
+    "risk": "critical",
+    "source": "community",
+    "date_added": "2026-10-15",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "harshmaur/apify-reddit-scraper-skill",
+    "license": "MIT",
+    "license_source": "https://github.com/harshmaur/apify-reddit-scraper-skill/blob/main/LICENSE.txt",
+    "tags": [
+      "reddit",
+      "apify",
+      "scraping",
+      "social-listening",
+      "brand-monitoring",
+      "subreddit",
+      "comments"
+    ]
   },
   {
     "id": "apify-trend-analysis",
@@ -13311,6 +13447,40 @@
       "fact-checking",
       "stipple",
       "authenticity"
+    ]
+  },
+  {
+    "id": "chord-onchain-trading",
+    "path": "skills/chord-onchain-trading",
+    "category": "blockchain",
+    "name": "chord-onchain-trading",
+    "description": "Read DEX market data and prepare best-route swap quotes and unsigned swap transactions on eight EVM chains with the Chord API. Never signs or moves funds.",
+    "risk": "critical",
+    "source": "https://github.com/getchordlabs/chord/tree/main/skills/chord",
+    "date_added": "2026-10-16",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "getchordlabs/chord",
+    "license": "MIT",
+    "license_source": "https://github.com/getchordlabs/chord/blob/main/LICENSE",
+    "tags": [
+      "crypto",
+      "defi",
+      "dex",
+      "swap",
+      "evm",
+      "market-data"
     ]
   },
   {
@@ -30337,6 +30507,40 @@
     ]
   },
   {
+    "id": "healthcare-job-search",
+    "path": "skills/healthcare-job-search",
+    "category": "career-jobs",
+    "name": "healthcare-job-search",
+    "description": "Find open US healthcare jobs (nursing, CNA, allied health, therapy, imaging, pharmacy, physicians) and the hourly pay employers post, via CareJobs.Now's free MCP server or JSON endpoints.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-10-16",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "yumaheymans/carejobs-mcp",
+    "license": "MIT",
+    "license_source": "https://github.com/yumaheymans/carejobs-mcp/blob/main/LICENSE",
+    "tags": [
+      "jobs",
+      "healthcare",
+      "nursing",
+      "job-search",
+      "pay",
+      "mcp"
+    ]
+  },
+  {
     "id": "helium-mcp",
     "path": "skills/helium-mcp",
     "category": "research",
@@ -38076,6 +38280,38 @@
     ]
   },
   {
+    "id": "logo-to-stickers",
+    "path": "skills/logo-to-stickers",
+    "category": "design",
+    "name": "logo-to-stickers",
+    "description": "Turn a brand mark or existing IP into consistent, playful paper stickers with small visual stories and separate transparent images. Use for brand characters and website sticker sets.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-10-16",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "huyanxius/logo-to-stickers",
+    "license": "MIT",
+    "license_source": "https://github.com/huyanxius/logo-to-stickers/blob/main/LICENSE",
+    "tags": [
+      "branding",
+      "stickers",
+      "illustration",
+      "image-generation"
+    ]
+  },
+  {
     "id": "loki-logging",
     "path": "skills/loki-logging",
     "category": "devops",
@@ -41625,6 +41861,40 @@
     }
   },
   {
+    "id": "moltnode-chain-reader",
+    "path": "skills/moltnode-chain-reader",
+    "category": "blockchain",
+    "name": "moltnode-chain-reader",
+    "description": "Read 31 blockchains over keyless JSON-RPC with MoltNode (balances, blocks, contract calls) and get Chord swap quotes with an unsigned transaction and simulation.",
+    "risk": "critical",
+    "source": "https://github.com/tuantqse90/moltnode-mcp/tree/main/skills/moltnode",
+    "date_added": "2026-10-16",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "tuantqse90/moltnode-mcp",
+    "license": "MIT",
+    "license_source": "https://github.com/tuantqse90/moltnode-mcp/blob/main/LICENSE",
+    "tags": [
+      "crypto",
+      "blockchain",
+      "json-rpc",
+      "evm",
+      "solana",
+      "swap"
+    ]
+  },
+  {
     "id": "molykit",
     "path": "skills/molykit",
     "category": "ai-ml",
@@ -42111,6 +42381,36 @@
       },
       "reasons": []
     }
+  },
+  {
+    "id": "movie-coupon",
+    "path": "skills/movie-coupon",
+    "category": "shopping",
+    "name": "movie-coupon",
+    "description": "Fetch movie ticket coupons from platforms like Taopiaopiao and Maoyan. Returns coupon links and QR code images for users to redeem via WeChat.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-10-16",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "moooai/movie-coupon",
+    "tags": [
+      "coupons",
+      "movie",
+      "cinema",
+      "entertainment"
+    ]
   },
   {
     "id": "moyu",
@@ -44150,6 +44450,39 @@
     }
   },
   {
+    "id": "obsess",
+    "path": "skills/obsess",
+    "category": "development",
+    "name": "obsess",
+    "description": "Perfectionist mode for one target: checked attempts on a UI detail or hot path, keeps the best version, stops on a budget. Only on explicit /obsess.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-10-15",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "UmarSiddiqui/obsess",
+    "license": "MIT",
+    "license_source": "https://github.com/UmarSiddiqui/obsess/blob/main/LICENSE",
+    "tags": [
+      "polish",
+      "ui",
+      "performance",
+      "verification",
+      "refactoring"
+    ]
+  },
+  {
     "id": "obsidian-bases",
     "path": "skills/obsidian-bases",
     "category": "productivity",
@@ -44236,6 +44569,38 @@
       },
       "reasons": []
     }
+  },
+  {
+    "id": "obtain-coupons-all-in-one",
+    "path": "skills/obtain-coupons-all-in-one",
+    "category": "shopping",
+    "name": "obtain-coupons-all-in-one",
+    "description": "All-in-one coupon fetcher supporting takeout (Meituan, Ele.me, JD), parcel/courier (SF, ZTO, YTO, etc.), travel (DiDi, Ctrip), and movie tickets (Taopiaopiao, Maoyan) coupons with one-click access to all discounts.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-10-16",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "moooai/obtain-coupons-all-in-one",
+    "tags": [
+      "coupons",
+      "all-in-one",
+      "takeout",
+      "travel",
+      "movie",
+      "parcel"
+    ]
   },
   {
     "id": "occupational-health-analyzer",
@@ -45566,6 +45931,37 @@
     "license_source": "https://github.com/amElnagdy/delegate-skills/blob/master/LICENSE"
   },
   {
+    "id": "openhook",
+    "path": "skills/openhook",
+    "category": "development",
+    "name": "openhook",
+    "description": "Creates private callback inboxes with Openhook. Use when an agent needs to wait for a webhook, inspect received HTTP/email/DNS events, or verify a test callback's contents.",
+    "risk": "critical",
+    "source": "https://github.com/openhook-dev/openhook-inbox/tree/9b11d08dfa520f37f387f6b003b67371dca930eb/skills/openhook",
+    "date_added": "2026-10-16",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "openhook-dev/openhook-inbox",
+    "license": "MIT",
+    "license_source": "https://github.com/openhook-dev/openhook-inbox/blob/9b11d08dfa520f37f387f6b003b67371dca930eb/LICENSE",
+    "tags": [
+      "webhooks",
+      "integration-testing",
+      "mcp"
+    ]
+  },
+  {
     "id": "openshift",
     "path": "skills/openshift",
     "category": "devops",
@@ -46255,6 +46651,37 @@
       "web-search",
       "research",
       "citations"
+    ]
+  },
+  {
+    "id": "parcel-coupon",
+    "path": "skills/parcel-coupon",
+    "category": "shopping",
+    "name": "parcel-coupon",
+    "description": "Call parcel/courier coupon API to fetch one-stop logistics service coupons, including smart shipping and smart price matching. Returns coupon links and QR code images for users to redeem via WeChat.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-10-16",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "moooai/parcel-coupon",
+    "tags": [
+      "coupons",
+      "parcel",
+      "courier",
+      "sf-express",
+      "cainiao"
     ]
   },
   {
@@ -59831,6 +60258,37 @@
     ]
   },
   {
+    "id": "takeout-coupon",
+    "path": "skills/takeout-coupon",
+    "category": "shopping",
+    "name": "takeout-coupon",
+    "description": "Call takeout coupon API to fetch hidden coupon lists, red packets and aggregated redemption pages for platforms (Meituan, Taobao Flash/Ele.me, JD.com). Returns coupon codes and redemption instructions for users to copy and redeem in corresponding apps.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-10-16",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "moooai/takeout-coupon",
+    "tags": [
+      "coupons",
+      "takeout",
+      "food-delivery",
+      "meituan",
+      "eleme"
+    ]
+  },
+  {
     "id": "talivia-agent-kit",
     "path": "skills/talivia-agent-kit",
     "category": "marketing",
@@ -62539,6 +62997,37 @@
       },
       "reasons": []
     }
+  },
+  {
+    "id": "trip-coupon",
+    "path": "skills/trip-coupon",
+    "category": "shopping",
+    "name": "trip-coupon",
+    "description": "Call trip/travel coupon API to fetch travel coupons including DiDi ride-hailing gift packages and hotel coupon bundles. Returns coupon links and QR code images for users to redeem via WeChat.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-10-16",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "moooai/trip-coupon",
+    "tags": [
+      "coupons",
+      "travel",
+      "didi",
+      "hotel",
+      "ride-hailing"
+    ]
   },
   {
     "id": "trl-training",
