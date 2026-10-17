@@ -1,0 +1,21 @@
+{
+  "id": "REPLACE_WITH_EXPERIMENT_ID",
+  "parent": "REPLACE_WITH_INCUMBENT_ID",
+  "hypothesis": "REPLACE_WITH_FALSIFIABLE_HYPOTHESIS",
+  "disconfirming_observation": "REPLACE_WITH_WHAT_WOULD_COUNT_AGAINST_IT",
+  "change_ref": null,
+  "outcome": "planned",
+  "evaluator_revision": null,
+  "evidence_refs": [],
+  "lesson": null,
+  "usage": {
+    "model_calls": null,
+    "tokens": null,
+    "cost_aud": null
+  },
+  "usage_note": "Null means unknown or not yet measured, never zero.",
+  "attempt_counted": false,
+  "verification_level": "unverified",
+  "observations": [],
+  "mode": null
+}

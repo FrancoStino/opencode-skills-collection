@@ -1,0 +1,19 @@
+{
+  "contract_id": "illustrative-run-not-real-data",
+  "evaluator_revision": "example-evaluator-v1",
+  "comparison_key": "example-fixtures/example-environment",
+  "artifact_id": "illustration-only:starting-version",
+  "metric_name": "median_runtime_ms",
+  "measurement_valid": true,
+  "value": 100.0,
+  "evidence_refs": [
+    "ILLUSTRATION_ONLY_NO_REAL_MEASUREMENT"
+  ],
+  "gates": {
+    "correctness": true,
+    "scope": true,
+    "evaluation_integrity": true,
+    "measurement_quality": true
+  },
+  "note": "Synthetic fixture for demonstrating the helper, not optimisation evidence."
+}
