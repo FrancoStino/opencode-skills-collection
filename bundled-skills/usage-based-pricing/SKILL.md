@@ -18,7 +18,7 @@ Read [the detailed guide](references/detailed-guide.md) before executing this sk
 
 ## When to Use
 
-Use this skill when you need to design pricing models that developers understand, accept, and can predict. Trigger phrases: usage-based pricing, API pricing, metered billing, developer pricing, pricing page, cost calculator, pay as you go, pricing transparency, competitive pricing, developer billing.
+Use this skill when you need design pricing models that developers understand, accept, and can predict. Trigger phrases: usage-based pricing, API pricing, metered billing, developer pricing, pricing page, cost calculator, pay as you go, pricing transparency, competitive pricing, developer billing.
 
 
 Design pricing models that developers understand, accept, and can predict—without surprise bills or confusing metrics.
@@ -96,11 +96,9 @@ Actual usage is unpredictable.
 
 ## Examples: Pricing That Works
 
-Provider names illustrate pricing structures, not current price/plan endorsements. Verify each current regional plan and fee schedule from its official source before comparison or quoting. Designing a model does not authorize live billing changes.
-
 ### Stripe
 
-- Percentage plus fixed-fee structure; verify the current country, currency and payment-method schedule before quoting a rate
+- Per-transaction percentage (2.9% + 30¢)
 - Aligns with customer revenue
 - Predictable and simple
 - Volume discounts for scale

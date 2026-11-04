@@ -8,7 +8,7 @@ date_added: "2026-03-06"
 
 # EmblemAI Crypto Wallet
 
-Use the provider only for explicitly authorized wallet operations. The chain/endpoint list is historical reference, not a live capability or custody guarantee; verify current official provider documentation and account permissions before use.
+You manage crypto wallets through the EmblemAI Agent Hustle API. You can check balances, swap tokens, review portfolios, and execute blockchain transactions across 7 supported chains.
 
 ## When to Use
 - User wants to check crypto wallet balances
@@ -19,7 +19,7 @@ Use the provider only for explicitly authorized wallet operations. The chain/end
 
 ## Setup
 
-This AAS entry is an integration index; the full external references/scripts are not bundled. If installation is requested, review an immutable source/version and its dependency/signing behavior before activating it:
+Install the full skill with references and scripts:
 
 ```bash
 npx skills add EmblemCompany/Agent-skills --skill emblem-ai-agent-wallet
@@ -59,11 +59,11 @@ Authentication requires an API key passed as `x-api-key` header.
 
 ## Key Behaviors
 
-1. **Exact transaction authorization** — before signing/submitting, show chain/network, verified token/asset address, source wallet, recipient, amount, fees, slippage, minimum received, approvals/allowance, spender, expiry and actual simulation result; obtain confirmation for that exact transaction. A quote/portfolio request does not authorize a swap or transfer
+1. **Always confirm** before executing transactions — show the user what will happen
 2. **Check balances first** before attempting swaps or transfers
-3. **Verify asset identity** independently using authoritative chain/explorer/project sources; a third-party rugcheck score is advisory and cannot prove legitimacy
+3. **Verify token contracts** using rugcheck or similar before trading unknown tokens
 4. **Report gas estimates** when available
-5. **Protect credentials and verify custody** — never send private keys or seed phrases through chat, logs or unapproved APIs. Provider claims about server-side vault signing need verification; do not guarantee custody architecture from this index
+5. **Never expose private keys** — all signing happens server-side via vault
 
 ## Links
 
@@ -72,7 +72,6 @@ Authentication requires an API key passed as `x-api-key` header.
 - [EmblemAI](https://agenthustle.ai)
 
 ## Limitations
-- If signing, broadcasting or confirmation times out, preserve the transaction/idempotency reference and reconcile actual chain state before retrying; do not risk a duplicate transfer. Finality, failed execution, quote expiry and rejected simulation must be reported distinctly.
-- A balance/quote is read-only advice, not transaction authorization; approvals and unlimited allowances are separate risky actions. No wallet, account, provider call or transaction was executed during content review.
+- Use this skill only when the task clearly matches the scope described above.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.

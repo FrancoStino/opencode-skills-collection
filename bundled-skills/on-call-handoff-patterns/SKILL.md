@@ -20,7 +20,7 @@ Effective patterns for on-call shift transitions, ensuring continuity, context t
 - Clarify goals, constraints, and required inputs.
 - Apply relevant best practices and validate outcomes.
 - Provide actionable steps and verification.
-- Use the handoff templates below and retain only facts verified for the declared shift.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
 
 ## Use this skill when
 
@@ -60,11 +60,9 @@ Incoming:
 
 ## Templates
 
-The names, dates, incidents and numbers below are synthetic examples. Replace them with verified shift evidence, preserve unknowns, and redact sensitive records. Draft the handoff by default; posting messages, changing paging routes, testing notifications or applying remediation requires authorization for the exact target. Do not run production commands merely to complete the template.
-
 ### Template 1: Shift Handoff Document
 
-````markdown
+```markdown
 # On-Call Handoff: Platform Team
 
 **Outgoing**: @alice (2024-01-15 to 2024-01-22)
@@ -161,7 +159,7 @@ No active incidents at handoff time.
 
 ### 2. Flaky Integration Test
 **Issue**: `test_payment_flow` fails intermittently in CI
-**Workaround**: Record the flaky failure and retry policy; retain the first failure and assign a root-cause investigation. A passing retry does not resolve the defect.
+**Workaround**: Re-run failed job (usually passes on retry)
 **Ticket**: ENG-1200 (P2)
 
 ---
@@ -200,8 +198,8 @@ kubectl get events --sort-by='.lastTimestamp' | tail -20
 # Database connections
 psql -c "SELECT count(*) FROM pg_stat_activity;"
 
-# Inspect the already authorized cache instance without deleting data
-redis-cli INFO memory
+# Clear cache (emergency only)
+redis-cli FLUSHDB
 ```
 
 ### Important Links
@@ -229,7 +227,7 @@ redis-cli INFO memory
 - [ ] Verify Slack notifications working
 - [ ] Check VPN/access working
 - [ ] Review critical dashboards
-````
+```
 
 ### Template 2: Quick Handoff (Async)
 

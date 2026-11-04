@@ -8,7 +8,8 @@ date_added: '2026-02-27'
 
 ## Use this skill when
 
-Implement or review Elixir/OTP supervision, process concurrency, Phoenix/Ecto boundaries, failure recovery and ExUnit coverage.
+- Working on elixir pro tasks or workflows
+- Needing guidance, best practices, or checklists for elixir pro
 
 ## Do not use this skill when
 
@@ -17,9 +18,10 @@ Implement or review Elixir/OTP supervision, process concurrency, Phoenix/Ecto bo
 
 ## Instructions
 
-- Read actual project/runtime versions, current instructions and existing code before choosing changes; clarify only indispensable unknowns.
+- Clarify goals, constraints, and required inputs.
 - Apply relevant best practices and validate outcomes.
 - Provide actionable steps and verification.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
 
 You are an Elixir expert specializing in concurrent, fault-tolerant, and distributed systems.
 
@@ -35,7 +37,7 @@ You are an Elixir expert specializing in concurrent, fault-tolerant, and distrib
 
 ## Approach
 
-1. Use supervision for expected failure isolation; choose restart intensity/strategy deliberately and handle persistent invalid input or side effects explicitly
+1. Embrace "let it crash" philosophy with proper supervision
 2. Use pattern matching over conditional logic
 3. Design with processes for isolation and concurrency
 4. Leverage immutability for predictable state
@@ -47,7 +49,7 @@ You are an Elixir expert specializing in concurrent, fault-tolerant, and distrib
 - Idiomatic Elixir following community style guide
 - OTP applications with proper supervision trees
 - Phoenix apps with contexts and clean boundaries
-- ExUnit tests with doctests; use async only when fixtures/state are genuinely isolated
+- ExUnit tests with doctests and async where possible
 - Dialyzer specs for type safety
 - Performance benchmarks with Benchee
 - Telemetry instrumentation for observability
@@ -61,6 +63,6 @@ Follow Elixir conventions. Design for fault tolerance and horizontal scaling.
 > Review this Elixir implementation for correctness, idiomatic design, performance, and test coverage.
 
 ## Limitations
-- This single-file guide is the available local procedure; no external reference pack or implementation-playbook is bundled or required. Keep existing framework/version constraints and report real verification separately from proposed code.
+- Use this skill only when the task clearly matches the scope described above.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.

@@ -13,11 +13,6 @@ tools: [claude, cursor, codex, gemini]
 
 # Glasser
 
-## External tool prerequisite
-
-Use only an already installed tool whose exact version, complete dependency tree and integrity have been reviewed. This skill does not bootstrap tools or activate external plugins. If the prerequisite is missing, stop that executable path and report it; continue with static analysis when possible. A separate installation task must pin immutable artifacts, stage them outside active agent directories with lifecycle scripts disabled, inspect every bundled file and executable entry point (including tests and hooks), and obtain approval before activation or host configuration changes. Do not substitute a same-named workspace script or fetch a moving branch.
-
-
 ## Overview
 
 Glasser is a commercial API broker that exposes third-party data providers
@@ -43,7 +38,11 @@ This skill was contributed by a member of the Glasser team.
 
 ### Step 1: Check Availability and Authentication
 
-Use only a previously reviewed installation. If absent, report the missing prerequisite and stop this executable path. Do not fetch vendor-hosted skill instructions as an installation workflow.
+Use the CLI only if it is already installed or the user has approved its
+installation under the host environment's software-installation policy.
+Installation instructions are maintained at
+<https://glasser.ai/SKILL.md>. Do not download or install executable code
+without the review and approval required by the current environment.
 
 Check the CLI and account:
 

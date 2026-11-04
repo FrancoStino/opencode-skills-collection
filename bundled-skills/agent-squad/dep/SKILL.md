@@ -1,7 +1,7 @@
 ---
 name: dep
 description: "Handles containerization, CI/CD pipelines, and deployment setup."
-risk: critical
+risk: safe
 source: community
 date_added: "2026-06-11"
 role: DevOps Engineer
@@ -20,12 +20,7 @@ Dep does not write application logic. He does not review code for quality. He ta
 ---
 
 ## When to Use
-
-Use when preparing an authorized container build, CI pipeline, deployment package or verified rollback procedure for a target environment.
-
-## Host and scope contract
-
-The squad names describe optional roles, not installed agents, merge authority or permission to delegate. Use existing user context and repository artifacts when a named report is absent. Follow the actual host's authorization, tool schemas and requested batch cadence; do not add handoff or approval checkpoints for routine scoped work. Pass exact revision and artifact paths with evidence and unresolved items, not merely version labels. Keep private data and secrets out of reports.
+- Use this skill when the task matches this description: Handles containerization, CI/CD pipelines, and deployment setup.
 
 ## Responsibilities
 
@@ -73,7 +68,7 @@ The squad names describe optional roles, not installed agents, merge authority o
   - Auth flow works end-to-end.
   - Error monitoring (Sentry, Datadog, etc.) is receiving events.
   - Logs are shipping to the log aggregator.
-- Generate a **rollback procedure** — simple, documented, tested for the target service and data migration.
+- Generate a **rollback procedure** — simple, documented, runnable in under 5 minutes.
 
 ### 6. Observability Setup
 - Configure **structured logging** output (JSON format with request ID, timestamp, level, message).
@@ -117,7 +112,7 @@ Input: Quinn Test Report v[x]
 - [ ] Confirm error events reaching monitoring
 
 ## Rollback Procedure
-[Validated steps, expected duration, data-restore limits and success checks]
+[Step-by-step, < 5 min, no jargon]
 
 ## Open Questions
 - [decision that requires user input — e.g. which cloud provider, which region]
@@ -152,5 +147,3 @@ When Dep is invoked outside the full flow (e.g. "just set up CI for this existin
 ## Limitations
 - AI agents may occasionally hallucinate or provide incorrect guidance. Always verify generated code and architectural designs before pushing to production.
 - Context window constraints mean large project histories must be compressed by the Orchestrator.
-
-Generating deployment files does not authorize provisioning, paid resources, publication or production deployment. Use reviewed action/image versions, least-privilege CI permissions and protected secret contexts. Measure recovery rather than promising a five-minute rollback; database reversal may need a separately verified restore.

@@ -1,21 +1,15 @@
 ---
 name: social-proof-architect
-description: "Select and place genuine testimonials, case studies, and other proof when an audience needs evidence at specific trust barriers."
+description: "One sentence - what this skill does and when to invoke it"
 risk: safe
 source: community
 date_added: "2026-04-04"
 ---
-Use a marketing planning and audience-research lens. Your task is to select, frame, and place the right type of social proof for a specific audience and context. You do not add proof as decoration. You match proof type to the trust gap.
+You are a **Social Psychologist specializing in conformity, trust, and influence**. Your task is to select, frame, and place the right type of social proof for a specific audience and context. You do not add proof as decoration. You match proof type to the trust gap.
 
 ## When to Use
 - Use when testimonials, logos, numbers, or case studies need to be structured for maximum trust impact.
 - Use when social proof exists but is weakly placed or not tied to the buyer's main hesitation.
-
-## Evidence and scope
-
-Use observed audience research and verified product facts. Psychological interpretations and the author-year references below are inherited conceptual context, not validated evidence for this exact workflow or a guaranteed conversion effect. Before using a scientific claim externally, verify the actual publication, method and applicability; omit unsupported claims. This is marketing planning, not clinical diagnosis. Do not infer sensitive traits or exploit vulnerabilities.
-
-Original contribution: [PR 451](https://github.com/sickn33/agentic-awesome-skills/pull/451) by MMEHDI0606; [immutable source snapshot](https://github.com/MMEHDI0606/antigravity-awesome-skills/blob/9c61357e3e6bb167946036f52ac1e28fc82e04d0/skills/social-proof-architect/SKILL.md). This identifies the contributed instructions, not scientific validation or a new upstream endorsement.
 
 ## CONTEXT GATHERING
 
@@ -37,23 +31,23 @@ People use social proof as a shortcut for uncertainty reduction, especially when
 
 **Step 1 - Identify the trust gap**
 Name what is missing: ability, benevolence, integrity, popularity, similarity, or legitimacy.
-*Planning hypothesis (verify before presenting as research): trust formation depends on distinct credibility dimensions, not one generic confidence factor (Mayer trust model; Rowley et al., 2015).*
+*Research basis: trust formation depends on distinct credibility dimensions, not one generic confidence factor (Mayer trust model; Rowley et al., 2015).*
 
 **Step 2 - Select the proof type**
 Choose peer similarity, authority, usage volume, certification, or outcome case studies.
-*Planning hypothesis (verify before presenting as research): similarity, authority, and bandwagon cues do not work equally across categories (Li et al., 2021; Bagozzi et al., 2021).*
+*Research basis: similarity, authority, and bandwagon cues do not work equally across categories (Li et al., 2021; Bagozzi et al., 2021).*
 
 **Step 3 - Match proof to awareness stage**
 Use softer proof early and stronger proof later when skepticism increases.
-*Planning hypothesis (verify before presenting as research): proof is most persuasive when it supports rather than replaces the audience's own reasoning (ELM; Quick et al., 2018).*
+*Research basis: proof is most persuasive when it supports rather than replaces the audience's own reasoning (ELM; Quick et al., 2018).*
 
 **Step 4 - Frame the proof honestly**
 Use real context, not cherry-picked outcomes.
-*Planning hypothesis (verify before presenting as research): fake or overstated proof creates backlash and skepticism once detected (Nguyen-Viet & Nguyen, 2024; Nagy et al., 2022).*
+*Research basis: fake or overstated proof creates backlash and skepticism once detected (Nguyen-Viet & Nguyen, 2024; Nagy et al., 2022).*
 
 **Step 5 - Place proof where doubt peaks**
 Insert proof immediately before a risky decision, not randomly.
-*Planning hypothesis (verify before presenting as research): trust is stage-specific and should be deployed at the friction point, not only in a testimonial block (Rowley et al., 2015; Du et al., 2023).*
+*Research basis: trust is stage-specific and should be deployed at the friction point, not only in a testimonial block (Rowley et al., 2015; Du et al., 2023).*
 
 ## DECISION MATRIX
 
@@ -101,7 +95,7 @@ The line between persuasion and manipulation is presenting evidence that helps a
 
 ## SKILL CHAINING
 
-Optional context from related skills (equivalent supplied research is sufficient; do not create a prerequisite cycle):
+Before invoking this skill, the agent should have completed:
 - [ ] `@customer-psychographic-profiler`
 - [ ] `@trust-calibrator`
 - [ ] `@awareness-stage-mapper`
@@ -110,7 +104,7 @@ This skill's output feeds into:
 - [ ] `@copywriting-psychologist`
 - [ ] `@pitch-psychologist`
 - [ ] `@sequence-psychologist`
-- [ ] landing-page drafts
+- [ ] `@landing-page`-style outputs
 
 ## OUTPUT QUALITY CHECK
 
@@ -126,8 +120,6 @@ Before finalizing output, the agent asks:
 **User request:**
 
 > Reorganize these testimonials, logos, metrics, and case studies to maximize trust without overstating the evidence.
-
-**Illustrative output:** Place an authorized testimonial beside the feature it actually discusses; include its context and date, and do not present one testimonial as a typical customer outcome.
 
 ## Limitations
 - Use this skill only when the task clearly matches the scope described above.

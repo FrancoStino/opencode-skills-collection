@@ -4,7 +4,7 @@ description: Launch RSVP speed reader for text
 trigger: command
 risk: critical
 source: community
-date_added: "2026-03-06"
+date_added: "2026-09-04"
 tools: Write, Bash, Read
 ---
 
@@ -24,22 +24,20 @@ Launch the RSVP speed reader to display text one word at a time with Spritz-styl
    - Otherwise, extract the main content from your **previous response** in this conversation
 
 2. **Prepare the content:**
-   - Preserve meaningful prose; do not discard user-requested code or numbers silently.
-   - Use a reviewed, actually installed reader template. The historical
-     `~/.claude/skills/speed/data/reader.html` path is not bundled by this AAS skill.
-   - Keep original assets immutable: write a separate private preview copy.
+   - Strip markdown formatting (headers, bold, links, code blocks)
+   - Keep clean, readable prose
+   - Escape quotes and backslashes for JavaScript
 
-3. **Serialize safely:**
-   - Serialize text as JSON rather than ad-hoc quote replacement. When embedding
-     JSON inside a script element, escape `<` as `\u003c` (and any required Unicode
-     separators) so supplied `</script>` text cannot become executable HTML.
-   - Do not put source text into shell arguments or execute its contents.
-   - If the template is absent, report the missing runtime; do not pretend a reader opened.
+3. **Write and launch:**
+   - Read `~/.claude/skills/speed/data/reader.html`
+   - Replace `<!-- CONTENT_PLACEHOLDER -->` with:
+     ```html
+     <script>window.SPEED_READER_CONTENT = "your escaped text";</script>
+     <!-- CONTENT_PLACEHOLDER -->
+     ```
+   - Run: `open ~/.claude/skills/speed/data/reader.html`
 
-4. **Launch and verify:**
-   - Open the preview using the current host's supported local-file action, not a
-     macOS-only command on every platform. Inspect actual displayed text and controls.
-   - Confirm opening only after successful host evidence; adjust speed to the user.
+4. **Confirm:** Tell the user it's opening. Mention `Space` to play/pause.
 
 ## Arguments
 $ARGUMENTS

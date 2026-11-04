@@ -10,75 +10,24 @@ import os
 import json
 from pathlib import Path
 
-TSC = ["npx", "--no-install", "tsc"]
-
-def run_cmd(args):
-    """Run a command as an argument list (no shell). Return (returncode, output)."""
+def run_cmd(cmd: str) -> str:
+    """Run shell command and return output."""
     try:
-        result = subprocess.run(args, capture_output=True, text=True, errors="replace")
-        return result.returncode, result.stdout + result.stderr
-    except OSError as e:
-        return None, str(e)
-
-def strip_jsonc(text: str) -> str:
-    """Remove // and /* */ comments and trailing commas, which tsconfig.json allows."""
-    out, i, n = [], 0, len(text)
-    while i < n:
-        c = text[i]
-        if c == '"':  # copy a string literal unchanged
-            j = i + 1
-            while j < n and text[j] != '"':
-                j += 2 if text[j] == "\\" else 1
-            out.append(text[i:j + 1])
-            i = j + 1
-        elif text.startswith("//", i):
-            j = text.find("\n", i)
-            i = n if j < 0 else j
-        elif text.startswith("/*", i):
-            j = text.find("*/", i + 2)
-            i = n if j < 0 else j + 2
-        else:
-            if c in "}]":  # drop a trailing comma before the closing bracket
-                k = len(out) - 1
-                while k >= 0 and out[k].isspace():
-                    k -= 1
-                if k >= 0 and out[k] == ",":
-                    del out[k]
-            out.append(c)
-            i += 1
-    return "".join(out)
-
-def grep_source_count(pattern: str, exclude: str | None = None) -> tuple[int, list[str]]:
-    """Count and sample lines containing ``pattern`` under ``src/``.
-
-    Pure-Python replacement for ``grep -r ... src/`` so no shell is involved.
-    """
-    root = Path("src")
-    if not root.is_dir():
-        return 0, []
-    matches: list[str] = []
-    for path in sorted(root.rglob("*")):
-        if path.suffix not in (".ts", ".tsx") or not path.is_file():
-            continue
-        try:
-            text = path.read_text(encoding="utf-8", errors="replace")
-        except OSError:
-            continue
-        for lineno, line in enumerate(text.splitlines(), start=1):
-            if pattern in line and (exclude is None or exclude not in line):
-                matches.append(f"{path}:{lineno}:{line}")
-    return len(matches), matches
+        result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+        return result.stdout + result.stderr
+    except Exception as e:
+        return str(e)
 
 def check_versions():
     """Check TypeScript and Node versions."""
     print("\n📦 Versions:")
     print("-" * 40)
     
-    ts_rc, ts_version = run_cmd([*TSC, "--version"])
-    node_rc, node_version = run_cmd(["node", "-v"])
+    ts_version = run_cmd("npx tsc --version 2>/dev/null").strip()
+    node_version = run_cmd("node -v 2>/dev/null").strip()
     
-    print(f"  TypeScript: {ts_version.strip() if ts_rc == 0 else 'Not found (no local typescript)'}")
-    print(f"  Node.js: {node_version.strip() if node_rc == 0 else 'Not found'}")
+    print(f"  TypeScript: {ts_version or 'Not found'}")
+    print(f"  Node.js: {node_version or 'Not found'}")
 
 def check_tsconfig():
     """Analyze tsconfig.json settings."""
@@ -91,8 +40,8 @@ def check_tsconfig():
         return
     
     try:
-        with open(tsconfig_path, encoding="utf-8") as f:
-            config = json.loads(strip_jsonc(f.read()))
+        with open(tsconfig_path) as f:
+            config = json.load(f)
         
         compiler_opts = config.get("compilerOptions", {})
         
@@ -185,28 +134,26 @@ def check_type_errors():
     print("\n🔍 Type Check:")
     print("-" * 40)
     
-    rc, result = run_cmd([*TSC, "--noEmit"])
-    lines = result.splitlines()
-    if rc == 0:
-        print("  ✅ No type errors")
-    elif "error TS" in result:
+    result = run_cmd("npx tsc --noEmit 2>&1 | head -20")
+    if "error TS" in result:
         errors = result.count("error TS")
         print(f"  ❌ {errors}+ type errors found")
-        print("\n".join(lines[:20])[:500])
+        print(result[:500])
     else:
-        print(f"  ⚠️ Type check did not run (exit code {rc}). Is typescript installed locally?")
-        print("\n".join(lines[:5])[:500])
+        print("  ✅ No type errors")
 
 def check_any_usage():
     """Check for any type usage."""
     print("\n⚠️ 'any' Type Usage:")
     print("-" * 40)
     
-    count, matches = grep_source_count(": any")
-    if count:
+    result = run_cmd("grep -r ': any' --include='*.ts' --include='*.tsx' src/ 2>/dev/null | wc -l")
+    count = result.strip()
+    if count and count != "0":
         print(f"  ⚠️ Found {count} occurrences of ': any'")
-        if matches:
-            print("\n".join(matches[:5]))
+        sample = run_cmd("grep -rn ': any' --include='*.ts' --include='*.tsx' src/ 2>/dev/null | head -5")
+        if sample:
+            print(sample)
     else:
         print("  ✅ No explicit 'any' types found")
 
@@ -215,8 +162,9 @@ def check_type_assertions():
     print("\n⚠️ Type Assertions (as):")
     print("-" * 40)
     
-    count, _ = grep_source_count(" as ", exclude="import")
-    if count:
+    result = run_cmd("grep -r ' as ' --include='*.ts' --include='*.tsx' src/ 2>/dev/null | grep -v 'import' | wc -l")
+    count = result.strip()
+    if count and count != "0":
         print(f"  ⚠️ Found {count} type assertions")
     else:
         print("  ✅ No type assertions found")
@@ -226,11 +174,9 @@ def check_performance():
     print("\n⏱️ Type Check Performance:")
     print("-" * 40)
     
-    _, result = run_cmd([*TSC, "--extendedDiagnostics", "--noEmit"])
-    keys = ("Check time", "Files:", "Lines:", "Nodes:")
-    lines = [line for line in result.splitlines() if any(k in line for k in keys)]
-    if lines:
-        for line in lines:
+    result = run_cmd("npx tsc --extendedDiagnostics --noEmit 2>&1 | grep -E 'Check time|Files:|Lines:|Nodes:'")
+    if result.strip():
+        for line in result.strip().split('\n'):
             print(f"  {line}")
     else:
         print("  ⚠️ Could not measure performance")

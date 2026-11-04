@@ -31,17 +31,17 @@ Before execution, define these once:
 - task goal
 - acceptance criteria (DoD)
 - target environment (`dev` by default)
-- review cadence/budget when requested; a default review cadence is not a task-completion limit
+- max iteration rounds (default `2`)
 
 If acceptance criteria are missing, request them once. If user does not provide, propose a concrete default and proceed.
 
 ## Issue Gate Dependency
 
-If the project already uses create-issue-gate, respect its current contract; otherwise derive acceptance criteria from the authorized task without inventing a mandatory issue.
+Before execution, prefer using `create-issue-gate`.
 
 - If issue status is `ready` and execution gate is `allowed`, continue.
-- A real project-required draft gate can block dependent actions; it does not forbid independent discovery or already-authorized work under a different applicable workflow.
-- Use available task context to formulate testable criteria; clarify only when a missing decision materially changes the outcome.
+- If issue status is `draft`, do not execute implementation/deploy/review loops.
+- Require user-provided, testable acceptance criteria before starting execution.
 
 ## Default Workflow
 
@@ -61,7 +61,7 @@ If the project already uses create-issue-gate, respect its current contract; oth
    - Fix valid items, re-run verification.
 
 5. **Dev deploy + runtime verification**
-   - Deploy only to an already-authorized dev target when runtime behavior matters; otherwise prepare and verify the concrete candidate locally.
+   - Deploy to `dev` when runtime behavior matters.
    - Verify via real API/Lambda/log evidence against DoD.
 
 6. **Completion decision**
@@ -85,7 +85,7 @@ If CI is still running, align polling to check completion boundaries instead of 
 
 ## Human Gate Rules (Must Ask)
 
-Require missing consequential authorization for the following; do not request it again when the user has already granted the exact scope:
+Require explicit user confirmation for:
 - production/staging deploy beyond agreed scope
 - destructive operations (history rewrite, force push, data-destructive ops)
 - actions with billing/security posture changes
@@ -95,7 +95,7 @@ Require missing consequential authorization for the following; do not request it
 ## Iteration/Stop Conditions
 
 Stop and escalate with a concise blocker report when:
-- The same verified external blocker leaves no meaningful authorized next step; two failed iterations alone are not a reason to stop when useful repair work remains
+- DoD still fails after max rounds (`2` default)
 - external dependency blocks progress (provider outage, missing creds, account permission)
 - conflicting review instructions cannot both be satisfied
 

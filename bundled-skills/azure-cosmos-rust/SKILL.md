@@ -10,34 +10,32 @@ date_added: '2026-02-27'
 
 Client library for Azure Cosmos DB NoSQL API — globally distributed, multi-model database.
 
-The examples below require a reviewed compatible crate set and replacement of every resource placeholder. Do not use production data for demonstration writes.
-
 ## Installation
 
 ```sh
-cargo add azure_data_cosmos@=0.37.1 azure_identity@=1.0.0 azure_core@=1.1.0
+cargo add azure_data_cosmos azure_identity
 ```
 
 ## Environment Variables
 
 ```bash
-export COSMOS_ENDPOINT="https://<account>.documents.azure.com:443/"
-export COSMOS_DATABASE="mydb"
-export COSMOS_CONTAINER="mycontainer"
+COSMOS_ENDPOINT=https://<account>.documents.azure.com:443/
+COSMOS_DATABASE=mydb
+COSMOS_CONTAINER=mycontainer
 ```
 
 ## Authentication
 
 ```rust
 use azure_identity::DeveloperToolsCredential;
-use azure_data_cosmos::{AccountEndpoint, AccountReference, CosmosClient, RoutingStrategy};
+use azure_data_cosmos::CosmosClient;
 
 let credential = DeveloperToolsCredential::new(None)?;
-let endpoint: AccountEndpoint = "https://<account>.documents.azure.com/".parse()?;
-let account = AccountReference::with_credential(endpoint, credential.clone());
-let client = CosmosClient::builder()
-    .build(account, RoutingStrategy::ProximityTo("East US".into()))
-    .await?;
+let client = CosmosClient::new(
+    "https://<account>.documents.azure.com:443/",
+    credential.clone(),
+    None,
+)?;
 ```
 
 ## Client Hierarchy
@@ -54,7 +52,7 @@ let client = CosmosClient::builder()
 
 ```rust
 let database = client.database_client("myDatabase");
-let container = database.container_client("myContainer", None).await?;
+let container = database.container_client("myContainer");
 ```
 
 ### Create Item
@@ -75,7 +73,7 @@ let item = Item {
     value: "hello".into(),
 };
 
-container.create_item("partition1", "1", item, None).await?;
+container.create_item("partition1", item, None).await?;
 ```
 
 ### Read Item
@@ -97,14 +95,13 @@ container.replace_item("partition1", "1", item, None).await?;
 ### Patch Item
 
 ```rust
-// Explicit preview opt-in: cargo add azure_data_cosmos@=0.37.1 --features preview_patch
-use azure_data_cosmos::models::{PatchInstructions, PatchOperation};
+use azure_data_cosmos::models::PatchDocument;
 
-let patch = PatchInstructions::from(vec![
-    PatchOperation::set("/value", serde_json::json!("newValue")),
-]);
-let patched: Item = container.patch_item("partition1", "1", patch, None)
-    .await?.into_model()?;
+let patch = PatchDocument::default()
+    .with_add("/newField", "newValue")?
+    .with_remove("/oldField")?;
+
+container.patch_item("partition1", "1", patch, None).await?;
 ```
 
 ### Delete Item
@@ -113,14 +110,12 @@ let patched: Item = container.patch_item("partition1", "1", patch, None)
 container.delete_item("partition1", "1", None).await?;
 ```
 
-The reviewed current API uses an async builder/container initialization and a separate explicit item ID. Preview PATCH is not a production-ready guarantee; review its selected strategy, conflict/retry behavior and request-unit cost. [Official crate reference](https://docs.rs/azure_data_cosmos/0.37.1/azure_data_cosmos/).
-
 ## Key Auth (Optional)
 
 Enable key-based authentication with feature flag:
 
 ```sh
-cargo add azure_data_cosmos@=0.37.1 --features key_auth
+cargo add azure_data_cosmos --features key_auth
 ```
 
 ## Best Practices
@@ -131,8 +126,6 @@ cargo add azure_data_cosmos@=0.37.1 --features key_auth
 4. **Use Entra ID auth** — prefer `DeveloperToolsCredential` over key auth
 5. **Reuse client instances** — clients are thread-safe and reusable
 
-The reviewed example set uses `azure_data_cosmos 0.37.1` and compatible Azure core/credential crates. Record and commit Cargo.lock; source/API review is not a compiler or live-service test.
-
 ## Reference Links
 
 | Resource | Link |
@@ -142,10 +135,9 @@ The reviewed example set uses `azure_data_cosmos 0.37.1` and compatible Azure co
 | crates.io | https://crates.io/crates/azure_data_cosmos |
 
 ## When to Use
-Use when a Rust application needs Cosmos DB NoSQL item CRUD, partition-key point reads, container access or explicitly opted-in preview patching.
+This skill is applicable to execute the workflow or actions described in the overview.
 
 ## Limitations
-- Examples are fragments inside async application code, with compatible pinned Azure crates and the required Tokio/Serde/Futures dependencies; verify the selected version’s API before use. They were reviewed against official source/reference, not compiled or run against a cloud account here.
-- Use an authorized tenant, resource and identity with least privilege. Writes, overwrites, deletes, backup retrieval and account changes require the corresponding scope; cleanup may remove only explicitly identified disposable resources. Bound requests, retries and downloaded bytes, and do not log payloads, credentials or secret values.
+- Use this skill only when the task clearly matches the scope described above.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.

@@ -1,7 +1,3 @@
-# Installation boundary
-
-This reference is historical installation background. This skill does not install or update rclone. Use an existing reviewed binary; otherwise stop before execution and arrange a separately approved immutable, signature-verified installation. The bundled legacy installer is disabled. Do not run the historical recipes below as an agent setup workflow.
-
 ---
 title: "Install"
 description: "Rclone Installation"
@@ -35,13 +31,13 @@ signatures on the release.
 To install rclone on Linux/macOS/BSD systems, run:
 
 ```console
-# No bootstrap execution: use a separately reviewed signed installation.
+sudo -v ; curl https://rclone.org/install.sh | sudo bash
 ```
 
 For beta installation, run:
 
 ```console
-# No bootstrap execution: use a separately reviewed signed installation.
+sudo -v ; curl https://rclone.org/install.sh | sudo bash -s beta
 ```
 
 Note that this script checks the version of rclone installed first and

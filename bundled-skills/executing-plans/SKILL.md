@@ -22,10 +22,10 @@ Load plan, review critically, execute tasks in batches, report for review betwee
 1. Read plan file
 2. Review critically - identify any questions or concerns about the plan
 3. If concerns: Raise them with your human partner before starting
-4. If no concerns: use the project’s existing task/todo mechanism and proceed; TodoWrite is a host-specific tool, not a universally installed command
+4. If no concerns: Create TodoWrite and proceed
 
 ### Step 2: Execute Batch
-**Batch size follows the user’s explicit instruction or project contract; otherwise choose a practical reviewable group**
+**Default: First 3 tasks**
 
 For each task:
 1. Mark as in_progress
@@ -37,7 +37,7 @@ For each task:
 When batch complete:
 - Show what was implemented
 - Show verification output
-- Continue to the next authorized batch unless the user explicitly requested a checkpoint; provide concise progress without ending the task unnecessarily.
+- Say: "Ready for feedback."
 
 ### Step 4: Continue
 Based on feedback:
@@ -49,13 +49,13 @@ Based on feedback:
 
 After all tasks complete and verified:
 - Announce: "I'm using the finishing-a-development-branch skill to complete this work."
-- Use the actually available finishing-a-development-branch skill only when appropriate; repository-specific maintainer/merge workflows take precedence. Do not invent a superpowers plugin dependency.
+- **REQUIRED SUB-SKILL:** Use superpowers:finishing-a-development-branch
 - Follow that skill to verify tests, present options, execute choice
 
 ## When to Stop and Ask for Help
 
-Pause only the dependent step when an indispensable input/authorization or unresolved external blocker prevents it; preserve independent work. Repair ordinary failures autonomously. Examples of issues to investigate include:
-- A missing dependency or failing test: inspect the actual cause and attempt relevant repair; it is not automatically a reason to stop
+**STOP executing immediately when:**
+- Hit a blocker mid-batch (missing dependency, test fails, instruction unclear)
 - Plan has critical gaps preventing starting
 - You don't understand an instruction
 - Verification fails repeatedly
@@ -75,11 +75,11 @@ Pause only the dependent step when an indispensable input/authorization or unres
 - Follow plan steps exactly
 - Don't skip verifications
 - Reference skills when plan says to
-- Between batches: follow the user’s authorized cadence and continue when no required checkpoint remains
+- Between batches: just report and wait
 - Stop when blocked, don't guess
 
 ## When to Use
-Use when implementing an existing written plan with verifiable tasks and checkpoints. Preserve the plan file when requested, use existing todos and the user’s latest batching/continuation instruction.
+This skill is applicable to execute the workflow or actions described in the overview.
 
 ## Example
 

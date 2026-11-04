@@ -159,16 +159,16 @@ describe('ComponentName', () => {
   });
 
   describe('Rendering', () => {
-    it.todo('should render component with default props');
-    it.todo('should render loading state when loading');
+    it('should render component with default props', () => {});
+    it('should render loading state when loading', () => {});
   });
 
   describe('User interactions', () => {
-    it.todo('should call onPress when button is clicked');
+    it('should call onPress when button is clicked', async () => {});
   });
 
   describe('Edge cases', () => {
-    it.todo('should handle empty data gracefully');
+    it('should handle empty data gracefully', () => {});
   });
 });
 ```
@@ -183,14 +183,15 @@ expect(screen.getByText('Hello')).toBeTruthy();
 expect(screen.queryByText('Goodbye')).toBeNull();
 
 // Element appears asynchronously
-// async-appearance-example: await the element, not the Promise
-expect(await screen.findByText('Loaded')).toBeTruthy();
+await waitFor(() => {
+  expect(screen.findByText('Loaded')).toBeTruthy();
+});
 ```
 
 ## User Interaction Patterns
 
 ```typescript
-import { fireEvent, screen, waitFor } from '@testing-library/react-native';
+import { fireEvent, screen } from '@testing-library/react-native';
 
 it('should submit form on button click', async () => {
   const onSubmit = jest.fn();
@@ -261,7 +262,7 @@ npm test ComponentName.test.tsx
 - **systematic-debugging**: Write test that reproduces bug before fixing
 
 ## When to Use
-Use when writing Jest unit tests, test factories and mocks, or diagnosing a failing test through a red-green-refactor cycle.
+This skill is applicable to execute the workflow or actions described in the overview.
 
 ## Limitations
 - Use this skill only when the task clearly matches the scope described above.

@@ -37,7 +37,8 @@ reading this, will happily produce a confident paraphrase of a product's system 
 reconstruction rather than a quotation. The archive is a primary source; your recollection of it is
 not.
 
-Reads public reference files from GitHub. Comparison downloads write only inside a newly created private temporary directory; nothing is installed or activated.
+Read-only. Nothing here installs, runs, or mutates anything; the only external access is fetching
+public files from github.com.
 
 ## When to Use This Skill
 
@@ -90,7 +91,6 @@ publication or an upstream collection — still useful, but it is the vendor's a
 prompt, which is a different kind of evidence.
 
 ```bash
-REVIEW_DIR="$(mktemp -d)" || exit 1
 curl -s "$BASE/docs/CAPTURES.md" | grep -i "claude code"
 ```
 
@@ -102,10 +102,9 @@ interchangeable claims.
 Two artifacts of the same product differ for a reason worth reporting.
 
 ```bash
-REVIEW_DIR="$(mktemp -d)" || exit 1
-curl -s "$BASE/Claude-Code/claude-code-fable-5.1-system-prompt-2026-09-02.md" -o "$REVIEW_DIR/a.md"
-curl -s "$BASE/Claude-Code/claude-code-fable-5.1-print-system-prompt-2026-09-02.md" -o "$REVIEW_DIR/b.md"
-diff "$REVIEW_DIR/a.md" "$REVIEW_DIR/b.md" | head -60
+curl -s "$BASE/Claude-Code/claude-code-fable-5.1-system-prompt-2026-09-02.md" -o /tmp/a.md
+curl -s "$BASE/Claude-Code/claude-code-fable-5.1-print-system-prompt-2026-09-02.md" -o /tmp/b.md
+diff /tmp/a.md /tmp/b.md | head -60
 ```
 
 Same model, same day, interactive versus headless: the identity line itself changes and the tool
@@ -145,7 +144,7 @@ a match on generic safety boilerplate is not.
 ## Best Practices
 
 - ✅ Cite file name plus capture date every time you quote.
-- ✅ State whether the artifact was captured off the wire or reported by the model itself.
+- ✅ State whether the artifact was captured or vendor-reported.
 - ✅ Treat every number — characters, tool counts — as tied to one dated file.
 - ✅ Say plainly when the archive has no entry for the product being asked about.
 - ❌ Do not paraphrase a prompt you did not fetch in this session.

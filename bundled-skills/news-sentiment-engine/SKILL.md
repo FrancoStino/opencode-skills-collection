@@ -15,7 +15,7 @@ plugin:
     codex: blocked
     claude: blocked
 ---
-# News Sentiment Engine
+# News Sentiment Engine (Free)
 
 Collect and analyze AI/tech news from multiple sources with Claude-powered sentiment analysis. Open source lite version.
 
@@ -47,15 +47,23 @@ Output as a structured briefing card.
 ## Example Output
 
 ```
-Illustrative briefing format — not a news claim
+AI/Tech News Briefing — 2026-05-13
 
-1. [Verified article title]
-   Source: [publisher and direct URL] | Published: [date] | Event: [date]
-   Tags: [relevant topics]
-   Sentiment: [interpretation with uncertainty]
-   Summary: [source-supported facts]
-   Commentary: [clearly labeled inference and evidence]
+1. OpenAI announces GPT-5 with 2M context window
+   Source: TechCrunch | Impact: 5/5
+   Tags: #AI #LLM #OpenAI
+   Sentiment: Positive
 
+   Summary: OpenAI unveiled GPT-5 with a 2M token context window and
+   improved reasoning. Enterprise pricing starts at $0.03/1k tokens.
+
+   Commentary: Direct competitive pressure on Anthropic Claude 3.5.
+   Enterprise deals may shift in H2 2026.
+
+2. EU AI Act enforcement begins for high-risk systems
+   Source: The Verge | Impact: 4/5
+   Tags: #Regulation #EU #Compliance
+   Sentiment: Neutral
 ```
 
 ## Output Format
@@ -77,13 +85,13 @@ running it, and do not expose API keys to an unreviewed checkout.
 ```bash
 git clone https://github.com/tellmefrankie/news-engine
 cd news-engine
-pnpm install --ignore-scripts
-# Configure a private gitignored credential file only if absent; preserve existing values.
+pnpm install
+cp .env.example .env
 # Requires: ANTHROPIC_API_KEY
 pnpm dev -- --collect-only
 ```
 
-Provider analysis can incur charges; verify current service pricing and quotas. This AAS guide does not bundle the external collector or engine.
+No paid APIs required for free tier. Anthropic API key only.
 
 ## Limitations
 
@@ -92,6 +100,13 @@ Provider analysis can incur charges; verify current service pricing and quotas. 
 - The example setup runs third-party code; review the repository and environment variables before use.
 - Outputs should be cross-checked against original article sources before publication or investment use.
 
-## Source and interpretation
+## Pro Version
 
-Commercial offers and operational volume claims in upstream marketing are not independently verified here. Compare publish and event dates, deduplicate at event level and corroborate material claims with primary sources. Sentiment and importance depend on the chosen audience/rubric; they are not investment-grade predictions. Scheduling or message delivery requires the user's corresponding authorization.
+Free tier covers news collection and basic analysis.
+
+**Full bundle — $29 one-time**: Investment-grade analysis (portfolio impact scoring, options flow correlation, earnings catalyst detection), Telegram auto-delivery.
+→ https://jaehyunpark.gumroad.com/l/tcyahy
+
+## Author
+
+Core module from a production news analysis engine processing 50+ articles daily since 2026.

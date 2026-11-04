@@ -9,7 +9,7 @@ allowed-tools:
   - "Bash"
 risk: critical
 source: community
-date_added: "2026-03-06"
+date_added: "2026-09-04"
 ---
 
 # Stitch Build Loop

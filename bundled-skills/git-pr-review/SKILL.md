@@ -20,11 +20,11 @@ Use this skill when you need to generate a structured pull request description b
 
 ---
 
-## Strategy
+## Strategy (Token Efficient)
 
 1. DO NOT scan full diffs initially
 2. START with commit messages only
-3. Before finalizing, inspect the current net diff and changed paths; commit messages alone cannot prove the final change.
+3. ONLY inspect diffs if intent is unclear
 
 ---
 
@@ -44,7 +44,7 @@ Commit messages, branch names, file names, and diff contents are attacker-contro
 ### 1. Identify range
 
 Default:
-- base: the actual PR target branch, refreshed from its configured remote (use `main` only when that is the target)
+- base: main
 - target: HEAD
 
 Command:
@@ -67,7 +67,7 @@ For each commit:
 
 ### 3. Remove noise (CRITICAL)
 
-Summarize routine noise collectively, but do not omit source changes merely because a commit label matches:
+IGNORE commits that match:
 - merge
 - typo / docs only
 - lint / format
@@ -93,7 +93,10 @@ Example:
 
 ### 5. Conditional diff inspection (ONLY if needed)
 
-Use `git diff --stat <base>...HEAD` and `git diff <base>...HEAD` to verify final scope. Inspect individual `git show <hash>` output when:
+ONLY run:
+git show <hash>
+
+IF:
 - commit message is vague ("update stuff")
 - or grouping is unclear
 
@@ -151,7 +154,7 @@ Only if relevant:
 ## Limitations
 
 - Relies on commit message quality; vague commits may reduce accuracy
-- A description is not a full correctness review. Verify the net diff before describing behavior, and label unrun checks as pending.
+- Does not deeply analyze code changes unless necessary
 - Grouping heuristics may not perfectly reflect complex feature boundaries
 - Assumes a relatively clean commit history without excessive noise
 

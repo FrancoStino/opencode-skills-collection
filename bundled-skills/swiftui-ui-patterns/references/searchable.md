@@ -41,36 +41,20 @@ struct ExploreView: View {
         Text(scope.title)
       }
     }
-    .task(id: [searchQuery, String(describing: searchScope)]) {
-      await runSearch(query: searchQuery, scope: searchScope)
+    .task(id: searchQuery) {
+      await runSearch()
     }
   }
 
-  private func runSearch(query requestedQuery: String, scope requestedScope: SearchScope) async {
-    guard !requestedQuery.isEmpty else {
+  private func runSearch() async {
+    guard !searchQuery.isEmpty else {
       results = []
-      isSearching = false
       return
     }
     isSearching = true
-    defer {
-      if !Task.isCancelled && searchQuery == requestedQuery && searchScope == requestedScope {
-        isSearching = false
-      }
-    }
-    do {
-      try await Task.sleep(for: .milliseconds(250))
-      try Task.checkCancellation()
-      let fetched = await fetchResults(query: requestedQuery, scope: requestedScope)
-      try Task.checkCancellation()
-      guard searchQuery == requestedQuery && searchScope == requestedScope else { return }
-      results = fetched
-    } catch is CancellationError {
-      return
-    } catch {
-      guard !Task.isCancelled else { return }
-      results = []
-    }
+    defer { isSearching = false }
+    try? await Task.sleep(for: .milliseconds(250))
+    results = await fetchResults(query: searchQuery, scope: searchScope)
   }
 }
 ```

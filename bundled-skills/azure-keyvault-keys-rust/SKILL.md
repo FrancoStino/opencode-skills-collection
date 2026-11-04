@@ -10,18 +10,16 @@ date_added: '2026-02-27'
 
 Client library for Azure Key Vault Keys — secure storage and management of cryptographic keys.
 
-The examples below require a reviewed compatible crate set and replacement of every resource placeholder. Do not use production data for demonstration writes.
-
 ## Installation
 
 ```sh
-cargo add azure_security_keyvault_keys@=1.0.1 azure_identity@=1.0.0 azure_core@=1.1.0
+cargo add azure_security_keyvault_keys azure_identity
 ```
 
 ## Environment Variables
 
 ```bash
-export AZURE_KEYVAULT_URL="https://<vault-name>.vault.azure.net/"
+AZURE_KEYVAULT_URL=https://<vault-name>.vault.azure.net/
 ```
 
 ## Authentication
@@ -66,7 +64,7 @@ println!("Key ID: {:?}", key.key.as_ref().map(|k| &k.kid));
 use azure_security_keyvault_keys::models::{CreateKeyParameters, KeyType};
 
 let params = CreateKeyParameters {
-    kty: Some(KeyType::Rsa),
+    kty: KeyType::Rsa,
     key_size: Some(2048),
     ..Default::default()
 };
@@ -83,7 +81,7 @@ let key = client
 use azure_security_keyvault_keys::models::{CreateKeyParameters, KeyType, CurveName};
 
 let params = CreateKeyParameters {
-    kty: Some(KeyType::Ec),
+    kty: KeyType::Ec,
     curve: Some(CurveName::P256),
     ..Default::default()
 };
@@ -106,7 +104,7 @@ client.delete_key("key-name", None).await?;
 use azure_security_keyvault_keys::ResourceExt;
 use futures::TryStreamExt;
 
-let mut pager = client.list_key_properties(None)?;
+let mut pager = client.list_key_properties(None)?.into_stream();
 while let Some(key) = pager.try_next().await? {
     let name = key.resource_id()?.name;
     println!("Key: {}", name);
@@ -149,7 +147,7 @@ Key Vault can perform crypto operations without exposing the private key:
 1. **Use Entra ID auth** — `DeveloperToolsCredential` for dev, `ManagedIdentityCredential` for production
 2. **Use HSM keys for sensitive workloads** — hardware-protected keys
 3. **Use EC for signing** — more efficient than RSA
-4. **Use envelope encryption** — RSA can wrap a symmetric data key; do not encrypt arbitrary bulk data directly with RSA
+4. **Use RSA for encryption** — when encrypting data
 5. **Backup keys** — for disaster recovery
 6. **Enable soft delete** — required for production vaults
 7. **Use key rotation** — create new versions periodically
@@ -160,8 +158,6 @@ Assign these Key Vault roles:
 - `Key Vault Crypto User` — use keys for crypto operations
 - `Key Vault Crypto Officer` — full CRUD on keys
 
-The reviewed example set uses `azure_security_keyvault_keys 1.0.1` and compatible Azure core/credential crates. Record and commit Cargo.lock; source/API review is not a compiler or live-service test.
-
 ## Reference Links
 
 | Resource | Link |
@@ -171,10 +167,9 @@ The reviewed example set uses `azure_security_keyvault_keys 1.0.1` and compatibl
 | crates.io | https://crates.io/crates/azure_security_keyvault_keys |
 
 ## When to Use
-Use when a Rust application retrieves public key metadata or performs authorized Key Vault key creation, versioning, backup, restoration or cryptographic operations.
+This skill is applicable to execute the workflow or actions described in the overview.
 
 ## Limitations
-- Examples are fragments inside async application code, with compatible pinned Azure crates and the required Tokio/Serde/Futures dependencies; verify the selected version’s API before use. They were reviewed against official source/reference, not compiled or run against a cloud account here.
-- Use an authorized tenant, resource and identity with least privilege. Writes, overwrites, deletes, backup retrieval and account changes require the corresponding scope; cleanup may remove only explicitly identified disposable resources. Bound requests, retries and downloaded bytes, and do not log payloads, credentials or secret values.
+- Use this skill only when the task clearly matches the scope described above.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.

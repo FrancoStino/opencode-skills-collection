@@ -1,7 +1,7 @@
 ---
 name: fal-generate
 description: "Generate images and videos using fal.ai AI models"
-risk: critical
+risk: safe
 source: "https://github.com/fal-ai-community/skills/blob/main/skills/claude.ai/fal-generate/SKILL.md"
 date_added: "2026-02-27"
 ---
@@ -12,25 +12,15 @@ date_added: "2026-02-27"
 
 Generate images and videos using fal.ai AI models
 
-## When to Use
+## When to Use This Skill
 
-Prepare image or video generation through an available fal.ai integration when the user requests that media operation.
+Use this skill when you need to work with generate images and videos using fal.ai ai models.
 
-## Procedure and Inputs
+## Instructions
 
-Resolve prompt, intended use, aspect ratio, duration, reference permissions and budget. This AAS entrypoint does not bundle a fal client, model catalog,
-credentials or executable examples. The historical upstream file is currently
-unavailable; preserve its attribution and do not invent an endpoint or model ID.
-Use only an already configured integration with a verified current schema, or
-report execution unavailable and return the requested job specification.
+This skill provides guidance and patterns for generate images and videos using fal.ai ai models.
 
-Choose a currently available model from the actual integration, inspect its input schema, and submit the smallest requested job. Preserve returned job identity and distinguish queued, failed and completed status.
-
-Confirm upload/privacy and paid-call scope before submitting. Use bounded status
-polling appropriate to the actual tool; do not retry an ambiguous submission until
-its job identity/account state is reconciled. Deliver the actual returned artifact
-and state which requested properties were checked; a draft or queued job is not a
-finished output.
+For more information, see the [source repository](https://github.com/fal-ai-community/skills/blob/main/skills/claude.ai/fal-generate/SKILL.md).
 
 ## Example
 

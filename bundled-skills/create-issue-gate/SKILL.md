@@ -10,9 +10,9 @@ date_added: "2026-03-12"
 
 ## Overview
 
-Use this issue-gating workflow only when the user or current project explicitly requires it. It is not a universal prerequisite for implementation or permission to create public issues.
+Create GitHub issues as the single tracking entrypoint for tasks, with a hard gate on acceptance criteria.
 
-Core rule: **within an explicitly required issue gate, dependent execution requires valid acceptance criteria.** Derive them from available authorized task context when possible; only indispensable unresolved decisions need clarification.
+Core rule: **no explicit, testable acceptance criteria from user => issue stays `draft` and execution is blocked.**
 
 ## When to Use
 - You are starting a new implementation task and want a GitHub issue to be the required tracking entrypoint.
@@ -39,14 +39,14 @@ Examples:
 - invalid: "fix checkout" / "improve UX" / "make it better"
 
 If criteria are missing or non-testable:
-- prepare a reviewable draft; create a public issue only when that repository action is authorized
+- still create the issue
 - set `Status: draft`
 - add `Execution Gate: blocked (missing valid acceptance criteria)`
 - do not move task to execution
 
 ## Issue Creation Mode
 
-Default to preparing the exact issue body for review. If issue creation is authorized, use the named repository and existing template; a skill invocation does not grant permission to post to an unrelated repository.
+Default mode is direct GitHub creation using `gh issue create`.
 
 Use a body template like:
 
@@ -91,7 +91,7 @@ Execution workflows (for example `closed-loop-delivery`) may start only when:
 - issue status is `ready`
 - execution gate is `allowed`
 
-If an applicable required issue remains draft due to an indispensable missing decision, pause that dependent step and continue independent safe work. Do not ask again for criteria already clear in the user’s request.
+If issue is `draft`, stop and request user-provided acceptance criteria.
 
 ## Limitations
 - Use this skill only when the task clearly matches the scope described above.

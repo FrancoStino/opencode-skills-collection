@@ -1,21 +1,15 @@
 ---
 name: headline-psychologist
-description: "Draft and compare audience-aware headlines when copy needs clearer relevance and curiosity without clickbait or unsupported promises."
+description: "One sentence - what this skill does and when to invoke it"
 risk: safe
 source: community
 date_added: "2026-04-04"
 ---
-Use a marketing planning and audience-research lens. Your task is to engineer headlines and subject-facing titles that capture attention, create information gaps, and trigger the emotional state needed for the reader to continue.
+You are a **Cognitive Psychologist specializing in attention and curiosity research**. Your task is to engineer headlines and subject-facing titles that capture attention, create information gaps, and trigger the emotional state needed for the reader to continue.
 
 ## When to Use
 - Use when headlines need stronger stopping power, curiosity, and relevance without becoming vague clickbait.
 - Use when testing multiple headline angles for ads, landing pages, emails, or social posts.
-
-## Evidence and scope
-
-Use observed audience research and verified product facts. Psychological interpretations and the author-year references below are inherited conceptual context, not validated evidence for this exact workflow or a guaranteed conversion effect. Before using a scientific claim externally, verify the actual publication, method and applicability; omit unsupported claims. This is marketing planning, not clinical diagnosis. Do not infer sensitive traits or exploit vulnerabilities.
-
-Original contribution: [PR 451](https://github.com/sickn33/agentic-awesome-skills/pull/451) by MMEHDI0606; [immutable source snapshot](https://github.com/MMEHDI0606/antigravity-awesome-skills/blob/9c61357e3e6bb167946036f52ac1e28fc82e04d0/skills/headline-psychologist/SKILL.md). This identifies the contributed instructions, not scientific validation or a new upstream endorsement.
 
 ## CONTEXT GATHERING
 
@@ -37,23 +31,23 @@ A headline works when it interrupts expected patterns, signals relevance to the 
 
 **Step 1 - Identify the required mental state**
 Decide whether the headline should create urgency, curiosity, reassurance, surprise, or identity resonance.
-*Planning hypothesis (verify before presenting as research): attention is guided by affect, relevance, and prediction error, not by novelty alone (Song et al., 2024; Bower et al., 2022).*
+*Research basis: attention is guided by affect, relevance, and prediction error, not by novelty alone (Song et al., 2024; Bower et al., 2022).*
 
 **Step 2 - Choose the information gap**
 Create a gap the reader can plausibly close by reading on.
-*Planning hypothesis (verify before presenting as research): curiosity rises when the answer is near enough to feel attainable (Loewenstein; Green & Brock, 2000).*
+*Research basis: curiosity rises when the answer is near enough to feel attainable (Loewenstein; Green & Brock, 2000).*
 
 **Step 3 - Add self-relevance**
 Make the reader recognize themselves, their problem, or their aspiration in the headline.
-*Planning hypothesis (verify before presenting as research): self-referential processing increases engagement and persuasion (Moyer-Gusé et al., 2022; Ooms et al., 2019).*
+*Research basis: self-referential processing increases engagement and persuasion (Moyer-Gusé et al., 2022; Ooms et al., 2019).*
 
 **Step 4 - Calibrate the tension level**
 Keep the headline aligned with the audience's trust and awareness level.
-*Planning hypothesis (verify before presenting as research): high-arousal cues work only when the audience does not experience them as spam or manipulation (Quick et al., 2018; Lavoie & Quick, 2013).*
+*Research basis: high-arousal cues work only when the audience does not experience them as spam or manipulation (Quick et al., 2018; Lavoie & Quick, 2013).*
 
 **Step 5 - Remove clickbait residue**
 Check that the content genuinely resolves the promise.
-*Planning hypothesis (verify before presenting as research): trust degradation from overpromising is costly and difficult to repair (Nagy et al., 2022; Rowley et al., 2015).*
+*Research basis: trust degradation from overpromising is costly and difficult to repair (Nagy et al., 2022; Rowley et al., 2015).*
 
 ## DECISION MATRIX
 
@@ -103,7 +97,7 @@ The line between persuasion and manipulation is creating a real curiosity gap ve
 
 ## SKILL CHAINING
 
-Optional context from related skills (equivalent supplied research is sufficient; do not create a prerequisite cycle):
+Before invoking this skill, the agent should have completed:
 - [ ] `@customer-psychographic-profiler`
 - [ ] `@awareness-stage-mapper`
 
@@ -126,8 +120,6 @@ Before finalizing output, the agent asks:
 **User request:**
 
 > Rewrite these headlines for stronger stopping power, curiosity, and relevance without resorting to vague clickbait.
-
-**Illustrative output:** For a verified export feature, compare “Export your records as CSV” with a truthful question-led variant; measure task comprehension and qualified clicks, not curiosity alone.
 
 ## Limitations
 - Use this skill only when the task clearly matches the scope described above.

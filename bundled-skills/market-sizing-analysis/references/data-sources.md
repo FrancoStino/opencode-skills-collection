@@ -1,6 +1,6 @@
 # Market Sizing Data Sources
 
-Discovery checklist for market research and sizing analysis. Provider availability, subscriptions and access restrictions must be verified on the current primary source; inclusion is not a recommendation to purchase. Obtain authorization before any purchase or customer-data export.
+Curated list of credible sources for market research and sizing analysis.
 
 ## Industry Research Reports
 
@@ -9,16 +9,19 @@ Discovery checklist for market research and sizing analysis. Provider availabili
 **Gartner** (https://www.gartner.com)
 - Technology market forecasts and sizing
 - Magic Quadrants for competitive positioning
+- Typical cost: $5K-$50K per report
 - Best for: Enterprise software, IT services, emerging tech
 
 **Forrester** (https://www.forrester.com)
 - Business technology and digital transformation
 - Wave evaluations for vendor comparison
+- Typical cost: $3K-$30K per report
 - Best for: Marketing tech, customer experience, B2B
 
 **IDC** (https://www.idc.com)
 - IT market intelligence and sizing
 - Detailed segment breakdowns
+- Typical cost: $4K-$40K per report
 - Best for: Hardware, software, IT services
 
 **McKinsey** (https://www.mckinsey.com/featured-insights)
@@ -29,18 +32,22 @@ Discovery checklist for market research and sizing analysis. Provider availabili
 ### Accessible Research
 
 **Statista** (https://www.statista.com)
+- Cost: $39/month individual, $199/month business
 - Coverage: 80,000+ topics across industries
 - Best for: Quick market size estimates, charts, trends
 
 **CB Insights** (https://www.cbinsights.com)
+- Cost: Custom pricing (typically $10K+/year)
 - Coverage: Venture capital, startup markets
 - Best for: Emerging markets, competitive intelligence
 
 **PitchBook** (https://pitchbook.com)
+- Cost: Institutional pricing
 - Coverage: Private company valuations, M&A, VC
 - Best for: Startup valuations, funding trends
 
 **Grand View Research** (https://www.grandviewresearch.com)
+- Cost: $2K-$5K per report
 - Coverage: B2C and emerging markets
 - Best for: Consumer markets, healthcare, cleantech
 
@@ -110,7 +117,7 @@ Industry associations often publish market research:
 
 ### B2B Databases
 
-**LinkedIn Sales Navigator**
+**LinkedIn Sales Navigator** ($99/month)
 - Company and employee counts
 - Industry filters
 - Best for: B2B customer counting
@@ -120,12 +127,12 @@ Industry associations often publish market research:
 - Contact data
 - Best for: B2B TAM calculations
 
-**Crunchbase**
+**Crunchbase** ($29-$99/month)
 - Startup company data
 - Funding and employee information
 - Best for: Tech startup markets
 
-**BuiltWith**
+**BuiltWith** ($295-$995/month)
 - Technology usage data
 - Website analytics
 - Best for: Technology adoption sizing
@@ -150,10 +157,12 @@ Industry associations often publish market research:
 
 **Research and Markets** (https://www.researchandmarkets.com)
 - Aggregates reports from 100+ publishers
+- $500-$10K per report
 - Search across all major research firms
 
 **MarketsandMarkets** (https://www.marketsandmarkets.com)
 - Custom and syndicated research
+- $4K-$10K per report
 - Good for niche B2B markets
 
 ### Free Search Tools
@@ -204,11 +213,11 @@ Industry associations often publish market research:
 
 ### Survey Tools
 
-**SurveyMonkey**
+**SurveyMonkey** ($25-$75/month)
 - DIY surveys
 - Best for: Customer willingness to pay
 
-**Typeform**
+**Typeform** ($25-$83/month)
 - Conversational surveys
 - Best for: User research
 
@@ -218,14 +227,17 @@ Industry associations often publish market research:
 
 ### Panel Providers
 
-**Respondent.io**
+**Respondent.io** ($100-$200 per response)
 - Recruit professionals for interviews
 - Best for: B2B customer research
 
-**UserTesting**
+**UserTesting** ($49 per participant)
 - User research and testing
 - Best for: Product validation
 
+**Google Surveys** ($0.10-$3.50 per response)
+- Quick consumer surveys
+- Best for: Basic consumer insights
 
 ## Data Quality Checklist
 
@@ -289,8 +301,8 @@ URL: [link if available]
 
 **Example:**
 ```
-Hypothetical example TAM: $X.XB (not verified market evidence)
-Source: <verified publisher, exact report title and publication date>
+Email Marketing Software TAM: $7.5B (2024)
+Source: Gartner, "Market Share: Email Marketing Software, Worldwide, 2024"
 Note: Includes all email marketing software revenue globally
 ```
 

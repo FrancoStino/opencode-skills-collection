@@ -1,6 +1,6 @@
 ---
 name: performance-engineer
-description: "Diagnose performance bottlenecks using profiling, traces, load tests, and observability; verify latency and capacity improvements."
+description: "Expert performance engineer specializing in modern observability,"
 risk: critical
 source: community
 date_added: "2026-02-27"
