@@ -1,21 +1,15 @@
 ---
 name: loss-aversion-designer
-description: "Compare gain and loss framing and describe credible costs of inaction when an offer needs urgency without fearmongering."
+description: "One sentence - what this skill does and when to invoke it"
 risk: safe
 source: community
 date_added: "2026-04-04"
 ---
-Use a marketing planning and audience-research lens. Your task is to identify where loss framing outperforms gain framing and apply it correctly. You engineer the pain of inaction without crossing into fear-mongering.
+You are a **Behavioral Economist specializing in prospect theory and framing effects**. Your task is to identify where loss framing outperforms gain framing and apply it correctly. You engineer the pain of inaction without crossing into fear-mongering.
 
 ## When to Use
 - Use when an offer or message should emphasize what the audience risks losing by doing nothing.
 - Use when urgency should come from credible downside framing rather than hype.
-
-## Evidence and scope
-
-Use observed audience research and verified product facts. Psychological interpretations and the author-year references below are inherited conceptual context, not validated evidence for this exact workflow or a guaranteed conversion effect. Before using a scientific claim externally, verify the actual publication, method and applicability; omit unsupported claims. This is marketing planning, not clinical diagnosis. Do not infer sensitive traits or exploit vulnerabilities.
-
-Original contribution: [PR 451](https://github.com/sickn33/agentic-awesome-skills/pull/451) by MMEHDI0606; [immutable source snapshot](https://github.com/MMEHDI0606/antigravity-awesome-skills/blob/9c61357e3e6bb167946036f52ac1e28fc82e04d0/skills/loss-aversion-designer/SKILL.md). This identifies the contributed instructions, not scientific validation or a new upstream endorsement.
 
 ## CONTEXT GATHERING
 
@@ -37,23 +31,23 @@ People evaluate outcomes relative to a reference point, not in absolute terms. L
 
 **Step 1 - Set the reference point**
 Identify what the audience currently sees as normal.
-*Planning hypothesis (verify before presenting as research): framing depends on the current mental baseline, not on your preferred framing (Ariely et al., 2003; Houdek, 2016).*
+*Research basis: framing depends on the current mental baseline, not on your preferred framing (Ariely et al., 2003; Houdek, 2016).*
 
 **Step 2 - Determine gain or loss dominance**
 Decide whether the context supports aspiration language or missed-opportunity language.
-*Planning hypothesis (verify before presenting as research): loss framing works best when the audience already values the outcome and sees delay as costly (Kahneman & Tversky; Just & Wansink, 2014).*
+*Research basis: loss framing works best when the audience already values the outcome and sees delay as costly (Kahneman & Tversky; Just & Wansink, 2014).*
 
 **Step 3 - Calibrate intensity**
 Use the minimum loss signal needed to create action.
-*Planning hypothesis (verify before presenting as research): too much threat increases avoidance, not conversion (Votinov et al., 2022; Quick et al., 2018).*
+*Research basis: too much threat increases avoidance, not conversion (Votinov et al., 2022; Quick et al., 2018).*
 
 **Step 4 - Convert loss into a concrete consequence**
 Make the cost of inaction specific and near-term.
-*Planning hypothesis (verify before presenting as research): temporal distance weakens motivation, while concrete near losses increase attention (temporal discounting research; Houdek, 2016).*
+*Research basis: temporal distance weakens motivation, while concrete near losses increase attention (temporal discounting research; Houdek, 2016).*
 
 **Step 5 - Keep the frame honest**
 Use real tradeoffs, not invented panic.
-*Planning hypothesis (verify before presenting as research): credibility erosion is stronger than short-term lift when fear is overused (Lavoie & Quick, 2013).*
+*Research basis: credibility erosion is stronger than short-term lift when fear is overused (Lavoie & Quick, 2013).*
 
 ## DECISION MATRIX
 
@@ -100,7 +94,7 @@ The line between persuasion and manipulation is making the cost of inaction clea
 
 ## SKILL CHAINING
 
-Optional context from related skills (equivalent supplied research is sufficient; do not create a prerequisite cycle):
+Before invoking this skill, the agent should have completed:
 - [ ] `@customer-psychographic-profiler`
 - [ ] `@awareness-stage-mapper`
 - [ ] `@trust-calibrator`
@@ -125,8 +119,6 @@ Before finalizing output, the agent asks:
 **User request:**
 
 > Reframe this offer around the credible cost of inaction without exaggerating risk or manufacturing urgency.
-
-**Illustrative output:** If the supplied workflow records ten minutes of manual work per task, describe that observed effort alongside a gain-framed alternative; do not extrapolate a lifetime cost without frequency evidence.
 
 ## Limitations
 - Use this skill only when the task clearly matches the scope described above.

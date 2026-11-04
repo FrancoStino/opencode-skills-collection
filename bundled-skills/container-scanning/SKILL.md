@@ -3,7 +3,7 @@ name: container-scanning
 description: Scan container images for vulnerabilities using Trivy, Grype, and cloud-native
   tools.
 category: security
-risk: critical
+risk: safe
 source: https://github.com/BagelHole/DevOps-Security-Agent-Skills
 source_repo: BagelHole/DevOps-Security-Agent-Skills
 source_type: community
@@ -53,7 +53,7 @@ Use this skill when:
 
 ```bash
 # Linux
-# Tool prerequisite: use a verified preinstalled binary; no network installer runs here.
+curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh -o /tmp/install-trivy.sh && sh /tmp/install-trivy.sh && rm /tmp/install-trivy.sh -s -- -b /usr/local/bin
 
 # macOS
 brew install trivy
@@ -121,8 +121,7 @@ scan:
 
 ### CI Integration
 
-```text
-NON-EXECUTABLE CI DESIGN: before adoption, use least-privilege jobs, pin every action to a reviewed full SHA, and provision verified fixed-version tools in a digest-pinned runner image. Never expose credentials during tool provisioning.
+```yaml
 # GitHub Actions
 name: Container Security
 
@@ -141,7 +140,7 @@ jobs:
         run: docker build -t myapp:${{ github.sha }} .
 
       - name: Run Trivy
-        step: Run the preinstalled reviewed Trivy binary
+        uses: aquasecurity/trivy-action@master
         with:
           image-ref: 'myapp:${{ github.sha }}'
           format: 'sarif'
@@ -161,7 +160,7 @@ jobs:
 
 ```bash
 # Linux/macOS
-# Tool prerequisite: use a verified preinstalled binary; no network installer runs here.
+curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh -o /tmp/install-grype.sh && sh /tmp/install-grype.sh && rm /tmp/install-grype.sh -s -- -b /usr/local/bin
 
 # Homebrew
 brew install grype
@@ -221,8 +220,7 @@ docker scout recommendations myapp:latest
 
 ### CI Integration
 
-```text
-NON-EXECUTABLE CI DESIGN: before adoption, use least-privilege jobs, pin every action to a reviewed full SHA, and provision verified fixed-version tools in a digest-pinned runner image. Never expose credentials during tool provisioning.
+```yaml
 - name: Docker Scout
   uses: docker/scout-action@v1
   with:

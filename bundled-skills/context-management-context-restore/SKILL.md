@@ -1,6 +1,6 @@
 ---
 name: context-management-context-restore
-description: "Resume interrupted project work from a handoff and current checkout evidence; reconcile completed work, pending changes and existing user constraints."
+description: "Use when working with context management context restore"
 risk: critical
 source: community
 date_added: "2026-02-27"

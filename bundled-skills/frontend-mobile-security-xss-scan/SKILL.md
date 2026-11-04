@@ -1,6 +1,6 @@
 ---
 name: frontend-mobile-security-xss-scan
-description: "Inspect frontend code for XSS injection points, unsafe DOM manipulation, and missing sanitization."
+description: "You are a frontend security specialist focusing on Cross-Site Scripting (XSS) vulnerability detection and prevention. Analyze React, Vue, Angular, and vanilla JavaScript code to identify injection poi"
 risk: critical
 source: community
 date_added: "2026-02-27"

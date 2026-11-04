@@ -26,7 +26,7 @@ Use for Svelte 5 or SvelteKit package setup, streaming state, workers, or scoped
 
 ## Workflow
 
-Inspect the existing package manager, installed package version and project conventions. A requested scoped integration already authorizes routine source/dependency edits; seek approval only for a material scope expansion or unresolved beta/alpha adoption decision.
+Before changing dependencies or source files, inspect the existing package manager and project conventions, preview the intended edits, and obtain explicit user approval.
 
 1. Confirm Svelte 5 and acceptance of a beta package.
 2. Install only requested peers; import package CSS after resets and KaTeX CSS only for math.
@@ -66,5 +66,3 @@ Inspect the existing package manager, installed package version and project conv
 ## Security & Safety Notes
 
 Keep safe HTML and strict Mermaid defaults. Review dependencies and never run browser-only peers during SSR.
-
-Verify props, export paths and peer ranges against the installed package, not a mutable upstream main. Test partial and completed streams, malformed/untrusted Markdown, links and image URLs, cancellation and reduced motion. Safe HTML and strict diagrams reduce exposure but do not alone enforce URL/network privacy or application component permissions.

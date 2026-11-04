@@ -34,10 +34,13 @@ enum SheetDestination: Identifiable, Hashable {
 
   var id: String {
     switch self {
-    case .composer: return "composer"
-    case .editProfile: return "edit-profile"
-    case .settings: return "settings"
-    case .report(let itemID): return "report-\(itemID)"
+    case .composer, .editProfile:
+      // Use the same id to ensure only one editor-like sheet is active at a time.
+      return "editor"
+    case .settings:
+      return "settings"
+    case .report:
+      return "report"
     }
   }
 }
@@ -119,28 +122,19 @@ struct EditItemSheet: View {
 
   let item: Item
   @State private var isSaving = false
-  @State private var saveError: String?
 
   var body: some View {
     VStack {
       Button(isSaving ? "Saving..." : "Save") {
         Task { await save() }
       }
-      .disabled(isSaving)
-      if let saveError { Text(saveError) }
     }
   }
 
   private func save() async {
-    guard !isSaving else { return }
     isSaving = true
-    defer { isSaving = false }
-    do {
-      try await store.save(item) // Project adapter must report actual failure.
-      dismiss()
-    } catch {
-      saveError = "Save failed. Please try again."
-    }
+    await store.save(item)
+    dismiss()
   }
 }
 ```
@@ -149,7 +143,7 @@ struct EditItemSheet: View {
 
 - Centralize sheet routing so features can present modals without wiring bindings through many layers.
 - Use `sheet(item:)` to guarantee a single sheet is active and to drive presentation from the enum.
-- Give every destination a distinct stable identity, including its associated item ID. One optional sheet value already expresses mutual exclusion; sharing IDs can preserve the wrong content.
+- Group related sheets under the same `id` when they are mutually exclusive (e.g., editor flows).
 - Keep sheet views lightweight and composed from smaller views; avoid large monoliths.
 - Let sheets own their actions and call `dismiss()` internally instead of forwarding `onCancel` or `onConfirm` closures through many layers.
 

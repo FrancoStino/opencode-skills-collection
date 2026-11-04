@@ -3,7 +3,7 @@ name: food-database-query
 description: Food Database Query
 risk: critical
 source: community
-date_added: "2026-03-06"
+date_added: "2026-09-04"
 ---
 
 # 食物数据库查询技能

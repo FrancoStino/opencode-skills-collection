@@ -118,7 +118,7 @@ aws wafv2 create-web-acl \
     "Priority": 5,
     "Statement": {
       "GeoMatchStatement": {
-        "CountryCodes": ["KP", "IR"]
+        "CountryCodes": ["KP", "IR", "SY"]
       }
     },
     "Action": { "Block": {} },

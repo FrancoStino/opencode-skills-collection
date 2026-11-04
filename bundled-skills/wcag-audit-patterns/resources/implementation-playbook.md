@@ -8,8 +8,8 @@ This file contains detailed patterns, checklists, and code samples referenced by
 
 | Level   | Description            | Required For      |
 | ------- | ---------------------- | ----------------- |
-| **A**   | Minimum WCAG conformance | Applicability depends on jurisdiction and policy    |
-| **AA**  | Standard WCAG conformance | Confirm the exact applicable requirement  |
+| **A**   | Minimum accessibility  | Legal baseline    |
+| **AA**  | Standard conformance   | Most regulations  |
 | **AAA** | Enhanced accessibility | Specialized needs |
 
 ### 2. POUR Principles
@@ -47,6 +47,7 @@ Moderate:
 
 ### Perceivable (Principle 1)
 
+````markdown
 ## 1.1 Text Alternatives
 
 ### 1.1.1 Non-text Content (Level A)
@@ -68,6 +69,8 @@ Check:
 <img src="chart.png" />
 <img src="decorative-line.png" alt="decorative line" />
 ```
+````
+
 ## 1.2 Time-based Media
 
 ### 1.2.1 Audio-only and Video-only (Level A)
@@ -81,9 +84,9 @@ Check:
 - [ ] Captions are accurate and complete
 - [ ] Speaker identification included
 
-### 1.2.3 Audio Description or Media Alternative (Level A)
+### 1.2.3 Audio Description (Level A)
 
-- [ ] Prerecorded synchronized media has an appropriate audio description or full text alternative, subject to the criterion’s exceptions
+- [ ] Video has audio description for visual content
 
 ## 1.3 Adaptable
 
@@ -168,8 +171,11 @@ Tools: WebAIM Contrast Checker, axe DevTools
 - [ ] Letter spacing 0.12x font size
 - [ ] Word spacing 0.16x font size
 
+````
+
 ### Operable (Principle 2)
 
+```markdown
 ## 2.1 Keyboard Accessible
 
 ### 2.1.1 Keyboard (Level A)
@@ -179,10 +185,11 @@ Tools: WebAIM Contrast Checker, axe DevTools
 - [ ] Custom widgets are keyboard operable
 
 Check:
-```html
-<!-- Prefer a native button: keyboard activation and role are built in. -->
-<button type="button" onclick="activate()">Open details</button>
-```
+```javascript
+// Custom button must be keyboard accessible
+<div role="button" tabindex="0"
+     onkeydown="if(event.key === 'Enter' || event.key === ' ') activate()">
+````
 
 ### 2.1.2 No Keyboard Trap (Level A)
 
@@ -278,8 +285,11 @@ Check:
 - [ ] Focused element not fully hidden
 - [ ] Sticky headers don't obscure focus
 
+````
+
 ### Understandable (Principle 3)
 
+```markdown
 ## 3.1 Readable
 
 ### 3.1.1 Language of Page (Level A)
@@ -288,7 +298,7 @@ Check:
 
 ```html
 <html lang="en">
-```
+````
 
 ### 3.1.2 Language of Parts (Level AA)
 
@@ -350,8 +360,11 @@ Check:
 - [ ] Data checked before submission
 - [ ] User can review before submit
 
+````
+
 ### Robust (Principle 4)
 
+```markdown
 ## 4.1 Compatible
 
 ### 4.1.1 Parsing (Level A) - Obsolete in WCAG 2.2
@@ -365,10 +378,14 @@ Check:
 - [ ] State changes announced
 
 ```html
-<!-- Native checkbox includes keyboard handling and checked state. -->
-<input type="checkbox" id="accept-terms" name="accept-terms" />
-<label for="accept-terms">Accept terms</label>
-```
+<!-- Accessible custom checkbox -->
+<div role="checkbox"
+     aria-checked="false"
+     tabindex="0"
+     aria-labelledby="label">
+</div>
+<span id="label">Accept terms</span>
+````
 
 ### 4.1.3 Status Messages (Level AA)
 
@@ -380,6 +397,8 @@ Check:
 
 <div role="alert" aria-live="assertive">Error: Form submission failed</div>
 ```
+
+````
 
 ## Automated Testing
 
@@ -413,15 +432,13 @@ test('should have no accessibility violations', async ({ page }) => {
 
   expect(results.violations).toHaveLength(0);
 });
-```
-
-Use CLI tools only if the project already has reviewed, lockfile-pinned installations. Run from that project and replace the example URL with its authorized local/test target. If a binary is absent, report the missing prerequisite; do not download or install a moving package to complete an audit. Browser testing may load third-party resources, so keep real credentials and sensitive records out of test fixtures.
+````
 
 ```bash
-# Existing project-local CLI tools; choose the tool already used by this project.
-./node_modules/.bin/axe http://localhost:3000
-./node_modules/.bin/pa11y http://localhost:3000
-./node_modules/.bin/lighthouse http://localhost:3000 --only-categories=accessibility
+# CLI tools
+npx @axe-core/cli https://example.com
+npx pa11y https://example.com
+lighthouse https://example.com --only-categories=accessibility
 ```
 
 ## Remediation Patterns
@@ -447,16 +464,14 @@ Use CLI tools only if the project already has reviewed, lockfile-pinned installa
 ### Fix: Insufficient Color Contrast
 
 ```css
-/* Before: #999999 on white is about 2.85:1 */
+/* Before: 2.5:1 contrast */
 .text {
-  color: #999999;
-  background: #fff;
+  color: #767676;
 }
 
-/* After: #595959 on white is about 7.00:1 */
+/* After: 4.5:1 contrast */
 .text {
   color: #595959;
-  background: #fff;
 }
 
 /* Or add background */
@@ -506,7 +521,7 @@ class AccessibleDropdown extends HTMLElement {
 
 - **Start early** - Accessibility from design phase
 - **Test with real users** - Disabled users provide best feedback
-- **Automate what you can** - Automated checks cover only part of accessibility; retain manual and assistive-technology checks.
+- **Automate what you can** - 30-50% issues detectable
 - **Use semantic HTML** - Reduces ARIA needs
 - **Document patterns** - Build accessible component library
 

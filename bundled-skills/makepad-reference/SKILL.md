@@ -1,9 +1,9 @@
 ---
 name: makepad-reference
-description: "Guide to diagnosing Makepad build, widget, redraw and layout issues against the exact runtime revision."
+description: "This category provides reference materials for debugging, code quality, and advanced layout patterns."
 risk: critical
 source: community
-date_added: "2026-03-06"
+date_added: "2026-09-04"
 ---
 
 # Makepad Reference
@@ -29,7 +29,7 @@ This category provides reference materials for debugging, code quality, and adva
 | Error | Quick Fix |
 |-------|-----------|
 | `no matching field: font` | Use `text_style: <THEME_FONT_*>{}` |
-| Color parse error | Check the installed live-design parser syntax; changing a valid hex color is not a general fix |
+| Color parse error (ends in `e`) | Change last digit (e.g., `#14141e` → `#14141f`) |
 | `set_text` missing argument | Add `cx` as first argument |
 | UI not updating | Call `redraw(cx)` after changes |
 | Widget not found | Check ID spelling, use `ids!()` for paths |
@@ -38,7 +38,7 @@ This category provides reference materials for debugging, code quality, and adva
 
 ```bash
 # Run with line info for better error messages
-MAKEPAD=lines cargo run  # Use the project-pinned toolchain; verify this diagnostic flag for its revision
+MAKEPAD=lines cargo +nightly run
 ```
 
 ```rust
@@ -58,5 +58,3 @@ log!("State: {} / {}", self.counter, self.is_loading);
 - Use this skill only when the task clearly matches the scope described above.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
-
-The navigation table names topics, not bundled reference files. Verify exact Makepad API signatures and the project toolchain before changing code; preserve private values in logs, and test widget updates, input and target layouts rather than assuming a redraw call fixes every issue.

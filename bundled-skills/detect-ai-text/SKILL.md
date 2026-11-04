@@ -16,7 +16,7 @@ license_source: "https://github.com/Sketchjar/stipple-agent-skills/blob/main/LIC
 
 # AI-Text Detection
 
-Inspect a provider’s uncalibrated AI-style signal for a document’s prose, with the specific linguistic tells and an honest abstention when the document isn't prose. Uses an external Stipple API; verify current access, cost and privacy terms.
+Estimate the probability that a document's prose was written by AI, with the specific linguistic tells and an honest abstention when the document isn't prose. Uses the Stipple API (free anonymous tier).
 
 ## When to use
 
@@ -32,7 +32,7 @@ Inspect a provider’s uncalibrated AI-style signal for a document’s prose, wi
 2. **Run detection.**
 
    ```bash
-   curl --fail --show-error --silent --max-time 30 -X POST https://www.stipple.sh/v1/detect-ai-text \
+   curl -X POST https://www.stipple.sh/v1/detect-ai-text \
      -F "file=@essay.pdf" \
      -H "Authorization: Bearer $STIPPLE_API_KEY"
    ```
@@ -60,7 +60,7 @@ Inspect a provider’s uncalibrated AI-style signal for a document’s prose, wi
 ## Output format
 
 ```
-Provider AI-style score: 0.87 (uncalibrated; lean: ai; not authorship proof)
+AI-written probability: 0.87  (lean: ai)
 prose ratio: 0.82
 
 linguistic tells:
@@ -88,4 +88,4 @@ limitations: The probability is the model's CONFIDENCE, not a calibrated truth.
 
 - Non-prose documents (forms, tables, payslips) get `applicable: false` — the engine refuses rather than guessing
 - Can false-flag templated/coached or non-native-English writing — always present as one signal alongside human review
-- Verify current authentication/allowance on https://www.stipple.sh; do not guarantee a free anonymous tier or publish the submitted document.
+- Free anonymous tier works without a key; free key at https://www.stipple.sh

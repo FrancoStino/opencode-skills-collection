@@ -25,7 +25,7 @@ Comprehensive market sizing methodologies for calculating Total Addressable Mark
 - Clarify goals, constraints, and required inputs.
 - Apply relevant best practices and validate outcomes.
 - Provide actionable steps and verification.
-- Use the examples below; no separate implementation playbook is bundled.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
 
 ## Overview
 
@@ -111,7 +111,7 @@ Build market size from customer segment calculations.
 **Formula:**
 ```
 TAM = Σ (Segment Size × Annual Revenue per Customer)
-SAM = Σ (Eligible Customer Count in Each Served Segment × Annual Revenue per Customer in That Segment)
+SAM = TAM × (Segments You Can Serve / Total Segments)
 SOM = SAM × Realistic Penetration Rate (Year 3-5)
 ```
 
@@ -263,7 +263,7 @@ SOM (Year 5) = SAM × 5%
 Cross-check using multiple methods.
 
 **Validation Techniques:**
-1. Compare top-down and bottom-up definitions, units, populations and source dates; investigate divergence rather than applying an arbitrary percentage gate
+1. Compare top-down and bottom-up results (should be within 30%)
 2. Check against public company revenues in space
 3. Validate customer count assumptions
 4. Sense-check pricing assumptions
@@ -271,10 +271,10 @@ Cross-check using multiple methods.
 6. Compare to similar market categories
 
 **Red Flags:**
-- Opportunity size that does not support the stated business model or investor constraints
+- TAM that's too small (< $1B for VC-backed startups)
 - TAM that's too large (unsupported by data)
-- SOM unsupported by the actual acquisition capacity, competition and retention assumptions
-- Unexplained inconsistency in populations, units or assumptions between methodologies
+- SOM that's too aggressive (> 10% in 5 years for new entrant)
+- Inconsistency between methodologies (> 50% difference)
 
 ## Industry-Specific Considerations
 
@@ -312,7 +312,7 @@ TAM = Total Category GMV × Expected Take Rate
 
 **TAM Calculation:**
 ```
-TAM = Total Potential Buyers × Average Revenue per Purchase × Purchases per Buyer per Year
+TAM = Total Users × ARPU × Purchase Frequency per Year
 ```
 
 ### B2B Services
@@ -388,12 +388,23 @@ TAM = Total Target Companies × Average Deal Size × Deals per Year
 - Consider competitive intensity
 - Factor in switching costs and barriers
 
-## Local Resources
+## Additional Resources
 
-- [Data source checklist](references/data-sources.md): discovery starting points; verify current availability, price and source dates before use.
-- [Illustrative SaaS calculation](examples/saas-market-sizing.md): a worked example, not current market evidence.
+### Reference Files
 
-No other templates or implementation playbook are bundled. Percentages in this guide are scenario assumptions, not universal market-share benchmarks. Do not purchase reports or transmit customer data without authorization.
+For detailed methodologies and frameworks:
+- **`references/methodology-deep-dive.md`** - Comprehensive guide to each methodology with step-by-step worksheets
+- **`references/data-sources.md`** - Curated list of market research sources, databases, and tools
+- **`references/industry-templates.md`** - Specific templates for SaaS, marketplace, consumer, B2B, and fintech markets
+
+### Example Files
+
+Working examples with complete calculations:
+- **`examples/saas-market-sizing.md`** - Complete TAM/SAM/SOM for a B2B SaaS product
+- **`examples/marketplace-sizing.md`** - Marketplace platform market opportunity calculation
+- **`examples/value-theory-example.md`** - Value-based market sizing for disruptive innovation
+
+Use these examples as templates for your own market sizing analysis. Each includes real numbers, data sources, and assumptions documented clearly.
 
 ## Quick Start
 
@@ -404,12 +415,12 @@ To perform market sizing analysis:
 3. **Gather data** - Industry reports, customer data, competitive intelligence
 4. **Calculate TAM** - Apply methodology formula
 5. **Narrow to SAM** - Apply product, geographic, segment filters
-6. **Estimate SOM** - Model acquisition, retention, capacity and competition; use a percentage only as an explicitly justified scenario assumption.
+6. **Estimate SOM** - 2-5% realistic capture rate
 7. **Validate** - Cross-check with alternative methods
 8. **Document** - Show methodology, sources, assumptions
 9. **Present** - Structure for audience (investors, strategy, operations)
 
-Use the two bundled resources above and cite current primary evidence for the actual market.
+For detailed step-by-step guidance on each methodology, reference the files in `references/` directory. For complete worked examples, see `examples/` directory.
 
 ## Limitations
 - Use this skill only when the task clearly matches the scope described above.

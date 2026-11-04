@@ -199,9 +199,8 @@ build_image:
 
 ```bash
 # Download and install
-# Prerequisite: GitLab Runner installed from an organization-approved signed package.
-# This guide does not fetch or execute a remote bootstrap script.
-gitlab-runner --version
+curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh | sudo bash
+sudo apt install gitlab-runner
 
 # Register runner
 sudo gitlab-runner register \

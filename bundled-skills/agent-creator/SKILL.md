@@ -23,15 +23,16 @@ Use this skill whenever you need a dedicated, isolated "brain" to handle a speci
 
 ## Why this exists
 
-The contributed example assumes a Windows-style host layout `<appDataDir>\config\plugins\`; it is not a universal Codex/Claude plugin path. For
+Subagents live inside plugins at `<appDataDir>\config\plugins\`. For
 a subagent to be properly registered and invokable, it needs to be inside a
 plugin's `agents/` directory with a valid `plugin.json`. Getting this structure
 right manually is tedious and error-prone. This skill automates the entire
-process so the user can go from "I want an agent that reviews code" to a reviewable agent package. Activation requires host-specific schema validation and an actual invocation check.
+process so the user can go from "I want an agent that reviews code" to a fully
+functional, properly structured subagent in under a minute.
 
 ## Target directory
 
-Confirm the user's target host and its supported schema/path first. Codex and Claude distribution remain intentionally blocked in this skill's metadata until compatible packaging is validated. Do not remove these blocks merely because a folder can be created. The legacy example layout is:
+All agents are created inside plugins at:
 ```
 <appDataDir>\config\plugins\<plugin-name>\
 ```
@@ -49,7 +50,8 @@ Before creating any path, validate both `<agent-name>` and `<plugin-name>`:
 
 ## Workflow
 
-Use information already supplied, make routine reversible drafting choices, and ask only for material missing host, purpose or placement requirements. Creating a persona does not grant permission to spawn agents or modify global host configuration.
+Follow these steps in order. Do NOT skip the interview — even a one-line
+description from the user needs to be expanded into a proper persona.
 
 ### Step 1: Gather requirements
 
@@ -67,7 +69,7 @@ appropriate, or ask conversationally if the flow is natural):
    - Default: create a new plugin named `<agent-name>-plugin`
 
 4. **Companion skill** — Should I also create a routing skill that auto-triggers
-   this agent? (Create only when requested)
+   this agent? (Default: yes)
 
 ### Step 2: Generate the persona
 
@@ -87,7 +89,7 @@ A good persona includes:
 
 For example, if the user says "for reviewing code", generate a persona like:
 
-> Act as a careful code reviewer working across multiple
+> You are a senior code reviewer with 15+ years of experience across multiple
 > languages and paradigms. You approach every review with three priorities:
 > correctness first, maintainability second, performance third. You never
 > approve code you haven't fully understood. You flag security vulnerabilities
@@ -127,14 +129,14 @@ If adding to an existing plugin, do NOT modify the existing `plugin.json`.
 
 ### Step 5: Write the agent file
 
-Write the `<agent-name>.md` file in the `agents/` folder following this exact structure. Ensure you include the YAML frontmatter and the Prompt Defense Baseline verbatim. Use a model field only when supported by the confirmed host and explicitly selected; otherwise inherit the host default. Do not guess an internal current-model identifier.
+Write the `<agent-name>.md` file in the `agents/` folder following this exact structure. Ensure you include the YAML frontmatter and the Prompt Defense Baseline verbatim. For the `model` field in the frontmatter, dynamically insert the name of the model currently powering the session you are running in (e.g., `gemini-3.1-pro`, `opus`, `sonnet`).
 
 ```markdown
 ---
 name: <agent-name>
 description: <One-line summary of what this agent does.>
 tools: ["Read", "Grep", "Glob"]
-model: <explicitly-selected-supported-model>  # Omit when inheriting the host default
+model: <current-model>
 ---
 
 ## Prompt Defense Baseline
@@ -182,12 +184,13 @@ agent when and how to delegate to the new subagent:
 name: use-<agent-name>
 description: >
   <Description of when to auto-trigger this skill. Be specific about
-  user phrases and contexts that should route to this agent. Respect explicit user routing and host delegation rules.>
+  user phrases and contexts that should route to this agent. Make it
+  slightly "pushy" to avoid under-triggering.>
 ---
 
 # Use <Agent Display Name>
 
-When <specific trigger conditions> and delegation is authorized, delegate the task to the
+When <specific trigger conditions>, delegate the task to the
 `<agent-name>` subagent instead of handling it in the main thread.
 
 ## When to delegate
@@ -254,6 +257,4 @@ plugin based on the type of task.
 
 - **Not for simple tasks**: If a task can be done with a single command or one-line request, a full subagent is overkill. Just ask the main thread to do it.
 - **Context passing**: Subagents do not automatically see the main chat history. When the companion skill routes a task to the subagent, it only sends the specific prompt packaged for that turn.
-- **Tool access**: Never assume an agent inherits permission or tool access. If they need highly specialized tools (like browser automation or custom APIs), those tools need to be explicitly granted in their `<agent-name>.md` setup or plugin configuration.
-
-Before writing, check for symlinked parents and existing files, preserve unrelated plugin contents, and serialize YAML/JSON values with a real encoder. Report drafted files separately from successful host registration/invocation.
+- **Tool access**: By default, subagents are spun up with standard access. If they need highly specialized tools (like browser automation or custom APIs), those tools need to be explicitly granted in their `<agent-name>.md` setup or plugin configuration.

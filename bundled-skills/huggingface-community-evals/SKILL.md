@@ -112,6 +112,7 @@ uv run scripts/inspect_vllm_uv.py \
   --model microsoft/phi-2 \
   --task mmlu \
   --backend hf \
+  --trust-remote-code \
   --limit 20
 ```
 
@@ -136,6 +137,7 @@ uv run scripts/lighteval_vllm_uv.py \
   --model microsoft/phi-2 \
   --tasks "leaderboard|mmlu|5" \
   --backend accelerate \
+  --trust-remote-code \
   --max-samples 20
 ```
 
@@ -202,7 +204,7 @@ For smoke tests, prefer cheaper local runs plus `--limit` or `--max-samples`.
 - Gated/private repo access fails:
   - verify `HF_TOKEN`
 - Custom model code required:
-  - Stop if a model requires custom remote code. These wrappers deliberately reject `--trust-remote-code`; use only standard model architectures here. A separate custom-code workflow must pin an immutable model revision, inspect every code file, obtain explicit approval, and run without credentials in filesystem/network isolation.
+  - add `--trust-remote-code`
 
 # Examples
 

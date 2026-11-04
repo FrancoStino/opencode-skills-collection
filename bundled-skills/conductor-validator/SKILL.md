@@ -12,28 +12,32 @@ source: community
 date_added: '2026-02-27'
 ---
 
-# Validate Conductor workflow artifacts
+# Check if conductor directory exists
+ls -la conductor/
 
-## When to Use
-Inspect a project that actually uses a `conductor/` workflow directory after setup, before resuming a track, or when diagnosing inconsistent plans/status. This is distinct from the Rails Conductor desktop-app setup (`conductor.json`/`script/server`).
+# Find all track directories
+ls -la conductor/tracks/
 
-## Read-only discovery
-
-```bash
-# Run from the explicitly selected project root; missing paths are findings, not permission to create them.
-ls -ld conductor/ conductor/tracks/
+# Check for required files
 ls conductor/index.md conductor/product.md conductor/tech-stack.md conductor/workflow.md conductor/tracks.md
 ```
 
-## Validation procedure
+## Use this skill when
 
-1. Read current project instructions and the actual configured Conductor workflow/version.
-2. Compare the declared artifact list with the project’s real files; report missing, unreadable and extra artifacts separately.
-3. Resolve local index/track links, track IDs and plan/status markers against their referenced content. Do not assume directory presence proves completeness.
-4. Reconcile completed markers with recorded implementation/test evidence and the current revision; report stale or conflicting state without inventing a pass.
-5. Output a concise list of file, observed inconsistency, expected contract and proposed correction. Apply fixes only when requested; preserve existing plans and dirty work.
+- Working on check if conductor directory exists tasks or workflows
+- Needing guidance, best practices, or checklists for check if conductor directory exists
 
-No implementation-playbook file or runnable validator script is bundled. The procedure above is the complete local guide; optional project-specific automation must actually exist and be reviewed before execution.
+## Do not use this skill when
+
+- The task is unrelated to check if conductor directory exists
+- You need a different domain or tool outside this scope
+
+## Instructions
+
+- Clarify goals, constraints, and required inputs.
+- Apply relevant best practices and validate outcomes.
+- Provide actionable steps and verification.
+- If detailed examples are required, open `resources/implementation-playbook.md`.
 
 ## Pattern Matching
 

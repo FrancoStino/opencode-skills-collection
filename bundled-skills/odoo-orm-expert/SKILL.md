@@ -3,7 +3,7 @@ name: odoo-orm-expert
 description: "Master Odoo ORM patterns: search, browse, create, write, domain filters, computed fields, and performance-safe query techniques."
 risk: safe
 source: "self"
-date_added: "2026-03-04"
+date_added: "2026-09-04"
 ---
 
 # Odoo ORM Expert
@@ -63,8 +63,8 @@ def _compute_total_order_count(self):
 ### Example 3: Safe Bulk Write (avoid N+1)
 
 ```python
-# Batch writes reduce repeated calls, but can trigger additional compute/tracking queries
-partners = self.env['res.partner'].browse(approved_partner_ids).exists()  # Explicit scoped IDs
+# ✅ GOOD: One query for all records
+partners = self.env['res.partner'].search([('country_id', '=', False)])
 partners.write({'country_id': self.env.ref('base.us').id})
 
 # ❌ BAD: Triggers a separate query per record
@@ -88,5 +88,3 @@ for partner in partners:
 - **Stored computed fields** can cause significant write overhead at scale; this skill does not cover partitioning strategies.
 - Does not cover **transient models** (`models.TransientModel`) or wizard patterns.
 - ORM behavior can differ slightly between Odoo SaaS and On-Premise due to config overrides.
-
-Examples are model-method fragments requiring imports, record definitions and authorized scope. Do not infer missing country data means US; write only confirmed values to selected records. `sudo()` bypasses access rules and requires a justified boundary. Batch operations do not guarantee one SQL query, and mapped/filtered may load large recordsets; profile actual query counts and test record-rule/multi-company isolation.

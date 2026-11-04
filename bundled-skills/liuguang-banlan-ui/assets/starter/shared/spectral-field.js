@@ -1,11 +1,7 @@
 (function () {
   "use strict";
 
-  // The field drifts slowly. Spacing frames so each advances field time by at most
-  // MAX_FIELD_STEP keeps the change per frame below a visible step at less GPU cost.
-  const MIN_FRAME_INTERVAL = 50;
-  const MAX_FRAME_INTERVAL = 250;
-  const MAX_FIELD_STEP = 0.003;
+  const MAX_COLORS = 12;
 
   const VERTEX_SHADER = `
     attribute vec2 aPosition;
@@ -27,12 +23,12 @@
     uniform float uWarp;
     uniform float uDither;
     uniform float uLuminanceCap;
-    uniform float uLevels;
     uniform vec3 uBase;
-    uniform vec3 uColors[6];
-    uniform float uStrengths[6];
-    uniform float uFieldScales[6];
-    uniform vec2 uPhases[6];
+    uniform vec3 uColors[12];
+    uniform float uStrengths[12];
+    uniform float uFieldScales[12];
+    uniform vec2 uPhases[12];
+    uniform float uColorCount;
 
     float hash21(vec2 p) {
       p = fract(p * vec2(123.34, 456.21));
@@ -56,8 +52,8 @@
       float amplitude = 0.52;
       mat2 rotation = mat2(0.80, 0.60, -0.60, 0.80);
       for (int i = 0; i < 5; i++) {
-        if (float(i) + 0.5 >= uOctaves) break;
-        value += amplitude * noise(p);
+        float enabled = 1.0 - step(uOctaves, float(i) + 0.5);
+        value += amplitude * noise(p) * enabled;
         p = rotation * p * 2.03 + vec2(13.1, 7.7);
         amplitude *= 0.48;
       }
@@ -79,19 +75,6 @@
 
     vec3 toneMap(vec3 c) {
       return c / (1.0 + max(c - 1.0, 0.0));
-    }
-
-    vec3 linearToSrgb(vec3 c) {
-      vec3 high = 1.055 * pow(max(c, vec3(0.0031308)), vec3(1.0 / 2.4)) - 0.055;
-      return mix(c * 12.92, high, step(vec3(0.0031308), c));
-    }
-
-    // Not hash21: offsetting pixel coordinates by the seed pushes them past
-    // float precision, and the dither turns into visible stripes.
-    float ditherHash(vec2 p) {
-      vec3 p3 = fract(vec3(p.xyx) * 0.1031);
-      p3 += dot(p3, p3.yzx + 33.33);
-      return fract((p3.x + p3.y) * p3.z);
     }
 
     void main() {
@@ -121,12 +104,7 @@
         + dot(warped, vec2(0.72, -0.49))
         + uSeed * 0.000017
       );
-      for (int i = 0; i < 6; i++) {
-        float hueStop = float(i) / 6.0;
-        float hueDistance = abs(spectralFlow - hueStop);
-        hueDistance = min(hueDistance, 1.0 - hueDistance);
-        float hueBand = 1.0 - smoothstep(0.035, 0.205, hueDistance);
-        if (hueBand <= 0.0) continue;
+      for (int i = 0; i < 12; i++) {
         float field = colorField(
           warped + q * (0.21 + float(i) * 0.025),
           uPhases[i],
@@ -134,11 +112,16 @@
           uFieldScales[i]
         );
         float softBand = smoothstep(0.22, 0.78, field);
+        float active = step(float(i) + 0.5, uColorCount);
+        float hueStop = float(i) / max(uColorCount, 1.0);
+        float hueDistance = abs(spectralFlow - hueStop);
+        hueDistance = min(hueDistance, 1.0 - hueDistance);
+        float hueBand = 1.0 - smoothstep(0.035, 0.205, hueDistance);
         float shapedBand = pow(hueBand, 2.2) * (0.64 + softBand * 0.36);
-        float weight = shapedBand * sqrt(max(uStrengths[i], 0.0));
+        float weight = shapedBand * sqrt(max(uStrengths[i], 0.0)) * active;
         colorSum += uColors[i] * weight;
         weightSum += weight;
-        energySum += shapedBand * uStrengths[i];
+        energySum += shapedBand * uStrengths[i] * active;
         strongestBand = max(strongestBand, shapedBand);
       }
 
@@ -162,13 +145,11 @@
         }
       }
 
-      vec2 pixel = floor(gl_FragCoord.xy);
-      float triangle = ditherHash(pixel) + ditherHash(pixel + vec2(47.0, 113.0)) - 1.0;
-      vec3 encoded = linearToSrgb(toneMap(max(color, 0.0)));
-      // Quantize here so the result does not depend on whether the GPU rounds or
-      // truncates when it stores floats; +0.25 lands inside the chosen code either way.
-      vec3 code = clamp(floor(encoded * uLevels + 0.5 + triangle * uDither), 0.0, uLevels);
-      gl_FragColor = vec4((code + 0.25) / uLevels, 1.0);
+      float dither = hash21(floor(gl_FragCoord.xy) + vec2(uSeed, -uSeed)) - 0.5;
+      color += dither * (uDither / 255.0);
+      color = toneMap(max(color, 0.0));
+      color = pow(color, vec3(1.0 / 2.2));
+      gl_FragColor = vec4(color, 1.0);
     }
   `;
 
@@ -188,8 +169,6 @@
       Math.max(0, -0.0041960863 * l - 0.7034186147 * m + 1.707614701 * s)
     ];
   }
-
-  const MAX_COLORS = 12;
 
   function clamp01(value) {
     const number = Number(value);
@@ -264,72 +243,89 @@
       this.applyFallbackConfig(config);
       this.available = false;
       this.error = null;
-      this.motionEnabled = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      this.motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
+      this.motionEnabled = !this.motionPreference.matches;
       this.visible = !document.hidden;
-      this.fieldTime = config.field.staticTime;
-      this.lastTick = null;
+      this.startTime = performance.now();
+      this.phaseTime = null;
       this.lastFrame = 0;
       this.frameHandle = 0;
       try {
-      this.gl = canvas.getContext("webgl", {
-        alpha: false,
-        antialias: false,
-        depth: false,
-        stencil: false,
-        powerPreference: "low-power",
-        preserveDrawingBuffer: true
-      });
+        this.gl = canvas.getContext("webgl", {
+          alpha: false,
+          antialias: false,
+          depth: false,
+          stencil: false,
+          powerPreference: "low-power",
+          preserveDrawingBuffer: true
+        });
+        if (!this.gl) throw new Error("WebGL context unavailable");
 
-      if (!this.gl) throw new Error("WebGL context unavailable");
+        this.program = createProgram(this.gl);
+        this.gl.useProgram(this.program);
+        const buffer = this.gl.createBuffer();
+        if (!buffer) throw new Error("WebGL buffer creation failed");
+        this.gl.bindBuffer(this.gl.ARRAY_BUFFER, buffer);
+        this.gl.bufferData(
+          this.gl.ARRAY_BUFFER,
+          new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]),
+          this.gl.STATIC_DRAW
+        );
+        const position = this.gl.getAttribLocation(this.program, "aPosition");
+        if (position < 0) throw new Error("WebGL position attribute unavailable");
+        this.gl.enableVertexAttribArray(position);
+        this.gl.vertexAttribPointer(position, 2, this.gl.FLOAT, false, 0, 0);
 
-      this.available = true;
-      this.levels = Math.pow(2, this.gl.getParameter(this.gl.RED_BITS) || 8) - 1;
-      this.program = createProgram(this.gl);
-      this.gl.useProgram(this.program);
-      const buffer = this.gl.createBuffer();
-      this.gl.bindBuffer(this.gl.ARRAY_BUFFER, buffer);
-      this.gl.bufferData(
-        this.gl.ARRAY_BUFFER,
-        new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]),
-        this.gl.STATIC_DRAW
-      );
-      const position = this.gl.getAttribLocation(this.program, "aPosition");
-      this.gl.enableVertexAttribArray(position);
-      this.gl.vertexAttribPointer(position, 2, this.gl.FLOAT, false, 0, 0);
+        this.locations = {
+          resolution: uniform(this.gl, this.program, "uResolution"),
+          time: uniform(this.gl, this.program, "uTime"),
+          seed: uniform(this.gl, this.program, "uSeed"),
+          mode: uniform(this.gl, this.program, "uMode"),
+          overall: uniform(this.gl, this.program, "uOverall"),
+          colorCount: uniform(this.gl, this.program, "uColorCount"),
+          scale: uniform(this.gl, this.program, "uScale"),
+          octaves: uniform(this.gl, this.program, "uOctaves"),
+          warp: uniform(this.gl, this.program, "uWarp"),
+          dither: uniform(this.gl, this.program, "uDither"),
+          luminanceCap: uniform(this.gl, this.program, "uLuminanceCap"),
+          base: uniform(this.gl, this.program, "uBase"),
+          colors: uniform(this.gl, this.program, "uColors[0]"),
+          strengths: uniform(this.gl, this.program, "uStrengths[0]"),
+          fieldScales: uniform(this.gl, this.program, "uFieldScales[0]"),
+          phases: uniform(this.gl, this.program, "uPhases[0]")
+        };
 
-      this.locations = {
-        resolution: uniform(this.gl, this.program, "uResolution"),
-        time: uniform(this.gl, this.program, "uTime"),
-        seed: uniform(this.gl, this.program, "uSeed"),
-        mode: uniform(this.gl, this.program, "uMode"),
-        overall: uniform(this.gl, this.program, "uOverall"),
-        scale: uniform(this.gl, this.program, "uScale"),
-        octaves: uniform(this.gl, this.program, "uOctaves"),
-        warp: uniform(this.gl, this.program, "uWarp"),
-        dither: uniform(this.gl, this.program, "uDither"),
-        luminanceCap: uniform(this.gl, this.program, "uLuminanceCap"),
-        levels: uniform(this.gl, this.program, "uLevels"),
-        base: uniform(this.gl, this.program, "uBase"),
-        colors: uniform(this.gl, this.program, "uColors[0]"),
-        strengths: uniform(this.gl, this.program, "uStrengths[0]"),
-        fieldScales: uniform(this.gl, this.program, "uFieldScales[0]"),
-        phases: uniform(this.gl, this.program, "uPhases[0]")
-      };
+        this.onResize = () => this.resize();
+        this.onVisibility = () => {
+          const now = performance.now();
+          if (document.hidden) {
+            this.capturePhase(now);
+            this.visible = false;
+            if (this.frameHandle) {
+              cancelAnimationFrame(this.frameHandle);
+              this.frameHandle = 0;
+            }
+            return;
+          }
 
-      // Resizing clears the drawing buffer; a paused field has no next frame to repaint it.
-      this.onResize = () => {
-        if (this.resize()) this.render(performance.now(), true);
-      };
-      this.onVisibility = () => {
-        this.visible = !document.hidden;
-        this.lastTick = null;
-        if (this.visible) this.schedule();
-      };
-      window.addEventListener("resize", this.onResize, { passive: true });
-      document.addEventListener("visibilitychange", this.onVisibility);
-      this.resize();
-      this.uploadConfig();
-      this.schedule();
+          this.visible = true;
+          if (this.motionEnabled) {
+            const speed = this.config.field.motionSpeed;
+            this.startTime = speed > 0 && this.phaseTime !== null
+              ? now - (this.phaseTime / speed) * 1000
+              : now;
+          }
+          this.render(now, true);
+          this.schedule();
+        };
+        this.onMotionPreference = (event) => this.setMotion(!event.matches);
+        window.addEventListener("resize", this.onResize, { passive: true });
+        document.addEventListener("visibilitychange", this.onVisibility);
+        this.motionPreference.addEventListener("change", this.onMotionPreference);
+        this.available = true;
+        this.resize();
+        this.uploadConfig();
+        this.schedule();
       } catch (error) {
         this.error = error instanceof Error ? error.message : String(error);
         this.available = false;
@@ -338,28 +334,36 @@
       }
     }
 
-    applyFallbackConfig(config) {
-      document.documentElement.style.setProperty("--field-fallback-background", fallbackBackground(config));
-    }
-
     resize() {
-      if (!this.available) return false;
+      if (!this.available) return;
       const pixelRatio = Math.min(window.devicePixelRatio || 1, 1.5);
       const width = Math.max(1, Math.round(this.canvas.clientWidth * pixelRatio));
       const height = Math.max(1, Math.round(this.canvas.clientHeight * pixelRatio));
-      if (this.canvas.width === width && this.canvas.height === height) return false;
-      this.canvas.width = width;
-      this.canvas.height = height;
-      this.gl.viewport(0, 0, width, height);
-      return true;
+      if (this.canvas.width !== width || this.canvas.height !== height) {
+        this.canvas.width = width;
+        this.canvas.height = height;
+        this.gl.viewport(0, 0, width, height);
+      }
+    }
+
+    applyFallbackConfig(config) {
+      document.documentElement.style.setProperty("--field-fallback-background", fallbackBackground(config));
     }
 
     uploadConfig() {
       if (!this.available) return;
       const gl = this.gl;
       const config = this.config;
-      const colors = config.colors.slice(0, 6);
-      while (colors.length < 6) colors.push(colors[colors.length - 1]);
+      const sourceColors = Array.isArray(config.colors) ? config.colors.slice(0, MAX_COLORS) : [];
+      const fallbackColor = sourceColors[0] || {
+        oklch: config.base.oklch,
+        intensity: 0,
+        peakOpacity: 0,
+        fieldScale: config.field.scale,
+        phase: [0, 0]
+      };
+      const colors = sourceColors.slice();
+      while (colors.length < MAX_COLORS) colors.push(fallbackColor);
       const colorValues = colors.flatMap((entry) => oklchToLinearRgb(entry.oklch));
       const strengthValues = colors.map((entry) => entry.intensity * entry.peakOpacity * 3.0);
       const fieldScaleValues = colors.map((entry) => entry.fieldScale);
@@ -368,12 +372,12 @@
       gl.uniform1f(this.locations.seed, config.seed);
       gl.uniform1f(this.locations.mode, config.mode === "obsidian" ? 1 : 0);
       gl.uniform1f(this.locations.overall, config.overallColorIntensity);
+      gl.uniform1f(this.locations.colorCount, sourceColors.length);
       gl.uniform1f(this.locations.scale, config.field.scale);
       gl.uniform1f(this.locations.octaves, config.field.octaves);
       gl.uniform1f(this.locations.warp, config.field.warpStrength);
       gl.uniform1f(this.locations.dither, config.field.ditherStrength);
-      gl.uniform1f(this.locations.luminanceCap, config.field.luminanceCap ?? 1);
-      gl.uniform1f(this.locations.levels, this.levels);
+      gl.uniform1f(this.locations.luminanceCap, config.field.luminanceCap);
       gl.uniform3fv(this.locations.base, new Float32Array(oklchToLinearRgb(config.base.oklch)));
       gl.uniform3fv(this.locations.colors, new Float32Array(colorValues));
       gl.uniform1fv(this.locations.strengths, new Float32Array(strengthValues));
@@ -381,20 +385,40 @@
       gl.uniform2fv(this.locations.phases, new Float32Array(phaseValues));
     }
 
+    capturePhase(now) {
+      if (this.motionEnabled) {
+        this.phaseTime = ((now - this.startTime) / 1000) * this.config.field.motionSpeed;
+      } else if (this.phaseTime === null) {
+        this.phaseTime = this.config.field.staticTime;
+      }
+      return this.phaseTime;
+    }
+
     updateConfig(config) {
+      const now = performance.now();
+      this.capturePhase(now);
       this.config = config;
       this.applyFallbackConfig(config);
       this.uploadConfig();
-      this.render(performance.now(), true);
+      this.render(now, true);
     }
 
     setMotion(enabled) {
+      if (enabled === this.motionEnabled) {
+        const now = performance.now();
+        if (!enabled) this.capturePhase(now);
+        this.render(now, true);
+        return;
+      }
+      const now = performance.now();
+      const phase = this.capturePhase(now);
       this.motionEnabled = enabled;
-      this.lastTick = null;
       if (enabled) {
+        const speed = this.config.field.motionSpeed;
+        this.startTime = speed > 0 ? now - (phase / speed) * 1000 : now;
         this.schedule();
       } else {
-        this.render(performance.now(), true);
+        this.render(now, true);
       }
     }
 
@@ -407,28 +431,17 @@
       });
     }
 
-    frameInterval() {
-      const speed = this.config.field.motionSpeed;
-      if (!(speed > 0)) return MAX_FRAME_INTERVAL;
-      return Math.min(MAX_FRAME_INTERVAL, Math.max(MIN_FRAME_INTERVAL, (MAX_FIELD_STEP / speed) * 1000));
-    }
-
     render(now, force) {
       if (!this.available) return;
-      if (!force && now - this.lastFrame < this.frameInterval()) {
+      if (!force && now - this.lastFrame < 50) {
         this.schedule();
         return;
       }
       this.lastFrame = now;
       this.resize();
-      if (this.motionEnabled) {
-        if (this.lastTick !== null) {
-          this.fieldTime += (Math.max(0, now - this.lastTick) / 1000) * this.config.field.motionSpeed;
-        }
-        this.lastTick = now;
-      }
+      const elapsed = this.capturePhase(now);
       this.gl.uniform2f(this.locations.resolution, this.canvas.width, this.canvas.height);
-      this.gl.uniform1f(this.locations.time, this.fieldTime);
+      this.gl.uniform1f(this.locations.time, elapsed);
       this.gl.drawArrays(this.gl.TRIANGLES, 0, 6);
     }
   }

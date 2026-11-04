@@ -5138,6 +5138,28 @@
     }
   },
   {
+    "id": "api-security-testing",
+    "path": "skills/api-security-testing",
+    "category": "granular-workflow-bundle",
+    "name": "api-security-testing",
+    "description": "API security testing workflow for REST and GraphQL APIs covering authentication, authorization, rate limiting, input validation, and security best practices.",
+    "risk": "offensive",
+    "source": "personal",
+    "date_added": "2026-02-27",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    }
+  },
+  {
     "id": "api-testing-observability-api-mock",
     "path": "skills/api-testing-observability-api-mock",
     "category": "backend",

@@ -1,6 +1,6 @@
 ---
 name: incident-response-smart-fix
-description: "Investigate production issues, reproduce root causes, implement scoped fixes, and verify recovery using tests and observability."
+description: "[Extended thinking: This workflow implements a sophisticated debugging and resolution pipeline that leverages AI-assisted debugging tools and observability platforms to systematically diagnose and res"
 risk: critical
 source: community
 date_added: "2026-02-27"

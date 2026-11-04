@@ -9,13 +9,17 @@ kubectl rollout undo deployment/myapp -n production
 ```
 
 ### If database related:
-Investigate the database's own health, replication and connection metrics using its approved runbook. Do not delete database pods as a generic remedy: quorum, storage and transaction recovery depend on the deployment. Escalate to the database owner before a specific approved recovery step.
+```bash
+kubectl delete pod -l app=postgres -n production
+```
 
 
 ## Escalation
 If not resolved within 15 minutes, escalate to:
 - Database team: @db-oncall
 - Platform team: @platform-oncall
+```
+
 
 ## Alert Fatigue Reduction
 

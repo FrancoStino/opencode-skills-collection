@@ -6,11 +6,8 @@ metadata:
     skill-author: K-Dense Inc.
 risk: critical
 source: community
-date_added: "2026-03-06"
+date_added: "2026-09-04"
 ---
-## Bundled upstream support
-
-Supporting files are included at skill-relative paths. See [UPSTREAM-NOTICE.md](UPSTREAM-NOTICE.md) for their pinned sources, licenses, hashes, and import changes.
 
 # Matplotlib
 
@@ -330,8 +327,6 @@ Interactive utility to configure matplotlib style preferences and generate custo
 ```bash
 python scripts/style_configurator.py
 ```
-
-When saving a style, choose a new output path. The helper refuses to overwrite an existing style or preview image; with `--preview --output`, the preview is saved beside the style as `<name>_preview.png`.
 
 ## Detailed References
 

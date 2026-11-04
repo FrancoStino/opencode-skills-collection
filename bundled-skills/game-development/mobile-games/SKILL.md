@@ -39,10 +39,10 @@ date_added: "2026-02-27"
 
 ### Best Practices
 
-- Follow the platform accessibility target size (for example, iOS points and Android dp are different units)
+- Minimum touch target: 44x44 points
 - Visual feedback on touch
 - Avoid precise timing requirements
-- Support the orientations chosen for the product; test rotation and safe areas where enabled
+- Support both portrait and landscape
 
 ---
 
@@ -73,15 +73,15 @@ date_added: "2026-02-27"
 |-------------|------|
 | Privacy labels | Required |
 | Account deletion | If account creation exists |
-| Screenshots | Required submission sizes for supported devices |
+| Screenshots | For all device sizes |
 
 ### Android (Google Play)
 
 | Requirement | Note |
 |-------------|------|
-| Target API | Current Play target-level deadline for this application |
+| Target API | Current year's SDK |
 | 64-bit | Required |
-| App bundles | Check mandatory format and exceptions for the submission |
+| App bundles | Recommended |
 
 ---
 
@@ -110,7 +110,7 @@ date_added: "2026-02-27"
 > **Remember:** Mobile is the most constrained platform. Respect battery and attention.
 
 ## When to Use
-Use when adapting gameplay to touch controls, mobile interruptions, battery and thermal constraints, or preparing a store submission.
+This skill is applicable to execute the workflow or actions described in the overview.
 
 ## Example
 
@@ -122,7 +122,3 @@ Use when adapting gameplay to touch controls, mobile interruptions, battery and 
 - Use this skill only when the task clearly matches the scope described above.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
-
-## Verification
-
-Treat tables as design starting points, not guarantees. Prototype the selected mechanic, test accessibility and recovery paths, and measure frame timing, memory and behavior on target hardware before claiming completion. Store submission and licensing requirements must be checked against current official platform documentation.

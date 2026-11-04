@@ -312,10 +312,10 @@ echo "[████████████████████] 100% - Step
 ```markdown
 # [Video Title]
 
-**Channel:** [Channel Name]  
-**Duration:** [Duration]  
+**Canal:** [Channel Name]  
+**Duração:** [Duration]  
 **URL:** [https://youtube.com/watch?v=VIDEO_ID]  
-**Published:** [Date if available]
+**Data de Publicação:** [Date if available]
 
 
 ## 📝 Detailed Summary

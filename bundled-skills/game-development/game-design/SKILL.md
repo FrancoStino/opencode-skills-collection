@@ -17,7 +17,7 @@ date_added: "2026-02-27"
 ### The 30-Second Test
 
 ```
-Prototype a short loop; 30 seconds is a heuristic, not a universal rule:
+Every game needs a fun 30-second loop:
 1. ACTION → Player does something
 2. FEEDBACK → Game responds
 3. REWARD → Player feels good
@@ -42,7 +42,7 @@ Prototype a short loop; 30 seconds is a heuristic, not a universal rule:
 | Section | Content |
 |---------|---------|
 | **Pitch** | One-sentence description |
-| **Core Loop** | Actions, feedback and meaningful outcomes |
+| **Core Loop** | 30-second gameplay |
 | **Mechanics** | How systems work |
 | **Progression** | How player advances |
 | **Art Style** | Visual direction |
@@ -72,7 +72,7 @@ Prototype a short loop; 30 seconds is a heuristic, not a universal rule:
 | Schedule | Effect | Use |
 |----------|--------|-----|
 | **Fixed** | Predictable | Milestone rewards |
-| **Variable** | Unpredictable outcomes | Optional rewards with transparent odds |
+| **Variable** | Addictive | Loot drops |
 | **Ratio** | Effort-based | Grind games |
 
 ---
@@ -131,13 +131,9 @@ Just Right → Flow → Engagement
 > **Remember:** Fun is discovered through iteration, not designed on paper.
 
 ## When to Use
-Use when designing a playable core loop, preparing a GDD, balancing difficulty, or evaluating progression through playtests.
+This skill is applicable to execute the workflow or actions described in the overview.
 
 ## Limitations
 - Use this skill only when the task clearly matches the scope described above.
 - Do not treat the output as a substitute for environment-specific validation, testing, or expert review.
 - Stop and ask for clarification if required inputs, permissions, safety boundaries, or success criteria are missing.
-
-## Verification
-
-Treat tables as design starting points, not guarantees. Prototype the selected mechanic, test accessibility and recovery paths, and measure frame timing, memory and behavior on target hardware before claiming completion. Store submission and licensing requirements must be checked against current official platform documentation.

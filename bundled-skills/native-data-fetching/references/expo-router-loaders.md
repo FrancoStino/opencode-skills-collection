@@ -9,10 +9,6 @@ Route-level data loading for web apps using Expo SDK 55+. Loaders are async func
 
 You write one function and the framework manages when and how it executes.
 
-## Version boundary
-
-Bind these examples to the installed SDK. The [official loader guide](https://docs.expo.dev/router/web/data-loaders/) distinguishes stable SDK 58+ from experimental SDK 55–57: enable the unstable loader flag only on those earlier versions. Current typed loader imports come from `expo-router/server`. Check rendering configuration and cache behavior for that exact SDK. The historical configurations below illustrate SDK 55–57 and must not be copied unchanged into every newer project.
-
 ## Configuration
 
 **Requirements:** Expo SDK 55+, web output mode (`npx expo serve` or `npx expo export --platform web`) set in `app.json` or `app.config.js`.
@@ -65,7 +61,7 @@ Bind these examples to the installed SDK. The [official loader guide](https://do
 Loaders use two packages:
 
 - **`expo-router`** — `useLoaderData` hook
-- **`expo-router/server`** — current `LoaderFunction` type; **`expo-server`** — runtime utilities such as `StatusError` and `setResponseHeaders`. Verify installed exports.
+- **`expo-server`** — `LoaderFunction` type, `StatusError`, `setResponseHeaders`. Always available (dependency of `expo-router`), no install needed.
 
 ## Basic Loader
 
@@ -79,7 +75,6 @@ import { ActivityIndicator, View, Text } from "react-native";
 
 export async function loader() {
   const response = await fetch("https://api.example.com/posts");
-  if (!response.ok) throw new Error("Posts unavailable");
   const posts = await response.json();
   return { posts };
 }
@@ -115,8 +110,7 @@ For loaders with params, use the `LoaderFunction<T>` type from `expo-server`. Th
 // app/posts/[id].tsx
 import { Suspense } from "react";
 import { useLoaderData } from "expo-router";
-import { StatusError } from "expo-server";
-import { type LoaderFunction } from "expo-router/server";
+import { StatusError, type LoaderFunction } from "expo-server";
 import { ActivityIndicator, View, Text } from "react-native";
 
 type Post = {
@@ -129,9 +123,8 @@ export const loader: LoaderFunction<{ post: Post }> = async (
   request,
   params,
 ) => {
-  if (typeof params.id !== "string" || !params.id) throw new Error("Invalid ID");
-  const id = params.id;
-  const response = await fetch(`https://api.example.com/posts/${encodeURIComponent(id)}`);
+  const id = params.id as string;
+  const response = await fetch(`https://api.example.com/posts/${id}`);
 
   if (!response.ok) {
     throw new StatusError(404, `Post ${id} not found`);
@@ -165,7 +158,7 @@ Catch-all routes access `params.slug` the same way:
 
 ```tsx
 // app/docs/[...slug].tsx
-import { type LoaderFunction } from "expo-router/server";
+import { type LoaderFunction } from "expo-server";
 
 type Doc = { title: string; content: string };
 
@@ -181,7 +174,7 @@ Query parameters are available via the `request` object (server output mode only
 
 ```tsx
 // app/search.tsx
-import { type LoaderFunction } from "expo-router/server";
+import { type LoaderFunction } from "expo-server";
 
 export const loader: LoaderFunction<{ results: any[]; query: string }> = async (request) => {
   // Assuming request.url is `/search?q=expo&page=2`
@@ -198,23 +191,26 @@ export const loader: LoaderFunction<{ results: any[]; query: string }> = async (
 
 Loaders run on the server, so you can access secrets and server-only resources directly:
 
-The following JavaScript is a dependency-injected server handler, not a claim about an installed Expo SDK signature. Wire it into the verified version's loader API. `verifySession` must verify expiry, revocation and identity server-side; cookie presence is insufficient. `authorizeAccount` must bind that identity to the requested account. These project functions are prerequisites, not bundled implementations.
+```tsx
+// app/dashboard.tsx
+import { type LoaderFunction } from "expo-server";
 
-```javascript
-export async function loadPrivateBalance(request, {
-  verifySession, authorizeAccount, fetchBalance,
-}) {
-  if (!request) throw new Error("Server request required");
-  const session = await verifySession(request);
-  if (!session) throw new Error("Unauthenticated");
-  const account = await authorizeAccount(session);
-  if (!account) throw new Error("Forbidden");
-  const balance = await fetchBalance(account);
-  return { balance }; // Return only fields this user may view.
-}
+export const loader: LoaderFunction<{ balance: any; isAuthenticated: boolean }> = async (
+  request,
+  params,
+) => {
+  const data = await fetch("https://api.stripe.com/v1/balance", {
+    headers: {
+      Authorization: `Bearer ${process.env.STRIPE_SECRET_KEY}`,
+    },
+  });
+
+  const sessionToken = request?.headers.get("cookie")?.match(/session=([^;]+)/)?.[1];
+
+  const balance = await data.json();
+  return { balance, isAuthenticated: !!sessionToken };
+};
 ```
-
-Disable shared caching (`Cache-Control: private, no-store`), protect client caches by identity and clear them on sign-out. Never prerender private account data into static HTML. Verify loader APIs and caching behavior against the installed version and [official data-loader documentation](https://docs.expo.dev/router/web/data-loaders/).
 
 The `request` object is available in server output mode. In static output mode, `request` is always `undefined`.
 
@@ -240,12 +236,10 @@ export async function loader() {
 
 ```tsx
 // app/products/[id].tsx
-import { StatusError } from "expo-server";
-import { type LoaderFunction } from "expo-router/server";
+import { StatusError, type LoaderFunction } from "expo-server";
 
 export const loader: LoaderFunction<{ product: Product }> = async (request, params) => {
-  if (typeof params.id !== "string" || !params.id) throw new Error("Invalid ID");
-  const id = params.id;
+  const id = params.id as string;
   const product = await fetchProduct(id);
 
   if (!product) {
@@ -270,7 +264,6 @@ import { ActivityIndicator, View, Text } from "react-native";
 
 export async function loader() {
   const response = await fetch("https://api.example.com/posts");
-  if (!response.ok) throw new Error("Posts unavailable");
   return { posts: await response.json() };
 }
 
@@ -336,7 +329,7 @@ When a loader throws (including `StatusError`), the nearest `ErrorBoundary` catc
 
 - Loaders are web-only; use client-side fetching (React Query, fetch) for native
 - Loaders cannot be used in `_layout` files — only in route files
-- Use the installed SDK’s `LoaderFunction<T>` (currently `expo-router/server`) to type loaders that use params
+- Use `LoaderFunction<T>` from `expo-server` to type loaders that use params
 - The request object is immutable — use optional chaining (`request?.headers`) as it may be `undefined` in static mode
 - Return only JSON-serializable values (no `Date`, `Map`, `Set`, class instances, functions)
 - Use non-prefixed `process.env` vars for secrets in loaders, not `EXPO_PUBLIC_` (which is embedded in the client bundle)
@@ -345,4 +338,4 @@ When a loader throws (including `StatusError`), the nearest `ErrorBoundary` catc
 - Export `ErrorBoundary` from route files to handle loader failures gracefully
 - Validate and sanitize user input (params, query strings) before using in database queries or API calls
 - Handle errors gracefully with try/catch; log server-side for debugging
-- SDK 55–57 retain client loader data during navigation. SDK 58+ re-fetches after route unmount/revisit under HTTP cache rules; mounted-route invalidation still needs an explicit design. Verify identity changes and error retries on the installed version.
+- Loader data is currently cached for the session. This is a known limitation that will be lifted in a future release

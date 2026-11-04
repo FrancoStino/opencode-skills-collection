@@ -18,17 +18,13 @@ Automate ActiveCampaign CRM and marketing automation operations through Composio
 
 ## Setup
 
-**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. Authentication and permissions depend on the host and current Rube integration; adding an endpoint alone does not prove access. Apply host configuration only when authorized.
+**Get Rube MCP**: Add `https://rube.app/mcp` as an MCP server in your client configuration. No API keys needed — just add the endpoint and it works.
 
 
 1. Verify Rube MCP is available by confirming `RUBE_SEARCH_TOOLS` responds
 2. Call `RUBE_MANAGE_CONNECTIONS` with toolkit `active_campaign`
 3. If connection is not ACTIVE, follow the returned auth link to complete ActiveCampaign authentication
 4. Confirm connection status shows ACTIVE before running any workflows
-
-## Authorization and verification
-
-Tool slugs and parameter notes are examples; discovered current schemas take precedence. Identify the exact account, contacts and requested mutations, read existing state, and check whether tags or automation enrollment trigger outbound messages. Contact creation does not imply subscription consent. Obtain explicit authorization for sending/enrollment with those effects, and preserve unsubscribe/suppression status. Read results back; reconcile timeouts before retrying non-idempotent operations.
 
 ## Core Workflows
 
@@ -37,8 +33,8 @@ Tool slugs and parameter notes are examples; discovered current schemas take pre
 **When to use**: User wants to create new contacts or look up existing ones
 
 **Tool sequence**:
-1. `ACTIVE_CAMPAIGN_FIND_CONTACT` - Search for an exact existing contact before a requested create/update
-2. `ACTIVE_CAMPAIGN_CREATE_CONTACT` - Create only when requested and not already present; lookup-only requests perform no create
+1. `ACTIVE_CAMPAIGN_FIND_CONTACT` - Search for an existing contact [Optional]
+2. `ACTIVE_CAMPAIGN_CREATE_CONTACT` - Create a new contact [Required]
 
 **Key parameters for find**:
 - `email`: Search by email address
@@ -214,7 +210,7 @@ Tool slugs and parameter notes are examples; discovered current schemas take pre
 | Create task | ACTIVE_CAMPAIGN_CREATE_CONTACT_TASK | relid, duedate, dealTasktype, title |
 
 ## When to Use
-Use when looking up or editing authorized ActiveCampaign contacts, tags, list subscriptions, existing automation enrollments or follow-up tasks.
+This skill is applicable to execute the workflow or actions described in the overview.
 
 ## Limitations
 - Use this skill only when the task clearly matches the scope described above.

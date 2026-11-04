@@ -94,7 +94,7 @@ def run_inspect_vllm(
     if dtype != "auto":
         cmd.extend(["--dtype", dtype])
     if trust_remote_code:
-        raise ValueError("Remote model code is disabled in this credential-bearing wrapper; use a separately reviewed, isolated, pinned workflow")
+        cmd.append("--trust-remote-code")
 
     if limit:
         cmd.extend(["--limit", str(limit)])
@@ -159,7 +159,7 @@ def run_inspect_hf(
     if dtype != "auto":
         cmd.extend(["--dtype", dtype])
     if trust_remote_code:
-        raise ValueError("Remote model code is disabled in this credential-bearing wrapper; use a separately reviewed, isolated, pinned workflow")
+        cmd.append("--trust-remote-code")
 
     if limit:
         cmd.extend(["--limit", str(limit)])

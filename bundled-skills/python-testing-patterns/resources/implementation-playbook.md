@@ -1,6 +1,6 @@
 # Python Testing Patterns Implementation Playbook
 
-Examples are isolated teaching fixtures. Stubbed database/network tests do not exercise a deployed system. Confirm project-local dependency versions, preserve synthetic data and do not enable coverage uploads without destination authorization. Naming-only and marker-only examples must be explicitly skipped until real assertions are implemented.
+This file contains detailed patterns, checklists, and code samples referenced by the skill.
 
 # Python Testing Patterns
 
@@ -207,10 +207,7 @@ import pytest
 
 def is_valid_email(email: str) -> bool:
     """Check if email is valid."""
-    parts = email.split("@")
-    return len(parts) == 2 and bool(parts[0]) and "." in parts[1] and not parts[1].startswith(".") and not parts[1].endswith(".")
-
-# Teaching predicate for these fixtures, not complete RFC email validation.
+    return "@" in email and "." in email.split("@")[1]
 
 
 @pytest.mark.parametrize("email,expected", [
@@ -371,7 +368,6 @@ def test_exception_info():
 ```python
 # test_async.py
 import pytest
-import pytest_asyncio
 import asyncio
 
 async def fetch_data(url: str) -> dict:
@@ -399,7 +395,7 @@ async def test_concurrent_fetches():
     assert all("data" in r for r in results)
 
 
-@pytest_asyncio.fixture
+@pytest.fixture
 async def async_client():
     """Async fixture."""
     client = {"connected": True}
@@ -638,20 +634,17 @@ def test_sorted_list_properties(lst):
 ### Test Naming
 
 ```python
-# Good test names; naming-only examples are not passing behavioral tests.
-@pytest.mark.skip(reason="Naming illustration; no implementation")
+# Good test names
 def test_user_creation_with_valid_data():
     """Clear name describes what is being tested."""
     pass
 
 
-@pytest.mark.skip(reason="Naming illustration; no implementation")
 def test_login_fails_with_invalid_password():
     """Name describes expected behavior."""
     pass
 
 
-@pytest.mark.skip(reason="Naming illustration; no implementation")
 def test_api_returns_404_for_missing_resource():
     """Specific about inputs and expected outcomes."""
     pass
@@ -674,7 +667,6 @@ def test_function():  # Doesn't explain what's tested
 
 ```python
 # test_markers.py
-import os
 import pytest
 
 @pytest.mark.slow
@@ -685,7 +677,6 @@ def test_slow_operation():
 
 
 @pytest.mark.integration
-@pytest.mark.skip(reason="Integration illustration; implement real assertions")
 def test_database_integration():
     """Mark integration tests."""
     pass

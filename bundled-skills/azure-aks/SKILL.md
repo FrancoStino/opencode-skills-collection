@@ -33,8 +33,7 @@ Deploy and manage production-grade Kubernetes clusters on Azure with AKS. Covers
 
 ```bash
 # Install Azure CLI and kubectl
-# Prerequisite: organization-approved Azure CLI installed from a verified signed package.
-az version
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 az aks install-cli
 
 # Login and set subscription

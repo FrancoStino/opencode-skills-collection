@@ -3,7 +3,7 @@ name: odoo-module-developer
 description: "Expert guide for creating custom Odoo modules. Covers __manifest__.py, model inheritance, ORM patterns, and module structure best practices."
 risk: safe
 source: "self"
-date_added: "2026-03-04"
+date_added: "2026-09-04"
 ---
 
 # Odoo Module Developer
@@ -57,7 +57,6 @@ hospital_management/
     'category': 'Healthcare',
     'depends': ['base', 'mail'],
     'data': [
-        'security/security.xml',
         'security/ir.model.access.csv',
         'views/hospital_patient_views.xml',
     ],
@@ -99,8 +98,6 @@ class HospitalPatient(models.Model):
 ## Limitations
 
 - Does not cover **OWL JavaScript components** or frontend widget development — use `@odoo-xml-views-builder` for view XML.
-- The manifest example targets Odoo 17; verify the exact version and supported module/view syntax. Older Odoo releases also use module manifests; do not infer a nonexistent manifest cutoff.
+- **Odoo 13 and below** have a different module structure (no `__manifest__.py` auto-loading) — this skill targets v14+.
 - Does not cover **multi-company** or **multi-website** configuration; those require additional model fields (`company_id`, `website_id`).
 - Does not generate automated test files — use `@odoo-automated-tests` for that.
-
-The displayed tree is a scaffold, not a complete installable module: supply imports, XML views, named groups, ACLs and record rules before claiming it works. Avoid default broad patient-data access; chatter/tracking can disclose sensitive values, so select fields and followers deliberately. Test installation, multi-record compute/constraints and unauthorized access in a disposable database, never through an unrequested production module upgrade.

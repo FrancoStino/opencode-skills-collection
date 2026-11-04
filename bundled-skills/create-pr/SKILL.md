@@ -3,7 +3,7 @@ name: create-pr
 description: Alias for pr-writer. Use when users explicitly ask for "create-pr" or reference the legacy skill name. Redirects to the canonical PR writing workflow.
 risk: critical
 source: community
-date_added: "2026-01-30"
+date_added: "2026-09-04"
 ---
 
 # Alias: create-pr
@@ -16,8 +16,6 @@ This skill name is kept for compatibility.
 - The task is specifically about writing or updating a pull request rather than general git operations.
 
 Use the available `pr-writer` skill as the canonical workflow for creating and editing pull requests. If the client requires qualified skill names, use the qualifier for the plugin that supplied this skill rather than assuming an external namespace.
-
-Confirm that `pr-writer` is actually installed; otherwise report the dependency missing. Repository-native maintainer and merge rules still apply.
 
 If invoked via `create-pr`, run the same workflow and conventions documented in `pr-writer`.
 

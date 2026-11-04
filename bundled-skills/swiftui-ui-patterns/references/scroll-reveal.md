@@ -127,9 +127,7 @@ This keeps the motion coherent and avoids duplicate-hit-target bugs.
 - Do not store derived state like `isSecondaryVisible` unless another API requires it. Prefer deriving it from `progress` or visible scroll targets.
 - Beware of layout feedback loops when measuring heights. Clamp zero values and update only when the measured height actually changes.
 
-## Historical author examples
-
-These are the original author’s private checkout paths, not bundled files or prerequisites. Use the self-contained schematic pattern above and real files from the current project; do not claim these historical files were opened.
+## Concrete example
 
 - Pool iOS tile detail reveal: `/Users/dimillian/Documents/Dev/Pool/pool-ios/Pool/Sources/Features/Tile/Detail/TileDetailView.swift`
 - Secondary content anchor example: `/Users/dimillian/Documents/Dev/Pool/pool-ios/Pool/Sources/Features/Tile/Detail/TileDetailIntentListView.swift`

@@ -2,7 +2,7 @@
 name: md2video-audio
 description: "Convert Markdown documents into narrated MP4 videos with synchronized visuals and voice narration."
 category: media
-risk: critical
+risk: safe
 source: community
 source_repo: 70v-Yoyo/md2video-audio-skill
 source_type: community
@@ -15,10 +15,6 @@ license_source: "https://github.com/70v-Yoyo/md2video-audio-skill/blob/main/LICE
 ---
 
 # Md2video-audio
-
-## Missing bundled runtime — stop before execution
-
-This entry bundles no conversion scripts. The historical command names below describe upstream interfaces only; do not execute them relative to the working directory or substitute project files. Until a separately reviewed complete runtime is installed at a verified absolute path, return a conversion plan and report the missing runtime. Do not download or execute helpers as part of a conversion request.
 
 ## Overview
 
@@ -64,10 +60,10 @@ Remove visual-only characters that should not be spoken and verify that slide se
 
 ### Step 5: Generate Video
 
-Historical upstream interface (not bundled or executable from this entry):
+Run the provided video-generation script with the presentation and narration files:
 
 ```
-# Historical interface only (unbundled): ai-2md2marp2av.py presentation.md narration.md
+python ai-2md2marp2av.py presentation.md narration.md
 ```
 
 The script renders Marp slides, generates speech with Edge-TTS, and combines them into an MP4 video.
@@ -76,16 +72,16 @@ Ask the user to complete any interactive input required by the script.
 
 ### Step 6: Fallback
 
-These upstream fallback names are reference only. Do not execute them or search the project for substitutes:
+If the primary workflow fails, try the included fallback scripts in order:
 
 ```
-# Historical interface only (unbundled): md2marp2av.py
+python md2marp2av.py
 ```
 
 Then:
 
 ```
-# Historical interface only (unbundled): md2video.py
+python md2video.py
 ```
 
 ## Examples
@@ -117,7 +113,7 @@ Use the generated slides and narration to create a presentation-style report vid
 
 ## Limitations
 
-- Requires a separately reviewed external runtime and dependencies; no scripts are bundled here.
+- Requires the local runtime and dependencies used by the included scripts.
 - Complex Markdown layouts may require manual adjustment.
 - Edge-TTS availability depends on the local network and runtime environment.
 - Stop and ask for clarification when required files, permissions, or user choices are missing.
@@ -136,4 +132,4 @@ Use the generated slides and narration to create a presentation-style report vid
 - **Problem:** Slide content overflows the Marp layout.
   **Solution:** Split the content into smaller logical sections before rendering.
 - **Problem:** Video generation fails because dependencies are unavailable.
-  **Solution:** Report the missing or failed reviewed runtime and stop execution; do not run project-relative fallbacks.
+  **Solution:** Verify the environment first, then use the fallback scripts if appropriate.

@@ -3,11 +3,8 @@ name: sharp-edges
 description: sharp-edges
 risk: critical
 source: community
-date_added: "2026-01-30"
+date_added: "2026-09-04"
 ---
-## Bundled upstream support
-
-Supporting files are included at skill-relative paths. See [UPSTREAM-NOTICE.md](UPSTREAM-NOTICE.md) for their pinned sources, licenses, hashes, and import changes.
 
 ---
 name: sharp-edges

@@ -13,10 +13,6 @@ license_source: https://github.com/amElnagdy/delegate-skills/blob/master/LICENSE
 metadata:
   version: 0.5.0
 ---
-## Bundled upstream support
-
-Supporting files are included at skill-relative paths. See [UPSTREAM-NOTICE.md](UPSTREAM-NOTICE.md) for their pinned sources, licenses, hashes, and import changes.
-
 # Pi Delegate
 
 ## When to Use
@@ -146,7 +142,7 @@ expanding the mandate). See [references/review-and-land.md](references/review-an
 
 ## Limitations
 
-- Runtime helper `scripts/relay.mjs` is bundled from the revision recorded in `UPSTREAM-NOTICE.md`. Requires the corresponding installed and authenticated CLI, Node 18+, and git.
+- Docs-only import — executable `scripts/relay.mjs` not included; see upstream for full runtime. Requires `pi` CLI, Node 18+, git.
 - Relay never commits — it only returns structured result JSON; you review and land the commit.
 
 > Adapted from [amElnagdy/delegate-skills](https://github.com/amElnagdy/delegate-skills) (MIT) — docs-only, runtime not bundled.

@@ -13,9 +13,6 @@ tools: [claude-code, codex-cli, copilot, opencode]
 license: "MIT"
 license_source: "https://github.com/glukicov/slideops/blob/main/LICENSE"
 ---
-## Bundled upstream support
-
-Supporting files are included at skill-relative paths. See [UPSTREAM-NOTICE.md](UPSTREAM-NOTICE.md) for their pinned sources, licenses, hashes, and import changes.
 
 # SlideOps: slides from a repo, that tell you when they go stale
 
@@ -55,21 +52,20 @@ milliseconds to run.
 
 ### Step 1: Install from the canonical repo
 
-In Claude Code, as a plugin (both skills, explicitly reviewed updates):
+In Claude Code, as a plugin (both skills, background updates):
 
-## External tool prerequisite
-
-Use only an already installed tool whose exact version, complete dependency tree and integrity have been reviewed. This skill does not bootstrap tools or activate external plugins. If the prerequisite is missing, stop that executable path and report it; continue with static analysis when possible. A separate installation task must pin immutable artifacts, stage them outside active agent directories with lifecycle scripts disabled, inspect every bundled file and executable entry point (including tests and hooks), and obtain approval before activation or host configuration changes. Do not substitute a same-named workspace script or fetch a moving branch.
-
-
+```text
+/plugin marketplace add glukicov/slideops
+/plugin install slideops@slideops
+```
 
 Or for Codex CLI, Copilot CLI, and OpenCode, one installer covers all of them:
 
-## External tool prerequisite
-
-Use only an already installed tool whose exact version, complete dependency tree and integrity have been reviewed. This skill does not bootstrap tools or activate external plugins. If the prerequisite is missing, stop that executable path and report it; continue with static analysis when possible. A separate installation task must pin immutable artifacts, stage them outside active agent directories with lifecycle scripts disabled, inspect every bundled file and executable entry point (including tests and hooks), and obtain approval before activation or host configuration changes. Do not substitute a same-named workspace script or fetch a moving branch.
-
-
+```bash
+git clone https://github.com/glukicov/slideops && cd slideops
+git checkout ba43e89bc7936649be36a1796a62203f704f8c60   # the v1.0.0 release commit
+./install.sh
+```
 
 The checkout pins the exact commit this catalog copy froze at, which is what a reader
 can verify independently. (The canonical repo also blocks retargeting of `v*` tags with
