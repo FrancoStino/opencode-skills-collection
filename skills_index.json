@@ -1209,6 +1209,32 @@
     ]
   },
   {
+    "id": "agent-instructions",
+    "path": "skills/agent-instructions",
+    "category": "development",
+    "name": "agent-instructions",
+    "description": "Writing or restructuring AGENTS.md or CLAUDE.md, adding a rule ('remember this'), or after an agent ignored a rule it had: make each rule get met when it applies.",
+    "risk": "safe",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
+  },
+  {
     "id": "agent-manager-skill",
     "path": "skills/agent-manager-skill",
     "category": "ai-agents",
@@ -2024,6 +2050,32 @@
       "quota",
       "cli"
     ]
+  },
+  {
+    "id": "ahrefs-research",
+    "path": "skills/ahrefs-research",
+    "category": "marketing",
+    "name": "ahrefs-research",
+    "description": "Use Ahrefs exports or an authorized connector to score competitor page gaps, qualify backlinks, cluster forum topics and find editorial fit.",
+    "risk": "critical",
+    "source": "https://github.com/Illyism/seo-skills",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "Illyism/seo-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/Illyism/seo-skills/blob/a158c36a1c2c84a44ee7a1ae69c009caf73e1a35/README.md#license"
   },
   {
     "id": "ai-agent-development",
@@ -3208,6 +3260,32 @@
     }
   },
   {
+    "id": "ai-seo-report",
+    "path": "skills/ai-seo-report",
+    "category": "marketing",
+    "name": "ai-seo-report",
+    "description": "Write the AI SEO Tracker report brief from live MCP data. Use when the user wants a TL;DR of AI search visibility, a weekly recap, or the same brief as the in-app Report page. Trigger on \"tldr the report\", \"AI SEO brief\", \"why am I missing in ChatGPT\".",
+    "risk": "safe",
+    "source": "https://github.com/Illyism/seo-skills",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "Illyism/seo-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/Illyism/seo-skills/blob/a158c36a1c2c84a44ee7a1ae69c009caf73e1a35/README.md#license"
+  },
+  {
     "id": "ai-snippet-generator",
     "path": "skills/ai-snippet-generator",
     "category": "ai-powered seo",
@@ -3448,6 +3526,32 @@
       },
       "reasons": []
     }
+  },
+  {
+    "id": "aiseotracker",
+    "path": "skills/aiseotracker",
+    "category": "marketing",
+    "name": "aiseotracker",
+    "description": "Use an authorized AI SEO Tracker connection to inspect tracked prompts, brand mentions, cited domains and competitors across answer engines.",
+    "risk": "critical",
+    "source": "https://github.com/Illyism/seo-skills",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "Illyism/seo-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/Illyism/seo-skills/blob/a158c36a1c2c84a44ee7a1ae69c009caf73e1a35/README.md#license"
   },
   {
     "id": "akf-trust-metadata",
@@ -5768,6 +5872,32 @@
     }
   },
   {
+    "id": "app-lifecycle",
+    "path": "skills/app-lifecycle",
+    "category": "development",
+    "name": "app-lifecycle",
+    "description": "Planning a SaaS stage, 'what's next', 'where are we', calling a stage done: the detailed path from an idea to production, each stage with its done-when.",
+    "risk": "safe",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
+  },
+  {
     "id": "app-store-changelog",
     "path": "skills/app-store-changelog",
     "category": "content",
@@ -7421,6 +7551,32 @@
       },
       "reasons": []
     }
+  },
+  {
+    "id": "awesome-tools",
+    "path": "skills/awesome-tools",
+    "category": "marketing",
+    "name": "awesome-tools",
+    "description": "Submit a software tool to Awesome Tools using the JSON API or browser WebMCP tools, and complete the free backlink path or review the paid listing options.",
+    "risk": "critical",
+    "source": "https://github.com/Illyism/seo-skills",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "Illyism/seo-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/Illyism/seo-skills/blob/a158c36a1c2c84a44ee7a1ae69c009caf73e1a35/README.md#license"
   },
   {
     "id": "aws-agentic-ai",
@@ -11016,6 +11172,43 @@
     }
   },
   {
+    "id": "b2b-hiring-intent-radar",
+    "path": "skills/b2b-hiring-intent-radar",
+    "category": "marketing",
+    "name": "b2b-hiring-intent-radar",
+    "description": "Query public read-only ATS feeds across 9 platforms to extract company tech-stack signals, disclosed salary bands, and B2B hiring intent.",
+    "risk": "safe",
+    "source": "https://github.com/yan0lovesha/hiring-intent-mcp",
+    "date_added": "2026-11-18",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "yan0lovesha/hiring-intent-mcp",
+    "license": "MIT",
+    "license_source": "https://github.com/yan0lovesha/hiring-intent-mcp/blob/e81b043512714fe88d2c4570fbb9681931d51393/LICENSE",
+    "tags": [
+      "b2b",
+      "hiring-intent",
+      "tech-stack",
+      "ats",
+      "greenhouse",
+      "ashby",
+      "lever",
+      "sales-research",
+      "mcp"
+    ]
+  },
+  {
     "id": "babysit-pr",
     "path": "skills/babysit-pr",
     "category": "code-quality",
@@ -11587,6 +11780,32 @@
       "mcp",
       "reference-data"
     ]
+  },
+  {
+    "id": "beachhead-segment",
+    "path": "skills/beachhead-segment",
+    "category": "product",
+    "name": "beachhead-segment",
+    "description": "Choosing the first market or customer segment to win, scored on burning pain, willingness to pay, winnable share and referrals.",
+    "risk": "safe",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
   },
   {
     "id": "beatra",
@@ -12170,6 +12389,84 @@
     }
   },
   {
+    "id": "blitz-copy",
+    "path": "skills/blitz-copy",
+    "category": "marketing",
+    "name": "blitz-copy",
+    "description": "Draft landing-page headlines, email openings, social hooks or titles using a hook, concrete surprise and relevant payoff.",
+    "risk": "safe",
+    "source": "https://github.com/Illyism/seo-skills",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "Illyism/seo-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/Illyism/seo-skills/blob/a158c36a1c2c84a44ee7a1ae69c009caf73e1a35/README.md#license"
+  },
+  {
+    "id": "blitz-seo",
+    "path": "skills/blitz-seo",
+    "category": "marketing",
+    "name": "blitz-seo",
+    "description": "Plan a 30-day SEO sprint for one existing commercial page with search-intent checks, relevant internal links, first-hand evidence and change tracking.",
+    "risk": "safe",
+    "source": "https://github.com/Illyism/seo-skills",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "Illyism/seo-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/Illyism/seo-skills/blob/a158c36a1c2c84a44ee7a1ae69c009caf73e1a35/README.md#license"
+  },
+  {
+    "id": "block-ai-scrapers",
+    "path": "skills/block-ai-scrapers",
+    "category": "marketing",
+    "name": "block-ai-scrapers",
+    "description": "Protect authorized web routes against abusive automation with scoped rate limits, verified crawler handling and rollback checks.",
+    "risk": "critical",
+    "source": "https://github.com/Illyism/seo-skills",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "Illyism/seo-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/Illyism/seo-skills/blob/a158c36a1c2c84a44ee7a1ae69c009caf73e1a35/README.md#license"
+  },
+  {
     "id": "block-storage",
     "path": "skills/block-storage",
     "category": "devops",
@@ -12272,6 +12569,32 @@
       "rpc",
       "robinhood"
     ]
+  },
+  {
+    "id": "blog-refresher",
+    "path": "skills/blog-refresher",
+    "category": "marketing",
+    "name": "blog-refresher",
+    "description": "Refresh and improve existing blog posts to outrank competitors using a 6-phase content audit and SERP gap analysis. Use when the user wants to update, refresh, or improve an existing blog post, recover lost rankings, or asks why a post fell behind competitors.",
+    "risk": "safe",
+    "source": "https://github.com/Illyism/seo-skills",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "Illyism/seo-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/Illyism/seo-skills/blob/a158c36a1c2c84a44ee7a1ae69c009caf73e1a35/README.md#license"
   },
   {
     "id": "blog-title-generator",
@@ -12471,6 +12794,838 @@
       "networking",
       "coroutines"
     ]
+  },
+  {
+    "id": "boring-marketing-ads-incrementality-check",
+    "path": "skills/boring-marketing-ads-incrementality-check",
+    "category": "marketing",
+    "name": "boring-marketing-ads-incrementality-check",
+    "description": "Design a matched ad pause test using call or sales logs.",
+    "risk": "critical",
+    "source": "https://github.com/boringmarketer/boring-marketing-skills/tree/7c6678c857fe514f79396ea607aa2a56ea82e676/skills/ads-incrementality-check",
+    "date_added": "2026-11-17",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "boringmarketer/boring-marketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/boringmarketer/boring-marketing-skills/blob/7c6678c857fe514f79396ea607aa2a56ea82e676/LICENSE"
+  },
+  {
+    "id": "boring-marketing-ai-search",
+    "path": "skills/boring-marketing-ai-search",
+    "category": "marketing",
+    "name": "boring-marketing-ai-search",
+    "description": "Audit and improve a brand's citations in AI search results.",
+    "risk": "critical",
+    "source": "https://github.com/boringmarketer/boring-marketing-skills/tree/7c6678c857fe514f79396ea607aa2a56ea82e676/skills/ai-search",
+    "date_added": "2026-11-17",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "boringmarketer/boring-marketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/boringmarketer/boring-marketing-skills/blob/7c6678c857fe514f79396ea607aa2a56ea82e676/LICENSE"
+  },
+  {
+    "id": "boring-marketing-audience-research",
+    "path": "skills/boring-marketing-audience-research",
+    "category": "marketing",
+    "name": "boring-marketing-audience-research",
+    "description": "Mine public conversations for audience segments and verbatim customer language.",
+    "risk": "safe",
+    "source": "https://github.com/boringmarketer/boring-marketing-skills/tree/7c6678c857fe514f79396ea607aa2a56ea82e676/skills/audience-research",
+    "date_added": "2026-11-17",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "boringmarketer/boring-marketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/boringmarketer/boring-marketing-skills/blob/7c6678c857fe514f79396ea607aa2a56ea82e676/LICENSE"
+  },
+  {
+    "id": "boring-marketing-brand-voice",
+    "path": "skills/boring-marketing-brand-voice",
+    "category": "marketing",
+    "name": "boring-marketing-brand-voice",
+    "description": "Extract a brand voice profile with evidence and observable writing checks.",
+    "risk": "safe",
+    "source": "https://github.com/boringmarketer/boring-marketing-skills/tree/7c6678c857fe514f79396ea607aa2a56ea82e676/skills/brand-voice",
+    "date_added": "2026-11-17",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "boringmarketer/boring-marketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/boringmarketer/boring-marketing-skills/blob/7c6678c857fe514f79396ea607aa2a56ea82e676/LICENSE"
+  },
+  {
+    "id": "boring-marketing-competitive-intel",
+    "path": "skills/boring-marketing-competitive-intel",
+    "category": "marketing",
+    "name": "boring-marketing-competitive-intel",
+    "description": "Compare competitor positioning, offers, ads and public customer feedback.",
+    "risk": "critical",
+    "source": "https://github.com/boringmarketer/boring-marketing-skills/tree/7c6678c857fe514f79396ea607aa2a56ea82e676/skills/competitive-intel",
+    "date_added": "2026-11-17",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "boringmarketer/boring-marketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/boringmarketer/boring-marketing-skills/blob/7c6678c857fe514f79396ea607aa2a56ea82e676/LICENSE"
+  },
+  {
+    "id": "boring-marketing-content-atomizer",
+    "path": "skills/boring-marketing-content-atomizer",
+    "category": "marketing",
+    "name": "boring-marketing-content-atomizer",
+    "description": "Adapt an existing asset into native social drafts for the brand's priority channels.",
+    "risk": "critical",
+    "source": "https://github.com/boringmarketer/boring-marketing-skills/tree/7c6678c857fe514f79396ea607aa2a56ea82e676/skills/content-atomizer",
+    "date_added": "2026-11-17",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "boringmarketer/boring-marketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/boringmarketer/boring-marketing-skills/blob/7c6678c857fe514f79396ea607aa2a56ea82e676/LICENSE"
+  },
+  {
+    "id": "boring-marketing-creative",
+    "path": "skills/boring-marketing-creative",
+    "category": "marketing",
+    "name": "boring-marketing-creative",
+    "description": "Plan and produce campaign visuals, product media and short advertising videos.",
+    "risk": "critical",
+    "source": "https://github.com/boringmarketer/boring-marketing-skills/tree/7c6678c857fe514f79396ea607aa2a56ea82e676/skills/creative",
+    "date_added": "2026-11-17",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "boringmarketer/boring-marketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/boringmarketer/boring-marketing-skills/blob/7c6678c857fe514f79396ea607aa2a56ea82e676/LICENSE"
+  },
+  {
+    "id": "boring-marketing-direct-response-copy",
+    "path": "skills/boring-marketing-direct-response-copy",
+    "category": "marketing",
+    "name": "boring-marketing-direct-response-copy",
+    "description": "Draft conversion copy from customer language, evidence and offer constraints.",
+    "risk": "safe",
+    "source": "https://github.com/boringmarketer/boring-marketing-skills/tree/7c6678c857fe514f79396ea607aa2a56ea82e676/skills/direct-response-copy",
+    "date_added": "2026-11-17",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "boringmarketer/boring-marketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/boringmarketer/boring-marketing-skills/blob/7c6678c857fe514f79396ea607aa2a56ea82e676/LICENSE"
+  },
+  {
+    "id": "boring-marketing-email-sequences",
+    "path": "skills/boring-marketing-email-sequences",
+    "category": "marketing",
+    "name": "boring-marketing-email-sequences",
+    "description": "Draft lifecycle and sales email sequences with send timing and delivery checks.",
+    "risk": "critical",
+    "source": "https://github.com/boringmarketer/boring-marketing-skills/tree/7c6678c857fe514f79396ea607aa2a56ea82e676/skills/email-sequences",
+    "date_added": "2026-11-17",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "boringmarketer/boring-marketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/boringmarketer/boring-marketing-skills/blob/7c6678c857fe514f79396ea607aa2a56ea82e676/LICENSE"
+  },
+  {
+    "id": "boring-marketing-find-local-clients",
+    "path": "skills/boring-marketing-find-local-clients",
+    "category": "marketing",
+    "name": "boring-marketing-find-local-clients",
+    "description": "Build a ranked list of local businesses from public search and directory evidence.",
+    "risk": "safe",
+    "source": "https://github.com/boringmarketer/boring-marketing-skills/tree/7c6678c857fe514f79396ea607aa2a56ea82e676/skills/find-local-clients",
+    "date_added": "2026-11-17",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "boringmarketer/boring-marketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/boringmarketer/boring-marketing-skills/blob/7c6678c857fe514f79396ea607aa2a56ea82e676/LICENSE"
+  },
+  {
+    "id": "boring-marketing-first-screen-check",
+    "path": "skills/boring-marketing-first-screen-check",
+    "category": "marketing",
+    "name": "boring-marketing-first-screen-check",
+    "description": "Audit what a mobile visitor sees on an ad destination or business homepage.",
+    "risk": "safe",
+    "source": "https://github.com/boringmarketer/boring-marketing-skills/tree/7c6678c857fe514f79396ea607aa2a56ea82e676/skills/first-screen-check",
+    "date_added": "2026-11-17",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "boringmarketer/boring-marketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/boringmarketer/boring-marketing-skills/blob/7c6678c857fe514f79396ea607aa2a56ea82e676/LICENSE"
+  },
+  {
+    "id": "boring-marketing-google-ads-tracking",
+    "path": "skills/boring-marketing-google-ads-tracking",
+    "category": "marketing",
+    "name": "boring-marketing-google-ads-tracking",
+    "description": "Audit Google Ads lead signals and plan or verify tracking corrections.",
+    "risk": "critical",
+    "source": "https://github.com/boringmarketer/boring-marketing-skills/tree/7c6678c857fe514f79396ea607aa2a56ea82e676/skills/google-ads-tracking",
+    "date_added": "2026-11-17",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "boringmarketer/boring-marketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/boringmarketer/boring-marketing-skills/blob/7c6678c857fe514f79396ea607aa2a56ea82e676/LICENSE"
+  },
+  {
+    "id": "boring-marketing-google-business-profile",
+    "path": "skills/boring-marketing-google-business-profile",
+    "category": "marketing",
+    "name": "boring-marketing-google-business-profile",
+    "description": "Audit a Google Business Profile against nearby competitors and draft profile posts.",
+    "risk": "critical",
+    "source": "https://github.com/boringmarketer/boring-marketing-skills/tree/7c6678c857fe514f79396ea607aa2a56ea82e676/skills/google-business-profile",
+    "date_added": "2026-11-17",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "boringmarketer/boring-marketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/boringmarketer/boring-marketing-skills/blob/7c6678c857fe514f79396ea607aa2a56ea82e676/LICENSE"
+  },
+  {
+    "id": "boring-marketing-keyword-research",
+    "path": "skills/boring-marketing-keyword-research",
+    "category": "marketing",
+    "name": "boring-marketing-keyword-research",
+    "description": "Organize search queries into topic families, intent and prioritized content briefs.",
+    "risk": "safe",
+    "source": "https://github.com/boringmarketer/boring-marketing-skills/tree/7c6678c857fe514f79396ea607aa2a56ea82e676/skills/keyword-research",
+    "date_added": "2026-11-17",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "boringmarketer/boring-marketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/boringmarketer/boring-marketing-skills/blob/7c6678c857fe514f79396ea607aa2a56ea82e676/LICENSE"
+  },
+  {
+    "id": "boring-marketing-landing-page",
+    "path": "skills/boring-marketing-landing-page",
+    "category": "marketing",
+    "name": "boring-marketing-landing-page",
+    "description": "Build or audit a mobile-first offer page with message match and conversion checks.",
+    "risk": "critical",
+    "source": "https://github.com/boringmarketer/boring-marketing-skills/tree/7c6678c857fe514f79396ea607aa2a56ea82e676/skills/landing-page",
+    "date_added": "2026-11-17",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "boringmarketer/boring-marketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/boringmarketer/boring-marketing-skills/blob/7c6678c857fe514f79396ea607aa2a56ea82e676/LICENSE"
+  },
+  {
+    "id": "boring-marketing-lead-magnet",
+    "path": "skills/boring-marketing-lead-magnet",
+    "category": "marketing",
+    "name": "boring-marketing-lead-magnet",
+    "description": "Research and prototype a useful opt-in resource, quiz or calculator.",
+    "risk": "critical",
+    "source": "https://github.com/boringmarketer/boring-marketing-skills/tree/7c6678c857fe514f79396ea607aa2a56ea82e676/skills/lead-magnet",
+    "date_added": "2026-11-17",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "boringmarketer/boring-marketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/boringmarketer/boring-marketing-skills/blob/7c6678c857fe514f79396ea607aa2a56ea82e676/LICENSE"
+  },
+  {
+    "id": "boring-marketing-local-seo-plan",
+    "path": "skills/boring-marketing-local-seo-plan",
+    "category": "marketing",
+    "name": "boring-marketing-local-seo-plan",
+    "description": "Prioritize local SEO fixes, service coverage and location page decisions.",
+    "risk": "safe",
+    "source": "https://github.com/boringmarketer/boring-marketing-skills/tree/7c6678c857fe514f79396ea607aa2a56ea82e676/skills/local-seo-plan",
+    "date_added": "2026-11-17",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "boringmarketer/boring-marketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/boringmarketer/boring-marketing-skills/blob/7c6678c857fe514f79396ea607aa2a56ea82e676/LICENSE"
+  },
+  {
+    "id": "boring-marketing-long-form-article",
+    "path": "skills/boring-marketing-long-form-article",
+    "category": "marketing",
+    "name": "boring-marketing-long-form-article",
+    "description": "Research and draft a long-form guide with sourced facts and platform-specific edits.",
+    "risk": "safe",
+    "source": "https://github.com/boringmarketer/boring-marketing-skills/tree/7c6678c857fe514f79396ea607aa2a56ea82e676/skills/long-form-article",
+    "date_added": "2026-11-17",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "boringmarketer/boring-marketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/boringmarketer/boring-marketing-skills/blob/7c6678c857fe514f79396ea607aa2a56ea82e676/LICENSE"
+  },
+  {
+    "id": "boring-marketing-meta-ads",
+    "path": "skills/boring-marketing-meta-ads",
+    "category": "marketing",
+    "name": "boring-marketing-meta-ads",
+    "description": "Run account preflight, create paused Meta campaigns, and verify pixel and Conversions API events. Use for Facebook Ads API launches, permission errors, and tracking audits.",
+    "risk": "critical",
+    "source": "https://github.com/boringmarketer/boring-marketing-skills/tree/7c6678c857fe514f79396ea607aa2a56ea82e676/skills/meta-ads",
+    "date_added": "2026-11-17",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "boringmarketer/boring-marketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/boringmarketer/boring-marketing-skills/blob/7c6678c857fe514f79396ea607aa2a56ea82e676/LICENSE"
+  },
+  {
+    "id": "boring-marketing-newsletter",
+    "path": "skills/boring-marketing-newsletter",
+    "category": "marketing",
+    "name": "boring-marketing-newsletter",
+    "description": "Plan and draft newsletter editions with a clear editorial angle and sourced material.",
+    "risk": "critical",
+    "source": "https://github.com/boringmarketer/boring-marketing-skills/tree/7c6678c857fe514f79396ea607aa2a56ea82e676/skills/newsletter",
+    "date_added": "2026-11-17",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "boringmarketer/boring-marketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/boringmarketer/boring-marketing-skills/blob/7c6678c857fe514f79396ea607aa2a56ea82e676/LICENSE"
+  },
+  {
+    "id": "boring-marketing-paid-ads",
+    "path": "skills/boring-marketing-paid-ads",
+    "category": "marketing",
+    "name": "boring-marketing-paid-ads",
+    "description": "Turn an ad matrix into campaign drafts, creative briefs and a measurement plan.",
+    "risk": "critical",
+    "source": "https://github.com/boringmarketer/boring-marketing-skills/tree/7c6678c857fe514f79396ea607aa2a56ea82e676/skills/paid-ads",
+    "date_added": "2026-11-17",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "boringmarketer/boring-marketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/boringmarketer/boring-marketing-skills/blob/7c6678c857fe514f79396ea607aa2a56ea82e676/LICENSE"
+  },
+  {
+    "id": "boring-marketing-performance-review",
+    "path": "skills/boring-marketing-performance-review",
+    "category": "marketing",
+    "name": "boring-marketing-performance-review",
+    "description": "Analyze campaign data to identify a measurable bottleneck and rank next tests.",
+    "risk": "critical",
+    "source": "https://github.com/boringmarketer/boring-marketing-skills/tree/7c6678c857fe514f79396ea607aa2a56ea82e676/skills/performance-review",
+    "date_added": "2026-11-17",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "boringmarketer/boring-marketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/boringmarketer/boring-marketing-skills/blob/7c6678c857fe514f79396ea607aa2a56ea82e676/LICENSE"
+  },
+  {
+    "id": "boring-marketing-pitch-the-fix",
+    "path": "skills/boring-marketing-pitch-the-fix",
+    "category": "marketing",
+    "name": "boring-marketing-pitch-the-fix",
+    "description": "Draft a targeted prospect email around one observable business problem and a proposed fix.",
+    "risk": "critical",
+    "source": "https://github.com/boringmarketer/boring-marketing-skills/tree/7c6678c857fe514f79396ea607aa2a56ea82e676/skills/pitch-the-fix",
+    "date_added": "2026-11-17",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "boringmarketer/boring-marketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/boringmarketer/boring-marketing-skills/blob/7c6678c857fe514f79396ea607aa2a56ea82e676/LICENSE"
+  },
+  {
+    "id": "boring-marketing-positioning-angles",
+    "path": "skills/boring-marketing-positioning-angles",
+    "category": "marketing",
+    "name": "boring-marketing-positioning-angles",
+    "description": "Build positioning options and an ad matrix from customer and competitive research.",
+    "risk": "safe",
+    "source": "https://github.com/boringmarketer/boring-marketing-skills/tree/7c6678c857fe514f79396ea607aa2a56ea82e676/skills/positioning-angles",
+    "date_added": "2026-11-17",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "boringmarketer/boring-marketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/boringmarketer/boring-marketing-skills/blob/7c6678c857fe514f79396ea607aa2a56ea82e676/LICENSE"
+  },
+  {
+    "id": "boring-marketing-programmatic-seo",
+    "path": "skills/boring-marketing-programmatic-seo",
+    "category": "marketing",
+    "name": "boring-marketing-programmatic-seo",
+    "description": "Validate a dataset and build templated SEO pages with genuinely distinct information.",
+    "risk": "critical",
+    "source": "https://github.com/boringmarketer/boring-marketing-skills/tree/7c6678c857fe514f79396ea607aa2a56ea82e676/skills/programmatic-seo",
+    "date_added": "2026-11-17",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "boringmarketer/boring-marketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/boringmarketer/boring-marketing-skills/blob/7c6678c857fe514f79396ea607aa2a56ea82e676/LICENSE"
+  },
+  {
+    "id": "boring-marketing-reviews",
+    "path": "skills/boring-marketing-reviews",
+    "category": "marketing",
+    "name": "boring-marketing-reviews",
+    "description": "Assess review coverage, draft owner replies and plan compliant review requests.",
+    "risk": "critical",
+    "source": "https://github.com/boringmarketer/boring-marketing-skills/tree/7c6678c857fe514f79396ea607aa2a56ea82e676/skills/reviews",
+    "date_added": "2026-11-17",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "boringmarketer/boring-marketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/boringmarketer/boring-marketing-skills/blob/7c6678c857fe514f79396ea607aa2a56ea82e676/LICENSE"
+  },
+  {
+    "id": "boring-marketing-seo-content",
+    "path": "skills/boring-marketing-seo-content",
+    "category": "marketing",
+    "name": "boring-marketing-seo-content",
+    "description": "Draft or refresh search content using intent, firsthand evidence and citation gaps.",
+    "risk": "critical",
+    "source": "https://github.com/boringmarketer/boring-marketing-skills/tree/7c6678c857fe514f79396ea607aa2a56ea82e676/skills/seo-content",
+    "date_added": "2026-11-17",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "boringmarketer/boring-marketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/boringmarketer/boring-marketing-skills/blob/7c6678c857fe514f79396ea607aa2a56ea82e676/LICENSE"
+  },
+  {
+    "id": "boring-marketing-service-area-pages",
+    "path": "skills/boring-marketing-service-area-pages",
+    "category": "marketing",
+    "name": "boring-marketing-service-area-pages",
+    "description": "Create distinct local service pages backed by credible evidence for each location.",
+    "risk": "critical",
+    "source": "https://github.com/boringmarketer/boring-marketing-skills/tree/7c6678c857fe514f79396ea607aa2a56ea82e676/skills/service-area-pages",
+    "date_added": "2026-11-17",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "boringmarketer/boring-marketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/boringmarketer/boring-marketing-skills/blob/7c6678c857fe514f79396ea607aa2a56ea82e676/LICENSE"
+  },
+  {
+    "id": "boring-marketing-site-audit",
+    "path": "skills/boring-marketing-site-audit",
+    "category": "marketing",
+    "name": "boring-marketing-site-audit",
+    "description": "Crawl a site and prioritize technical SEO fixes. Use to check robots.txt, sitemaps, noindex, duplicate pages, broken links, metadata, page speed, and AI crawler access.",
+    "risk": "safe",
+    "source": "https://github.com/boringmarketer/boring-marketing-skills/tree/7c6678c857fe514f79396ea607aa2a56ea82e676/skills/site-audit",
+    "date_added": "2026-11-17",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "boringmarketer/boring-marketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/boringmarketer/boring-marketing-skills/blob/7c6678c857fe514f79396ea607aa2a56ea82e676/LICENSE"
+  },
+  {
+    "id": "boring-marketing-social-content",
+    "path": "skills/boring-marketing-social-content",
+    "category": "marketing",
+    "name": "boring-marketing-social-content",
+    "description": "Draft original X and LinkedIn posts grounded in a brand's past posts and real numbers.",
+    "risk": "critical",
+    "source": "https://github.com/boringmarketer/boring-marketing-skills/tree/7c6678c857fe514f79396ea607aa2a56ea82e676/skills/social-content",
+    "date_added": "2026-11-17",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "boringmarketer/boring-marketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/boringmarketer/boring-marketing-skills/blob/7c6678c857fe514f79396ea607aa2a56ea82e676/LICENSE"
+  },
+  {
+    "id": "boring-marketing-speed-to-lead",
+    "path": "skills/boring-marketing-speed-to-lead",
+    "category": "marketing",
+    "name": "boring-marketing-speed-to-lead",
+    "description": "Analyze missed calls and response time, then design a follow-up workflow.",
+    "risk": "critical",
+    "source": "https://github.com/boringmarketer/boring-marketing-skills/tree/7c6678c857fe514f79396ea607aa2a56ea82e676/skills/speed-to-lead",
+    "date_added": "2026-11-17",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "boringmarketer/boring-marketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/boringmarketer/boring-marketing-skills/blob/7c6678c857fe514f79396ea607aa2a56ea82e676/LICENSE"
+  },
+  {
+    "id": "boring-marketing-start-here",
+    "path": "skills/boring-marketing-start-here",
+    "category": "marketing",
+    "name": "boring-marketing-start-here",
+    "description": "Build project marketing context from business evidence and route work to a matching skill.",
+    "risk": "critical",
+    "source": "https://github.com/boringmarketer/boring-marketing-skills/tree/7c6678c857fe514f79396ea607aa2a56ea82e676/skills/start-here",
+    "date_added": "2026-11-17",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "boringmarketer/boring-marketing-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/boringmarketer/boring-marketing-skills/blob/7c6678c857fe514f79396ea607aa2a56ea82e676/LICENSE"
   },
   {
     "id": "bounce-rate-estimator",
@@ -14634,6 +15789,37 @@
     ]
   },
   {
+    "id": "carbonmark-carbon-retirement",
+    "path": "skills/carbonmark-carbon-retirement",
+    "category": "api-integration",
+    "name": "carbonmark-carbon-retirement",
+    "description": "Price and retire verified carbon credits on Base through Carbonmark's x402 API. Use when a user asks to offset emissions or buy and retire carbon credits.",
+    "risk": "critical",
+    "source": "self",
+    "date_added": "2026-11-18",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "self",
+    "tags": [
+      "carbon-credits",
+      "carbon-retirement",
+      "climate",
+      "x402",
+      "base",
+      "usdc"
+    ]
+  },
+  {
     "id": "card-based-design",
     "path": "skills/design-it/card-based-design",
     "category": "design-it",
@@ -15144,6 +16330,32 @@
     ]
   },
   {
+    "id": "chatgpt-plugin",
+    "path": "skills/chatgpt-plugin",
+    "category": "development",
+    "name": "chatgpt-plugin",
+    "description": "Before building, submitting or changing a ChatGPT plugin or Apps SDK app: get it through OpenAI's directory review (auth, package, OAuth, data rules, portal).",
+    "risk": "critical",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
+  },
+  {
     "id": "check-identity-pack",
     "path": "skills/check-identity-pack",
     "category": "document-verification",
@@ -15300,6 +16512,30 @@
       },
       "reasons": []
     }
+  },
+  {
+    "id": "cinematic-ui-ux",
+    "path": "skills/cinematic-ui-ux",
+    "category": "frontend",
+    "name": "cinematic-ui-ux",
+    "description": "Build high-performance cinematic web experiences with GSAP 3.12+, Lenis smooth scroll, canvas frame scrubbing, kinetic typography, and WCAG 2.2 motion accessibility.",
+    "risk": "safe",
+    "source": "self",
+    "date_added": "2026-11-19",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "self",
+    "license": "MIT"
   },
   {
     "id": "circleci",
@@ -15532,6 +16768,34 @@
       "api-scoring",
       "clarvia"
     ]
+  },
+  {
+    "id": "claude-agents",
+    "path": "skills/claude-agents",
+    "category": "development",
+    "name": "claude-agents",
+    "description": "'Ask Claude', 'have Claude build or review this': drive Claude Code headless (claude -p) from another agent as a peer, builder or fresh reviewer.",
+    "risk": "critical",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "blocked",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": [
+        "target_specific_home_path"
+      ]
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
   },
   {
     "id": "claude-ally-health",
@@ -15913,6 +17177,32 @@
     }
   },
   {
+    "id": "clerk-production",
+    "path": "skills/clerk-production",
+    "category": "development",
+    "name": "clerk-production",
+    "description": "Setting up or changing Clerk sign-in, organizations, roles or billing on Next.js, or sign-in that does nothing or lands wrong: Clerk in production.",
+    "risk": "critical",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
+  },
+  {
     "id": "clickup-automation",
     "path": "skills/clickup-automation",
     "category": "automation",
@@ -16064,7 +17354,7 @@
     "path": "skills/cloro-mcp",
     "category": "mcp",
     "name": "cloro-mcp",
-    "description": "Get Google results with the AI Overview, and ChatGPT, Google AI Mode, Bing AI Mode and Gemini answers with their cited sources, through cloro's hosted MCP server. Use when the user chooses cloro.",
+    "description": "Get Google and Bing results with the AI Overview, and ChatGPT, Google AI Mode, Bing AI Mode and Gemini answers with their cited sources, through cloro's hosted MCP server. Use when the user chooses cloro.",
     "risk": "safe",
     "source": "self",
     "date_added": "2026-11-06",
@@ -16746,6 +18036,32 @@
     }
   },
   {
+    "id": "code-review",
+    "path": "skills/code-review",
+    "category": "development",
+    "name": "code-review",
+    "description": "'Review this', 'find bugs', 'is this fix safe': review code for defects that matter, correctness first, each finding refuted before it's reported.",
+    "risk": "safe",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
+  },
+  {
     "id": "code-review-ai-ai-review",
     "path": "skills/code-review-ai-ai-review",
     "category": "development",
@@ -17065,6 +18381,30 @@
     }
   },
   {
+    "id": "codebase-aware-ui-prompts",
+    "path": "skills/codebase-aware-ui-prompts",
+    "category": "design",
+    "name": "codebase-aware-ui-prompts",
+    "description": "Transform product requirements into precise, architecture-preserving UI implementation prompts for Cursor, Claude Code, v0, Lovable, and Stitch without duplicating packages or breaking design tokens.",
+    "risk": "safe",
+    "source": "self",
+    "date_added": "2026-11-19",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "self",
+    "license": "MIT"
+  },
+  {
     "id": "codebase-cleanup-deps-audit",
     "path": "skills/codebase-cleanup-deps-audit",
     "category": "development",
@@ -17207,6 +18547,34 @@
       },
       "reasons": []
     }
+  },
+  {
+    "id": "codex-agents",
+    "path": "skills/codex-agents",
+    "category": "development",
+    "name": "codex-agents",
+    "description": "'Ask Codex', 'check with Codex', handing Codex a build or review, or stuck between two framings: the Codex CLI as peer, builder or fresh reviewer.",
+    "risk": "critical",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "blocked",
+        "claude": "blocked"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": [
+        "target_specific_home_path"
+      ]
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
   },
   {
     "id": "codex-delegate",
@@ -18482,6 +19850,32 @@
       },
       "reasons": []
     }
+  },
+  {
+    "id": "content-coverage",
+    "path": "skills/content-coverage",
+    "category": "marketing",
+    "name": "content-coverage",
+    "description": "Turn verified AI-search citation gaps into a deduplicated content plan and review-ready drafts through AI SEO Tracker or existing reports.",
+    "risk": "critical",
+    "source": "https://github.com/Illyism/seo-skills",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "Illyism/seo-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/Illyism/seo-skills/blob/a158c36a1c2c84a44ee7a1ae69c009caf73e1a35/README.md#license"
   },
   {
     "id": "content-creator",
@@ -20442,6 +21836,32 @@
     "license_source": "https://github.com/amElnagdy/delegate-skills/blob/master/LICENSE"
   },
   {
+    "id": "customer-journey",
+    "path": "skills/customer-journey",
+    "category": "marketing",
+    "name": "customer-journey",
+    "description": "Map five customer awareness stages to realistic search queries, answer-engine prompts and content decisions.",
+    "risk": "safe",
+    "source": "https://github.com/Illyism/seo-skills",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "Illyism/seo-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/Illyism/seo-skills/blob/a158c36a1c2c84a44ee7a1ae69c009caf73e1a35/README.md#license"
+  },
+  {
     "id": "customer-psychographic-profiler",
     "path": "skills/customer-psychographic-profiler",
     "category": "marketing",
@@ -21520,6 +22940,32 @@
     }
   },
   {
+    "id": "dataforseo-serp",
+    "path": "skills/dataforseo-serp",
+    "category": "marketing",
+    "name": "dataforseo-serp",
+    "description": "Use DataForSEO exports or an authorized connection to cluster keywords by SERP overlap, validate page intent and trace answer-engine citations.",
+    "risk": "critical",
+    "source": "https://github.com/Illyism/seo-skills",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "Illyism/seo-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/Illyism/seo-skills/blob/a158c36a1c2c84a44ee7a1ae69c009caf73e1a35/README.md#license"
+  },
+  {
     "id": "datawebot",
     "path": "skills/datawebot",
     "category": "data",
@@ -22374,6 +23820,32 @@
     ]
   },
   {
+    "id": "delegation",
+    "path": "skills/delegation",
+    "category": "development",
+    "name": "delegation",
+    "description": "Before spawning a subagent or dispatching a build, review or research, and before trusting its report: the brief, the delegate, parallel runs, the handoff.",
+    "risk": "critical",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
+  },
+  {
     "id": "dep",
     "path": "skills/agent-squad/dep",
     "category": "agent-squad",
@@ -22629,6 +24101,32 @@
     "license_source": "https://github.com/addyosmani/agent-skills/blob/main/LICENSE"
   },
   {
+    "id": "derive-tests",
+    "path": "skills/derive-tests",
+    "category": "development",
+    "name": "derive-tests",
+    "description": "'What should we test' or a coverage map: derive the coverage map and missing tests from docs and code; check mode reports staleness.",
+    "risk": "safe",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
+  },
+  {
     "id": "desearch-mcp",
     "path": "skills/desearch-mcp",
     "category": "mcp",
@@ -22658,6 +24156,240 @@
       "people-search",
       "company-search"
     ]
+  },
+  {
+    "id": "design-how-build-design-system",
+    "path": "skills/design-how-build-design-system",
+    "category": "design",
+    "name": "design-how-build-design-system",
+    "description": "Extract semantic tokens and reusable components from an existing app, check behavior and visual parity, and validate one pilot flow.",
+    "risk": "critical",
+    "source": "https://github.com/arla6ka/design.how/tree/1ce5304466db2ba47a7a7524603e86df77c702bd/skills/build-design-system",
+    "date_added": "2026-11-19",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "arla6ka/design.how",
+    "license": "MIT",
+    "license_source": "https://github.com/arla6ka/design.how/blob/1ce5304466db2ba47a7a7524603e86df77c702bd/LICENSE"
+  },
+  {
+    "id": "design-how-component-docs",
+    "path": "skills/design-how-component-docs",
+    "category": "design",
+    "name": "design-how-component-docs",
+    "description": "Write one component entry from implementation, stories and real call sites, including states, behavior and usage constraints.",
+    "risk": "critical",
+    "source": "https://github.com/arla6ka/design.how/tree/1ce5304466db2ba47a7a7524603e86df77c702bd/skills/component-docs",
+    "date_added": "2026-11-19",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "arla6ka/design.how",
+    "license": "MIT",
+    "license_source": "https://github.com/arla6ka/design.how/blob/1ce5304466db2ba47a7a7524603e86df77c702bd/LICENSE"
+  },
+  {
+    "id": "design-how-design-system-boss",
+    "path": "skills/design-how-design-system-boss",
+    "category": "design",
+    "name": "design-how-design-system-boss",
+    "description": "Route a whole-app UI consistency request to a design-system build or adoption audit, then verify a representative flow.",
+    "risk": "critical",
+    "source": "https://github.com/arla6ka/design.how/tree/1ce5304466db2ba47a7a7524603e86df77c702bd/skills/design-system-boss",
+    "date_added": "2026-11-19",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "arla6ka/design.how",
+    "license": "MIT",
+    "license_source": "https://github.com/arla6ka/design.how/blob/1ce5304466db2ba47a7a7524603e86df77c702bd/LICENSE"
+  },
+  {
+    "id": "design-how-make-font",
+    "path": "skills/design-how-make-font",
+    "category": "design",
+    "name": "design-how-make-font",
+    "description": "Fit a modifiable open typeface to aggregate reference measurements, then verify glyph coverage, spacing and web distribution.",
+    "risk": "critical",
+    "source": "https://github.com/arla6ka/design.how/tree/1ce5304466db2ba47a7a7524603e86df77c702bd/skills/make-font",
+    "date_added": "2026-11-19",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "arla6ka/design.how",
+    "license": "MIT",
+    "license_source": "https://github.com/arla6ka/design.how/blob/1ce5304466db2ba47a7a7524603e86df77c702bd/LICENSE"
+  },
+  {
+    "id": "design-how-make-logo",
+    "path": "skills/design-how-make-logo",
+    "category": "design",
+    "name": "design-how-make-logo",
+    "description": "Develop original mark and wordmark directions from a brief, compare legibility and similarity, and prepare a reviewed asset package.",
+    "risk": "critical",
+    "source": "https://github.com/arla6ka/design.how/tree/1ce5304466db2ba47a7a7524603e86df77c702bd/skills/make-logo",
+    "date_added": "2026-11-19",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "arla6ka/design.how",
+    "license": "MIT",
+    "license_source": "https://github.com/arla6ka/design.how/blob/1ce5304466db2ba47a7a7524603e86df77c702bd/LICENSE"
+  },
+  {
+    "id": "design-how-make-motion",
+    "path": "skills/design-how-make-motion",
+    "category": "design",
+    "name": "design-how-make-motion",
+    "description": "Turn an approved product story into a short motion video with a timing sheet, review cuts and measured export checks.",
+    "risk": "critical",
+    "source": "https://github.com/arla6ka/design.how/tree/1ce5304466db2ba47a7a7524603e86df77c702bd/skills/make-motion",
+    "date_added": "2026-11-19",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "arla6ka/design.how",
+    "license": "MIT",
+    "license_source": "https://github.com/arla6ka/design.how/blob/1ce5304466db2ba47a7a7524603e86df77c702bd/LICENSE"
+  },
+  {
+    "id": "design-how-migrate-design-system",
+    "path": "skills/design-how-migrate-design-system",
+    "category": "design",
+    "name": "design-how-migrate-design-system",
+    "description": "Audit or replace legacy UI with an existing design system in bounded waves while preserving route behavior and rendering.",
+    "risk": "critical",
+    "source": "https://github.com/arla6ka/design.how/tree/1ce5304466db2ba47a7a7524603e86df77c702bd/skills/migrate-design-system",
+    "date_added": "2026-11-19",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "arla6ka/design.how",
+    "license": "MIT",
+    "license_source": "https://github.com/arla6ka/design.how/blob/1ce5304466db2ba47a7a7524603e86df77c702bd/LICENSE"
+  },
+  {
+    "id": "design-how-token-mapping",
+    "path": "skills/design-how-token-mapping",
+    "category": "design",
+    "name": "design-how-token-mapping",
+    "description": "Produce a read-only mapping from hardcoded styling to semantic design tokens with exact, near, ambiguous and missing matches.",
+    "risk": "safe",
+    "source": "https://github.com/arla6ka/design.how/tree/1ce5304466db2ba47a7a7524603e86df77c702bd/skills/token-mapping",
+    "date_added": "2026-11-19",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "arla6ka/design.how",
+    "license": "MIT",
+    "license_source": "https://github.com/arla6ka/design.how/blob/1ce5304466db2ba47a7a7524603e86df77c702bd/LICENSE"
+  },
+  {
+    "id": "design-how-ui-review",
+    "path": "skills/design-how-ui-review",
+    "category": "design",
+    "name": "design-how-ui-review",
+    "description": "Review a rendered screen or flow and rank reproducible usability, accessibility and responsive defects with evidence.",
+    "risk": "safe",
+    "source": "https://github.com/arla6ka/design.how/tree/1ce5304466db2ba47a7a7524603e86df77c702bd/skills/ui-review",
+    "date_added": "2026-11-19",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "arla6ka/design.how",
+    "license": "MIT",
+    "license_source": "https://github.com/arla6ka/design.how/blob/1ce5304466db2ba47a7a7524603e86df77c702bd/LICENSE"
   },
   {
     "id": "design-it",
@@ -23608,6 +25340,32 @@
     }
   },
   {
+    "id": "diff-marketing",
+    "path": "skills/diff-marketing",
+    "category": "marketing",
+    "name": "diff-marketing",
+    "description": "Turn verified shipped Git changes into customer-facing launch drafts for blogs, newsletters, social posts and documentation.",
+    "risk": "safe",
+    "source": "https://github.com/Illyism/seo-skills",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "Illyism/seo-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/Illyism/seo-skills/blob/a158c36a1c2c84a44ee7a1ae69c009caf73e1a35/README.md#license"
+  },
+  {
     "id": "differential-review",
     "path": "skills/differential-review",
     "category": "security",
@@ -23654,6 +25412,32 @@
     "source_repo": "zhaoxuya520/reverse-skill",
     "license": "MIT",
     "license_source": "https://github.com/zhaoxuya520/reverse-skill/blob/main/LICENSE"
+  },
+  {
+    "id": "directory-submissions",
+    "path": "skills/directory-submissions",
+    "category": "marketing",
+    "name": "directory-submissions",
+    "description": "Plan a product directory launch with a reusable manifest, current eligibility checks and reviewed single-directory submission drafts.",
+    "risk": "critical",
+    "source": "https://github.com/Illyism/seo-skills",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "Illyism/seo-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/Illyism/seo-skills/blob/a158c36a1c2c84a44ee7a1ae69c009caf73e1a35/README.md#license"
   },
   {
     "id": "disaster-recovery",
@@ -24237,6 +26021,32 @@
     "source_repo": "amElnagdy/guard-skills"
   },
   {
+    "id": "document-app",
+    "path": "skills/document-app",
+    "category": "development",
+    "name": "document-app",
+    "description": "'Document the app': write or refresh an app's system docs from its code. 'Are the docs right?': check mode, which only reports where docs and code disagree.",
+    "risk": "safe",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
+  },
+  {
     "id": "document-management-system",
     "path": "skills/document-management-system",
     "category": "business",
@@ -24467,6 +26277,32 @@
       "bounded-context",
       "architecture]"
     ]
+  },
+  {
+    "id": "domain-migration",
+    "path": "skills/domain-migration",
+    "category": "marketing",
+    "name": "domain-migration",
+    "description": "Plan and validate an SEO site move with a URL inventory, redirect map, canonical cutover and backlink-update drafts.",
+    "risk": "critical",
+    "source": "https://github.com/Illyism/seo-skills",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "Illyism/seo-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/Illyism/seo-skills/blob/a158c36a1c2c84a44ee7a1ae69c009caf73e1a35/README.md#license"
   },
   {
     "id": "domain-modeling",
@@ -25073,6 +26909,41 @@
     }
   },
   {
+    "id": "e2e",
+    "path": "skills/e2e",
+    "category": "testing",
+    "name": "e2e",
+    "description": "Write, run and debug e2e tests for web and iOS/Android apps that mix plain-language agent steps with exact assertions, replaying cached agent steps without model calls.",
+    "risk": "critical",
+    "source": "https://github.com/e2e-inc/e2e/tree/e693cdcf0baee66dead26fa2e51a6693266b4b8f/skills/e2e",
+    "date_added": "2026-11-17",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "e2e-inc/e2e",
+    "license": "Apache-2.0",
+    "license_source": "https://github.com/e2e-inc/e2e/blob/e693cdcf0baee66dead26fa2e51a6693266b4b8f/LICENSE",
+    "tags": [
+      "e2e",
+      "end-to-end-testing",
+      "mobile-testing",
+      "ios",
+      "android",
+      "playwright",
+      "agentic-testing"
+    ]
+  },
+  {
     "id": "e2e-testing",
     "path": "skills/e2e-testing",
     "category": "granular-workflow-bundle",
@@ -25437,6 +27308,318 @@
     "source_repo": "zhaoxuya520/reverse-skill",
     "license": "MIT",
     "license_source": "https://github.com/zhaoxuya520/reverse-skill/blob/main/LICENSE"
+  },
+  {
+    "id": "effect-smol-ai-docs",
+    "path": "skills/effect-smol-ai-docs",
+    "category": "development",
+    "name": "effect-smol-ai-docs",
+    "description": "Update Effect AI documentation sources and verify generated LLMS.md, examples and coverage.",
+    "risk": "critical",
+    "source": "https://github.com/sybil-solutions/local-studio/tree/f65c8af78582f741b62546c93d7c66439f0cd5b1/.repos/effect-smol/.agents/skills/ai-docs",
+    "date_added": "2026-11-19",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "sybil-solutions/local-studio",
+    "license": "MIT",
+    "license_source": "https://github.com/sybil-solutions/local-studio/blob/f65c8af78582f741b62546c93d7c66439f0cd5b1/.repos/effect-smol/LICENSE"
+  },
+  {
+    "id": "effect-smol-bundle-analysis",
+    "path": "skills/effect-smol-bundle-analysis",
+    "category": "development",
+    "name": "effect-smol-bundle-analysis",
+    "description": "Compare Effect bundle fixtures across revisions and identify verified changes in bytes and composition.",
+    "risk": "critical",
+    "source": "https://github.com/sybil-solutions/local-studio/tree/f65c8af78582f741b62546c93d7c66439f0cd5b1/.repos/effect-smol/.agents/skills/bundle-analysis",
+    "date_added": "2026-11-19",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "sybil-solutions/local-studio",
+    "license": "MIT",
+    "license_source": "https://github.com/sybil-solutions/local-studio/blob/f65c8af78582f741b62546c93d7c66439f0cd5b1/.repos/effect-smol/LICENSE"
+  },
+  {
+    "id": "effect-smol-changesets",
+    "path": "skills/effect-smol-changesets",
+    "category": "development",
+    "name": "effect-smol-changesets",
+    "description": "Audit Effect package changes for consumer-visible impacts and record the appropriate changeset and migration notes.",
+    "risk": "critical",
+    "source": "https://github.com/sybil-solutions/local-studio/tree/f65c8af78582f741b62546c93d7c66439f0cd5b1/.repos/effect-smol/.agents/skills/changesets",
+    "date_added": "2026-11-19",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "sybil-solutions/local-studio",
+    "license": "MIT",
+    "license_source": "https://github.com/sybil-solutions/local-studio/blob/f65c8af78582f741b62546c93d7c66439f0cd5b1/.repos/effect-smol/LICENSE"
+  },
+  {
+    "id": "effect-smol-ci-maintenance",
+    "path": "skills/effect-smol-ci-maintenance",
+    "category": "development",
+    "name": "effect-smol-ci-maintenance",
+    "description": "Review or update Effect GitHub Actions with a job-by-job trigger, revision, permission and artifact trust inventory.",
+    "risk": "critical",
+    "source": "https://github.com/sybil-solutions/local-studio/tree/f65c8af78582f741b62546c93d7c66439f0cd5b1/.repos/effect-smol/.agents/skills/ci-maintenance",
+    "date_added": "2026-11-19",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "sybil-solutions/local-studio",
+    "license": "MIT",
+    "license_source": "https://github.com/sybil-solutions/local-studio/blob/f65c8af78582f741b62546c93d7c66439f0cd5b1/.repos/effect-smol/LICENSE"
+  },
+  {
+    "id": "effect-smol-dependency-maintenance",
+    "path": "skills/effect-smol-dependency-maintenance",
+    "category": "development",
+    "name": "effect-smol-dependency-maintenance",
+    "description": "Synchronize Effect workspace dependency changes across manifests, lockfile and the affected validation matrix.",
+    "risk": "critical",
+    "source": "https://github.com/sybil-solutions/local-studio/tree/f65c8af78582f741b62546c93d7c66439f0cd5b1/.repos/effect-smol/.agents/skills/dependency-maintenance",
+    "date_added": "2026-11-19",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "sybil-solutions/local-studio",
+    "license": "MIT",
+    "license_source": "https://github.com/sybil-solutions/local-studio/blob/f65c8af78582f741b62546c93d7c66439f0cd5b1/.repos/effect-smol/LICENSE"
+  },
+  {
+    "id": "effect-smol-effect-development",
+    "path": "skills/effect-smol-effect-development",
+    "category": "development",
+    "name": "effect-smol-effect-development",
+    "description": "Implement or review Effect integrations using targeted repository API guidance and version-matched runtime or type checks.",
+    "risk": "critical",
+    "source": "https://github.com/sybil-solutions/local-studio/tree/f65c8af78582f741b62546c93d7c66439f0cd5b1/.repos/effect-smol/.agents/skills/effect-development",
+    "date_added": "2026-11-19",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "sybil-solutions/local-studio",
+    "license": "MIT",
+    "license_source": "https://github.com/sybil-solutions/local-studio/blob/f65c8af78582f741b62546c93d7c66439f0cd5b1/.repos/effect-smol/LICENSE"
+  },
+  {
+    "id": "effect-smol-jsdocs",
+    "path": "skills/effect-smol-jsdocs",
+    "category": "development",
+    "name": "effect-smol-jsdocs",
+    "description": "Write or review Effect public JSDoc against declaration, implementation, call-site and doctest evidence.",
+    "risk": "critical",
+    "source": "https://github.com/sybil-solutions/local-studio/tree/f65c8af78582f741b62546c93d7c66439f0cd5b1/.repos/effect-smol/.agents/skills/jsdocs",
+    "date_added": "2026-11-19",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "sybil-solutions/local-studio",
+    "license": "MIT",
+    "license_source": "https://github.com/sybil-solutions/local-studio/blob/f65c8af78582f741b62546c93d7c66439f0cd5b1/.repos/effect-smol/LICENSE"
+  },
+  {
+    "id": "effect-smol-migration-guidance",
+    "path": "skills/effect-smol-migration-guidance",
+    "category": "development",
+    "name": "effect-smol-migration-guidance",
+    "description": "Keep Effect v3-to-v4 migration annotations and generated guidance aligned with verified public API replacements.",
+    "risk": "critical",
+    "source": "https://github.com/sybil-solutions/local-studio/tree/f65c8af78582f741b62546c93d7c66439f0cd5b1/.repos/effect-smol/.agents/skills/migration-guidance",
+    "date_added": "2026-11-19",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "sybil-solutions/local-studio",
+    "license": "MIT",
+    "license_source": "https://github.com/sybil-solutions/local-studio/blob/f65c8af78582f741b62546c93d7c66439f0cd5b1/.repos/effect-smol/LICENSE"
+  },
+  {
+    "id": "effect-smol-package-development",
+    "path": "skills/effect-smol-package-development",
+    "category": "development",
+    "name": "effect-smol-package-development",
+    "description": "Create or move an Effect workspace package while checking registration, exports, generated barrels and packed contents.",
+    "risk": "critical",
+    "source": "https://github.com/sybil-solutions/local-studio/tree/f65c8af78582f741b62546c93d7c66439f0cd5b1/.repos/effect-smol/.agents/skills/package-development",
+    "date_added": "2026-11-19",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "sybil-solutions/local-studio",
+    "license": "MIT",
+    "license_source": "https://github.com/sybil-solutions/local-studio/blob/f65c8af78582f741b62546c93d7c66439f0cd5b1/.repos/effect-smol/LICENSE"
+  },
+  {
+    "id": "effect-smol-performance-analysis",
+    "path": "skills/effect-smol-performance-analysis",
+    "category": "development",
+    "name": "effect-smol-performance-analysis",
+    "description": "Compare Effect runtime performance or TypeScript checker cost with matched fixtures and repeatable measurements.",
+    "risk": "safe",
+    "source": "https://github.com/sybil-solutions/local-studio/tree/f65c8af78582f741b62546c93d7c66439f0cd5b1/.repos/effect-smol/.agents/skills/performance-analysis",
+    "date_added": "2026-11-19",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "sybil-solutions/local-studio",
+    "license": "MIT",
+    "license_source": "https://github.com/sybil-solutions/local-studio/blob/f65c8af78582f741b62546c93d7c66439f0cd5b1/.repos/effect-smol/LICENSE"
+  },
+  {
+    "id": "effect-smol-test-development",
+    "path": "skills/effect-smol-test-development",
+    "category": "development",
+    "name": "effect-smol-test-development",
+    "description": "Add focused Vitest and Tstyche coverage for Effect runtime behavior and public type inference.",
+    "risk": "critical",
+    "source": "https://github.com/sybil-solutions/local-studio/tree/f65c8af78582f741b62546c93d7c66439f0cd5b1/.repos/effect-smol/.agents/skills/test-development",
+    "date_added": "2026-11-19",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "sybil-solutions/local-studio",
+    "license": "MIT",
+    "license_source": "https://github.com/sybil-solutions/local-studio/blob/f65c8af78582f741b62546c93d7c66439f0cd5b1/.repos/effect-smol/LICENSE"
+  },
+  {
+    "id": "effect-smol-vendored-assets",
+    "path": "skills/effect-smol-vendored-assets",
+    "category": "development",
+    "name": "effect-smol-vendored-assets",
+    "description": "Refresh Effect vendored assets with pinned sources, retained notices, deterministic generation and verified consumer impact.",
+    "risk": "critical",
+    "source": "https://github.com/sybil-solutions/local-studio/tree/f65c8af78582f741b62546c93d7c66439f0cd5b1/.repos/effect-smol/.agents/skills/vendored-assets",
+    "date_added": "2026-11-19",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "sybil-solutions/local-studio",
+    "license": "MIT",
+    "license_source": "https://github.com/sybil-solutions/local-studio/blob/f65c8af78582f741b62546c93d7c66439f0cd5b1/.repos/effect-smol/LICENSE"
   },
   {
     "id": "effective-agent-skills",
@@ -25812,6 +27995,62 @@
     }
   },
   {
+    "id": "embedded-agents-agent-sdk",
+    "path": "skills/embedded-agents-agent-sdk",
+    "category": "development",
+    "name": "embedded-agents-agent-sdk",
+    "description": "Only when the Agent SDK is asked for, an agent needs Claude Code's own tools, or the app already runs it: embed Claude agents in a Next.js app with the Agent SDK.",
+    "risk": "critical",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "blocked",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": [
+        "target_specific_home_path"
+      ]
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
+  },
+  {
+    "id": "embedded-agents-messages-api",
+    "path": "skills/embedded-agents-messages-api",
+    "category": "development",
+    "name": "embedded-agents-messages-api",
+    "description": "Building, adding or wiring up an agent or an agent chat inside a Next.js app: embed Claude agents on the Messages API, the default way.",
+    "risk": "critical",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "blocked",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": [
+        "target_specific_home_path"
+      ]
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
+  },
+  {
     "id": "embedding-strategies",
     "path": "skills/embedding-strategies",
     "category": "data-ai",
@@ -26153,6 +28392,32 @@
       },
       "reasons": []
     }
+  },
+  {
+    "id": "environments",
+    "path": "skills/environments",
+    "category": "development",
+    "name": "environments",
+    "description": "Adding a variable or secret, 'set up production', a domain or a provider token, 'which database is this', a leaked key: dev and production for an AI-built app, backups, incidents.",
+    "risk": "critical",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
   },
   {
     "id": "eol-resistor-calculator",
@@ -28865,6 +31130,32 @@
     "source_type": "self"
   },
   {
+    "id": "flight-deck",
+    "path": "skills/flight-deck",
+    "category": "development",
+    "name": "flight-deck",
+    "description": "'What's the status', 'where were we', a progress report or status deck; long work that must survive compaction: multi-hour runs, background jobs, waiting on a decision.",
+    "risk": "safe",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
+  },
+  {
     "id": "floating-ui",
     "path": "skills/design-it/floating-ui",
     "category": "design-it",
@@ -29140,6 +31431,40 @@
       "player-valuation",
       "transfer-value",
       "mcp"
+    ]
+  },
+  {
+    "id": "foragent-call",
+    "path": "skills/foragent-call",
+    "category": "development",
+    "name": "foragent-call",
+    "description": "Connect two AI agents by private phone number so they can talk directly and exchange files across computers or teammates using ForAgent.",
+    "risk": "critical",
+    "source": "https://github.com/seankwon816/foragent-skills",
+    "date_added": "2026-11-20",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "seankwon816/foragent-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/seankwon816/foragent-skills/blob/09549018909a55ee110b49aead47f5d89e8df6e6/LICENSE",
+    "tags": [
+      "multi-agent",
+      "mcp",
+      "agent-to-agent",
+      "claude-code",
+      "codex",
+      "file-transfer"
     ]
   },
   {
@@ -30836,6 +33161,34 @@
     }
   },
   {
+    "id": "gemini-agents",
+    "path": "skills/gemini-agents",
+    "category": "development",
+    "name": "gemini-agents",
+    "description": "'Ask Gemini', 'have Gemini build or review this': Google's Antigravity CLI as a partner. It may break Google's terms on a consumer plan, so the user agrees first.",
+    "risk": "critical",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "blocked",
+        "claude": "blocked"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": [
+        "target_specific_home_path"
+      ]
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
+  },
+  {
     "id": "gemini-api-dev",
     "path": "skills/gemini-api-dev",
     "category": "ai-ml",
@@ -31582,6 +33935,42 @@
     ]
   },
   {
+    "id": "getyoutubetranscript",
+    "path": "skills/getyoutubetranscript",
+    "category": "api-integration",
+    "name": "getyoutubetranscript",
+    "description": "Fetch YouTube transcripts in any caption language a video has, search YouTube, and list channel videos, Shorts, live streams, posts and playlists via the GetYouTubeTranscript API.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-11-20",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "tubeagentkit/youtube-transcript-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/tubeagentkit/youtube-transcript-skills/blob/main/LICENSE",
+    "tags": [
+      "youtube",
+      "transcripts",
+      "captions",
+      "subtitles",
+      "video-search",
+      "channels",
+      "playlists",
+      "api"
+    ]
+  },
+  {
     "id": "gh-attach",
     "path": "skills/gh-attach",
     "category": "developer-tools",
@@ -31720,6 +34109,39 @@
     "source_repo": "zhaoxuya520/reverse-skill",
     "license": "MIT",
     "license_source": "https://github.com/zhaoxuya520/reverse-skill/blob/main/LICENSE"
+  },
+  {
+    "id": "ghost-qa",
+    "path": "skills/ghost-qa",
+    "category": "testing",
+    "name": "ghost-qa",
+    "description": "Run autonomous headless Playwright browser QA across Desktop, Tablet, and Mobile viewports to catch hydration, layout, overflow, and a11y bugs.",
+    "risk": "critical",
+    "source": "self",
+    "date_added": "2026-11-14",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "self",
+    "tags": [
+      "testing",
+      "playwright",
+      "qa",
+      "browser-automation",
+      "accessibility",
+      "frontend",
+      "e2e",
+      "mcp"
+    ]
   },
   {
     "id": "git-advanced-workflows",
@@ -33238,6 +35660,32 @@
     ]
   },
   {
+    "id": "grok-agents",
+    "path": "skills/grok-agents",
+    "category": "development",
+    "name": "grok-agents",
+    "description": "'Ask Grok', 'have Grok build or review this': drive the Grok CLI headless from another agent as a peer, builder or fresh reviewer.",
+    "risk": "critical",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
+  },
+  {
     "id": "grok-build",
     "path": "skills/grok-build",
     "category": "agent-orchestration",
@@ -33325,6 +35773,32 @@
     ]
   },
   {
+    "id": "growth-loops",
+    "path": "skills/growth-loops",
+    "category": "product",
+    "name": "growth-loops",
+    "description": "Designing how a product grows: loops that compound (viral, usage, collaboration, user-generated, referral).",
+    "risk": "safe",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
+  },
+  {
     "id": "grpc-golang",
     "path": "skills/grpc-golang",
     "category": "development",
@@ -33345,6 +35819,34 @@
       },
       "reasons": []
     }
+  },
+  {
+    "id": "guardrail-hooks",
+    "path": "skills/guardrail-hooks",
+    "category": "development",
+    "name": "guardrail-hooks",
+    "description": "An agent keeps breaking a rule ('it did it again', 'make this impossible', 'add a hook', 'my hook didn't fire'): make it a hook, permission rule or script.",
+    "risk": "critical",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "blocked",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": [
+        "target_specific_home_path"
+      ]
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
   },
   {
     "id": "guest-posting-opportunity-finder",
@@ -33404,6 +35906,32 @@
       "workflow",
       "coding-agents"
     ]
+  },
+  {
+    "id": "handover",
+    "path": "skills/handover",
+    "category": "development",
+    "name": "handover",
+    "description": "Write a concise agent handover with task state, exact workspace, evidence, open decisions and the next safe step.",
+    "risk": "safe",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
   },
   {
     "id": "hardware-security",
@@ -34376,6 +36904,32 @@
       "reasons": []
     },
     "source_type": "self"
+  },
+  {
+    "id": "honest-link-outreach",
+    "path": "skills/honest-link-outreach",
+    "category": "marketing",
+    "name": "honest-link-outreach",
+    "description": "Build a qualified editorial outreach list and draft plain-text backlink requests grounded in public business relationships and page relevance.",
+    "risk": "critical",
+    "source": "https://github.com/Illyism/seo-skills",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "Illyism/seo-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/Illyism/seo-skills/blob/a158c36a1c2c84a44ee7a1ae69c009caf73e1a35/README.md#license"
   },
   {
     "id": "hono",
@@ -37136,6 +39690,32 @@
     ]
   },
   {
+    "id": "illyism-intro",
+    "path": "skills/illyism-intro",
+    "category": "marketing",
+    "name": "illyism-intro",
+    "description": "Write short, Semrush-style blog post intros with journey teasers, practical relevance, and reader intent matching. Use when the user asks for /intro, a blog intro, opening paragraph, article lead, listicle intro, or hook copy for a post.",
+    "risk": "safe",
+    "source": "https://github.com/Illyism/seo-skills",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "Illyism/seo-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/Illyism/seo-skills/blob/a158c36a1c2c84a44ee7a1ae69c009caf73e1a35/README.md#license"
+  },
+  {
     "id": "ilya-sutskever",
     "path": "skills/ilya-sutskever",
     "category": "ai-ml",
@@ -37609,6 +40189,32 @@
     "license_source": "https://github.com/addyosmani/agent-skills/blob/main/LICENSE"
   },
   {
+    "id": "independent-review",
+    "path": "skills/independent-review",
+    "category": "development",
+    "name": "independent-review",
+    "description": "Before 'ship it', a deploy or release, for 'an independent review', and after each fix until a round is clean: a fresh reviewer that never saw the build.",
+    "risk": "critical",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
+  },
+  {
     "id": "indexing-issue-auditor",
     "path": "skills/indexing-issue-auditor",
     "category": "growth",
@@ -37843,6 +40449,32 @@
     ]
   },
   {
+    "id": "intended-vs-implemented",
+    "path": "skills/intended-vs-implemented",
+    "category": "development",
+    "name": "intended-vs-implemented",
+    "description": "Auditing AI-built code against its docs: where it does what the docs or permissions don't say, access control against documented roles, cited both sides.",
+    "risk": "safe",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
+  },
+  {
     "id": "interactive-portfolio",
     "path": "skills/interactive-portfolio",
     "category": "front-end",
@@ -38074,6 +40706,32 @@
       "seo",
       "tool"
     ]
+  },
+  {
+    "id": "internal-linking",
+    "path": "skills/internal-linking",
+    "category": "marketing",
+    "name": "internal-linking",
+    "description": "Audit contextual inbound links, find underlinked commercial pages and verify targeted internal-link edits with a static route graph.",
+    "risk": "safe",
+    "source": "https://github.com/Illyism/seo-skills",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "Illyism/seo-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/Illyism/seo-skills/blob/a158c36a1c2c84a44ee7a1ae69c009caf73e1a35/README.md#license"
   },
   {
     "id": "internal-linking-planner",
@@ -40918,6 +43576,32 @@
     ]
   },
   {
+    "id": "legal-pages",
+    "path": "skills/legal-pages",
+    "category": "development",
+    "name": "legal-pages",
+    "description": "Privacy policy, terms, a cookie banner, consent at sign-up, a public front door: legal pages drafted from what the code does, held to it by a test, with the owner's facts and sign-off.",
+    "risk": "safe",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
+  },
+  {
     "id": "leiloeiro-avaliacao",
     "path": "skills/leiloeiro-avaliacao",
     "category": "leiloeiro",
@@ -41445,6 +44129,32 @@
       "api-integration",
       "research"
     ]
+  },
+  {
+    "id": "linkdr",
+    "path": "skills/linkdr",
+    "category": "marketing",
+    "name": "linkdr",
+    "description": "Review LinkDR placement options, pricing and editorial controls, and prepare a budget estimate for an explicitly authorized handoff.",
+    "risk": "critical",
+    "source": "https://github.com/Illyism/seo-skills",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "Illyism/seo-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/Illyism/seo-skills/blob/a158c36a1c2c84a44ee7a1ae69c009caf73e1a35/README.md#license"
   },
   {
     "id": "linkedin-automation",
@@ -44467,6 +47177,32 @@
     ]
   },
   {
+    "id": "market-segments",
+    "path": "skills/market-segments",
+    "category": "product",
+    "name": "market-segments",
+    "description": "Exploring customer segments, audiences or new markets: 3-5 segments with their jobs, pains and product fit.",
+    "risk": "safe",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
+  },
+  {
     "id": "market-sizing-analysis",
     "path": "skills/market-sizing-analysis",
     "category": "business",
@@ -45406,6 +48142,32 @@
       "devsecops",
       "sarif"
     ]
+  },
+  {
+    "id": "mcp-server",
+    "path": "skills/mcp-server",
+    "category": "development",
+    "name": "mcp-server",
+    "description": "Before adding a remote MCP server or tool to a web product, adding OAuth to it, or listing it in a directory: ship it right the first time, tests included.",
+    "risk": "critical",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
   },
   {
     "id": "mcp-server-security",
@@ -46706,6 +49468,40 @@
     }
   },
   {
+    "id": "mobilebox-cloud-phones",
+    "path": "skills/mobilebox-cloud-phones",
+    "category": "testing",
+    "name": "mobilebox-cloud-phones",
+    "description": "Drive a Mobilebox cloud Android phone or iOS simulator over MCP or REST: create it, read the screen, tap and type, install an app, then delete it. Needs a Mobilebox account.",
+    "risk": "critical",
+    "source": "https://github.com/mobilebox-dev/mobilebox/blob/a8bef0e3d80317f4ae58da9a8624803dde80370f/skills/mobilebox/SKILL.md",
+    "date_added": "2026-11-23",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "mobilebox-dev/mobilebox",
+    "license": "MIT",
+    "license_source": "https://github.com/mobilebox-dev/mobilebox/blob/a8bef0e3d80317f4ae58da9a8624803dde80370f/LICENSE",
+    "tags": [
+      "android",
+      "ios",
+      "mobile-testing",
+      "cloud-phone",
+      "mcp",
+      "app-testing"
+    ]
+  },
+  {
     "id": "mock-hunter",
     "path": "skills/mock-hunter",
     "category": "testing",
@@ -46856,6 +49652,36 @@
       "modellix",
       "cli",
       "api"
+    ]
+  },
+  {
+    "id": "modern-java-guidance",
+    "path": "skills/modern-java-guidance",
+    "category": "development",
+    "name": "modern-java-guidance",
+    "description": "Guides agents to write Java 17/21+ and Spring Boot 3.x+ code with version detection and the mjg CLI scanner instead of Java 8 and Boot 2.x patterns.",
+    "risk": "safe",
+    "source": "self",
+    "date_added": "2026-11-18",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "self",
+    "tags": [
+      "java",
+      "spring-boot",
+      "java-21",
+      "spring-security",
+      "cli"
     ]
   },
   {
@@ -49076,6 +51902,135 @@
     "source_repo": "supernovae-st/nika-agents",
     "license": "MIT",
     "license_source": "https://github.com/supernovae-st/nika-agents/blob/main/LICENSE"
+  },
+  {
+    "id": "nitrosend-email-platform-migration",
+    "path": "skills/nitrosend-email-platform-migration",
+    "category": "marketing",
+    "name": "nitrosend-email-platform-migration",
+    "description": "Move contacts from MailerLite, Brevo, Kit, ActiveCampaign, HubSpot or any CSV export to Nitrosend, importing opt-outs first and only subscribed contacts after.",
+    "risk": "critical",
+    "source": "https://github.com/nitrosend/claude/tree/644249d0f6362e146dd1e5c310caea5520d97ecb/skills/email-platform-migration",
+    "date_added": "2026-11-24",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "nitrosend/claude",
+    "license": "MIT",
+    "license_source": "https://github.com/nitrosend/claude/blob/644249d0f6362e146dd1e5c310caea5520d97ecb/LICENSE",
+    "tags": [
+      "email-marketing",
+      "migration",
+      "mailerlite",
+      "brevo",
+      "mcp"
+    ]
+  },
+  {
+    "id": "nitrosend-klaviyo-migration",
+    "path": "skills/nitrosend-klaviyo-migration",
+    "category": "marketing",
+    "name": "nitrosend-klaviyo-migration",
+    "description": "Move email marketing from Klaviyo to Nitrosend: bring suppressed profiles across first, import subscribed profiles by list, then rebuild flows as inactive drafts.",
+    "risk": "critical",
+    "source": "https://github.com/nitrosend/claude/tree/644249d0f6362e146dd1e5c310caea5520d97ecb/skills/klaviyo-migration",
+    "date_added": "2026-11-24",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "nitrosend/claude",
+    "license": "MIT",
+    "license_source": "https://github.com/nitrosend/claude/blob/644249d0f6362e146dd1e5c310caea5520d97ecb/LICENSE",
+    "tags": [
+      "email-marketing",
+      "migration",
+      "klaviyo",
+      "mcp"
+    ]
+  },
+  {
+    "id": "nitrosend-mailchimp-migration",
+    "path": "skills/nitrosend-mailchimp-migration",
+    "category": "marketing",
+    "name": "nitrosend-mailchimp-migration",
+    "description": "Move a Mailchimp audience to Nitrosend without losing consent: import opt-outs first, connect Mailchimp to sync subscribed members, then rebuild journeys as drafts.",
+    "risk": "critical",
+    "source": "https://github.com/nitrosend/claude/tree/644249d0f6362e146dd1e5c310caea5520d97ecb/skills/mailchimp-migration",
+    "date_added": "2026-11-24",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "nitrosend/claude",
+    "license": "MIT",
+    "license_source": "https://github.com/nitrosend/claude/blob/644249d0f6362e146dd1e5c310caea5520d97ecb/LICENSE",
+    "tags": [
+      "email-marketing",
+      "migration",
+      "mailchimp",
+      "mcp"
+    ]
+  },
+  {
+    "id": "nitrosend-shopify-email-marketing",
+    "path": "skills/nitrosend-shopify-email-marketing",
+    "category": "marketing",
+    "name": "nitrosend-shopify-email-marketing",
+    "description": "Run Shopify email marketing in Nitrosend: connect the store with customer consent kept, segment on orders and store activity, and draft the core store flows.",
+    "risk": "critical",
+    "source": "https://github.com/nitrosend/claude/tree/644249d0f6362e146dd1e5c310caea5520d97ecb/skills/shopify-email-marketing",
+    "date_added": "2026-11-24",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "nitrosend/claude",
+    "license": "MIT",
+    "license_source": "https://github.com/nitrosend/claude/blob/644249d0f6362e146dd1e5c310caea5520d97ecb/LICENSE",
+    "tags": [
+      "email-marketing",
+      "shopify",
+      "ecommerce",
+      "mcp"
+    ]
   },
   {
     "id": "no-free-work",
@@ -52153,6 +55108,32 @@
     ]
   },
   {
+    "id": "parasite-and-pr",
+    "path": "skills/parasite-and-pr",
+    "category": "marketing",
+    "name": "parasite-and-pr",
+    "description": "Prepare review-ready press, community and social syndication drafts around a verified launch or benchmark, with source and privacy checks.",
+    "risk": "critical",
+    "source": "https://github.com/Illyism/seo-skills",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "Illyism/seo-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/Illyism/seo-skills/blob/a158c36a1c2c84a44ee7a1ae69c009caf73e1a35/README.md#license"
+  },
+  {
     "id": "parcel-coupon",
     "path": "skills/parcel-coupon",
     "category": "shopping",
@@ -52744,6 +55725,32 @@
       "sql",
       "onboard"
     ]
+  },
+  {
+    "id": "performance-audit-static",
+    "path": "skills/performance-audit-static",
+    "category": "development",
+    "name": "performance-audit-static",
+    "description": "Only when a performance audit is asked for (ship-check asks by name; a release proposes, never runs it): static audit of N+1 queries, over-fetching, indexes, caching.",
+    "risk": "safe",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
   },
   {
     "id": "performance-engineer",
@@ -53457,7 +56464,7 @@
     "source_type": "official",
     "source_repo": "pixeltable/pixeltable-skill",
     "license": "Apache-2.0",
-    "license_source": "https://github.com/pixeltable/pixeltable-skill/blob/9296e22ad083307ac983217eef8e62f488409c67/LICENSE",
+    "license_source": "https://github.com/pixeltable/pixeltable-skill/blob/79cc55476e1ab81e6b47109398afa1e422ebc9e6/LICENSE",
     "tags": [
       "pixeltable",
       "multimodal",
@@ -55057,6 +58064,32 @@
     ]
   },
   {
+    "id": "product-analytics",
+    "path": "skills/product-analytics",
+    "category": "development",
+    "name": "product-analytics",
+    "description": "Adding analytics, session recordings, heatmaps, 'what did users do', Clarity or PostHog: behaviour analytics without analytics cookies, read back by the agent.",
+    "risk": "safe",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
+  },
+  {
     "id": "product-decision-agent",
     "path": "skills/product-decision-agent",
     "category": "product",
@@ -55177,6 +58210,110 @@
       "evidence",
       "handoff"
     ]
+  },
+  {
+    "id": "product-engineering-competitor-analysis",
+    "path": "skills/product-engineering-competitor-analysis",
+    "category": "product",
+    "name": "product-engineering-competitor-analysis",
+    "description": "Competitive research or a competitive brief: competitors and substitutes, their strengths and weaknesses, where to differentiate.",
+    "risk": "safe",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
+  },
+  {
+    "id": "product-engineering-propose",
+    "path": "skills/product-engineering-propose",
+    "category": "product",
+    "name": "product-engineering-propose",
+    "description": "'I have an idea', 'is this worth building', 'what next': research it and propose what to build, with sources and key screens to review. Not for agreed changes or bugs.",
+    "risk": "safe",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
+  },
+  {
+    "id": "product-engineering-retro",
+    "path": "skills/product-engineering-retro",
+    "category": "development",
+    "name": "product-engineering-retro",
+    "description": "Build a session's learnings into the setup: its friction, what went wrong and why, then an improved instruction, route, hook or script, verified, or 'no setup change warranted'. Started by name only: /agent-harness:retro in Claude Code, $agent-harness:retro in Codex.",
+    "risk": "safe",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
+  },
+  {
+    "id": "product-engineering-start-here",
+    "path": "skills/product-engineering-start-here",
+    "category": "product",
+    "name": "product-engineering-start-here",
+    "description": "Where to start, and what comes next, along the product lifecycle: from a new idea, new evidence, an agreed change, a bug or a release to the next step and the skill that does it. Started by name only: /product:start-here in Claude Code, $product:start-here in Codex.",
+    "risk": "safe",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
   },
   {
     "id": "product-inventor",
@@ -56007,6 +59144,32 @@
     }
   },
   {
+    "id": "proof-kb",
+    "path": "skills/proof-kb",
+    "category": "marketing",
+    "name": "proof-kb",
+    "description": "Maintain a source-linked knowledge base of first-hand SEO evidence and update pages that depend on superseded facts.",
+    "risk": "safe",
+    "source": "https://github.com/Illyism/seo-skills",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "Illyism/seo-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/Illyism/seo-skills/blob/a158c36a1c2c84a44ee7a1ae69c009caf73e1a35/README.md#license"
+  },
+  {
     "id": "protect-mcp-governance",
     "path": "skills/protect-mcp-governance",
     "category": "mcp",
@@ -56157,6 +59320,39 @@
       "reasons": []
     },
     "license": "Unknown"
+  },
+  {
+    "id": "punchtape",
+    "path": "skills/punchtape",
+    "category": "development",
+    "name": "punchtape",
+    "description": "Use a user-authorized punchtape zone to verify agreed project checks and record a machine verdict.",
+    "risk": "critical",
+    "source": "https://github.com/neurophant/punchtape",
+    "date_added": "2026-11-20",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "neurophant/punchtape",
+    "license": "MIT",
+    "license_source": "https://github.com/neurophant/punchtape/blob/5aa248589b52de4f9930406849106d4100c940eb/LICENSE",
+    "tags": [
+      "verification",
+      "ai-agents",
+      "task-management",
+      "arbiter",
+      "testing"
+    ]
   },
   {
     "id": "puppeteer-skill",
@@ -56820,6 +60016,35 @@
       "addiction-recovery",
       "wellbeing",
       "coaching"
+    ]
+  },
+  {
+    "id": "qurl-private-review",
+    "path": "skills/qurl-private-review",
+    "category": "development",
+    "name": "qurl-private-review",
+    "description": "Share one local web app with an approved browser reviewer through qURL, check the app loads, and delete the share when the review ends.",
+    "risk": "critical",
+    "source": "self",
+    "date_added": "2026-11-18",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "self",
+    "tags": [
+      "localhost",
+      "private-preview",
+      "browser-review",
+      "qurl"
     ]
   },
   {
@@ -57941,6 +61166,32 @@
     }
   },
   {
+    "id": "reddit-serp",
+    "path": "skills/reddit-serp",
+    "category": "marketing",
+    "name": "reddit-serp",
+    "description": "Find relevant public Reddit threads in search or citation reports and draft transparent practitioner replies for user review.",
+    "risk": "critical",
+    "source": "https://github.com/Illyism/seo-skills",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "Illyism/seo-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/Illyism/seo-skills/blob/a158c36a1c2c84a44ee7a1ae69c009caf73e1a35/README.md#license"
+  },
+  {
     "id": "redesign-existing-projects",
     "path": "skills/redesign-existing-projects",
     "category": "frontend",
@@ -58171,6 +61422,32 @@
       },
       "reasons": []
     }
+  },
+  {
+    "id": "release-gate",
+    "path": "skills/release-gate",
+    "category": "development",
+    "name": "release-gate",
+    "description": "Before 'push it', 'ship it', a deploy, release or go-live, or calling a stage done: the gate, the owner's preview, go/no-go, promote, prove it serves, roll back.",
+    "risk": "critical",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
   },
   {
     "id": "remote-gpu-trainer",
@@ -59862,6 +63139,32 @@
     }
   },
   {
+    "id": "saas-authorization",
+    "path": "skills/saas-authorization",
+    "category": "development",
+    "name": "saas-authorization",
+    "description": "Adding sign-in, a role, a route that touches data, API tokens, a webhook or job, or 'is this secure': who may do what in a multi-tenant SaaS.",
+    "risk": "safe",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
+  },
+  {
     "id": "saas-multi-tenant",
     "path": "skills/saas-multi-tenant",
     "category": "database",
@@ -60908,6 +64211,34 @@
     ]
   },
   {
+    "id": "scribiz",
+    "path": "skills/scribiz",
+    "category": "marketing",
+    "name": "scribiz",
+    "description": "Summarize authorized video or audio with Scribiz transcripts, timestamps, chapters and on-screen text, or turn existing captions into draft content.",
+    "risk": "critical",
+    "source": "https://github.com/Illyism/seo-skills",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "blocked",
+        "claude": "blocked"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": [
+        "target_specific_home_path"
+      ]
+    },
+    "source_type": "community",
+    "source_repo": "Illyism/seo-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/Illyism/seo-skills/blob/a158c36a1c2c84a44ee7a1ae69c009caf73e1a35/README.md#license"
+  },
+  {
     "id": "scroll-3d-world",
     "path": "skills/scroll-3d-world",
     "category": "frontend",
@@ -61192,6 +64523,32 @@
       },
       "reasons": []
     }
+  },
+  {
+    "id": "security-audit-static",
+    "path": "skills/security-audit-static",
+    "category": "development",
+    "name": "security-audit-static",
+    "description": "Only when a security audit is asked for (ship-check asks by name; a release proposes one, never runs it): a static audit of AI-built code against its documented trust boundaries.",
+    "risk": "safe",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
   },
   {
     "id": "security-auditor",
@@ -62075,6 +65432,58 @@
     }
   },
   {
+    "id": "seo-autopilot",
+    "path": "skills/seo-autopilot",
+    "category": "marketing",
+    "name": "seo-autopilot",
+    "description": "Run a user-invoked SEO maintenance pass with repository change checks, ranking history, competitor sitemap diffs and a reviewable backlog.",
+    "risk": "critical",
+    "source": "https://github.com/Illyism/seo-skills",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "Illyism/seo-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/Illyism/seo-skills/blob/a158c36a1c2c84a44ee7a1ae69c009caf73e1a35/README.md#license"
+  },
+  {
+    "id": "seo-blog-images",
+    "path": "skills/seo-blog-images",
+    "category": "marketing",
+    "name": "seo-blog-images",
+    "description": "Plan and verify blog covers, social previews and inline proof visuals with accurate alt text, responsive dimensions and optimized file sizes.",
+    "risk": "safe",
+    "source": "https://github.com/Illyism/seo-skills",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "Illyism/seo-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/Illyism/seo-skills/blob/a158c36a1c2c84a44ee7a1ae69c009caf73e1a35/README.md#license"
+  },
+  {
     "id": "seo-cannibalization-detector",
     "path": "skills/seo-cannibalization-detector",
     "category": "content",
@@ -62651,6 +66060,32 @@
     }
   },
   {
+    "id": "seo-roast",
+    "path": "skills/seo-roast",
+    "category": "marketing",
+    "name": "seo-roast",
+    "description": "Review owned-site crawlability, page structure, authority and AI-search visibility, then prepare a prioritized revenue-oriented fix roadmap.",
+    "risk": "critical",
+    "source": "https://github.com/Illyism/seo-skills",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "Illyism/seo-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/Illyism/seo-skills/blob/a158c36a1c2c84a44ee7a1ae69c009caf73e1a35/README.md#license"
+  },
+  {
     "id": "seo-schema",
     "path": "skills/seo-schema",
     "category": "seo",
@@ -62759,6 +66194,32 @@
       },
       "reasons": []
     }
+  },
+  {
+    "id": "seo-title-optimization",
+    "path": "skills/seo-title-optimization",
+    "category": "marketing",
+    "name": "seo-title-optimization",
+    "description": "Rewrite and audit SEO page titles, title tags, MDX frontmatter titles, H1 alignment, and bulk title improvements. Use when the user mentions titles, title tags, SERP titles, metadata titles, SEO titles, CTR, truncation, or asks to improve titles across pages.",
+    "risk": "safe",
+    "source": "https://github.com/Illyism/seo-skills",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "Illyism/seo-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/Illyism/seo-skills/blob/a158c36a1c2c84a44ee7a1ae69c009caf73e1a35/README.md#license"
   },
   {
     "id": "sequence-psychologist",
@@ -63232,6 +66693,32 @@
     }
   },
   {
+    "id": "ship-check",
+    "path": "skills/ship-check",
+    "category": "development",
+    "name": "ship-check",
+    "description": "Assemble a ship-readiness review from existing evidence, with bounded static findings, test gaps, sign-off decisions and release artifacts.",
+    "risk": "critical",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
+  },
+  {
     "id": "shipping-and-launch",
     "path": "skills/shipping-and-launch",
     "category": "devops",
@@ -63256,6 +66743,32 @@
     "source_repo": "addyosmani/agent-skills",
     "license": "MIT",
     "license_source": "https://github.com/addyosmani/agent-skills/blob/main/LICENSE"
+  },
+  {
+    "id": "shipping-artifacts",
+    "path": "skills/shipping-artifacts",
+    "category": "development",
+    "name": "shipping-artifacts",
+    "description": "Documenting an AI-built app for handoff, review or audit: the docs that make it reviewable (architecture, flows, permissions, variables, coverage).",
+    "risk": "safe",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
   },
   {
     "id": "shipvela-publish",
@@ -66825,6 +70338,37 @@
     }
   },
   {
+    "id": "supabase-edge-function-caller-auth",
+    "path": "skills/supabase-edge-function-caller-auth",
+    "category": "security",
+    "name": "supabase-edge-function-caller-auth",
+    "description": "Audit and fix who can call each Supabase Edge Function: verify_jwt settings, withSupabase auth modes, role checks, webhook signatures and CORS, especially in Lovable/Bolt SPAs.",
+    "risk": "safe",
+    "source": "self",
+    "date_added": "2026-11-18",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "self",
+    "tags": [
+      "supabase",
+      "edge-functions",
+      "jwt",
+      "auth",
+      "lovable",
+      "security"
+    ]
+  },
+  {
     "id": "supabase-postgres-best-practices",
     "path": "skills/supabase-postgres-best-practices",
     "category": "database",
@@ -66849,6 +70393,32 @@
     "source_repo": "supabase/agent-skills",
     "license": "MIT",
     "license_source": "https://github.com/supabase/agent-skills/blob/main/LICENSE"
+  },
+  {
+    "id": "supabase-production",
+    "path": "skills/supabase-production",
+    "category": "development",
+    "name": "supabase-production",
+    "description": "A Supabase query, RPC or migration, 'db push', 'supabase link', RLS or grants, a Supabase error: server-only keys, deny-all RLS, migrations via the CLI.",
+    "risk": "critical",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
   },
   {
     "id": "super-code",
@@ -67241,6 +70811,136 @@
       "reasons": []
     },
     "source_type": "self"
+  },
+  {
+    "id": "sybil-glm53-offload-setup",
+    "path": "skills/sybil-glm53-offload-setup",
+    "category": "ai-ml",
+    "name": "sybil-glm53-offload-setup",
+    "description": "Select, verify and benchmark a GLM-5.3-Flash EXL3 offload mode on a single supported Linux NVIDIA host.",
+    "risk": "critical",
+    "source": "https://github.com/sybil-solutions/glm-flash-lite/tree/6fe077da79a4d6fc842cf9f50cb703e4409924ca/skills/glm53-offload-setup",
+    "date_added": "2026-11-19",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "sybil-solutions/glm-flash-lite",
+    "license": "MIT",
+    "license_source": "https://github.com/sybil-solutions/glm-flash-lite/blob/6fe077da79a4d6fc842cf9f50cb703e4409924ca/LICENSE"
+  },
+  {
+    "id": "sybil-inference-optimisation",
+    "path": "skills/sybil-inference-optimisation",
+    "category": "ai-ml",
+    "name": "sybil-inference-optimisation",
+    "description": "Benchmark and tune local LLM serving against a measured ceiling with controlled comparisons, resource limits and quality gates.",
+    "risk": "critical",
+    "source": "https://github.com/sybil-solutions/inference-optimisation-skill/tree/fda968e7fc1996aa23c67139c755fe541c9d4be0/skills/inference-optimisation",
+    "date_added": "2026-11-19",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "sybil-solutions/inference-optimisation-skill",
+    "license": "MIT",
+    "license_source": "https://github.com/sybil-solutions/inference-optimisation-skill/blob/fda968e7fc1996aa23c67139c755fe541c9d4be0/LICENSE"
+  },
+  {
+    "id": "sybil-local-studio-contribution-triage",
+    "path": "skills/sybil-local-studio-contribution-triage",
+    "category": "development",
+    "name": "sybil-local-studio-contribution-triage",
+    "description": "Evaluate PR eligibility from pinned T3 Code policy and immutable submission evidence before any authorised moderation.",
+    "risk": "critical",
+    "source": "https://github.com/sybil-solutions/local-studio/tree/f65c8af78582f741b62546c93d7c66439f0cd5b1/.agents/skills/contribution-triage",
+    "date_added": "2026-11-19",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "sybil-solutions/local-studio",
+    "license": "MIT",
+    "license_source": "https://github.com/sybil-solutions/local-studio/blob/f65c8af78582f741b62546c93d7c66439f0cd5b1/LICENSE"
+  },
+  {
+    "id": "sybil-local-studio-test-t3-app",
+    "path": "skills/sybil-local-studio-test-t3-app",
+    "category": "development",
+    "name": "sybil-local-studio-test-t3-app",
+    "description": "Verify a T3 Code web or desktop flow through its Browser panel against isolated checkout state.",
+    "risk": "critical",
+    "source": "https://github.com/sybil-solutions/local-studio/tree/f65c8af78582f741b62546c93d7c66439f0cd5b1/.agents/skills/test-t3-app",
+    "date_added": "2026-11-19",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "sybil-solutions/local-studio",
+    "license": "MIT",
+    "license_source": "https://github.com/sybil-solutions/local-studio/blob/f65c8af78582f741b62546c93d7c66439f0cd5b1/LICENSE"
+  },
+  {
+    "id": "sybil-local-studio-test-t3-mobile",
+    "path": "skills/sybil-local-studio-test-t3-mobile",
+    "category": "development",
+    "name": "sybil-local-studio-test-t3-mobile",
+    "description": "Verify the native T3 Code client through its Device panel, an isolated backend and the returned target-specific controls.",
+    "risk": "critical",
+    "source": "https://github.com/sybil-solutions/local-studio/tree/f65c8af78582f741b62546c93d7c66439f0cd5b1/.agents/skills/test-t3-mobile",
+    "date_added": "2026-11-19",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "sybil-solutions/local-studio",
+    "license": "MIT",
+    "license_source": "https://github.com/sybil-solutions/local-studio/blob/f65c8af78582f741b62546c93d7c66439f0cd5b1/LICENSE"
   },
   {
     "id": "sympy",
@@ -68909,6 +72609,32 @@
     "source_repo": "amElnagdy/guard-skills"
   },
   {
+    "id": "test-harness",
+    "path": "skills/test-harness",
+    "category": "development",
+    "name": "test-harness",
+    "description": "Writing or running tests, proving a fix, a red or flaky run, a fix that didn't land, 'is it verified', 'run the gate': tests where green means something.",
+    "risk": "safe",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
+  },
+  {
     "id": "testdriver-e2e-testing",
     "path": "skills/testdriver-e2e-testing",
     "category": "testing",
@@ -70323,6 +74049,32 @@
     "license_source": "https://github.com/huggingface/skills/blob/main/LICENSE"
   },
   {
+    "id": "transactional-email",
+    "path": "skills/transactional-email",
+    "category": "development",
+    "name": "transactional-email",
+    "description": "Adding transactional or alert email, choosing a provider, 'sent twice', 'never arrived': app email sent once, never lost, with one-click unsubscribe.",
+    "risk": "critical",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
+  },
+  {
     "id": "transformers-js",
     "path": "skills/transformers-js",
     "category": "web-development",
@@ -71020,6 +74772,32 @@
     "license_source": "https://github.com/bitjaru/styleseed/blob/main/LICENSE"
   },
   {
+    "id": "ui-design",
+    "path": "skills/ui-design",
+    "category": "development",
+    "name": "ui-design",
+    "description": "Mandatory for any product's screens, a builder's too, and any mock, prototype or artifact that shows them: its design system, colour, type, components; judging the look.",
+    "risk": "safe",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
+  },
+  {
     "id": "ui-from-screenshot",
     "path": "skills/ui-from-screenshot",
     "category": "frontend",
@@ -71470,6 +75248,37 @@
     ]
   },
   {
+    "id": "ultrafast",
+    "path": "skills/ultrafast",
+    "category": "content",
+    "name": "ultrafast",
+    "description": "Make or edit videos as ultrafast JSON documents with the uf CLI or its MCP tools: write, check, look at frames, review, then export MP4, ProRes, WebM, GIF or frame sequences.",
+    "risk": "critical",
+    "source": "self",
+    "date_added": "2026-11-24",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "self",
+    "license": "Apache-2.0 OR MIT",
+    "tags": [
+      "video",
+      "motion-graphics",
+      "captions",
+      "mcp",
+      "gpu"
+    ]
+  },
+  {
     "id": "uncle-bob-craft",
     "path": "skills/uncle-bob-craft",
     "category": "code-quality",
@@ -71498,6 +75307,32 @@
       "craftsmanship",
       "uncle-bob"
     ]
+  },
+  {
+    "id": "understand-customers",
+    "path": "skills/understand-customers",
+    "category": "marketing",
+    "name": "understand-customers",
+    "description": "Synthesize consented customer research into pains, buying objections, switching triggers and attributed customer language before drafting copy.",
+    "risk": "safe",
+    "source": "https://github.com/Illyism/seo-skills",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "Illyism/seo-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/Illyism/seo-skills/blob/a158c36a1c2c84a44ee7a1ae69c009caf73e1a35/README.md#license"
   },
   {
     "id": "understand-project-yylo",
@@ -71715,6 +75550,41 @@
     ]
   },
   {
+    "id": "unpolish-ai-writing",
+    "path": "skills/unpolish-ai-writing",
+    "category": "writing",
+    "name": "unpolish-ai-writing",
+    "description": "Strip AI writing tells from a draft, then optionally add sparse seeded typos at researched human error rates. Use for deslop, imperfections, or both.",
+    "risk": "safe",
+    "source": "community",
+    "date_added": "2026-11-22",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "wilu222/unpolish-ai-writing",
+    "license": "MIT",
+    "license_source": "https://github.com/wilu222/unpolish-ai-writing/blob/main/LICENSE",
+    "tags": [
+      "writing",
+      "editing",
+      "ai-writing",
+      "humanize",
+      "deslop",
+      "typos",
+      "content-quality"
+    ]
+  },
+  {
     "id": "unreal-engine-cpp-pro",
     "path": "skills/unreal-engine-cpp-pro",
     "category": "code",
@@ -71883,6 +75753,32 @@
     "license_source": "https://github.com/MohamedAbdallah-14/unslop/blob/main/LICENSE"
   },
   {
+    "id": "unslop-seo",
+    "path": "skills/unslop-seo",
+    "category": "marketing",
+    "name": "unslop-seo",
+    "description": "Edit existing SEO and answer-engine content for plain language, accurate entities, cited claims and readable heading structure.",
+    "risk": "safe",
+    "source": "https://github.com/Illyism/seo-skills",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "Illyism/seo-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/Illyism/seo-skills/blob/a158c36a1c2c84a44ee7a1ae69c009caf73e1a35/README.md#license"
+  },
+  {
     "id": "unslop-ui",
     "path": "skills/unslop-ui",
     "category": "uncategorized",
@@ -71907,6 +75803,36 @@
     "source_repo": "heydamir/unslop",
     "license": "CC-BY-4.0",
     "license_source": "https://github.com/heydamir/unslop/blob/a6f121eee5f29c2f74976b75456feae8b66afb3a/LICENSE"
+  },
+  {
+    "id": "unslop-ui-audit",
+    "path": "skills/unslop-ui-audit",
+    "category": "frontend",
+    "name": "unslop-ui-audit",
+    "description": "Use the Unslop UI design linter for static frontend diagnostics, contrast checks, and reviewing design presets.",
+    "risk": "critical",
+    "source": "self",
+    "date_added": "2026-11-14",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "self",
+    "tags": [
+      "ui",
+      "accessibility",
+      "design-system",
+      "frontend",
+      "css"
+    ]
   },
   {
     "id": "unsloth-finetuning",
@@ -72127,6 +76053,32 @@
       "edge",
       "key-value"
     ]
+  },
+  {
+    "id": "uptime-monitoring",
+    "path": "skills/uptime-monitoring",
+    "category": "development",
+    "name": "uptime-monitoring",
+    "description": "Publishing an app, adding /health or a cron job, 'set up monitoring', 'is it down': content checks, a second location, heartbeats, a tested alert route; Staygreen by default.",
+    "risk": "critical",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
   },
   {
     "id": "url-slug-generator",
@@ -72739,6 +76691,58 @@
     ]
   },
   {
+    "id": "value-curve",
+    "path": "skills/value-curve",
+    "category": "product",
+    "name": "value-curve",
+    "description": "Comparing a product with competitors or choosing what to be best at: a value curve on one segment's top needs, plus price.",
+    "risk": "safe",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
+  },
+  {
+    "id": "value-proposition",
+    "path": "skills/value-proposition",
+    "category": "product",
+    "name": "value-proposition",
+    "description": "Creating or testing a value proposition: the 6-part form (Who, Why, What before, How, What after, Alternatives).",
+    "risk": "safe",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
+  },
+  {
     "id": "vaporwave",
     "path": "skills/design-it/vaporwave",
     "category": "design-it",
@@ -73175,6 +77179,32 @@
     }
   },
   {
+    "id": "vercel-vgpu",
+    "path": "skills/vercel-vgpu",
+    "category": "development",
+    "name": "vercel-vgpu",
+    "description": "Build and profile WGSL shaders and WebGPU passes using the installed vgpu package and version-matched documentation.",
+    "risk": "critical",
+    "source": "https://github.com/vercel-labs/vgpu/tree/61779b7d15cc40a0058e4ade0457b8dbf717319e/skills/vgpu",
+    "date_added": "2026-11-19",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "vercel-labs/vgpu",
+    "license": "MIT",
+    "license_source": "https://github.com/vercel-labs/vgpu/blob/61779b7d15cc40a0058e4ade0457b8dbf717319e/LICENSE"
+  },
+  {
     "id": "verification-before-completion",
     "path": "skills/verification-before-completion",
     "category": "workflow",
@@ -73415,6 +77445,41 @@
     "source_repo": "amElnagdy/delegate-skills",
     "license": "MIT",
     "license_source": "https://github.com/amElnagdy/delegate-skills/blob/master/LICENSE"
+  },
+  {
+    "id": "vibe-shield",
+    "path": "skills/vibe-shield",
+    "category": "development",
+    "name": "vibe-shield",
+    "description": "Audit Next.js, React, Express, Hono, Supabase SQL, Stripe webhooks, and SKILL.md or MCP configs across 92 static security and prompt-injection rules.",
+    "risk": "safe",
+    "source": "self",
+    "date_added": "2026-11-17",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "self",
+    "license": "MIT",
+    "license_source": "https://github.com/avivgerz-hue/vibe-shield/blob/81cc23361ab7f147487ea68ba17bd6f23cbbade7/LICENSE",
+    "tags": [
+      "security",
+      "static-analysis",
+      "mcp",
+      "owasp",
+      "cwe",
+      "supabase",
+      "nextjs",
+      "prompt-injection"
+    ]
   },
   {
     "id": "vibecode-production-qa-validator",
@@ -74076,6 +78141,32 @@
       },
       "reasons": []
     }
+  },
+  {
+    "id": "vs-and-alternatives",
+    "path": "skills/vs-and-alternatives",
+    "category": "marketing",
+    "name": "vs-and-alternatives",
+    "description": "Draft evidence-backed comparison and alternative pages using sourced switching reasons, pricing scenarios and migration details.",
+    "risk": "safe",
+    "source": "https://github.com/Illyism/seo-skills",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "Illyism/seo-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/Illyism/seo-skills/blob/a158c36a1c2c84a44ee7a1ae69c009caf73e1a35/README.md#license"
   },
   {
     "id": "vscode-extension-guide-en",
@@ -75658,6 +79749,32 @@
     "license_source": "https://github.com/zhaoxuya520/reverse-skill/blob/main/LICENSE"
   },
   {
+    "id": "windows-agent-shell",
+    "path": "skills/windows-agent-shell",
+    "category": "development",
+    "name": "windows-agent-shell",
+    "description": "A coding agent on Windows: Git Bash path rewriting, PowerShell quoting and encoding, CRLF. Use when output comes back garbled, or it works here and breaks there.",
+    "risk": "safe",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
+  },
+  {
     "id": "windows-hardening",
     "path": "skills/windows-hardening",
     "category": "security",
@@ -76020,6 +80137,32 @@
     }
   },
   {
+    "id": "work-humanizer",
+    "path": "skills/work-humanizer",
+    "category": "development",
+    "name": "work-humanizer",
+    "description": "'Make this sound human', 'less AI': edit AI-sounding work writing so a careful person could have written it, without changing what it says.",
+    "risk": "safe",
+    "source": "https://github.com/phuryn/product-engineering",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "phuryn/product-engineering",
+    "license": "MIT",
+    "license_source": "https://github.com/phuryn/product-engineering/blob/8ebb50bb1b28dc9e8bc669199493e6020b808cc6/LICENSE.md"
+  },
+  {
     "id": "workflow-automation",
     "path": "skills/workflow-automation",
     "category": "workflow",
@@ -76142,6 +80285,40 @@
       "recruiting",
       "talent-marketplace",
       "mcp"
+    ]
+  },
+  {
+    "id": "worktable-mcp",
+    "path": "skills/worktable-mcp",
+    "category": "mcp",
+    "name": "worktable-mcp",
+    "description": "Find, cite and update Docs, Records, HTML Docs, annotations and threads in a Worktable workspace through Worktable's MCP server. Use when the user chooses Worktable.",
+    "risk": "critical",
+    "source": "https://github.com/worktable/worktable-plugin/tree/6841f2727e1fc004e02305d99690759d54f20884",
+    "date_added": "2026-11-16",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "official",
+    "source_repo": "worktable/worktable-plugin",
+    "license": "MIT",
+    "license_source": "https://github.com/worktable/worktable-plugin/blob/6841f2727e1fc004e02305d99690759d54f20884/LICENSE",
+    "tags": [
+      "mcp",
+      "workspace",
+      "documents",
+      "records",
+      "collaboration",
+      "knowledge-base"
     ]
   },
   {
@@ -76907,6 +81084,32 @@
       "ai",
       "workflow"
     ]
+  },
+  {
+    "id": "youtube-seo",
+    "path": "skills/youtube-seo",
+    "category": "marketing",
+    "name": "youtube-seo",
+    "description": "Use an authorized recording or transcript to draft YouTube titles, timestamped chapters, launch posts and verified video structured data.",
+    "risk": "safe",
+    "source": "https://github.com/Illyism/seo-skills",
+    "date_added": "2026-11-21",
+    "plugin": {
+      "targets": {
+        "codex": "supported",
+        "claude": "supported"
+      },
+      "setup": {
+        "type": "none",
+        "summary": "",
+        "docs": null
+      },
+      "reasons": []
+    },
+    "source_type": "community",
+    "source_repo": "Illyism/seo-skills",
+    "license": "MIT",
+    "license_source": "https://github.com/Illyism/seo-skills/blob/a158c36a1c2c84a44ee7a1ae69c009caf73e1a35/README.md#license"
   },
   {
     "id": "youtube-seo-optimizer",
